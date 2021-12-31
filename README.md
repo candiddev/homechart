@@ -2,7 +2,7 @@
 
 > Your Handy Home Assistant
 
-This repository contains the [Homechart community discussions](https://github.com/candiddev/homechart/discussions):
+This repository contains [Upcoming Homechart Features](https://github.com/candiddev/homechart/issues) and [Homechart Community Discussions](https://github.com/candiddev/homechart/discussions):
 
 - [:mega: Announcements](https://github.com/candiddev/homechart/discussions/categories/announcements)
 - [:computer: Feedback - Developers](https://github.com/candiddev/homechart/discussions/categories/feedback-developers)
