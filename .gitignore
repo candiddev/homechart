@@ -1,0 +1,5 @@
+.bin
+.hugo_build.lock
+gh-pages
+public
+resources
