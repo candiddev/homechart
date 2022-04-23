@@ -3,7 +3,6 @@
 Homechart can be configured using environment variables or a JSON configuration file.  The configuration is divided into sections:
 
 - <a href="#app">App</a>
-- <a href="#cache">Cache</a>
 - <a href="#postgresql">PostgreSQL</a>
 - <a href="#smtp">SMTP</a>
 - <a href="#vault">Vault</a>
@@ -20,7 +19,7 @@ For a JSON configuration file, the keys are camelCase and nested under each sect
 }
 ```
 
-Configuration values can be booleans (true/false), integers (1/2/3),lists (1,2,3/a,b,c), and strings (a/b/c).
+Configuration values can be booleans (true/false), integers (1/2/3), lists (1,2,3/a,b,c), and strings (a/b/c).
 
 Homechart can also read configuration files from HashiCorp Vault.  See <a href="#vault">Vault</a>.
 
@@ -46,6 +45,17 @@ Type: string
 Default: "https://web.homechart.app"
 Environment Variable: HOMECHART_APP_BASEURL
 JSON: `{"app": {"baseURL": "https://web.homechart.app"}}`
+```
+
+### cacheTTLMinutes
+
+Number of minutes to keep entries in cache.
+
+```
+Type: integer
+Default: 15
+Environment Variable: HOMECHART_APP_CACHETTLMINUTES
+JSON: `{"app": {"cacheTTLMinutes": 15}}`
 ```
 
 ### debug
@@ -169,6 +179,39 @@ Environment Variable: HOMECHART_APP_PORT
 JSON: `{"app": {"port": 3000}}`
 ```
 
+### proxyAddress {#app-proxyaddress}
+
+Upstream IPv4 or IPv6 address of a trusted proxy.  See <a href="/getting-started/on-your-network/operations/sso/">SSO documentation</a> for usage details.
+
+```
+Type: string
+Default: ""
+Environment Variable: HOMECHART_APP_PROXYADDRESS
+JSON: `{"app": {"proxyAddress": ""}}`
+```
+
+### proxyHeaderEmail {#app-proxyheaderemail}
+
+Proxy header that should be associated with an account email address.  See <a href="/getting-started/on-your-network/operations/sso/">SSO documentation</a> for usage details.
+
+```
+Type: string
+Default: ""
+Environment Variable: HOMECHART_APP_PROXYHEADEREMAIL
+JSON: `{"app": {"proxyHeaderEmail": ""}}`
+```
+
+### proxyHeaderName {#app-proxyheadername}
+
+Proxy header that should be associated with an account name.  See <a href="/getting-started/on-your-network/operations/sso/">SSO documentation</a> for usage details.
+
+```
+Type: string
+Default: ""
+Environment Variable: HOMECHART_APP_PROXYHEADERNAME
+JSON: `{"app": {"proxyHeaderName": ""}}`
+```
+
 ### rateLimiterRate
 
 Maximum number of requests over a specific time to public endpoints.  Prevents brute force attacks.  Takes the format of (number-H/M/S) where H=hour, M=minute, S=Second.  The default, 15-H, means 15 requests per hour.
@@ -255,76 +298,6 @@ Type: string
 Default: ""
 Environment Variable: HOMECHART_APP_TLSKEY
 JSON: `{"app": {"tlsKey": ""}}`
-```
-
-## cache
-
-Homechart uses an in-memory cache by default.  You can use Redis instead, especially if you have multiple Homechart instances.
-
-### redisDatabase
-
-Redis database number to use.
-
-```
-Type: integer
-Default: 0
-Environment Variable: HOMECHART_CACHE_REDISDATABASE
-JSON: `{"cache": {"redisDatabase": 0}}`
-```
-
-### redisEnableTLS
-
-Connect to Redis using SSL/TLS
-
-```
-Type: boolean
-Default: false
-Environment Variable: HOMECHART_CACHE_REDISENABLETLS
-JSON: `{"cache": {"redisEnableTLS": false}}`
-```
-
-### redisHostname
-
-Hostname of Redis instance to connect to.  Setting this value disables Homechart's in-memory cache and enables Redis.
-
-```
-Type: string
-Default: ""
-Environment Variable: HOMECHART_CACHE_REDISHOSTNAME
-JSON: `{"cache": {"redisHostname": ""}}`
-```
-
-### redisPassword
-
-Redis instance password.
-
-```
-Type: string
-Default: ""
-Environment Variable: HOMECHART_CACHE_REDISPASSWORD
-JSON: `{"cache": {"redisPassword": ""}}`
-```
-
-### redisPort
-
-Redis port to connect to.
-
-```
-Type: integer
-Default: 6379
-Environment Variable: HOMECHART_CACHE_REDISPORT
-JSON: `{"cache": {"redisPort": 6379}}`
-```
-
-### redisSkipVerify
-
-Disable verification of Redis SSL/TLS certificate.
-
-```
-Type: boolean
-Default: false
-Environment Variable: HOMECHART_CACHE_REDISSKIPVERIFY
-JSON: `{"cache": {"redisSkipVerify": false}}`
 ```
 
 ## postgresql
