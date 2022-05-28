@@ -1,3 +1,3 @@
 # Paid Support
 
-[Homechart Premium](https://homechart.app/pricing) users can create support tickets within the app.  Click the Help button at the top (? icon) and create a Support request.
+After setting up your Homechart subscription, you can use the **Contact Us** options in the menu to submit support and feature requests.

@@ -413,7 +413,7 @@ JSON: {"postgresql": {"username": ""}}
 
 ## smtp
 
-Homechart can use a SMTP server to send notifications to your household members.  You can also subscribe to [Homechart Premium](/getting-started/on-your-network/homechart-premium/) to get push notifications.
+Homechart can use a SMTP server to send notifications to your household members.
 
 ### emailAddress
 
