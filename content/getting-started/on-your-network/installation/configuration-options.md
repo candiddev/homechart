@@ -167,17 +167,6 @@ Environment Variable: HOMECHART_APP_MOTD
 JSON: {"app": {"motd": ""}}
 ```
 
-### noEmailDomains
-
-List of domains that will not be verified.  Use this to automatically activate accounts for each domain listed.
-
-```
-Type: list
-Default: []
-Environment Variable: HOMECHART_APP_NOEMAILDOMAINS
-JSON: {"app": {"noEmailDomains": []}}
-```
-
 ### port {#app-port}
 
 Listening port for Homechart.  Setup port forwarding to this port.
@@ -435,6 +424,17 @@ Type: string
 Default: ""
 Environment Variable: HOMECHART_SMTP_HOSTNAME
 JSON: {"smtp": {"hostname": ""}}
+```
+
+### noEmailDomains
+
+List of domains that will not be verified.  Use this to automatically activate accounts for each domain listed.
+
+```
+Type: list
+Default: []
+Environment Variable: HOMECHART_APP_NOEMAILDOMAINS
+JSON: {"app": {"noEmailDomains": []}}
 ```
 
 ### replyTo
