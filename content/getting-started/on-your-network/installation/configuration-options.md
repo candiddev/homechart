@@ -404,15 +404,15 @@ JSON: {"postgresql": {"username": ""}}
 
 Homechart can use a SMTP server to send notifications to your household members.
 
-### emailAddress
+### fromAddress
 
-Email address to send from.
+Email address to send from.  Required to make SMTP work.
 
 ```
 Type: string
 Default: ""
-Environment Variable: HOMECHART_SMTP_EMAILADDRESS
-JSON: {"smtp": {"emailAddress": ""}}
+Environment Variable: HOMECHART_SMTP_FROMADDRESS
+JSON: {"smtp": {"fromAddress": ""}}
 ```
 
 ### hostname {#smtp-hostname}
