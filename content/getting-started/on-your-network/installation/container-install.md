@@ -12,12 +12,20 @@ Ensure your system meets the [Server Requirements](/getting-started/on-your-netw
 
 ## 2. Install a container runtime
 
-Homechart can run on any [OCI compatible runtime](https://opencontainers.org/) on Linux amd64 and arm64.  Most users use [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/).
+Homechart can run on any [OCI compatible runtime](https://opencontainers.org/) on Linux amd64 and arm64.  Most users use [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/), but we also support [Kubernetes](https://kubernetes.io).
 
 ## 3. Run Homechart
 
 The Homechart container is configured to start Homechart server without having to specify a command or entrypoint.  You will need to provide some configuration settings via environment variables, see [Configuration Options](/getting-started/on-your-network/installation/configuration-options/).
 
+### Kubernetes (via helm)
+
+Our Helm Chart is available on [ArtifactHub](https://artifacthub.io/packages/helm/homechart) and [GitHub](https://github.com/candiddev/homechart-helm).
+
+```
+helm repo add homechart https://helm.homechart.app/
+helm install my-homechart homechart/homechart
+```
 
 ### docker run
 
