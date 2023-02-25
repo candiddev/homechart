@@ -12,7 +12,7 @@ Ensure your system meets the [Server Requirements](/getting-started/on-your-netw
 
 ## 2. Install a container runtime
 
-Homechart can run on any [OCI compatible runtime](https://opencontainers.org/) on Linux amd64 and arm64.  Most users use [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/), but we also support [Kubernetes](https://kubernetes.io).
+Homechart can run on any [OCI compatible runtime](https://opencontainers.org/) on Linux amd64 and arm64.  Most users use [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/), but we also support [Kubernetes](https://kubernetes.io) and [Podman](https://podman.io/).
 
 ## 3. Run Homechart
 
@@ -22,23 +22,24 @@ The Homechart container is configured to start Homechart server without having t
 
 Our Helm Chart is available on [ArtifactHub](https://artifacthub.io/packages/helm/homechart) and [GitHub](https://github.com/candiddev/homechart-helm).
 
-```
-helm repo add homechart https://helm.homechart.app/
-helm install my-homechart homechart/homechart
+```bash
+$ helm repo add homechart https://helm.homechart.app/
+$ helm install my-homechart homechart/homechart
 ```
 
-### docker run
+### docker/podman run
 
 A minimal docker run for Homechart:
 
-```
-docker run -e HOMECHART_POSTGRESQL_HOSTNAME=homechart -e HOMECHART_POSTGRESQL_PASSWORD=homechart -e HOMECHART_POSTGRESQL_USERNAME=homechart -p 3000:3000 -d candiddev/homechart
+```bash
+$ docker run -e HOMECHART_POSTGRESQL_HOSTNAME=homechart -e HOMECHART_POSTGRESQL_PASSWORD=homechart -e HOMECHART_POSTGRESQL_USERNAME=homechart -p 3000:3000 -d candiddev/homechart
 ```
 
 ### docker-compose.yml
 
 A base docker-compose.yml file:
-```
+
+```yaml
 version: "3"
 services:
   homechart:

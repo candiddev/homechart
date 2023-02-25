@@ -9,14 +9,21 @@ Homechart can be configured using environment variables or a JSON configuration 
 
 **For environment variables**, every configuration key can be set using `HOMECHART_<SECTION>_<KEY>=a value`, i.e. `HOMECHART_APP_DEBUG=true`
 
-**For a JSON configuration file**, the keys are camelCase and nested under each section:
+**For a JSON or YAML configuration file**, the keys are camelCase and nested under each section:
 
-```
+_JSON_
+```json
 {
   "app": {
-    "debug": true
+    "baseURL": "example.com"
   }
 }
+```
+
+_YAML_
+```yaml
+app:
+  baseURL: example.com
 ```
 
 Configuration values can be booleans (true/false), integers (1/2/3), lists (1,2,3/a,b,c), and strings (a/b/c).
@@ -437,15 +444,15 @@ Environment Variable: HOMECHART_APP_NOEMAILDOMAINS
 JSON: {"app": {"noEmailDomains": []}}
 ```
 
-### replyTo
+### password {#smtp-password}
 
-Email address to have users send to when replying.
+Password to use when connecting to SMTP server.
 
 ```
 Type: string
 Default: ""
-Environment Variable: HOMECHART_SMTP_REPLYTO
-JSON: {"smtp": {"replyTo": ""}}
+Environment Variable: HOMECHART_SMTP_PASSWORD
+JSON: {"smtp": {"password": ""}}
 ```
 
 ### port {#smtp-port}
@@ -459,15 +466,15 @@ Environment Variable: HOMECHART_SMTP_PORT
 JSON: {"smtp": {"port": 587}}
 ```
 
-### password {#smtp-password}
+### replyTo
 
-Password to use when connecting to SMTP server.
+Email address to have users send to when replying.
 
 ```
 Type: string
 Default: ""
-Environment Variable: HOMECHART_SMTP_PASSWORD
-JSON: {"smtp": {"password": ""}}
+Environment Variable: HOMECHART_SMTP_REPLYTO
+JSON: {"smtp": {"replyTo": ""}}
 ```
 
 ### username {#smtp-username}
