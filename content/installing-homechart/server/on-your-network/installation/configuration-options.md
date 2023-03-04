@@ -3,11 +3,12 @@
 Homechart can be configured using environment variables or a JSON configuration file.  The configuration is divided into sections:
 
 - <a href="#app">App</a>
+- <a href="#cli">App</a>
 - <a href="#postgresql">PostgreSQL</a>
 - <a href="#smtp">SMTP</a>
 - <a href="#vault">Vault</a>
 
-**For environment variables**, every configuration key can be set using `HOMECHART_<SECTION>_<KEY>=a value`, i.e. `HOMECHART_APP_DEBUG=true`
+**For environment variables**, every configuration key can be set using `HOMECHART_<SECTION>_<KEY>=a value`, i.e. `HOMECHART_CLI_DEBUG=true`
 
 **For a JSON or YAML configuration file**, the keys are camelCase and nested under each section:
 
@@ -63,17 +64,6 @@ Type: integer
 Default: 15
 Environment Variable: HOMECHART_APP_CACHETTLMINUTES
 JSON: {"app": {"cacheTTLMinutes": 15}}
-```
-
-### debug
-
-Enable debug logging.
-
-```
-Type: boolean
-Default: false
-Environment Variable: HOMECHART_APP_DEBUG
-JSON: {"app": {"debug": false}}
 ```
 
 ### demo
@@ -304,6 +294,30 @@ Type: string
 Default: ""
 Environment Variable: HOMECHART_APP_TLSKEY
 JSON: {"app": {"tlsKey": ""}}
+```
+
+## cli
+
+### debug
+
+Enable debug logging.
+
+```
+Type: boolean
+Default: false
+Environment Variable: HOMECHART_CLI_DEBUG
+JSON: {"cli": {"debug": false}}
+```
+
+### noColor
+
+Disable colored logging
+
+```
+Type: boolean
+Default: false
+Environment Variable: HOMECHART_CLI_NOCOLOR
+JSON: {"cli": {"noColor": false}}
 ```
 
 ## postgresql

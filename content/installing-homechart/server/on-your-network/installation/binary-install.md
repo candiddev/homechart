@@ -40,7 +40,7 @@ $ homechart -c config.yaml serve
 
 ### systemd
 
-A base homechart.service file with a config file in /usr/locall/etc:
+A base homechart.service file with a config file in /usr/local/etc:
 
 ```systemd
 [Unit]
@@ -52,7 +52,7 @@ After=network.target
 Type=simple
 User=homechart
 Group=homechart
-ExecStart=/usr/local/bin/homechart -c /usr/local/etc/homechart.yaml serve
+ExecStart=/usr/local/bin/homechart -c /usr/local/etc/homechart.yaml run
 Restart=always
 RestartSec=1s
 

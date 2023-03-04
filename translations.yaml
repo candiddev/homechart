@@ -17,7 +17,7 @@ translations:
     en: Someone (hopefully you!) changed a Homechart account to use this email address.
     es: Alguien (¡con suerte tú!) cambió una cuenta de Homechart para usar esta dirección
       de correo electrónico.
-    fr: Quelqu&#39;un (vous, espérons-le!) a modifié un compte Homechart pour utiliser
+    fr: Quelqu'un (vous, espérons-le!) a modifié un compte Homechart pour utiliser
       cette adresse e-mail.
     hi: इस ईमेल पते का उपयोग करने के लिए किसी ने (उम्मीद है कि आपने!) होमचार्ट खाता
       बदल दिया है।
@@ -43,9 +43,8 @@ translations:
     es: Alguien (¡esperemos que usted!) cambió la dirección de correo electrónico
       de una cuenta de Homechart asociada con esta dirección de correo electrónico.
       La nueva dirección de correo electrónico es
-    fr: Quelqu&#39;un (vous, espérons-le!) a changé l&#39;adresse e-mail d&#39;un
-      compte Homechart associé à cette adresse e-mail. La nouvelle adresse e-mail
-      est
+    fr: Quelqu'un (vous, espérons-le!) a changé l'adresse e-mail d'un compte Homechart
+      associé à cette adresse e-mail. La nouvelle adresse e-mail est
     hi: किसी ने (उम्मीद है कि आपने!) इस ईमेल पते से जुड़े होमचार्ट खाते का ईमेल पता
       बदल दिया है। नया ईमेल पता है
     zh: 有人（希望是您！）更改了与此电子邮件地址关联的 Homechart 帐户的电子邮件地址。新的电子邮件地址是
@@ -64,7 +63,7 @@ translations:
     de: Klicken Sie hier, um die Veranstaltung anzuzeigen
     en: Click here to view event
     es: Haga clic aquí para ver el evento
-    fr: Cliquez ici pour voir l&#39;événement
+    fr: Cliquez ici pour voir l'événement
     hi: इवेंट देखने के लिए यहां क्लिक करें
     zh: 点击此处查看活动
   EmailExpiredBody:
@@ -142,7 +141,7 @@ translations:
     en: If you did not request this, please reply to this email.  We're here to help!
     es: Si no lo solicitó, responda a este correo electrónico. ¡Estamos aquí para
       ayudar!
-    fr: Si vous ne l&#39;avez pas demandé, veuillez répondre à cet e-mail. Nous sommes
+    fr: Si vous ne l'avez pas demandé, veuillez répondre à cet e-mail. Nous sommes
       là pour vous aider !
     hi: यदि आपने इसका अनुरोध नहीं किया है, तो कृपया इस ईमेल का उत्तर दें। हमलोग यहां
       सहायता करने के लिए हैं!
@@ -158,7 +157,7 @@ translations:
     es: Hola %s, %s te invitó a su hogar Homechart. Haga clic en el enlace a continuación
       para aceptar o rechazar la invitación.
     fr: Bonjour %s, %s vous a invité dans son foyer Homechart! Veuillez cliquer sur
-      le lien ci-dessous pour accepter ou refuser l&#39;invitation
+      le lien ci-dessous pour accepter ou refuser l'invitation
     hi: हैलो %s, %s ने आपको अपने होमचार्ट हाउस में आमंत्रित किया! आमंत्रण स्वीकार
       या अस्वीकार करने के लिए कृपया नीचे दिए गए लिंक पर क्लिक करें
     zh: 你好 %s，%s 邀请你去他们的 Homechart 家庭！请点击以下链接接受或拒绝邀请
@@ -199,7 +198,7 @@ translations:
       associated with this email address.
     es: Alguien (¡esperemos que usted!) Habilitó Iniciar sesión con %s para la cuenta
       de Homechart asociada con esta dirección de correo electrónico.
-    fr: Quelqu&#39;un (vous, espérons-le!) a activé la connexion avec %s pour le compte
+    fr: Quelqu'un (vous, espérons-le!) a activé la connexion avec %s pour le compte
       Homechart associé à cette adresse e-mail.
     hi: इस ईमेल पते से जुड़े होमचार्ट खाते के लिए किसी ने (उम्मीद है कि आपने!) %s
       के साथ साइन इन करने में सक्षम किया है।
@@ -223,8 +222,8 @@ translations:
       with this email address.
     es: Alguien (¡ojalá seas tú!) cambió la contraseña de una cuenta de Homechart
       asociada con esta dirección de correo electrónico.
-    fr: Quelqu&#39;un (vous, espérons-le!) a changé le mot de passe d&#39;un compte
-      Homechart associé à cette adresse e-mail.
+    fr: Quelqu'un (vous, espérons-le!) a changé le mot de passe d'un compte Homechart
+      associé à cette adresse e-mail.
     hi: किसी ने (उम्मीद है कि आपने!) इस ईमेल पते से जुड़े होमचार्ट खाते का पासवर्ड
       बदल दिया है।
     zh: 有人（希望是您！）更改了与此电子邮件地址关联的 Homechart 帐户的密码。
@@ -247,8 +246,8 @@ translations:
       associated with this email address.
     es: Alguien (¡esperemos que usted!) Solicitó un restablecimiento de contraseña
       para una cuenta de Homechart asociada con esta dirección de correo electrónico.
-    fr: Quelqu&#39;un (vous, espérons-le!) a demandé la réinitialisation du mot de
-      passe d&#39;un compte Homechart associé à cette adresse e-mail.
+    fr: Quelqu'un (vous, espérons-le!) a demandé la réinitialisation du mot de passe
+      d'un compte Homechart associé à cette adresse e-mail.
     hi: किसी ने (उम्मीद है कि आपने!) इस ईमेल पते से जुड़े होमचार्ट खाते के लिए पासवर्ड
       रीसेट करने का अनुरोध किया है।
     zh: 有人（希望是您！）请求重置与此电子邮件地址关联的 Homechart 帐户的密码。
@@ -268,9 +267,9 @@ translations:
       de correo electrónico. Si tiene problemas para recuperar su cuenta de Homechart,
       responda a este correo electrónico. Si no solicitó este correo electrónico,
       ignórelo.
-    fr: Malheureusement, nous n&#39;avons pas trouvé de compte associé à cette adresse
+    fr: Malheureusement, nous n'avons pas trouvé de compte associé à cette adresse
       e-mail. Si vous rencontrez des problèmes pour récupérer votre compte Homechart,
-      veuillez répondre à cet e-mail. Si vous n&#39;avez pas demandé cet e-mail, veuillez
+      veuillez répondre à cet e-mail. Si vous n'avez pas demandé cet e-mail, veuillez
       ne pas en tenir compte.
     hi: दुर्भाग्य से, हम इस ईमेल पते से जुड़ा कोई खाता नहीं ढूंढ सके। यदि आपको अपना
       होमचार्ट खाता पुनर्प्राप्त करने में समस्या हो रही है, तो कृपया इस ईमेल का उत्तर
@@ -331,7 +330,7 @@ translations:
     de: Dies ist Ihre Erinnerung für die bevorstehende Veranstaltung
     en: This is your reminder for the upcoming event
     es: Este es su recordatorio para el próximo evento.
-    fr: Ceci est votre rappel pour l&#39;événement à venir
+    fr: Ceci est votre rappel pour l'événement à venir
     hi: यह आगामी कार्यक्रम के लिए आपका अनुस्मारक है
     zh: 这是您对即将举行的活动的提醒
   EmailPushEventReminderBodyLeave:
@@ -349,7 +348,7 @@ translations:
     de: Veranstaltung beginnt
     en: Event starts
     es: Comienza el evento
-    fr: L&#39;événement commence
+    fr: L'événement commence
     hi: घटना शुरू होती है
     zh: 活动开始
   EmailPushEventReminderSubject:
@@ -358,7 +357,7 @@ translations:
     de: Ereigniserinnerung
     en: Event Reminder
     es: Recordatorio de evento
-    fr: Rappel d&#39;événement
+    fr: Rappel d'événement
     hi: घटना अनुस्मारक
     zh: 活动提醒
   EmailPushMealPlanReminderCookSubject:
@@ -399,9 +398,9 @@ translations:
       they don't allow us to cancel your subscription so you must do this manually.
     es: Actualmente estás suscrito a Homechart usando la App Store. Lamentablemente,
       no nos permiten cancelar su suscripción, por lo que debe hacerlo manualmente.
-    fr: Vous êtes actuellement abonné à Homechart via l&#39;App Store. Malheureusement,
-      ils ne nous permettent pas d&#39;annuler votre abonnement, vous devez donc le
-      faire manuellement.
+    fr: Vous êtes actuellement abonné à Homechart via l'App Store. Malheureusement,
+      ils ne nous permettent pas d'annuler votre abonnement, vous devez donc le faire
+      manuellement.
     hi: आपने वर्तमान में ऐप स्टोर का उपयोग करके होमचार्ट की सदस्यता ली है। दुर्भाग्य
       से, वे हमें आपकी सदस्यता रद्द करने की अनुमति नहीं देते हैं, इसलिए आपको इसे मैन्युअल
       रूप से करना होगा।
@@ -425,8 +424,8 @@ translations:
       far
     es: ¡Alguien usó su referencia para registrarse en Homechart! Has recomendado
       a %d hasta ahora
-    fr: Quelqu&#39;un a utilisé votre parrainage pour s&#39;inscrire à Homechart!
-      Vous avez parrainé %d jusqu&#39;à présent
+    fr: Quelqu'un a utilisé votre parrainage pour s'inscrire à Homechart! Vous avez
+      parrainé %d jusqu'à présent
     hi: होमचार्ट के लिए साइन अप करने के लिए किसी ने आपके रेफ़रल का उपयोग किया! आपने
       अभी तक %d का उल्लेख किया है
     zh: 有人使用您的推荐注册了 Homechart！到目前为止你已经推荐了 %d
@@ -446,7 +445,7 @@ translations:
       erhalten.
     en: and only need %d more to receive a lifetime subscription to Homechart.
     es: y solo necesita %d más para recibir una suscripción de por vida a Homechart.
-    fr: et n&#39;avez besoin que de %dplus pour recevoir un abonnement à vie à Homechart.
+    fr: et n'avez besoin que de %dplus pour recevoir un abonnement à vie à Homechart.
     hi: और होमचार्ट के लिए आजीवन सदस्यता प्राप्त करने के लिए केवल %d अधिक की आवश्यकता
       है।
     zh: 只需要再增加 %d 就可以终生订阅 Homechart。
@@ -456,7 +455,7 @@ translations:
     de: Betreff der Empfehlungs-E-Mail
     en: Subject for referral email
     es: Asunto del correo electrónico de referencia
-    fr: Objet de l&#39;e-mail de recommandation
+    fr: Objet de l'e-mail de recommandation
     hi: रेफरल ईमेल के लिए विषय
     zh: 推荐电子邮件的主题
   EmailSignInBody:
@@ -481,8 +480,9 @@ translations:
       **Tipo de dispositivo**: %s **Dirección IP**: %s Si no fue usted, considere
       cambiar la contraseña de su cuenta de Homechart. ¿No estás seguro de qué hacer?
       Responde a este correo electrónico, ¡estamos aquí para ayudarte!'
-    fr: 'Quelqu&#39;un (vous, espérons-le!) vient de se connecter à votre compte Homechart:
-      **Type d&#39;appareil**: %s **Adresse IP**: %s Si ce n&#39;était pas vous, veuillez
+    fr: |
+      'Quelqu'un (vous, espérons-le!) vient de se connecter à votre compte Homechart:
+      **Type d'appareil**: %s **Adresse IP**: %s Si ce n'était pas vous, veuillez
       envisager de modifier le mot de passe de votre compte Homechart. Vous ne savez
       pas quoi faire? Répondez à cet e-mail, nous sommes là pour vous aider!'
     hi: 'किसी ने (उम्मीद है कि आपने!) अभी-अभी आपके होमचार्ट खाते में प्रवेश किया है:
@@ -519,7 +519,7 @@ translations:
       with this email address.
     es: Se inhabilitó la autenticación de dos factores para la cuenta de Homechart
       asociada con esta dirección de correo electrónico.
-    fr: L&#39;authentification à deux facteurs a été désactivée pour le compte Homechart
+    fr: L'authentification à deux facteurs a été désactivée pour le compte Homechart
       associé à cette adresse e-mail.
     hi: इस ईमेल पते से संबद्ध होमचार्ट खाते के लिए दो-कारक प्रमाणीकरण अक्षम कर दिया
       गया है।
@@ -548,9 +548,9 @@ translations:
       asociada con esta dirección de correo electrónico. En caso de que su dispositivo
       de autenticación de dos factores no esté disponible, aquí está su código de
       respaldo
-    fr: L&#39;authentification à deux facteurs a été activée pour le compte Homechart
-      associé à cette adresse e-mail. Si votre dispositif d&#39;authentification à
-      deux facteurs n&#39;est pas disponible, voici votre code de secours
+    fr: L'authentification à deux facteurs a été activée pour le compte Homechart
+      associé à cette adresse e-mail. Si votre dispositif d'authentification à deux
+      facteurs n'est pas disponible, voici votre code de secours
     hi: इस ईमेल पते से जुड़े होमचार्ट खाते के लिए दो-कारक प्रमाणीकरण सक्षम किया गया
       है। यदि आपका टू-फैक्टर ऑथेंटिकेशन डिवाइस उपलब्ध नहीं है, तो यहां आपका बैकअप
       कोड है
@@ -589,7 +589,7 @@ translations:
     de: Die E-Mail-Adresse Ihres Homechart-Kontos wurde verifiziert.
     en: Your Homechart account email address has been verified.
     es: Se ha verificado la dirección de correo electrónico de su cuenta de Homechart.
-    fr: L&#39;adresse e-mail de votre compte Homechart a été vérifiée.
+    fr: L'adresse e-mail de votre compte Homechart a été vérifiée.
     hi: आपका होमचार्ट खाता ईमेल पता सत्यापित किया गया है।
     zh: 您的 Homechart 帐户电子邮件地址已通过验证。
   EmailVerifiedSubject:
@@ -620,7 +620,7 @@ translations:
       here to help!
     es: Si tiene algún problema con el uso de Homechart, responda a este correo electrónico.
       ¡Estamos aquí para ayudar!
-    fr: Si vous rencontrez des problèmes lors de l&#39;utilisation de Homechart, veuillez
+    fr: Si vous rencontrez des problèmes lors de l'utilisation de Homechart, veuillez
       répondre à cet e-mail. Nous sommes là pour vous aider !
     hi: यदि आपको होमचार्ट का उपयोग करने में कोई समस्या है, तो कृपया इस ईमेल का उत्तर
       दें। हमलोग यहां सहायता करने के लिए हैं!
@@ -638,17 +638,32 @@ translations:
       (٪ [1] s / shop / Stores) - [أضف عناصر إلى قائمة التسوق الخاصة بك] (٪ [1] s
       / shop / items)'
     context: Getting started body for welcome email
-    de: 'Hier sind einige Möglichkeiten, um loszulegen: - [Termine zu Ihrem Kalender
-      hinzufügen](%[1]s/calendar) - [Budgetkategorien einrichten](%[1]s/budget/categories)
+    de: |
+      Hier sind einige Möglichkeiten, um loszulegen:
+
+      - [Termine zu Ihrem Kalender hinzufügen](%[1]s/calendar)
+
+      - [Budgetkategorien einrichten](%[1]s/budget/categories)
+
       - [Standardbank aktualisieren Konten und Transaktionen eingeben oder importieren](%[1]s/budget/accounts)
+
       - [Fügen Sie Ihre Lieblingsrezepte hinzu oder importieren Sie sie](%[1]s/cook/recipes)
-      - [Planen Sie Mahlzeiten für diese Woche](%[1 ]s/calendar) - [Eingaben/Ausgaben
-      für Ihre Gesundheits- und Allergenverfolgung einrichten](%[1]s/health/inputs)
-      - [Artikel aus Ihrem Haus oder Ihrer Speisekammer zum Inventar hinzufügen](%[1]s/inventory/
-      alle) - [Deine Dokumentationsbibliothek starten](%[1]s/notes/household) - [Projekte
-      und Aufgaben erstellen](%[1]s/plan/tasks) - [Belohnungskarten und Ziele einrichten](%[1
-      ]s/rewards/sent) - [Geschäfte zu Ihrer Einkaufsliste hinzufügen](%[1]s/shop/stores)
-      - [Artikel zu Ihrer Einkaufsliste hinzufügen](%[1]s/shop/items)'
+
+      - [Planen Sie Mahlzeiten für diese Woche](%[1]s/calendar)
+
+      - [Eingaben/Ausgaben für Ihre Gesundheits- und Allergenverfolgung einrichten](%[1]s/health/inputs)
+
+      - [Artikel aus Ihrem Haus oder Ihrer Speisekammer zum Inventar hinzufügen](%[1]s/inventory/all)
+
+      - [Deine Dokumentationsbibliothek starten](%[1]s/notes/household)
+
+      - [Projekte und Aufgaben erstellen](%[1]s/plan/tasks)
+
+      - [Belohnungskarten und Ziele einrichten](%[1]s/rewards/sent)
+
+      - [Geschäfte zu Ihrer Einkaufsliste hinzufügen](%[1]s/shop/stores)
+
+      - [Artikel zu Ihrer Einkaufsliste hinzufügen](%[1]s/shop/items)
     en: |
       Here are a few ways to get started:
 
@@ -675,44 +690,109 @@ translations:
       - [Add stores for your shopping list](%[1]s/shop/stores)
 
       - [Add items to your shopping list](%[1]s/shop/items)
-    es: 'Estas son algunas formas de comenzar: - [Agregar eventos a su calendario](%[1]s/calendar)
-      - [Configurar sus categorías de presupuesto](%[1]s/budget/categories) - [Actualizar
-      el banco predeterminado cuentas e ingresar o importar transacciones](%[1]s/budget/accounts)
-      - [Agregar o importar sus recetas favoritas](%[1]s/cook/recipes) - [Planificar
-      comidas para esta semana](%[1 ]s/calendar) - [Configure sus entradas/salidas
-      de salud y seguimiento de alérgenos](%[1]s/health/inputs) - [Agregue artículos
-      de su casa o despensa al inventario](%[1]s/inventario/ all) - [Inicie su biblioteca
-      de documentación](%[1]s/notes/home) - [Crear proyectos y tareas](%[1]s/plan/tasks)
-      - [Configurar tarjetas de recompensa y metas](%[1 ]s/rewards/sent) - [Agregar
-      tiendas a su lista de compras](%[1]s/shop/stores) - [Agregar artículos a su
-      lista de compras](%[1]s/shop/items)'
-    fr: 'Voici quelques façons de commencer: - [Ajouter des événements à votre calendrier](%[1]s/calendar)
-      - [Configurer vos catégories de budget](%[1]s/budget/categories) - [Mettre à
-      jour la banque par défaut comptes et saisir ou importer des transactions](%[1]s/budget/accounts)
-      - [Ajouter ou importer vos recettes préférées](%[1]s/cook/recipes) - [Planifier
-      les repas de cette semaine](%[1 ]s/calendar) - [Configurez vos entrées/sorties
-      de suivi de la santé et des allergènes](%[1]s/health/inputs) - [Ajoutez des
-      articles de votre maison ou de votre garde-manger à l&#39;inventaire](%[1]s/inventory/
-      tous) - [Commencer votre bibliothèque de documentation](%[1]s/notes/ménage)
-      - [Créer des projets et des tâches](%[1]s/plan/tâches) - [Configurer des cartes
-      de récompense et des objectifs](%[1 ]s/rewards/sent) - [Ajouter des magasins
-      à votre liste de courses](%[1]s/shop/stores) - [Ajouter des articles à votre
-      liste de courses](%[1]s/shop/items)'
-    hi: 'आरंभ करने के कुछ तरीके यहां दिए गए हैं: - [अपने कैलेंडर में ईवेंट जोड़ें](%[1]s/कैलेंडर)
-      - [अपनी बजट श्रेणियां सेट करें](%[1]s/बजट/श्रेणियां) - [डिफ़ॉल्ट बैंक अपडेट
-      करें खाते और लेनदेन दर्ज करें या आयात करें](%[1]s/बजट/खाते) - [अपने पसंदीदा
-      व्यंजनों को जोड़ें या आयात करें](%[1]s/cook/recipes) - [इस सप्ताह के लिए भोजन
-      की योजना बनाएं](%[1 ]s/कैलेंडर) - [अपना स्वास्थ्य और एलर्जेन ट्रैकिंग इनपुट/आउटपुट
-      सेटअप करें](%[1]s/स्वास्थ्य/इनपुट) - [अपने घर या पेंट्री से आइटम को इन्वेंट्री
-      में जोड़ें](%[1]s/इन्वेंट्री/ सभी) - [अपना प्रलेखन पुस्तकालय शुरू करें](%[1]s/नोट्स/घरेलू)
-      - [परियोजनाएं और कार्य बनाएं](%[1]s/योजना/कार्य) - [इनाम कार्ड और लक्ष्य सेटअप
-      करें](%[1 ]s/rewards/sent) - [अपनी खरीदारी सूची के लिए स्टोर जोड़ें](%[1]s/shop/stores)
-      - [अपनी खरीदारी सूची में आइटम जोड़ें](%[1]s/shop/items)'
-    zh: 以下是一些入门方法：- [将事件添加到您的日历](%[1]s/calendar) - [设置您的预算类别](%[1]s/budget/categories)
-      - [更新默认银行帐户并输入或导入交易](%[1]s/budget/accounts) - [添加或导入您最喜欢的食谱](%[1]s/cook/recipes)
-      - [计划本周的膳食](%[1 ]s/calendar) - [设置您的健康和过敏原跟踪输入/输出](%[1]s/health/inputs) - [将您家中或储藏室的物品添加到库存](%[1]s/inventory/
-      all) - [启动你的文档库](%[1]s/notes/household) - [创建项目和任务](%[1]s/plan/tasks) - [设置奖励卡和目标](%[1
-      ]s/rewards/sent) - [为您的购物清单添加商店](%[1]s/shop/stores) - [向您的购物清单添加商品](%[1]s/shop/items)
+    es: |
+      Estas son algunas formas de comenzar:
+
+      - [Agregar eventos a su calendario](%[1]s/calendar)
+
+      - [Configurar sus categorías de presupuesto](%[1]s/budget/categories)
+
+      - [Actualizar el banco predeterminado cuentas e ingresar o importar transacciones](%[1]s/budget/accounts)
+
+      - [Agregar o importar sus recetas favoritas](%[1]s/cook/recipes)
+
+      - [Planificar comidas para esta semana](%[1]s/calendar)
+
+      - [Configure sus entradas/salidas de salud y seguimiento de alérgenos](%[1]s/health/inputs)
+
+      - [Agregue artículos de su casa o despensa al inventario](%[1]s/inventory/all)
+
+      - [Inicie su biblioteca de documentación](%[1]s/notes/household)
+
+      - [Crear proyectos y tareas](%[1]s/plan/tasks)
+
+      - [Configurar tarjetas de recompensa y metas](%[1]s/rewards/sent)
+
+      - [Agregar tiendas a su lista de compras](%[1]s/shop/stores)
+
+      - [Agregar artículos a su lista de compras](%[1]s/shop/items)
+    fr: |
+      Voici quelques façons de commencer:
+      - [Ajouter des événements à votre calendrier](%[1]s/calendar)
+
+      - [Configurer vos catégories de budget](%[1]s/budget/categories)
+
+      - [Mettre à jour la banque par défaut comptes et saisir ou importer des transactions](%[1]s/budget/accounts)
+
+      - [Ajouter ou importer vos recettes préférées](%[1]s/cook/recipes)
+
+      - [Planifier les repas de cette semaine](%[1]s/calendar)
+
+      - [Configurez vos entrées/sorties de suivi de la santé et des allergènes](%[1]s/health/inputs)
+
+      - [Ajoutez des articles de votre maison ou de votre garde-manger à l'inventaire](%[1]s/inventory/all)
+
+      - [Commencer votre bibliothèque de documentation](%[1]s/notes/household)
+
+      - [Créer des projets et des tâches](%[1]s/plan/tasks)
+
+      - [Configurer des cartes de récompense et des objectifs](%[1]s/rewards/sent)
+
+      - [Ajouter des magasins à votre liste de courses](%[1]s/shop/stores)
+
+      - [Ajouter des articles à votre liste de courses](%[1]s/shop/items)
+    hi: |
+      आरंभ करने के कुछ तरीके यहां दिए गए हैं:
+
+      - [अपने कैलेंडर में ईवेंट जोड़ें](%[1]s/calendar)
+
+      - [अपनी बजट श्रेणियां सेट करें](%[1]s/budget/categories)
+
+      - [डिफ़ॉल्ट बैंक अपडेट करें खाते और लेनदेन दर्ज करें या आयात करें](%[1]s/budget/accounts)
+
+      - [अपने पसंदीदा व्यंजनों को जोड़ें या आयात करें](%[1]s/cook/recipes)
+
+      - [इस सप्ताह के लिए भोजन की योजना बनाएं](%[1]s/calendar)
+
+      - [अपना स्वास्थ्य और एलर्जेन ट्रैकिंग इनपुट/आउटपुट सेटअप करें](%[1]s/health/inputs)
+
+      - [अपने घर या पेंट्री से आइटम को इन्वेंट्री में जोड़ें](%[1]s/inventory/all)
+
+      - [अपना प्रलेखन पुस्तकालय शुरू करें](%[1]s/notes/household)
+
+      - [परियोजनाएं और कार्य बनाएं](%[1]s/plan/tasks)
+
+      - [इनाम कार्ड और लक्ष्य सेटअप करें](%[1]s/rewards/sent)
+
+      - [अपनी खरीदारी सूची के लिए स्टोर जोड़ें](%[1]s/shop/stores)
+
+      - [अपनी खरीदारी सूची में आइटम जोड़ें](%[1]s/shop/items)
+    zh: |
+      以下是一些入门方法：
+
+      - [将事件添加到您的日历](%[1]s/calendar)
+
+      - [设置您的预算类别](%[1]s/budget/categories)
+
+      - [更新默认银行帐户并输入或导入交易](%[1]s/budget/accounts)
+
+      - [添加或导入您最喜欢的食谱](%[1]s/cook/recipes)
+
+      - [计划本周的膳食](%[1 ]s/calendar)
+
+      - [设置您的健康和过敏原跟踪输入/输出](%[1]s/health/inputs)
+
+      - [将您家中或储藏室的物品添加到库存](%[1]s/inventory/all)
+
+      - [启动你的文档库](%[1]s/notes/household)
+
+      - [创建项目和任务](%[1]s/plan/tasks)
+
+      - [设置奖励卡和目标](%[1]s/rewards/sent)
+
+      - [为您的购物清单添加商店](%[1]s/shop/stores)
+
+      - [向您的购物清单添加商品](%[1]s/shop/items)
   EmailWelcomeSubject:
     ar: مرحبا بكم في Homechart
     context: Subject for welcome email
@@ -899,7 +979,7 @@ translations:
     de: Notfallfonds
     en: Emergency Fund
     es: Fondo de emergencia
-    fr: Fonds d&#39;urgence
+    fr: Fonds d'urgence
     hi: आपातकालीन निधि
     zh: 应急基金
   ObjectBudgetCategoryGroceries:
@@ -1583,7 +1663,7 @@ translations:
     de: Essenszeit erstellt
     en: Meal time created
     es: Hora de la comida creada
-    fr: L&#39;heure du repas créée
+    fr: L'heure du repas créée
     hi: भोजन का समय बनाया गया
     zh: 用餐时间已创建
   ObjectMealTimeDeleted:
@@ -1601,7 +1681,7 @@ translations:
     de: Essenszeit aktualisiert
     en: Meal time updated
     es: Hora de la comida actualizada
-    fr: L&#39;heure du repas mise à jour
+    fr: L'heure du repas mise à jour
     hi: भोजन का समय अपडेट किया गया
     zh: 用餐时间已更新
   ObjectMealTimes:
@@ -1688,7 +1768,7 @@ translations:
   ObjectNotes:
     ar: ملحوظات
     context: Multiple knowledge articles
-    de: Anmerkungen
+    de: Notizen
     en: Notes
     es: notas
     fr: Remarques
@@ -1994,7 +2074,7 @@ translations:
   ObjectReward:
     ar: جائزة
     context: Praising someone for doing something
-    de: Preis
+    de: Belohnung
     en: Reward
     es: Premio
     fr: Récompense
@@ -2003,7 +2083,7 @@ translations:
   ObjectSecrets:
     ar: أسرار
     context: Things you want to keep private/hidden/secure
-    de: Geheimnisse
+    de: Sicherheit
     en: Secrets
     es: Misterios
     fr: secrets
@@ -2150,7 +2230,7 @@ translations:
     de: Nächstes Fälligkeitsdatum
     en: Next due date
     es: Fecha de vencimiento Siguiente
-    fr: Prochaine date d&#39;échéance
+    fr: Prochaine date d'échéance
     hi: अगला देय तिथि
     zh: 下一个截止日期
   ObjectTaskSub:
@@ -2411,7 +2491,7 @@ translations:
     de: Heute ist nichts geplant!
     en: Nothing scheduled today!
     es: Nada programado hoy!
-    fr: Rien de prévu aujourd&#39;hui !
+    fr: Rien de prévu aujourd'hui !
     hi: आज कुछ निर्धारित नहीं है!
     zh: 今天没有安排！
   PushDailyAgendaSubject:
@@ -2429,7 +2509,7 @@ translations:
     de: Drücken Sie hier, um das Ereignis anzuzeigen
     en: Press here to view event
     es: Presione aquí para ver el evento
-    fr: Appuyez ici pour voir l&#39;événement
+    fr: Appuyez ici pour voir l'événement
     hi: इवेंट देखने के लिए यहां दबाएं
     zh: 按此查看活动
   PushMealPlanReminderBody:
@@ -2520,7 +2600,7 @@ translations:
     de: Abonnement-Kunden-ID
     en: Subscription Customer ID
     es: ID de cliente de suscripción
-    fr: ID client d&#39;abonnement
+    fr: ID client d'abonnement
     hi: सदस्यता ग्राहक आईडी
     zh: 订阅客户 ID
   WebAdminHouseholdsSubscriptionID:
@@ -2529,7 +2609,7 @@ translations:
     de: Abonnement-ID
     en: Subscription ID
     es: ID de suscripción
-    fr: ID d&#39;abonnement
+    fr: ID d'abonnement
     hi: अंशदान पहचानपत्र
     zh: 订阅号
   WebAdminHouseholdsSubscriptionProcessor:
@@ -2538,7 +2618,7 @@ translations:
     de: Abonnementprozessor
     en: Subscription Processor
     es: Procesador de suscripción
-    fr: Processeur d&#39;abonnement
+    fr: Processeur d'abonnement
     hi: सदस्यता प्रोसेसर
     zh: 订阅处理器
   WebAdminNotificationsAction:
@@ -2619,7 +2699,7 @@ translations:
     de: Vielen Dank für den Kauf von Homechart!
     en: Thank you for purchasing Homechart!
     es: ¡Gracias por comprar Homechart!
-    fr: Merci d&#39;avoir acheté Homechart !
+    fr: Merci d'avoir acheté Homechart !
     hi: होमचार्ट खरीदने के लिए धन्यवाद!
     zh: 感谢您购买 Homechart！
   WebAlertSubscriptionExpired1:
@@ -2723,7 +2803,7 @@ translations:
     de: Bestätigungs-E-Mail gesendet
     en: Verification email sent
     es: El mensaje de verificación ha sido enviado
-    fr: L&#39;email de vérification a été envoyé
+    fr: L'email de vérification a été envoyé
     hi: सत्यापन विद्युतडाक भेज दिया गया है
     zh: 已发送验证邮件
   WebAuthAccountVerifyEmail:
@@ -2786,7 +2866,7 @@ translations:
     de: Datumsbereich bis
     en: Date Range To
     es: Intervalo de fechas hasta
-    fr: Plage de dates jusqu&#39;au
+    fr: Plage de dates jusqu'au
     hi: दिनांक सीमा तक
     zh: 日期范围至
   WebBudgetChartsDateRangeToTooltip:
@@ -3162,8 +3242,8 @@ translations:
       features and get them prioritized.
     es: A continuación se muestra una lista de ideas para Homechart. Necesitamos su
       ayuda para convertirlas en características y priorizarlas.
-    fr: Vous trouverez ci-dessous une liste d&#39;idées pour Homechart. Nous avons
-      besoin de votre aide pour les transformer en fonctionnalités et les prioriser.
+    fr: Vous trouverez ci-dessous une liste d'idées pour Homechart. Nous avons besoin
+      de votre aide pour les transformer en fonctionnalités et les prioriser.
     hi: होमचार्ट के लिए विचारों की सूची नीचे दी गई है। इन्हें सुविधाओं में बदलने और
       उन्हें प्राथमिकता देने के लिए हमें आपकी सहायता की आवश्यकता है।
     zh: 以下是 Homechart 的想法列表。我们需要您的帮助来将这些转化为功能并确定它们的优先级。
@@ -3177,8 +3257,8 @@ translations:
       you can comment on all of them.
     es: Cada hogar tiene cinco votos para gastar en las ideas que más les gustan,
       pero puedes comentarlas todas.
-    fr: Chaque ménage dispose de cinq votes à dépenser pour les idées qu&#39;il aime
-      le plus, mais vous pouvez tous les commenter.
+    fr: Chaque ménage dispose de cinq votes à dépenser pour les idées qu'il aime le
+      plus, mais vous pouvez tous les commenter.
     hi: प्रत्येक परिवार के पास उन विचारों पर खर्च करने के लिए पाँच वोट हैं जिन्हें
       वे सबसे अधिक पसंद करते हैं, लेकिन आप उन सभी पर टिप्पणी कर सकते हैं।
     zh: 每个家庭有五票可以投给他们最喜欢的想法，但您可以对所有想法进行评论。
@@ -3288,7 +3368,7 @@ translations:
     de: Eigenschaften zum Filtern von Inventarelementen
     en: Properties to use for filtering inventory items
     es: Propiedades a usar para filtrar artículos de inventario
-    fr: Propriétés à utiliser pour filtrer les éléments d&#39;inventaire
+    fr: Propriétés à utiliser pour filtrer les éléments d'inventaire
     hi: इन्वेंट्री आइटम को फ़िल्टर करने के लिए उपयोग करने के लिए गुण
     zh: 用于过滤库存项目的属性
   WebFormImportRecipeTitle:
@@ -3371,8 +3451,8 @@ translations:
     en: Icon to be displayed with the item.  Use this link to search for icons on
     es: Icono que se mostrará con el elemento. Utilice este enlace para buscar iconos
       en
-    fr: Icône à afficher avec l&#39;élément. Utilisez ce lien pour rechercher des
-      icônes sur
+    fr: Icône à afficher avec l'élément. Utilisez ce lien pour rechercher des icônes
+      sur
     hi: आइटम के साथ प्रदर्शित किया जाने वाला चिह्न। आइकन खोजने के लिए इस लिंक का उपयोग
       करें
     zh: 与项目一起显示的图标。使用此链接搜索图标
@@ -3400,7 +3480,7 @@ translations:
     de: Wem gehört der Artikel
     en: Who owns the item
     es: Quién es el propietario del artículo
-    fr: A qui appartient l&#39;objet
+    fr: A qui appartient l'objet
     hi: वस्तु का स्वामी कौन है
     zh: 谁拥有该物品
   WebFormItemSelectColorName:
@@ -3436,7 +3516,7 @@ translations:
     de: Anzeigeformat für Währungen
     en: Display format for currencies
     es: Formato de visualización para monedas
-    fr: Format d&#39;affichage des devises
+    fr: Format d'affichage des devises
     hi: मुद्राओं के लिए प्रदर्शन प्रारूप
     zh: 货币显示格式
   WebFormItemTextAreaScanText:
@@ -3445,7 +3525,7 @@ translations:
     de: Text aus Bild scannen
     en: Scan Text From Picture
     es: Escanear texto de la imagen
-    fr: Numériser le texte à partir de l&#39;image
+    fr: Numériser le texte à partir de l'image
     hi: चित्र से टेक्स्ट स्कैन करें
     zh: 从图片中扫描文本
   WebFormItemsShopItemCategoryTooltip:
@@ -3454,7 +3534,7 @@ translations:
     de: Kategorie, die mit ihnen verknüpft ist
     en: Category associated with them item
     es: Categoría asociada con el artículo
-    fr: Catégorie associée à l&#39;article
+    fr: Catégorie associée à l'article
     hi: उनसे जुड़ी श्रेणी आइटम
     zh: 与他们相关的类别项目
   WebFormItemsShopItemListTooltip:
@@ -3463,7 +3543,7 @@ translations:
     de: Fügen Sie den Artikel einer Liste statt dem Einkaufswagen hinzu
     en: Add the item to a list instead of the cart
     es: Agregar el artículo a una lista en lugar del carrito
-    fr: Ajouter l&#39;article à une liste au lieu du panier
+    fr: Ajouter l'article à une liste au lieu du panier
     hi: कार्ट के बजाय आइटम को सूची में जोड़ें
     zh: 将项目添加到列表而不是购物车
   WebFormItemsShopItemMakeStaple:
@@ -3493,7 +3573,7 @@ translations:
       for Projects
     es: Precio del Ítem, se utilizará para calcular los costos de la corrida de compras
       y de los Proyectos
-    fr: Le prix de l&#39;article sera utilisé pour calculer les coûts du cycle d&#39;achat
+    fr: Le prix de l'article sera utilisé pour calculer les coûts du cycle d'achat
       et des projets
     hi: आइटम की कीमत का उपयोग खरीदारी चलाने और परियोजनाओं के लिए लागतों की गणना करने
       के लिए किया जाएगा
@@ -3513,7 +3593,7 @@ translations:
     de: Nächstes Datum, um diesen Artikel zu kaufen
     en: Next date to purchase this item
     es: Próxima fecha para comprar este artículo
-    fr: Prochaine date d&#39;achat de cet article
+    fr: Prochaine date d'achat de cet article
     hi: इस वस्तु को खरीदने की अगली तारीख
     zh: 下一个购买该商品的日期
   WebFormItemsShopItemStoreTooltip:
@@ -3522,7 +3602,7 @@ translations:
     de: Geschäft, das den Artikel verkauft
     en: Store which sells the item
     es: Tienda que vende el artículo
-    fr: Magasin qui vend l&#39;article
+    fr: Magasin qui vend l'article
     hi: स्टोर जो आइटम बेचता है
     zh: 出售该物品的商店
   WebFormJoinHouseholdAddHousehold:
@@ -3540,7 +3620,7 @@ translations:
     de: Haushaltsbeitrittstoken
     en: Household Join Token
     es: Token de unión del hogar
-    fr: Jeton d&#39;adhésion au foyer
+    fr: Jeton d'adhésion au foyer
     hi: घरेलू जुड़ाव टोकन
     zh: 家庭加入令牌
   WebFormJoinHouseholdJoinTokenTooltip:
@@ -3549,7 +3629,7 @@ translations:
     de: Geben Sie einen Beitrittscode für einen Haushalt ein
     en: Enter a join code for a household
     es: Ingrese un código de unión para un hogar
-    fr: Saisir un code d&#39;adhésion pour un foyer
+    fr: Saisir un code d'adhésion pour un foyer
     hi: एक घर के लिए एक ज्वाइन कोड दर्ज करें
     zh: 输入家庭的加入代码
   WebFormOverlayAuthAccountPrivateKeyPassphrase:
@@ -3567,7 +3647,7 @@ translations:
     de: URL des Symbolbilds
     en: URL of Icon Image
     es: URL de la imagen del icono
-    fr: URL de l&#39;image de l&#39;icône
+    fr: URL de l'image de l'icône
     hi: आइकॉन इमेज का यूआरएल
     zh: 图标图片的网址
   WebFormOverlayBookmarkIconImageTooltip:
@@ -3576,7 +3656,7 @@ translations:
     de: URL des anzuzeigenden Symbolbildes
     en: URL of the icon image to be displayed
     es: URL de la imagen del icono que se mostrará
-    fr: URL de l&#39;image de l&#39;icône à afficher
+    fr: URL de l'image de l'icône à afficher
     hi: प्रदर्शित की जाने वाली आइकन छवि का URL
     zh: 要显示的图标图像的 URL
   WebFormOverlayBookmarkImageIcon:
@@ -3585,7 +3665,7 @@ translations:
     de: Verwenden Sie Bild als Symbol
     en: Use Image as Icon
     es: Usar imagen como icono
-    fr: Utiliser l&#39;image comme icône
+    fr: Utiliser l'image comme icône
     hi: छवि को चिह्न के रूप में उपयोग करें
     zh: 使用图像作为图标
   WebFormOverlayBookmarkLinkTooltip:
@@ -3612,7 +3692,7 @@ translations:
     de: Auf Startseite anzeigen
     en: Show on Home
     es: Mostrar en Inicio
-    fr: Afficher sur la page d&#39;accueil
+    fr: Afficher sur la page d'accueil
     hi: होम पर दिखाएँ
     zh: 在主页上显示
   WebFormOverlayBudgetAccountOnBudget:
@@ -3666,7 +3746,7 @@ translations:
     de: Betrag in dieser Kategorie am Ende des Ziels zu haben
     en: Amount to have in this category at the end of the target
     es: Cantidad a tener en esta categoría al final del objetivo
-    fr: Montant à avoir dans cette catégorie à la fin de l&#39;objectif
+    fr: Montant à avoir dans cette catégorie à la fin de l'objectif
     hi: लक्ष्य के अंत में इस श्रेणी में होने वाली राशि
     zh: 目标末尾此类别中的金额
   WebFormOverlayBudgetCategoryTargetDate:
@@ -3702,7 +3782,7 @@ translations:
     de: Monatsfrist, um den Zielbetrag zu haben
     en: Month deadline to have the target amount
     es: Mes plazo para tener el importe objetivo
-    fr: Délai d&#39;un mois pour avoir le montant cible
+    fr: Délai d'un mois pour avoir le montant cible
     hi: लक्ष्य राशि प्राप्त करने के लिए महीने की समय सीमा
     zh: 达到目标金额的最后期限
   WebFormOverlayBudgetCategoryTargetType:
@@ -3720,7 +3800,7 @@ translations:
     de: Art des zu budgetierenden Ziels
     en: Type of target to budget for
     es: Tipo de objetivo a presupuestar
-    fr: Type d&#39;objectif à budgétiser
+    fr: Type d'objectif à budgétiser
     hi: बजट के लक्ष्य का प्रकार
     zh: 预算目标的类型
   WebFormOverlayBudgetPayeeAddress:
@@ -3776,7 +3856,7 @@ translations:
     en: An amount of money, use the minus symbol (-20.00) to create a negative amount
     es: Una cantidad de dinero, use el símbolo menos (-20.00) para crear una cantidad
       negativa
-    fr: Une somme d&#39;argent, utilisez le symbole moins (-20,00) pour créer un montant
+    fr: Une somme d'argent, utilisez le symbole moins (-20,00) pour créer un montant
       négatif
     hi: धन की राशि, ऋणात्मक राशि बनाने के लिए ऋण चिह्न (-20.00) का उपयोग करें
     zh: 金额，使用减号 (-20.00) 创建负数
@@ -3901,7 +3981,7 @@ translations:
     de: Legen Sie das Ende des Ereignisses fest
     en: Set the end of the event
     es: Establecer el final del evento
-    fr: Définir la fin de l&#39;événement
+    fr: Définir la fin de l'événement
     hi: घटना का अंत निर्धारित करें
     zh: 设置事件结束
   WebFormOverlayCalendarEventLocation:
@@ -3919,7 +3999,7 @@ translations:
     de: Ort der Veranstaltung
     en: Location of the event
     es: Ubicación del evento
-    fr: Lieu de l&#39;événement
+    fr: Lieu de l'événement
     hi: घटना का स्थान
     zh: 活动地点
   WebFormOverlayCalendarEventParticipants:
@@ -3937,7 +4017,7 @@ translations:
     de: Wer wird an der Veranstaltung teilnehmen
     en: Who will attend the event
     es: Quién asistirá al evento
-    fr: Qui assistera à l&#39;événement
+    fr: Qui assistera à l'événement
     hi: कार्यक्रम में कौन शामिल होगा
     zh: 谁将参加活动
   WebFormOverlayCalendarEventReminder10Minutes:
@@ -3991,7 +4071,7 @@ translations:
     de: Legen Sie den Beginn des Ereignisses fest
     en: Set the start of the event
     es: Establecer el inicio del evento
-    fr: Définir le début de l&#39;événement
+    fr: Définir le début de l'événement
     hi: घटना की शुरुआत निर्धारित करें
     zh: 设置事件的开始
   WebFormOverlayCalendarEventTimeZoneTooltip:
@@ -4000,7 +4080,7 @@ translations:
     de: Zeitzone für das Ereignis
     en: Time zone for the event
     es: Zona horaria del evento
-    fr: Fuseau horaire de l&#39;événement
+    fr: Fuseau horaire de l'événement
     hi: घटना के लिए समय क्षेत्र
     zh: 事件的时区
   WebFormOverlayCalendarEventTravelTime:
@@ -4018,7 +4098,7 @@ translations:
     de: Wie lange zum Standort reisen
     en: How long to travel to location
     es: Cuánto tiempo para viajar a la ubicación
-    fr: Combien de temps pour se rendre à l&#39;emplacement
+    fr: Combien de temps pour se rendre à l'emplacement
     hi: स्थान की यात्रा करने में कितना समय लगता है
     zh: 多长时间到目的地
   WebFormOverlayCookMealPlanChef:
@@ -4091,8 +4171,7 @@ translations:
       Rezepts/Restaurants
     en: Name of an existing recipe in Homechart, or a custom recipe/restaurant
     es: Nombre de una receta existente en Homechart, o una receta/restaurante personalizado
-    fr: Nom d&#39;une recette existante dans Homechart, ou d&#39;une recette/restaurant
-      personnalisée
+    fr: Nom d'une recette existante dans Homechart, ou d'une recette/restaurant personnalisée
     hi: होमचार्ट में मौजूदा रेसिपी का नाम, या कस्टम रेसिपी/रेस्तरां
     zh: Homechart 中现有食谱的名称，或自定义食谱/餐厅
   WebFormOverlayCookMealPlanReminderCook:
@@ -4235,7 +4314,7 @@ translations:
     de: Eigenschaften zum Filtern von Inventarelementen
     en: Properties to use for filtering inventory items
     es: Propiedades a usar para filtrar artículos de inventario
-    fr: Propriétés à utiliser pour filtrer les éléments d&#39;inventaire
+    fr: Propriétés à utiliser pour filtrer les éléments d'inventaire
     hi: इन्वेंट्री आइटम को फ़िल्टर करने के लिए उपयोग करने के लिए गुण
     zh: 用于过滤库存项目的属性
   WebFormOverlayInventoryItemProperty:
@@ -4262,7 +4341,7 @@ translations:
     de: Anzahl der Teile
     en: Number of items
     es: Número de items
-    fr: Nombre d&#39;objets
+    fr: Nombre d'objets
     hi: मदों की संख्या
     zh: 东西的个数
   WebFormOverlayInventoryItemUPC:
@@ -4280,7 +4359,7 @@ translations:
     de: UPC des Artikels, der zum Scannen verwendet wird
     en: UPC of the item, used for scanning
     es: UPC del artículo, utilizado para escanear
-    fr: UPC de l&#39;article, utilisé pour la numérisation
+    fr: UPC de l'article, utilisé pour la numérisation
     hi: आइटम का UPC, स्कैन करने के लिए उपयोग किया गया
     zh: 物品的UPC，用于扫描
   WebFormOverlayPlanTaskAssignees:
@@ -4301,8 +4380,8 @@ translations:
       tasks rotate between them.
     es: Quién es responsable de completar la tarea. Seleccione varios miembros para
       que las tareas roten entre ellos.
-    fr: Qui est responsable de l&#39;exécution de la tâche. Sélectionnez plusieurs
-      membres pour faire alterner les tâches entre eux.
+    fr: Qui est responsable de l'exécution de la tâche. Sélectionnez plusieurs membres
+      pour faire alterner les tâches entre eux.
     hi: कार्य को पूरा करने के लिए कौन जिम्मेदार है। कार्यों को उनके बीच घुमाने के
       लिए एकाधिक सदस्यों का चयन करें।
     zh: 谁负责完成任务。选择多个成员以在他们之间轮流执行任务。
@@ -4312,7 +4391,7 @@ translations:
     de: Geburtstermin
     en: Due Date
     es: Fecha de vencimiento
-    fr: Date d&#39;échéance
+    fr: Date d'échéance
     hi: नियत तारीख
     zh: 到期日
   WebFormOverlayPlanTaskDueDateTooltip:
@@ -4348,7 +4427,7 @@ translations:
     de: Verknüpfen Sie eine Aufgabe mit einem Inventarelement
     en: Associate task to an inventory item
     es: Asociar tarea a un artículo de inventario
-    fr: Associer une tâche à un article d&#39;inventaire
+    fr: Associer une tâche à un article d'inventaire
     hi: कार्य को इन्वेंट्री आइटम से संबद्ध करें
     zh: 将任务关联到库存项目
   WebFormOverlayPlanTaskLastDone:
@@ -4367,7 +4446,7 @@ translations:
     de: Wiederkehrend basierend auf dem Fertigstellungsdatum
     en: Recur Based on Completion Date
     es: Recurrente basado en la fecha de finalización
-    fr: Se reproduire en fonction de la date d&#39;achèvement
+    fr: Se reproduire en fonction de la date d'achèvement
     hi: पूर्णता तिथि के आधार पर पुनरावृत्ति
     zh: 根据完成日期重复
   WebFormOverlayPlanTaskReminder:
@@ -4376,7 +4455,7 @@ translations:
     de: Fälligkeit
     en: Due Time
     es: Tiempo debido
-    fr: Heure d&#39;échéance
+    fr: Heure d'échéance
     hi: निश्चित समय
     zh: 截至日期
   WebFormOverlayPlanTaskReminderTooltip:
@@ -4385,7 +4464,7 @@ translations:
     de: Zeit zum Senden der Erinnerung
     en: Time to send reminder
     es: Hora de enviar recordatorio
-    fr: Heure d&#39;envoi du rappel
+    fr: Heure d'envoi du rappel
     hi: रिमाइंडर भेजने का समय
     zh: 发送提醒的时间
   WebFormOverlayPlanTaskTemplate:
@@ -4457,7 +4536,7 @@ translations:
     de: Anzahl der zum Einlösen verfügbaren Stempel
     en: Number of stamps available for redemption
     es: Número de sellos disponibles para redención
-    fr: Nombre de timbres disponibles pour l&#39;échange
+    fr: Nombre de timbres disponibles pour l'échange
     hi: मोचन के लिए उपलब्ध टिकटों की संख्या
     zh: 可换领的印花数量
   WebFormOverlayRewardCardRewardStampGoal:
@@ -4484,7 +4563,7 @@ translations:
     de: Belohnung für das Einlösen dieser Karte
     en: Reward for redeeming this card
     es: Recompensa por canjear esta tarjeta
-    fr: Récompense pour l&#39;utilisation de cette carte
+    fr: Récompense pour l'utilisation de cette carte
     hi: इस कार्ड को रिडीम करने के लिए इनाम
     zh: 兑换此卡的奖励
   WebFormOverlayRewardCardSenders:
@@ -4628,7 +4707,7 @@ translations:
     de: Standardspeicher für diese Kategorie beim Hinzufügen von Artikeln
     en: Default store to use for this category when adding items
     es: Tienda predeterminada para usar en esta categoría al agregar artículos
-    fr: Magasin par défaut à utiliser pour cette catégorie lors de l&#39;ajout d&#39;articles
+    fr: Magasin par défaut à utiliser pour cette catégorie lors de l'ajout d'articles
     hi: आइटम जोड़ते समय इस श्रेणी के लिए उपयोग करने के लिए डिफ़ॉल्ट स्टोर
     zh: 添加项目时用于此类别的默认商店
   WebFormOverlayShopCategoryMatch:
@@ -4658,8 +4737,8 @@ translations:
       Transaktionen
     en: Permissions to edit or view budgeting accounts, categories, and transactions
     es: Permisos para editar o ver cuentas presupuestarias, categorías y transacciones
-    fr: Autorisations de modifier ou d&#39;afficher les comptes, les catégories et
-      les transactions de budgétisation
+    fr: Autorisations de modifier ou d'afficher les comptes, les catégories et les
+      transactions de budgétisation
     hi: बजट खातों, श्रेणियों और लेन-देन को संपादित करने या देखने की अनुमति
     zh: 编辑或查看预算账户、类别和交易的权限
   WebFormPermissionsCalendarTooltip:
@@ -4668,7 +4747,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Kalenderereignissen
     en: Permissions to edit or view calendar events
     es: Permisos para editar o ver eventos del calendario
-    fr: Autorisations de modifier ou d&#39;afficher les événements du calendrier
+    fr: Autorisations de modifier ou d'afficher les événements du calendrier
     hi: कैलेंडर ईवेंट संपादित करने या देखने की अनुमतियां
     zh: 编辑或查看日历事件的权限
   WebFormPermissionsCookTooltip:
@@ -4679,8 +4758,8 @@ translations:
     en: Permissions to edit or view cooking meal times, meal plans, and recipes
     es: Permisos para editar o ver los horarios de las comidas, los planes de comidas
       y las recetas
-    fr: Autorisations de modifier ou d&#39;afficher les heures de repas, les plans
-      de repas et les recettes
+    fr: Autorisations de modifier ou d'afficher les heures de repas, les plans de
+      repas et les recettes
     hi: खाना पकाने के भोजन के समय, भोजन की योजना और व्यंजनों को संपादित करने या देखने
       की अनुमति
     zh: 编辑或查看烹饪用餐时间、用餐计划和食谱的权限
@@ -4690,7 +4769,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Zustandselementen und Protokollen
     en: Permissions to edit or view health items and logs
     es: Permisos para editar o ver registros y elementos de salud
-    fr: Autorisations de modifier ou d&#39;afficher des éléments de santé et des journaux
+    fr: Autorisations de modifier ou d'afficher des éléments de santé et des journaux
     hi: स्वास्थ्य आइटम और लॉग को संपादित करने या देखने की अनुमति
     zh: 编辑或查看健康项目和日志的权限
   WebFormPermissionsInventoryTooltip:
@@ -4699,8 +4778,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Inventarelementen oder -ansichten
     en: Permissions to edit or view inventory items or views
     es: Permisos para editar o ver artículos de inventario o vistas
-    fr: Autorisations de modifier ou d&#39;afficher des éléments d&#39;inventaire
-      ou des vues
+    fr: Autorisations de modifier ou d'afficher des éléments d'inventaire ou des vues
     hi: इन्वेंट्री आइटम या दृश्य को संपादित करने या देखने की अनुमतियां
     zh: 编辑或查看库存项目或视图的权限
   WebFormPermissionsNotesTooltip:
@@ -4709,7 +4787,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Notizen
     en: Permissions to edit or view notes
     es: Permisos para editar o ver notas
-    fr: Autorisations de modifier ou d&#39;afficher des notes
+    fr: Autorisations de modifier ou d'afficher des notes
     hi: नोट संपादित करने या देखने की अनुमतियां
     zh: 编辑或查看笔记的权限
   WebFormPermissionsPlanTooltip:
@@ -4718,7 +4796,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Planungsprojekten und -aufgaben
     en: Permissions to edit or view planning projects and tasks
     es: Permisos para editar o ver proyectos y tareas de planificación
-    fr: Autorisations de modifier ou d&#39;afficher des projets et des tâches de planification
+    fr: Autorisations de modifier ou d'afficher des projets et des tâches de planification
     hi: नियोजन परियोजनाओं और कार्यों को संपादित करने या देखने की अनुमति
     zh: 编辑或查看计划项目和任务的权限
   WebFormPermissionsRewardTooltip:
@@ -4727,7 +4805,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Prämienkarten
     en: Permissions to edit or view reward cards
     es: Permisos para editar o ver tarjetas de recompensa
-    fr: Autorisations de modifier ou d&#39;afficher des cartes de récompense
+    fr: Autorisations de modifier ou d'afficher des cartes de récompense
     hi: पुरस्कार कार्ड संपादित करने या देखने की अनुमतियां
     zh: 编辑或查看奖励卡的权限
   WebFormPermissionsSecretsTooltip:
@@ -4736,7 +4814,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Geheimnissen
     en: Permissions to edit or view secrets
     es: Permisos para editar o ver secretos
-    fr: Autorisations de modifier ou d&#39;afficher des secrets
+    fr: Autorisations de modifier ou d'afficher des secrets
     hi: रहस्यों को संपादित करने या देखने की अनुमतियां
     zh: 编辑或查看机密的权限
   WebFormPermissionsSettingsTooltip:
@@ -4745,7 +4823,7 @@ translations:
     de: Berechtigungen zum Bearbeiten oder Anzeigen von Einstellungen
     en: Permissions to edit or view settings
     es: Permisos para editar o ver la configuración
-    fr: Autorisations de modifier ou d&#39;afficher les paramètres
+    fr: Autorisations de modifier ou d'afficher les paramètres
     hi: सेटिंग संपादित करने या देखने की अनुमतियां
     zh: 编辑或查看设置的权限
   WebFormPermissionsShopTooltip:
@@ -4755,8 +4833,8 @@ translations:
       Listen und Geschäften
     en: Permissions to edit or view shopping categories, items, lists, and stores
     es: Permisos para editar o ver categorías de compras, artículos, listas y tiendas
-    fr: Autorisations de modifier ou d&#39;afficher les catégories d&#39;achats, les
-      articles, les listes et les magasins
+    fr: Autorisations de modifier ou d'afficher les catégories d'achats, les articles,
+      les listes et les magasins
     hi: शॉपिंग श्रेणियों, आइटम, सूचियों और स्टोर को संपादित करने या देखने की अनुमतियां
     zh: 编辑或查看购物类别、项目、列表和商店的权限
   WebFormRecurrenceDays:
@@ -4792,7 +4870,7 @@ translations:
     de: Erste
     en: First
     es: Primero
-    fr: D&#39;abord
+    fr: D'abord
     hi: पहला
     zh: 第一的
   WebFormRecurrenceFourth:
@@ -4937,7 +5015,7 @@ translations:
     de: Einkaufsartikel hinzufügen
     en: Add Shopping Items
     es: Agregar artículos de compras
-    fr: Ajouter des articles d&#39;achat
+    fr: Ajouter des articles d'achat
     hi: शॉपिंग आइटम जोड़ें
     zh: 添加购物项目
   WebFormSubscriptionCancelApple:
@@ -4955,7 +5033,7 @@ translations:
     de: Abonnement läuft ab
     en: Subscription Expires
     es: La suscripción caduca
-    fr: L&#39;abonnement expire
+    fr: L'abonnement expire
     hi: सदस्यता समाप्त हो रही है
     zh: 订阅到期
   WebFormSubscriptionExpiresTrial:
@@ -4988,8 +5066,8 @@ translations:
     en: Your custom referral code, feel free to change it to something more memorable.
     es: Su código de referencia personalizado, siéntase libre de cambiarlo por algo
       más memorable.
-    fr: Votre code de parrainage personnalisé, n&#39;hésitez pas à le changer pour
-      quelque chose de plus mémorable.
+    fr: Votre code de parrainage personnalisé, n'hésitez pas à le changer pour quelque
+      chose de plus mémorable.
     hi: आपका कस्टम रेफ़रल कोड, बेझिझक इसे कुछ और यादगार में बदल सकते हैं।
     zh: 您的自定义推荐代码，请随时将其更改为更令人难忘的内容。
   WebFormSubscriptionReferralStatus1:
@@ -5007,7 +5085,7 @@ translations:
     de: bis jetzt
     en: so far
     es: hasta ahora
-    fr: jusqu&#39;à présent
+    fr: jusqu'à présent
     hi: अब तक
     zh: 迄今为止
   WebFormSubscriptionReferralStatus3:
@@ -5032,8 +5110,8 @@ translations:
       vida. Los usuarios que recomiendes obtienen un mes gratis. Aquí hay un enlace
       para las redes sociales.
     fr: plus pour vous abonner à Homechart et recevoir un abonnement à vie gratuit!
-      Les utilisateurs que vous parrainez bénéficient d&#39;un mois gratuit. Voici
-      un lien pour les réseaux sociaux
+      Les utilisateurs que vous parrainez bénéficient d'un mois gratuit. Voici un
+      lien pour les réseaux sociaux
     hi: होमचार्ट की सदस्यता लेने के लिए और अधिक मुफ्त लाइफटाइम सब्सक्रिप्शन प्राप्त
       करें! आप जिन उपयोगकर्ताओं को संदर्भित करते हैं उन्हें एक निःशुल्क महीना मिलता
       है। यहां सोशल मीडिया के लिए एक लिंक दिया गया है
@@ -5056,7 +5134,7 @@ translations:
       discount!
     es: Si alguien lo refirió a Homechart, ingrese su código aquí para recibir su
       descuento.
-    fr: Si quelqu&#39;un vous a référé à Homechart, entrez son code ici pour recevoir
+    fr: Si quelqu'un vous a référé à Homechart, entrez son code ici pour recevoir
       sa réduction!
     hi: अगर किसी ने आपको होमचार्ट के लिए रेफर किया है, तो उनकी छूट प्राप्त करने के
       लिए उनका कोड यहां दर्ज करें!
@@ -5094,7 +5172,7 @@ translations:
     de: ID kopieren und Homechart Cloud besuchen
     en: Copy ID and Visit Homechart Cloud
     es: Copie la identificación y visite la nube de Homechart
-    fr: Copiez l&#39;ID et visitez Homechart Cloud
+    fr: Copiez l'ID et visitez Homechart Cloud
     hi: कॉपी आईडी और होमचार्ट क्लाउड पर जाएं
     zh: 复制 ID 并访问 Homechart Cloud
   WebFormSubscriptionSelfHostedIDTooltip:
@@ -5117,7 +5195,7 @@ translations:
     de: Abonnementstatus
     en: Subscription Status
     es: Estado de suscripción
-    fr: État de l&#39;abonnement
+    fr: État de l'abonnement
     hi: सदस्यता स्थिति
     zh: 订阅状态
   WebFormSubscriptionSubscribeLifetime:
@@ -5153,7 +5231,7 @@ translations:
     de: Verknüpfen Sie Ihren selbst gehosteten Server mit dem Homechart-Abonnement
     en: Associate Your Self-Hosted Server to Homechart Subscription
     es: Asocie su servidor autohospedado a la suscripción de Homechart
-    fr: Associez votre serveur auto-hébergé à l&#39;abonnement Homechart
+    fr: Associez votre serveur auto-hébergé à l'abonnement Homechart
     hi: होमचार्ट सब्सक्रिप्शन के साथ अपने सेल्फ-होस्टेड सर्वर को संबद्ध करें
     zh: 将您的自托管服务器关联到 Homechart 订阅
   WebFormTableAuthHouseholdMembersInviteToken:
@@ -5162,13 +5240,13 @@ translations:
     de: Token einladen
     en: Invite Token
     es: Token de invitación
-    fr: Jeton d&#39;invitation
+    fr: Jeton d'invitation
     hi: टोकन आमंत्रित करें
     zh: 邀请令牌
   WebGlobalAbout:
     ar: عن
     context: Details about something
-    de: Um
+    de: Über
     en: About
     es: Acerca de
     fr: À propos
@@ -5216,13 +5294,13 @@ translations:
     de: Nutzungsbedingungen
     en: Terms of Service
     es: Términos de servicio
-    fr: Conditions d&#39;utilisation
+    fr: Conditions d'utilisation
     hi: सेवा की शर्तें
     zh: 服务条款
   WebGlobalAboutWhatsNew:
     ar: ما هو الجديد
     context: New features in Homechart
-    de: Was gibt&#39;s Neues
+    de: Was gibt es Neues
     en: What's New
     es: Qué hay de nuevo
     fr: Quoi de neuf
@@ -5459,7 +5537,7 @@ translations:
     de: Rezept kann nicht importiert werden
     en: Unable to import recipe
     es: No se puede importar la receta
-    fr: Impossible d&#39;importer la recette
+    fr: Impossible d'importer la recette
     hi: रेसिपी आयात करने में असमर्थ
     zh: 无法导入配方
   WebGlobalActionImportRecipeFromWebsite:
@@ -5621,7 +5699,7 @@ translations:
     de: Bestätigungsmail erneut senden
     en: Resend Verification Email
     es: Reenviar correo electrónico de verificación
-    fr: Renvoyer l&#39;e-mail de vérification
+    fr: Renvoyer l'e-mail de vérification
     hi: सत्यापन ईमेल पुनः भेजे
     zh: 重新发送验证邮件
   WebGlobalActionReset:
@@ -5774,7 +5852,7 @@ translations:
     de: Anmelden
     en: Sign In
     es: Iniciar sesión
-    fr: S&#39;identifier
+    fr: S'identifier
     hi: दाखिल करना
     zh: 登入
   WebGlobalActionSignInChild:
@@ -5783,7 +5861,7 @@ translations:
     de: Melden Sie sich als Kind an
     en: Sign In as Child
     es: Iniciar sesión como niño
-    fr: Se connecter en tant qu&#39;enfant
+    fr: Se connecter en tant qu'enfant
     hi: बच्चे के रूप में साइन इन करें
     zh: 以儿童身份登录
   WebGlobalActionSignInFail:
@@ -5819,7 +5897,7 @@ translations:
     de: Anmeldung
     en: Sign Up
     es: Inscribirse
-    fr: S&#39;inscrire
+    fr: S'inscrire
     hi: साइन अप करें
     zh: 报名
   WebGlobalActionSignUpFail:
@@ -5828,7 +5906,7 @@ translations:
     de: Anmeldung gescheitert
     en: Sign up failed
     es: Registro fallido
-    fr: L&#39;inscription a échoué
+    fr: L'inscription a échoué
     hi: साइन अप करने में विफल रहा
     zh: 注册失败
   WebGlobalActionSignUpWith:
@@ -5846,7 +5924,7 @@ translations:
     de: Abonnieren
     en: Subscribe
     es: Suscribir
-    fr: S&#39;abonner
+    fr: S'abonner
     hi: सदस्यता लें
     zh: 订阅
   WebGlobalActionUndo:
@@ -6278,7 +6356,7 @@ translations:
     de: Einzelheiten zum Artikel
     en: Details of the item
     es: Detalles del artículo
-    fr: Détails de l&#39;article
+    fr: Détails de l'article
     hi: वस्तु का विवरण
     zh: 商品详情
   WebGlobalDisabled:
@@ -6368,7 +6446,7 @@ translations:
     de: Gruppieren, um Artikel darunter zu platzieren
     en: Grouping to put item underneath
     es: Agrupación para poner el elemento debajo
-    fr: Regroupement pour mettre l&#39;article en dessous
+    fr: Regroupement pour mettre l'article en dessous
     hi: आइटम को नीचे रखने के लिए समूह बनाना
     zh: 分组以将项目放在下面
   WebGlobalHidden:
@@ -6404,7 +6482,7 @@ translations:
     de: Haushaltsmitglied, dem der Artikel zugeordnet werden soll.
     en: Household member to associate item with.
     es: Miembro del hogar con el que asociar el artículo.
-    fr: Membre du ménage auquel associer l&#39;article.
+    fr: Membre du ménage auquel associer l'article.
     hi: आइटम को संबद्ध करने के लिए घरेलू सदस्य।
     zh: 与项目相关联的家庭成员。
   WebGlobalImage:
@@ -6593,7 +6671,7 @@ translations:
     de: Name der Zeit
     en: Name of the item
     es: Nombre del artículo
-    fr: Nom de l&#39;article
+    fr: Nom de l'article
     hi: वस्तु का नाम
     zh: 商品名称
   WebGlobalNever:
@@ -6719,7 +6797,7 @@ translations:
     de: Kauf konnte nicht abgeschlossen werden, bitte versuchen Sie es erneut
     en: Couldn't complete purchase, please try again
     es: No se pudo completar la compra, intente nuevamente
-    fr: Impossible de finaliser l&#39;achat, veuillez réessayer
+    fr: Impossible de finaliser l'achat, veuillez réessayer
     hi: खरीदारी पूरी नहीं हो सकी, कृपया फिर से कोशिश करें
     zh: 无法完成购买，请重试
   WebGlobalQRCode:
@@ -6746,7 +6824,7 @@ translations:
     de: Komplexität eines Rezepts
     en: Complexity of a recipe
     es: Complejidad de una receta.
-    fr: Complexité d&#39;une recette
+    fr: Complexité d'une recette
     hi: एक नुस्खा की जटिलता
     zh: 食谱的复杂性
   WebGlobalRecipeIngredients:
@@ -6881,7 +6959,7 @@ translations:
     de: Die Adresse Ihrer selbst gehosteten Instanz, z. B. https://example.com
     en: The address of your self-hosted instance, like https://example.com
     es: La dirección de su instancia autohospedada, como https://example.com
-    fr: L&#39;adresse de votre instance auto-hébergée, comme https://example.com
+    fr: L'adresse de votre instance auto-hébergée, comme https://example.com
     hi: आपके द्वारा होस्ट किए गए इंस्टेंस का पता, जैसे https://example.com
     zh: 您的自托管实例的地址，例如 https://example.com
   WebGlobalSendReminder:
@@ -7067,7 +7145,7 @@ translations:
     de: Heute
     en: Today
     es: Hoy
-    fr: Aujourd&#39;hui
+    fr: Aujourd'hui
     hi: आज
     zh: 今天
   WebGlobalTransactionStatusCleared:
@@ -7139,7 +7217,7 @@ translations:
     de: Nutzername
     en: Username
     es: Nombre de usuario
-    fr: Nom d&#39;utilisateur
+    fr: Nom d'utilisateur
     hi: उपयोगकर्ता नाम
     zh: 用户名
   WebGlobalVerified:
@@ -7213,7 +7291,7 @@ translations:
     de: Die heutige Tagesordnung
     en: Today's Agenda
     es: Agenda de hoy
-    fr: L&#39;ordre du jour d&#39;aujourd&#39;hui
+    fr: L'ordre du jour d'aujourd'hui
     hi: आज का एजेंडा
     zh: 今天的议程
   WebHomeAgendaNothing:
@@ -7262,9 +7340,8 @@ translations:
       grant this permission in the app settings.
     es: Homechart necesita permiso para acceder a su cámara, pero ha sido denegado.
       Otorgue este permiso en la configuración de la aplicación.
-    fr: Homechart a besoin d&#39;une autorisation pour accéder à votre caméra, mais
-      celle-ci a été refusée. Veuillez accorder cette autorisation dans les paramètres
-      de l&#39;application.
+    fr: Homechart a besoin d'une autorisation pour accéder à votre caméra, mais celle-ci
+      a été refusée. Veuillez accorder cette autorisation dans les paramètres de l'application.
     hi: होमचार्ट को आपके कैमरे तक पहुंचने की अनुमति चाहिए, लेकिन इसे अस्वीकार कर दिया
       गया है। कृपया ऐप सेटिंग में यह अनुमति दें।
     zh: Homechart 需要访问您的相机的权限，但已被拒绝。请在应用程序设置中授予此权限。
@@ -7329,7 +7406,7 @@ translations:
     de: Kein Bild
     en: No Image
     es: Sin imágen
-    fr: Pas d&#39;image
+    fr: Pas d'image
     hi: चित्र उपलब्द नहीं है
     zh: 没有图像
   WebNotesPagesIDParentPageTooltip:
@@ -7356,7 +7433,7 @@ translations:
     de: Zugriff gewähren
     en: Grant Access
     es: Autorizará el acceso
-    fr: Accorder l&#39;accès
+    fr: Accorder l'accès
     hi: अनुदान पहुँच
     zh: 授予访问权限
   WebOAuthRequest:
@@ -7384,9 +7461,9 @@ translations:
       información de acuerdo con sus respectivos términos de servicio y políticas
       de privacidad. Puede cambiar y revocar estos permisos en
     fr: En cliquant sur Autoriser, vous autorisez cette application et Homechart à
-      utiliser vos informations conformément à leurs conditions d&#39;utilisation
-      et politiques de confidentialité respectives. Vous pouvez modifier et révoquer
-      ces autorisations sous
+      utiliser vos informations conformément à leurs conditions d'utilisation et politiques
+      de confidentialité respectives. Vous pouvez modifier et révoquer ces autorisations
+      sous
     hi: अनुमति दें पर क्लिक करके, आप इस ऐप और होमचार्ट को अपनी संबंधित सेवा शर्तों
       और गोपनीयता नीतियों के अनुसार अपनी जानकारी का उपयोग करने की अनुमति देते हैं।
       आप इन अनुमतियों को बदल सकते हैं और रद्द कर सकते हैं
@@ -7487,7 +7564,7 @@ translations:
     de: Akzentfarbe
     en: Accent Color
     es: Acentuar el color
-    fr: Couleur d&#39;accentuation
+    fr: Couleur d'accentuation
     hi: स्वरोंका रंग
     zh: 强调色
   WebSettingsAccountColorTheme:
@@ -7577,7 +7654,7 @@ translations:
     de: Deaktivieren Sie die Zwei-Faktor-Authentifizierung
     en: Disable Two-Factor Authentication
     es: Deshabilitar la autenticación de dos factores
-    fr: Désactiver l&#39;authentification à deux facteurs
+    fr: Désactiver l'authentification à deux facteurs
     hi: दो-कारक प्रमाणीकरण अक्षम करें
     zh: 禁用双因素身份验证
   WebSettingsAccountEmailAddressTooltip:
@@ -7586,7 +7663,7 @@ translations:
     de: Mit dem Konto verknüpfte E-Mail-Adresse ändern
     en: Change email address associated with account
     es: Cambiar la dirección de correo electrónico asociada con la cuenta
-    fr: Modifier l&#39;adresse e-mail associée au compte
+    fr: Modifier l'adresse e-mail associée au compte
     hi: खाते से जुड़ा ईमेल पता बदलें
     zh: 更改与帐户关联的电子邮件地址
   WebSettingsAccountLanguageDateTime:
@@ -7604,7 +7681,7 @@ translations:
     de: Für die Benutzeroberfläche zu verwendende Sprache
     en: Language to use for the UI
     es: Idioma a usar para la interfaz de usuario
-    fr: Langue à utiliser pour l&#39;interface utilisateur
+    fr: Langue à utiliser pour l'interface utilisateur
     hi: यूआई के लिए उपयोग की जाने वाली भाषा
     zh: 用于 UI 的语言
   WebSettingsAccountNameTooltip:
@@ -7730,7 +7807,7 @@ translations:
     de: Ja, ich verstehe, dass dies nicht umkehrbar ist
     en: Yes, I Understand This Is Not Reversible
     es: Sí, entiendo que esto no es reversible
-    fr: Oui, je comprends que ce n&#39;est pas réversible
+    fr: Oui, je comprends que ce n'est pas réversible
     hi: हां, मैं समझता हूं कि यह उत्क्रमणीय नहीं है
     zh: 是的，我知道这是不可逆的
   WebSettingsAccountPrivateKeyResetConfirm3:
@@ -7802,7 +7879,7 @@ translations:
     de: Zwei-Faktor-Authentifizierung einrichten
     en: Setup Two-Factor Authentication
     es: Configurar la autenticación de dos factores
-    fr: Configurer l&#39;authentification à deux facteurs
+    fr: Configurer l'authentification à deux facteurs
     hi: सेटअप टू-फैक्टर ऑथेंटिकेशन
     zh: 设置双因素身份验证
   WebSettingsAccountShowBackupCode:
@@ -7856,7 +7933,7 @@ translations:
     de: Zeitformat
     en: Time Format
     es: Formato de tiempo
-    fr: Format de l&#39;heure
+    fr: Format de l'heure
     hi: समय स्वरूप
     zh: 时间格式
   WebSettingsAccountTimeFormatTooltip:
@@ -7865,7 +7942,7 @@ translations:
     de: Von Homechart verwendetes Zeitformat
     en: Time format used by Homechart
     es: Formato de hora utilizado por Homechart
-    fr: Format d&#39;heure utilisé par Homechart
+    fr: Format d'heure utilisé par Homechart
     hi: होमचार्ट द्वारा उपयोग किया जाने वाला समय प्रारूप
     zh: Homechart 使用的时间格式
   WebSettingsAccountTimeZoneTooltip:
@@ -7883,7 +7960,7 @@ translations:
     de: Haushalt exportieren
     en: Export Household
     es: Hogar de exportación
-    fr: Ménage d&#39;exportation
+    fr: Ménage d'exportation
     hi: निर्यात घरेलू
     zh: 出口户
   WebSettingsHouseholdImportHousehold:
@@ -7892,7 +7969,7 @@ translations:
     de: Haushalt importieren
     en: Import Household
     es: Hogar importado
-    fr: Ménage d&#39;importation
+    fr: Ménage d'importation
     hi: घरेलू आयात करें
     zh: 进口户
   WebSettingsNotificationsDailyAgenda:
@@ -7901,7 +7978,7 @@ translations:
     de: Tagesordnung Zeit
     en: Daily Agenda Time
     es: Hora de la agenda diaria
-    fr: Heure de l&#39;agenda quotidien
+    fr: Heure de l'agenda quotidien
     hi: दैनिक एजेंडा समय
     zh: 每日议程时间
   WebSettingsNotificationsDailyAgendaTooltip:
@@ -7955,7 +8032,7 @@ translations:
     de: Ereigniserinnerungen
     en: Event Reminders
     es: Recordatorios de eventos
-    fr: Rappels d&#39;événements
+    fr: Rappels d'événements
     hi: घटना अनुस्मारक
     zh: 活动提醒
   WebSettingsNotificationsRecipeCookReminders:
@@ -8018,7 +8095,7 @@ translations:
     de: Wann die Sitzung oder der API-Schlüssel abläuft
     en: When the session or API key will expire
     es: Cuándo caducará la sesión o la clave API
-    fr: Date d&#39;expiration de la session ou de la clé API
+    fr: Date d'expiration de la session ou de la clé API
     hi: जब सत्र या एपीआई कुंजी समाप्त हो जाएगी
     zh: 会话或 API 密钥何时过期
   WebSettingsSessionsThisSession:
@@ -8072,7 +8149,7 @@ translations:
     de: Geben Sie einen Elementnamen zum Testen ein
     en: Enter an item name to test
     es: Introduzca un nombre de elemento para probar
-    fr: Entrez un nom d&#39;élément à tester
+    fr: Entrez un nom d'élément à tester
     hi: परीक्षण करने के लिए एक आइटम का नाम दर्ज करें
     zh: 输入要测试的项目名称
   WebShopCategoriesTest:
@@ -8198,7 +8275,7 @@ translations:
     de: Nutzungsbedingungen
     en: Terms of Service
     es: Términos de servicio
-    fr: Conditions d&#39;utilisation
+    fr: Conditions d'utilisation
     hi: सेवा की शर्तें
     zh: 服务条款
   WebSignInLegal4:
@@ -8234,7 +8311,7 @@ translations:
     de: Wenn Sie jemand auf Homechart verwiesen hat, geben Sie hier seinen Code ein
     en: If someone referred you to Homechart, enter their code here
     es: Si alguien lo refirió a Homechart, ingrese su código aquí
-    fr: Si quelqu&#39;un vous a référé à Homechart, entrez son code ici
+    fr: Si quelqu'un vous a référé à Homechart, entrez son code ici
     hi: यदि किसी ने आपको होमचार्ट के लिए रेफर किया है, तो उनका कोड यहां दर्ज करें
     zh: 如果有人将您推荐给 Homechart，请在此处输入他们的代码
   WebSignInRememberMe:
@@ -8285,7 +8362,7 @@ translations:
     es: Habilite las copias de seguridad en la nube proporcionando una clave de cifrado
       aquí. Los datos se cifran antes de enviarse a Homechart Cloud.
     fr: Activez les sauvegardes dans le cloud en fournissant une clé de chiffrement
-      ici. Les données sont cryptées avant d&#39;être envoyées à Homechart Cloud.
+      ici. Les données sont cryptées avant d'être envoyées à Homechart Cloud.
     hi: यहां एन्क्रिप्शन कुंजी प्रदान करके क्लाउड बैकअप सक्षम करें। होमचार्ट क्लाउड
       पर भेजे जाने से पहले डेटा को एन्क्रिप्ट किया जाता है।
     zh: 通过在此处提供加密密钥启用云备份。数据在发送到 Homechart Cloud 之前经过加密。
@@ -8344,8 +8421,8 @@ translations:
       expression (RegExp).
     es: Filtre los valores en esta columna. Puede ser una cadena simple o una expresión
       regular (RegExp).
-    fr: Filtrez les valeurs dans cette colonne. Il peut s&#39;agir d&#39;une simple
-      chaîne ou d&#39;une expression régulière (RegExp).
+    fr: Filtrez les valeurs dans cette colonne. Il peut s'agir d'une simple chaîne
+      ou d'une expression régulière (RegExp).
     hi: इस कॉलम में मानों को फ़िल्टर करें। यह एक साधारण स्ट्रिंग या रेगुलर एक्सप्रेशन
       (RegExp) हो सकता है।
     zh: 过滤此列中的值。这可以是简单的字符串或正则表达式 (RegExp)。
@@ -8355,7 +8432,7 @@ translations:
     de: Nichts gefunden
     en: Nothing Found
     es: Nada Encontrado
-    fr: rien n&#39;a été trouvé
+    fr: rien n'a été trouvé
     hi: कुछ भी नहीं मिला
     zh: 什么都没找到
   WebTooltipMarkdown:
