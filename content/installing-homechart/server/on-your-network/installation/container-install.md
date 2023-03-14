@@ -8,7 +8,7 @@ Homechart can be deployed as a container on Linux (amd64 and arm) from our image
 
 ## 1. Review the requirements
 
-Ensure your system meets the [Server Requirements](/getting-started/on-your-network/installation/requirements/).
+Ensure your system meets the [Server Requirements](/installing-homechart/server/on-your-network/installation/requirements/).
 
 ## 2. Install a container runtime
 
@@ -16,7 +16,7 @@ Homechart can run on any [OCI compatible runtime](https://opencontainers.org/) o
 
 ## 3. Run Homechart
 
-The Homechart container is configured to start Homechart server without having to specify a command or entrypoint.  You will need to provide some configuration settings via environment variables, see [Configuration Options](/getting-started/on-your-network/installation/configuration-options/).
+The Homechart container is configured to start Homechart server without having to specify a command or entrypoint.  You will need to provide some configuration settings via environment variables, see [Configuration Options](/installing-homechart/server/on-your-network/installation/configuration-options/).
 
 ### Kubernetes (via helm)
 

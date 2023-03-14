@@ -28,7 +28,7 @@ $ chmod +x /usr/local/bin/homechart
 
 ## 3. Run Homechart
 
-The Homechart executable can be ran from any directory and stores no files locally.  You will need to provide some configuration settings via environment variables or a JSON configuration file, see [Configuration Options](/getting-started/on-your-network/installation/configuration-options/).
+The Homechart executable can be ran from any directory and stores no files locally.  You will need to provide some configuration settings via environment variables or a JSON configuration file, see [Configuration Options](/installing-homechart/server/on-your-network/installation/configuration-options/).
 
 ### CLI
 
