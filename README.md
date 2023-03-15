@@ -2,9 +2,12 @@
 
 > Your Handy Home Assistant
 
-[:motorway: Roadmap](https://github.com/orgs/candiddev/projects/6)
+[:book: Docs](https://docs.homechart.app)
+[:motorway: Roadmap](https://github.com/orgs/candiddev/projects/6/views/23)
 
-This repository contains [Upcoming Homechart Features](https://github.com/candiddev/homechart/issues) and [Homechart Community Discussions](https://github.com/candiddev/homechart/discussions):
+This repository contains [Documentation](https://docs.homechart.app/helping-out/documentation/), [Translations](https://docs.homechart.app/helping-out/translating/), and [Issues](https://github.com/candiddev/homechart/issues) for Homechart.
+
+The GitHub [Homechart Community Discussions](https://github.com/candiddev/homechart/discussions) lives here, too:
 
 - [:mega: Announcements](https://github.com/candiddev/homechart/discussions/categories/announcements)
 - [:computer: Feedback - Developers](https://github.com/candiddev/homechart/discussions/categories/feedback-developers)

@@ -4,7 +4,7 @@ weight: 2
 
 # Container Install
 
-Homechart can be deployed as a container on Linux (amd64 and arm) from our images hosted on DockerHub.
+Homechart can be deployed as a container on Linux (amd64 and arm) from our images hosted on [GitHub](https://github.com/candiddev/homechart/pkgs/container/homechart).
 
 ## 1. Review the requirements
 
@@ -49,14 +49,14 @@ services:
       HOMECHART_POSTGRESQL_HOSTNAME: postgres
       HOMECHART_POSTGRESQL_PASSWORD: postgres
       HOMECHART_POSTGRESQL_USERNAME: postgres
-    image: candiddev/homechart:latest
+    image: ghcr.io/candiddev/homechart:latest
     ports:
       - "3000:3000"
     restart: always
   postgres:
     environment:
       POSTGRES_PASSWORD: postgres
-    image: postgres:14
+    image: docker.io/postgres:14
     restart: always
     volumes:
       - postgres:/var/lib/postgresql/data
