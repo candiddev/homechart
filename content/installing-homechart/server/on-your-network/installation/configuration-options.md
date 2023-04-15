@@ -265,7 +265,7 @@ JSON: {"app": {"sessionExpirationRememberSeconds": 7776000}}
 
 ### signupDisabled
 
-Disables new account signups.  Accounts can still be created/invited under the Admin > Household page and Settings > Household.  Self-hosted instances should enable this after they have setup their household.
+Disables new account signups.  Accounts can still be created/invited under the Admin > Accounts.  Self-hosted instances should enable this after they have setup their household.
 
 ```
 Type: boolean
