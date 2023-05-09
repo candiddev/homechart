@@ -8,7 +8,7 @@ For self-hosted users, Homechart can integrate with your existing authentication
 
 - The account will be created if the email address does not exist in Homechart already.  You should pre-create your household members using the email address that the SSO will pass through, otherwise they will be created under a separate household.
 - If the account already exists in Homechart, Homechart will create a new session for the account associated with the email address that the SSO passes.  **Please ensure you have properly configured your SSO implementation to avoid malicious users from setting the proxy headers and gaining access to your instance.**
-- At a minimum, you must have the appropriate configuration values set for [HOMECHART_APP_PROXYADDRESS](/getting-started/on-your-network/installation/configuration-options/#app-proxyaddress) and [HOMECHART_APP_PROXYHEADEREMAIL](/getting-started/on-your-network/installation/configuration-options/#app-proxyaddress) to enable SSO.
+- At a minimum, you must have the appropriate configuration values set for [HOMECHART_APP_PROXYADDRESS](/installing-homechart/server/on-your-network/installation/configuration-options/#app-proxyaddress) and [HOMECHART_APP_PROXYHEADEREMAIL](/installing-homechart/server/on-your-network/installation/configuration-options/#app-proxyheaderemail) to enable SSO.
 
 ## Examples
 

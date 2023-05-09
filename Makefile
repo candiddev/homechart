@@ -3,7 +3,7 @@
 DOCKER_LOGOPTS = --log-opt max-file=1 --log-opt max-size=100k
 DOCKER_UID = -u `id -u`:`id -g`
 HUGO = .bin/hugo
-HUGO_VERSION = 0.110.0
+HUGO_VERSION = 0.111.3
 
 build: hugo
 	$(HUGO) --cleanDestinationDir --minify

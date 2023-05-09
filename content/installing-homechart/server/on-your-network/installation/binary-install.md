@@ -8,7 +8,7 @@ Homechart can be deployed as a standalone binary on Linux (amd64 and arm) from o
 
 ## 1. Review the requirements
 
-Ensure your system meets the [Server Requirements](/getting-started/on-your-network/installation/requirements/).
+Ensure your system meets the [Server Requirements](/installing-homechart/server/on-your-network/installation/requirements/).
 
 ## 2. Download Homechart
 
