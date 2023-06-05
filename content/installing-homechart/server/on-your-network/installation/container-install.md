@@ -32,7 +32,7 @@ $ helm install my-homechart homechart/homechart
 A minimal docker run for Homechart:
 
 ```bash
-$ docker run -e HOMECHART_POSTGRESQL_HOSTNAME=homechart -e HOMECHART_POSTGRESQL_PASSWORD=homechart -e HOMECHART_POSTGRESQL_USERNAME=homechart -p 3000:3000 -d candiddev/homechart
+$ docker run -e HOMECHART_POSTGRESQL_HOSTNAME=homechart -e HOMECHART_POSTGRESQL_PASSWORD=homechart -e HOMECHART_POSTGRESQL_USERNAME=homechart -p 3000:3000 -d ghcr.io/candiddev/homechart:latest
 ```
 
 ### docker-compose.yml
