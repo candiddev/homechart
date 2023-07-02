@@ -5824,7 +5824,7 @@ translations:
   WebFormTableAuthHouseholdMembersInviteToken:
     ar: دعوة رمز
     context: Token used to invite a member to household
-    de: Token einladen
+    de: Einladungs-Token
     en: Invite Token
     es: Token de invitación
     fr: Jeton d'invitation
@@ -5874,7 +5874,7 @@ translations:
   WebGlobalAboutRoadmap:
     ar: خريطة الطريق
     context: Upcoming features that will be added to Homechart
-    de: Fahrplan
+    de: Roadmap
     en: Roadmap
     es: Mapa vial
     fr: Feuille de route
@@ -6034,7 +6034,7 @@ translations:
   WebGlobalActionDeny:
     ar: ينكر
     context: Don't let something to do something
-    de: Leugnen
+    de: Ablehnen
     en: Deny
     es: Denegar
     fr: Refuser
@@ -6054,7 +6054,7 @@ translations:
   WebGlobalActionDismiss:
     ar: رفض
     context: Dismiss an alert
-    de: Zurückweisen
+    de: Verwerfen
     en: Dismiss
     es: Despedir
     fr: Rejeter
@@ -6214,7 +6214,7 @@ translations:
   WebGlobalActionJoin:
     ar: ينضم
     context: Join a household as a member
-    de: Verbinden
+    de: Beitreten
     en: Join
     es: Unirse
     fr: Rejoindre
@@ -6254,7 +6254,7 @@ translations:
   WebGlobalActionLeaveHouseholdMessage:
     ar: غادر المنزل
     context: Message when leaving a household
-    de: Haushalt verlassen
+    de: Haushalt wurde verlassen
     en: Left household
     es: hogar izquierdo
     fr: A quitté le ménage
@@ -6304,7 +6304,7 @@ translations:
   WebGlobalActionReconcile:
     ar: التصالح
     context: Match something like a bank statement to another value
-    de: Versöhnen
+    de: abgleichen
     en: Reconcile
     es: Conciliar
     fr: Réconcilier
@@ -6404,7 +6404,7 @@ translations:
   WebGlobalActionSend:
     ar: يرسل
     context: Send button
-    de: Schicken
+    de: Versenden
     en: Send
     es: Enviar
     fr: Envoyer
@@ -6414,7 +6414,7 @@ translations:
   WebGlobalActionSetup:
     ar: يثبت
     context: Setup a new account
-    de: Aufstellen
+    de: Konfigurieren
     en: Setup
     es: Configuración
     fr: Installation
@@ -6424,7 +6424,7 @@ translations:
   WebGlobalActionShare:
     ar: يشارك
     context: Actions related to things being shared
-    de: Aktie
+    de: Teile
     en: Share
     es: Compartir
     fr: Partager
@@ -6454,7 +6454,7 @@ translations:
   WebGlobalActionShowCompleted:
     ar: عرض مكتمل
     context: Show completed items
-    de: Show abgeschlossen
+    de: Zeige abgeschlossene
     en: Show Completed
     es: Mostrar completado
     fr: Afficher terminé
@@ -6474,7 +6474,7 @@ translations:
   WebGlobalActionShowHidden:
     ar: أظهر المخفي
     context: Show hidden items
-    de: Verborgenes zeigen
+    de: Versteckte anzeigen
     en: Show Hidden
     es: Mostrar oculto
     fr: Afficher masqué
@@ -6534,7 +6534,7 @@ translations:
   WebGlobalActionSignInWith:
     ar: تسجيل الدخول ب
     context: Sign in with a provider to your Homechart account button
-    de: Melden Sie sich mit an
+    de: Melden Sie sich an mit
     en: Sign in with
     es: Inicia sesión con
     fr: Se connecter avec
@@ -6544,7 +6544,7 @@ translations:
   WebGlobalActionSignOut:
     ar: خروج
     context: Sign out of your Homechart account button
-    de: Austragen
+    de: Abmelden
     en: Sign Out
     es: Desconectar
     fr: Se déconnecter
@@ -6554,7 +6554,7 @@ translations:
   WebGlobalActionSignUp:
     ar: اشتراك
     context: Sign up for a Homechart account button
-    de: Anmeldung
+    de: Registrierung
     en: Sign Up
     es: Inscribirse
     fr: S'inscrire
@@ -6564,7 +6564,7 @@ translations:
   WebGlobalActionSignUpFail:
     ar: فشل انشاء الحساب
     context: Sign up to your Homechart account button failed
-    de: Anmeldung gescheitert
+    de: Registrierung fehlgeschlagen
     en: Sign up failed
     es: Registro fallido
     fr: L'inscription a échoué
@@ -6604,7 +6604,7 @@ translations:
   WebGlobalActionUndo:
     ar: الغاء التحميل
     context: Revert a change
-    de: Rückgängig machen
+    de: Rückgängig
     en: Undo
     es: Deshacer
     fr: annuler
@@ -6624,7 +6624,7 @@ translations:
   WebGlobalActionView:
     ar: منظر
     context: The ability to view something
-    de: Sicht
+    de: Ansehen
     en: View
     es: Vista
     fr: Voir
@@ -8547,7 +8547,7 @@ translations:
   WebSettingsAccountLanguageTooltip:
     ar: اللغة المراد استخدامها لواجهة المستخدم
     context: Language field tooltip
-    de: Für die Benutzeroberfläche zu verwendende Sprache
+    de: Sprache der Benutzeroberfläche
     en: Language to use for the UI
     es: Idioma a usar para la interfaz de usuario
     fr: Langue à utiliser pour l'interface utilisateur
@@ -8677,7 +8677,7 @@ translations:
   WebSettingsAccountPrivateKeyResetConfirm1:
     ar: نعم ، يرجى إزالة قدرتي على قراءة أسراري
     context: Confirmation message for erasing private keys
-    de: Ja, bitte entfernen Sie meine Fähigkeit, meine Geheimnisse zu lesen
+    de: Ja, bitte entferne die Möglichkeit, meine Geheimnisse zu lesen
     en: Yes, Please Remove My Ability To Read My Secrets
     es: Sí, elimine mi capacidad para leer mis secretos
     fr: Oui, veuillez supprimer ma capacité à lire mes secrets
@@ -8687,7 +8687,7 @@ translations:
   WebSettingsAccountPrivateKeyResetConfirm2:
     ar: نعم ، أفهم أن هذا لا يمكن عكسه
     context: Confirmation message for erasing private keys
-    de: Ja, ich verstehe, dass dies nicht umkehrbar ist
+    de: Ja, ich verstehe, dass dies nicht rückgängig gemacht werden kann
     en: Yes, I Understand This Is Not Reversible
     es: Sí, entiendo que esto no es reversible
     fr: Oui, je comprends que ce n'est pas réversible
@@ -8727,7 +8727,7 @@ translations:
   WebSettingsAccountRandomizeColors:
     ar: ترتيب الألوان عشوائيًا
     context: Randomize colors button
-    de: Farben randomisieren
+    de: Zufällige Farben
     en: Randomize Colors
     es: Aleatorizar colores
     fr: Couleurs aléatoires
@@ -9147,7 +9147,7 @@ translations:
   WebShopItemsInCart:
     ar: في العربة
     context: Items that are in a cart
-    de: Im Wagen
+    de: Im Einkaufswagen
     en: In Cart
     es: En el carrito
     fr: Dans un chariot
@@ -9267,7 +9267,7 @@ translations:
   WebSignInRememberMe:
     ar: تذكرنى
     context: A toggle to remember a sign in
-    de: Mich erinnern
+    de: Angemeldet bleiben
     en: Remember Me
     es: Acuérdate de mí
     fr: Souviens-toi de moi
