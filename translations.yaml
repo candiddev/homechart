@@ -9,6 +9,26 @@ iso639codes:
   nl: Nederlands
   zh: 中文
 translations:
+  EmailDailyAgendaHeader:
+    ar: فيما يلي ملخص لجدول أعمالك اليومي
+    context: Heading for daily agenda emails
+    de: Hier finden Sie eine Zusammenfassung Ihrer täglichen Agenda
+    en: Here's a summary of your daily agenda
+    es: Aquí tienes un resumen de tu agenda diaria
+    fr: Voici un résumé de votre agenda quotidien
+    hi: यहां आपके दैनिक एजेंडे का सारांश दिया गया है
+    nl: Hier is een samenvatting van uw dagelijkse agenda
+    zh: 这是您每日日程的摘要
+  EmailDailyAgendaViewCalendar:
+    ar: عرض التقويم الخاص بك
+    context: Heading for daily agenda emails
+    de: Sehen Sie sich Ihren Kalender an
+    en: View your calendar
+    es: ver tu calendario
+    fr: Afficher votre calendrier
+    hi: अपना कैलेंडर देखें
+    nl: Bekijk je agenda
+    zh: 查看您的日历
   EmailEmailAddressChangeConfirmationBody:
     ar: قام شخص ما (نأمل أنت!) بتغيير حساب Homechart لاستخدام عنوان البريد الإلكتروني
       هذا.
@@ -4276,18 +4296,23 @@ translations:
     nl: Winkel
     zh: 购物商店
   WebFormOverlayBudgetTransactionAmountTooltip:
-    ar: مبلغ من المال ، استخدم رمز الطرح (-20.00) لإنشاء مبلغ سلبي
+    ar: مبلغ من المال ، استخدم رمز الطرح (-) لإنشاء مبلغ سلبي أو رمز الجمع (+) لإنشاء
+      مبلغ موجب
     context: The tooltip for the amount field of a transaction
-    de: Ein Geldbetrag, verwenden Sie das Minuszeichen (-20,00), um einen negativen
-      Betrag zu erstellen
-    en: An amount of money, use the minus symbol (-20.00) to create a negative amount
-    es: Una cantidad de dinero, use el símbolo menos (-20.00) para crear una cantidad
-      negativa
-    fr: Une somme d'argent, utilisez le symbole moins (-20,00) pour créer un montant
-      négatif
-    hi: धन की राशि, ऋणात्मक राशि बनाने के लिए ऋण चिह्न (-20.00) का उपयोग करें
-    nl: Een geldbedrag, gebruik het minteken (-20.00) om een negatief bedrag te creëren
-    zh: 金额，使用减号 (-20.00) 创建负数
+    de: Verwenden Sie für einen Geldbetrag das Minuszeichen (-), um einen negativen
+      Betrag zu erstellen, oder das Pluszeichen (+), um einen positiven Betrag zu
+      erstellen
+    en: An amount of money, use the minus symbol (-) to create a negative amount or
+      the plus symbol (+) to create a positive amount
+    es: Una cantidad de dinero, use el símbolo menos (-) para crear una cantidad negativa
+      o el símbolo más (+) para crear una cantidad positiva
+    fr: Une somme d&#39;argent, utilisez le symbole moins (-) pour créer un montant
+      négatif ou le symbole plus (+) pour créer un montant positif
+    hi: धन की राशि, ऋणात्मक राशि बनाने के लिए ऋण चिह्न (-) का उपयोग करें या धनात्मक
+      राशि बनाने के लिए धन चिह्न (+) का उपयोग करें
+    nl: Een geldbedrag, gebruik het minteken (-) om een negatief bedrag te creëren
+      of het plusteken (+) om een positief bedrag te creëren
+    zh: 金额，使用减号 (-) 创建负数或加号 (+) 创建正数
   WebFormOverlayBudgetTransactionCategoryTooltip:
     ar: اسم الفئة
     context: The tooltip for the category field of a category transaction
@@ -5579,16 +5604,6 @@ translations:
     hi: शॉपिंग आइटम जोड़ें
     nl: Winkelartikelen toevoegen
     zh: 添加购物项目
-  WebFormSubscriptionCancelApple:
-    ar: يجب إلغاء الاشتراكات من جهاز iOS
-    context: Message that displays when trying to cancel from non-apple devices
-    de: Abonnements müssen von einem iOS-Gerät gekündigt werden
-    en: Subscriptions must be cancelled from an iOS device
-    es: Las suscripciones deben cancelarse desde un dispositivo iOS
-    fr: Les abonnements doivent être annulés depuis un appareil iOS
-    hi: किसी iOS डिवाइस से सदस्यता रद्द की जानी चाहिए
-    nl: Abonnementen moeten worden opgezegd vanaf een iOS-apparaat
-    zh: 必须从 iOS 设备取消订阅
   WebFormSubscriptionExpires:
     ar: انتهاء الاشتراك
     context: Subscription expires field
@@ -6244,7 +6259,7 @@ translations:
   WebGlobalActionLeaveHousehold:
     ar: اترك المنزل
     context: Button to leave a household
-    de: Haushalt verlassen
+    de: Haushalt wurde verlassen
     en: Leave Household
     es: Salir del hogar
     fr: Quitter le ménage
@@ -6254,7 +6269,7 @@ translations:
   WebGlobalActionLeaveHouseholdMessage:
     ar: غادر المنزل
     context: Message when leaving a household
-    de: Haushalt wurde verlassen
+    de: Haushalt verlassen
     en: Left household
     es: hogar izquierdo
     fr: A quitté le ménage
@@ -6304,7 +6319,7 @@ translations:
   WebGlobalActionReconcile:
     ar: التصالح
     context: Match something like a bank statement to another value
-    de: abgleichen
+    de: Abgleichen
     en: Reconcile
     es: Conciliar
     fr: Réconcilier
@@ -7251,6 +7266,23 @@ translations:
     hi: होमचार्ट स्थापित करें
     nl: Homechart installeren
     zh: 安装 Homechart
+  WebGlobalInstallHomechartiOS:
+    ar: قم بتثبيت Homechart على iOS من خلال النقر على زر المشاركة في الأسفل والنقر
+      فوق إضافة إلى الشاشة الرئيسية.
+    context: Alert for iOS users on how to install Homechart
+    de: Installieren Sie Homechart auf iOS, indem Sie unten auf die Schaltfläche „Teilen“
+      und dann auf „Zum Startbildschirm hinzufügen“ tippen.
+    en: Install Homechart on iOS by tapping the Share button at the bottom and tap
+      Add to Home Screen.
+    es: Instale Homechart en iOS tocando el botón Compartir en la parte inferior y
+      toque Agregar a la pantalla de inicio.
+    fr: Installez Homechart sur iOS en appuyant sur le bouton Partager en bas et appuyez
+      sur Ajouter à l&#39;écran d&#39;accueil.
+    hi: नीचे शेयर बटन पर टैप करके और होम स्क्रीन में जोड़ें पर टैप करके iOS पर होमचार्ट
+      इंस्टॉल करें।
+    nl: Installeer Homechart op iOS door onderaan op de knop Delen te tikken en vervolgens
+      op Toevoegen aan startscherm.
+    zh: 通过点击底部的共享按钮在 iOS 上安装 Homechart，然后点击添加到主屏幕。
   WebGlobalLanguage:
     ar: لغة
     context: Language field
@@ -7561,16 +7593,6 @@ translations:
     hi: प्राथमिकता
     nl: Prioriteit
     zh: 优先事项
-  WebGlobalPurchaseFail:
-    ar: تعذر إكمال الشراء ، يرجى المحاولة مرة أخرى
-    context: Message when a purchase failed
-    de: Kauf konnte nicht abgeschlossen werden, bitte versuchen Sie es erneut
-    en: Couldn't complete purchase, please try again
-    es: No se pudo completar la compra, intente nuevamente
-    fr: Impossible de finaliser l'achat, veuillez réessayer
-    hi: खरीदारी पूरी नहीं हो सकी, कृपया फिर से कोशिश करें
-    nl: Kan aankoop niet voltooien, probeer het opnieuw
-    zh: 无法完成购买，请重试
   WebGlobalQRCode:
     ar: رمز الاستجابة السريعة
     context: A QR code for an item
@@ -8160,23 +8182,6 @@ translations:
     hi: बारकोड से आइटम
     nl: Artikel van streepjescode
     zh: 来自条形码的项目
-  WebInventoryItemFromBarcodeFail:
-    ar: يحتاج Homechart إلى إذن للوصول إلى الكاميرا الخاصة بك ، ولكن تم رفضه. يرجى
-      منح هذا الإذن في إعدادات التطبيق.
-    context: A message that shows when Homechart can't scan from barcode
-    de: Homechart benötigt die Erlaubnis, auf Ihre Kamera zuzugreifen, diese wurde
-      jedoch verweigert. Bitte erteilen Sie diese Berechtigung in den App-Einstellungen.
-    en: Homechart needs permission to access your camera, but it has been denied.  Please
-      grant this permission in the app settings.
-    es: Homechart necesita permiso para acceder a su cámara, pero ha sido denegado.
-      Otorgue este permiso en la configuración de la aplicación.
-    fr: Homechart a besoin d'une autorisation pour accéder à votre caméra, mais celle-ci
-      a été refusée. Veuillez accorder cette autorisation dans les paramètres de l'application.
-    hi: होमचार्ट को आपके कैमरे तक पहुंचने की अनुमति चाहिए, लेकिन इसे अस्वीकार कर दिया
-      गया है। कृपया ऐप सेटिंग में यह अनुमति दें।
-    nl: Homechart heeft toestemming nodig om toegang te krijgen tot uw camera, maar
-      dit is geweigerd. Geef deze toestemming in de instellingen van de app.
-    zh: Homechart 需要访问您的相机的权限，但已被拒绝。请在应用程序设置中授予此权限。
   WebInventoryItemFromBarcodeSuccess:
     ar: مضاف
     context: A message that shows when Homechart increases the quantity of an existing
@@ -8218,6 +8223,16 @@ translations:
     hi: संग्रह रीसेट करें
     nl: Verzameling resetten
     zh: 重置收藏
+  WebInventoryItemsSearch:
+    ar: ابحث عن الاسم أو الملكية
+    context: Search for an item
+    de: Suche nach Namen oder Eigentum
+    en: Search for name or property
+    es: Buscar por nombre o propiedad
+    fr: Rechercher un nom ou une propriété
+    hi: नाम या संपत्ति खोजें
+    nl: Zoek op naam of eigenschap
+    zh: 搜索姓名或财产
   WebInventoryItemsStopScanning:
     ar: توقف عن المسح
     context: Button to stop the scanning process
@@ -8405,15 +8420,15 @@ translations:
     nl: Kluis bewerken
     zh: 编辑保险库
   WebSecretsSearch:
-    ar: البحث عن طريق الإسم
+    ar: ابحث عن اسم أو خاصية
     context: Search for a value
-    de: Suche mit Name
-    en: Search by name
-    es: Buscar por nombre
-    fr: Rechercher par nom
-    hi: नाम से खोजें
-    nl: Zoek op naam
-    zh: 按名称搜索
+    de: Suchen Sie nach einem Namen oder einer Eigenschaft
+    en: Search for a name or property
+    es: Buscar un nombre o propiedad
+    fr: Rechercher un nom ou une propriété
+    hi: नाम या संपत्ति खोजें
+    nl: Zoek naar een naam of eigenschap
+    zh: 搜索名称或属性
   WebSettingsAccountAccentColor:
     ar: لون التمييز
     context: Accent color picker
@@ -8677,7 +8692,7 @@ translations:
   WebSettingsAccountPrivateKeyResetConfirm1:
     ar: نعم ، يرجى إزالة قدرتي على قراءة أسراري
     context: Confirmation message for erasing private keys
-    de: Ja, bitte entferne die Möglichkeit, meine Geheimnisse zu lesen
+    de: Ja, ich verstehe, dass dies nicht rückgängig gemacht werden kann
     en: Yes, Please Remove My Ability To Read My Secrets
     es: Sí, elimine mi capacidad para leer mis secretos
     fr: Oui, veuillez supprimer ma capacité à lire mes secrets
@@ -8687,7 +8702,7 @@ translations:
   WebSettingsAccountPrivateKeyResetConfirm2:
     ar: نعم ، أفهم أن هذا لا يمكن عكسه
     context: Confirmation message for erasing private keys
-    de: Ja, ich verstehe, dass dies nicht rückgängig gemacht werden kann
+    de: Ja, ich verstehe, dass dies nicht umkehrbar ist
     en: Yes, I Understand This Is Not Reversible
     es: Sí, entiendo que esto no es reversible
     fr: Oui, je comprends que ce n'est pas réversible
@@ -8875,6 +8890,16 @@ translations:
     nl: Huishouden importeren
     zh: 进口户
   WebSettingsNotificationsDailyAgenda:
+    ar: الأجندة اليومية
+    context: Table row for Agenda settings
+    de: Tagesordnung
+    en: Daily Agenda
+    es: Agenda diaria
+    fr: Ordre du jour quotidien
+    hi: दैनिक एजेंडा
+    nl: Dagelijkse Agenda
+    zh: 每日议程
+  WebSettingsNotificationsDailyAgendaTime:
     ar: وقت الأجندة اليومية
     context: Field for selecting when to receive daily agenda
     de: Tagesordnung Zeit
@@ -9362,16 +9387,6 @@ translations:
     hi: क्लाउड वॉयस सहायक प्रॉक्सी सक्षम करें
     nl: Cloud Voice Assistant-proxy inschakelen
     zh: 启用云语音助手代理
-  WebSubscriptionEnableCloudPush:
-    ar: تفعيل إشعارات الدفع السحابي
-    context: Toggle for enabling push notifications to the cloud
-    de: Aktivieren Sie Cloud-Push-Benachrichtigungen
-    en: Enable Cloud Push Notifications
-    es: Habilitar notificaciones push en la nube
-    fr: Activer les notifications push cloud
-    hi: क्लाउड पुश सूचनाएं सक्षम करें
-    nl: Cloud-pushmeldingen inschakelen
-    zh: 启用云推送通知
   WebTableHeaderFilterTooltip:
     ar: قم بتصفية القيم في هذا العمود. يمكن أن يكون هذا عبارة عن سلسلة بسيطة أو تعبيرًا
       عاديًا (RegExp).
