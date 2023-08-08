@@ -167,7 +167,7 @@ translations:
     es: Actualice su configuración de notificaciones
     fr: Mettre à jour vos paramètres de notification
     hi: अपनी अधिसूचना सेटिंग अपडेट करें
-    nl: Werk uw meldingsinstellingen bij
+    nl: Werk uw notificatie instellingen bij
     zh: 更新您的通知设置
   EmailHelpBody:
     ar: إذا لم تطلب هذا ، يرجى الرد على هذا البريد الإلكتروني. نحن هنا للمساعدة!
@@ -917,7 +917,7 @@ translations:
     es: Cuenta
     fr: Compte
     hi: खाता
-    nl: Rekening
+    nl: Gebruiker
     zh: 帐户
   ObjectAccountCreated:
     ar: تم إنشاء الحساب
@@ -927,7 +927,7 @@ translations:
     es: Cuenta creada
     fr: Compte créé
     hi: खाता बन गया
-    nl: Account aangemaakt
+    nl: Gebruiker aangemaakt
     zh: 帐户已创建
   ObjectAccountDeleted:
     ar: تم حذف الحساب
@@ -937,7 +937,7 @@ translations:
     es: Cuenta borrada
     fr: Compte supprimé
     hi: खाता हटा दिया गया
-    nl: Account verwijderd
+    nl: Gebruiker verwijderd
     zh: 帐户已删除
   ObjectAccountInvited:
     ar: تمت دعوة الحساب
@@ -947,7 +947,7 @@ translations:
     es: Cuenta invitada
     fr: Compte invité
     hi: खाता आमंत्रित किया
-    nl: Account uitgenodigd
+    nl: Gebruiker uitgenodigd
     zh: 帐户邀请
   ObjectAccountUpdated:
     ar: تم تحديث الحساب
@@ -957,7 +957,7 @@ translations:
     es: Cuenta actualizada
     fr: Compte mis à jour
     hi: खाता अपडेट किया गया
-    nl: Account bijgewerkt
+    nl: Gebruiker bijgewerkt
     zh: 帐户已更新
   ObjectAccountVerified:
     ar: تم التحقق من الحساب
@@ -967,7 +967,7 @@ translations:
     es: Cuenta verificada
     fr: Compte vérifié
     hi: खाता सत्यापित
-    nl: Account geverifieerd
+    nl: Gebruiker geverifieerd
     zh: 帐户已验证
   ObjectAccounts:
     ar: حسابات
@@ -977,7 +977,7 @@ translations:
     es: cuentas
     fr: Comptes
     hi: हिसाब किताब
-    nl: rekeningen
+    nl: Gebruikers
     zh: 帐户
   ObjectBackup:
     ar: دعم
@@ -1067,7 +1067,7 @@ translations:
     es: Presupuesto
     fr: Budget
     hi: बजट
-    nl: Begroting
+    nl: Budget
     zh: 预算
   ObjectBudgetAccountChecking:
     ar: تدقيق
@@ -1167,7 +1167,7 @@ translations:
     es: Ahorros
     fr: Des économies
     hi: जमा पूंजी
-    nl: Besparingen
+    nl: Spaargeld
     zh: 储蓄
   ObjectBudgetCategoryHouseholdGoods:
     ar: بضائع منزلية
@@ -1467,7 +1467,7 @@ translations:
     es: Cocinar
     fr: Cuisiner
     hi: खाना पकाना
-    nl: Kok
+    nl: Koken
     zh: 厨师
   ObjectEvent:
     ar: حدث
@@ -1547,7 +1547,7 @@ translations:
     es: Hogar creado
     fr: Ménage créé
     hi: घरेलू बनाया
-    nl: huishouden gemaakt
+    nl: Huishouden gemaakt
     zh: 家庭创建
   ObjectHouseholdDeleted:
     ar: تم حذف الأسرة
@@ -1597,7 +1597,7 @@ translations:
     es: Entradas
     fr: Contributions
     hi: इनपुट
-    nl: Ingangen
+    nl: Invoeren
     zh: 输入
   ObjectInventory:
     ar: جرد
@@ -1637,7 +1637,7 @@ translations:
     es: Elemento creado
     fr: Article créé
     hi: आइटम बनाया गया
-    nl: Artikel gemaakt
+    nl: Item gemaakt
     zh: 已创建项目
   ObjectItemDeleted:
     ar: تم حذف العنصر
@@ -1647,7 +1647,7 @@ translations:
     es: Elemento eliminado
     fr: Article supprimé
     hi: आइटम मिटाया गया
-    nl: Artikel verwijderd
+    nl: Item verwijderd
     zh: 项目已删除
   ObjectItemUpdated:
     ar: تم تحديث العنصر
@@ -1657,7 +1657,7 @@ translations:
     es: Artículo actualizado
     fr: Article mis à jour
     hi: आइटम अपडेट किया गया
-    nl: Artikel bijgewerkt
+    nl: Item bijgewerkt
     zh: 项目已更新
   ObjectItems:
     ar: أغراض
@@ -1667,7 +1667,7 @@ translations:
     es: Elementos
     fr: Articles
     hi: सामान
-    nl: Artikelen
+    nl: Items
     zh: 项目
   ObjectLink:
     ar: وصلة
@@ -1877,7 +1877,7 @@ translations:
     es: Hora de comer eliminada
     fr: Heure du repas supprimée
     hi: भोजन का समय हटाया गया
-    nl: Etenstijd geschrapt
+    nl: Maaltijd geschrapt
     zh: 用餐时间已删除
   ObjectMealTimeUpdated:
     ar: تحديث وقت الوجبة
@@ -1997,7 +1997,7 @@ translations:
     es: Notificación
     fr: Notification
     hi: अधिसूचना
-    nl: Kennisgeving
+    nl: Melding
     zh: 通知
   ObjectNotificationCreated:
     ar: تم إنشاء الإخطار
@@ -2047,7 +2047,7 @@ translations:
     es: Producción
     fr: Sortir
     hi: उत्पादन
-    nl: Uitgang
+    nl: Terugkoppeling
     zh: 输出
   ObjectOutputs:
     ar: النواتج
@@ -2057,7 +2057,7 @@ translations:
     es: Salidas
     fr: Les sorties
     hi: आउटपुट
-    nl: Uitgangen
+    nl: Terugkoppelingen
     zh: 产出
   ObjectOwner:
     ar: مالك
@@ -2077,7 +2077,7 @@ translations:
     es: Página
     fr: Page
     hi: पृष्ठ
-    nl: Bladzijde
+    nl: Pagina
     zh: 页
   ObjectParentPage:
     ar: الصفحة الأصل
@@ -2097,7 +2097,7 @@ translations:
     es: Proyecto principal
     fr: Projet parent
     hi: जनक परियोजना
-    nl: Ouderproject
+    nl: Bovenliggend Project
     zh: 父项目
   ObjectPayee:
     ar: المستفيد
@@ -2107,7 +2107,7 @@ translations:
     es: Tenedor
     fr: Bénéficiaire
     hi: आदाता
-    nl: Begunstigde
+    nl: Ontvanger
     zh: 收款人
   ObjectPayeeCreated:
     ar: تم إنشاء المدفوع لأمره
@@ -2117,7 +2117,7 @@ translations:
     es: Beneficiario creado
     fr: Bénéficiaire créé
     hi: भुगतानकर्ता बनाया गया
-    nl: Begunstigde gemaakt
+    nl: Ontvanger gemaakt
     zh: 收款人创建
   ObjectPayeeDeleted:
     ar: تم حذف المدفوع لأمره
@@ -2127,7 +2127,7 @@ translations:
     es: Beneficiario eliminado
     fr: Bénéficiaire supprimé
     hi: प्राप्तकर्ता हटा दिया गया
-    nl: Begunstigde verwijderd
+    nl: Ontvanger verwijderd
     zh: 收款人已删除
   ObjectPayeeUpdated:
     ar: تحديث المدفوع لأمره
@@ -2137,7 +2137,7 @@ translations:
     es: Beneficiario actualizado
     fr: Bénéficiaire mis à jour
     hi: भुगतानकर्ता अपडेट किया गया
-    nl: Begunstigde bijgewerkt
+    nl: Ontvanger bijgewerkt
     zh: 收款人已更新
   ObjectPayees:
     ar: المدفوع لهم
@@ -2147,7 +2147,7 @@ translations:
     es: Beneficiarios
     fr: Bénéficiaires
     hi: आदाता
-    nl: Begunstigden
+    nl: Ontvangers
     zh: 收款人
   ObjectPlan:
     ar: يخطط
@@ -2167,7 +2167,7 @@ translations:
     es: Proyecto
     fr: Projet
     hi: परियोजना
-    nl: projecteren
+    nl: project
     zh: 项目
   ObjectProjectCreated:
     ar: تم إنشاء المشروع
@@ -2407,7 +2407,7 @@ translations:
     es: Grapas
     fr: Agrafes
     hi: स्टेपल्स
-    nl: Nietjes
+    nl: Basisbehoeftes
     zh: 订书钉
   ObjectStore:
     ar: محل
@@ -2447,7 +2447,7 @@ translations:
     es: Tarea después
     fr: Tâche après
     hi: कार्य के बाद
-    nl: Taak na
+    nl: Volgende Taak
     zh: 任务之后
   ObjectTaskBefore:
     ar: المهمة السابقة
@@ -2457,7 +2457,7 @@ translations:
     es: Tarea antes
     fr: Tâche avant
     hi: टास्क पहले
-    nl: Taak Voor
+    nl: Vorige Taak
     zh: 之前的任务
   ObjectTaskCompleted:
     ar: تمت المهمة
@@ -2677,7 +2677,7 @@ translations:
     es: Bóvedas
     fr: coffres
     hi: वाल्टों
-    nl: Gewelven
+    nl: Kluizen
     zh: 金库
   ObjectVersion:
     ar: إصدار
@@ -2787,7 +2787,7 @@ translations:
     es: Nada programado hoy!
     fr: Rien de prévu aujourd'hui !
     hi: आज कुछ निर्धारित नहीं है!
-    nl: Niets gepland vandaag!
+    nl: Niets gepland voor vandaag!
     zh: 今天没有安排！
   PushDailyAgendaSubject:
     ar: جدول أعمال
@@ -2797,7 +2797,7 @@ translations:
     es: Agenda para
     fr: Ordre du jour pour
     hi: के लिए एजेंडा
-    nl: agenda voor
+    nl: Agenda voor
     zh: 议程
   PushEventReminderBody:
     ar: اضغط هنا لعرض الحدث
@@ -2868,7 +2868,7 @@ translations:
     es: Buscar cuenta
     fr: Rechercher un compte
     hi: खाता खोजें
-    nl: Zoek naar rekening
+    nl: Zoek naar gebruikers
     zh: 搜索帐号
   WebAdminHouseholdsLastTransactionID:
     ar: معرّف آخر معاملة
@@ -2888,7 +2888,7 @@ translations:
     es: cuenta de miembro
     fr: Nombre de membres
     hi: सदस्य गणना
-    nl: Leden Aantal
+    nl: Aantal leden
     zh: 会员人数
   WebAdminHouseholdsSearch:
     ar: ابحث عن الأسرة
@@ -2908,7 +2908,7 @@ translations:
     es: ID de cliente de suscripción
     fr: ID client d'abonnement
     hi: सदस्यता ग्राहक आईडी
-    nl: Abonnement klant-ID
+    nl: klant-ID Abonnement
     zh: 订阅客户 ID
   WebAdminHouseholdsSubscriptionID:
     ar: معرف الإشتراك
@@ -2928,7 +2928,7 @@ translations:
     es: Procesador de suscripción
     fr: Processeur d'abonnement
     hi: सदस्यता प्रोसेसर
-    nl: Abonnementsverwerker
+    nl: Abonnement verwerker
     zh: 订阅处理器
   WebAdminNotificationsAction:
     ar: فعل
@@ -2968,7 +2968,7 @@ translations:
     es: Enviar después
     fr: Envoyer après
     hi: बाद भेजें
-    nl: Stuur daarna
+    nl: Stuur hierna
     zh: 之后发送
   WebAdminNotificationsSubject:
     ar: موضوع
@@ -3008,7 +3008,7 @@ translations:
     es: Homechart está en línea
     fr: Homechart est en ligne
     hi: होमचार्ट ऑनलाइन है
-    nl: Thuiskaart is online
+    nl: Homechart is online
     zh: 主页图表已上线
   WebAlertPurchase:
     ar: شكرا لشرائك Homechart!
@@ -3038,7 +3038,7 @@ translations:
     es: ¡Renuévala para seguir usando Homechart!
     fr: Veuillez le renouveler pour continuer à utiliser Homechart!
     hi: होमचार्ट का उपयोग जारी रखने के लिए कृपया इसे नवीनीकृत करें!
-    nl: Verleng deze om Homechart te blijven gebruiken!
+    nl: Verleng het abonnement deze om Homechart te blijven gebruiken!
     zh: 请续订以继续使用 Homechart！
   WebAlertSubscriptionExpiring1:
     ar: سينتهي اشتراكك في Homechart في
@@ -3058,7 +3058,7 @@ translations:
     es: ¡Renuévala para seguir usando Homechart!
     fr: Veuillez le renouveler pour continuer à utiliser Homechart!
     hi: होमचार्ट का उपयोग जारी रखने के लिए कृपया इसे नवीनीकृत करें!
-    nl: Verleng deze om Homechart te blijven gebruiken!
+    nl: Verlengen om Homechart te blijven gebruiken!
     zh: 请续订以继续使用 Homechart！
   WebAlertSubscriptionNeeded:
     ar: قم بإنهاء إعداد اشتراكك في Homechart لاستخدام الميزات المنزلية
@@ -3083,7 +3083,7 @@ translations:
     es: La nueva versión está disponible
     fr: Une nouvelle version est disponible
     hi: नया संस्करण उपलब्ध है
-    nl: Nieuwe versie is beschikbaar
+    nl: Nieuwe versie beschikbaar
     zh: 新版本可用
   WebAppDemoWelcome1:
     ar: مرحبًا بك في العرض التوضيحي لـ Homechart!
@@ -3194,7 +3194,7 @@ translations:
     es: Intervalo de fechas de inicio del gráfico
     fr: Plage de dates de début du graphique
     hi: चार्ट के लिए आरंभिक तिथि सीमा
-    nl: Begindatumbereik voor de grafiek
+    nl: Begindatum bereik voor de grafiek
     zh: 图表的开始日期范围
   WebBudgetChartsDateRangeTo:
     ar: النطاق الزمني إلى
@@ -3214,7 +3214,7 @@ translations:
     es: Intervalo de fechas de finalización del gráfico
     fr: Plage de dates de fin pour le graphique
     hi: चार्ट के लिए समाप्ति तिथि सीमा
-    nl: Einddatumbereik voor de grafiek
+    nl: Einddatum bereik voor de grafiek
     zh: 图表的结束日期范围
   WebBudgetChartsExpense:
     ar: مصروف
@@ -3234,7 +3234,7 @@ translations:
     es: Gráfico de filtros
     fr: Filtrer le graphique
     hi: फ़िल्टर चार्ट
-    nl: Filterkaart
+    nl: Filter kaart
     zh: 筛选图表
   WebBudgetChartsLastThreeMonths:
     ar: الثلاثة اشهر الاخيرة
@@ -3424,7 +3424,7 @@ translations:
     es: Hora de cocinar
     fr: Temps de cuisson
     hi: पकाने का समय
-    nl: Kooktijd
+    nl: Bereidingstijd
     zh: 烹饪时间
   WebCookRecipesIDCookTimeTooltip:
     ar: كم من الوقت يستغرق لطهي الوصفة
@@ -3454,7 +3454,7 @@ translations:
     es: Direcciones
     fr: Directions
     hi: दिशा-निर्देश
-    nl: Routebeschrijving
+    nl: Bereidingen
     zh: 方向
   WebCookRecipesIDDirectionsTooltip:
     ar: اتجاهات الوصفة
@@ -3464,7 +3464,7 @@ translations:
     es: Direcciones de recetas
     fr: Instructions de recette
     hi: नुस्खा निर्देश
-    nl: Recept richtingen
+    nl: Recept bereidingen
     zh: 食谱说明
   WebCookRecipesIDIngredientsToShoppingList:
     ar: مكونات قائمة التسوق
@@ -3494,7 +3494,7 @@ translations:
     es: Notas para la comida, como cambios en la receta.
     fr: Notes pour le repas, telles que les changements dans la recette
     hi: भोजन के लिए नोट, जैसे रेसिपी में बदलाव
-    nl: Aantekeningen bij de maaltijd, zoals wijzigingen in het recept
+    nl: Aantekeningen bij de maaltijd, bijvoorbeeld wijzigingen in het recept
     zh: 用餐注意事项，例如食谱的更改
   WebCookRecipesIDPrepTime:
     ar: وقت التحضير
@@ -3587,7 +3587,7 @@ translations:
     fr: Toute entrée supplémentaire sur la façon dont vous voudriez que cette fonctionnalité
       fonctionne/fonctionne
     hi: आप इस सुविधा को कैसे काम/कार्य करना चाहते हैं, इस पर कोई अतिरिक्त इनपुट
-    nl: Eventuele aanvullende invoer over hoe u wilt dat deze functie werkt/functioneert
+    nl: Eventuele aanvullende toevoeging over hoe u wilt dat deze functie werkt/functioneert
     zh: 关于您希望此功能如何工作/发挥作用的任何其他输入
   WebFeatureVotingDescription:
     ar: وصف
@@ -3662,7 +3662,7 @@ translations:
     fr: Combien de votes vous donnez à cette fonctionnalité - vous obtenez cinq votes
       à dépenser
     hi: आप इस फीचर को कितने वोट देते हैं--आपको खर्च करने के लिए पांच वोट मिलते हैं
-    nl: 'Hoeveel stemmen u deze functie geeft: u krijgt vijf stemmen om uit te geven'
+    nl: Hoeveel stemmen u deze functie geeft: u krijgt vijf stemmen om uit te geven
     zh: How many votes you give this feature——你有五票可以花
   WebFormContactUsButtonFeedback:
     ar: تعليق
@@ -3702,7 +3702,7 @@ translations:
     es: ¿Teniendo problemas? ¡Estamos aquí para ayudar!
     fr: Avoir des problèmes? Nous sommes là pour vous aider !
     hi: समस्याएं आ रही हैं? हमलोग यहां सहायता करने के लिए हैं!
-    nl: Moeilijkheden hebben? We zijn hier om te helpen!
+    nl: Heeft u problemen? We zijn er om te helpen!
     zh: 遇到问题？我们随时为您提供帮助！
   WebFormContactUsMessage:
     ar: رسالة
@@ -3856,7 +3856,7 @@ translations:
       sur
     hi: आइटम के साथ प्रदर्शित किया जाने वाला चिह्न। आइकन खोजने के लिए इस लिंक का उपयोग
       करें
-    nl: Pictogram dat bij het item moet worden weergegeven. Gebruik deze link om iconen
+    nl: Icoon dat bij het item moet worden weergegeven. Gebruik deze link om iconen
       op te zoeken
     zh: 与项目一起显示的图标。使用此链接搜索图标
   WebFormItemPlanProjectParentTooltip:
@@ -3867,7 +3867,7 @@ translations:
     es: Proyecto padre para este proyecto
     fr: Projet parent pour ce projet
     hi: इस परियोजना के लिए मूल परियोजना
-    nl: Ouderproject voor dit project
+    nl: Bovenliggend project
     zh: 该项目的父项目
   WebFormItemPlanProjectTooltip:
     ar: مشروع لربط هذه المهمة به
@@ -3887,7 +3887,7 @@ translations:
     es: Quién es el propietario del artículo
     fr: A qui appartient l'objet
     hi: वस्तु का स्वामी कौन है
-    nl: Wie is de eigenaar van het artikel
+    nl: Wie is de eigenaar van het item
     zh: 谁拥有该物品
   WebFormItemSelectColorName:
     ar: لون
@@ -3927,7 +3927,7 @@ translations:
     es: Formato de visualización para monedas
     fr: Format d'affichage des devises
     hi: मुद्राओं के लिए प्रदर्शन प्रारूप
-    nl: Weergaveformaat voor valuta&#39;s
+    nl: Weergaveformaat voor valuta
     zh: 货币显示格式
   WebFormItemTextAreaScanText:
     ar: مسح النص من الصورة
@@ -3967,7 +3967,7 @@ translations:
     es: Hacer grapas
     fr: Créer une agrafe
     hi: स्टेपल बनाओ
-    nl: Maak nietje
+    nl: Maak basisbehoefte
     zh: 制作主食
   WebFormItemsShopItemPrice:
     ar: سعر
@@ -3992,8 +3992,7 @@ translations:
       et des projets
     hi: आइटम की कीमत का उपयोग खरीदारी चलाने और परियोजनाओं के लिए लागतों की गणना करने
       के लिए किया जाएगा
-    nl: De prijs van het artikel wordt gebruikt om de kosten voor de winkelrun en
-      voor projecten te berekenen
+    nl: De prijs van het artikel, wordt gebruikt om de kosten voor de boodschappen en projecten te berekenen
     zh: 物品的价格，将用于计算购物运行和项目的成本
   WebFormItemsShopItemPurchaseOn:
     ar: الشراء على
@@ -4003,7 +4002,7 @@ translations:
     es: Compra en
     fr: Achat sur
     hi: खरीदारी चालू है
-    nl: Aankoop op
+    nl: Gekocht op
     zh: 购买日期
   WebFormItemsShopItemPurchaseOnTooltip:
     ar: التاريخ التالي لشراء هذا العنصر
@@ -4133,7 +4132,7 @@ translations:
     es: Dentro del presupuesto
     fr: Budget
     hi: बजट पर
-    nl: Op begroting
+    nl: Op budget
     zh: 预算内
   WebFormOverlayBudgetCategoryBudgetZero:
     ar: الميزانية إلى الصفر
@@ -4143,7 +4142,7 @@ translations:
     es: Presupuesto a cero
     fr: Budget à zéro
     hi: बजट टू जीरो
-    nl: Budget tot nul
+    nl: Budget naar nul
     zh: 预算为零
   WebFormOverlayBudgetCategoryBudgetedTooltip:
     ar: المبلغ المدرج في الميزانية للشهر
@@ -4153,7 +4152,7 @@ translations:
     es: Monto presupuestado para el mes
     fr: Montant budgété pour le mois
     hi: महीने के लिए बजट राशि
-    nl: Bedrag begroot voor de maand
+    nl: Bedrag budget voor de maand
     zh: 当月预算金额
   WebFormOverlayBudgetCategoryProjects:
     ar: المشاريع التي تستخدم هذه الميزانية
@@ -4263,7 +4262,7 @@ translations:
     es: dirección del beneficiario
     fr: Adresse du bénéficiaire
     hi: पाने वाले का पता
-    nl: Adres begunstigde
+    nl: Adres ontvanger
     zh: 收款人地址
   WebFormOverlayBudgetPayeeDefaultCategory:
     ar: الفئة الافتراضية
@@ -4379,7 +4378,7 @@ translations:
     es: Un nombre de beneficiario nuevo o existente
     fr: Un nom de bénéficiaire nouveau ou existant
     hi: पाने वाले का नया या मौजूदा नाम
-    nl: Een nieuwe of bestaande naam van de begunstigde
+    nl: Een nieuwe of bestaande naam van de ontvanger
     zh: 新的或现有的收款人姓名
   WebFormOverlayBudgetTransactionStatus:
     ar: حالة
@@ -4389,7 +4388,7 @@ translations:
     es: Estado
     fr: Statut
     hi: दर्जा
-    nl: Toestand
+    nl: Status
     zh: 地位
   WebFormOverlayBudgetTransactionStatusTooltip:
     ar: حالة المعاملة في الحساب
@@ -4409,7 +4408,7 @@ translations:
     es: Todo el dia
     fr: Toute la journée
     hi: पूरे दिन
-    nl: De hele dag
+    nl: Hele dag
     zh: 一整天
   WebFormOverlayCalendarEventCustomReminder:
     ar: تذكير مخصص
@@ -4549,7 +4548,7 @@ translations:
     es: Establecer el inicio del evento
     fr: Définir le début de l'événement
     hi: घटना की शुरुआत निर्धारित करें
-    nl: Stel het begin van het evenement in
+    nl: Stel de startdatum van het evenement in
     zh: 设置事件的开始
   WebFormOverlayCalendarEventTimeZoneTooltip:
     ar: المنطقة الزمنية للحدث
@@ -4579,7 +4578,7 @@ translations:
     es: Cuánto tiempo para viajar a la ubicación
     fr: Combien de temps pour se rendre à l'emplacement
     hi: स्थान की यात्रा करने में कितना समय लगता है
-    nl: Hoe lang reizen naar de locatie
+    nl: Hoe lang is het reizen naar de locatie
     zh: 多长时间到目的地
   WebFormOverlayCookMealPlanChef:
     ar: طاه
@@ -4609,7 +4608,7 @@ translations:
     es: Que dia preparar la receta
     fr: Quel jour préparer la recette
     hi: किस दिन रेसिपी बनानी है
-    nl: Welke dag om het recept te bereiden
+    nl: Op welke dag moet het recept worden bereid
     zh: 哪天准备菜谱
   WebFormOverlayCookMealPlanFilterTags:
     ar: تصفية العلامات
@@ -4639,7 +4638,7 @@ translations:
     es: Para qué comida preparar la receta.
     fr: Pour quel repas préparer la recette
     hi: किस व्यंजन के लिए नुस्खा तैयार करना है
-    nl: Voor welke maaltijd het recept moet worden bereid
+    nl: Voor welke maaltijd moet het recept worden bereid
     zh: 准备食谱的餐点是什么
   WebFormOverlayCookMealPlanRecipeDetails:
     ar: تفاصيل الوصفة
@@ -4670,7 +4669,7 @@ translations:
     es: Enviar recordatorio de cocina a
     fr: Envoyer un rappel de cuisinier à
     hi: पर कुक रिमाइंडर भेजें
-    nl: Stuur een kookherinnering naar
+    nl: Stuur een kook-herinnering naar
     zh: 发送厨师提醒至
   WebFormOverlayCookMealPlanReminderPrep:
     ar: إرسال تذكير الإعدادية في
@@ -4680,7 +4679,7 @@ translations:
     es: Enviar recordatorio de preparación a
     fr: Envoyer un rappel de préparation à
     hi: पर प्रेप रिमाइंडर भेजें
-    nl: Stuur een voorbereidingsherinnering op
+    nl: Stuur een voorbereidings-herinnering op
     zh: 发送准备提醒
   WebFormOverlayCookMealPlanReminderTooltip:
     ar: متى ترسل التذكير
@@ -4710,7 +4709,7 @@ translations:
     es: A que hora preparar la receta
     fr: A quelle heure préparer la recette
     hi: किस समय रेसिपी तैयार करें
-    nl: Hoe laat om het recept te bereiden
+    nl: Hoe laat wil je het recept bereiden
     zh: 什么时间准备菜谱
   WebFormOverlayCookMealTimeTime:
     ar: وقت
@@ -4880,7 +4879,7 @@ translations:
     es: cesionarios
     fr: Cessionnaires
     hi: असाइनी
-    nl: Verkrijgenden
+    nl: Behandelaren
     zh: 受让人
   WebFormOverlayPlanTaskAssigneesTooltip:
     ar: من هو المسؤول عن إكمال المهمة. حدد عدة أعضاء لتقوم بالمهام بالتناوب بينهم.
@@ -4896,7 +4895,7 @@ translations:
     hi: कार्य को पूरा करने के लिए कौन जिम्मेदार है। कार्यों को उनके बीच घुमाने के
       लिए एकाधिक सदस्यों का चयन करें।
     nl: Wie is verantwoordelijk voor het voltooien van de taak. Selecteer meerdere
-      leden om taken tussen hen te laten roteren.
+      leden om taken tussen hen te laten rouleren.
     zh: 谁负责完成任务。选择多个成员以在他们之间轮流执行任务。
   WebFormOverlayPlanTaskDueDate:
     ar: تاريخ الاستحقاق
@@ -4916,7 +4915,7 @@ translations:
     es: La tarea de fecha debe completarse antes de
     fr: Date à laquelle la tâche doit être terminée par
     hi: दिनांक कार्य द्वारा पूरा करने की आवश्यकता है
-    nl: Datum taak moet worden voltooid door
+    nl: Taak moet worden voltooid zijn vóór
     zh: 日期任务需要完成
   WebFormOverlayPlanTaskDuration:
     ar: مدة
@@ -4936,7 +4935,7 @@ translations:
     es: Cuánto tiempo llevará completar la tarea
     fr: Combien de temps la tâche prendra pour terminer
     hi: कार्य को पूरा होने में कितना समय लगेगा
-    nl: Hoe lang de taak duurt om te voltooien
+    nl: Hoe lang het duurt om de taak te voltooien
     zh: 完成任务需要多长时间
   WebFormOverlayPlanTaskInventoryItemTooltip:
     ar: إقران المهمة إلى عنصر المخزون
@@ -5057,7 +5056,7 @@ translations:
     es: Número de sellos
     fr: Nombre de timbres
     hi: स्टाम्प संख्या
-    nl: Postzegels tellen
+    nl: Stempels tellen
     zh: 邮票计数
   WebFormOverlayRewardCardRewardStampCountTooltip:
     ar: عدد الطوابع المتاحة للاسترداد
@@ -5227,7 +5226,7 @@ translations:
     es: Bóveda para almacenar el valor bajo
     fr: Vault pour stocker la valeur sous
     hi: वैल्यू को स्टोर करने के लिए वॉल्ट
-    nl: Vault om de waarde onder op te slaan
+    nl: Kluis om de waarde onder op te slaan
     zh: 用于存储价值的保险库
   WebFormOverlaySecretsVaultHouseholdAccess:
     ar: وصول الأسرة
@@ -5338,7 +5337,7 @@ translations:
     es: Permisos para editar o ver artículos de inventario o vistas
     fr: Autorisations de modifier ou d'afficher des éléments d'inventaire ou des vues
     hi: इन्वेंट्री आइटम या दृश्य को संपादित करने या देखने की अनुमतियां
-    nl: Rechten om inventarisitems of weergaven te bewerken of te bekijken
+    nl: Rechten om inventarisitems of weergaves te bewerken of te bekijken
     zh: 编辑或查看库存项目或视图的权限
   WebFormPermissionsNotesTooltip:
     ar: أذونات لتحرير أو عرض الملاحظات
@@ -5421,7 +5420,7 @@ translations:
     es: Terminar recurrencia en
     fr: Fin de la récurrence le
     hi: पुनरावृत्ति समाप्त करें
-    nl: Einde herhaling aan
+    nl: Einde herhaling op
     zh: 结束循环
   WebFormRecurrenceEndTooltip:
     ar: متى تتوقف عن التكرار
@@ -5431,7 +5430,7 @@ translations:
     es: Cuándo dejar de repetirse
     fr: Quand arrêter de se reproduire
     hi: आवर्ती कब बंद करें
-    nl: Wanneer stoppen met terugkeren
+    nl: Wanneer stoppen met herhalen
     zh: 什么时候停止重复
   WebFormRecurrenceFirst:
     ar: أولاً
@@ -5441,7 +5440,7 @@ translations:
     es: Primero
     fr: D'abord
     hi: पहला
-    nl: Eerst
+    nl: Eerste
     zh: 第一的
   WebFormRecurrenceFourth:
     ar: الرابعة
@@ -5481,7 +5480,7 @@ translations:
     es: Último
     fr: Dernier
     hi: अंतिम
-    nl: Laatst
+    nl: Laatste
     zh: 最后的
   WebFormRecurrenceMonths:
     ar: شهور
@@ -5572,7 +5571,7 @@ translations:
     es: Años
     fr: Années
     hi: साल
-    nl: jaren
+    nl: Jaren
     zh: 年
   WebFormShopItemIngredientsAddSelectedItemsToPickUp:
     ar: إضافة العناصر المحددة لالتقاط
@@ -5660,7 +5659,7 @@ translations:
     es: te has referido
     fr: Vous avez référé
     hi: आपने संदर्भित किया है
-    nl: Je hebt verwezen
+    nl: Aantal verwijzingen
     zh: 你提到了
   WebFormSubscriptionReferralStatus2:
     ar: حتى الآن
@@ -5670,7 +5669,7 @@ translations:
     es: hasta ahora
     fr: jusqu'à présent
     hi: अब तक
-    nl: dusver
+    nl: Tot zo ver
     zh: 迄今为止
   WebFormSubscriptionReferralStatus3:
     ar: يشير إلى
@@ -5844,7 +5843,7 @@ translations:
     es: Token de invitación
     fr: Jeton d'invitation
     hi: टोकन आमंत्रित करें
-    nl: Token uitnodigen
+    nl: Uitnodigings Token
     zh: 邀请令牌
   WebGlobalAbout:
     ar: عن
@@ -5894,7 +5893,7 @@ translations:
     es: Mapa vial
     fr: Feuille de route
     hi: रोडमैप
-    nl: Routekaart
+    nl: Roadmap
     zh: 路线图
   WebGlobalAboutTermsService:
     ar: شروط الخدمة
@@ -5984,7 +5983,7 @@ translations:
     es: Cerca
     fr: Fermer
     hi: बंद करना
-    nl: Dichtbij
+    nl: Sluiten
     zh: 关闭
   WebGlobalActionConfirm:
     ar: يتأكد
@@ -6024,7 +6023,7 @@ translations:
     es: Confirmar eliminación
     fr: Confirmation de la suppression
     hi: हटाने की पुष्टि करें
-    nl: Bevestig verwijderen
+    nl: Verwijderen bevestigen
     zh: 确认删除
   WebGlobalActionDeleteNow:
     ar: احذف الان
@@ -6034,7 +6033,7 @@ translations:
     es: Elimina ahora
     fr: Effacer maintenant
     hi: इसे अभी मिटाओ
-    nl: Verwijder nu
+    nl: Nu verwijderen
     zh: 立即删除
   WebGlobalActionDeleteSessions:
     ar: حذف الجلسات
@@ -6054,7 +6053,7 @@ translations:
     es: Denegar
     fr: Refuser
     hi: अस्वीकार करना
-    nl: Ontkennen
+    nl: Afwijzen
     zh: 否定
   WebGlobalActionDeselectAll:
     ar: الغاء تحديد الكل
@@ -6064,7 +6063,7 @@ translations:
     es: Deseleccionar todo
     fr: Tout déselectionner
     hi: सबको अचयनित करो
-    nl: Deselecteer alles
+    nl: Alles deselecteren
     zh: 取消全选
   WebGlobalActionDismiss:
     ar: رفض
@@ -6084,7 +6083,7 @@ translations:
     es: Editar
     fr: Modifier
     hi: संपादन करना
-    nl: Bewerking
+    nl: Bewerken
     zh: 编辑
   WebGlobalActionEndDemo:
     ar: نهاية العرض
@@ -6124,7 +6123,7 @@ translations:
     es: Finalizar
     fr: Finir
     hi: खत्म करना
-    nl: Finish
+    nl: Afronden
     zh: 结束
   WebGlobalActionImport:
     ar: يستورد
@@ -6234,7 +6233,7 @@ translations:
     es: Unirse
     fr: Rejoindre
     hi: जोड़ना
-    nl: Meedoen
+    nl: Deelnemen
     zh: 加入
   WebGlobalActionJoinHouseholdMessage:
     ar: انضم إلى الأسرة
@@ -6254,7 +6253,7 @@ translations:
     es: Mantenerse despierto
     fr: Reste éveillé
     hi: जागते रहना
-    nl: Blijf wakker
+    nl: Wakker houden
     zh: 保持清醒
   WebGlobalActionLeaveHousehold:
     ar: اترك المنزل
@@ -6274,7 +6273,7 @@ translations:
     es: hogar izquierdo
     fr: A quitté le ménage
     hi: गृहस्थी छोड़ दी
-    nl: Links huishouden
+    nl: Huishouden verlaten
     zh: 左户
   WebGlobalActionNext:
     ar: التالي
@@ -6324,7 +6323,7 @@ translations:
     es: Conciliar
     fr: Réconcilier
     hi: समाधान करना
-    nl: Verzoenen
+    nl: Overeenstemmen
     zh: 调和
   WebGlobalActionRedeem:
     ar: Redem
@@ -6334,7 +6333,7 @@ translations:
     es: canjear
     fr: Utiliser
     hi: रिडीम करें
-    nl: Redeem
+    nl: Inwisselen
     zh: 赎回
   WebGlobalActionResend:
     ar: إعادة إرسال
@@ -6394,7 +6393,7 @@ translations:
     es: Ahorrar
     fr: Sauvegarder
     hi: बचाना
-    nl: Redden
+    nl: Opslaan
     zh: 节省
   WebGlobalActionSearch:
     ar: يبحث
@@ -6404,7 +6403,7 @@ translations:
     es: Buscar
     fr: Recherche
     hi: खोज
-    nl: Zoekopdracht
+    nl: Zoeken
     zh: 搜索
   WebGlobalActionSelect:
     ar: يختار
@@ -6434,7 +6433,7 @@ translations:
     es: Configuración
     fr: Installation
     hi: स्थापित करना
-    nl: Opgericht
+    nl: Installatie
     zh: 设置
   WebGlobalActionShare:
     ar: يشارك
@@ -6444,7 +6443,7 @@ translations:
     es: Compartir
     fr: Partager
     hi: शेयर करना
-    nl: Deel
+    nl: Delen
     zh: 分享
   WebGlobalActionShow:
     ar: يعرض
@@ -6454,7 +6453,7 @@ translations:
     es: Espectáculo
     fr: Montrer
     hi: दिखाना
-    nl: Show
+    nl: Tonen
     zh: 展示
   WebGlobalActionShowColumns:
     ar: إظهار الأعمدة
@@ -6474,7 +6473,7 @@ translations:
     es: Mostrar completado
     fr: Afficher terminé
     hi: शो पूरा हुआ
-    nl: Toon Voltooid
+    nl: Toon voltooide
     zh: 显示完成
   WebGlobalActionShowDeleted:
     ar: إظهار المحذوفة
@@ -6484,7 +6483,7 @@ translations:
     es: Mostrar eliminado
     fr: Afficher supprimé
     hi: हटा दिया गया दिखाएँ
-    nl: Toon verwijderd
+    nl: Toon verwijderde
     zh: 显示已删除
   WebGlobalActionShowHidden:
     ar: أظهر المخفي
@@ -6524,7 +6523,7 @@ translations:
     es: Iniciar sesión
     fr: S'identifier
     hi: दाखिल करना
-    nl: Aanmelden
+    nl: Inloggen
     zh: 登入
   WebGlobalActionSignInChild:
     ar: تسجيل الدخول كطفل
@@ -6554,7 +6553,7 @@ translations:
     es: Inicia sesión con
     fr: Se connecter avec
     hi: के साथ साइन इन करें
-    nl: Aanmelden met
+    nl: Inloggen met
     zh: 登陆使用
   WebGlobalActionSignOut:
     ar: خروج
@@ -6574,7 +6573,7 @@ translations:
     es: Inscribirse
     fr: S'inscrire
     hi: साइन अप करें
-    nl: Aanmelden
+    nl: Registreren
     zh: 报名
   WebGlobalActionSignUpFail:
     ar: فشل انشاء الحساب
@@ -6594,7 +6593,7 @@ translations:
     es: Registrarte con
     fr: Se connecter avec
     hi: इसके साथ साइन अप करें
-    nl: Meld aan met
+    nl: Registreren met
     zh: 注册
   WebGlobalActionSkip:
     ar: يتخطى
@@ -6654,7 +6653,7 @@ translations:
     es: Administración
     fr: Administrateur
     hi: व्यवस्थापक
-    nl: beheerder
+    nl: Beheerder
     zh: 行政
   WebGlobalAll:
     ar: الجميع
@@ -6684,7 +6683,7 @@ translations:
     es: Todos los artículos
     fr: Tous les articles
     hi: सभी वस्तुएं
-    nl: Alle spullen
+    nl: Alle items
     zh: 所有项目
   WebGlobalAllTransactions:
     ar: كل الحركات المالية
@@ -6714,7 +6713,7 @@ translations:
     es: Todas las bóvedas
     fr: Tous les coffres
     hi: सभी वाल्ट
-    nl: Alle gewelven
+    nl: Alle kluizen
     zh: 所有金库
   WebGlobalBudgetAmount:
     ar: كمية
@@ -6724,7 +6723,7 @@ translations:
     es: Cantidad
     fr: Montant
     hi: मात्रा
-    nl: Hoeveelheid
+    nl: Aantal
     zh: 数量
   WebGlobalBudgetBalance:
     ar: توازن
@@ -6734,7 +6733,7 @@ translations:
     es: Balance
     fr: Équilibre
     hi: संतुलन
-    nl: Evenwicht
+    nl: Balans
     zh: 平衡
   WebGlobalBudgetCharts:
     ar: الرسوم البيانية
@@ -6774,7 +6773,7 @@ translations:
     es: Gasto por beneficiario
     fr: Dépenses par bénéficiaire
     hi: भुगतानकर्ता द्वारा खर्च
-    nl: Uitgaven door begunstigde
+    nl: Uitgaven door ontvangers
     zh: 收款人支出
   WebGlobalBudgetMonth:
     ar: شهر
@@ -6794,7 +6793,7 @@ translations:
     es: presupuestado
     fr: Budgétisé
     hi: बजट
-    nl: Begroot
+    nl: Budget
     zh: 预算
   WebGlobalColorBlack:
     ar: أسود
@@ -6904,7 +6903,7 @@ translations:
     es: verde azulado
     fr: Sarcelle
     hi: टील
-    nl: Wintertaling
+    nl: Teal
     zh: 蓝绿色
   WebGlobalColorWhite:
     ar: أبيض
@@ -6964,7 +6963,7 @@ translations:
     es: Creador
     fr: Créateur
     hi: बनाने वाला
-    nl: Schepper
+    nl: Aangemaakt door
     zh: 造物主
   WebGlobalCustom:
     ar: مخصص
@@ -7074,7 +7073,7 @@ translations:
     es: Eliminado
     fr: Supprimé
     hi: हटाए गए
-    nl: verwijderd
+    nl: Verwijderd
     zh: 已删除
   WebGlobalDetails:
     ar: تفاصيل
@@ -7094,7 +7093,7 @@ translations:
     es: Detalles del artículo
     fr: Détails de l'article
     hi: वस्तु का विवरण
-    nl: Details van het artikel
+    nl: Details van het item
     zh: 商品详情
   WebGlobalDisabled:
     ar: عاجز
@@ -7104,7 +7103,7 @@ translations:
     es: Desactivado
     fr: Désactivé
     hi: अक्षम
-    nl: Gehandicapt
+    nl: Uitgeschakeld
     zh: 残疾人
   WebGlobalDisplay:
     ar: عرض
@@ -7204,7 +7203,7 @@ translations:
     es: Oculto
     fr: Caché
     hi: छिपा हुआ
-    nl: Verborgen
+    nl: Verbergen
     zh: 隐
   WebGlobalHideComponents:
     ar: إخفاء المكونات
@@ -7401,7 +7400,7 @@ translations:
     es: Mayo
     fr: Peut
     hi: मई
-    nl: Kunnen
+    nl: Mei
     zh: 可能
   WebGlobalMonthNovember:
     ar: شهر نوفمبر
@@ -7641,7 +7640,7 @@ translations:
     es: ingredientes de la receta
     fr: Ingrédients de la recette
     hi: नुस्खा सामग्री
-    nl: Recept ingrediënten
+    nl: Ingrediënten recept
     zh: 配方成分
   WebGlobalRecipeLastMade:
     ar: آخر صنع
@@ -7721,7 +7720,7 @@ translations:
     es: Veces Hecho
     fr: Fois faites
     hi: टाइम्स मेड
-    nl: Tijden gemaakt
+    nl: Aantal keren gemaakt
     zh: 时代成就
   WebGlobalRecurring:
     ar: يتكرر
@@ -7821,7 +7820,7 @@ translations:
     es: Estado
     fr: Statut
     hi: दर्जा
-    nl: Toestand
+    nl: Status
     zh: 地位
   WebGlobalSubscription:
     ar: الاشتراك
@@ -7928,7 +7927,7 @@ translations:
     es: Etiqueta
     fr: Étiqueter
     hi: उपनाम
-    nl: Label
+    nl: Tag
     zh: 标签
   WebGlobalTags:
     ar: العلامات
@@ -7938,7 +7937,7 @@ translations:
     es: Etiquetas
     fr: Mots clés
     hi: टैग
-    nl: Labels
+    nl: Tags
     zh: 标签
   WebGlobalTagsTooltip:
     ar: قائمة علامات مفصولة بمسافة
@@ -7988,7 +7987,7 @@ translations:
     es: borrado
     fr: Effacé
     hi: साफ़ किया गया
-    nl: gewist
+    nl: Gewist
     zh: 清除
   WebGlobalTransactionStatusReconciled:
     ar: فرضت عليه
@@ -7998,7 +7997,7 @@ translations:
     es: reconciliado
     fr: Réconcilié
     hi: मेल मिलाप
-    nl: Verzoend
+    nl: Samenvoegen
     zh: 和好
   WebGlobalTransactionStatusUncleared:
     ar: غير واضح
@@ -8048,7 +8047,7 @@ translations:
     es: próximos
     fr: A venir
     hi: आगामी
-    nl: Aanstaande
+    nl: Binnenkort
     zh: 即将到来
   WebGlobalUsername:
     ar: اسم المستخدم
@@ -8170,7 +8169,7 @@ translations:
     es: Importar artículos
     fr: Importer des articles
     hi: आयात आइटम
-    nl: Artikelen importeren
+    nl: Items importeren
     zh: 进口物品
   WebInventoryItemFromBarcode:
     ar: عنصر من الباركود
@@ -8180,7 +8179,7 @@ translations:
     es: Artículo de código de barras
     fr: Article du code-barres
     hi: बारकोड से आइटम
-    nl: Artikel van streepjescode
+    nl: Items van streepjescode
     zh: 来自条形码的项目
   WebInventoryItemFromBarcodeSuccess:
     ar: مضاف
@@ -8251,7 +8250,7 @@ translations:
     es: Actualizar colección
     fr: Mettre à jour la collecte
     hi: अद्यतन संग्रह
-    nl: Collectie bijwerken
+    nl: Verzameling bijwerken
     zh: 更新收藏
   WebNoImage:
     ar: لا توجد صورة
@@ -8301,7 +8300,7 @@ translations:
     es: quiere acceder a su cuenta de Homechart
     fr: veut accéder à votre compte Homechart
     hi: आपके होमचार्ट खाते तक पहुंचना चाहता है
-    nl: wil toegang tot uw Homechart-account
+    nl: wilt toegang tot uw Homechart-account
     zh: 想要访问您的 Homechart 帐户
   WebOAuthRequestFooter:
     ar: بالنقر فوق السماح ، أنت تسمح لهذا التطبيق و Homechart باستخدام معلوماتك وفقًا
@@ -8467,7 +8466,7 @@ translations:
     es: Orden de fecha
     fr: Date Commande
     hi: दिनांक आदेश
-    nl: Datum Bestelling
+    nl: Datum Notatie
     zh: 日期顺序
   WebSettingsAccountDateOrderTooltip:
     ar: تم استخدام ترتيب التاريخ بواسطة Homechart
@@ -8817,7 +8816,7 @@ translations:
     es: ¿Qué día para empezar una semana en
     fr: Quel jour commencer une semaine
     hi: सप्ताह की शुरुआत किस दिन से करें
-    nl: Op welke dag een week moet beginnen
+    nl: Op welke dag de week moet beginnen
     zh: 一周从哪一天开始
   WebSettingsAccountTOTPBackupCode:
     ar: كود النسخ الاحتياطي
@@ -8827,7 +8826,7 @@ translations:
     es: Código de respaldo
     fr: Code de sauvegarde
     hi: बैकअप कोड
-    nl: Back-upcode
+    nl: Backup code
     zh: 备份代码
   WebSettingsAccountTOTPSecretEntry:
     ar: الإدخال السري اليدوي
@@ -8977,7 +8976,7 @@ translations:
     es: Recordatorios de cocina de recetas
     fr: Rappels de recettes de cuisine
     hi: पकाने की विधि कुक अनुस्मारक
-    nl: Herinneringen voor receptenkoks
+    nl: Herinneringen voor recept koken
     zh: 食谱厨师提醒
   WebSettingsNotificationsRecipePrepReminders:
     ar: وصفة تذكير الإعدادية
@@ -8987,7 +8986,7 @@ translations:
     es: Recordatorios de preparación de recetas
     fr: Rappels de préparation de recettes
     hi: पकाने की विधि तैयारी अनुस्मारक
-    nl: Recept Prep Herinneringen
+    nl: Recept bereid Herinneringen
     zh: 食谱准备提醒
   WebSettingsNotificationsTaskCompleteUpdates:
     ar: تحديثات المهمة الكاملة
@@ -8997,7 +8996,7 @@ translations:
     es: Actualizaciones de tareas completadas
     fr: Mises à jour des tâches terminées
     hi: कार्य पूर्ण अद्यतन
-    nl: Taak voltooide updates
+    nl: Voltooide taken Update
     zh: 任务完成更新
   WebSettingsNotificationsTaskReminders:
     ar: تذكير المهام
@@ -9007,7 +9006,7 @@ translations:
     es: Recordatorios de tareas
     fr: Rappels de tâches
     hi: टास्क रिमाइंडर
-    nl: Taakherinneringen
+    nl: Taak herinneringen
     zh: 任务提醒
   WebSettingsSessionsClearAll:
     ar: مسح كافة الجلسات
@@ -9027,7 +9026,7 @@ translations:
     es: Habilitar modo de depuración
     fr: Activer le mode débogage
     hi: डिबग मोड सक्षम करें
-    nl: Schakel de foutopsporingsmodus in
+    nl: Schakel de foutopsporings-modus in
     zh: 启用调试模式
   WebSettingsSessionsExpiresTooltip:
     ar: متى تنتهي صلاحية الجلسة أو مفتاح واجهة برمجة التطبيقات
@@ -9127,7 +9126,7 @@ translations:
     es: Vaciar carrito
     fr: Vider le panier
     hi: कार्ट को खाली करें
-    nl: Winkelwagen wissen
+    nl: Winkelwagen legen
     zh: 清除购物车
   WebShopItemsClearCartSucccess:
     ar: تم مسح عربة التسوق
@@ -9137,7 +9136,7 @@ translations:
     es: Carro vaciado
     fr: Panier vidé
     hi: गाड़ी साफ हो गई
-    nl: Winkelwagen gewist
+    nl: Winkelwagen geleegd
     zh: 购物车清空
   WebShopItemsClearPurchased:
     ar: مسح المشتريات
@@ -9147,7 +9146,7 @@ translations:
     es: Borrar Comprado
     fr: Effacer Acheté
     hi: साफ खरीदा
-    nl: Wis Gekocht
+    nl: Gekocht legen
     zh: 清除购买
   WebShopItemsClearPurchasedSuccess:
     ar: مشتراة مسحها
@@ -9157,7 +9156,7 @@ translations:
     es: Comprado liquidado
     fr: Acheté dédouané
     hi: ख़रीदे गए साफ़ कर दिए गए हैं
-    nl: Gekocht opgeruimd
+    nl: Gekocht geleegd
     zh: 购买清除
   WebShopItemsCost:
     ar: يكلف
@@ -9197,7 +9196,7 @@ translations:
     es: Llegar
     fr: Obtenir
     hi: पाने के
-    nl: Krijgen
+    nl: Ophalen
     zh: 要得到
   WebShopStaplesPickUpNow:
     ar: التقط الآن
@@ -9237,7 +9236,7 @@ translations:
     es: usted está de acuerdo con nuestro
     fr: vous acceptez notre
     hi: आप हमारी बात से सहमत हैं
-    nl: u gaat akkoord met onze
+    nl: gaat u akkoord met onze
     zh: 你同意我们的
   WebSignInLegal3:
     ar: شروط الخدمة
@@ -9277,7 +9276,7 @@ translations:
     es: código de referencia
     fr: Code de Parrainage
     hi: रेफरल कोड
-    nl: Verwijzingscode
+    nl: Referentie Code
     zh: 推荐码
   WebSignInReferralCodeTooltip:
     ar: إذا قام شخص ما بإحالتك إلى Homechart ، فأدخل رمزه هنا
@@ -9297,7 +9296,7 @@ translations:
     es: Acuérdate de mí
     fr: Souviens-toi de moi
     hi: पहचाना की नहीं
-    nl: Onthoud me
+    nl: Onthoud mij
     zh: 记住账号
   WebSignInTryDemo:
     ar: جرب Homechart في الوضع التجريبي
@@ -9412,7 +9411,7 @@ translations:
     es: Nada Encontrado
     fr: rien n'a été trouvé
     hi: कुछ भी नहीं मिला
-    nl: niets gevonden
+    nl: Niets gevonden
     zh: 什么都没找到
   WebTooltipMarkdown:
     ar: يستخدم هذا الإدخال Markdown
