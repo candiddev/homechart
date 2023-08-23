@@ -1,0 +1,41 @@
+.Logo {
+	align-items: center;
+	display: flex;
+	font-weight: var(--font-weight_bold);
+	font-size: var(--font-size_4);
+	line-height: 1;
+	padding: 20px;
+}
+
+.Logo--small {
+	padding: 0;
+}
+
+.Logo--small img {
+	align-items: center;
+	display: flex;
+	height: 40px;
+	padding: 4px;
+}
+
+.Logo--small p {
+	font-size: var(--font-size_3);
+}
+
+.Logo__img {
+	background-color: var(--color_primary);
+	border-radius: var(--border-radius);
+	display: flex;
+	height: 70px;
+	margin-right: 10px;
+	padding: 10px;
+	transition: filter var(--animation) ease-in-out;
+}
+
+.Logo__img:hover {
+	filter: var(--filter_focus);
+}
+
+.Logo__name {
+	font-weight: var(--font-weight_bold);
+}

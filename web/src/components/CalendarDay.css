@@ -1,0 +1,69 @@
+.CalendarDay__container {
+	border-bottom: var(--border);
+	border-left: var(--border);
+	flex-direction: column;
+	display: flex;
+	min-width: 17%;
+	width: 100%;
+}
+
+.CalendarDay__container:nth-child(7n + 1) {
+	border-left-width: 0;
+}
+.CalendarDay__container:nth-child(1) {
+	border-top-left-radius: var(--border-radius);
+}
+
+.CalendarDay__container:nth-child(7) {
+	border-top-right-radius: var(--border-radius);
+}
+
+.CalendarDay__container--day {
+	background-color: var(--color_base-2);
+	display: var(--display_CalendarDay__container--day);
+	font-weight: var(--font-weight_bold);
+	padding: 10px;
+	position: sticky;
+	text-align: center;
+	top: 134px;
+	z-index: var(--z-index_CalendarDay__date--day);
+}
+
+.CalendarDay__container--day > p {
+	filter: var(--filter_light);
+	text-transform: uppercase;
+}
+
+.CalendarDay__container--outside {
+	background-color: var(--color_base-2);
+}
+
+.CalendarDay__date {
+	justify-content: space-between;
+	display: flex;
+	padding: 5px;
+	padding-left: 10px;
+	padding-right: 10px;
+	position: relative;
+	z-index: var(--z-index_CalendarDay__date);
+}
+
+.CalendarDay__date > span {
+	filter: var(--filter_light);
+	font-size: var(--font-size_3);
+	font-weight: var(--font-weight_bold);
+}
+
+.CalendarDay__date--today > span {
+	filter: none;
+	color: var(--color_accent);
+}
+
+.CalendarDay__items {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	min-height: 200px;
+	padding: 5px;
+	width: 100%;
+}

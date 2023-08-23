@@ -1,0 +1,2 @@
+ALTER TABLE bookmark
+	ADD COLUMN new_window BOOL NOT NULL DEFAULT false;

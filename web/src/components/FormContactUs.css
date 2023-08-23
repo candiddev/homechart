@@ -1,0 +1,16 @@
+#form-contact-us {
+	max-width: 400px;
+	padding: var(--padding);
+	width: 100%;
+}
+
+#form-contact-us .FormItem--textarea,
+#form-contact-us .FormItem__field,
+#form-contact-us .FormItem__label {
+	max-width: 325px;
+}
+
+#form-contact-us i {
+	margin-right: 0;
+	padding-right: 0;
+}

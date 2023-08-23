@@ -1,0 +1,101 @@
+.RewardCards__buttons {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 10px;
+}
+
+.RewardCards__card {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 10px;
+}
+
+.RewardCards__empty {
+	align-items: center;
+	display: flex;
+	font-weight: var(--font-weight_bold);
+	justify-content: center;
+	padding: var(--padding);
+}
+
+.RewardCards__empty > i {
+	margin-right: 10px;
+}
+
+.RewardCards__empty-icon {
+	display: flex;
+	filter: var(--filter_light);
+	font-size: var(--font-size_4);
+	justify-content: center;
+	margin-top: var(--padding);
+}
+
+.RewardCards__field {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 20px;
+	text-align: center;
+	width: 100%;
+}
+
+.RewardCards__field > :first-child {
+	font-weight: var(--font-weight_bold)
+}
+
+.RewardCards__form {
+	border: var(--border);
+}
+
+.RewardCards__form:not(:first-child) {
+	margin-top: var(--padding);
+}
+
+.RewardCards__form .Title {
+	border-radius: var(--border-radius);
+}
+
+.RewardCards__reward {
+	font-style: italic;
+}
+
+.RewardCards__stamp {
+	border: var(--border);
+	border-width: 2px;
+	border-radius: 1rem;
+	margin: 20px;
+	margin-top: 0;
+	padding: 20px;
+	transform-origin: 100% 0;
+}
+
+.RewardCards__stamp--stamped {
+	background-color: var(--color_primary);
+	box-shadow: var(--box-shadow-inset);
+}
+
+.RewardCards__stamps {
+	align-items: center;
+	cursor: pointer;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	width: 100%;
+}
+
+.RewardCards__title {
+	background-color: var(--color_base-1);
+	border-radius: var(--border-radius);
+	border: none;
+	position: static;
+}
+
+.RewardCards__title .Title__tabs {
+	border-bottom: 0;
+}
+
+.RewardCards__title .Title__tab {
+	border-radius: var(--border-radius);
+}

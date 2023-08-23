@@ -1,0 +1,240 @@
+.PlanTasks {
+	align-items: center;
+	background-color: var(--color_base-1);
+	border-radius: var(--border-radius);
+	display: flex;
+	flex-direction: column;
+	justify-self: center;
+	min-width: 300px;
+	width: 100%;
+}
+
+.PlanTasks .ButtonArray {
+	width: auto;
+}
+
+.PlanTasks__actions {
+	align-items: center;
+	display: flex;
+	margin-left: auto;
+}
+
+.PlanTasks__arrow {
+	padding: 5px;
+}
+
+.PlanTasks__button {
+	padding-right: 10px;
+}
+
+.PlanTasks__button--checkbox {
+	cursor: pointer;
+	font-size: var(--font-size_3) !important;
+	transition: color var(--animation) ease-in-out;
+}
+
+.PlanTasks__button--checkbox:hover {
+	filter: var(--filter_focus);
+}
+
+.PlanTasks__details {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: var(--font-size_1);
+	font-weight: var(--font-weight_normal);
+	padding-top: 2px;
+	width: 100%;
+}
+
+.PlanTasks__details > span {
+	align-items: center;
+	display: flex;
+}
+
+.PlanTasks__details i {
+	font-size: var(--font-size_1);
+}
+
+.PlanTasks__button--drag {
+	cursor: move;
+}
+
+.PlanTasks__duedate {
+	transition: color var(--animation) ease-in-out
+}
+
+.PlanTasks__duedate > i {
+	color: var(--color_positive);
+	padding-right: 3px;
+}
+
+.PlanTasks__duedate--overdue > i {
+	color: var(--color_negative);
+}
+
+.PlanTasks__item {
+	align-items: center;
+	background-color: var(--color_base-1);
+	cursor: pointer;
+	display: flex;
+	padding-bottom: var(--padding);
+	padding-top: var(--padding);
+	transition: background-color var(--animation) ease-in-out;
+}
+
+.PlanTasks__item:hover {
+	background-color: var(--color_base-2);
+}
+
+.PlanTasks__item > i {
+	font-size: 20px;
+}
+
+.PlanTasks__name > .Markdown {
+	padding-bottom: 0;
+}
+
+.PlanTasks__item--details {
+	border-radius: var(--border-radius);
+	margin-top: 10px;
+	max-width: 1000px;
+	padding: 6px;
+	width: 100%;
+}
+
+.PlanTasks__item--details > .Markdown:last-child {
+	padding-bottom: 0;
+}
+
+.PlanTasks__item--dragging {
+	box-shadow: var(--box-shadow);
+}
+
+.PlanTasks__item--header {
+	border-bottom: var(--border);
+	flex-direction: row;
+	font-size: var(--font-size_3);
+}
+
+.PlanTasks__item--info {
+	align-items: center;
+	display: flex;
+	width: 100%;
+}
+
+.PlanTasks__item--item {
+	border-bottom: var(--border);
+}
+
+.PlanTasks__item--loading {
+	border-bottom: var(--border);
+}
+
+.PlanTasks__item--loading:not(:first-child) {
+	margin-left: var(--padding);
+}
+
+.PlanTasks__item--loading span {
+	background-color: var(--color_base-3);
+	padding: var(--padding);
+	width: 100%;
+}
+
+.PlanTasks__item--loading:first-child span {
+	padding: 20px;
+}
+
+.PlanTasks__item--loading span:first-child {
+	margin-right: var(--padding);
+	width: 40px;
+}
+
+.PlanTasks__item--task {
+	align-items: flex-start;
+	border-bottom: var(--border);
+	flex-direction: column;
+}
+
+.PlanTasks__label {
+	font-size: var(--font-size-label) !important;
+	padding-right: 10px;
+}
+
+.PlanTasks__list {
+	height: 100%;
+	padding-bottom: var(--padding);
+	padding-left: var(--padding);
+	padding-right: var(--padding);
+	width: 100%;
+}
+
+.PlanTasks__list .PlanTasks__list {
+	padding-bottom: 0;
+	padding-left: 10px;
+	padding-right: 0;
+}
+
+.PlanTasks__list.PlanTasks__dragtarget {
+	background-color: var(--color_base-2) !important;
+}
+
+.PlanTasks__dragtarget > .PlanTasks__list {
+	height: 0;
+	visibility: hidden;
+}
+
+.PlanTasks__menu-container {
+	align-items: center;
+	display: flex;
+	font-size: var(--font-size_1);
+	position: relative;
+}
+
+.PlanTasks__name {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.PlanTasks__name--done > p {
+	text-decoration: line-through;
+}
+
+.PlanTasks__name--header {
+	align-items: center;
+	flex-direction: row;
+	font-weight: var(--font-weight_bold);
+}
+
+.PlanTasks__none {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	font-weight: var(--font-weight_bold);
+	justify-content: center;
+	padding: var(--padding);
+	width: 100%;
+}
+
+.PlanTasks__none > * {
+	margin-bottom: var(--padding);
+}
+
+.PlanTasks__none > i {
+	display: flex;
+	filter: var(--filter_light);
+	font-size: var(--font-size_4);
+	font-weight: var(--font-weight_normal);
+	justify-content: center;
+	margin-top: var(--padding);
+}
+
+.PlanTasks__notification {
+	color: var(--color_accent);
+}
+
+.PlanTasks__recurrence {
+	color: var(--color_accent);
+}
+
