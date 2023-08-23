@@ -1,0 +1,1 @@
+../shared/web/stylelint.config.cjs

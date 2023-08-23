@@ -1,0 +1,45 @@
+.Setup {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	font-size: var(--font-size_2);
+}
+
+.Setup i {
+	background-color: var(--color_accent);
+	border-radius: 1rem;
+	box-shadow: var(--box-shadow);
+	color: var(--color_accent-content);
+	cursor: text;
+	font-weight: var(--font-weight_normal);
+	margin-right: var(--padding);
+	padding: 5px;
+}
+
+.Setup__components > p {
+	align-items: center;
+	align-self: flex-start;
+	display: flex;
+	padding: 10px;
+	padding-top: 0;
+}
+
+.Setup__components > p:first-child {
+	padding-top: 20px;
+}
+
+.Setup__components > p:last-child {
+	padding-bottom: 0;
+}
+
+.Setup__overview {
+	max-width: 400px;
+	text-align: center;
+}
+
+.Setup__welcome {
+	font-size: var(--font-size_3);
+	font-weight: var(--font-weight_bold);
+	padding: var(--padding);
+	padding-right: 0;
+}

@@ -1,5 +1,8 @@
-.bin
-.hugo_build.lock
-gh-pages
-public
-resources
+.npm
+go/coverage.out
+go/tmp
+hugo/.hugo_build.lock
+hugo/public
+hugo/resources
+homechart_*
+web/screenshots

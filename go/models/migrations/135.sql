@@ -1,0 +1,9 @@
+ALTER TABLE auth_household ADD COLUMN cloud_jwt TEXT NOT NULL DEFAULT '';
+
+CREATE TABLE self_hosted_household (
+	  id UUID PRIMARY KEY
+	, last_ip_address TEXT NOT NULL DEFAULT ''
+	, households INT NOT NULL DEFAULT 0
+	, created TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT CURRENT_TIMESTAMP
+	, last_activity TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_date
+);

@@ -1,0 +1,40 @@
+disableLanguages:
+  - ar
+  - de
+  - es
+  - fr
+  - hi
+  - nl
+  - zh
+menu:
+  main:
+    - name: Source Code
+      weight: 40
+      url: https://github.com/candiddev/homechart
+      post: <sup><i class="ps-1 fa-solid fa-up-right-from-square fa-xs"
+        aria-hidden="true"></i></sup>
+    - name: Sign Up
+      weight: 50
+      url: https://web.homechart.app
+      post: <sup><i class="ps-1 fa-solid fa-up-right-from-square fa-xs"
+        aria-hidden="true"></i></sup>
+params:
+  colorPrimary: yellow
+  colorSecondary: blue
+  links:
+    developer:
+      - description: Discord
+        icon: fab fa-discord
+        name: Discord
+        url: https://discord.gg/UzgYbYggDJ
+      - description: GitHub
+        icon: fab fa-github
+        name: GitHub
+        url: https://github.com/candiddev/homechart
+      - description: Reddit
+        icon: fab fa-reddit
+        name: Reddit
+        url: https://reddit.com/r/homechart/
+  offlineSearch: true
+  search:
+title: Homechart

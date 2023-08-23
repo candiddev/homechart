@@ -1,0 +1,2 @@
+ALTER TABLE cache
+  DROP CONSTRAINT cache_auth_account_id_auth_household_id_id_table_name_key;

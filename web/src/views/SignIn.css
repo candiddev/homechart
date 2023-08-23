@@ -1,0 +1,39 @@
+.SignIn__buttons {
+	display: flex;
+	flex-direction: column;
+	padding-top: 20px;
+}
+
+.SignIn__buttons > .Button {
+	margin: 5px;
+	width: 300px;
+}
+
+.SignIn__forgot {
+	display: flex;
+	justify-content: flex-end;
+	padding: 5px;
+	width: var(--width_input);
+}
+
+.SignIn__selfhosted {
+	cursor: pointer;
+	filter: var(--filter_light);
+	margin-left: auto;
+}
+
+.SignIn__selfhosted--enabled {
+	background-color: var(--color_primary);
+	border-radius: 50%;
+	box-shadow: var(--box-shadow);
+	color: var(--color_primary-content);
+	filter: none;
+	padding: 2px;
+}
+
+.SignIn__terms {
+	max-width: 300px;
+	padding-top: 20px;
+	text-align: center;
+	white-space: pre-wrap;
+}

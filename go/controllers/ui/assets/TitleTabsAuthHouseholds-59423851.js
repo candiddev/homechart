@@ -1,0 +1,1 @@
+import{D as e,m as t,I as o}from"./index-09c2e996.js";function h(){return e.data().length>1?e.data().map(a=>({active:t.route.param().household===a.id,href:`${t.parsePathname(t.route.get()).path}?household=${a.id}`,icon:o.Household,name:a.name})):[]}export{h as T};

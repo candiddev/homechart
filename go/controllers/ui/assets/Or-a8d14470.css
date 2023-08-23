@@ -1,0 +1,1 @@
+.Or{align-items:center;display:flex;filter:var(--filter_light);font-size:var(--font-size_2);font-weight:var(--font-weight_bold);padding-top:var(--padding)}.Or:before,.Or:after{border-bottom:var(--border);border-width:2px;content:"";flex:1}.Or:before{margin-right:.5rem}.Or:after{margin-left:.5rem}

@@ -1,0 +1,40 @@
+.OAuth {
+	align-content: center;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.OAuth > .Markdown {
+	padding-top: var(--padding);
+	text-align: center;
+	width: var(--width_input);
+}
+
+.OAuth__badge {
+	height: auto;
+	margin: var(--padding);
+	width: 125px;
+}
+
+.OAuth__badges {
+	align-items: center;
+	display: flex;
+}
+
+.OAuth__badges > i {
+	font-size: var(--font-size-header);
+}
+
+.OAuth__title {
+	font-size: var(--font-size_3);
+	padding-bottom: 40px;
+	padding-top: 40px;
+	text-align: center;
+	width: var(--width_input);
+}
+
+.OAuth__title > span {
+	font-weight: var(--font-weight_bold);
+	color: var(--color_primary);
+}

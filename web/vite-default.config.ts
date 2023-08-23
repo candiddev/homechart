@@ -1,0 +1,1 @@
+../shared/web/vite-default.config.ts

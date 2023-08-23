@@ -1,0 +1,3 @@
+ALTER TABLE notes_page
+	ADD COLUMN color SMALLINT NOT NULL DEFAULT 0 CHECK (color >= 0),
+	ADD COLUMN icon TEXT NOT NULL DEFAULT '' CHECK (char_length(icon) <= 100);
