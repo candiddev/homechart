@@ -69,8 +69,8 @@ describe("AuthHousehold", () => {
 		expect(AuthHouseholdState.findMemberNames(seed.authHouseholds[0].id))
 			.toStrictEqual([
 				seed.authHouseholds[0].members[0].name,
-				seed.authHouseholds[0].members[1].name,
 				seed.authHouseholds[0].members[2].name,
+				seed.authHouseholds[0].members[1].name,
 			]);
 		expect(AuthHouseholdState.findMemberNames(seed.authHouseholds[0].id, true))
 			.toStrictEqual([

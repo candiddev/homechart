@@ -407,6 +407,7 @@ type PermissionsOpts struct {
 	AuthAccountPermissions    *Permissions
 	AuthHouseholdsPermissions *AuthHouseholdsPermissions
 	Permission                Permission
+	PrimaryAuthHouseholdID    *uuid.UUID
 }
 
 type filter struct {
@@ -462,7 +463,15 @@ func getFilter(ctx context.Context, m Model, opts PermissionsOpts) (filter, errs
 
 func setIDs(ctx context.Context, m Model, opts PermissionsOpts) errs.Err { //nolint: gocognit
 	aaOld, ahOld, _ := m.getIDs()
+
 	aaNew, ahNew, _ := m.getIDs()
+	if (ahNew == nil || *ahNew == uuid.Nil) && m.getType() != modelPlanTask { // PlanTask can have a nil AuthAccountID and AuthHouseholdID for global templates
+		ahNew = opts.PrimaryAuthHouseholdID
+	}
+
+	if (ahOld != nil && *ahOld == uuid.Nil) && m.getType() != modelPlanTask { // PlanTask can have a nil AuthAccountID and AuthHouseholdID for global templates
+		ahOld = nil
+	}
 
 	if ahOld != nil && opts.AuthHouseholdsPermissions != nil {
 		ah := AuthHousehold{

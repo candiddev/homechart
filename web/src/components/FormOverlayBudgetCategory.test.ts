@@ -98,6 +98,7 @@ test("FormOverlayBudgetCategory", async () => {
 	AuthHouseholdState.data()[0].subscriptionExpires = seed.authHouseholds[0].subscriptionExpires;
 	testing.redraw();
 
+	budgetCategory.targetAmount = 5000;
 	budgetCategory.budgetCategory.targetAmount = 5000;
 	testing.click("#button-budget-target-amount");
 	expect(budgetCategory.amount)
@@ -105,9 +106,9 @@ test("FormOverlayBudgetCategory", async () => {
 	budgetCategory.balance = -4000;
 	testing.click("#button-budget-to-zero");
 	expect(budgetCategory.amount)
-		.toBe(9000);
+		.toBe(4000);
 	expect(budgetCategory.balance)
-		.toBe(0);
+		.toBe(-4000);
 
 	budgetCategory.amount = 0;
 	budgetCategory.balance = 0;

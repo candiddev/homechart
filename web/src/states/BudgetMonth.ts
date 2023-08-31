@@ -17,6 +17,7 @@ export interface BudgetMonth {
 	budgetMonthCategories: BudgetMonthCategory[],
 	budgetTransactionAmountIncome: number,
 	budgetTransactionAmountIncomeRemaining: number,
+	targetAmount?: number, // not sent by API
 	yearMonth: number,
 }
 
@@ -27,6 +28,7 @@ function newBudgetMonth (): BudgetMonth {
 		budgetMonthCategoryAmount: 0,
 		budgetTransactionAmountIncome: 0,
 		budgetTransactionAmountIncomeRemaining: 0,
+		targetAmount: 0,
 		yearMonth: 0,
 	};
 }

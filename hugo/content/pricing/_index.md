@@ -7,7 +7,7 @@ weight: 30
 
 {{% blocks/section color="white" height=full %}}
 {{< cardpane >}}
-{{% card footer="## <br>$0.00/free<br>[Get Started](/docs/guides/getting-started)" %}}
+{{% card footer="## <br>$0.00/free<br>[Get Started](/docs/guides/get-homechart)" %}}
 ## Personal
 
 - No Ads, Ever
@@ -20,7 +20,7 @@ weight: 30
 - Shopping and Grocery
 
 {{< /card >}}
-{{% card footer="## $3.99/month<br>$79.99/lifetime<br>[Get Started](/docs/guides/getting-started)" %}}
+{{% card footer="## $3.99/month<br>$79.99/lifetime<br>[Get Started](/docs/guides/get-homechart)" %}}
 ## Household
 - Everything in Personal
 - Budgeting and Savings

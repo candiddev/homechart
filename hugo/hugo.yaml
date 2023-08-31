@@ -8,14 +8,12 @@ disableLanguages:
   - zh
 menu:
   main:
-    - name: Source Code
+    - name: Get Homechart
       weight: 40
-      url: https://github.com/candiddev/homechart
-      post: <sup><i class="ps-1 fa-solid fa-up-right-from-square fa-xs"
-        aria-hidden="true"></i></sup>
-    - name: Sign Up
+      url: /docs/guides/get-homechart
+    - name: Source Code
       weight: 50
-      url: https://web.homechart.app
+      url: https://github.com/candiddev/homechart
       post: <sup><i class="ps-1 fa-solid fa-up-right-from-square fa-xs"
         aria-hidden="true"></i></sup>
 params:

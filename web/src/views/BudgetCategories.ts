@@ -19,7 +19,6 @@ import { TitleTabsAuthHousehold } from "../components/TitleTabsAuthHouseholds";
 import { AppToolbarActions } from "../layout/AppToolbarActions";
 import { AuthAccountState } from "../states/AuthAccount";
 import { AuthHouseholdState } from "../states/AuthHousehold";
-import { BudgetCategoryState } from "../states/BudgetCategory";
 import type { BudgetMonth } from "../states/BudgetMonth";
 import { BudgetMonthState } from "../states/BudgetMonth";
 import type { BudgetMonthCategory } from "../states/BudgetMonthCategory";
@@ -27,7 +26,7 @@ import { BudgetMonthCategoryState } from "../states/BudgetMonthCategory";
 import { GlobalState } from "../states/Global";
 import { PermissionComponentsEnum } from "../types/Permission";
 import { GetHelp } from "../utilities/GetHelp";
-import { ObjectBudget, ObjectBudgetCategoryGroupingIncome, ObjectCategories, ObjectCategory, ObjectChange, WebBudgetCategoriesCarryover, WebBudgetCategoriesRemaining, WebGlobalActionBudgetTargetAmount, WebGlobalBudgetBalance, WebGlobalBudgeted, WebGlobalHidden } from "../yaml8n";
+import { ObjectBudget, ObjectBudgetCategoryGroupingIncome, ObjectCategories, ObjectCategory, ObjectChange, WebBudgetCategoriesCarryover, WebBudgetCategoriesRemaining, WebFormOverlayBudgetCategoryTargetAmount, WebGlobalActionBudgetTargetAmount, WebGlobalBudgetBalance, WebGlobalBudgeted, WebGlobalHidden } from "../yaml8n";
 
 export function BudgetCategories (): m.Component {
 	const state: {
@@ -44,9 +43,9 @@ export function BudgetCategories (): m.Component {
 		columns: Stream<FilterType>({
 			budgetCategoryName: "",
 			amount: "", // eslint-disable-line sort-keys
+			budgetCategoryTargetAmount: "",
 			budgetTransactionAmount: "",
 			balance: "", // eslint-disable-line sort-keys
-			budgetCategoryTargetAmount: "",
 		}),
 		householdID: AuthAccountState.data().primaryAuthHouseholdID,
 		loaded: false,
@@ -138,11 +137,11 @@ export function BudgetCategories (): m.Component {
 						onclick: async (): Promise<void | Err> => {
 							if (BudgetMonthState.data().budgetMonthCategories !== null) {
 								BudgetMonthState.data().budgetMonthCategories.map(async (b) => { // eslint-disable-line @typescript-eslint/no-non-null-assertion
-									if (b.budgetCategory.grouping === "" || b.budgetCategory.grouping === AuthAccountState.translate(WebGlobalHidden)) {
+									if (b.budgetCategory.grouping === "" || b.budgetCategory.grouping === AuthAccountState.translate(WebGlobalHidden) || b.targetAmount === 0) {
 										return;
 									}
 
-									b.amount = BudgetMonthCategoryState.targetAmount(b, BudgetMonthState.yearMonth.toNumber());
+									b.amount = b.targetAmount as number;
 
 									if (b.yearMonth === BudgetMonthState.yearMonth.toNumber()) {
 										return BudgetMonthCategoryState.update(b);
@@ -228,6 +227,22 @@ export function BudgetCategories (): m.Component {
 					{
 						currencyFormat: AuthHouseholdState.findID(state.householdID).preferences.currency,
 						formatter: (category: BudgetMonthCategory): number | string => {
+							if (category.targetAmount === 0) {
+								return "";
+							}
+
+							return category.targetAmount as number;
+						},
+						name: AuthAccountState.translate(WebFormOverlayBudgetCategoryTargetAmount),
+						positive: (category: BudgetMonthCategory): boolean => {
+							return category.amount <= (category.targetAmount as number);
+						},
+						property: "budgetCategoryTargetAmount",
+						type: TableDataType.Currency,
+					},
+					{
+						currencyFormat: AuthHouseholdState.findID(state.householdID).preferences.currency,
+						formatter: (category: BudgetMonthCategory): number | string => {
 							if (category.budgetCategory.grouping === "") {
 								if (category.budgetCategory.name === AuthAccountState.translate(WebGlobalHidden)) {
 									return "";
@@ -272,18 +287,6 @@ export function BudgetCategories (): m.Component {
 						},
 						name: AuthAccountState.translate(WebGlobalBudgetBalance),
 						property: "balance",
-						type: TableDataType.Currency,
-					},
-					{
-						currencyFormat: AuthHouseholdState.findID(state.householdID).preferences.currency,
-						formatter: (category: BudgetMonthCategory): number | string => {
-							if (category.budgetCategory.grouping === "" || BudgetCategoryState.findID(category.budgetCategoryID).income) {
-								return "";
-							}
-							return category.budgetCategory.targetAmount;
-						},
-						name: AuthAccountState.translate(WebGlobalActionBudgetTargetAmount),
-						property: "budgetCategoryTargetAmount",
 						type: TableDataType.Currency,
 					},
 				],
@@ -336,9 +339,16 @@ export function BudgetCategories (): m.Component {
 							color: -1 * BudgetMonthState.data().budgetMonthCategoryAmount < 0 ?
 								"var(--color_negative)" :
 								"var(--color_positive)",
-							key: "Budgeted:",
+							key: `${AuthAccountState.translate(WebGlobalBudgeted)}:`,
 							value: BudgetMonthState.data().yearMonth === BudgetMonthState.yearMonth.toNumber() ?
 								Currency.toString(BudgetMonthState.data().budgetMonthCategoryAmount * -1, AuthHouseholdState.findID(state.householdID).preferences.currency) :
+								Currency.toString(0, AuthHouseholdState.findID(state.householdID).preferences.currency),
+						},
+						{
+							color: "var(--color_negative)",
+							key: `${AuthAccountState.translate(WebFormOverlayBudgetCategoryTargetAmount)}:`,
+							value: BudgetMonthState.data().yearMonth === BudgetMonthState.yearMonth.toNumber() ?
+								Currency.toString(-1 * (BudgetMonthState.data().targetAmount as number), AuthHouseholdState.findID(state.householdID).preferences.currency) :
 								Currency.toString(0, AuthHouseholdState.findID(state.householdID).preferences.currency),
 						},
 						{

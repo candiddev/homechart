@@ -561,14 +561,14 @@ export function FormOverlayBudgetTransaction (): m.Component<FormOverlayComponen
 											if (e === "") {
 												vnode.attrs.data.template.categories = [];
 											} else if (vnode.attrs.data.template.categories !== null && vnode.attrs.data.template.categories.length === 1) {
-												vnode.attrs.data.template.categories[0].budgetCategoryID = BudgetCategoryState.findGroupName(e).id;
+												vnode.attrs.data.template.categories[0].budgetCategoryID = e;
 											} else {
 												vnode.attrs.data.template.categories = [
 													{
 														...BudgetTransactionState.newCategory(),
 														...{
 															amount: vnode.attrs.data.template.amount,
-															budgetCategoryID: BudgetCategoryState.findGroupName(e).id,
+															budgetCategoryID: e,
 															id: UUID.new(),
 															yearMonth: CivilDate.now()
 																.toYearMonth()
@@ -580,11 +580,11 @@ export function FormOverlayBudgetTransaction (): m.Component<FormOverlayComponen
 										},
 										options: [
 											"",
-											...BudgetCategoryState.names(),
+											...BudgetCategoryState.nameOptions(),
 										],
 										value: vnode.attrs.data.template.categories === null || vnode.attrs.data.template.categories.length === 0 ?
 											"" :
-											BudgetCategoryState.findIDHeaderName(vnode.attrs.data.template.categories[0].budgetCategoryID),
+											vnode.attrs.data.template.categories[0].budgetCategoryID,
 									},
 									tooltip: AuthAccountState.translate(WebFormOverlayBudgetTransactionCategoryTooltip),
 								}),

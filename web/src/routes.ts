@@ -151,29 +151,40 @@ export default {
 		onmatch: async (): Promise<void> => {
 			const hostname = await API.getHostname();
 
-			return IndexedDB.clear()
-				.then(async () => {
-					API.setHostname(hostname);
+			setTimeout(async () => {
+				return IndexedDB.clear()
+					.then(async () => {
+						API.setHostname(hostname);
 
-					return API.read(`/api/v1/auth/demo?code=${AuthAccountState.data().iso639Code}&timezone=${Intl.DateTimeFormat()
-						.resolvedOptions().timeZone}`, {});
-				})
-				.then(async (response) => {
-					if (!IsErr(response) && AuthSessionState.inResponse(response)) {
-						return API.setAuth({
-							id: response.dataValue[0].id,
-							key: response.dataValue[0].key,
-						})
-							.then(async () => {
-								return AuthSessionState.set(response.dataValue[0]);
+						return API.read(`/api/v1/auth/demo?code=${AuthAccountState.data().iso639Code}&timezone=${Intl.DateTimeFormat()
+							.resolvedOptions().timeZone}`, {});
+					})
+					.then(async (response) => {
+						if (!IsErr(response) && AuthSessionState.inResponse(response)) {
+							return API.setAuth({
+								id: response.dataValue[0].id,
+								key: response.dataValue[0].key,
 							})
-							.then(async () => {
-								return GlobalState.signIn();
-							});
-					}
+								.then(async () => {
+									return AuthSessionState.set(response.dataValue[0]);
+								})
+								.then(async () => {
+									return GlobalState.signIn();
+								});
+						}
 
-					return GlobalState.signOut();
-				});
+						return GlobalState.signOut();
+					});
+			}, 100);
+		},
+		render: (): m.Children => {
+			return m(App, {
+				...routeOptions,
+				...{
+					hideHeader: true,
+					public: true,
+				},
+			});
 		},
 	},
 	"/feature-voting": BuildRoute(async () => {

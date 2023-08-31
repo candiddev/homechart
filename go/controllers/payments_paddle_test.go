@@ -149,7 +149,7 @@ func TestPaymentsPaddleCreate(t *testing.T) {
 			name:              "subscription_payment_succeeded",
 			inputValues:       subscriptionPaymentSucceeded,
 			wantCustomerID:    subscriptionPaymentSucceeded.Get("user_id"),
-			wantExpires:       expiresMonthly,
+			wantExpires:       expiresMonthly.AddDays(2),
 			wantHousehold:     &ahMonthly,
 			wantProcessor:     models.AuthHouseholdSubscriptionProcessorPaddleMonthly,
 			wantTransactionID: subscriptionPaymentSucceeded.Get("subscription_payment_id"),

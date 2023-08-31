@@ -261,7 +261,7 @@ describe("FormOverlayBudgetTransaction", () => {
 		testing.input("#form-item-input-amount", "1000");
 		testing.redraw();
 		testing.value("#form-item-select-category", "");
-		testing.input("#form-item-select-category", "Bills > Utilities");
+		testing.input("#form-item-select-category", BudgetCategoryState.findName("Utilities").id as string);
 		expect(data.template.categories)
 			.toStrictEqual([
 				{
@@ -276,7 +276,7 @@ describe("FormOverlayBudgetTransaction", () => {
 					},
 				},
 			]);
-		testing.input("#form-item-select-category", "Food > Restaurants");
+		testing.input("#form-item-select-category", BudgetCategoryState.findName("Restaurants").id as string);
 		expect(data.template.categories)
 			.toStrictEqual([
 				{

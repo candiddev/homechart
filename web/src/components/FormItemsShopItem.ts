@@ -105,9 +105,12 @@ export function FormShopItem (): m.Component<FormShopItemAttrs> {
 					select: {
 						oninput: (e: string): void => {
 							if (e === "Pick Up" || e === "") {
+								vnode.attrs.data.authHouseholdID = AuthAccountState.data().primaryAuthHouseholdID;
 								vnode.attrs.data.shopListID = null;
 							} else {
 								vnode.attrs.data.shopListID = e;
+								vnode.attrs.data.authAccountID = ShopListState.findID(e).authAccountID;
+								vnode.attrs.data.authHouseholdID = ShopListState.findID(e).authHouseholdID;
 							}
 						},
 						options: [

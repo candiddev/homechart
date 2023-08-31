@@ -245,6 +245,7 @@ func (h *Handler) CheckSession(next http.Handler) http.Handler { //nolint:gocogn
 			AuthAccountID:             &s.AuthAccountID,
 			AuthAccountPermissions:    &s.PermissionsAccount,
 			AuthHouseholdsPermissions: &s.PermissionsHouseholds,
+			PrimaryAuthHouseholdID:    s.PrimaryAuthHouseholdID,
 		})
 
 		logger.Log(ctx, nil) //nolint:errcheck

@@ -120,19 +120,19 @@ Default: 3000
 
 ### `proxyAddress` {#app-proxyaddress}
 
-String, Upstream IPv4 or IPv6 address of a trusted proxy.  See the [Single Sign-On (SSO) guide](/docs/guides/getting-started/self-hosted/sso) for usage details.
+String, Upstream IPv4 or IPv6 address of a trusted proxy.  See the [Single Sign-On (SSO) guide](/docs/guides/get-homechart/self-hosted/sso) for usage details.
 
 Default: ""
 
 ### `proxyHeaderEmail` {#app-proxyheaderemail}
 
-String, proxy header that should be associated with an account email address.  See [Single Sign-On (SSO) guide](/docs/guides/getting-started/self-hosted/sso) for usage details.
+String, proxy header that should be associated with an account email address.  See [Single Sign-On (SSO) guide](/docs/guides/get-homechart/self-hosted/sso) for usage details.
 
 Default: ""
 
 ### `proxyHeaderName` {#app-proxyheadername}
 
-String, proxy header that should be associated with an account name.  See [Single Sign-On (SSO) guide](/docs/guides/getting-started/self-hosted/sso) for usage details.
+String, proxy header that should be associated with an account name.  See [Single Sign-On (SSO) guide](/docs/guides/get-homechart/self-hosted/sso) for usage details.
 
 Default: ""
 

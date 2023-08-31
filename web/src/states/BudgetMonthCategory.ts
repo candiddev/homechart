@@ -9,7 +9,7 @@ import { WebGlobalHidden } from "../yaml8n";
 import { AuthAccountState } from "./AuthAccount";
 import type { BudgetCategory } from "./BudgetCategory";
 import { BudgetCategoryState } from "./BudgetCategory";
-import type { BudgetMonth } from "./BudgetMonth";
+import { type BudgetMonth } from "./BudgetMonth";
 
 export interface BudgetMonthCategory {
 	amount: number,
@@ -21,6 +21,7 @@ export interface BudgetMonthCategory {
 	created: NullTimestamp,
 	grouping?: boolean, // not sent by API
 	id?: NullUUID, // not sent by API
+	targetAmount?: number, // not sent by API
 	yearMonth: number,
 }
 
@@ -43,6 +44,8 @@ export const BudgetMonthCategoryState = {
 		});
 	},
 	groupingSort: (b: BudgetMonth): BudgetMonthCategory[] => {
+		b.targetAmount = 0;
+
 		if (b.budgetMonthCategories === null || b.budgetMonthCategories.length === 0) {
 			b.budgetMonthCategories = BudgetCategoryState.data()
 				.map((category) => {
@@ -82,6 +85,8 @@ export const BudgetMonthCategoryState = {
 		];
 
 		for (const budget of b.budgetMonthCategories) {
+			budget.targetAmount = BudgetMonthCategoryState.targetAmount(budget, budget.amount, b.yearMonth);
+
 			if (budget.budgetCategory.grouping === "") {
 				if (b.yearMonth === budget.yearMonth) {
 					bhidden[0].amount += budget.amount;
@@ -103,6 +108,8 @@ export const BudgetMonthCategoryState = {
 
 					if (!budget.budgetCategory.income) {
 						bnew[i].balance += budget.balance;
+						(bnew[i].targetAmount as number) += budget.targetAmount;
+						b.targetAmount += budget.targetAmount;
 					}
 				} else {
 					i = bnew.push({
@@ -124,6 +131,8 @@ export const BudgetMonthCategoryState = {
 
 					if (!budget.budgetCategory.income) {
 						bnew[i - 1].balance = budget.balance;
+						bnew[i - 1].targetAmount = budget.targetAmount;
+						b.targetAmount += budget.targetAmount;
 					}
 				}
 				bnew.push(budget);
@@ -148,21 +157,19 @@ export const BudgetMonthCategoryState = {
 			budgetTransactionAmount: 0,
 			created: null,
 			id: null,
+			targetAmount: 0,
 			yearMonth: 0,
 		};
 	},
-	targetAmount: (category: BudgetMonthCategory, y: number): number => {
+	targetAmount: (category: BudgetMonthCategory, init: number, y: number): number => {
 		if (category.budgetCategory.targetAmount === 0) {
-			return category.amount;
+			return 0;
 		}
 
 		const month = parseInt(y.toString()
 			.slice(4, 6), 10);
 		const year = parseInt(y.toString()
 			.slice(0, 4), 10);
-		if (category.budgetCategory.targetMonth === 0 && category.budgetCategory.targetYear === 0) {
-			return category.budgetCategory.targetAmount;
-		}
 
 		let m = 1;
 		if (category.budgetCategory.targetAmount !== 0) {
@@ -173,10 +180,17 @@ export const BudgetMonthCategoryState = {
 				m += (category.budgetCategory.targetYear - year) * 12;
 			}
 		}
-		const amount = category.budgetCategory.targetAmount - category.balance + category.amount;
-		if (m <= 0) {
+
+		if (m === 1) {
+			return category.budgetCategory.targetAmount;
+		}
+
+		const amount = category.budgetCategory.targetAmount - (category.balance + init);
+
+		if (m <= 0 || category.budgetCategory.targetMonth === 0 && category.budgetCategory.targetYear === 0) {
 			return amount;
 		}
+
 		return Math.ceil(amount / m);
 	},
 	update: async (data: BudgetMonthCategory): Promise<void> => {

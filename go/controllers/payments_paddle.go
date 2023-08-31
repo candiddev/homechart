@@ -189,7 +189,8 @@ func (h *Handler) paddleHandlePaymentSucceeded(ctx context.Context, values url.V
 			fallthrough
 		case strconv.Itoa(h.Config.Paddle.PlanIDMonthlyReferral):
 			if date, err := types.ParseCivilDate(values.Get("next_bill_date")); err == nil {
-				expires = &date
+				d := date.AddDays(2)
+				expires = &d
 			}
 
 			processor = models.AuthHouseholdSubscriptionProcessorPaddleMonthly

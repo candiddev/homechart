@@ -53,4 +53,12 @@ describe("BudgetCategoryState", () => {
 				"Hidden > Starting Balance",
 			]);
 	});
+
+	test("nameOptions", async () => {
+		expect(BudgetCategoryState.nameOptions()[0])
+			.toStrictEqual({
+				id: BudgetCategoryState.findName("Mortgage/Rent").id,
+				name: "Bills > Mortgage/Rent",
+			});
+	});
 });

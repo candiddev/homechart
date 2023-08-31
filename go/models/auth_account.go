@@ -720,7 +720,7 @@ func (a *AuthAccount) Delete(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Delete account
-	return logger.Log(ctx, db.Exec(ctx, "DELETE FROM auth_account WHERE id = :id", a))
+	return logger.Log(ctx, db.Query(ctx, false, a, "DELETE FROM auth_account WHERE id = :id RETURNING *", a))
 }
 
 // GeneratePasswordHash creates a password hash.

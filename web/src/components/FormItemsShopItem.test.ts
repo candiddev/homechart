@@ -58,10 +58,14 @@ test("FormShopItem", async () => {
 	testing.value("#form-item-select-store", seed.budgetPayees[1].name);
 	expect(shopItem.budgetPayeeID)
 		.toBe(seed.budgetPayees[1].id);
+	expect(shopItem.authAccountID)
+		.toBeNull();
 	testing.input("#form-item-select-list", seed.shopLists[0].id);
 	testing.value("#form-item-select-list", seed.shopLists[0].id);
 	expect(shopItem.shopListID)
 		.toBe(seed.shopLists[0].id);
+	expect(shopItem.authAccountID)
+		.toBe(seed.authAccounts[0].id);
 	testing.click(`#form-item-option-project-${seed.planProjects[5].id}`);
 	testing.hasClass(`#form-item-option-project-${seed.planProjects[5].id}`, "FormItemSelectNested__option--selected");
 	expect(shopItem.planProjectID)

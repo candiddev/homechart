@@ -185,16 +185,22 @@ class AuthHouseholdManager extends DataArrayManager<AuthHousehold> {
 				}
 			}
 
+			Sort(names);
+
 			return names;
 		}
 		const ah = this.findID(authHouseholdID);
 
-		return ah.members.filter((member) => {
+		const names = ah.members.filter((member) => {
 			return member.id === AuthAccountState.data().id || (member.child || children !== true);
 		})
 			.map((member) => {
 				return member.name;
 			});
+
+		Sort(names);
+
+		return names;
 	}
 
 	getPermitted (cmp: PermissionComponentsEnum, p: PermissionEnum): AuthHousehold[] {

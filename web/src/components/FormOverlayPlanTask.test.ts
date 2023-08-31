@@ -96,10 +96,10 @@ test("FormOverlayPlanTask", async () => {
 	testing.click(assignee[0]);
 	expect(planTask.assignees)
 		.toHaveLength(2);
-	testing.hasClass(assignee[1], "ButtonArray__selected");
+	testing.hasClass(assignee[2], "ButtonArray__selected");
 	testing.hasClass(assignee[0], "ButtonArray__selected");
-	testing.click(assignee[1]);
-	testing.notHasClass(assignee[1], "ButtonArray__selected");
+	testing.click(assignee[2]);
+	testing.notHasClass(assignee[2], "ButtonArray__selected");
 
 	// Color
 	testing.input("#form-item-select-color", `${ColorEnum.Red}`);

@@ -5,6 +5,7 @@ import type { FormOverlayComponentAttrs } from "@lib/components/FormOverlay";
 import { FormOverlay } from "@lib/components/FormOverlay";
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
+import { AppState } from "@lib/states/App";
 import { Animate, Animation } from "@lib/utilities/Animate";
 import { FormRecurrenceSpecificDate } from "@lib/yaml8n";
 import m from "mithril";
@@ -25,6 +26,7 @@ import { ObjectBudgetCategoryGroupingIncome, ObjectCategory,   WebFormOverlayBud
 export function FormOverlayBudgetCategory (): m.Component<FormOverlayComponentAttrs<BudgetMonthCategory>> {
 	let id: NullUUID = null;
 	let groupingName = "";
+	let initAmount = 0;
 	let picker = "";
 
 	function setup (data: BudgetMonthCategory): void {
@@ -33,15 +35,16 @@ export function FormOverlayBudgetCategory (): m.Component<FormOverlayComponentAt
 
 			if (data.budgetCategory.targetMonth !== 0) {
 				if (data.budgetCategory.targetYear !== 0) {
-					picker = "yearly";
+					picker = "date";
 					return;
 				}
-				picker = "monthly";
+
+				picker = "yearly";
 				return;
 			}
 
 			if (data.budgetCategory.targetAmount !== 0) {
-				picker = "date";
+				picker = "monthly";
 				return;
 			}
 
@@ -52,6 +55,8 @@ export function FormOverlayBudgetCategory (): m.Component<FormOverlayComponentAt
 	return {
 		onbeforeremove: Animate.onbeforeremove(Animation.FromRight),
 		oninit: (vnode): void => {
+			initAmount = vnode.attrs.data.amount;
+
 			if (vnode.attrs.data.grouping === true) {
 				groupingName = vnode.attrs.data.budgetCategory.name;
 			}
@@ -67,13 +72,37 @@ export function FormOverlayBudgetCategory (): m.Component<FormOverlayComponentAt
 					{
 						name: AuthAccountState.translate(WebGlobalActionBudgetTargetAmount),
 						onclick: async (): Promise<void> => {
+							if (vnode.attrs.data.grouping === true && BudgetMonthState.data().budgetMonthCategories !== null) {
+								BudgetMonthState.data().budgetMonthCategories.map(async (category) => {
+									if (category.budgetCategory.grouping === vnode.attrs.data.budgetCategory.name && category.targetAmount !== 0) {
+										await BudgetMonthCategoryState.update({
+											...category,
+											...{
+												amount: category.targetAmount as number,
+											},
+										});
+									}
+								});
+
+								if (m.route.get()
+									.includes("/budget/categories")) {
+									await BudgetMonthState.read(vnode.attrs.data.authHouseholdID);
+								}
+
+								AppState.setLayoutAppForm();
+
+								return;
+							}
+
 							return new Promise((resolve) => {
-								vnode.attrs.data.amount = BudgetMonthCategoryState.targetAmount(vnode.attrs.data, BudgetMonthState.yearMonth.toNumber());
+								if (vnode.attrs.data.targetAmount !== 0) {
+									vnode.attrs.data.amount = vnode.attrs.data.targetAmount as number;
+								}
 
 								return resolve();
 							});
 						},
-						permitted: GlobalState.permitted(PermissionComponentsEnum.Budget, true) && vnode.attrs.data.grouping !== true,
+						permitted: GlobalState.permitted(PermissionComponentsEnum.Budget, true),
 						requireOnline: true,
 					},
 					{
@@ -93,12 +122,17 @@ export function FormOverlayBudgetCategory (): m.Component<FormOverlayComponentAt
 
 								if (m.route.get()
 									.includes("/budget/categories")) {
-									return BudgetMonthState.read(vnode.attrs.data.authHouseholdID);
+									await BudgetMonthState.read(vnode.attrs.data.authHouseholdID);
 								}
+
+								AppState.setLayoutAppForm();
 							}
+
 							return new Promise((resolve) => {
-								vnode.attrs.data.amount -= vnode.attrs.data.balance;
-								vnode.attrs.data.balance = 0;
+								if (vnode.attrs.data.amount + vnode.attrs.data.balance - initAmount !== 0) {
+									vnode.attrs.data.amount =  -1 * (vnode.attrs.data.balance - initAmount);
+								}
+
 								return resolve();
 							});
 						},
@@ -260,7 +294,15 @@ export function FormOverlayBudgetCategory (): m.Component<FormOverlayComponentAt
 										onclick: (e: string): void => {
 											picker = e;
 
-											if (e === "") {
+											switch (e) {
+											case "monthly":
+												vnode.attrs.data.budgetCategory.targetMonth = 0;
+												vnode.attrs.data.budgetCategory.targetYear = 0;
+												break;
+											case "yearly":
+												vnode.attrs.data.budgetCategory.targetYear = 0;
+												break;
+											default:
 												vnode.attrs.data.budgetCategory.targetAmount = 0;
 												vnode.attrs.data.budgetCategory.targetMonth = 0;
 												vnode.attrs.data.budgetCategory.targetYear = 0;

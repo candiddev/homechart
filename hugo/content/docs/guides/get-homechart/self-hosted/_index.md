@@ -67,8 +67,8 @@ Homechart binaries are available on [GitHub](https://github.com/candiddev/homech
 {{< tabpane text=true >}}
 {{< tab header="Linux amd64" >}}
 {{< highlight bash >}}
-curl -L https://github.com/candiddev/homechart/releases/download/latest/homechart_linux_amd64.tar.gz -O
-curl -L https://github.com/candiddev/homechart/releases/download/latest/homechart_linux_amd64.tar.gz.sha256 -O
+curl -L https://github.com/candiddev/homechart/releases/latest/download/homechart_linux_amd64.tar.gz -O
+curl -L https://github.com/candiddev/homechart/releases/latest/download/homechart_linux_amd64.tar.gz.sha256 -O
 sha256sum -c homechart_linux_amd64.tar.gz.sha256
 tar -C /usr/local/bin -xzf homechart_linux_amd64.tar.gz
 {{< /highlight >}}
@@ -76,8 +76,8 @@ tar -C /usr/local/bin -xzf homechart_linux_amd64.tar.gz
 
 {{< tab header="Linux arm" >}}
 {{< highlight bash >}}
-curl -L https://github.com/candiddev/homechart/releases/download/latest/homechart_linux_arm.tar.gz -O
-curl -L https://github.com/candiddev/homechart/releases/download/latest/homechart_linux_arm.tar.gz.sha256 -O
+curl -L https://github.com/candiddev/homechart/releases/latest/download/homechart_linux_arm.tar.gz -O
+curl -L https://github.com/candiddev/homechart/releases/latest/download/homechart_linux_arm.tar.gz.sha256 -O
 sha256sum -c homechart_linux_arm.tar.gz.sha256
 tar -C /usr/local/bin -xzf homechart_linux_arm.tar.gz
 {{< /highlight >}}
@@ -85,8 +85,8 @@ tar -C /usr/local/bin -xzf homechart_linux_arm.tar.gz
 
 {{< tab header="Linux arm64" >}}
 {{< highlight bash >}}
-curl -L https://github.com/candiddev/homechart/releases/download/latest/homechart_linux_arm64.tar.gz -O
-curl -L https://github.com/candiddev/homechart/releases/download/latest/homechart_linux_arm64.tar.gz.sha256 -O
+curl -L https://github.com/candiddev/homechart/releases/latest/download/homechart_linux_arm64.tar.gz -O
+curl -L https://github.com/candiddev/homechart/releases/latest/download/homechart_linux_arm64.tar.gz.sha256 -O
 sha256sum -c homechart_linux_arm64.tar.gz.sha256
 tar -C /usr/local/bin -xzf homechart_linux_arm64.tar.gz
 {{< /tab >}}
@@ -107,7 +107,7 @@ Using [households](/pricing/) in Homechart requires a subscription, even for sel
 
 You’ll need to link your self-hosted instance household to a household on Homechart Cloud to use your subscription. No data is transferred to Homechart Cloud, it’s just used to transfer the subscription details.
 
-- [Sign up](/docs/guides/getting-started/sign-up) for a new account on Homechart Cloud
+- [Sign up](/docs/guides/get-homechart/sign-up) for a new account on Homechart Cloud
 - On Homechart Cloud, create a household and setup a subscription (either during setup or under https://web.homechart.app/subscription)
 - On your self-hosted instance, go to **Subscription** in the menu and copy the **Self-Hosted ID**
 - On Homechart Cloud, paste the **Self-Hosted ID** into the appropriate field. Your household should now be linked!

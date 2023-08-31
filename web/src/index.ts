@@ -82,6 +82,10 @@ AppState.init(
 	},
 	// oncreate
 	async () => {
+		if (m.route.get() === "/demo") {
+			return;
+		}
+
 		// Check if this is the first time the app has been opened
 		await AuthSessionState.load();
 

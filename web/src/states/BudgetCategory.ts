@@ -52,6 +52,14 @@ class BudgetCategoryManager extends DataArrayManager<BudgetCategory> {
 		names.push(...hidden);
 		return names;
 	});
+	nameOptions = this.names.map((names) => {
+		return names.map((name) => {
+			return {
+				id: BudgetCategoryState.findGroupName(name).id,
+				name: name,
+			};
+		});
+	});
 
 	constructor () {
 		super(
