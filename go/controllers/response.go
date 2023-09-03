@@ -30,7 +30,7 @@ func (r *Response) Error() string {
 }
 
 // WriteResponse writes a Response to a HTTP client.
-func WriteResponse(ctx context.Context, w http.ResponseWriter, value any, ids []models.ID, total int, hash string, err error) errs.Err { //nolint:gocognit,revive
+func WriteResponse(ctx context.Context, w http.ResponseWriter, value any, ids []models.ID, total int, hash string, err error) errs.Err { //nolint:revive
 	r := Response{
 		RequestID: getRequestID(ctx),
 	}

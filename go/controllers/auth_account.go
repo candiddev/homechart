@@ -363,7 +363,7 @@ func (*Handler) AuthAccountTOTPUpdate(w http.ResponseWriter, r *http.Request) {
 // @Success 200 {object} Response{dataValue=models.AuthAccounts}
 // @Summary Update AuthAccount
 // @Tags AuthAccount
-func (h *Handler) AuthAccountUpdate(w http.ResponseWriter, r *http.Request) { //nolint:gocognit
+func (h *Handler) AuthAccountUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	// Get AuthAccount from body

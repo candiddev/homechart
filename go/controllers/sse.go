@@ -79,7 +79,7 @@ func (s *sse) handleClientRemove(c sseClient) {
 	}
 }
 
-func (s *sse) handleReceiver(_ context.Context, n *types.TableNotify) { //nolint:gocognit
+func (s *sse) handleReceiver(_ context.Context, n *types.TableNotify) {
 	// For global objects, like PlanTask templates
 	if n.AuthAccountID == nil && n.AuthHouseholdID == nil {
 		s.ClientsMux.Lock()

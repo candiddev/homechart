@@ -461,7 +461,7 @@ func getFilter(ctx context.Context, m Model, opts PermissionsOpts) (filter, errs
 	return f, logger.Log(ctx, err)
 }
 
-func setIDs(ctx context.Context, m Model, opts PermissionsOpts) errs.Err { //nolint: gocognit
+func setIDs(ctx context.Context, m Model, opts PermissionsOpts) errs.Err {
 	aaOld, ahOld, _ := m.getIDs()
 
 	aaNew, ahNew, _ := m.getIDs()

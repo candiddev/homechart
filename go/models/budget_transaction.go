@@ -744,7 +744,7 @@ AND budget_transaction.id = :id
 }
 
 // Validate verifies a BudgetTransaction is correct.
-func (b BudgetTransaction) Validate() errs.Err { //nolint:gocognit
+func (b BudgetTransaction) Validate() errs.Err {
 	if len(b.Accounts) == 0 && len(b.Categories) == 0 {
 		return errs.ErrClientBadRequestProperty
 	}

@@ -1129,7 +1129,7 @@ func (d *Data) createBudgetMonthCategories(ctx context.Context) errs.Err {
 	return logger.Log(ctx, nil)
 }
 
-func (d *Data) createBudgetPayees(ctx context.Context) errs.Err { //nolint:gocognit
+func (d *Data) createBudgetPayees(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	for i := range d.BudgetPayees {

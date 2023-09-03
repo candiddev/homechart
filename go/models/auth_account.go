@@ -489,7 +489,7 @@ WITH auth_accounts AS (
 }
 
 // AuthAccountsReadNotifications queries a database for accounts returns notifications.
-func AuthAccountsReadNotifications(ctx context.Context, authAccountID *uuid.UUID, authHouseholdID *uuid.UUID, t AuthAccountNotifyType) Notifications { //nolint: gocognit
+func AuthAccountsReadNotifications(ctx context.Context, authAccountID *uuid.UUID, authHouseholdID *uuid.UUID, t AuthAccountNotifyType) Notifications {
 	/*
 		This isn't as complicated as it seems
 		- Get key from cache if it exists (hopefully it does!)
