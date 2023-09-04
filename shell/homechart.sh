@@ -167,9 +167,9 @@ cp -R ${DIR}/web/dist ${DIR}/go/controllers/ui"
 
 cmd run-homechart-api-self-hosted,rhas Run Homechart API as a self hosted instance
 run-homechart-api-self-hosted () {
-	build-homechart-api
+	build-go
 
-	HOMECHART_APP_CLOUDJWT="" HOMECHART_POSTGRESQL_DATABASE=homechart_self_hosted "${DIR}/${BUILD_NAME_HOMECHART}" -c "${DIR}/homechart_config.yaml" run
+	HOMECHART_APP_CLOUDJWT="" HOMECHART_POSTGRESQL_DATABASE=homechart_self_hosted "${DIR}/${BUILD_NAME}" -c "${DIR}/homechart_config.yaml" run
 }
 rhas () {
 	run-homechart-api-self-hosted
