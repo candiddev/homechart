@@ -3,7 +3,7 @@
 export APP_NAME=homechart
 export BUILD_TARGETS_BINARY="linux/amd64 linux/arm64 linux/arm/v7"
 export GITHUB_REPOSITORY_ID=416805305
-export INSTALLALL="install-go install-golangci-lint install-hugo install-node install-shellcheck install-swag install-vault"
+export INSTALL_ALL="install-go install-golangci-lint install-hugo install-node install-shellcheck install-swag install-vault"
 export HOMECHART_APP_BASEURL=${HOMECHART_APP_BASEURL:-http://localhost}
 export HOMECHART_APP_CLOUDENDPOINT=${HOMECHART_APP_CLOUDENDPOINT:-http://localhost}
 export HOMECHART_APP_CLOUDJWT=${HOMECHART_APP_CLOUDJWT:-eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJjbG91ZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly9taWtlLWRlc2t0b3AxLmNhbmRpZC5kZXYiLCJzdWIiOiJDbG91ZCIsImF1ZCI6WyJIb21lY2hhcnQiXSwiZXhwIjoxODM3NzEwNTc3LCJuYmYiOjE2ODAwMzA1NzcsImlhdCI6MTY4MDAzMDU3NywianRpIjoiN2MzNWJlNzEtMmE0OC00NjIwLTgxMGUtMDU4Njc4ODgyODAwIn0.xLDsYa_7cQnMmLF9XuxpzSllvcQVLRNsU4wgMZrddkz_Uzwj0rnZmhrh1gdUcWO_jzPHcjiK-7LgJ2Jz7SWYDw}

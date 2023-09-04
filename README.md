@@ -49,7 +49,7 @@ Our development process is mostly trunk-based with a `main` branch that folks ca
 
 - `./github:` Reusable GitHub Actions
 - `./go:` Homechart sever code
-- `./hugo:` YAML8n website
+- `./hugo:` Homechart website
 - `./shell:` Development tooling
 - `./shared:` Shared libraries from https://github.com/candiddev/shared
 - `./web:` Homechart UI code
