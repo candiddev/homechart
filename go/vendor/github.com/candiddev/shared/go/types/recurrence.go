@@ -194,7 +194,7 @@ func (r *Recurrence) UnmarshalJSON(b []byte) error {
 }
 
 // Validate checks that a recurrence is valid.
-func (r *Recurrence) Validate() errs.Err { //nolint:gocognit,gocyclo
+func (r *Recurrence) Validate() errs.Err { //nolint:gocyclo
 	// Check each value
 	if r.Day > 31 || r.Day < 0 {
 		return ErrRecurrenceDay

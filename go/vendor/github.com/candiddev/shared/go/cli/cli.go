@@ -74,7 +74,7 @@ type AppConfig[T any] interface {
 }
 
 // Run is the main entrypoint into a CLI app.
-func (a App[T]) Run() errs.Err { //nolint:gocognit
+func (a App[T]) Run() errs.Err {
 	ctx := context.Background()
 
 	flag.Usage = func() {

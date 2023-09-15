@@ -470,6 +470,8 @@ func (c *Config) Query(ctx context.Context, multi bool, destination any, query s
 }
 
 func decodeErr(ctx context.Context, err error) errs.Err {
+	var e errs.Err
+
 	var pgerr *pq.Error
 
 	if errors.As(err, &pgerr) {
@@ -479,12 +481,14 @@ func decodeErr(ctx context.Context, err error) errs.Err {
 		case "23502": // Null constraint
 			fallthrough
 		case "23503": // Foreign key doesn't exist
-			return errs.ErrClientBadRequestProperty
+			e = errs.ErrClientBadRequestProperty.Append(err)
 		case "23505": // Duplicate key
-			return errs.ErrClientConflictExists
+			e = errs.ErrClientConflictExists.Append(err)
 		default:
-			return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err))
+			e = errs.NewServerErr(ErrPostgreSQLAction, err)
 		}
+
+		return logger.Log(ctx, e)
 	}
 
 	switch err.Error() {

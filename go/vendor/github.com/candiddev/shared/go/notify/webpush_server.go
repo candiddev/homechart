@@ -1,3 +1,6 @@
+// Package notify contains helper functions for sending notifications.
+//
+//nolint:staticcheck
 package notify
 
 import (

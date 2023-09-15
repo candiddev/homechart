@@ -16,7 +16,7 @@ github.com/boombuler/barcode
 github.com/boombuler/barcode/qr
 github.com/boombuler/barcode/utils
 # github.com/candiddev/shared v0.0.0-00010101000000-000000000000 => ./shared
-## explicit; go 1.20
+## explicit; go 1.21
 github.com/candiddev/shared/go/assert
 github.com/candiddev/shared/go/cli
 github.com/candiddev/shared/go/config

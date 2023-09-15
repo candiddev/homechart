@@ -10,6 +10,7 @@ import (
 
 // Err is a custom interface for Errs.
 type Err interface {
+	Append(err error) Err
 	Error() string
 	Is(err error) bool
 	Message() string
@@ -23,7 +24,15 @@ type err struct {
 	status  int
 }
 
-// Err returns the actual error message for logging.
+// Append adds an error to an Err.
+func (e *err) Append(err error) Err {
+	ne := *e
+	ne.errors = append(ne.errors, err)
+
+	return &ne
+}
+
+// Error returns the actual error message for logging.
 func (e *err) Error() string {
 	if e.errors == nil {
 		return ""
@@ -40,7 +49,7 @@ func (e *err) Error() string {
 // Is returns whether the error contains another error.
 func (e *err) Is(err error) bool {
 	for i := range e.errors {
-		if e.errors[i] == err || errors.Is(e.errors[i], err) {
+		if e.errors[i] == err || errors.Is(err, e.errors[i]) {
 			return true
 		}
 	}
