@@ -1,7 +1,7 @@
 ---
 author: Mike
 date: 2020-09-30
-summary: Release notes for Homechart v1.7.
+description: Release notes for Homechart v1.7.
 tags:
   - release
 title: "What's New in Homechart: v1.7"

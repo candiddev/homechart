@@ -1,8 +1,8 @@
 ---
+description: Homechart's blog, containing the latest news and release notes for Homechart.
 linkTitle: Blog
 menu: {main}
-title: |
-  Homechart, The Ultimate Home Organizer
+title: Blog
 type: blog
 weight: 40
 ---

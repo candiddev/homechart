@@ -1,6 +1,7 @@
 ---
 categories:
 - reference
+description: Reference documentation for Homechart's CLI
 title: CLI
 ---
 

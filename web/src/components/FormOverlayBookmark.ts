@@ -21,6 +21,9 @@ export function FormOverlayBookmark (): m.Component<FormOverlayComponentAttrs<Bo
 
 	return {
 		onbeforeremove: Animate.onbeforeremove(Animation.FromRight),
+		oninit: (vnode): void => {
+			imageLink = vnode.attrs.data.iconLink !== "";
+		},
 		view: (vnode): m.Children => {
 			return m(FormOverlay, {
 				buttons: [],

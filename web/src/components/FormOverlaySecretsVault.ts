@@ -4,7 +4,6 @@ import type { FormOverlayComponentAttrs } from "@lib/components/FormOverlay";
 import { FormOverlay } from "@lib/components/FormOverlay";
 import { NewAESKey } from "@lib/encryption/AES";
 import { EncryptionTypeRSA2048, EncryptValue } from "@lib/encryption/Encryption";
-import { rsaEncrypt } from "@lib/encryption/RSA";
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { Animate, Animation } from "@lib/utilities/Animate";
@@ -22,11 +21,20 @@ import { FormItemSelectAuthHouseholdMembers } from "./FormItemSelectAuthHousehol
 
 export function FormOverlaySecretsVault (): m.Component<FormOverlayComponentAttrs<SecretsVault>> {
 	let denied = false;
+	let initMembers: string[] = [];
 
 	return {
 		onbeforeremove: Animate.onbeforeremove(Animation.FromRight),
 		oninit: (vnode): void => {
 			denied = vnode.attrs.data.id !== null && SecretsVaultState.findKeyIndex(vnode.attrs.data.keys, AuthAccountState.data().id) < 0;
+
+			if (vnode.attrs.data.keys.length === 0) {
+				initMembers.push(AuthAccountState.data().id as string);
+			} else {
+				initMembers = vnode.attrs.data.keys.map((key) => {
+					return key.authAccountID;
+				});
+			}
 		},
 		view: (vnode): m.Children => {
 			return m(FormOverlay, {
@@ -47,42 +55,32 @@ export function FormOverlaySecretsVault (): m.Component<FormOverlayComponentAttr
 						});
 				},
 				onSubmit: async (): Promise<SecretsVault | void | Err> => {
-					if (vnode.attrs.data.keys.length === 0) {
-						const k = await NewAESKey();
-						if (IsErr(k)) {
-							return k;
+					let key: string | Err = SecretsVaultState.keys()[`${vnode.attrs.data.id}`];
+					if (key === undefined) {
+						key = await NewAESKey();
+						if (IsErr(key)) {
+							return key;
 						}
+					}
 
-						const v = await EncryptValue(EncryptionTypeRSA2048, AuthAccountState.data().publicKey, k);
+					vnode.attrs.data.keys = [];
+
+					for (let i = 0; i < initMembers.length; i++) {
+						const v = await EncryptValue(EncryptionTypeRSA2048, initMembers[i] === AuthAccountState.data().id ?
+							AuthAccountState.data().publicKey :
+							AuthHouseholdState.findMember(initMembers[i]).publicKey, key);
 
 						if (! IsErr(v)) {
-							vnode.attrs.data.keys = [
-								{
-									authAccountID: AuthAccountState.data().id as string,
-									key: v.string(),
-								},
-							];
+							vnode.attrs.data.keys.push({
+								authAccountID: initMembers[i],
+								key: v.string(),
+							});
 						}
 					}
 
-					if (vnode.attrs.data.id === null) {
-						return SecretsVaultState.create(vnode.attrs.data)
-							.then((collection) => {
-								if (IsErr(collection)) {
-									return collection;
-								}
-
-								m.route.set(`/secrets/${collection.id}`, "", {
-									state: {
-										key: Date.now(),
-									},
-								});
-
-								return;
-							});
-					}
-
-					return SecretsVaultState.update(vnode.attrs.data);
+					return vnode.attrs.data.id === null ?
+						SecretsVaultState.create(vnode.attrs.data) :
+						SecretsVaultState.update(vnode.attrs.data);
 				},
 				permitted: GlobalState.permitted(PermissionComponentsEnum.Secrets, true, vnode.attrs.data.authHouseholdID) && ! denied,
 			}, [
@@ -119,31 +117,21 @@ export function FormOverlaySecretsVault (): m.Component<FormOverlayComponentAttr
 
 								return names;
 							}, [] as string[]),
-						members: vnode.attrs.data.keys.map((member) => {
-							return member.authAccountID;
-						}),
+						members: initMembers,
 						multiple: true,
 						name: AuthAccountState.translate(WebFormOverlaySecretsVaultHouseholdAccess),
-						oninput: async (members: string[]): Promise<void> => {
+						oninput: (members: string[]): void => {
 							if (denied) {
 								return;
 							}
 
-							vnode.attrs.data.keys = [];
+							initMembers = members;
 
-							for (let i = 0; i < members.length; i++) {
-								const e = await rsaEncrypt(AuthHouseholdState.findMember(members[i]).publicKey, SecretsVaultState.keys()[vnode.attrs.data.id as string]);
-								if (IsErr(e)) {
-									continue;
-								}
-
-								vnode.attrs.data.keys.push({
-									authAccountID: members[i],
-									key: e,
-								});
+							if (initMembers.findIndex((member) => {
+								return member === AuthAccountState.data().id;
+							}) < 0) {
+								initMembers.push(AuthAccountState.data().id as string);
 							}
-
-							m.redraw();
 						},
 						tooltip: AuthAccountState.translate(WebFormOverlaySecretsVaultHouseholdAccessTooltip),
 					}) :

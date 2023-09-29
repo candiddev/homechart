@@ -41,7 +41,7 @@ test("CookRecipes", async () => {
 	testing.click("#dropdown-item-meal-plan");
 	testing.value("#form-item-input-recipe", seed.cookRecipes[0].name);
 	testing.click("#button-cancel");
-	testing.text(`#table-data-${seed.cookRecipes[0].id}-time`, Duration.toString(seed.cookRecipes[0].timeCook + seed.cookRecipes[0].timePrep));
+	testing.text(`#table-data-${seed.cookRecipes[0].id}-timecooktimeprep`, Duration.toString(seed.cookRecipes[0].timeCook + seed.cookRecipes[0].timePrep));
 	testing.findAll("tbody tr", 2);
 
 	testing.click("#button-show-deleted");

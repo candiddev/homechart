@@ -1,8 +1,8 @@
 ---
+description: About Homechart, the ultimate home organizer
 linkTitle: About
 menu: {main}
-title: |
-  Homechart, The Ultimate Home Organizer
+title: About
 type: docs
 weight: 10
 ---

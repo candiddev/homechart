@@ -94,7 +94,7 @@ jobs:
 
   release_branch:
     env:
-      BUILD_SOURCE: ${{ github.ref_name == 'main' && 'main' || 'pr' }}
+      BUILD_SOURCE: ${{ github.ref_name == 'main' && 'main' || 'dev' }}
     name: Release - Branch
     needs:
       - lint

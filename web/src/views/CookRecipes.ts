@@ -186,21 +186,21 @@ export function CookRecipes (): m.Component {
 				switch (AppState.getSessionDisplay()) {
 				case DisplayEnum.XLarge:
 					state.columns({
-						image: "",
-						name: "",
-						time: "",
-						rating: "", // eslint-disable-line sort-keys
-						cookMealPlanLast: "", // eslint-disable-line sort-keys
-						cookMealPlanCount: "", // eslint-disable-line sort-keys
+						"image": "",
+						"name": "",
+						"timeCook+timePrep": "",
+						"rating": "", // eslint-disable-line sort-keys
+						"cookMealPlanLast": "", // eslint-disable-line sort-keys
+						"cookMealPlanCount": "", // eslint-disable-line sort-keys
 					});
 					break;
 				case DisplayEnum.Large:
 					state.columns({
-						image: "",
-						name: "",
-						time: "",
-						rating: "", // eslint-disable-line sort-keys
-						cookMealPlanLast: "", // eslint-disable-line sort-keys
+						"image": "",
+						"name": "",
+						"timeCook+timePrep": "",
+						"rating": "", // eslint-disable-line sort-keys
+						"cookMealPlanLast": "", // eslint-disable-line sort-keys
 					});
 					break;
 				case DisplayEnum.Medium:
@@ -370,7 +370,7 @@ export function CookRecipes (): m.Component {
 								return e.timeCook + e.timePrep;
 							},
 							name: AuthAccountState.translate(WebGlobalRecipePrepCookTime),
-							property: "time",
+							property: "timeCook+timePrep",
 							type: TableDataType.Duration,
 						},
 						{

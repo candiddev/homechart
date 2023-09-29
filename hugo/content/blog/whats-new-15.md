@@ -1,7 +1,7 @@
 ---
 author: Mike
 date: 2020-05-28
-summary: Release notes for Homechart v1.5.
+description: Release notes for Homechart v1.5.
 tags:
   - release
 title: "What's New in Homechart: v1.5"

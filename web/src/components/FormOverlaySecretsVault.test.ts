@@ -1,3 +1,5 @@
+import type { EncryptedValue } from "@lib/encryption/Encryption";
+import { ParseEncryptedValue } from "@lib/encryption/Encryption";
 import { CivilDate } from "@lib/types/CivilDate";
 
 import seed from "../jest/seed";
@@ -73,12 +75,56 @@ test("FormOverlaySecretsVault", async () => {
 	await testing.sleep(100);
 	expect(SecretsVaultState.create)
 		.toBeCalledTimes(1);
+	const expires = AuthHouseholdState.data()[0].subscriptionExpires;
 	AuthHouseholdState.data()[0].subscriptionExpires = CivilDate.now()
 		.toJSON();
 	testing.redraw();
 	testing.notFind("#button-add");
-	AuthHouseholdState.data()[0].subscriptionExpires = seed.authHouseholds[0].subscriptionExpires;
+	AuthHouseholdState.data()[0].subscriptionExpires = expires;
 	testing.redraw();
+	testing.find("#button-add");
+
+	expect(vault.keys)
+		.toHaveLength(1);
+	const keyOld = await (ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)
+		.decrypt(AuthAccountState.privateKey());
+	SecretsVaultState.keys({
+		1: keyOld as string,
+	});
+	vault.id = "1";
+	testing.mount(FormOverlaySecretsVault, {
+		data: vault,
+	});
+	testing.click("#button-array-household-access-jennifer");
+	testing.click("#button-update");
+	await testing.sleep(100);
+	expect(vault.keys)
+		.toHaveLength(2);
+	const keyNew = await (ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)
+		.decrypt(AuthAccountState.privateKey());
+	// THIS SHOULD NEVER FAIL
+	expect(keyOld)
+		.toStrictEqual(keyNew);
+	vault.id = null;
+	vault.keys = [];
+	testing.mount(FormOverlaySecretsVault, {
+		data: vault,
+	});
+	testing.click(`#button-array-owner-${AuthAccountState.data().id}`);
+	testing.input("#form-item-input-name", "Test");
+	testing.click("#button-add");
+	await testing.sleep(100);
+	// THIS SHOULD NEVER FAIL
+	expect(vault.keys)
+		.toHaveLength(1);
+	expect(await (ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)
+		.decrypt(AuthAccountState.privateKey()))
+		.toHaveLength(24);
+
+	vault.id = null;
+	testing.mount(FormOverlaySecretsVault, {
+		data: vault,
+	});
 
 	// Household
 	testing.find("#form-item-owner");

@@ -1,7 +1,7 @@
 ---
 author: Mike
 date: 2023-03-03
-summary: Release notes for Homechart v2023.03.
+description: Release notes for Homechart v2023.03.
 tags:
   - release
 title: "What's New in Homechart: v2023.03"

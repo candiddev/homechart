@@ -19,12 +19,9 @@ menu:
 params:
   colorPrimary: yellow
   colorSecondary: blue
+  description: Homechart makes it easy to run your household with one simple app.  Built by families, for families.
   links:
     developer:
-      - description: Discord
-        icon: fab fa-discord
-        name: Discord
-        url: https://discord.gg/UzgYbYggDJ
       - description: GitHub
         icon: fab fa-github
         name: GitHub
@@ -33,6 +30,7 @@ params:
         icon: fab fa-reddit
         name: Reddit
         url: https://reddit.com/r/homechart/
+  logo: homechart
   offlineSearch: true
   search:
 title: Homechart

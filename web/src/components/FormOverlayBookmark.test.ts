@@ -26,6 +26,18 @@ test("FormOverlayBookmark", async () => {
 		data: bookmark,
 	});
 
+	// Init
+	testing.notFind("#form-item-input-url-of-icon-image");
+	bookmark.iconLink = "hello";
+	testing.mount(FormOverlayBookmark, {
+		data: bookmark,
+	});
+	testing.find("#form-item-input-url-of-icon-image");
+	bookmark.iconLink = "";
+	testing.mount(FormOverlayBookmark, {
+		data: bookmark,
+	});
+
 	// Buttons
 	testing.find("#form-update-bookmark");
 	testing.click("#button-delete");
@@ -77,7 +89,7 @@ test("FormOverlayBookmark", async () => {
 	testing.value(iconName, "icon");
 
 	// Icon URL
-	testing.notFind("#form-item-input-url-of-icon");
+	testing.notFind("#form-item-input-url-of-icon-image");
 	testing.click("#form-checkbox-input-use-image-as-icon");
 	const iconURL = testing.find("#form-item-input-url-of-icon-image");
 	testing.input(iconURL, "icon");

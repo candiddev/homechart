@@ -1,7 +1,7 @@
 ---
 author: Mike
 date: 2021-11-22
-summary: Release notes for Homechart v2021.11.
+description: Release notes for Homechart v2021.11.
 tags:
   - release
 title: "What's New in Homechart: v2021.11"

@@ -172,6 +172,7 @@ const views = {
 			await utilities.click(page, "#app-toolbar-action-toggle");
 			await utilities.click(page, "#dropdown-item-secretsvault");
 			await utilities.input(page, "#form-item-input-name", "My Vault");
+			await utilities.screenshot(page, "#table", "secrets_vaults");
 			await utilities.click(page, "#button-add");
 			await utilities.click(page, "#button-vault-created-dismiss");
 			await utilities.openMenu(page, "secrets", "all-vaults");

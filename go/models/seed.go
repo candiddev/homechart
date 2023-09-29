@@ -1022,7 +1022,7 @@ tiny pinch of salt
 		{
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
 			Home:            true,
-			IconLink:        "https://www.candid.dev/candid.png",
+			IconLink:        "https://www.candid.dev/candiddev.png",
 			Link:            "https://www.candid.dev",
 			Name:            "Candid Development",
 			Tags:            types.Tags{"tiles"},
@@ -1030,7 +1030,7 @@ tiny pinch of salt
 		{
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
 			Home:            true,
-			IconLink:        "https://homechart.app/homechart.png",
+			IconLink:        "https://homechart.app/logo.png",
 			Link:            "https://homechart.app",
 			Name:            "Homechart",
 			NewWindow:       true,
