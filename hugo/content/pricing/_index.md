@@ -1,4 +1,5 @@
 ---
+description: Pricing for Homechart--Personal is free, Households require a monthly or lifetime subscription.
 linkTitle: Pricing
 menu: {main}
 title: Pricing

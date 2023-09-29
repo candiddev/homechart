@@ -119,6 +119,8 @@ export function FormOverlaySecretsValue (): m.Component<FormOverlayComponentAttr
 
 						return SecretsValueState.update(s);
 					}
+
+					return s;
 				},
 				permitted: GlobalState.permitted(PermissionComponentsEnum.Secrets, true, vnode.attrs.data.authHouseholdID),
 			}, [

@@ -40,14 +40,18 @@ export function SecretsVaults (): m.Component {
 				m.redraw();
 
 				return Filter.array([
-					{
-						...SecretsVaultState.new(),
-						...{
-							icon: Icons.All,
-							id: "all",
-							name: AuthAccountState.translate(WebGlobalAll),
-						},
-					},
+					...vaults.length > 0 ?
+						[
+							{
+								...SecretsVaultState.new(),
+								...{
+									icon: Icons.All,
+									id: "all",
+									name: AuthAccountState.translate(WebGlobalAll),
+								},
+							},
+						] :
+						[],
 					...vaults.filter((vault) => {
 						return m.route.param().filter === "personal" ?
 							vault.authAccountID !== null :

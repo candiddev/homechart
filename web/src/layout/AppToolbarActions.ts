@@ -311,7 +311,7 @@ export function AppToolbarActions (): AppToolbarActionAttrs {
 			onclick: (): void => {
 				AppState.setLayoutAppForm(FormOverlaySecretsVault, SecretsVaultState.new());
 			},
-			permitted: GlobalState.permitted(PermissionComponentsEnum.Shop, true) && ! GlobalState.hideComponentIncludes("Secrets"),
+			permitted: GlobalState.permitted(PermissionComponentsEnum.Secrets, true) && ! GlobalState.hideComponentIncludes("Secrets"),
 			requireOnline: true,
 		},
 		newSecretsValue: { // eslint-disable-line sort-keys
@@ -321,7 +321,7 @@ export function AppToolbarActions (): AppToolbarActionAttrs {
 			onclick: (): void => {
 				AppState.setLayoutAppForm(FormOverlaySecretsValue, SecretsValueState.newDecrypted());
 			},
-			permitted: GlobalState.permitted(PermissionComponentsEnum.Shop, true) && ! GlobalState.hideComponentIncludes("Secrets"),
+			permitted: GlobalState.permitted(PermissionComponentsEnum.Secrets, true) && ! GlobalState.hideComponentIncludes("Secrets") && SecretsVaultState.data().length > 0 && AuthAccountState.privateKey() !== "",
 			requireOnline: true,
 		},
 		headerShop: { // eslint-disable-line sort-keys

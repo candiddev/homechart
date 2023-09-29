@@ -142,6 +142,9 @@ deploy-post () {
 	try "while ! curl -s -k ${PUPPETEER_URL}/api | grep ${BUILD_VERSION}; do
 ((c++)) && ((c==60)) && exit 1
 sleep 1
+if [[ ${BUILD_SOURCE} == 'dev' ]]; then
+	${CR} logs candiddev_homechart_api
+fi
 done" || exit 1
 }
 
@@ -198,6 +201,7 @@ run-homechart-start () {
 	install-go
 	install-node
 
+	build-homechart-config
 	run-postgresql-start
 	run-yaml8n-start
 

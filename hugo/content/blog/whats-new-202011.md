@@ -1,7 +1,7 @@
 ---
 author: Mike
 date: 2020-11-26
-summary: Release notes for Homechart v2020.11.
+description: Release notes for Homechart v2020.11.
 tags:
   - release
 title: "What's New in Homechart: v2020.11"

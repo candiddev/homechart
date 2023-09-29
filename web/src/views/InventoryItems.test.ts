@@ -43,6 +43,7 @@ describe("InventoryItems", () => {
 		testing.input("#form-item-input-warranty", "1");
 		await testing.sleep(100);
 		testing.findAll("tbody tr", 1);
+		testing.click("#button-array-show-columns-propertieswarranty");
 	});
 
 	test("form.inventoryitem", async () => {

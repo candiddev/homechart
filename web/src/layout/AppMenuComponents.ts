@@ -590,12 +590,14 @@ AuthAccountState.data.map((authAccount) => {
 					matchExact: true,
 					name: AuthAccountState.translate(WebGlobalAllVaults),
 				},
-				{
-					icon: Icons.SecretsValue,
-					link: "/all",
-					matchExact: true,
-					name: AuthAccountState.translate(WebGlobalAllValues),
-				},
+				SecretsVaultState.data().length > 0 && AuthAccountState.privateKey() !== "" ?
+					{
+						icon: Icons.SecretsValue,
+						link: "/all",
+						matchExact: true,
+						name: AuthAccountState.translate(WebGlobalAllValues),
+					} :
+					null,
 				{
 					icon: Icons.More,
 					items: SecretsVaultState.data.map((vaults) => {

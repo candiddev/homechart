@@ -1,6 +1,7 @@
 ---
 categories:
 - reference
+description: Reference documentation for Homechart's configuration
 title: Config
 ---
 
@@ -16,16 +17,8 @@ Homechart can be configured using [command line arguments](../cli#-x-keyvalue), 
 
 **For environment variables**, every configuration key can be set using `HOMECHART_<SECTION>_<KEY>=a value`, i.e. `HOMECHART_CLI_DEBUG=true`
 
-**For a JSON or YAML configuration file**, the keys are camelCase and nested under each section:
+**For a JSON configuration files**, the keys are camelCase and nested under each section:
 
-{{< tabpane text=true >}}
-{{< tab header="YAML" >}}
-{{< highlight yaml >}}
-app:
-  baseURL: example.com
-{{< /highlight >}}
-{{< /tab >}}
-{{< tab header="JSON" >}}
 {{< highlight json >}}
 {
   "app": {
@@ -33,8 +26,6 @@ app:
   }
 }
 {{< /highlight >}}
-{{< /tab >}}
-{{< /tabpane >}}
 
 Configuration values can be booleans (true/false), integers (1/2/3), lists (1,2,3/a,b,c), and strings (a/b/c).
 

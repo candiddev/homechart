@@ -1,7 +1,8 @@
 ---
+description: Homechart's documentation for cloud and self-hosted usage.  Contains explanations, references, and guides.
 linkTitle: Docs
 menu: {main}
-title: Homechart Documentation
+title: Documentation
 weight: 20
 ---
 

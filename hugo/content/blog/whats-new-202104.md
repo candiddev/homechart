@@ -1,7 +1,7 @@
 ---
 author: Mike
 date: 2021-04-28
-summary: Release notes for Homechart v2021.04.
+description: Release notes for Homechart v2021.04.
 tags:
   - release
 title: "What's New in Homechart: v2021.04"
