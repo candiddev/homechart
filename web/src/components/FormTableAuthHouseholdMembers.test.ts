@@ -26,7 +26,7 @@ test("FormTableAuthHouseholdMembers", async () => {
 	testing.text(`#table-data-${seed.authAccounts[0].id}-name`, seed.authAccounts[0].name);
 	testing.text(`#table-data-${seed.authAccounts[0].id}-emailaddress`, seed.authAccounts[0].emailAddress);
 	testing.text(`#table-data-${seed.authAccounts[0].id}-owner`, "check_box");
-	testing.text(`#table-data-${seed.authAccounts[0].id}-color`, Color.values[seed.authHouseholds[0].members[0].color]);
+	testing.text(`#table-data-${seed.authAccounts[0].id}-color`, Color.values[AuthHouseholdState.findMember(seed.authAccounts[0].id, seed.authHouseholds[0].id).color]);
 	testing.text(`#table-data-${seed.authAccounts[2].id}-child`, "check_box");
 	testing.click(`#table-row_${seed.authAccounts[0].id}`);
 	testing.find("#form-item-email-address");

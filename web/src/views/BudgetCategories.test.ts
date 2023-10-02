@@ -52,7 +52,7 @@ test("BudgetCategories", async () => {
 	testing.text("#subtitle-carryover", "Carryover: $0.00");
 	testing.text("#subtitle-income", "Income: $1,000.00");
 	testing.text("#subtitle-budgeted", "Budgeted:-$600.00");
-	testing.text("#subtitle-target-amount", "Target Amount:-$1,127.50");
+	testing.text("#subtitle-target-amount", "Target Amount:-$1,125.00");
 	testing.text("#subtitle-remaining", "Remaining: $400.00");
 	testing.findAll("tbody tr", 19);
 	testing.text("#table-data-home-budgetcategoryname", "Homeexpand_less");
@@ -83,7 +83,7 @@ test("BudgetCategories", async () => {
 	testing.text("#table-data-foodpistachios-budgetcategoryname", "Pistachios");
 	testing.text("#table-data-foodpistachios-amount", " $300.00");
 	testing.text("#table-data-foodpistachios-balance", " $250.00");
-	testing.text("#table-data-foodpistachios-budgetcategorytargetamount", " $690.00");
+	testing.text("#table-data-foodpistachios-budgetcategorytargetamount", " $575.00");
 
 	testing.text("#table-data-income-budgetcategoryname", "Incomeexpand_less");
 	testing.text("#table-data-income-amount", "");

@@ -24,7 +24,7 @@ describe("FormItemSelectAuthHouseholdMembers", () => {
 		testing.click(array[0]);
 		testing.click(array[1]);
 		expect(attrs.members[0])
-			.toBe(seed.authHouseholds[0].members[2].id);
+			.toBe(AuthHouseholdState.members()[4].id);
 		testing.click(array[1]);
 		expect(attrs.members[0])
 			.toBeNull();

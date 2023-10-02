@@ -30,7 +30,7 @@ describe("BudgetMonthState", () => {
 				...seed.budgetMonths[0],
 				...{
 					budgetMonthCategories: BudgetMonthState.data().budgetMonthCategories,
-					targetAmount: 112750,
+					targetAmount: 112500,
 				},
 			});
 

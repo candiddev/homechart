@@ -297,6 +297,8 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 		},
 	}
 
+	t1 := types.CivilDateToday().AddMonths(5)
+
 	seed.BudgetCategories = BudgetCategories{
 		{
 			AuthHouseholdID: seed.AuthHouseholds[0].ID,
@@ -304,8 +306,8 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 			ID:              GenerateUUID(),
 			Name:            "Pistachios",
 			TargetAmount:    400000,
-			TargetMonth:     1,
-			TargetYear:      types.CivilDateToday().AddMonths(12).Year,
+			TargetMonth:     t1.Month,
+			TargetYear:      t1.Year,
 		},
 		{
 			AuthHouseholdID: seed.AuthHouseholds[0].ID,
@@ -313,7 +315,7 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 			ID:              GenerateUUID(),
 			Name:            "Cleaning",
 			TargetAmount:    40000,
-			TargetMonth:     12,
+			TargetMonth:     t1.Month,
 		},
 		{
 			AuthHouseholdID: seed.AuthHouseholds[0].ID,

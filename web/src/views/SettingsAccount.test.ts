@@ -28,10 +28,17 @@ test("SettingsAccount", async () => {
 		{
 			...seed.authHouseholds[0],
 			...{
-				members: [
-					seed.authHouseholds[0].members[0],
-				],
 				subscriptionProcessor: AuthHouseholdSubscriptionProcessorEnum.Apple,
+			},
+		},
+	]);
+	AuthHouseholdState.data([
+		{
+			...AuthHouseholdState.data()[0],
+			...{
+				members: [
+					AuthHouseholdState.findMember(seed.authAccounts[0].id),
+				],
 			},
 		},
 	]);
