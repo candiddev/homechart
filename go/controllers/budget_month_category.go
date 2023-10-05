@@ -26,20 +26,20 @@ func (*Handler) BudgetMonthCategoryCreate(w http.ResponseWriter, r *http.Request
 	var b models.BudgetMonthCategory
 
 	if err := getJSON(ctx, &b, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	p := getPermissions(ctx)
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&b.AuthHouseholdID, models.PermissionComponentBudget, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	// Create the BudgetMonth
-	WriteResponse(ctx, w, b, nil, 1, "", logger.Log(ctx, b.Create(ctx)))
+	WriteResponse(ctx, w, b, nil, 1, "", logger.Error(ctx, b.Create(ctx)))
 }
 
 // BudgetMonthCategoryUpdate updates a BudgetMonthCategory.
@@ -60,18 +60,18 @@ func (*Handler) BudgetMonthCategoryUpdate(w http.ResponseWriter, r *http.Request
 	var b models.BudgetMonthCategory
 
 	if err := getJSON(ctx, &b, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	p := getPermissions(ctx)
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&b.AuthHouseholdID, models.PermissionComponentBudget, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	// Update month
-	WriteResponse(ctx, w, b, nil, 1, "", logger.Log(ctx, b.Update(ctx)))
+	WriteResponse(ctx, w, b, nil, 1, "", logger.Error(ctx, b.Update(ctx)))
 }

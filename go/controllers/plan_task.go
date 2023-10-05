@@ -21,7 +21,7 @@ import (
 func (*Handler) PlanTaskCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
 }
 
 // PlanTaskDelete deletes a PlanTask.
@@ -38,7 +38,7 @@ func (*Handler) PlanTaskCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) PlanTaskDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
 }
 
 // PlanTaskRead reads a PlanTask.
@@ -55,7 +55,7 @@ func (*Handler) PlanTaskDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) PlanTaskRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
 }
 
 // PlanTaskUpdate updates a PlanTask.
@@ -73,7 +73,7 @@ func (*Handler) PlanTaskRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) PlanTaskUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.PlanTask{}, w, r)) //nolint:errcheck
 }
 
 // PlanTasksRead reads all PlanTasks for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) PlanTaskUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) PlanTasksRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.PlanTasks{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.PlanTasks{}, w)) //nolint:errcheck
 }

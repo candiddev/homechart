@@ -35,7 +35,7 @@ func TestAuthAccountAuthHouseholdInviteAcceptCreate(t *testing.T) {
 
 	a.EmailAddress = seed.AuthAccounts[4].EmailAddress.String()
 	id := a.ID
-	assert.HasErr(t, a.InviteCreate(ctx), errs.ErrClientConflictExists)
+	assert.HasErr(t, a.InviteCreate(ctx), errs.ErrSenderConflict)
 	assert.Equal(t, a.ID, id)
 
 	Delete(ctx, &a, DeleteOpts{})
@@ -57,7 +57,7 @@ func TestAuthAccountAuthHouseholdInviteDelete(t *testing.T) {
 	}
 
 	assert.Equal(t, aa.InviteDelete(ctx), nil)
-	assert.HasErr(t, Read(ctx, &a, ReadOpts{}), errs.ErrClientBadRequestMissing)
+	assert.HasErr(t, Read(ctx, &a, ReadOpts{}), errs.ErrSenderNotFound)
 }
 func TestAuthAccountAuthHouseholdUpdate(t *testing.T) {
 	logger.UseTestLogger(t)

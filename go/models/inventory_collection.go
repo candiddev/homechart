@@ -95,7 +95,7 @@ func (i *InventoryCollection) create(ctx context.Context, opts CreateOpts) errs.
 		i.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, i, `
+	return logger.Error(ctx, db.Query(ctx, false, i, `
 INSERT INTO inventory_collection (
 	  auth_household_id
 	, columns
@@ -141,7 +141,7 @@ func (i *InventoryCollection) update(ctx context.Context, _ UpdateOpts) errs.Err
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, i, `
+	return logger.Error(ctx, db.Query(ctx, false, i, `
 UPDATE inventory_collection
 SET
 		auth_household_id = :auth_household_id
@@ -229,9 +229,9 @@ func InventoryCollectionsInit(ctx context.Context, authHouseholdID uuid.UUID) er
 
 	for i := range collections {
 		if err := collections[i].create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

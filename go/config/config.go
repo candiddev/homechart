@@ -29,7 +29,6 @@ type Config struct {
 
 // App contains config options.
 type App struct {
-	Debug                                 bool                     `json:"debug"`
 	DisableTasks                          bool                     `json:"disableTasks,omitempty"`
 	IgnorePaymentFailures                 bool                     `json:"ignorePaymentFailures,omitempty"`
 	Demo                                  bool                     `json:"demo,omitempty"`

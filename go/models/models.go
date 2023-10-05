@@ -455,10 +455,10 @@ func getFilter(ctx context.Context, m Model, opts PermissionsOpts) (filter, errs
 	var err errs.Err
 
 	if f.AuthAccountID == nil && len(f.AuthHouseholdIDs) == 0 && !opts.Admin {
-		err = errs.ErrClientForbidden
+		err = errs.ErrSenderForbidden
 	}
 
-	return f, logger.Log(ctx, err)
+	return f, logger.Error(ctx, err)
 }
 
 func setIDs(ctx context.Context, m Model, opts PermissionsOpts) errs.Err {
@@ -478,11 +478,11 @@ func setIDs(ctx context.Context, m Model, opts PermissionsOpts) errs.Err {
 			ID: *ahOld,
 		}
 		if err := ah.Read(ctx); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		if ah.IsExpired() {
-			return logger.Log(ctx, errs.ErrClientPaymentRequired)
+			return logger.Error(ctx, errs.ErrSenderPaymentRequired)
 		}
 
 		if !opts.AuthHouseholdsPermissions.IsPermitted(ahOld, permissions[m.getType()], PermissionEdit) {
@@ -497,12 +497,12 @@ func setIDs(ctx context.Context, m Model, opts PermissionsOpts) errs.Err {
 	}
 
 	if !opts.Admin && aaNew == nil && ahNew == nil && m.getType() != modelNotesPageVersion && m.getType() != modelSecretsValue {
-		return logger.Log(ctx, errs.ErrClientForbidden)
+		return logger.Error(ctx, errs.ErrSenderForbidden)
 	} else if aaNew != aaOld || ahNew != ahOld {
 		m.setIDs(aaNew, ahNew)
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // CreateOpts are used to create models.
@@ -516,19 +516,19 @@ func Create(ctx context.Context, m Model, opts CreateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	if err := setIDs(ctx, m, opts.PermissionsOpts); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	err := m.create(ctx, opts)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if m.getChange(ctx) != "" {
 		ChangeCreate(ctx, types.TableNotifyOperationCreate, m)
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // DeleteOpts is used to delete models.
@@ -542,7 +542,7 @@ func Delete(ctx context.Context, m Model, opts DeleteOpts) errs.Err {
 
 	f, err := getFilter(ctx, m, opts.PermissionsOpts)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	var condition string
@@ -554,7 +554,7 @@ func Delete(ctx context.Context, m Model, opts DeleteOpts) errs.Err {
 	if condition, ok = conditionsDelete[t]; !ok {
 		if condition, ok = conditionsRead[t]; !ok {
 			if condition, ok = conditionsAll[t]; !ok {
-				return logger.Log(ctx, errs.NewServerErr(fmt.Errorf("couldn't lookup conditions for table %d", t)))
+				return logger.Error(ctx, errs.ErrReceiver.Wrap(fmt.Errorf("couldn't lookup conditions for table %d", t)))
 			}
 		}
 	}
@@ -568,76 +568,76 @@ RETURNING %[1]s.*
 
 	err = db.Query(ctx, false, m, query, f)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if m.getChange(ctx) != "" {
 		ChangeCreate(ctx, types.TableNotifyOperationDelete, m)
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // InitAccount initializes default objects for an account.
 func InitAccount(ctx context.Context, authAccountID uuid.UUID) errs.Err {
 	if err := BookmarksInitPersonal(ctx, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := HealthItemsInit(ctx, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := PlanTasksInit(ctx, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := NotesPagesInit(ctx, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := ShopListsInitPersonal(ctx, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // InitHousehold initializes default objects for a household.
 func InitHousehold(ctx context.Context, authHouseholdID, authAccountID uuid.UUID) errs.Err {
 	if err := BookmarksInitHousehold(ctx, authHouseholdID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := BudgetAccountsInit(ctx, authHouseholdID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := BudgetCategoriesInit(ctx, authHouseholdID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := CookMealTimesInit(ctx, authHouseholdID, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := InventoryCollectionsInit(ctx, authHouseholdID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := RewardCardsInit(ctx, authHouseholdID, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := ShopCategoriesInit(ctx, authHouseholdID, authAccountID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := ShopListsInitHousehold(ctx, authHouseholdID); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // ReadOpts are used to read models.
@@ -651,7 +651,7 @@ func Read(ctx context.Context, m Model, opts ReadOpts) errs.Err {
 
 	f, err := getFilter(ctx, m, opts.PermissionsOpts)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	t := m.getType()
@@ -662,7 +662,7 @@ func Read(ctx context.Context, m Model, opts ReadOpts) errs.Err {
 
 	if condition, ok = conditionsRead[t]; !ok {
 		if condition, ok = conditionsAll[t]; !ok {
-			return logger.Log(ctx, errs.NewServerErr(fmt.Errorf("couldn't lookup conditions for table %d", t)))
+			return logger.Error(ctx, errs.ErrReceiver.Wrap(fmt.Errorf("couldn't lookup conditions for table %d", t)))
 		}
 	}
 
@@ -674,7 +674,7 @@ FROM %[1]s
 
 	// TODO: cache this?
 
-	return logger.Log(ctx, db.Query(ctx, false, m, query, f))
+	return logger.Error(ctx, db.Query(ctx, false, m, query, f))
 }
 
 // ReadAllOpts are used to read all models.
@@ -705,7 +705,7 @@ func ReadAll(ctx context.Context, m Models, opts ReadAllOpts) (newHash string, i
 	}
 
 	if aai == nil && len(ahi) == 0 {
-		return "", nil, logger.Log(ctx, errs.ErrClientForbidden)
+		return "", nil, logger.Error(ctx, errs.ErrSenderForbidden)
 	}
 
 	t := m.getType()
@@ -736,11 +736,11 @@ FROM %[1]s
 		if err := cache.Get(ctx); err != nil {
 			aQuery := query + condition
 			if err := db.Query(ctx, true, &ids, aQuery, filter); err != nil {
-				return newHash, ids, logger.Log(ctx, err)
+				return newHash, ids, logger.Error(ctx, err)
 			}
 
 			err := cache.Set(ctx)
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 		}
 	}
 
@@ -763,11 +763,11 @@ FROM %[1]s
 				aQuery := query + condition
 
 				if err := db.Query(ctx, true, &ahIDs, aQuery, filter); err != nil {
-					return newHash, ids, logger.Log(ctx, err)
+					return newHash, ids, logger.Error(ctx, err)
 				}
 
 				err := cache.Set(ctx)
-				logger.Log(ctx, err) //nolint:errcheck
+				logger.Error(ctx, err) //nolint:errcheck
 			}
 
 			ids = append(ids, ahIDs...)
@@ -782,11 +782,11 @@ FROM %[1]s
 
 	newHash = GetCRC(ids)
 	if newHash == opts.Hash {
-		return newHash, ids, logger.Log(ctx, errs.ErrClientNoContent)
+		return newHash, ids, logger.Error(ctx, errs.ErrSenderNoContent)
 	}
 
 	if len(ids) > 0 && ids[0].Updated.Equal(opts.Updated) {
-		return newHash, ids, logger.Log(ctx, err)
+		return newHash, ids, logger.Error(ctx, err)
 	} else if opts.Updated.IsZero() {
 		ids = nil
 	}
@@ -805,7 +805,7 @@ FROM %[1]s
 
 	query += "ORDER BY created ASC"
 
-	return newHash, ids, logger.Log(ctx, db.Query(ctx, true, m, query, filter))
+	return newHash, ids, logger.Error(ctx, db.Query(ctx, true, m, query, filter))
 }
 
 // Setup adds a cache and DB.
@@ -815,7 +815,7 @@ func Setup(ctx context.Context, cfg *config.Config, cloudEnabled, clearDatabase 
 	metrics.Setup()
 
 	if err := cfg.PostgreSQL.Setup(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if clearDatabase {
@@ -823,7 +823,7 @@ func Setup(ctx context.Context, cfg *config.Config, cloudEnabled, clearDatabase 
 	}
 
 	if err := cfg.PostgreSQL.Migrate(ctx, "homechart", triggers, migrations); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	db = &cfg.PostgreSQL
@@ -831,11 +831,11 @@ func Setup(ctx context.Context, cfg *config.Config, cloudEnabled, clearDatabase 
 
 	if cfg.SMTP.FromAddress != "" {
 		if err := cfg.SMTP.Setup(ctx, "Homechart", cfg.App.BaseURL, "https://homechart.app/homechart.png", "/settings/notifications"); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // UpdateOpts are options used for updating.
@@ -848,17 +848,17 @@ func Update(ctx context.Context, m Model, opts UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	if err := setIDs(ctx, m, opts.PermissionsOpts); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	err := m.update(ctx, opts)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if m.getChange(ctx) != "" {
 		ChangeCreate(ctx, types.TableNotifyOperationUpdate, m)
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

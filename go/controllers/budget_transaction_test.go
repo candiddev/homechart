@@ -23,7 +23,7 @@ func TestBudgetTransactionCreate(t *testing.T) {
 		transaction models.BudgetTransaction
 	}{
 		"missing date": {
-			err:         errs.ErrClientBadRequestProperty.Message(),
+			err:         errs.ErrSenderBadRequest.Message(),
 			transaction: noDate,
 		},
 		"good": {
@@ -124,13 +124,13 @@ func TestBudgetTransactionUpdate(t *testing.T) {
 	}{
 		{
 			name:        "invalid id",
-			err:         errs.ErrClientBadRequestProperty.Message(),
+			err:         errs.ErrSenderBadRequest.Message(),
 			transaction: bn,
 			uri:         "/budget/transactions/aaa",
 		},
 		{
 			name:        "missing date",
-			err:         errs.ErrClientBadRequestProperty.Message(),
+			err:         errs.ErrSenderBadRequest.Message(),
 			transaction: noDate,
 			uri:         "/budget/transactions/" + b.ID.String(),
 		},

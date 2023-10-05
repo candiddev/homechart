@@ -57,7 +57,7 @@ func (s *SMTP) Setup(ctx context.Context, appName, baseURL, logoURL, unsubscribe
 	s.invalidDomain = regexp.MustCompile(fmt.Sprintf("(%s)", strings.Join(append(s.NoEmailDomains, "example.com"), "|")))
 
 	if s.FromAddress == "" {
-		return logger.Log(ctx, errs.NewServerErr(ErrSMTPInit, errors.New("missing FromAddress")))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSMTPInit, errors.New("missing FromAddress")))
 	}
 
 	s.smtpTemplate = template.New("message").Funcs(template.FuncMap{
@@ -92,22 +92,24 @@ func (s *SMTP) Send(ctx context.Context, msg SMTPMessage) errs.Err {
 
 	from := s.Username
 
+	ctx = logger.SetAttribute(ctx, "smtpTo", msg.To)
+
 	if s.smtpTemplate == nil {
 		metrics.Notifications.WithLabelValues("smtp", "cancelled").Add(1)
 
-		return logger.Log(ctx, NewErrCancelled("no SMTP template configured"))
+		return logger.Error(ctx, NewErrCancelled("no SMTP template configured"))
 	}
 
 	if s.Hostname == "" {
 		metrics.Notifications.WithLabelValues("smtp", "cancelled").Add(1)
 
-		return logger.Log(ctx, NewErrCancelled("no SMTP hostname"))
+		return logger.Error(ctx, NewErrCancelled("no SMTP hostname"))
 	}
 
 	if !s.ValidDomain(msg.To) {
 		metrics.Notifications.WithLabelValues("smtp", "cancelled").Add(1)
 
-		return logger.Log(ctx, NewErrCancelled("no valid recipients"))
+		return logger.Error(ctx, NewErrCancelled("no valid recipients"))
 	}
 
 	if s.Username != "" {
@@ -116,18 +118,18 @@ func (s *SMTP) Send(ctx context.Context, msg SMTPMessage) errs.Err {
 
 	b, err := s.generateBody(msg)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, err))
 	}
 
 	if err := smtp.SendMail(net.JoinHostPort(s.Hostname, strconv.Itoa(s.Port)), i, from, []string{msg.To}, b); err != nil {
 		metrics.Notifications.WithLabelValues("smtp", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, err))
 	}
 
 	metrics.Notifications.WithLabelValues("smtp", "success").Add(1)
 
-	return logger.Log(ctx, nil, msg.To)
+	return logger.Error(ctx, nil)
 }
 
 // ValidDomain checks an email address to see if it's from a domain that should be ignored.

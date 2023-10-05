@@ -30,7 +30,7 @@ func (h *HealthLog) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	h.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, h, `
+	return logger.Error(ctx, db.Query(ctx, false, h, `
 INSERT INTO health_log (
 	  auth_account_id
 	, date
@@ -98,7 +98,7 @@ AND (
 RETURNING health_log.*
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs().String())
 
-	return logger.Log(ctx, db.Query(ctx, false, h, query, h))
+	return logger.Error(ctx, db.Query(ctx, false, h, query, h))
 }
 
 // HealthLogs is multiple HealthLog.
@@ -114,5 +114,5 @@ func HealthLogsDelete(ctx context.Context) {
 
 	query := fmt.Sprintf("DELETE FROM health_log WHERE date < CURRENT_DATE - INTERVAL '%d day'", c.App.KeepHealthLogDays)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }

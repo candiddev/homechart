@@ -6,18 +6,18 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-var errClientBadRequestAuthAccountMissing = errs.NewClientBadRequestErr("Account does not exist")
-var errClientBadRequestOAuth = errs.NewClientBadRequestErr("Unable to parse OAuth header")
-var errClientBadRequestPassword = errs.NewClientBadRequestErr("Incorrect password")
-var errClientBadRequestSignupDisabled = errs.NewClientBadRequestErr("Sorry, new account signup is currently disabled")
-var errClientBadRequestToSAccepted = errs.NewClientBadRequestErr("Terms of Service not accepted, please accept Terms of Service")
-var errClientBadRequestSSEUnsupported = errs.NewClientBadRequestErr("Event stream is unsupported")
+var errClientBadRequestAuthAccountMissing = errs.ErrSenderBadRequest.Set("Account does not exist")
+var errClientBadRequestOAuth = errs.ErrSenderBadRequest.Set("Unable to parse OAuth header")
+var errClientBadRequestPassword = errs.ErrSenderBadRequest.Set("Incorrect password")
+var errClientBadRequestSignupDisabled = errs.ErrSenderBadRequest.Set("Sorry, new account signup is currently disabled")
+var errClientBadRequestToSAccepted = errs.ErrSenderBadRequest.Set("Terms of Service not accepted, please accept Terms of Service")
+var errClientBadRequestSSEUnsupported = errs.ErrSenderBadRequest.Set("Event stream is unsupported")
 
-var errConflictAuthAccount = errs.NewConflictErr("Account already exists")
+var errConflictAuthAccount = errs.ErrSenderConflict.Set("Account already exists")
 
-var errServerDuplicateWebhook = errs.NewServerErr(errors.New("duplicate webhook received"))
-var errServerProxyURL = errs.NewServerErr(errors.New("unable to proxy URL to self hosted instance"))
-var errServerWebhook = errs.NewServerErr(errors.New("unable to read webhook request"))
+var errServerDuplicateWebhook = errs.ErrReceiver.Wrap(errors.New("duplicate webhook received"))
+var errServerProxyURL = errs.ErrReceiver.Wrap(errors.New("unable to proxy URL to self hosted instance"))
+var errServerWebhook = errs.ErrReceiver.Wrap(errors.New("unable to read webhook request"))
 
 const (
 	noticeAuthAccountCreated      = "AuthAccount created: "

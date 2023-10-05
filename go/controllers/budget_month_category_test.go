@@ -53,11 +53,11 @@ func TestBudgetMonthCategoryCreate(t *testing.T) {
 		category models.BudgetMonthCategory
 	}{
 		"missing year month": {
-			err:      errs.ErrClientForbidden.Message(),
+			err:      errs.ErrSenderForbidden.Message(),
 			category: wrongHousehold,
 		},
 		"missing budget category ID": {
-			err:      errs.ErrClientBadRequestProperty.Message(),
+			err:      errs.ErrSenderBadRequest.Message(),
 			category: noBudgetCategoryID,
 		},
 		"good": {
@@ -136,7 +136,7 @@ func TestBudgetMonthCategoryUpdate(t *testing.T) {
 		category models.BudgetMonthCategory
 	}{
 		"bad household": {
-			err:      errs.ErrClientForbidden.Message(),
+			err:      errs.ErrSenderForbidden.Message(),
 			category: badHousehold,
 		},
 		"good": {

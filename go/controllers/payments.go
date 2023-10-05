@@ -47,12 +47,12 @@ func (h *Handler) setAuthHouseholdExpires(ctx context.Context, authHouseholdID *
 		err = ah.Read(ctx)
 	}
 
-	if err != nil || errors.Is(err, errs.ErrClientNoContent) {
-		if errors.Is(err, errs.ErrClientBadRequestMissing) {
+	if err != nil || errors.Is(err, errs.ErrSenderNotFound) {
+		if errors.Is(err, errs.ErrSenderNotFound) {
 			err = nil
 		}
 
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if customerID != "" {
@@ -61,9 +61,9 @@ func (h *Handler) setAuthHouseholdExpires(ctx context.Context, authHouseholdID *
 
 	if transactionID != "" {
 		if ah.SubscriptionLastTransactionID == transactionID {
-			logger.Log(ctx, errServerDuplicateWebhook, ah.ID.String()) //nolint:errcheck
+			logger.Error(ctx, errServerDuplicateWebhook, ah.ID.String()) //nolint:errcheck
 
-			return errs.ErrClientNoContent
+			return errs.ErrSenderNoContent
 		}
 
 		ah.SubscriptionLastTransactionID = transactionID
@@ -106,7 +106,7 @@ func (h *Handler) setAuthHouseholdExpires(ctx context.Context, authHouseholdID *
 
 				if i == 0 {
 					if err := ahReferral.UpdateSubscription(ctx); err != nil {
-						logger.Log(ctx, err) //nolint:errcheck
+						logger.Error(ctx, err) //nolint:errcheck
 					}
 				}
 
@@ -118,12 +118,12 @@ func (h *Handler) setAuthHouseholdExpires(ctx context.Context, authHouseholdID *
 	}
 
 	if err := ah.UpdateSubscription(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if ah.SubscriptionID != "" && subscriptionProcessor == models.AuthHouseholdSubscriptionProcessorPaddleLifetime {
 		if err := h.paddleCancelSubscription(ctx, ah.SubscriptionID); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -137,10 +137,10 @@ func (h *Handler) setAuthHouseholdExpires(ctx context.Context, authHouseholdID *
 			go ns[i].Send(ctx, nil) //nolint:errcheck
 		}
 
-		logger.LogNotice(noticeAuthHouseholdSubscribed, models.AuthHouseholdSubscriptionProcessors[ah.SubscriptionProcessor])
+		logger.Info(ctx, noticeAuthHouseholdSubscribed, models.AuthHouseholdSubscriptionProcessors[ah.SubscriptionProcessor])
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // PaymentsCreate generates payment data for the frontend.
@@ -152,7 +152,7 @@ func (h *Handler) PaymentsCreate(w http.ResponseWriter, r *http.Request) {
 		var p paymentsBilling
 
 		if err := getJSON(ctx, &p, r.Body); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -170,7 +170,7 @@ func (h *Handler) PaymentsCreate(w http.ResponseWriter, r *http.Request) {
 
 			err := ah.Read(ctx)
 			if err != nil {
-				WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestMissing))
+				WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderNotFound))
 
 				return
 			}
@@ -222,18 +222,18 @@ func (h *Handler) PaymentsCreate(w http.ResponseWriter, r *http.Request) {
 				URL: fmt.Sprintf("%s/payment?%s", h.Config.App.BaseURL, query.Encode()),
 			}
 
-			WriteResponse(ctx, w, p, nil, 1, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, p, nil, 1, "", logger.Error(ctx, err))
 
 			return
 		}
 
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, nil))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, nil))
 
 		return
 	}
 
 	err := h.proxyCloudRequest(ctx, w, "POST", "/api/v1/payments", r.Body)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // PaymentsDelete cancels a subscription.
@@ -245,7 +245,7 @@ func (h *Handler) PaymentsDelete(w http.ResponseWriter, r *http.Request) {
 		var p paymentsBilling
 
 		if err := getJSON(ctx, &p, r.Body); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -260,7 +260,7 @@ func (h *Handler) PaymentsDelete(w http.ResponseWriter, r *http.Request) {
 
 		err := ah.Read(ctx)
 		if err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestMissing))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderNotFound))
 
 			return
 		}
@@ -275,13 +275,13 @@ func (h *Handler) PaymentsDelete(w http.ResponseWriter, r *http.Request) {
 			err = ah.UpdateSubscription(ctx)
 		}
 
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	err := h.proxyCloudRequest(ctx, w, "DELETE", "/api/v1/payments", r.Body)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // PaymentsUpdate changes a subscription.
@@ -294,7 +294,7 @@ func (h *Handler) PaymentsUpdate(w http.ResponseWriter, r *http.Request) {
 
 		err := getJSON(ctx, &p, r.Body)
 		if err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -308,7 +308,7 @@ func (h *Handler) PaymentsUpdate(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := ah.Read(ctx); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestMissing))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderNotFound))
 
 			return
 		}
@@ -319,15 +319,15 @@ func (h *Handler) PaymentsUpdate(w http.ResponseWriter, r *http.Request) {
 			data.Set("plan_id", strconv.Itoa(h.Config.Paddle.PlanIDMonthly))
 
 			if err := h.Config.Paddle.Request(ctx, nil, "POST", "/api/2.0/subscription/users/update", data); err != nil {
-				WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 			}
 		}
 
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	err := h.proxyCloudRequest(ctx, w, "PUT", "/api/v1/payments", r.Body)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }

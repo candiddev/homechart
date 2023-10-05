@@ -12,7 +12,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-var ErrImportRecipe = errs.NewClientBadRequestErr("Unable to import recipe from website")
+var ErrImportRecipe = errs.ErrSenderBadRequest.Set(("Unable to import recipe from website"))
 
 // JSONLDHowTo contains text.
 type JSONLDHowTo struct {
@@ -47,7 +47,7 @@ type JSONLDRecipe struct {
 func HTMLToJSONLDRecipe(ctx context.Context, input string) (jsonld *JSONLDRecipe, err errs.Err) { //nolint:gocognit, gocyclo
 	node, e := html.Parse(strings.NewReader(input))
 	if e != nil {
-		return jsonld, logger.Log(ctx, ErrImportRecipe, e.Error())
+		return jsonld, logger.Error(ctx, ErrImportRecipe.Wrap(e))
 	}
 
 	var getJSONLD func(node *html.Node)
@@ -71,7 +71,7 @@ func HTMLToJSONLDRecipe(ctx context.Context, input string) (jsonld *JSONLDRecipe
 						}
 
 						if err != nil || len(jsonlds) == 0 {
-							logger.Log(ctx, ErrImportRecipe, err.Error()) //nolint:errcheck
+							logger.Error(ctx, ErrImportRecipe.Wrap(err)) //nolint:errcheck
 
 							continue
 						}
@@ -100,12 +100,12 @@ func HTMLToJSONLDRecipe(ctx context.Context, input string) (jsonld *JSONLDRecipe
 						}
 
 						if !match {
-							logger.Log(ctx, ErrImportRecipe, fmt.Sprintf("jsonld type: %v", jsonld.Type)) //nolint:errcheck
+							logger.Error(ctx, ErrImportRecipe, fmt.Sprintf("jsonld type: %v", jsonld.Type)) //nolint:errcheck
 
 							continue
 						}
 					} else if jsonld.Type != "Recipe" {
-						logger.Log(ctx, ErrImportRecipe, fmt.Sprintf("jsonld type: %v", jsonld.Type)) //nolint:errcheck
+						logger.Error(ctx, errs.ErrSenderBadRequest.Wrap(errs.ErrSenderBadRequest), fmt.Sprintf("jsonld type: %v", jsonld.Type)) //nolint:errcheck
 
 						continue
 					}
@@ -165,7 +165,7 @@ func HTMLToJSONLDRecipe(ctx context.Context, input string) (jsonld *JSONLDRecipe
 					}
 
 					jsonld.ImageRaw = nil
-					logger.Log(ctx, nil) //nolint:errcheck
+					logger.Error(ctx, nil) //nolint:errcheck
 
 					return
 				}
@@ -180,8 +180,8 @@ func HTMLToJSONLDRecipe(ctx context.Context, input string) (jsonld *JSONLDRecipe
 	getJSONLD(node)
 
 	if jsonld == nil || jsonld.Name == "" {
-		return nil, logger.Log(ctx, ErrImportRecipe)
+		return nil, logger.Error(ctx, ErrImportRecipe)
 	}
 
-	return jsonld, logger.Log(ctx, nil)
+	return jsonld, logger.Error(ctx, nil)
 }

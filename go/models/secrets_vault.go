@@ -33,7 +33,7 @@ func (s *SecretsVault) create(ctx context.Context, opts CreateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	if err := s.validate(opts.PermissionsOpts); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	s.ID = GenerateUUID()
@@ -42,7 +42,7 @@ func (s *SecretsVault) create(ctx context.Context, opts CreateOpts) errs.Err {
 		s.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, s, `
+	return logger.Error(ctx, db.Query(ctx, false, s, `
 INSERT INTO secrets_vault (
 	  auth_account_id
 	, auth_household_id
@@ -96,7 +96,7 @@ func (s *SecretsVault) update(ctx context.Context, opts UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	if err := s.validate(opts.PermissionsOpts); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	query := fmt.Sprintf(`
@@ -116,12 +116,12 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, s, query, s))
+	return logger.Error(ctx, db.Query(ctx, false, s, query, s))
 }
 
 func (s *SecretsVault) validate(p PermissionsOpts) errs.Err {
 	if len(s.Keys) == 0 {
-		return errs.ErrClientBadRequestProperty
+		return errs.ErrSenderBadRequest
 	}
 
 	if p.AuthAccountID != nil {
@@ -136,7 +136,7 @@ func (s *SecretsVault) validate(p PermissionsOpts) errs.Err {
 		}
 
 		if !match {
-			return errs.ErrClientBadRequestProperty
+			return errs.ErrSenderBadRequest
 		}
 	}
 

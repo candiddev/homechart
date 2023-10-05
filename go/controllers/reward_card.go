@@ -21,7 +21,7 @@ import (
 func (*Handler) RewardCardCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
 }
 
 // RewardCardDelete deletes a RewardCard.
@@ -38,7 +38,7 @@ func (*Handler) RewardCardCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) RewardCardDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
 }
 
 // RewardCardRead reads a RewardCard.
@@ -55,7 +55,7 @@ func (*Handler) RewardCardDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) RewardCardRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
 }
 
 // RewardCardUpdate updates a RewardCard.
@@ -73,7 +73,7 @@ func (*Handler) RewardCardRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) RewardCardUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.RewardCard{}, w, r)) //nolint:errcheck
 }
 
 // RewardCardsRead reads all RewardCards for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) RewardCardUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) RewardCardsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.RewardCards{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.RewardCards{}, w)) //nolint:errcheck
 }

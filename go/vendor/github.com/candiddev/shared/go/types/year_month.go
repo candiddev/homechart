@@ -9,7 +9,7 @@ import (
 )
 
 // ErrYearMonth means the YearMonth format is invalid.
-var ErrYearMonth = errs.NewClientBadRequestErr("YearMonth format should match YYYYMM")
+var ErrYearMonth = errs.ErrSenderBadRequest.Set("YearMonth format should match YYYYMM")
 
 // YearMonth is a year and month concat'd.
 type YearMonth int

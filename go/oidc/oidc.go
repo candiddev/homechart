@@ -18,7 +18,7 @@ import (
 	"golang.org/x/oauth2"
 )
 
-var ErrProvider = errs.NewServerErr(errors.New("OIDC provider error"))
+var ErrProvider = errs.ErrReceiver.Wrap(errors.New("oidc provider error"))
 
 // Provider contains settings for an Provider.
 type Provider struct {
@@ -63,7 +63,7 @@ func initProvider(ctx context.Context, opts *providerOpts) *Provider {
 
 	p.Provider, err = oidc.NewProvider(ctx, opts.IssuerURL)
 	if err != nil {
-		logger.Log(ctx, ErrProvider, err.Error()) //nolint:errcheck
+		logger.Error(ctx, ErrProvider.Wrap(err)) //nolint:errcheck
 
 		return &p
 	}
@@ -79,7 +79,7 @@ func initProvider(ctx context.Context, opts *providerOpts) *Provider {
 		p.Config.RedirectURL = fmt.Sprintf("%s/oidc?provider=%d", opts.BaseURL, p.Type)
 	}
 
-	logger.Log(ctx, nil, p.Name) //nolint:errcheck
+	logger.Error(ctx, nil, p.Name) //nolint:errcheck
 
 	return &p
 }
@@ -110,7 +110,7 @@ func initAppleProvider(ctx context.Context, c *config.Config) *Provider {
 
 	keyStr, err := base64.StdEncoding.DecodeString(c.OIDC.AppleKeyPEMBase64)
 	if err != nil {
-		logger.Log(ctx, ErrProvider, err.Error()) //nolint:errcheck
+		logger.Error(ctx, ErrProvider.Wrap(err)) //nolint:errcheck
 
 		return nil
 	}
@@ -119,14 +119,14 @@ func initAppleProvider(ctx context.Context, c *config.Config) *Provider {
 
 	key, err := x509.ParsePKCS8PrivateKey(keyPEM.Bytes)
 	if err != nil {
-		logger.Log(ctx, ErrProvider, err.Error()) //nolint:errcheck
+		logger.Error(ctx, ErrProvider.Wrap(err)) //nolint:errcheck
 
 		return nil
 	}
 
 	jwt, err := token.SignedString(key)
 	if err != nil {
-		logger.Log(ctx, ErrProvider, err.Error()) //nolint:errcheck
+		logger.Error(ctx, ErrProvider.Wrap(err)) //nolint:errcheck
 
 		return nil
 	}
@@ -185,5 +185,5 @@ func Setup(ctx context.Context, c *config.Config) (*Providers, errs.Err) {
 		}
 	}
 
-	return &providers, logger.Log(ctx, nil, fmt.Sprintf("initialized %d", len(providers)))
+	return &providers, logger.Error(ctx, nil, fmt.Sprintf("initialized %d", len(providers)))
 }

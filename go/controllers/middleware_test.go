@@ -64,27 +64,27 @@ func TestCheckSession(t *testing.T) {
 		uri     string
 	}{
 		"no auth": {
-			err:     errs.ErrClientGone.Message(),
+			err:     errs.ErrSenderNotFound.Message(),
 			session: models.AuthSession{},
 			uri:     "/auth/accounts/" + s.AuthAccountID.String(),
 		},
 		"bad token": {
-			err:     errs.ErrClientGone.Message(),
+			err:     errs.ErrSenderNotFound.Message(),
 			session: badToken,
 			uri:     "/auth/accounts/" + s.AuthAccountID.String(),
 		},
 		"expired token": {
-			err:     errs.ErrClientGone.Message(),
+			err:     errs.ErrSenderNotFound.Message(),
 			session: expired,
 			uri:     "/auth/accounts/" + s.AuthAccountID.String(),
 		},
 		"wrong token - account": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: s,
 			uri:     "/auth/accounts/" + seed.AuthAccounts[1].ID.String(),
 		},
 		"wrong token - household": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: s,
 			uri:     "/auth/households/" + ah.ID.String(),
 		},
@@ -128,7 +128,7 @@ func TestCheckSession(t *testing.T) {
 			uri: "/payments",
 		},
 		"expired": {
-			err:   errs.ErrClientPaymentRequired.Message(),
+			err:   errs.ErrSenderPaymentRequired.Message(),
 			input: seed.CalendarEvents[6],
 			uri:   "/calendar/events",
 		},
@@ -219,7 +219,7 @@ func TestCheckSession(t *testing.T) {
 		want    bool
 	}{
 		"expired": {
-			err:     errs.ErrClientPaymentRequired.Message(),
+			err:     errs.ErrSenderPaymentRequired.Message(),
 			id:      ahE.SelfHostedID.UUID.String(),
 			session: asE,
 		},
@@ -280,7 +280,7 @@ func TestCheckSession(t *testing.T) {
 			input: "127.0.0.1",
 		},
 		"invalid": {
-			err:   errs.ErrClientGone.Message(),
+			err:   errs.ErrSenderNotFound.Message(),
 			input: "1.1.1.1",
 		},
 	}

@@ -22,7 +22,7 @@ func TestNotificationCreate(t *testing.T) {
 		session models.AuthSession
 	}{
 		"not admin": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: seed.AuthSessions[0],
 		},
 		"admin": {
@@ -81,12 +81,12 @@ func TestNotificationDelete(t *testing.T) {
 		uri     string
 	}{
 		"invalid id": {
-			err:     errs.ErrClientBadRequestProperty.Message(),
+			err:     errs.ErrSenderBadRequest.Message(),
 			session: admin,
 			uri:     "/notifications/safdsafsadf",
 		},
 		"not admin": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: seed.AuthSessions[0],
 			uri:     "/notifications/" + n.ID.String(),
 		},
@@ -132,12 +132,12 @@ func TestNotificationUpdate(t *testing.T) {
 		uri     string
 	}{
 		"invalid id": {
-			err:     errs.ErrClientBadRequestProperty.Message(),
+			err:     errs.ErrSenderBadRequest.Message(),
 			session: admin,
 			uri:     "/notifications/aaa",
 		},
 		"not admin": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: seed.AuthSessions[0],
 			uri:     "/notifications/" + n.ID.String(),
 		},
@@ -206,5 +206,5 @@ func TestNotificationsRead(t *testing.T) {
 
 	r.session = seed.AuthSessions[0]
 
-	assert.Equal(t, r.do().Error(), errs.ErrClientForbidden.Message())
+	assert.Equal(t, r.do().Error(), errs.ErrSenderForbidden.Message())
 }

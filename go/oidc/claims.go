@@ -9,17 +9,17 @@ import (
 	"github.com/coreos/go-oidc"
 )
 
-var ErrClient = errs.NewClientBadRequestErr("OIDC verification failed")
+var ErrClient = errs.ErrSenderBadRequest.Set("OIDC verification failed")
 
 func (p *Provider) getIDToken(ctx context.Context, code string) (*oidc.IDToken, errs.Err) {
 	token, err := p.Config.Exchange(ctx, code)
 	if err != nil {
-		return nil, logger.Log(ctx, ErrProvider, err.Error())
+		return nil, logger.Error(ctx, ErrProvider.Wrap(err))
 	}
 
 	rawToken, ok := token.Extra("id_token").(string)
 	if !ok {
-		return nil, logger.Log(ctx, ErrProvider, err.Error())
+		return nil, logger.Error(ctx, ErrProvider.Wrap(err))
 	}
 
 	verifier := p.Provider.Verifier(&oidc.Config{
@@ -28,10 +28,10 @@ func (p *Provider) getIDToken(ctx context.Context, code string) (*oidc.IDToken, 
 
 	idToken, err := verifier.Verify(ctx, rawToken)
 	if err != nil {
-		return nil, logger.Log(ctx, ErrProvider, err.Error())
+		return nil, logger.Error(ctx, ErrProvider.Wrap(err))
 	}
 
-	return idToken, logger.Log(ctx, nil)
+	return idToken, logger.Error(ctx, nil)
 }
 
 // GetClaims reads in OIDC claims from a code.
@@ -45,7 +45,7 @@ func (p *Providers) GetClaims(ctx context.Context, providerType ProviderType, co
 			if provider.Type == providerType {
 				idToken, err = provider.getIDToken(ctx, code)
 				if err != nil {
-					logger.Log(ctx, err) //nolint:errcheck
+					logger.Error(ctx, err) //nolint:errcheck
 
 					continue
 				}
@@ -57,7 +57,7 @@ func (p *Providers) GetClaims(ctx context.Context, providerType ProviderType, co
 
 				err := idToken.Claims(&claims)
 				if err != nil {
-					logger.Log(ctx, ErrClient, err.Error()) //nolint:errcheck
+					logger.Error(ctx, ErrClient.Wrap(err)) //nolint:errcheck
 
 					continue
 				}
@@ -69,8 +69,8 @@ func (p *Providers) GetClaims(ctx context.Context, providerType ProviderType, co
 	}
 
 	if id == "" || emailAddress == "" {
-		return emailAddress, id, logger.Log(ctx, ErrClient)
+		return emailAddress, id, logger.Error(ctx, ErrClient)
 	}
 
-	return emailAddress, id, logger.Log(ctx, nil)
+	return emailAddress, id, logger.Error(ctx, nil)
 }

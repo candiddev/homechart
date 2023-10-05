@@ -6,7 +6,7 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-var ErrScaleInt = errs.NewClientBadRequestErr("Value must be between 0 and 5")
+var ErrScaleInt = errs.ErrSenderBadRequest.Set("Value must be between 0 and 5")
 
 // ScaleInt is a number between 0 and 5.
 type ScaleInt int

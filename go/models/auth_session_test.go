@@ -30,7 +30,7 @@ func TestAuthSessionsDelete(t *testing.T) {
 		ID: a.ID,
 	}
 
-	assert.Equal[error](t, output.Read(ctx, false), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, output.Read(ctx, false), errs.ErrSenderNotFound)
 }
 
 func TestAuthSessionsReadAll(t *testing.T) {
@@ -80,7 +80,7 @@ func TestAuthSessionCreate(t *testing.T) {
 		AuthAccountID: id,
 	}
 
-	assert.Equal[error](t, output.Create(ctx, false), errs.ErrClientBadRequestProperty)
+	assert.Equal[error](t, output.Create(ctx, false), errs.ErrSenderBadRequest)
 
 	// Keep tokens
 	id = GenerateUUID()
@@ -124,7 +124,7 @@ func TestAuthSessionDeleteAll(t *testing.T) {
 	a2.Create(ctx, false)
 
 	assert.Equal(t, a1.DeleteAll(ctx), nil)
-	assert.Equal[error](t, a1.Read(ctx, false), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, a1.Read(ctx, false), errs.ErrSenderNotFound)
 
 	aa.Delete(ctx)
 }
@@ -165,21 +165,21 @@ func TestAuthSessionRead(t *testing.T) {
 			want: seed.AuthSessions[0],
 		},
 		"expired": {
-			err: errs.ErrClientBadRequestMissing,
+			err: errs.ErrSenderNotFound,
 			inputSession: AuthSession{
 				ID:  as.ID,
 				Key: as.Key,
 			},
 		},
 		"invalid key": {
-			err: errs.ErrClientBadRequestMissing,
+			err: errs.ErrSenderNotFound,
 			inputSession: AuthSession{
 				ID:  as.ID,
 				Key: seed.AuthSessions[0].Key,
 			},
 		},
 		"missing key": {
-			err: errs.ErrClientBadRequestMissing,
+			err: errs.ErrSenderNotFound,
 			inputSession: AuthSession{
 				ID: seed.AuthSessions[0].ID,
 			},

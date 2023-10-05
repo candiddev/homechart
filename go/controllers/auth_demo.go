@@ -25,7 +25,7 @@ func (h *Handler) AuthDemoRead(w http.ResponseWriter, r *http.Request) {
 
 	seed, err := models.Seed(ctx, true)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -36,5 +36,5 @@ func (h *Handler) AuthDemoRead(w http.ResponseWriter, r *http.Request) {
 
 	err = seed.AuthAccounts[0].Update(ctx)
 
-	WriteResponse(ctx, w, seed.AuthSessions[0], nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, seed.AuthSessions[0], nil, 1, "", logger.Error(ctx, err))
 }

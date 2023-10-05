@@ -1,14 +1,14 @@
 package types
 
 import (
+	"fmt"
 	"regexp"
 	"strconv"
 
 	"github.com/candiddev/shared/go/errs"
 )
 
-// ErrPosition means the position is invalid.
-var ErrPosition = errs.NewClientBadRequestErr("Position must be formatted as <number>:<a-z>")
+var ErrPosition = errs.ErrSenderBadRequest.Set("Position must be formatted as <number>:<a-z>")
 
 // Position is the position of an item in a list.
 type Position string
@@ -23,7 +23,7 @@ func (p *Position) UnmarshalJSON(data []byte) error {
 			return nil
 		}
 
-		return err
+		return ErrPosition.Wrap(err)
 	}
 
 	if s == "" {
@@ -37,5 +37,5 @@ func (p *Position) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return ErrPosition
+	return ErrPosition.Wrap(fmt.Errorf("position has invalid format: %s", s))
 }

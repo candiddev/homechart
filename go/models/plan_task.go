@@ -68,10 +68,10 @@ func (t *PlanTask) create(ctx context.Context, opts CreateOpts) errs.Err {
 	}
 
 	if !opts.Admin && t.AuthAccountID == nil && t.AuthHouseholdID == nil {
-		return logger.Log(ctx, errs.ErrClientBadRequestProperty)
+		return logger.Error(ctx, errs.ErrSenderBadRequest.Set("authAccountID or authHouseholdID must be specified"))
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, t, `
+	return logger.Error(ctx, db.Query(ctx, false, t, `
 INSERT INTO plan_task (
 	  assignees
 	, auth_account_id
@@ -237,7 +237,7 @@ RETURNING
 
 		err := a.Read(ctx)
 		if err != nil {
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 
 			return nil
 		}
@@ -257,7 +257,7 @@ RETURNING
 		}
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // PlanTasks is multiple PlanTask.
@@ -279,7 +279,7 @@ WHERE (
 )
 AND done`, c.App.KeepPlanTaskDays)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }
 
 // PlanTasksInit adds default projects and tasks to a database for an AuthAccount.
@@ -301,7 +301,7 @@ func PlanTasksInit(ctx context.Context, authAccountID uuid.UUID) errs.Err {
 
 	for i := range projects {
 		if err := projects[i].create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -490,7 +490,7 @@ func PlanTasksInit(ctx context.Context, authAccountID uuid.UUID) errs.Err {
 		oldID := tasks[i].ID
 
 		if err := tasks[i].create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		for k := range tasks {
@@ -500,7 +500,7 @@ func PlanTasksInit(ctx context.Context, authAccountID uuid.UUID) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // PlanTasksReadAssistant reads all tasks for an assistant and returns a text prompt.
@@ -541,7 +541,7 @@ FROM plan_task
 
 	var tasks []string
 
-	logger.Log(ctx, db.Query(ctx, true, &tasks, query, filter)) //nolint:errcheck
+	logger.Error(ctx, db.Query(ctx, true, &tasks, query, filter)) //nolint:errcheck
 
 	return toSpeechList(err, tasks, c, itemType, "/plan/tasks")
 }
@@ -579,7 +579,7 @@ AND NOT done
 ORDER BY plan_task.created
 `, nil, id)
 	if err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	offset := 10
@@ -614,7 +614,7 @@ ORDER BY plan_task.created
 		e = append(e, n)
 	}
 
-	return e, logger.Log(ctx, err)
+	return e, logger.Error(ctx, err)
 }
 
 // PlanTasksReadNotifications reads all PlanTasks ready for notification.
@@ -625,7 +625,7 @@ func PlanTasksReadNotifications(ctx context.Context) (Notifications, errs.Err) {
 
 	var ns Notifications
 
-	if err := logger.Log(ctx, db.Query(ctx, true, &t, `
+	if err := logger.Error(ctx, db.Query(ctx, true, &t, `
 UPDATE plan_task
 SET notified = true
 WHERE DATE_TRUNC('minute', due_date) <= DATE_TRUNC('minute', now())
@@ -639,7 +639,7 @@ RETURNING
 	, name
 	, plan_project_id
 `, nil)); err != nil {
-		return ns, logger.Log(ctx, err)
+		return ns, logger.Error(ctx, err)
 	}
 
 	for _, task := range t {
@@ -670,5 +670,5 @@ RETURNING
 		ns = append(ns, n...)
 	}
 
-	return ns, logger.Log(ctx, nil)
+	return ns, logger.Error(ctx, nil)
 }

@@ -26,7 +26,7 @@ func setup(ctx context.Context, config *config.Config) (outCtx context.Context, 
 		if err != nil {
 			err = fmt.Errorf("invalid cloud JWT: %w", err)
 
-			return ctx, cancel, false, logger.Log(ctx, errs.NewCLIErr(err))
+			return ctx, cancel, false, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 		}
 
 		cloud = c.Cloud
@@ -41,5 +41,5 @@ func setup(ctx context.Context, config *config.Config) (outCtx context.Context, 
 	defer tracer.Shutdown(ctx) //nolint: errcheck
 
 	// Setup models
-	return ctx, cancel, cloud, logger.Log(ctx, models.Setup(ctx, config, cloud, false))
+	return ctx, cancel, cloud, logger.Error(ctx, models.Setup(ctx, config, cloud, false))
 }

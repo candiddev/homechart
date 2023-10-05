@@ -33,7 +33,7 @@ func (h *HealthItem) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	h.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, h, `
+	return logger.Error(ctx, db.Query(ctx, false, h, `
 INSERT INTO health_item (
 	  auth_account_id
 	, color
@@ -96,7 +96,7 @@ AND (
 RETURNING health_item.*
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs().String())
 
-	return logger.Log(ctx, db.Query(ctx, false, h, query, h))
+	return logger.Error(ctx, db.Query(ctx, false, h, query, h))
 }
 
 // HealthItems is multiple HealthItem.
@@ -287,9 +287,9 @@ func HealthItemsInit(ctx context.Context, authAccountID uuid.UUID) errs.Err {
 		h[i].AuthAccountID = authAccountID
 
 		if err := h[i].create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

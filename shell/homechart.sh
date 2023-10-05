@@ -19,7 +19,7 @@ export HOMECHART_POSTGRESQL_USERNAME=${HOMECHART_POSTGRESQL_USERNAME:-homechart}
 export HOMECHART_WEBPUSH_VAPIDPRIVATEKEY=${HOMECHART_WEBPUSH_VAPIDPRIVATEKEY:-3-NI4eCXzQt3ILqRmOaIuEWHCl9Lp7zrOlGhhdyy7MU}
 export HOMECHART_WEBPUSH_VAPIDPUBLICKEY=${HOMECHART_WEBPUSH_VAPIDPUBLICKEY:-BMcCmv0dhitH4h1hrKHGpJbaD_kTPpaGap8AH4kjLoM7pZXPzdPgCASqZ9pMOZckHD62xvXFtfWbxLBzJGzWtU4}
 export PUPPETEER_URL=${PUPPETEER_URL:-""}
-export RUN_GO_ARGS="-c ${DIR}/homechart_config.yaml run"
+export RUN_GO_ARGS="-c ${DIR}/homechart_config.jsonnet run"
 export VAULT_GCP_HOMECHART_RELEASE=gcp/static-account/homechart-release/key
 export VAULT_KV_HOMECHART=kv/dev/homechart
 
@@ -66,69 +66,75 @@ export BUILD_GO_VARS="-X main.appCloudPublicKey=${HOMECHART_APP_CLOUDPUBLICKEY}"
 
 cmd build-homechart-config,bhc Build Homechart config
 build-homechart-config () {
-	if [[ -n ${VAULT_TOKEN} ]]; then
-		cat > "${DIR}/homechart_config.yaml" << EOF
-{{ \$vault := (get "${VAULT_ADDR}/v1/${VAULT_KV_HOMECHART}#x-vault-token:${VAULT_TOKEN}" | decode_json).data }}
-EOF
-	else
-		cat > "${DIR}/homechart_config.yaml" << EOF
-{{ \$vault := dict }}
-EOF
-	fi
+	cat > "${DIR}/homechart_config.jsonnet" << EOF
+local n = import "./shared/go/jsonnet/native.libsonnet";
 
-	cat >> "${DIR}/homechart_config.yaml" << EOF
-app:
-  adminEmailAddresses:
-  - jane@example.com
-  baseURL: ${HOMECHART_APP_BASEURL}
-  cacheControl: no-store
-  cloudEndpoint: ${HOMECHART_APP_CLOUDENDPOINT}
-  cloudPrivateKey: ${HOMECHART_APP_CLOUDPRIVATEKEY}
-  counterTimeZone: ${HOMECHART_APP_TIMEZONE}
-  debug: false
-  demo: true
-  featureVotes:
-  - This Awesome Feature
-  - This Other Feature
-  - User Experience
-  rateLimiterKey: ${HOMECHART_APP_RATELIMITERKEY}
-  rateLimiterRate: 499-S
-  systemConfigKey: config
-  systemHealthKey: health
-  systemMetricsKey: metrics
-  systemPprofKey: pprof
-  systemStopKey: stop
-  uiDir: web/dist/homechart
-oidc:
-  appleClientID: {{ try \$vault.oidc_appleclientid }}
-  appleKeyID: {{ try \$vault.oidc_applekeyid }}
-  appleKeyPEMBase64: {{ try \$vault.oidc_applekeypembase64 }}
-  appleTeamID: {{ try \$vault.oidc_appleteamid }}
-  googleClientID: {{ try \$vault.oidc_googleclientid }}
-  googleClientSecret: {{ try \$vault.oidc_googleclientsecret }}
-paddle:
-  planIDMonthly: {{ try \$vault.paddle_planidmonthly }}
-  planIDMonthlyReferral: {{ try \$vault.paddle_planidmonthlyreferral }}
-  productIDLifetime: {{ try \$vault.paddle_productidlifetime }}
-  publicKeyBase64: {{ try \$vault.paddle_publickeybase64 }}
-  sandbox: {{ try \$vault.paddle_sandbox }}
-  vendorAuthCode: {{ try \$vault.paddle_vendorauthcode }}
-  vendorID: {{ try \$vault.paddle_vendorid }}
-postgresql:
-  database: ${HOMECHART_POSTGRESQL_DATABASE}
-  hostname: ${HOMECHART_POSTGRESQL_HOSTNAME}
-  password: ${HOMECHART_POSTGRESQL_PASSWORD}
-  username: ${HOMECHART_POSTGRESQL_USERNAME}
-smtp:
-  noEmailDomains:
-  - example.com
-  replyTo: Support <support@homechart.app>
-tracing:
-  endpoint: tempo.candid.dev
-  serviceName: homechart-api
-webPush:
-  vapidPrivateKey: ${HOMECHART_WEBPUSH_VAPIDPRIVATEKEY}
-  vapidPublicKey: ${HOMECHART_WEBPUSH_VAPIDPUBLICKEY}
+local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getPath('~/.vault-token', '') == '' then {} else std.parseJson(n.getPath(n.getEnv('VAULT_ADDR')+'/v1/${VAULT_KV_HOMECHART}#x-vault-token:'+(if n.getEnv('VAULT_TOKEN') == '' then n.getPath('~/.vault-token') else n.getEnv('VAULT_TOKEN')), '{"data":{}}')).data);
+
+{
+  app: {
+    adminEmailAddresses: [
+      'jane@example.com'
+    ],
+    baseURL: "${HOMECHART_APP_BASEURL}",
+    cacheControl: "no-store",
+    cloudEndpoint: "${HOMECHART_APP_CLOUDENDPOINT}",
+    cloudPrivateKey: "${HOMECHART_APP_CLOUDPRIVATEKEY}",
+    counterTimeZone: "${HOMECHART_APP_TIMEZONE}",
+    debug: false,
+    demo: true,
+    featureVotes: [
+      "This Awesome Feature",
+      "This Other Feature",
+      "User Experience"
+    ],
+    rateLimiterKey: "${HOMECHART_APP_RATELIMITERKEY}",
+    rateLimiterRate: "499-S",
+    systemConfigKey: "config",
+    systemHealthKey: "health",
+    systemMetricsKey: "metrics",
+    systemPprofKey: "pprof",
+    systemStopKey: "stop",
+    uiDir: "web/dist/homechart"
+  },
+  oidc: {
+    appleClientID: std.get(vault, 'oidc_appleclientid'),
+    appleKeyID: std.get(vault, 'oidc_applekeyid'),
+    appleKeyPEMBase64: std.get(vault, 'oidc_applekeypembase64'),
+    appleTeamID: std.get(vault, 'oidc_appleteamid'),
+    googleClientID: std.get(vault, 'oidc_googleclientid'),
+    googleClientSecret: std.get(vault, 'oidc_googleclientsecret')
+  },
+  paddle: {
+    planIDMonthly: std.parseInt(std.get(vault, 'paddle_planidmonthly', '0')),
+    planIDMonthlyReferral: std.parseInt(std.get(vault, 'paddle_planidmonthlyreferral', '0')),
+    productIDLifetime: std.parseInt(std.get(vault, 'paddle_productidlifetime', '0')),
+    publicKeyBase64: std.get(vault, 'paddle_publickeybase64'),
+    sandbox: std.get(vault, 'paddle_sandbox') == 'true',
+    vendorAuthCode: std.get(vault, 'paddle_vendorauthcode'),
+    vendorID: std.parseInt(std.get(vault, 'paddle_vendorid', '0'))
+  },
+  postgresql: {
+    database: "${HOMECHART_POSTGRESQL_DATABASE}",
+    hostname: "${HOMECHART_POSTGRESQL_HOSTNAME}",
+    password: "${HOMECHART_POSTGRESQL_PASSWORD}",
+    username: "${HOMECHART_POSTGRESQL_USERNAME}"
+  },
+  smtp: {
+    noEmailDomains: [
+      "example.com"
+    ],
+    replyTo: "Support <support@homechart.app>"
+  },
+  tracing: {
+    endpoint: "tempo.candid.dev",
+    serviceName: "homechart-api"
+  },
+  webPush: {
+    vapidPrivateKey: "${HOMECHART_WEBPUSH_VAPIDPRIVATEKEY}",
+    vapidPublicKey: "${HOMECHART_WEBPUSH_VAPIDPUBLICKEY}"
+  }
+}
 EOF
 }
 bhc () {
@@ -172,7 +178,7 @@ cmd run-homechart-api-self-hosted,rhas Run Homechart API as a self hosted instan
 run-homechart-api-self-hosted () {
 	build-go
 
-	HOMECHART_APP_CLOUDJWT="" HOMECHART_POSTGRESQL_DATABASE=homechart_self_hosted "${DIR}/${BUILD_NAME}" -c "${DIR}/homechart_config.yaml" run
+	HOMECHART_APP_CLOUDJWT="" HOMECHART_POSTGRESQL_DATABASE=homechart_self_hosted "${DIR}/${BUILD_NAME}" -c "${DIR}/homechart_config.jsonnet" run
 }
 rhas () {
 	run-homechart-api-self-hosted
@@ -189,7 +195,7 @@ run-homechart-seed () {
 sleep 1
 done
 sleep 1
-HOMECHART_APP_DEBUG=false TZ=America/Chicago ${DIR}/${BUILD_NAME} -c ${DIR}/homechart_config.yaml seed ${DIR}/homechart_data.json"
+HOMECHART_APP_DEBUG=false TZ=America/Chicago ${DIR}/${BUILD_NAME} -c ${DIR}/homechart_config.jsonnet seed ${DIR}/homechart_data.json"
 }
 rhs () {
 	run-homechart-seed
@@ -245,7 +251,11 @@ run-homechart-start () {
 
 cmd run-homechart-stop Stop Homechart containers
 run-homechart-stop () {
+	run-hugo-stop
+	run-yaml8n-stop
+
 	printf "Stopping all Homechart containers..."
+
 	try "${CR} rm -f candiddev_homechart_api || true
 ${CR} rm -f candiddev_homechart_ui || true"
 }

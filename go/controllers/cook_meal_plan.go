@@ -21,7 +21,7 @@ import (
 func (*Handler) CookMealPlanCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
 }
 
 // CookMealPlanDelete deletes a CookMealPlan.
@@ -38,7 +38,7 @@ func (*Handler) CookMealPlanCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookMealPlanDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
 }
 
 // CookMealPlanRead reads a CookMealPlan.
@@ -55,7 +55,7 @@ func (*Handler) CookMealPlanDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookMealPlanRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
 }
 
 // CookMealPlanUpdate updates a CookMealPlan.
@@ -73,7 +73,7 @@ func (*Handler) CookMealPlanRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookMealPlanUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.CookMealPlan{}, w, r)) //nolint:errcheck
 }
 
 // CookMealPlansRead reads all CookMealPlan for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) CookMealPlanUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookMealPlansRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.CookMealPlans{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.CookMealPlans{}, w)) //nolint:errcheck
 }

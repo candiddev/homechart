@@ -88,7 +88,7 @@ func TestAuthSignInCreate(t *testing.T) {
 	}{
 		"no email": {
 			account: noAuthAccountEmail,
-			err:     types.MsgEmailAddress,
+			err:     types.ErrEmailAddress.Message(),
 		},
 		"no password": {
 			account: noAuthAccountPassword,

@@ -143,7 +143,7 @@ func TestNotificationSend(t *testing.T) {
 		},
 		"smtp - queue": {
 			toSMTP:       "text@example.com",
-			testErr:      errs.NewServerErr(notify.ErrSend),
+			testErr:      errs.ErrReceiver.Wrap(notify.ErrSend),
 			testNotifier: true,
 		},
 		"webpush": {
@@ -155,21 +155,21 @@ func TestNotificationSend(t *testing.T) {
 		"webpush - missing": {
 			err:          notify.ErrMissing,
 			toWebPush:    as.WebPush,
-			testErr:      errs.NewServerErr(notify.ErrMissing),
+			testErr:      errs.ErrReceiver.Wrap(notify.ErrMissing),
 			testNotifier: true,
 		},
 		"webpush - queue": {
 			toWebPush: &notify.WebPushClient{
 				Endpoint: "endpoint1",
 			},
-			testErr:      errs.NewServerErr(notify.ErrSend),
+			testErr:      errs.ErrReceiver.Wrap(notify.ErrSend),
 			testNotifier: true,
 		},
 		"newsletter no valid": {
 			newsletter: true,
 		},
 		"newsletter test": {
-			testErr:      errs.NewServerErr(notify.ErrSend),
+			testErr:      errs.ErrReceiver.Wrap(notify.ErrSend),
 			newsletter:   true,
 			testNotifier: true,
 		},
@@ -220,7 +220,7 @@ func TestNotificationSend(t *testing.T) {
 
 	c.App.TestNotifier = true
 
-	notify.Test.Error(errs.NewServerErr(notify.ErrSend))
+	notify.Test.Error(errs.ErrReceiver.Wrap(notify.ErrSend))
 
 	// Test retry queue
 	n := Notification{

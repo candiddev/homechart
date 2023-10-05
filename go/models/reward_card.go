@@ -52,7 +52,7 @@ func (r *RewardCard) create(ctx context.Context, opts CreateOpts) errs.Err {
 		r.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, r, `
+	return logger.Error(ctx, db.Query(ctx, false, r, `
 INSERT INTO reward_card (
 	  auth_household_id
 	, details
@@ -108,7 +108,7 @@ func (r *RewardCard) setIDs(_, authHouseholdID *uuid.UUID) {
 func (r *RewardCard) update(ctx context.Context, opts UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Query(ctx, false, r, fmt.Sprintf(`
+	return logger.Error(ctx, db.Query(ctx, false, r, fmt.Sprintf(`
 UPDATE reward_card
 SET
 	  details = :details
@@ -157,9 +157,9 @@ func RewardCardsInit(ctx context.Context, authHouseholdID, authAccountID uuid.UU
 		}
 
 		if err := card.create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

@@ -61,7 +61,7 @@ func getAssistantResponse(ctx context.Context, request assistantRequest) (speech
 
 		speech, url, list = models.ShopItemsReadAssistant(ctx, p, budgetPayeeName)
 	default:
-		logger.Log(ctx, errs.NewServerErr(fmt.Errorf("unknown intent: %s", request.intent()))) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(fmt.Errorf("unknown intent: %s", request.intent()))) //nolint:errcheck
 	}
 
 	return speech, url, list

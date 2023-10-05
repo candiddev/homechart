@@ -43,7 +43,7 @@ func (t *PlanProject) create(ctx context.Context, opts CreateOpts) errs.Err {
 		t.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, t, `
+	return logger.Error(ctx, db.Query(ctx, false, t, `
 INSERT INTO plan_project (
 	  auth_account_id
 	, auth_household_id
@@ -125,7 +125,7 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, t, query, t))
+	return logger.Error(ctx, db.Query(ctx, false, t, query, t))
 }
 
 // PlanProjects is multiple PlanProject.

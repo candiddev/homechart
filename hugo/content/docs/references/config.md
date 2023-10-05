@@ -5,7 +5,7 @@ description: Reference documentation for Homechart's configuration
 title: Config
 ---
 
-Homechart can be configured using [command line arguments](../cli#-x-keyvalue), environment variables or a JSON configuration file.  The configuration is divided into sections:
+Homechart can be configured using [command line arguments](../cli#-x-keyvalue), environment variables or a JSON/Jsonnet configuration file.  The configuration is divided into sections:
 
 - <a href="#app">App</a>
 - <a href="#cli">App</a>
@@ -28,6 +28,8 @@ Homechart can be configured using [command line arguments](../cli#-x-keyvalue), 
 {{< /highlight >}}
 
 Configuration values can be booleans (true/false), integers (1/2/3), lists (1,2,3/a,b,c), and strings (a/b/c).
+
+The configuration file can also be formatted using Jsonnet.  See [the Jsonnet reference](../jsonnet/) for more information.
 
 ## `app`
 

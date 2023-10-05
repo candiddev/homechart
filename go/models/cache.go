@@ -51,7 +51,7 @@ WHERE
 	expires < now()
 `, nil)
 
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // Get returns a cached value from a table.
@@ -85,7 +85,7 @@ WHERE
 		if err != nil {
 			metrics.CacheRequestTotal.WithLabelValues(ca.TableName, "miss").Add(1)
 
-			return logger.Log(ctx, errs.ErrClientBadRequestMissing, err.Error())
+			return logger.Error(ctx, errs.ErrSenderBadRequest, err.Error())
 		}
 
 		metrics.CacheRequestTotal.WithLabelValues(ca.TableName, "hit").Add(1)
@@ -93,7 +93,7 @@ WHERE
 		metrics.CacheRequestTotal.WithLabelValues(ca.TableName, "miss").Add(1)
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // Set adds a cached value to the DB.
@@ -104,7 +104,7 @@ func (ca *Cache) Set(ctx context.Context) errs.Err {
 
 	b, err := encode(ca.Value)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	if ca.ID == nil {
@@ -114,7 +114,7 @@ func (ca *Cache) Set(ctx context.Context) errs.Err {
 
 	ca.Value = b
 
-	return logger.Log(ctx, db.Exec(ctx, `
+	return logger.Error(ctx, db.Exec(ctx, `
 INSERT INTO cache (
 	  auth_account_id
 	, auth_household_id

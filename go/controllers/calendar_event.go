@@ -21,7 +21,7 @@ import (
 func (*Handler) CalendarEventCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
 }
 
 // CalendarEventDelete deletes a CalendarEvent.
@@ -38,7 +38,7 @@ func (*Handler) CalendarEventCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CalendarEventDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
 }
 
 // CalendarEventRead reads a CalendarEvent.
@@ -55,7 +55,7 @@ func (*Handler) CalendarEventDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CalendarEventRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
 }
 
 // CalendarEventUpdate updates a CalendarEvent.
@@ -73,7 +73,7 @@ func (*Handler) CalendarEventRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CalendarEventUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.CalendarEvent{}, w, r)) //nolint:errcheck
 }
 
 // CalendarEventsRead reads all CalendarEvents for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) CalendarEventUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CalendarEventsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.CalendarEvents{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.CalendarEvents{}, w)) //nolint:errcheck
 }

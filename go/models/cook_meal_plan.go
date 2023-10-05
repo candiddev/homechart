@@ -45,7 +45,7 @@ func (c *CookMealPlan) create(ctx context.Context, _ CreateOpts) errs.Err {
 		c.CookRecipeScale = "1"
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, c, `
+	return logger.Error(ctx, db.Query(ctx, false, c, `
 INSERT INTO cook_meal_plan (
 	  auth_account_id
 	, auth_household_id
@@ -111,7 +111,7 @@ func (c *CookMealPlan) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, c, `
+	return logger.Error(ctx, db.Query(ctx, false, c, `
 UPDATE cook_meal_plan
 SET
 	  auth_account_id = :auth_account_id
@@ -142,7 +142,7 @@ func CookMealPlansDelete(ctx context.Context) {
 
 	query := fmt.Sprintf("DELETE FROM cook_meal_plan WHERE date < CURRENT_DATE - INTERVAL '%d day'", c.App.KeepCookMealPlanDays)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }
 
 // CookMealPlansReadAssistant reads all plans for an Assistant and returns a text prompt.
@@ -235,7 +235,7 @@ RETURNING
 `, nil)
 
 	if err != nil {
-		return n, logger.Log(ctx, err)
+		return n, logger.Error(ctx, err)
 	}
 
 	for i := range p {
@@ -277,5 +277,5 @@ RETURNING
 		}
 	}
 
-	return n, logger.Log(ctx, err)
+	return n, logger.Error(ctx, err)
 }

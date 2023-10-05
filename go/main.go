@@ -2,15 +2,11 @@
 package main
 
 import (
-	"context"
-	"errors"
 	"os"
 
 	"github.com/candiddev/homechart/go/config"
 	"github.com/candiddev/shared/go/cli"
 	"github.com/candiddev/shared/go/crypto"
-	"github.com/candiddev/shared/go/errs"
-	"github.com/candiddev/shared/go/logger"
 )
 
 //nolint:gochecknoglobals
@@ -34,14 +30,6 @@ func main() {
 			"run": {
 				Run:   run,
 				Usage: "Start Homechart API server",
-			},
-			"serve": { // TODO remove this
-				Name: "serve",
-				Run: func(ctx context.Context, args []string, config *config.Config) errs.Err {
-					logger.Log(ctx, errs.NewCLIErr(errors.New("homechart serve has been deprecated, please switch to homechart run"))) //nolint:errcheck
-
-					return run(ctx, args, config)
-				},
 			},
 			"seed": {
 				ArgumentsRequired: []string{

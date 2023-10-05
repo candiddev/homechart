@@ -32,7 +32,7 @@ type AuthAccountAuthHouseholds []AuthAccountAuthHousehold
 func (a *AuthAccountAuthHousehold) InviteAccept(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account_auth_household
 SET
 	  auth_account_id = :auth_account_id
@@ -56,7 +56,7 @@ func (a *AuthAccountAuthHousehold) InviteCreate(ctx context.Context) errs.Err {
 			AuthHouseholdID: a.AuthHouseholdID,
 		}
 		if err := aaah.readAuthIDs(ctx); err == nil {
-			return logger.Log(ctx, errs.ErrClientConflictExists)
+			return logger.Error(ctx, errs.ErrSenderConflict)
 		}
 
 		a.AuthAccountID = &aa.ID
@@ -64,14 +64,14 @@ func (a *AuthAccountAuthHousehold) InviteCreate(ctx context.Context) errs.Err {
 
 	a.InviteToken = types.StringLimit(types.NewNanoid())
 
-	return logger.Log(ctx, a.create(ctx, CreateOpts{}))
+	return logger.Error(ctx, a.create(ctx, CreateOpts{}))
 }
 
 // InviteDelete removes an AuthAccountAuthHousehold using an invite token.
 func (a *AuthAccountAuthHousehold) InviteDelete(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Exec(ctx, `
+	return logger.Error(ctx, db.Exec(ctx, `
 DELETE FROM auth_account_auth_household
 WHERE invite_token = UPPER(:invite_token)
 `, a))
@@ -87,7 +87,7 @@ func (a *AuthAccountAuthHousehold) create(ctx context.Context, _ CreateOpts) err
 
 	a.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 INSERT INTO auth_account_auth_household (
 	  auth_account_id
 	, auth_household_id
@@ -124,7 +124,7 @@ func (*AuthAccountAuthHousehold) getType() modelType {
 func (a *AuthAccountAuthHousehold) readAuthIDs(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 SELECT * FROM auth_account_auth_household
 WHERE
 	auth_account_id = :auth_account_id
@@ -142,7 +142,7 @@ func (a *AuthAccountAuthHousehold) setIDs(_, authHouseholdID *uuid.UUID) {
 func (a *AuthAccountAuthHousehold) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account_auth_household
 SET
 	  color = :color

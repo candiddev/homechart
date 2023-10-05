@@ -21,7 +21,7 @@ func (h *Handler) AuthResetCreate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthAccount
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -35,7 +35,7 @@ func (h *Handler) AuthResetCreate(w http.ResponseWriter, r *http.Request) {
 	// Read AuthAccount
 	err := a.ReadPasswordReset(ctx)
 	if err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		m.BodySMTP += "\n\n" + yaml8n.EmailPasswordResetBodyMissing.Translate(a.ISO639Code)
 	} else {
@@ -47,7 +47,7 @@ func (h *Handler) AuthResetCreate(w http.ResponseWriter, r *http.Request) {
 
 		err = a.UpdatePasswordReset(ctx)
 		if err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -58,8 +58,8 @@ func (h *Handler) AuthResetCreate(w http.ResponseWriter, r *http.Request) {
 
 	go m.Send(ctx, nil) //nolint:errcheck
 
-	logger.LogNotice(noticeAuthAccountReset, a.EmailAddress.String())
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	logger.Info(ctx, noticeAuthAccountReset, a.EmailAddress.String())
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }
 
 // AuthResetUpdate resets an AuthAccount password using a token.
@@ -70,7 +70,7 @@ func (*Handler) AuthResetUpdate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthAccount
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -80,14 +80,14 @@ func (*Handler) AuthResetUpdate(w http.ResponseWriter, r *http.Request) {
 
 	err := old.ReadPasswordReset(ctx)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	// Check token
 	if ((a.PasswordResetToken == nil && old.PasswordResetToken != nil) || (a.PasswordResetToken != nil && old.PasswordResetToken == nil) || (*a.PasswordResetToken != *old.PasswordResetToken)) || (old.PasswordResetExpires != time.Time{} && old.PasswordResetExpires.Before(models.GenerateTimestamp())) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientNoContent))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderNoContent))
 
 		return
 	}
@@ -96,15 +96,15 @@ func (*Handler) AuthResetUpdate(w http.ResponseWriter, r *http.Request) {
 	a.ID = old.ID
 
 	if err = a.UpdatePasswordHash(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	a.TOTPSecret = ""
 
-	if err = a.UpdateTOTP(ctx); err != nil && !errors.Is(err, errs.ErrClientBadRequestMissing) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	if err = a.UpdateTOTP(ctx); err != nil && !errors.Is(err, errs.ErrSenderBadRequest) {
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -116,7 +116,7 @@ func (*Handler) AuthResetUpdate(w http.ResponseWriter, r *http.Request) {
 	err = a.UpdatePasswordReset(ctx)
 
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -128,10 +128,10 @@ func (*Handler) AuthResetUpdate(w http.ResponseWriter, r *http.Request) {
 		ToSMTP:      old.EmailAddress.String(),
 	}
 	if sendErr := m.Send(ctx, nil); sendErr != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, sendErr))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, sendErr))
 
 		return
 	}
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }

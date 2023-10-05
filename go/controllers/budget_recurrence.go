@@ -27,20 +27,20 @@ func (*Handler) BudgetRecurrenceCreate(w http.ResponseWriter, r *http.Request) {
 	var b models.BudgetRecurrence
 
 	if err := getJSON(ctx, &b, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	// Validate entries
 	if err := b.Template.Validate(); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	if err := b.Recurrence.Validate(); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -58,7 +58,7 @@ func (*Handler) BudgetRecurrenceCreate(w http.ResponseWriter, r *http.Request) {
 		if err := models.Create(ctx, &bp, models.CreateOpts{
 			PermissionsOpts: p,
 		}); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -69,7 +69,7 @@ func (*Handler) BudgetRecurrenceCreate(w http.ResponseWriter, r *http.Request) {
 		PermissionsOpts: p,
 	})
 
-	WriteResponse(ctx, w, b, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, b, nil, 1, "", logger.Error(ctx, err))
 }
 
 // BudgetRecurrenceDelete deletes a BudgetRecurrence.
@@ -86,7 +86,7 @@ func (*Handler) BudgetRecurrenceCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetRecurrenceDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.BudgetRecurrence{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.BudgetRecurrence{}, w, r)) //nolint:errcheck
 }
 
 // BudgetRecurrenceRead reads a BudgetRecurrence.
@@ -103,7 +103,7 @@ func (*Handler) BudgetRecurrenceDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetRecurrenceRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.BudgetRecurrence{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.BudgetRecurrence{}, w, r)) //nolint:errcheck
 }
 
 // BudgetRecurrenceUpdate updates a BudgetRecurrence.
@@ -125,20 +125,20 @@ func (*Handler) BudgetRecurrenceUpdate(w http.ResponseWriter, r *http.Request) {
 	var b models.BudgetRecurrence
 
 	if err := getJSON(ctx, &b, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	// Validate entries
 	if err := b.Template.Validate(); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	if err := b.Recurrence.Validate(); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -146,7 +146,7 @@ func (*Handler) BudgetRecurrenceUpdate(w http.ResponseWriter, r *http.Request) {
 	// Get Recurrence ID and AuthHouseholdID
 	b.ID = getUUID(r, "id")
 	if b.ID == uuid.Nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
@@ -163,7 +163,7 @@ func (*Handler) BudgetRecurrenceUpdate(w http.ResponseWriter, r *http.Request) {
 		if err := models.Create(ctx, &bp, models.CreateOpts{
 			PermissionsOpts: p,
 		}); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -174,7 +174,7 @@ func (*Handler) BudgetRecurrenceUpdate(w http.ResponseWriter, r *http.Request) {
 		PermissionsOpts: p,
 	})
 
-	WriteResponse(ctx, w, b, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, b, nil, 1, "", logger.Error(ctx, err))
 }
 
 // BudgetRecurrencesRead reads all BudgetRecurrences for an AuthHousehold.
@@ -190,5 +190,5 @@ func (*Handler) BudgetRecurrenceUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetRecurrencesRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.BudgetRecurrences{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.BudgetRecurrences{}, w)) //nolint:errcheck
 }

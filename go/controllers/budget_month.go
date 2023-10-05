@@ -32,7 +32,7 @@ func (*Handler) BudgetMonthRead(w http.ResponseWriter, r *http.Request) {
 
 	p := getPermissions(ctx)
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&b.AuthHouseholdID, models.PermissionComponentBudget, models.PermissionView) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -42,9 +42,9 @@ func (*Handler) BudgetMonthRead(w http.ResponseWriter, r *http.Request) {
 	}
 
 	err := b.Read(ctx)
-	if errors.Is(err, errs.ErrClientBadRequestMissing) {
-		err = errs.ErrClientNoContent
+	if errors.Is(err, errs.ErrSenderBadRequest) {
+		err = errs.ErrSenderNoContent
 	}
 
-	WriteResponse(ctx, w, b, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, b, nil, 1, "", logger.Error(ctx, err))
 }

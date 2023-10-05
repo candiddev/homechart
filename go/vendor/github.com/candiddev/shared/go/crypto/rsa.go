@@ -14,6 +14,7 @@ import (
 	"github.com/candiddev/shared/go/cli"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
+	"github.com/candiddev/shared/go/types"
 )
 
 // RSAPrivateKey is a private key type.
@@ -169,10 +170,10 @@ func (RSAPublicKey) Type() Type {
 }
 
 // GenerateRSA2048 is a helper function for CLI apps to generate an RSA-2048 public/private keypair.
-func GenerateRSA2048[T cli.AppConfig[any]](ctx context.Context, _ []string, c T) errs.Err {
+func GenerateRSA2048[T cli.AppConfig[any]](ctx context.Context, _ []string, _ T) errs.Err {
 	prv, pub, err := NewRSA()
 	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	m := map[string]string{
@@ -180,7 +181,7 @@ func GenerateRSA2048[T cli.AppConfig[any]](ctx context.Context, _ []string, c T)
 		"publicKey":  string(pub),
 	}
 
-	c.CLIConfig().Print(m)
+	logger.Info(ctx, types.JSONToString(m))
 
 	return nil
 }

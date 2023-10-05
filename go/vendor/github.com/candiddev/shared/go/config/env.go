@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/candiddev/shared/go/errs"
+	"github.com/candiddev/shared/go/jsonnet"
 	"github.com/candiddev/shared/go/logger"
 )
 
@@ -15,8 +16,11 @@ var ErrUpdateEnv = errors.New("error updating config from environment variable")
 
 func getEnv(ctx context.Context, config any, prefix string) errs.Err {
 	if c := os.Getenv(strings.ToUpper(prefix) + "_CONFIG"); c != "" {
-		if err := Render(ctx, config, config, c); err != nil {
-			return logger.Log(ctx, err)
+		r := jsonnet.NewRender(ctx, config)
+		r.Import(r.GetString(c))
+
+		if err := r.Render(ctx, config); err != nil {
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -24,10 +28,10 @@ func getEnv(ctx context.Context, config any, prefix string) errs.Err {
 	v := reflect.ValueOf(config).Elem()
 
 	if err := iterateConfig(prefix+"_", k, v, lookupEnv, nil); err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(ErrUpdateEnv, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrUpdateEnv, err))
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func lookupEnv(key string, _ any) (string, error) {

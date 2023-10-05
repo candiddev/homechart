@@ -40,7 +40,7 @@ func (b *BudgetAccount) create(ctx context.Context, opts CreateOpts) errs.Err {
 		b.ShortID = types.NewNanoid()
 	}
 
-	err := logger.Log(ctx, db.Query(ctx, false, b, `
+	err := logger.Error(ctx, db.Query(ctx, false, b, `
 INSERT INTO budget_account (
 	  auth_household_id
 	, budget
@@ -70,8 +70,8 @@ RETURNING *
 		Name:            types.StringLimit(yaml8n.ObjectBudgetStartingBalance.Translate(GetISO639Code(ctx))),
 	}
 
-	if err := logger.Log(ctx, bp.create(ctx, CreateOpts{})); err != nil {
-		return logger.Log(ctx, err)
+	if err := logger.Error(ctx, bp.create(ctx, CreateOpts{})); err != nil {
+		return logger.Error(ctx, err)
 	}
 
 	bc := BudgetCategory{
@@ -82,7 +82,7 @@ RETURNING *
 	}
 
 	if err := bc.create(ctx, opts); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	date := types.CivilDateOf(GenerateTimestamp())
@@ -104,7 +104,7 @@ RETURNING *
 		Date: date,
 	}
 
-	return logger.Log(ctx, bt.create(ctx, CreateOpts{}))
+	return logger.Error(ctx, bt.create(ctx, CreateOpts{}))
 }
 
 func (b *BudgetAccount) getChange(_ context.Context) string {
@@ -141,7 +141,7 @@ AND auth_household_id = :auth_household_id
 RETURNING *
 `, b)
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // BudgetAccounts is multiple BudgetAccount.
@@ -171,9 +171,9 @@ func BudgetAccountsInit(ctx context.Context, authHouseholdID uuid.UUID) errs.Err
 		account.AuthHouseholdID = authHouseholdID
 
 		if err := account.create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

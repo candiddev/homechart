@@ -21,7 +21,7 @@ import (
 func (*Handler) CalendarICalendarCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
 }
 
 // CalendarICalendarDelete deletes a CalendarICalendar.
@@ -38,7 +38,7 @@ func (*Handler) CalendarICalendarCreate(w http.ResponseWriter, r *http.Request) 
 func (*Handler) CalendarICalendarDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
 }
 
 // CalendarICalendarRead reads a CalendarICalendar.
@@ -55,7 +55,7 @@ func (*Handler) CalendarICalendarDelete(w http.ResponseWriter, r *http.Request) 
 func (*Handler) CalendarICalendarRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
 }
 
 // CalendarICalendarUpdate updates a CalendarICalendar.
@@ -73,7 +73,7 @@ func (*Handler) CalendarICalendarRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CalendarICalendarUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.CalendarICalendar{}, w, r)) //nolint:errcheck
 }
 
 // CalendarICalendarsRead reads all CalendarICalendars for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) CalendarICalendarUpdate(w http.ResponseWriter, r *http.Request) 
 func (*Handler) CalendarICalendarsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.CalendarICalendars{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.CalendarICalendars{}, w)) //nolint:errcheck
 }

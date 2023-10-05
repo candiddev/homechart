@@ -17,7 +17,7 @@ import (
 func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,gocyclo
 	central, err := time.LoadLocation("US/Central")
 	if err != nil {
-		return nil, logger.Log(ctx, errs.NewServerErr(err))
+		return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	tz := types.TimeZone(central.String())
@@ -214,7 +214,7 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 		seed.AuthAccounts[i].Verified = true
 
 		if err := seed.AuthAccounts[i].GeneratePasswordHash(ctx); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 	}
 
@@ -1825,18 +1825,18 @@ Call someone!
 	}
 
 	if err := seed.Restore(ctx, true); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	for i := range seed.AuthAccounts {
 		if err := seed.AuthAccounts[i].Read(ctx); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 	}
 
 	for i := range seed.AuthHouseholds {
 		if err := seed.AuthHouseholds[i].Read(ctx); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 	}
 
@@ -1852,7 +1852,7 @@ Call someone!
 
 	for i := range seed.AuthSessions {
 		if err := seed.AuthSessions[i].Read(ctx, false); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 	}
 
@@ -1861,28 +1861,28 @@ Call someone!
 	if _, _, err := ReadAll(ctx, &seed.Bookmarks, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.BudgetAccounts = BudgetAccounts{}
 	if _, _, err := ReadAll(ctx, &seed.BudgetAccounts, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.BudgetCategories = BudgetCategories{}
 	if _, _, err := ReadAll(ctx, &seed.BudgetCategories, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.BudgetPayees = BudgetPayees{}
 	if _, _, err := ReadAll(ctx, &seed.BudgetPayees, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	month := BudgetMonth{
@@ -1890,7 +1890,7 @@ Call someone!
 		YearMonth:       today.YearMonth(),
 	}
 	if err := month.Read(ctx); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.BudgetMonths = BudgetMonths{
@@ -1901,92 +1901,92 @@ Call someone!
 	if _, _, err := ReadAll(ctx, &seed.CookMealTimes, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.CookRecipes = CookRecipes{}
 	if _, _, err := ReadAll(ctx, &seed.CookRecipes, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.HealthItems = HealthItems{}
 	if _, _, err := ReadAll(ctx, &seed.HealthItems, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.HealthLogs = HealthLogs{}
 	if _, _, err := ReadAll(ctx, &seed.HealthLogs, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.InventoryCollections = InventoryCollections{}
 	if _, _, err := ReadAll(ctx, &seed.InventoryCollections, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.NotesPages = NotesPages{}
 	if _, _, err := ReadAll(ctx, &seed.NotesPages, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.NotesPageVersions = NotesPageVersions{}
 	if _, _, err := ReadAll(ctx, &seed.NotesPageVersions, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.PlanProjects = PlanProjects{}
 	if _, _, err := ReadAll(ctx, &seed.PlanProjects, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.PlanTasks = PlanTasks{}
 	if _, _, err := ReadAll(ctx, &seed.PlanTasks, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.RewardCards = RewardCards{}
 	if _, _, err := ReadAll(ctx, &seed.RewardCards, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.ShopCategories = ShopCategories{}
 	if _, _, err := ReadAll(ctx, &seed.ShopCategories, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.ShopItems = ShopItems{}
 	if _, _, err := ReadAll(ctx, &seed.ShopItems, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	seed.ShopLists = ShopLists{}
 	if _, _, err := ReadAll(ctx, &seed.ShopLists, ReadAllOpts{
 		PermissionsOpts: p,
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
-	return seed, logger.Log(ctx, nil)
+	return seed, logger.Error(ctx, nil)
 }

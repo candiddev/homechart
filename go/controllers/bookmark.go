@@ -22,7 +22,7 @@ func (*Handler) BookmarkCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	err := actionCreate.do(ctx, &models.Bookmark{}, w, r)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // BookmarkDelete deletes a Bookmark.
@@ -40,7 +40,7 @@ func (*Handler) BookmarkDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	err := actionDelete.do(ctx, &models.Bookmark{}, w, r)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // BookmarkRead reads a Bookmark.
@@ -58,7 +58,7 @@ func (*Handler) BookmarkRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	err := actionRead.do(ctx, &models.Bookmark{}, w, r)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // BookmarkUpdate updates a Bookmark.
@@ -77,7 +77,7 @@ func (*Handler) BookmarkUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	err := actionUpdate.do(ctx, &models.Bookmark{}, w, r)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // BookmarksRead reads all Bookmarks for an AuthHousehold.
@@ -94,5 +94,5 @@ func (*Handler) BookmarksRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	err := readAll(ctx, &models.Bookmarks{}, w)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }

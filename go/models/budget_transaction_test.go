@@ -158,7 +158,7 @@ func TestBudgetTransactionValidate(t *testing.T) {
 		input BudgetTransaction
 	}{
 		"no entries": {
-			err:   errs.ErrClientBadRequestProperty,
+			err:   errs.ErrSenderBadRequest,
 			input: BudgetTransaction{},
 		},
 		"3 accounts": {
@@ -594,7 +594,7 @@ func TestBudgetTransactionsRollup(t *testing.T) {
 					},
 					Date: d,
 				}
-				logger.Log(ctx, bt1.Validate())
+				logger.Error(ctx, bt1.Validate())
 				assert.Equal(t, bt1.Validate(), nil)
 				bt1.create(ctx, CreateOpts{})
 

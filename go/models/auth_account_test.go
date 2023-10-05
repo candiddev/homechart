@@ -620,7 +620,7 @@ func TestAuthAccountRead(t *testing.T) {
 		Updated: output1.Updated,
 	}
 
-	assert.Equal[error](t, output2.Read(ctx), errs.ErrClientNoContent)
+	assert.Equal[error](t, output2.Read(ctx), errs.ErrSenderNoContent)
 	assert.Equal(t, output2.EmailAddress, types.EmailAddress(""))
 
 	var output AuthAccount
@@ -917,7 +917,7 @@ func TestAuthAccountUpdatePrivatePublicKeys(t *testing.T) {
 		},
 	}
 
-	assert.Equal[error](t, Read(ctx, &sv1, r), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, Read(ctx, &sv1, r), errs.ErrSenderNotFound)
 	assert.Equal(t, Read(ctx, &sv2, r), nil)
 	assert.Equal(t, sv2.Keys, seed.SecretsVaults[1].Keys)
 
@@ -968,7 +968,7 @@ func TestAuthAccountUpdateTOTP(t *testing.T) {
 	}{
 		{
 			name:  "update - child",
-			err:   errs.ErrClientNoContent,
+			err:   errs.ErrSenderNoContent,
 			input: &aac,
 			want:  "",
 		},
@@ -1069,7 +1069,7 @@ func TestAuthAccountsDeleteInactive(t *testing.T) {
 	_, n, _ = AuthAccountsRead(ctx, "", uuid.Nil, 0)
 
 	assert.Equal(t, n, want)
-	assert.Equal[error](t, aa1.Read(ctx), errs.ErrClientNoContent)
+	assert.Equal[error](t, aa1.Read(ctx), errs.ErrSenderNoContent)
 	assert.Equal(t, aa2.Delete(ctx), nil)
 
 	ah.Delete(ctx)

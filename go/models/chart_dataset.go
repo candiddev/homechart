@@ -58,7 +58,7 @@ func ChartDatasetsReadBudgetCategories(ctx context.Context, authHouseholdID uuid
 		groupBy = "grouping"
 	}
 
-	return d, logger.Log(ctx, db.Query(ctx, true, &d, fmt.Sprintf(`
+	return d, logger.Error(ctx, db.Query(ctx, true, &d, fmt.Sprintf(`
 SELECT
 	  %[1]s AS name
 	, coalesce(
@@ -87,7 +87,7 @@ func ChartDatasetsReadBudgetIncomeExpense(ctx context.Context, authHouseholdID u
 
 	d := ChartDatasets{}
 
-	return d, logger.Log(ctx, db.Query(ctx, true, &d, `
+	return d, logger.Error(ctx, db.Query(ctx, true, &d, `
 SELECT
 	format('%s-%s', left(year_month::text, 4), right(year_month::text, -4)) as name,
 	coalesce(
@@ -129,7 +129,7 @@ func ChartDatasetsReadBudgetPayees(ctx context.Context, authHouseholdID uuid.UUI
 
 	d := ChartDatasets{}
 
-	return d, logger.Log(ctx, db.Query(ctx, true, &d, `
+	return d, logger.Error(ctx, db.Query(ctx, true, &d, `
 SELECT
 	CASE
 		WHEN budget_transaction.budget_payee_id IS NULL

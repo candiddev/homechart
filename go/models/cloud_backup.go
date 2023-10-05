@@ -34,7 +34,7 @@ WHERE
 	auth_household_id = $1
 	AND id = $2
 `, nil, authHouseholdID, id)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 
 	return output
 }
@@ -45,7 +45,7 @@ func CloudBackupsRead(ctx context.Context, authHouseholdID uuid.UUID) (CloudBack
 
 	backups := CloudBackups{}
 
-	return backups, logger.Log(ctx, db.Query(ctx, true, &backups, `
+	return backups, logger.Error(ctx, db.Query(ctx, true, &backups, `
 SELECT
 	  created
 	, id
@@ -73,7 +73,7 @@ INSERT INTO cloud_backup (
 RETURNING *
 `, b)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	delErr := db.Exec(ctx, `
@@ -86,18 +86,18 @@ WHERE
 		LIMIT 5
 	);
 `, nil)
-	if delErr != nil && !errors.Is(delErr, errs.ErrClientNoContent) {
-		return logger.Log(ctx, delErr)
+	if delErr != nil && !errors.Is(delErr, errs.ErrSenderNoContent) {
+		return logger.Error(ctx, delErr)
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // Delete removes a CloudBackup from the database.
 func (b *CloudBackup) Delete(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Exec(ctx, `
+	return logger.Error(ctx, db.Exec(ctx, `
 DELETE FROM cloud_backup
 WHERE id = :id
 AND auth_household_id = :auth_household_id

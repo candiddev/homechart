@@ -39,7 +39,7 @@ func (s *ShopList) create(ctx context.Context, opts CreateOpts) errs.Err {
 		s.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, s, `
+	return logger.Error(ctx, db.Query(ctx, false, s, `
 INSERT INTO shop_list (
 	  auth_account_id
 	, auth_household_id
@@ -110,7 +110,7 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs().String())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, s, query, s))
+	return logger.Error(ctx, db.Query(ctx, false, s, query, s))
 }
 
 // ShopLists is multiple ShopList.
@@ -133,11 +133,11 @@ func ShopListsInitHousehold(ctx context.Context, authHouseholdID uuid.UUID) errs
 
 	for i := range lists {
 		if err := lists[i].create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // ShopListsInitPersonal adds default personal lists to the database.
@@ -153,9 +153,9 @@ func ShopListsInitPersonal(ctx context.Context, authAccountID uuid.UUID) errs.Er
 
 	for i := range lists {
 		if err := lists[i].create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

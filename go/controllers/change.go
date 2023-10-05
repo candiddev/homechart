@@ -25,8 +25,8 @@ func (*Handler) ChangeRead(w http.ResponseWriter, r *http.Request) {
 
 	id := getUUID(r, "id")
 	if id == uuid.Nil {
-		err := errs.ErrClientBadRequestProperty
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		err := errs.ErrSenderBadRequest
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -42,10 +42,10 @@ func (*Handler) ChangeRead(w http.ResponseWriter, r *http.Request) {
 	})
 
 	if err == nil && !c.IsPermitted(*p.AuthHouseholdsPermissions) {
-		err = errs.ErrClientBadRequestMissing
+		err = errs.ErrSenderNotFound
 	}
 
-	WriteResponse(ctx, w, c, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, c, nil, 1, "", logger.Error(ctx, err))
 }
 
 // ChangesRead reads all Changes for an AuthHousehold.
@@ -72,5 +72,5 @@ func (*Handler) ChangesRead(w http.ResponseWriter, r *http.Request) {
 
 	c = c.Filter(*p.AuthHouseholdsPermissions)
 
-	WriteResponse(ctx, w, c, ids, 0, hash, logger.Log(ctx, err))
+	WriteResponse(ctx, w, c, ids, 0, hash, logger.Error(ctx, err))
 }

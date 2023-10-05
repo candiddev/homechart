@@ -16,15 +16,22 @@ func (sampler) Description() string {
 }
 
 func (s sampler) ShouldSample(p tracesdk.SamplingParameters) tracesdk.SamplingResult {
-	if b, ok := p.ParentContext.Value("sample").(bool); ok && b || rand.Float64() <= s.ratio { //nolint:gosec
-		return tracesdk.SamplingResult{
-			Decision:   tracesdk.RecordAndSample,
-			Tracestate: trace.SpanContextFromContext(p.ParentContext).TraceState(),
+	decision := tracesdk.Drop
+
+	for i := range p.Attributes {
+		if p.Attributes[i].Key == "level" && p.Attributes[i].Value.AsString() != string(LevelDebug) {
+			decision = tracesdk.RecordAndSample
+
+			break
 		}
 	}
 
+	if decision == tracesdk.Drop && rand.Float64() <= s.ratio { //nolint:gosec
+		decision = tracesdk.RecordAndSample
+	}
+
 	return tracesdk.SamplingResult{
-		Decision:   tracesdk.Drop,
+		Decision:   decision,
 		Tracestate: trace.SpanContextFromContext(p.ParentContext).TraceState(),
 	}
 }

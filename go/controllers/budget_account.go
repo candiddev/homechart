@@ -21,7 +21,7 @@ import (
 func (*Handler) BudgetAccountCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
 }
 
 // BudgetAccountDelete deletes a BudgetAccount.
@@ -38,7 +38,7 @@ func (*Handler) BudgetAccountCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetAccountDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
 }
 
 // BudgetAccountRead reads a BudgetAccount.
@@ -55,7 +55,7 @@ func (*Handler) BudgetAccountDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetAccountRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
 }
 
 // BudgetAccountReconcile reconciles all cleared BudgetTransactions for a BudgetAccount.
@@ -76,7 +76,7 @@ func (*Handler) BudgetAccountReconcile(w http.ResponseWriter, r *http.Request) {
 	ba := getUUID(r, "id")
 
 	err := models.BudgetTransactionAccountsReconcile(ctx, getPermissions(ctx), ba)
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }
 
 // BudgetAccountUpdate updates a BudgetAccount.
@@ -94,7 +94,7 @@ func (*Handler) BudgetAccountReconcile(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetAccountUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.BudgetAccount{}, w, r)) //nolint:errcheck
 }
 
 // BudgetAccountsRead reads all BudgetAccounts for an AuthHousehold.
@@ -110,5 +110,5 @@ func (*Handler) BudgetAccountUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetAccountsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.BudgetAccounts{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.BudgetAccounts{}, w)) //nolint:errcheck
 }

@@ -23,7 +23,7 @@ var seed *models.Data
 func TestMain(m *testing.M) {
 	ctx = context.Background()
 	c = config.Default()
-	c.Parse(ctx, "", "../../homechart_config.yaml")
+	c.Parse(ctx, "", "../../homechart_config.jsonnet")
 
 	if err := models.Setup(ctx, c, true, true); err != nil {
 		os.Exit(1)
@@ -36,7 +36,7 @@ func TestMain(m *testing.M) {
 		os.Exit(1)
 	}
 
-	ctx = logger.SetDebug(ctx, true)
+	ctx = logger.SetLevel(ctx, logger.LevelDebug)
 
 	r := m.Run()
 	os.Exit(r)

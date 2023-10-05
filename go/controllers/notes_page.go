@@ -21,7 +21,7 @@ import (
 func (*Handler) NotesPageCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
 }
 
 // NotesPageDelete deletes a NotesPage.
@@ -38,7 +38,7 @@ func (*Handler) NotesPageCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) NotesPageDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
 }
 
 // NotesPageRead reads a NotesPage.
@@ -55,7 +55,7 @@ func (*Handler) NotesPageDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) NotesPageRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
 }
 
 // NotesPageUpdate updates a NotesPage.
@@ -73,7 +73,7 @@ func (*Handler) NotesPageRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) NotesPageUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.NotesPage{}, w, r)) //nolint:errcheck
 }
 
 // NotesPagesRead reads all NotesPages for an AuthAccount and AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) NotesPageUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) NotesPagesRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.NotesPages{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.NotesPages{}, w)) //nolint:errcheck
 }

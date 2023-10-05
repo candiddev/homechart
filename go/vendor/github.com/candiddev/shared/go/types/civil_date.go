@@ -2,6 +2,7 @@ package types
 
 import (
 	"database/sql/driver"
+	"errors"
 	"fmt"
 	"strconv"
 	"strings"
@@ -10,8 +11,7 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-// MsgCivilDate is the client message for date format issues.
-const MsgCivilDate = "Date format should match YYYY-MM-DD"
+var ErrParseCivilDate = errs.ErrSenderBadRequest.Set("Date format should match YYYY-MM-DD").Wrap(errors.New("error parsing CivilDate"))
 
 // CivilDate represents a year, month and day.
 type CivilDate struct {
@@ -86,7 +86,7 @@ func MapToCivilDate(m map[string]any) CivilDate {
 func ParseCivilDate(s string) (CivilDate, error) {
 	t, err := time.Parse("2006-01-02", s)
 	if err != nil {
-		return CivilDate{}, errs.NewClientBadRequestErr(MsgCivilDate, err)
+		return CivilDate{}, ErrParseCivilDate.Wrap(err)
 	}
 
 	return CivilDateOf(t), nil

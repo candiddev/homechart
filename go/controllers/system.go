@@ -19,7 +19,7 @@ func (h *Handler) SystemInfoRead(w http.ResponseWriter, r *http.Request) {
 		h.sendAnalytics(analyticsEventInit, types.UserAgent(strings.ToLower(p)), r)
 	}
 
-	WriteResponse(ctx, w, *h.Info, nil, 1, "", logger.Log(ctx, nil))
+	WriteResponse(ctx, w, *h.Info, nil, 1, "", logger.Error(ctx, nil))
 }
 
 // SystemHealthRead checks application health and returns JSON.
@@ -32,6 +32,6 @@ func (*Handler) SystemHealthRead(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(health.Status)
 
 	if err := json.NewEncoder(w).Encode(&health); err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 	}
 }

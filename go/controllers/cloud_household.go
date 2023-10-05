@@ -30,7 +30,7 @@ func authHouseholdReadAndCheckExpire(ctx context.Context, selfHostedID *uuid.Nul
 	}
 
 	if ah.IsExpired() {
-		return &ah, errs.ErrClientPaymentRequired
+		return &ah, errs.ErrSenderPaymentRequired
 	}
 
 	return &ah, nil
@@ -39,8 +39,8 @@ func authHouseholdReadAndCheckExpire(ctx context.Context, selfHostedID *uuid.Nul
 func (h *Handler) proxyCloudRequest(ctx context.Context, w http.ResponseWriter, method, path string, body io.Reader) errs.Err {
 	r, err := http.NewRequestWithContext(ctx, method, fmt.Sprintf("%s%s", h.Config.App.CloudEndpoint, path), body)
 	if err != nil {
-		e := errs.NewServerErr(err)
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, e))
+		e := errs.ErrReceiver.Wrap(err)
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, e))
 
 		return e
 	}
@@ -51,7 +51,7 @@ func (h *Handler) proxyCloudRequest(ctx context.Context, w http.ResponseWriter, 
 	if err != nil {
 		w.WriteHeader(http.StatusNotFound)
 
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	defer res.Body.Close()
@@ -61,10 +61,10 @@ func (h *Handler) proxyCloudRequest(ctx context.Context, w http.ResponseWriter, 
 
 	_, err = io.Copy(w, res.Body)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // CloudHouseholdCreate creates a new AuthHousehold using just an email address.
@@ -78,7 +78,7 @@ func (h *Handler) CloudHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 		var c cloudHousehold
 
 		if err := getJSON(ctx, &c, r.Body); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -90,7 +90,7 @@ func (h *Handler) CloudHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 			SelfHostedID: types.UUIDToNullUUID(id),
 		}, true)
 
-		WriteResponse(ctx, w, s, nil, 1, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, s, nil, 1, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -99,19 +99,19 @@ func (h *Handler) CloudHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 	var c cloudHousehold
 
 	if err := getJSON(ctx, &c, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	j, err := json.Marshal(c)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.NewServerErr(err)))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrReceiver.Wrap(err)))
 
 		return
 	}
 
-	logger.Log(ctx, h.proxyCloudRequest(ctx, w, "POST", fmt.Sprintf("/api/v1/cloud/%s", getUUID(r, "self_hosted_id")), bytes.NewBuffer(j))) //nolint:errcheck
+	logger.Error(ctx, h.proxyCloudRequest(ctx, w, "POST", fmt.Sprintf("/api/v1/cloud/%s", getUUID(r, "self_hosted_id")), bytes.NewBuffer(j))) //nolint:errcheck
 }
 
 // CloudHouseholdRead verifies if an AuthHouseholdID is enabled for cloud features.
@@ -122,7 +122,7 @@ func (h *Handler) CloudHouseholdRead(w http.ResponseWriter, r *http.Request) {
 		id := getUUID(r, "self_hosted_id")
 
 		if id == uuid.Nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 			return
 		}
@@ -131,13 +131,13 @@ func (h *Handler) CloudHouseholdRead(w http.ResponseWriter, r *http.Request) {
 			SelfHostedID: types.UUIDToNullUUID(id),
 		}
 
-		WriteResponse(ctx, w, ah, nil, 1, "", logger.Log(ctx, ah.Read(ctx)))
+		WriteResponse(ctx, w, ah, nil, 1, "", logger.Error(ctx, ah.Read(ctx)))
 
 		return
 	}
 
 	err := h.proxyCloudRequest(ctx, w, "GET", fmt.Sprintf("/api/v1/cloud/%s", getUUID(r, "self_hosted_id")), nil)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // CloudHouseholdReadJWT returns a JWT for a household from the cloud.
@@ -148,7 +148,7 @@ func (h *Handler) CloudHouseholdReadJWT(w http.ResponseWriter, r *http.Request) 
 		id := getUUID(r, "self_hosted_id")
 
 		if id == uuid.Nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 			return
 		}
@@ -164,7 +164,7 @@ func (h *Handler) CloudHouseholdReadJWT(w http.ResponseWriter, r *http.Request) 
 			w.WriteHeader(http.StatusNotFound)
 		}
 
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return
 	}
@@ -174,7 +174,7 @@ func (h *Handler) CloudHouseholdReadJWT(w http.ResponseWriter, r *http.Request) 
 	p := getPermissions(ctx)
 
 	if p.AuthHouseholdsPermissions == nil || !p.AuthHouseholdsPermissions.IsPermitted(&id, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -183,7 +183,7 @@ func (h *Handler) CloudHouseholdReadJWT(w http.ResponseWriter, r *http.Request) 
 		ID: id,
 	}
 
-	WriteResponse(ctx, w, ah, nil, 0, "", logger.Log(ctx, ah.ReadJWT(ctx, true)))
+	WriteResponse(ctx, w, ah, nil, 0, "", logger.Error(ctx, ah.ReadJWT(ctx, true)))
 }
 
 // CloudHouseholdUpdate updates a CloudHousehold.
@@ -194,7 +194,7 @@ func (h *Handler) CloudHouseholdUpdate(w http.ResponseWriter, r *http.Request) {
 		id := getUUID(r, "self_hosted_id")
 
 		if id == uuid.Nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 			return
 		}
@@ -203,7 +203,7 @@ func (h *Handler) CloudHouseholdUpdate(w http.ResponseWriter, r *http.Request) {
 		var ah models.AuthHousehold
 
 		if err := getJSON(ctx, &ah, r.Body); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -212,10 +212,10 @@ func (h *Handler) CloudHouseholdUpdate(w http.ResponseWriter, r *http.Request) {
 
 		err := ah.UpdateSelfHosted(ctx)
 
-		WriteResponse(ctx, w, ah, nil, 1, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, ah, nil, 1, "", logger.Error(ctx, err))
 
 		return
 	}
 
-	logger.Log(ctx, h.proxyCloudRequest(ctx, w, "PUT", fmt.Sprintf("/api/v1/cloud/%s", getUUID(r, "self_hosted_id")), r.Body)) //nolint:errcheck
+	logger.Error(ctx, h.proxyCloudRequest(ctx, w, "PUT", fmt.Sprintf("/api/v1/cloud/%s", getUUID(r, "self_hosted_id")), r.Body)) //nolint:errcheck
 }

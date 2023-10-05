@@ -46,7 +46,7 @@ func (s *ShopItem) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	s.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, s, `
+	return logger.Error(ctx, db.Query(ctx, false, s, `
 INSERT INTO shop_item (
 	  auth_account_id
 	, auth_household_id
@@ -138,7 +138,7 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, s, query, s))
+	return logger.Error(ctx, db.Query(ctx, false, s, query, s))
 }
 
 // ShopItems is multiple ShopItem.

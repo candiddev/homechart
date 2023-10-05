@@ -57,7 +57,7 @@ func TestShopCategoriesInit(t *testing.T) {
 
 	tests := []error{
 		nil,
-		errs.ErrClientConflictExists,
+		errs.ErrSenderConflict,
 	}
 
 	for _, tc := range tests {

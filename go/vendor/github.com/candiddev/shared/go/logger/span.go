@@ -10,7 +10,7 @@ func Trace(ctx context.Context) context.Context {
 		return ctx
 	}
 
-	f, _ := getFunc()
+	f, _ := getFunc(2)
 
 	ctx, _ = Tracer.Start(ctx, f)
 

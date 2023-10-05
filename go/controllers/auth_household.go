@@ -27,7 +27,7 @@ func (h *Handler) AuthHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	if getChild(ctx) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -36,7 +36,7 @@ func (h *Handler) AuthHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 	var ah models.AuthHousehold
 
 	if err := getJSON(ctx, &ah, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -45,7 +45,7 @@ func (h *Handler) AuthHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 		ID: models.GetAuthAccountID(ctx),
 	}
 	if err := a.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -53,7 +53,7 @@ func (h *Handler) AuthHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 	ah.SubscriptionExpires = types.CivilDateToday().AddDays(h.Config.App.TrialDays)
 
 	if err := ah.Create(ctx, false); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -63,19 +63,19 @@ func (h *Handler) AuthHouseholdCreate(w http.ResponseWriter, r *http.Request) {
 		AuthHouseholdID: ah.ID,
 	}
 	if err := models.Create(ctx, &aaah, models.CreateOpts{}); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	if err := models.InitHousehold(ctx, ah.ID, a.ID); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	// Get Account ID
-	WriteResponse(ctx, w, ah, nil, 0, "", logger.Log(ctx, ah.Read(ctx)))
+	WriteResponse(ctx, w, ah, nil, 0, "", logger.Error(ctx, ah.Read(ctx)))
 }
 
 // AuthHouseholdDelete deletes an AuthHousehold using URL parameters.
@@ -98,7 +98,7 @@ func (*Handler) AuthHouseholdDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if !getPermissions(ctx).AuthHouseholdsPermissions.IsPermitted(&a.ID, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -106,8 +106,8 @@ func (*Handler) AuthHouseholdDelete(w http.ResponseWriter, r *http.Request) {
 	// Delete account
 	err := a.Delete(ctx)
 
-	logger.LogNotice(noticeAuthHouseholdDeleted, a.ID.String())
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	logger.Info(ctx, noticeAuthHouseholdDeleted, a.ID.String())
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }
 
 // AuthHouseholdExport exports all household data.
@@ -117,27 +117,27 @@ func (*Handler) AuthHouseholdExport(w http.ResponseWriter, r *http.Request) {
 	// Only household admins can export
 	ah := getUUID(r, "auth_household_id")
 	if !getPermissions(ctx).AuthHouseholdsPermissions.IsPermitted(&ah, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	data, err := models.DataFromDatabase(ctx, ah)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	export, err := data.ExportByte(ctx, "")
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	if _, err := w.Write(export); err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
@@ -168,7 +168,7 @@ func (*Handler) AuthHouseholdInviteAccept(w http.ResponseWriter, r *http.Request
 
 	err := a.InviteAccept(ctx)
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }
 
 // AuthHouseholdInviteCreate creates a new AuthAccountAuthHousehold for an existing household.
@@ -190,7 +190,7 @@ func (h *Handler) AuthHouseholdInviteCreate(w http.ResponseWriter, r *http.Reque
 
 	p := getPermissions(ctx)
 	if !p.AuthHouseholdsPermissions.IsPermitted(&ah, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -202,7 +202,7 @@ func (h *Handler) AuthHouseholdInviteCreate(w http.ResponseWriter, r *http.Reque
 
 	err := ai.Read(ctx)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -217,13 +217,13 @@ func (h *Handler) AuthHouseholdInviteCreate(w http.ResponseWriter, r *http.Reque
 
 	err = getJSON(ctx, &a, r.Body)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	if !a.Child && a.EmailAddress == "" {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
@@ -237,7 +237,7 @@ func (h *Handler) AuthHouseholdInviteCreate(w http.ResponseWriter, r *http.Reque
 			Name:  a.Name,
 		}
 		if err := aa.Create(ctx, false); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -248,14 +248,14 @@ func (h *Handler) AuthHouseholdInviteCreate(w http.ResponseWriter, r *http.Reque
 		if err := models.Create(ctx, &a, models.CreateOpts{
 			PermissionsOpts: p,
 		}); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
 	} else {
 		// Create the invite
 		if err := a.InviteCreate(ctx); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -273,7 +273,7 @@ func (h *Handler) AuthHouseholdInviteCreate(w http.ResponseWriter, r *http.Reque
 		go m.Send(ctx, nil) //nolint:errcheck
 	}
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, nil))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, nil))
 }
 
 // AuthHouseholdInviteDelete removes an AuthHousehold invite.
@@ -296,7 +296,7 @@ func (*Handler) AuthHouseholdInviteDelete(w http.ResponseWriter, r *http.Request
 		InviteToken: types.StringLimit(chi.URLParam(r, "invite_token")),
 	}
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, a.InviteDelete(ctx)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, a.InviteDelete(ctx)))
 }
 
 // AuthHouseholdImport imports household data.
@@ -304,7 +304,7 @@ func (h *Handler) AuthHouseholdImport(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	if h.Info.Cloud { // cloud should NEVER allow imports, who knows what they might contain.
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -312,27 +312,27 @@ func (h *Handler) AuthHouseholdImport(w http.ResponseWriter, r *http.Request) {
 	// Only household admins can import
 	ah := getUUID(r, "auth_household_id")
 	if !getPermissions(ctx).AuthHouseholdsPermissions.IsPermitted(&ah, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	raw, er := io.ReadAll(r.Body)
 	if er != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.NewServerErr(er)))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrReceiver.Wrap(er)))
 
 		return
 	}
 
 	data, err := models.DataFromByte(ctx, raw, "")
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	err = data.Restore(ctx, false)
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }
 
 // AuthHouseholdRead reads an AuthHousehold using URL parameters.
@@ -356,7 +356,7 @@ func (*Handler) AuthHouseholdRead(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Read Household
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, a.Read(ctx)))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, a.Read(ctx)))
 }
 
 // AuthHouseholdUpdate updates an AuthHousehold using PUT data.
@@ -376,7 +376,7 @@ func (*Handler) AuthHouseholdUpdate(w http.ResponseWriter, r *http.Request) {
 
 	ah := getUUID(r, "auth_household_id")
 	if !getPermissions(ctx).AuthHouseholdsPermissions.IsPermitted(&ah, models.PermissionComponentAuth, models.PermissionEdit) && !getAuthSessionAdmin(ctx) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -385,7 +385,7 @@ func (*Handler) AuthHouseholdUpdate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthHousehold
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -401,7 +401,7 @@ func (*Handler) AuthHouseholdUpdate(w http.ResponseWriter, r *http.Request) {
 		if getPermissions(ctx).AuthHouseholdsPermissions.IsPermitted(&ah, models.PermissionComponentAuth, models.PermissionEdit) {
 			errUp := a.Update(ctx)
 
-			if errors.Is(err, errs.ErrClientNoContent) && !errors.Is(errUp, errs.ErrClientNoContent) {
+			if errors.Is(err, errs.ErrSenderNoContent) && !errors.Is(errUp, errs.ErrSenderNoContent) {
 				err = errUp
 			}
 		}
@@ -410,12 +410,12 @@ func (*Handler) AuthHouseholdUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthHouseholdsRead reads all AllHouseholds an account has access to.
@@ -453,7 +453,7 @@ func (*Handler) AuthHouseholdsRead(w http.ResponseWriter, r *http.Request) {
 		a, total, err = models.AuthHouseholdsRead(ctx, ids, 0)
 	}
 
-	WriteResponse(ctx, w, a, nil, total, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, total, "", logger.Error(ctx, err))
 }
 
 // AuthHouseholdMemberDelete deletes an AuthHousehold member.
@@ -479,7 +479,7 @@ func (*Handler) AuthHouseholdMemberDelete(w http.ResponseWriter, r *http.Request
 		p = models.PermissionsOpts{}
 	}
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, models.AuthHouseholdMemberDelete(ctx, aa, ah, p)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, models.AuthHouseholdMemberDelete(ctx, aa, ah, p)))
 }
 
 // AuthHouseholdMemberUpdate updates an AuthHousehold member using PUT data.
@@ -502,7 +502,7 @@ func (*Handler) AuthHouseholdMemberUpdate(w http.ResponseWriter, r *http.Request
 	var a models.AuthAccountAuthHousehold
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -513,8 +513,8 @@ func (*Handler) AuthHouseholdMemberUpdate(w http.ResponseWriter, r *http.Request
 	a.AuthAccountID = &aa
 
 	if aa == models.GetAuthAccountID(ctx) && !getPermissions(ctx).AuthHouseholdsPermissions.IsPermitted(&a.AuthHouseholdID, models.PermissionComponentAuth, models.PermissionEdit) {
-		err := errs.ErrClientForbidden
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		err := errs.ErrSenderForbidden
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -523,5 +523,5 @@ func (*Handler) AuthHouseholdMemberUpdate(w http.ResponseWriter, r *http.Request
 		PermissionsOpts: getPermissions(ctx),
 	})
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }

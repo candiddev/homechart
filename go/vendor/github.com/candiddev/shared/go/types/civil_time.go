@@ -11,8 +11,7 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-// MsgCivilTime is the client message for time format issues.
-const MsgCivilTime = "Time format should match HH:MM"
+var ErrParseCivilTime = errs.ErrSenderBadRequest.Set("Time format should match HH:MM").Wrap(errors.New("error parsing CivilTime"))
 
 // CivilTime represents a hour and minute.
 type CivilTime struct {
@@ -39,17 +38,17 @@ func ParseCivilTime(s string) (CivilTime, error) {
 	var err error
 
 	if len(r) != 3 {
-		return CivilTime{}, errs.NewClientBadRequestErr(MsgCivilTime, errors.New("invalid regexp match"))
+		return CivilTime{}, ErrParseCivilTime.Wrap(errors.New("invalid regexp match"))
 	}
 
 	c.Hour, err = strconv.Atoi(r[1])
 	if err != nil || c.Hour < 0 || c.Hour > 23 {
-		return CivilTime{}, errs.NewClientBadRequestErr(MsgCivilTime, errors.New("couldn't parse hour"))
+		return CivilTime{}, ErrParseCivilTime.Wrap(errors.New("couldn't parse hour"))
 	}
 
 	c.Minute, err = strconv.Atoi(r[2])
 	if err != nil || c.Minute < 0 || c.Minute > 59 {
-		return CivilTime{}, errs.NewClientBadRequestErr(MsgCivilTime, errors.New("couldn't parse minute"))
+		return CivilTime{}, ErrParseCivilTime.Wrap(errors.New("couldn't parse minute"))
 	}
 
 	return c, nil

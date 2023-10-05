@@ -86,7 +86,7 @@ func TestCookMealTimesInit(t *testing.T) {
 		"exists": {
 			authAccountID:   seed.AuthAccounts[0].ID,
 			authHouseholdID: seed.AuthHouseholds[0].ID,
-			err:             errs.ErrClientConflictExists,
+			err:             errs.ErrSenderConflict,
 		},
 	}
 

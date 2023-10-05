@@ -42,7 +42,7 @@ const (
 func (n *Notification) Delete(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Exec(ctx, "DELETE FROM notification WHERE id = :id", n))
+	return logger.Error(ctx, db.Exec(ctx, "DELETE FROM notification WHERE id = :id", n))
 }
 
 // Send sends a notification using the notifier.
@@ -91,10 +91,10 @@ func (n *Notification) Send(ctx context.Context, wg *sync.WaitGroup) errs.Err { 
 			}
 
 			if err != nil {
-				logger.Log(ctx, err) //nolint:errcheck
+				logger.Error(ctx, err) //nolint:errcheck
 
 				if err.Is(notify.ErrMissing) {
-					logger.Log(ctx, AuthSessionDeleteWebPush(ctx, webPush[i].Endpoint)) //nolint:errcheck
+					logger.Error(ctx, AuthSessionDeleteWebPush(ctx, webPush[i].Endpoint)) //nolint:errcheck
 				} else if !err.Is(notify.ErrCancelled) {
 					w = append(w, webPush[i])
 				}
@@ -120,7 +120,7 @@ func (n *Notification) Send(ctx context.Context, wg *sync.WaitGroup) errs.Err { 
 				err = c.SMTP.Send(ctx, msg)
 			}
 
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 
 			if err == nil || err.Is(notify.ErrCancelled) {
 				n.ToSMTP = ""
@@ -129,7 +129,7 @@ func (n *Notification) Send(ctx context.Context, wg *sync.WaitGroup) errs.Err { 
 	}
 
 	if n.Newsletter { // Never error for newsletter, no retries
-		return logger.Log(ctx, nil)
+		return logger.Error(ctx, nil)
 	} else if (n.ToSMTP != "" && n.BodySMTP != "") || (len(n.ToWebPush) > 0 && n.BodyWebPush != "") {
 		if n.ID == uuid.Nil {
 			err = n.create(ctx, CreateOpts{})
@@ -142,10 +142,10 @@ func (n *Notification) Send(ctx context.Context, wg *sync.WaitGroup) errs.Err { 
 			}
 		}
 
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 func (n *Notification) SetID(id uuid.UUID) {
@@ -158,7 +158,7 @@ func (n *Notification) create(ctx context.Context, _ CreateOpts) errs.Err {
 	// Set fields
 	n.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, n, `
+	return logger.Error(ctx, db.Query(ctx, false, n, `
 INSERT INTO notification (
 	  actions
 	, auth_account_id
@@ -205,7 +205,7 @@ func (*Notification) setIDs(_, _ *uuid.UUID) {}
 func (n *Notification) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Query(ctx, false, n, `
+	return logger.Error(ctx, db.Query(ctx, false, n, `
 UPDATE notification
 SET
 	  actions = :actions
@@ -231,7 +231,7 @@ type Notifications []Notification
 func NotificationsDelete(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Exec(ctx, "DELETE FROM notification", nil))
+	return logger.Error(ctx, db.Exec(ctx, "DELETE FROM notification", nil))
 }
 
 // NotificationsRead reads all notifications in the database.
@@ -240,7 +240,7 @@ func NotificationsRead(ctx context.Context) (Notifications, errs.Err) {
 
 	n := Notifications{}
 
-	return n, logger.Log(ctx, db.Query(ctx, true, &n, "SELECT * FROM notification", nil))
+	return n, logger.Error(ctx, db.Query(ctx, true, &n, "SELECT * FROM notification", nil))
 }
 
 // NotificationsReadQueue reads all notifications ready to be sent.
@@ -260,7 +260,7 @@ AND (
 RETURNING *
 `, nil)
 	if err != nil || len(n) != 0 {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 	}
 
 	return &n, err

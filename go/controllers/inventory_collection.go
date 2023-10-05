@@ -21,7 +21,7 @@ import (
 func (*Handler) InventoryCollectionCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
 }
 
 // InventoryCollectionDelete deletes a InventoryCollection.
@@ -38,7 +38,7 @@ func (*Handler) InventoryCollectionCreate(w http.ResponseWriter, r *http.Request
 func (*Handler) InventoryCollectionDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
 }
 
 // InventoryCollectionRead reads a InventoryCollection.
@@ -55,7 +55,7 @@ func (*Handler) InventoryCollectionDelete(w http.ResponseWriter, r *http.Request
 func (*Handler) InventoryCollectionRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
 }
 
 // InventoryCollectionUpdate updates a InventoryCollection.
@@ -73,7 +73,7 @@ func (*Handler) InventoryCollectionRead(w http.ResponseWriter, r *http.Request) 
 func (*Handler) InventoryCollectionUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.InventoryCollection{}, w, r)) //nolint:errcheck
 }
 
 // InventoryCollectionsRead reads all InventoryCollection for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) InventoryCollectionUpdate(w http.ResponseWriter, r *http.Request
 func (*Handler) InventoryCollectionsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.InventoryCollections{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.InventoryCollections{}, w)) //nolint:errcheck
 }

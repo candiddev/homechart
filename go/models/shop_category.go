@@ -30,7 +30,7 @@ func (s *ShopCategory) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	s.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, s, `
+	return logger.Error(ctx, db.Query(ctx, false, s, `
 INSERT INTO shop_category (
 	  auth_household_id
 	, budget_payee_id
@@ -70,7 +70,7 @@ func (s *ShopCategory) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, s, `
+	return logger.Error(ctx, db.Query(ctx, false, s, `
 UPDATE shop_category
 SET
 	  budget_payee_id = :budget_payee_id
@@ -170,9 +170,9 @@ func ShopCategoriesInit(ctx context.Context, authHouseholdID uuid.UUID, _ uuid.U
 			Match:           category.Match,
 		}
 		if err := m.create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

@@ -37,7 +37,7 @@ func (h *Handler) Contact(w http.ResponseWriter, r *http.Request) {
 		var c contact
 
 		if err := getJSON(ctx, &c, r.Body); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -51,13 +51,13 @@ func (h *Handler) Contact(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := ah.Read(ctx); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
 
 		if c.SelfHostedID != nil && ah.IsExpired() {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientPaymentRequired))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderPaymentRequired))
 
 			return
 		}
@@ -79,11 +79,11 @@ func (h *Handler) Contact(w http.ResponseWriter, r *http.Request) {
 			go email.Send(ctx, nil) //nolint:errcheck
 		}
 
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, nil))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, nil))
 
 		return
 	}
 
 	err := h.proxyCloudRequest(ctx, w, "POST", "/api/v1/contact", r.Body)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }

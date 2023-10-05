@@ -4,48 +4,26 @@ import (
 	"context"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"strings"
 
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
-	"sigs.k8s.io/yaml"
+	"github.com/candiddev/shared/go/types"
 )
 
 var ErrPrint = errors.New("error printing config")
-
-// Print outputs the config to stdout.
-func (c *Config) Print(i any) {
-	var err error
-
-	var out []byte
-
-	if c.OutputJSON {
-		out, err = json.MarshalIndent(i, "", "  ")
-	} else {
-		out, err = yaml.Marshal(i)
-	}
-
-	if err == nil {
-		fmt.Printf("%s", out) //nolint:forbidigo
-
-		if c.OutputJSON {
-			fmt.Println() //nolint:forbidigo
-		}
-	}
-}
 
 func printConfig[T AppConfig[any]](ctx context.Context, a App[T]) errs.Err {
 	var out map[string]any
 
 	j, err := json.Marshal(a.Config)
 	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(ErrPrint, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPrint, err))
 	}
 
 	err = json.Unmarshal(j, &out)
 	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(ErrPrint, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPrint, err))
 	}
 
 	for _, field := range a.HideConfigFields {
@@ -67,7 +45,7 @@ func printConfig[T AppConfig[any]](ctx context.Context, a App[T]) errs.Err {
 		}
 	}
 
-	a.Config.CLIConfig().Print(out)
+	logger.Info(logger.SetFormat(ctx, logger.FormatRaw), types.JSONToString(out))
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

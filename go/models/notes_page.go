@@ -40,7 +40,7 @@ func (n *NotesPage) create(ctx context.Context, opts CreateOpts) errs.Err {
 		n.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, n, `
+	return logger.Error(ctx, db.Query(ctx, false, n, `
 INSERT INTO notes_page (
 	  auth_account_id
 	, auth_household_id
@@ -117,7 +117,7 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, n, query, n))
+	return logger.Error(ctx, db.Query(ctx, false, n, query, n))
 }
 
 // NotesPages is multiple NotesPage.
@@ -141,7 +141,7 @@ func NotesPagesInit(ctx context.Context, authAccountID uuid.UUID) errs.Err {
 
 	err := page.create(ctx, CreateOpts{})
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	version := NotesPageVersion{
@@ -158,7 +158,7 @@ Here are some ideas to get you started:
 		NotesPageID: page.ID,
 	}
 
-	return logger.Log(ctx, version.create(ctx, CreateOpts{}))
+	return logger.Error(ctx, version.create(ctx, CreateOpts{}))
 }
 
 // NotesPagesDelete deletes all pages that were marked for deletion.
@@ -167,5 +167,5 @@ func NotesPagesDelete(ctx context.Context) {
 
 	query := fmt.Sprintf("DELETE FROM notes_page WHERE deleted > '0001-01-01' AND deleted < now() - interval '%d day'", c.App.KeepDeletedDays)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }

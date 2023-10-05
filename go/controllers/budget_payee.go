@@ -21,7 +21,7 @@ import (
 func (*Handler) BudgetPayeeCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
 }
 
 // BudgetPayeeDelete deletes a BudgetPayee.
@@ -38,7 +38,7 @@ func (*Handler) BudgetPayeeCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetPayeeDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
 }
 
 // BudgetPayeeRead reads a BudgetPayee.
@@ -55,7 +55,7 @@ func (*Handler) BudgetPayeeDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetPayeeRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
 }
 
 // BudgetPayeeUpdate updates a BudgetPayee.
@@ -73,7 +73,7 @@ func (*Handler) BudgetPayeeRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetPayeeUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.BudgetPayee{}, w, r)) //nolint:errcheck
 }
 
 // BudgetPayeesRead reads all BudgetPayees for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) BudgetPayeeUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetPayeesRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.BudgetPayees{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.BudgetPayees{}, w)) //nolint:errcheck
 }

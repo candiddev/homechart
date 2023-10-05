@@ -18,7 +18,7 @@ import (
 func (h *Handler) InitRateLimiter(ctx context.Context) {
 	rate, err := limiter.NewRateFromFormatted(h.Config.App.RateLimiterRate)
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 		panic(err)
 	}
 
@@ -46,7 +46,7 @@ func (h *Handler) CheckRateLimiter(next http.Handler) http.Handler {
 		}
 
 		if err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.NewServerErr(err)))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrReceiver.Wrap(err)))
 
 			return
 		}
@@ -56,8 +56,8 @@ func (h *Handler) CheckRateLimiter(next http.Handler) http.Handler {
 		w.Header().Add("x-rate-limit-reset", strconv.Itoa(int(limit.Reset)))
 
 		if limit.Reached && h.Config.App.RateLimiterKey != r.Header.Get("x-homechart-ratelimiterkey") {
-			logger.LogNotice(noticeRateLimited, key)
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientTooManyRequests))
+			logger.Info(ctx, noticeRateLimited, key)
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderTooManyRequest))
 
 			return
 		}
@@ -68,7 +68,7 @@ func (h *Handler) CheckRateLimiter(next http.Handler) http.Handler {
 		if post && ww.Status() > 299 && ww.Status() < 500 {
 			_, err := h.RateLimiter.Get(ctx, key)
 			if err != nil {
-				logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+				logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 				return
 			}

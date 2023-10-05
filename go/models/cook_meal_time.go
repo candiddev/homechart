@@ -29,7 +29,7 @@ func (c *CookMealTime) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	c.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, c, `
+	return logger.Error(ctx, db.Query(ctx, false, c, `
 INSERT INTO cook_meal_time (
 	  auth_household_id
 	, id
@@ -67,7 +67,7 @@ func (c *CookMealTime) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, c, `
+	return logger.Error(ctx, db.Query(ctx, false, c, `
 UPDATE cook_meal_time SET
 	  name = :name
 	, time = :time
@@ -123,9 +123,9 @@ func CookMealTimesInit(ctx context.Context, authHouseholdID uuid.UUID, _ uuid.UU
 		}
 
 		if err := m.create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

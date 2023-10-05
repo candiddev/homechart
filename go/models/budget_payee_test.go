@@ -89,7 +89,7 @@ func TestBudgetPayeeUpdateBudgetCategoryID(t *testing.T) {
 
 	b1.BudgetCategoryID = &seed.BudgetCategories[0].ID
 
-	assert.Equal[error](t, b1.UpdateBudgetCategoryID(ctx), errs.ErrClientNoContent)
+	assert.Equal[error](t, b1.UpdateBudgetCategoryID(ctx), errs.ErrSenderNoContent)
 
 	Delete(ctx, &b1, DeleteOpts{})
 }

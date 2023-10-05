@@ -2,19 +2,19 @@ package main
 
 import (
 	"context"
-	"encoding/json"
 	"errors"
 
 	"github.com/candiddev/homechart/go/config"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/notify"
+	"github.com/candiddev/shared/go/types"
 )
 
-func generateVAPID(ctx context.Context, _ []string, c *config.Config) errs.Err {
+func generateVAPID(ctx context.Context, _ []string, _ *config.Config) errs.Err {
 	prv, pub, err := notify.NewWebPushVAPID()
 	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(errors.New("error generating keys"), err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(errors.New("error generating keys"), err))
 	}
 
 	m := map[string]string{
@@ -22,12 +22,7 @@ func generateVAPID(ctx context.Context, _ []string, c *config.Config) errs.Err {
 		"publicKey":  pub,
 	}
 
-	j, err := json.MarshalIndent(m, "", "  ")
-	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(errors.New("error generating keys"), err))
-	}
-
-	c.CLIConfig().Print(j)
+	logger.Raw(types.JSONToString(m))
 
 	return nil
 }

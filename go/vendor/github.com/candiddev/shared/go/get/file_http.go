@@ -25,10 +25,10 @@ func fileHTTP(ctx context.Context, src string, dst io.Writer, lastModified time.
 	skipVerify := false
 
 	if len(h) == 2 {
-		for _, header := range strings.Split(h[1], "&") {
+		for _, header := range strings.Split(h[1], "\r\n") {
 			kv := strings.Split(header, ":")
 			if len(kv) == 2 {
-				req.Header.Add(kv[0], kv[1])
+				req.Header[kv[0]] = append(req.Header[kv[0]], kv[1])
 			} else if header == "skipVerify" {
 				skipVerify = true
 			}

@@ -42,7 +42,7 @@ func (b *Bookmark) create(ctx context.Context, opts CreateOpts) errs.Err {
 		b.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 INSERT INTO bookmark (
 	  auth_account_id
 	, auth_household_id
@@ -126,7 +126,7 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, query, b))
+	return logger.Error(ctx, db.Query(ctx, false, b, query, b))
 }
 
 // Bookmarks is multiple Bookmark.
@@ -153,11 +153,11 @@ func BookmarksInitHousehold(ctx context.Context, authHouseholdID uuid.UUID) errs
 	for i := range bookmarks {
 		err := bookmarks[i].create(ctx, CreateOpts{})
 		if err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // BookmarksInitPersonal adds default personal bookmarks to the database.
@@ -177,9 +177,9 @@ func BookmarksInitPersonal(ctx context.Context, authAccountID uuid.UUID) errs.Er
 	for i := range bookmarks {
 		err := bookmarks[i].create(ctx, CreateOpts{})
 		if err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

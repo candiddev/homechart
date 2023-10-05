@@ -113,7 +113,7 @@ func TestBudgetMonthCategoryCreate(t *testing.T) {
 		YearMonth:        types.CivilDateOf(GenerateTimestamp()).AddMonths(-2).YearMonth(),
 	}
 
-	assert.Equal[error](t, bmc.Create(ctx), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, bmc.Create(ctx), errs.ErrSenderNotFound)
 
 	bmc.Amount = 0
 
@@ -183,7 +183,7 @@ func TestBudgetMonthCategoryUpdate(t *testing.T) {
 	bmc.Amount = 10
 	bmc.BudgetCategoryID = seed.BudgetCategories[3].ID
 
-	assert.Equal[error](t, bmc.Update(ctx), errs.ErrClientNoContent)
+	assert.Equal[error](t, bmc.Update(ctx), errs.ErrSenderNoContent)
 
 	bmc.BudgetCategoryID = bc.ID
 
