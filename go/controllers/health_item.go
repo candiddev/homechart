@@ -23,7 +23,7 @@ import (
 func (*Handler) HealthItemCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
 }
 
 // HealthItemDelete deletes a HealthItem.
@@ -40,7 +40,7 @@ func (*Handler) HealthItemCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthItemDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
 }
 
 // HealthItemRead reads a HealthItem.
@@ -57,7 +57,7 @@ func (*Handler) HealthItemDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthItemRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
 }
 
 // HealthItemUpdate updates a HealthItem.
@@ -75,7 +75,7 @@ func (*Handler) HealthItemRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthItemUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.HealthItem{}, w, r)) //nolint:errcheck
 }
 
 // HealthItemsInit re-initializes defaults for HealthItems for an AuthAccount.
@@ -96,14 +96,14 @@ func (*Handler) HealthItemsInit(w http.ResponseWriter, r *http.Request) {
 	p := getPermissions(ctx)
 
 	if p.AuthAccountPermissions != nil && p.AuthAccountPermissions.Health > models.PermissionEdit {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	aai, err := uuid.Parse(r.URL.Query().Get("authAccountID"))
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
@@ -113,7 +113,7 @@ func (*Handler) HealthItemsInit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := a.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -127,7 +127,7 @@ func (*Handler) HealthItemsInit(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Read cards
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, models.HealthItemsInit(ctx, aa)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, models.HealthItemsInit(ctx, aa)))
 }
 
 // HealthItemsRead reads all HealthItems for an AuthAccount.
@@ -143,5 +143,5 @@ func (*Handler) HealthItemsInit(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthItemsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.HealthItems{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.HealthItems{}, w)) //nolint:errcheck
 }

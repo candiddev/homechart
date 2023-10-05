@@ -25,10 +25,10 @@ func (h *Handler) TelemetryErrorCreate(w http.ResponseWriter, r *http.Request) {
 
 	if t.Path != "" && t.Error != "" && t.Version == h.Info.Version {
 		metrics.TelemetryErrorTotal.WithLabelValues(t.Path, t.Version).Add(1)
-		ctx = logger.SetAttribute(ctx, logger.AttributePath, t.Path)
-		ctx = logger.SetAttribute(ctx, logger.AttributeMethod,
+		ctx = logger.SetAttribute(ctx, "path", t.Path)
+		ctx = logger.SetAttribute(ctx, "method",
 			"GET")
-		logger.Log(ctx, errs.ErrUI, t.Error) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver, t.Error) //nolint:errcheck
 	}
 
 	w.WriteHeader(http.StatusNoContent)
@@ -60,7 +60,7 @@ func (h *Handler) TelemetryTraceCreate(w http.ResponseWriter, r *http.Request) {
 
 	r, err := http.NewRequestWithContext(r.Context(), r.Method, tracer, r.Body)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.NewServerErr(err)))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrReceiver.Wrap(err)))
 
 		return
 	}
@@ -71,7 +71,7 @@ func (h *Handler) TelemetryTraceCreate(w http.ResponseWriter, r *http.Request) {
 
 	res, err := client.Do(r)
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 		w.WriteHeader(http.StatusNotFound)
 
 		return
@@ -83,7 +83,7 @@ func (h *Handler) TelemetryTraceCreate(w http.ResponseWriter, r *http.Request) {
 
 	_, err = io.Copy(w, res.Body)
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}

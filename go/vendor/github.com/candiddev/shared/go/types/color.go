@@ -7,9 +7,6 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-// MsgColor is the client message for color format issues.
-const MsgColor = "Color must be non-negative and less than 12"
-
 // Color is an enum for a UI color.
 type Color int
 
@@ -42,7 +39,7 @@ func (c *Color) UnmarshalJSON(data []byte) error {
 	v := Color(i)
 
 	if v < ColorDefault || v > ColorWhite {
-		return errs.NewClientBadRequestErr(MsgColor, fmt.Errorf("color has invalid value: %d", v))
+		return errs.ErrSenderBadRequest.Set("Color must be non-negative and less than 12").Wrap(fmt.Errorf("color has invalid value: %d", v))
 	}
 
 	*c = v

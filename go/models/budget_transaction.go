@@ -62,19 +62,19 @@ INSERT INTO budget_transaction (
 `
 
 // ErrBudgetTransactionAccounts means a transaction has no accounts.
-var ErrBudgetTransactionAccounts = errs.NewClientBadRequestErr("Transactions must have at least 1 account")
+var ErrBudgetTransactionAccounts = errs.ErrSenderBadRequest.Set("Transactions must have at least 1 account")
 
 // ErrBudgetTransactionBalanceAccountAmount means a transaction doesn't balance.
-var ErrBudgetTransactionBalanceAccountAmount = errs.NewClientBadRequestErr("The transaction amount for one of your accounts must match your categories")
+var ErrBudgetTransactionBalanceAccountAmount = errs.ErrSenderBadRequest.Set("The transaction amount for one of your accounts must match your categories")
 
 // ErrBudgetTransactionBalanceAccounts means a transaction doesn't balance.
-var ErrBudgetTransactionBalanceAccounts = errs.NewClientBadRequestErr("The transaction amount for all of your accounts must equal zero")
+var ErrBudgetTransactionBalanceAccounts = errs.ErrSenderBadRequest.Set("The transaction amount for all of your accounts must equal zero")
 
 // ErrBudgetTransactionBalanceCategoryAmount means a transaction doesn't balance.
-var ErrBudgetTransactionBalanceCategoryAmount = errs.NewClientBadRequestErr("The transaction amount must match your categories")
+var ErrBudgetTransactionBalanceCategoryAmount = errs.ErrSenderBadRequest.Set("The transaction amount must match your categories")
 
 // ErrBudgetTransactionPayee means a transaction has a payee but no category.
-var ErrBudgetTransactionPayee = errs.NewClientBadRequestErr("Transactions with a payee must be categorized")
+var ErrBudgetTransactionPayee = errs.ErrSenderBadRequest.Set("Transactions with a payee must be categorized")
 
 // BudgetTransaction defines transaction fields.
 type BudgetTransaction struct {
@@ -201,13 +201,13 @@ func budgetTransactionsCreateRollup(ctx context.Context, transactions []budgetTr
 
 			tx, err := db.BeginTx(ctx)
 			if err != nil {
-				logger.Log(ctx, err) //nolint:errcheck
+				logger.Error(ctx, err) //nolint:errcheck
 
 				return
 			}
 
 			if _, err := tx.NamedExec(budgetTransactionInsert, bt); err != nil {
-				logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+				logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 				return
 			}
@@ -217,7 +217,7 @@ func budgetTransactionsCreateRollup(ctx context.Context, transactions []budgetTr
 			for _, account := range bas {
 				if account.Amount != 0 {
 					if _, err := tx.NamedExec(budgetTransactionAccountInsert, account); err != nil {
-						logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+						logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 						return
 					}
@@ -227,7 +227,7 @@ func budgetTransactionsCreateRollup(ctx context.Context, transactions []budgetTr
 			for _, category := range bcs {
 				if category.Amount != 0 {
 					if _, err := tx.NamedExec(budgetTransactionCategoryInsert, category); err != nil {
-						logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+						logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 						return
 					}
@@ -235,7 +235,7 @@ func budgetTransactionsCreateRollup(ctx context.Context, transactions []budgetTr
 			}
 
 			if _, err := tx.Exec(fmt.Sprintf(`DELETE FROM budget_transaction WHERE id IN ('%s')`, strings.Join(transactions[i].IDs, "', '"))); err != nil {
-				logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+				logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 				return
 			}
@@ -243,7 +243,7 @@ func budgetTransactionsCreateRollup(ctx context.Context, transactions []budgetTr
 			deleteCount.Add(int32(len(transactions[i].IDs)))
 
 			if err := tx.Commit(); err != nil {
-				logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+				logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 				return
 			}
@@ -252,7 +252,7 @@ func budgetTransactionsCreateRollup(ctx context.Context, transactions []budgetTr
 
 	wg.Wait()
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 
 	return int(addCount.Load()), int(deleteCount.Load())
 }
@@ -309,7 +309,7 @@ limit %d
 offset $2
 `, limit), nil, budgetAccountID, offset)
 	if err != nil {
-		return b, total, logger.Log(ctx, err)
+		return b, total, logger.Error(ctx, err)
 	}
 
 	err = db.Query(ctx, false, &total, `
@@ -323,7 +323,7 @@ WHERE budget_transaction.id IN (
 )
 `, nil, budgetAccountID)
 
-	return b, total, logger.Log(ctx, err)
+	return b, total, logger.Error(ctx, err)
 }
 
 // BudgetTransactionsReadCategory queries a database for BudgetTransactions for a BudgetCategory.
@@ -375,7 +375,7 @@ LIMIT 50
 OFFSET $2
 `, nil, budgetCategoryID, offset)
 	if err != nil {
-		return b, total, logger.Log(ctx, err)
+		return b, total, logger.Error(ctx, err)
 	}
 
 	err = db.Query(ctx, false, &total, `
@@ -388,7 +388,7 @@ WHERE budget_transaction.id IN (
 )
 `, nil, budgetCategoryID)
 
-	return b, total, logger.Log(ctx, err)
+	return b, total, logger.Error(ctx, err)
 }
 
 // BudgetTransactionsReadCategoryMonth queries a database for BudgetTransactions for a BudgetCategory BudgetMonth.
@@ -440,7 +440,7 @@ LIMIT 50
 OFFSET $3
 `, nil, budgetCategoryID, yearMonth, offset)
 	if err != nil {
-		return b, total, logger.Log(ctx, err)
+		return b, total, logger.Error(ctx, err)
 	}
 
 	err = db.Query(ctx, false, &total, `
@@ -454,7 +454,7 @@ WHERE budget_transaction.id IN (
 )
 `, nil, budgetCategoryID, yearMonth)
 
-	return b, total, logger.Log(ctx, err)
+	return b, total, logger.Error(ctx, err)
 }
 
 // BudgetTransactionsReadPayee queries a database for BudgetTransactions for a BudgetPayee.
@@ -497,7 +497,7 @@ LIMIT 50
 OFFSET $2
 `, nil, budgetPayeeID, offset)
 	if err != nil {
-		return b, total, logger.Log(ctx, err)
+		return b, total, logger.Error(ctx, err)
 	}
 
 	err = db.Query(ctx, false, &total, `
@@ -506,7 +506,7 @@ FROM budget_transaction
 WHERE budget_transaction.budget_payee_id = $1
 `, nil, budgetPayeeID)
 
-	return b, total, logger.Log(ctx, err)
+	return b, total, logger.Error(ctx, err)
 }
 
 // BudgetTransactionsRollupBalance queries a database for BudgetTransactions and rolls them into a starting balance.
@@ -551,14 +551,14 @@ GROUP BY
 HAVING count(distinct(budget_transaction.id)) > 1
 LIMIT 10000`, c.App.RollupBudgetTransactionsBalanceMonths), nil)
 	if err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return added, deleted
 	}
 
 	added, deleted = budgetTransactionsCreateRollup(ctx, btr, true)
 
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 
 	return added, deleted
 }
@@ -612,14 +612,14 @@ HAVING count(distinct(budget_transaction.id)) > 1
 ORDER BY date_trunc('month', budget_transaction.date) desc
 LIMIT 10000`, c.App.RollupBudgetTransactionsSummaryMonths), nil)
 	if err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return added, deleted
 	}
 
 	added, deleted = budgetTransactionsCreateRollup(ctx, btr, false)
 
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 
 	return added, deleted
 }
@@ -639,7 +639,7 @@ RETURNING *
 `, b)
 
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	for i := range b.Accounts {
@@ -648,7 +648,7 @@ RETURNING *
 		err = b.Accounts[i].create(ctx, CreateOpts{})
 
 		if err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -662,8 +662,8 @@ RETURNING *
 
 			err = bp.UpdateBudgetCategoryID(ctx)
 
-			if err != nil && !errors.Is(err, errs.ErrClientNoContent) {
-				return logger.Log(ctx, err)
+			if err != nil && !errors.Is(err, errs.ErrSenderNoContent) {
+				return logger.Error(ctx, err)
 			}
 		}
 
@@ -672,11 +672,11 @@ RETURNING *
 		err = b.Categories[i].create(ctx, CreateOpts{})
 
 		if err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 func (*BudgetTransaction) getChange(_ context.Context) string {
@@ -701,7 +701,7 @@ func (b *BudgetTransaction) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_transaction
 SET
 	  amount = :amount
@@ -720,7 +720,7 @@ func (b *BudgetTransaction) Read(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Get transaction
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 SELECT
 	  budget_transaction.*
 	, budget_transaction_account.accounts
@@ -746,7 +746,7 @@ AND budget_transaction.id = :id
 // Validate verifies a BudgetTransaction is correct.
 func (b BudgetTransaction) Validate() errs.Err {
 	if len(b.Accounts) == 0 && len(b.Categories) == 0 {
-		return errs.ErrClientBadRequestProperty
+		return errs.ErrSenderBadRequest
 	}
 
 	if len(b.Accounts) > 2 {

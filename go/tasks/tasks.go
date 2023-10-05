@@ -89,7 +89,7 @@ func (t *Tasks) Start() { //nolint:gocognit
 
 	conn, err := t.Config.PostgreSQL.Conn(t.Context)
 	if err != nil {
-		logger.Log(t.Context, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(t.Context, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
@@ -111,7 +111,7 @@ func (t *Tasks) Start() { //nolint:gocognit
 			if conn == nil {
 				conn, err = t.Config.PostgreSQL.Conn(t.Context)
 				if err != nil {
-					logger.Log(t.Context, errs.NewServerErr(err)) //nolint:errcheck
+					logger.Error(t.Context, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 					continue
 				}
@@ -122,18 +122,18 @@ func (t *Tasks) Start() { //nolint:gocognit
 			if (runner && !t.Config.PostgreSQL.LockExists(t.Context, postgresql.LockTasks, conn)) || err != nil {
 				err = conn.Close()
 				if err != nil {
-					logger.Log(t.Context, errs.NewServerErr(err)) //nolint:errcheck
+					logger.Error(t.Context, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 				}
 
 				conn, err = t.Config.PostgreSQL.Conn(t.Context)
 				if err != nil {
-					logger.Log(t.Context, errs.NewServerErr(err)) //nolint:errcheck
+					logger.Error(t.Context, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 				}
 
 				if runner {
 					runner = false
 
-					logger.Log(t.Context, nil, "Stepping down as task runner") //nolint:errcheck
+					logger.Debug(t.Context, "Stepping down as task runner")
 
 					cancelRunner()
 
@@ -142,7 +142,7 @@ func (t *Tasks) Start() { //nolint:gocognit
 				}
 			} else if !runner && t.Config.PostgreSQL.LockAcquire(t.Context, postgresql.LockTasks, conn) {
 				ctxRunner, cancelRunner = context.WithCancel(t.Context)
-				logger.Log(t.Context, nil, "Became task runner") //nolint:errcheck
+				logger.Debug(t.Context, "Became task runner")
 
 				runner = true
 
@@ -156,7 +156,7 @@ func (t *Tasks) Start() { //nolint:gocognit
 func (t *Tasks) CheckUpdate(ctx context.Context) {
 	r, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/api?p=server", t.Config.App.CloudEndpoint), nil)
 	if err != nil {
-		logger.Log(t.Context, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(t.Context, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
@@ -167,7 +167,7 @@ func (t *Tasks) CheckUpdate(ctx context.Context) {
 
 	res, err := client.Do(r)
 	if err != nil {
-		logger.Log(t.Context, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(t.Context, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
@@ -182,6 +182,6 @@ func (t *Tasks) CheckUpdate(ctx context.Context) {
 	}
 
 	if infos[0].Version != cli.BuildVersion {
-		logger.LogNotice(fmt.Sprintf("A new version of Homechart is available: %s", infos[0].Version))
+		logger.Info(ctx, fmt.Sprintf("A new version of Homechart is available: %s", infos[0].Version))
 	}
 }

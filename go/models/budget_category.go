@@ -13,7 +13,7 @@ import (
 )
 
 // ErrBudgetCategory means an income category had goals.
-var ErrBudgetCategory = errs.NewClientBadRequestErr("Income categories cannot have goals")
+var ErrBudgetCategory = errs.ErrSenderBadRequest.Set("Income categories cannot have goals")
 
 // BudgetCategory defines category fields.
 type BudgetCategory struct {
@@ -45,7 +45,7 @@ func (b *BudgetCategory) create(ctx context.Context, opts CreateOpts) errs.Err {
 		b.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 WITH category AS (
 	INSERT INTO budget_category (
 		  auth_household_id
@@ -102,7 +102,7 @@ func (b *BudgetCategory) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_category
 SET
 	  grouping = :grouping
@@ -204,9 +204,9 @@ func BudgetCategoriesInit(ctx context.Context, authHouseholdID uuid.UUID) errs.E
 		}
 
 		if err := m.create(ctx, CreateOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

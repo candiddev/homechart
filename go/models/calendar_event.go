@@ -55,7 +55,7 @@ func (c *CalendarEvent) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	c.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, c, `
+	return logger.Error(ctx, db.Query(ctx, false, c, `
 INSERT INTO calendar_event (
 	  auth_account_id
 	, auth_household_id
@@ -273,7 +273,7 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, c, query, c))
+	return logger.Error(ctx, db.Query(ctx, false, c, query, c))
 }
 
 // CalendarEvents is multiple CalendarEvent.
@@ -293,7 +293,7 @@ WHERE
 	recurrence IS NULL
 	AND timestamp_end < current_date - INTERVAL '%[1]d day'`, c.App.KeepCalendarEventDays)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }
 
 // CalendarEventsReadAssistant reads all events for an assistant and returns a text prompt.
@@ -395,14 +395,14 @@ GROUP BY
 ORDER BY calendar_event.created
 `, nil, id)
 	if err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	for i := range c {
 		e = append(e, c[i].ToICalendarEvents()...)
 	}
 
-	return e, logger.Log(ctx, err)
+	return e, logger.Error(ctx, err)
 }
 
 // CalendarEventsReadNotifications reads all CalendarEvents ready for notification.
@@ -437,7 +437,7 @@ RETURNING
 `, nil)
 
 	if err != nil {
-		return n, logger.Log(ctx, err)
+		return n, logger.Error(ctx, err)
 	}
 
 	t := template.Must(template.New("body").Parse(templates.EventReminderBody))
@@ -465,7 +465,7 @@ RETURNING
 				"Starts":      e[i].getStartTime(true),
 				"TravelTime":  e[i].TravelTime,
 			}); err != nil {
-				return n, logger.Log(ctx, errs.NewServerErr(err))
+				return n, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 			}
 
 			ns[j].Actions.Default = url
@@ -483,5 +483,5 @@ RETURNING
 		}
 	}
 
-	return n, logger.Log(ctx, err)
+	return n, logger.Error(ctx, err)
 }

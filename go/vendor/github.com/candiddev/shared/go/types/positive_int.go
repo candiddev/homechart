@@ -1,13 +1,14 @@
 package types
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/candiddev/shared/go/errs"
 )
 
 // ErrPositiveInt means the value is negative.
-var ErrPositiveInt = errs.NewClientBadRequestErr("Value must not be negative")
+var ErrPositiveInt = errs.ErrSenderBadRequest.Set("Value must not be negative")
 
 // PositiveInt is a non-negative number.
 type PositiveInt int
@@ -23,7 +24,7 @@ func (p *PositiveInt) UnmarshalJSON(data []byte) error {
 	v := PositiveInt(i)
 
 	if v < 0 {
-		return ErrPositiveInt
+		return ErrPositiveInt.Wrap(fmt.Errorf("int is negative: %d", p))
 	}
 
 	*p = v

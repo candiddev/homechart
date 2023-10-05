@@ -73,7 +73,7 @@ func TestHealthItemUpdate(t *testing.T) {
 		},
 		"personal not admin": {
 			authHouseholdID: uuid.UUID{},
-			err:             errs.ErrClientNoContent,
+			err:             errs.ErrSenderNoContent,
 			healthItem:      &hi2n,
 		},
 		"household": {
@@ -116,7 +116,7 @@ func TestHealthItemUpdate(t *testing.T) {
 			}
 
 			if name == "personal" {
-				assert.HasErr(t, Read(ctx, &hl, ReadOpts{}), errs.ErrClientBadRequestMissing)
+				assert.HasErr(t, Read(ctx, &hl, ReadOpts{}), errs.ErrSenderNotFound)
 			}
 		})
 	}

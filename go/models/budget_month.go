@@ -27,7 +27,7 @@ func BudgetMonthsDelete(ctx context.Context) {
 	ctx = logger.Trace(ctx)
 
 	//nolint:errcheck
-	logger.Log(ctx, db.Exec(ctx, `
+	logger.Error(ctx, db.Exec(ctx, `
 DELETE FROM budget_month
 WHERE
 	budget_month_category_amount = 0
@@ -41,7 +41,7 @@ func (b *BudgetMonth) Read(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Get meals
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 SELECT
 	  JSON_AGG(
 			JSON_BUILD_OBJECT(

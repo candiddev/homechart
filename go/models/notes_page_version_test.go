@@ -49,7 +49,7 @@ func TestNotesPageVersionDelete(t *testing.T) {
 	}
 
 	// Should fail
-	assert.Equal[error](t, Delete(ctx, &w, opts), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, Delete(ctx, &w, opts), errs.ErrSenderNotFound)
 
 	// Should success
 	opts.PermissionsOpts.AuthAccountID = &seed.AuthAccounts[0].ID
@@ -74,7 +74,7 @@ func TestNotesPageVersionRead(t *testing.T) {
 	}
 
 	// Should fail
-	assert.Equal[error](t, Read(ctx, &wr, ReadOpts{}), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, Read(ctx, &wr, ReadOpts{}), errs.ErrSenderNotFound)
 
 	// Should success
 	wr.AuthAccountID = &seed.AuthAccounts[0].ID

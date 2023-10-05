@@ -27,7 +27,7 @@ import (
 )
 
 // ErrClientBadRequestTOTP means the TOTP passcode is incorrect.
-var ErrClientBadRequestTOTP = errs.NewClientBadRequestErr("Incorrect passcode")
+var ErrClientBadRequestTOTP = errs.ErrSenderBadRequest.Set("Incorrect passcode")
 
 // AuthAccount defines the user account fields.
 type AuthAccount struct {
@@ -343,7 +343,7 @@ WHERE
 	auth_account.id = $1
 `), nil, authAccountID, date)
 	if err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return fmt.Sprintf("Sorry, I couldn't find your agenda for %s, please try again later.", getDateOriginal(dateOriginal, false))
 	}
@@ -377,12 +377,12 @@ WHERE
 	}
 
 	if len(speechParts) == 0 {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return "You have nothing scheduled for " + getDateOriginal(dateOriginal, false)
 	}
 
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 
 	return fmt.Sprintf("You have %s scheduled for %s.", ToList(speechParts), getDateOriginal(dateOriginal, false))
 }
@@ -427,13 +427,13 @@ ORDER BY created
 LIMIT 50
 OFFSET $2
 `, nil, emailAddressFilter, offset); err != nil {
-			return a, total, logger.Log(ctx, err)
+			return a, total, logger.Error(ctx, err)
 		}
 
 		err = db.Query(ctx, false, &total, "SELECT COUNT(id) FROM auth_account WHERE email_address LIKE '%' || $1 || '%'", nil, emailAddressFilter)
 	}
 
-	return a, total, logger.Log(ctx, err)
+	return a, total, logger.Error(ctx, err)
 }
 
 // AuthAccountsReadAgendaNotify generates an agenda notification.
@@ -454,7 +454,7 @@ WITH auth_accounts AS (
 		, auth_account.time_zone
 )
 `+fmt.Sprintf(authAccountAgendaQuery, "auth_accounts", "(now() at TIME ZONE auth_accounts.time_zone)::date", ""), nil); err != nil {
-		return ns, logger.Log(ctx, err)
+		return ns, logger.Error(ctx, err)
 	}
 
 	t := template.Must(template.New("body").Parse(templates.DailyAgendaBody))
@@ -470,7 +470,7 @@ WITH auth_accounts AS (
 		var body bytes.Buffer
 
 		if err := t.Execute(&body, a[i]); err != nil {
-			return ns, logger.Log(ctx, errs.NewServerErr(err))
+			return ns, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 		}
 
 		n := AuthAccountsReadNotifications(ctx, &a[i].ID, nil, AuthAccountNotifyTypeAgenda)
@@ -485,7 +485,7 @@ WITH auth_accounts AS (
 		}
 	}
 
-	return ns, logger.Log(ctx, nil)
+	return ns, logger.Error(ctx, nil)
 }
 
 // AuthAccountsReadNotifications queries a database for accounts returns notifications.
@@ -547,14 +547,14 @@ ON auth_account.id = auth_session.auth_account_id
 			query += "GROUP BY auth_account.id ORDER BY auth_account.created"
 			err = db.Query(ctx, true, &aa, query, nil)
 		default:
-			logger.Log(ctx, errs.NewServerErr(errors.New("attempted to send an email to everyone that wasn't a newsletter or system")), fmt.Sprintf("type: %d", t)) //nolint:errcheck
+			logger.Error(ctx, errs.ErrReceiver.Wrap(errors.New("attempted to send an email to everyone that wasn't a newsletter or system")), fmt.Sprintf("type: %d", t)) //nolint:errcheck
 
 			return ns
 		}
 
 		if err != nil && (authAccountID != nil || authHouseholdID != nil) && t != AuthAccountNotifyTypeNewsletter {
 			err := cache.Set(ctx)
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 		}
 	}
 
@@ -584,7 +584,7 @@ ON auth_account.id = auth_session.auth_account_id
 		}
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 
 	return ns
 }
@@ -602,7 +602,7 @@ func (a *AuthAccount) Create(ctx context.Context, restore bool) errs.Err {
 	if !restore {
 		// Hash the password
 		if err := a.GeneratePasswordHash(ctx); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -636,7 +636,7 @@ func (a *AuthAccount) Create(ctx context.Context, restore bool) errs.Err {
 	}
 
 	// Add to database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 INSERT INTO auth_account (
 	  child
 	, daily_agenda_next
@@ -693,26 +693,26 @@ func (a *AuthAccount) CreateTOTP(ctx context.Context) errs.Err {
 	})
 
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	a.TOTPSecret = key.Secret()
 
 	img, err := key.Image(200, 200)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	var buf bytes.Buffer
 
 	err = png.Encode(&buf, img)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	a.TOTPQR = base64.StdEncoding.EncodeToString(buf.Bytes())
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // Delete deletes an AuthAccount database record.
@@ -720,7 +720,7 @@ func (a *AuthAccount) Delete(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Delete account
-	return logger.Log(ctx, db.Query(ctx, false, a, "DELETE FROM auth_account WHERE id = :id RETURNING *", a))
+	return logger.Error(ctx, db.Query(ctx, false, a, "DELETE FROM auth_account WHERE id = :id RETURNING *", a))
 }
 
 // GeneratePasswordHash creates a password hash.
@@ -729,7 +729,7 @@ func (a *AuthAccount) GeneratePasswordHash(ctx context.Context) errs.Err {
 
 	a.PasswordHash, err = a.Password.Hash(nil)
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // Read queries a database for an AuthAccount using an ID.
@@ -746,12 +746,12 @@ func (a *AuthAccount) Read(ctx context.Context) errs.Err {
 
 	if err := cache.Get(ctx); err == nil {
 		if ac.Updated.Equal(a.Updated) {
-			err = errs.ErrClientNoContent
+			err = errs.ErrSenderNoContent
 		} else {
 			*a = ac
 		}
 
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	// Make sure a password is never accidentally leaked into cache
@@ -760,8 +760,8 @@ func (a *AuthAccount) Read(ctx context.Context) errs.Err {
 	// Update LastActivity
 	a.LastActivity = GenerateTimestamp()
 
-	if err := db.Query(ctx, false, a, "UPDATE auth_account SET last_activity = :last_activity WHERE id = :id AND last_activity::::date IS DISTINCT FROM (:last_activity)::::date", a); err != nil && !errors.Is(err, errs.ErrClientNoContent) {
-		return logger.Log(ctx, err)
+	if err := db.Query(ctx, false, a, "UPDATE auth_account SET last_activity = :last_activity WHERE id = :id AND last_activity::::date IS DISTINCT FROM (:last_activity)::::date", a); err != nil && !errors.Is(err, errs.ErrSenderNoContent) {
+		return logger.Error(ctx, err)
 	}
 
 	query := `
@@ -779,11 +779,11 @@ WHERE id = :id
 	if err == nil {
 		cache.Value = &a
 		if err := cache.Set(ctx); err != nil {
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 		}
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // ReadOIDCID queries a database for an AuthAccount using an OIDC ID.
@@ -791,7 +791,7 @@ func (a *AuthAccount) ReadOIDCID(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Get details
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 SELECT
 	id
 FROM auth_account
@@ -805,7 +805,7 @@ func (a *AuthAccount) ReadPasswordHash(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Get details
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 SELECT
 	  child
 	, id
@@ -824,7 +824,7 @@ func (a *AuthAccount) ReadPasswordReset(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Get details
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 SELECT
 	  id
 	, iso_639_code
@@ -841,7 +841,7 @@ func (a *AuthAccount) ReadTOTPBackup(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, "SELECT email_address, totp_backup FROM auth_account WHERE id = :id", a))
+	return logger.Error(ctx, db.Query(ctx, false, a, "SELECT email_address, totp_backup FROM auth_account WHERE id = :id", a))
 }
 
 // Update updates an AuthAccount database record.
@@ -860,7 +860,7 @@ func (a *AuthAccount) Update(ctx context.Context) errs.Err {
 	a.Preferences.NotificationsHouseholds.Sanitize(ctx, a.ID)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET
 	  collapsed_notes_pages = :collapsed_notes_pages
@@ -893,7 +893,7 @@ func (a *AuthAccount) UpdateICalendarID(ctx context.Context, remove bool) errs.E
 		a.ICalendarID = types.UUIDToNullUUID(GenerateUUID())
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET
 	  icalendar_id = :icalendar_id
@@ -906,7 +906,7 @@ RETURNING *
 func (a *AuthAccount) UpdateOIDC(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET
 	  oidc_id = :oidc_id
@@ -922,11 +922,11 @@ func (a *AuthAccount) UpdatePasswordHash(ctx context.Context) errs.Err {
 
 	// Hash the password
 	if err := a.GeneratePasswordHash(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET password_hash = :password_hash
 WHERE id = :id
@@ -939,7 +939,7 @@ func (a *AuthAccount) UpdatePasswordReset(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET
 	  password_reset_expires = :password_reset_expires
@@ -960,7 +960,7 @@ func (a *AuthAccount) UpdatePrivatePublicKeys(ctx context.Context) errs.Err {
 	}
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET
 	  private_keys = :private_keys
@@ -976,12 +976,12 @@ func (a *AuthAccount) UpdateTOTP(ctx context.Context) errs.Err {
 
 	// Set fields
 	if a.TOTPSecret != "" && !totp.Validate(a.TOTPCode, a.TOTPSecret) {
-		return logger.Log(ctx, ErrClientBadRequestTOTP)
+		return logger.Error(ctx, ErrClientBadRequestTOTP)
 	}
 
 	seed, err := rand.Int(rand.Reader, big.NewInt(899999))
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	if a.TOTPSecret != "" {
@@ -993,7 +993,7 @@ func (a *AuthAccount) UpdateTOTP(ctx context.Context) errs.Err {
 	}
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET
 	  totp_backup = :totp_backup
@@ -1020,7 +1020,7 @@ func (a *AuthAccount) UpdateVerification(ctx context.Context) errs.Err {
 	}
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_account
 SET
 	  verification_token = :verification_token
@@ -1116,7 +1116,7 @@ func AuthAccountsDeleteInactive(ctx context.Context) {
 
 	// Delete accounts
 	//nolint:errcheck
-	logger.Log(ctx, db.Exec(ctx, fmt.Sprintf(`
+	logger.Error(ctx, db.Exec(ctx, fmt.Sprintf(`
 DELETE FROM auth_account
 WHERE last_activity < now() - interval '%d days'
 AND NOT EXISTS (

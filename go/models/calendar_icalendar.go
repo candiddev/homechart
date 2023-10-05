@@ -13,8 +13,8 @@ import (
 	"github.com/google/uuid"
 )
 
-var ErrClientBadRequestCalendarICalendarFormat = errs.NewClientBadRequestErr("Error parsing iCalendar data")
-var ErrClientBadRequestCalendarICalendarURL = errs.NewClientBadRequestErr("Error retrieving iCalendar from URL")
+var ErrClientBadRequestCalendarICalendarFormat = errs.ErrSenderBadRequest.Set("Error parsing iCalendar data")
+var ErrClientBadRequestCalendarICalendarURL = errs.ErrSenderBadRequest.Set("Error retrieving iCalendar from URL")
 
 // CalendarICalendar defines the calendar iCalendar fields.
 type CalendarICalendar struct {
@@ -41,7 +41,7 @@ func (c *CalendarICalendar) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	if c.URL != "" && c.ICS == "" {
 		if err := c.getICS(ctx); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -69,18 +69,18 @@ INSERT INTO calendar_icalendar (
 )
 RETURNING *
 `, c); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
 	err := c.createCalendarEvents(ctx)
 	if err != nil {
 		if dErr := Delete(ctx, c, DeleteOpts{}); dErr != nil {
-			return logger.Log(ctx, dErr)
+			return logger.Error(ctx, dErr)
 		}
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 func (c *CalendarICalendar) createCalendarEvents(ctx context.Context) errs.Err {
@@ -88,13 +88,13 @@ func (c *CalendarICalendar) createCalendarEvents(ctx context.Context) errs.Err {
 
 	newEvents, err := c.getCalendarEvents(ctx)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	oldEvents := CalendarEvents{}
 
 	if err := db.Query(ctx, true, &oldEvents, "SELECT * FROM calendar_event WHERE calendar_icalendar_id=:id", c); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	for i := range newEvents {
@@ -112,18 +112,18 @@ func (c *CalendarICalendar) createCalendarEvents(ctx context.Context) errs.Err {
 
 		if !match {
 			if err := newEvents[i].create(ctx, CreateOpts{}); err != nil {
-				return logger.Log(ctx, err)
+				return logger.Error(ctx, err)
 			}
 		}
 	}
 
 	for i := range oldEvents {
 		if err := Delete(ctx, &oldEvents[i], DeleteOpts{}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (c *CalendarICalendar) getCalendarEvents(ctx context.Context) (CalendarEvents, errs.Err) {
@@ -135,7 +135,7 @@ func (c *CalendarICalendar) getCalendarEvents(ctx context.Context) (CalendarEven
 
 	i, err := types.ICalendarEventsFromICS(c.ICS)
 	if err != nil {
-		return nil, logger.Log(ctx, ErrClientBadRequestCalendarICalendarFormat, err.Error())
+		return nil, logger.Error(ctx, ErrClientBadRequestCalendarICalendarFormat, err.Error())
 	}
 
 	events := CalendarEvents{}
@@ -193,12 +193,12 @@ func (c *CalendarICalendar) getICS(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	if c.URL == "" {
-		return logger.Log(ctx, nil)
+		return logger.Error(ctx, nil)
 	}
 
 	req, err := http.NewRequestWithContext(ctx, http.MethodGet, string(c.URL), nil)
 	if err != nil {
-		return logger.Log(ctx, ErrClientBadRequestCalendarICalendarURL, string(c.URL), err.Error())
+		return logger.Error(ctx, ErrClientBadRequestCalendarICalendarURL, string(c.URL), err.Error())
 	}
 
 	if c.IfModifiedSince != "" {
@@ -209,28 +209,28 @@ func (c *CalendarICalendar) getICS(ctx context.Context) errs.Err {
 
 	resp, err := client.Do(req)
 	if err != nil {
-		return logger.Log(ctx, ErrClientBadRequestCalendarICalendarURL, string(c.URL), err.Error())
+		return logger.Error(ctx, ErrClientBadRequestCalendarICalendarURL, string(c.URL), err.Error())
 	}
 	defer resp.Body.Close()
 
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		return logger.Log(ctx, ErrClientBadRequestCalendarICalendarURL, string(c.URL), err.Error())
+		return logger.Error(ctx, ErrClientBadRequestCalendarICalendarURL, string(c.URL), err.Error())
 	}
 
 	ncrc := GetCRC(string(body))
 	if resp.StatusCode == http.StatusNotModified || (c.CRC != "" && ncrc == c.CRC) {
-		return errs.ErrClientNoContent
+		return errs.ErrSenderNoContent
 	}
 
 	if string(body) == "" {
-		return logger.Log(ctx, errs.NewServerErr(err), string(c.URL))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err), string(c.URL))
 	}
 
 	c.CRC = ncrc
 	c.ICS = string(body)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (*CalendarICalendar) getType() modelType {
@@ -256,13 +256,13 @@ func (c *CalendarICalendar) update(ctx context.Context, opts UpdateOpts) errs.Er
 
 	if c.URL != "" {
 		if err := c.getICS(ctx); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
 	if c.ICS != "" {
 		if err := c.createCalendarEvents(ctx); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -282,7 +282,7 @@ RETURNING *
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, c, query, c))
+	return logger.Error(ctx, db.Query(ctx, false, c, query, c))
 }
 
 // CalendarICalendars is multiple CalendarICalendars.

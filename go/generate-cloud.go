@@ -8,6 +8,7 @@ import (
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/jwt"
 	"github.com/candiddev/shared/go/logger"
+	"github.com/candiddev/shared/go/types"
 )
 
 type jwtCloud struct {
@@ -24,10 +25,10 @@ func generateCloud(ctx context.Context, _ []string, c *config.Config) errs.Err {
 		Cloud: true,
 	}, time.Now().Add(24*time.Hour*365*5), "Homechart", c.App.BaseURL, "Cloud")
 	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
-	c.CLIConfig().Print(t)
+	logger.Raw(types.JSONToString(t))
 
 	return nil
 }

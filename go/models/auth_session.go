@@ -131,7 +131,7 @@ func AuthSessionDeleteWebPush(ctx context.Context, endpoint string) errs.Err {
 		"endpoint": endpoint,
 	}
 
-	return logger.Log(ctx, db.Exec(ctx, "UPDATE auth_session SET web_push = null WHERE web_push ->> 'endpoint' = :endpoint", a))
+	return logger.Error(ctx, db.Exec(ctx, "UPDATE auth_session SET web_push = null WHERE web_push ->> 'endpoint' = :endpoint", a))
 }
 
 // Create adds an AuthSession to a database.
@@ -147,7 +147,7 @@ func (a *AuthSession) Create(ctx context.Context, keepIDs bool) errs.Err {
 	a.PermissionsHouseholds.Sanitize(ctx, a.AuthAccountID)
 
 	// Add to database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 INSERT INTO auth_session (
 	  admin
 	, auth_account_id
@@ -180,7 +180,7 @@ func (a *AuthSession) Delete(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Delete session
-	return logger.Log(ctx, db.Exec(ctx, "DELETE FROM auth_session WHERE id = :id AND auth_account_id = :auth_account_id", a))
+	return logger.Error(ctx, db.Exec(ctx, "DELETE FROM auth_session WHERE id = :id AND auth_account_id = :auth_account_id", a))
 }
 
 // DeleteAll deletes all AuthSession records.
@@ -188,7 +188,7 @@ func (a *AuthSession) DeleteAll(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Delete all sessions
-	return logger.Log(ctx, db.Exec(ctx, "DELETE FROM auth_session WHERE auth_account_id = :auth_account_id", a))
+	return logger.Error(ctx, db.Exec(ctx, "DELETE FROM auth_session WHERE auth_account_id = :auth_account_id", a))
 }
 
 // Read queries a cache for an AuthSession.
@@ -209,16 +209,16 @@ func (a *AuthSession) Read(ctx context.Context, idOnly bool) errs.Err {
 		if err == nil {
 			cache.AuthAccountID = &a.AuthAccountID
 			err := cache.Set(ctx)
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 		}
 	}
 
 	if (!idOnly && a.Key != key) || a.Expires.Before(time.Now()) {
-		err = errs.ErrClientBadRequestMissing
+		err = errs.ErrSenderNotFound
 		*a = AuthSession{}
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // Renew updates the expiration for an AuthSession.
@@ -226,7 +226,7 @@ func (a *AuthSession) Renew(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, "UPDATE auth_session SET expires = :expires WHERE id = :id RETURNING *", a))
+	return logger.Error(ctx, db.Query(ctx, false, a, "UPDATE auth_session SET expires = :expires WHERE id = :id RETURNING *", a))
 }
 
 // Update updates the an AuthSession using an ID.
@@ -236,7 +236,7 @@ func (a *AuthSession) Update(ctx context.Context) errs.Err {
 	a.PermissionsHouseholds.Sanitize(ctx, a.AuthAccountID)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_session
 SET
 	  permissions_account = :permissions_account
@@ -254,7 +254,7 @@ type AuthSessions []AuthSession
 func AuthSessionsDelete(ctx context.Context) {
 	ctx = logger.Trace(ctx)
 
-	logger.Log(ctx, db.Exec(ctx, "DELETE FROM auth_session WHERE expires > '0001-01-01' AND expires < now()", nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, "DELETE FROM auth_session WHERE expires > '0001-01-01' AND expires < now()", nil)) //nolint:errcheck
 }
 
 // AuthSessionsReadAll reads all AuthSessions for an AuthAccountID.
@@ -263,5 +263,5 @@ func AuthSessionsReadAll(ctx context.Context, authAccountID uuid.UUID) (AuthSess
 
 	var a AuthSessions
 
-	return a, logger.Log(ctx, db.Query(ctx, true, &a, `SELECT `+authSessionReadQuery1+`WHERE a_s.auth_account_id = $1`+authSessionReadQuery2, nil, authAccountID))
+	return a, logger.Error(ctx, db.Query(ctx, true, &a, `SELECT `+authSessionReadQuery1+`WHERE a_s.auth_account_id = $1`+authSessionReadQuery2, nil, authAccountID))
 }

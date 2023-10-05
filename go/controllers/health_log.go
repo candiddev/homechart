@@ -21,7 +21,7 @@ import (
 func (*Handler) HealthLogCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
 }
 
 // HealthLogDelete deletes a HealthLog.
@@ -38,7 +38,7 @@ func (*Handler) HealthLogCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthLogDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
 }
 
 // HealthLogRead reads a HealthLog.
@@ -55,7 +55,7 @@ func (*Handler) HealthLogDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthLogRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
 }
 
 // HealthLogUpdate updates a HealthLog.
@@ -73,7 +73,7 @@ func (*Handler) HealthLogRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthLogUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.HealthLog{}, w, r)) //nolint:errcheck
 }
 
 // HealthLogsRead reads all HealthLogs for an AuthAccount.
@@ -89,5 +89,5 @@ func (*Handler) HealthLogUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) HealthLogsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.HealthLogs{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.HealthLogs{}, w)) //nolint:errcheck
 }

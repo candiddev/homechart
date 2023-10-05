@@ -41,5 +41,5 @@ SET
 RETURNING *
 `, s)
 
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }

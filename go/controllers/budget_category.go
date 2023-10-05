@@ -21,7 +21,7 @@ import (
 func (*Handler) BudgetCategoryCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
 }
 
 // BudgetCategoryDelete deletes a BudgetCategory.
@@ -38,7 +38,7 @@ func (*Handler) BudgetCategoryCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetCategoryDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
 }
 
 // BudgetCategoryRead reads a BudgetCategory.
@@ -55,7 +55,7 @@ func (*Handler) BudgetCategoryDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetCategoryRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
 }
 
 // BudgetCategoryUpdate updates a BudgetCategory.
@@ -73,7 +73,7 @@ func (*Handler) BudgetCategoryRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetCategoryUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.BudgetCategory{}, w, r)) //nolint:errcheck
 }
 
 // BudgetCategoriesRead reads all BudgetCategories for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) BudgetCategoryUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) BudgetCategoriesRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.BudgetCategories{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.BudgetCategories{}, w)) //nolint:errcheck
 }

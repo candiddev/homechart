@@ -20,7 +20,7 @@ type Health struct {
 // Read checks the health of various services.
 func (h *Health) Read(ctx context.Context) {
 	if err := db.Health(); err != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrHealth, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrHealth, err)) //nolint:errcheck
 	} else {
 		h.DB = true
 	}

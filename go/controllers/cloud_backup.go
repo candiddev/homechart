@@ -20,7 +20,7 @@ func (h *Handler) CloudBackupCreate(w http.ResponseWriter, r *http.Request) {
 	if h.Info.Cloud {
 		ah, err := authHouseholdReadAndCheckExpire(ctx, types.UUIDToNullUUID(ahid))
 		if err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -33,12 +33,12 @@ func (h *Handler) CloudBackupCreate(w http.ResponseWriter, r *http.Request) {
 
 		b.Data, e = io.ReadAll(r.Body)
 		if e != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty, e.Error()))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest, e.Error()))
 
 			return
 		}
 
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, b.Create(ctx)))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, b.Create(ctx)))
 
 		return
 	}
@@ -46,7 +46,7 @@ func (h *Handler) CloudBackupCreate(w http.ResponseWriter, r *http.Request) {
 	p := getPermissions(ctx)
 
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&ahid, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -56,20 +56,20 @@ func (h *Handler) CloudBackupCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := ah.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	d, err := models.DataFromDatabase(ctx, ahid)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	err = d.Send(ctx, ah.ID, string(ah.BackupEncryptionKey))
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }
 
 // CloudBackupDelete writes a backup to the endpoint.
@@ -84,7 +84,7 @@ func (h *Handler) CloudBackupDelete(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := ah.Read(ctx); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -94,20 +94,20 @@ func (h *Handler) CloudBackupDelete(w http.ResponseWriter, r *http.Request) {
 			ID:              getUUID(r, "cloud_backup_id"),
 		}
 
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, c.Delete(ctx)))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, c.Delete(ctx)))
 
 		return
 	}
 
 	p := getPermissions(ctx)
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&ahid, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	err := h.proxyCloudRequest(ctx, w, "DELETE", fmt.Sprintf("/api/v1/cloud/%s/backups/%s", ahid, getUUID(r, "cloud_backup_id")), nil)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // CloudBackupsRead gets a list of backups from an endpoint and returns them to the client.
@@ -119,26 +119,26 @@ func (h *Handler) CloudBackupsRead(w http.ResponseWriter, r *http.Request) {
 	if h.Info.Cloud {
 		ah, err := authHouseholdReadAndCheckExpire(ctx, types.UUIDToNullUUID(ahid))
 		if err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
 
 		backups, err := models.CloudBackupsRead(ctx, ah.ID)
-		WriteResponse(ctx, w, backups, nil, len(backups), "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, backups, nil, len(backups), "", logger.Error(ctx, err))
 
 		return
 	}
 
 	p := getPermissions(ctx)
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&ahid, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	err := h.proxyCloudRequest(ctx, w, "GET", fmt.Sprintf("/api/v1/cloud/%s/backups", ahid), nil)
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // CloudBackupRead reads a backup from an endpoint, possibly to restore it.
@@ -150,7 +150,7 @@ func (h *Handler) CloudBackupRead(w http.ResponseWriter, r *http.Request) {
 	if h.Info.Cloud {
 		ah, err := authHouseholdReadAndCheckExpire(ctx, types.UUIDToNullUUID(ahid))
 		if err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -159,17 +159,17 @@ func (h *Handler) CloudBackupRead(w http.ResponseWriter, r *http.Request) {
 
 		_, e := w.Write(data)
 		if e != nil {
-			err = errs.NewServerErr(e)
+			err = errs.ErrReceiver.Wrap(e)
 		}
 
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return
 	}
 
 	p := getPermissions(ctx)
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&ahid, models.PermissionComponentAuth, models.PermissionEdit) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -178,7 +178,7 @@ func (h *Handler) CloudBackupRead(w http.ResponseWriter, r *http.Request) {
 
 	r, err := http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/api/v1/cloud/%s/backups/%s", h.Config.App.CloudEndpoint, ahid, id), nil)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
@@ -187,7 +187,7 @@ func (h *Handler) CloudBackupRead(w http.ResponseWriter, r *http.Request) {
 
 	res, err := client.Do(r)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.NewServerErr(err)))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrReceiver.Wrap(err)))
 
 		return
 	}
@@ -196,7 +196,7 @@ func (h *Handler) CloudBackupRead(w http.ResponseWriter, r *http.Request) {
 
 	backup, err := io.ReadAll(res.Body)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.NewServerErr(err)))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrReceiver.Wrap(err)))
 
 		return
 	}
@@ -206,17 +206,17 @@ func (h *Handler) CloudBackupRead(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := ah.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	d, e := models.DataFromByte(ctx, backup, string(ah.BackupEncryptionKey))
 	if e != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, e))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, e))
 
 		return
 	}
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, d.Restore(ctx, false)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, d.Restore(ctx, false)))
 }

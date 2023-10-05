@@ -15,5 +15,5 @@ var ErrSend = errors.New("error sending notification")
 
 // NewErrCancelled creates an error with a cancellation reason.
 func NewErrCancelled(reason string) errs.Err {
-	return errs.NewClientBadRequestErr("Notification cancelled", ErrCancelled, errors.New(reason))
+	return errs.ErrSenderBadRequest.Set("Notification cancelled").Wrap(ErrCancelled, errors.New(reason))
 }

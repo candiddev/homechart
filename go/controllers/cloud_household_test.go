@@ -176,7 +176,7 @@ func TestCloudHouseholdReadJWT(t *testing.T) {
 		},
 		"forbidden": {
 			authHouseholdID: models.GenerateUUID(),
-			errWant:         errs.ErrClientForbidden.Message(),
+			errWant:         errs.ErrSenderForbidden.Message(),
 		},
 	}
 

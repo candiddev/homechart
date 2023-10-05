@@ -215,13 +215,13 @@ func TestAuthAccountDelete(t *testing.T) {
 			}
 
 			noError(t, r.do())
-			assert.Equal(t, r.do().Error(), errs.ErrClientGone.Message())
+			assert.Equal(t, r.do().Error(), errs.ErrSenderNotFound.Message())
 		})
 	}
 
 	a1.Updated = time.Time{}
 
-	assert.Equal[error](t, a1.Read(ctx), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, a1.Read(ctx), errs.ErrSenderNotFound)
 
 	ah.Delete(ctx)
 }
@@ -247,7 +247,7 @@ func TestAuthAccountKeysUpdate(t *testing.T) {
 		want  crypto.RSAPublicKey
 	}{
 		"wrong account": {
-			err:   errs.ErrClientForbidden.Message(),
+			err:   errs.ErrSenderForbidden.Message(),
 			input: seed.AuthSessions[0],
 		},
 		"good": {
@@ -369,7 +369,7 @@ func TestAuthAccountTOTPUpdate(t *testing.T) {
 	}{
 		{
 			name: "missing body",
-			err:  types.MsgEmailAddress,
+			err:  types.ErrEmailAddress.Message(),
 			uri:  uri + "aaaaa/totp",
 		},
 		{
@@ -488,7 +488,7 @@ func TestAuthAccountUpdate(t *testing.T) {
 	}{
 		{
 			name:    "invalid",
-			err:     types.MsgEmailAddress,
+			err:     types.ErrEmailAddress.Message(),
 			session: s,
 		},
 		{
@@ -514,7 +514,7 @@ func TestAuthAccountUpdate(t *testing.T) {
 		{
 			name:    "update password - admin - cloud",
 			account: aPassword,
-			err:     errs.ErrClientBadRequestProperty.Message(),
+			err:     errs.ErrSenderBadRequest.Message(),
 			session: sa,
 		},
 		{
@@ -691,19 +691,19 @@ func TestAuthAccountVerifyUpdate(t *testing.T) {
 	}{
 		{
 			name:  "invalid",
-			err:   errs.ErrClientBadRequestMissing.Message(),
+			err:   errs.ErrSenderBadRequest.Message(),
 			id:    "aaaaaa",
 			token: "aaaaaa",
 		},
 		{
 			name:  "bad token",
-			err:   errs.ErrClientBadRequestMissing.Message(),
+			err:   errs.ErrSenderBadRequest.Message(),
 			id:    a2.ID.String(),
 			token: "aaaaaa",
 		},
 		{
 			name:  "wrong token for user",
-			err:   errs.ErrClientBadRequestMissing.Message(),
+			err:   errs.ErrSenderNotFound.Message(),
 			id:    a2.ID.String(),
 			token: a1.VerificationToken.UUID.String(),
 		},
@@ -714,7 +714,7 @@ func TestAuthAccountVerifyUpdate(t *testing.T) {
 		},
 		{
 			name:  "used token",
-			err:   errs.ErrClientBadRequestMissing.Message(),
+			err:   errs.ErrSenderNotFound.Message(),
 			id:    a1.ID.String(),
 			token: a1.VerificationToken.UUID.String(),
 		},

@@ -38,7 +38,7 @@ func TestShopListCreate(t *testing.T) {
 	// Should fail due to duplicate name
 	s1 = seed.ShopLists[0]
 
-	assert.HasErr(t, s1.create(ctx, CreateOpts{}), errs.ErrClientConflictExists)
+	assert.HasErr(t, s1.create(ctx, CreateOpts{}), errs.ErrSenderConflict)
 
 	// Increment short ID
 	id := types.NewNanoid()

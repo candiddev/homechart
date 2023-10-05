@@ -33,7 +33,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 	var a models.AuthAccount
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -57,7 +57,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 			// This is for reals
 			a.EmailAddress, a.OIDCID, err = h.OIDCProviders.GetClaims(ctx, a.OIDCProviderType, a.OIDCCode)
 			if err != nil {
-				WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 				return
 			}
@@ -66,7 +66,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 		if err = a.ReadOIDCID(ctx); err != nil {
 			var s models.AuthSession
 
-			if errors.Is(err, errs.ErrClientBadRequestMissing) {
+			if errors.Is(err, errs.ErrSenderNotFound) {
 				if a.ToSAccepted {
 					a.Verified = true
 					s, err = h.createAuthAccount(ctx, r, &a, false)
@@ -75,7 +75,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 				}
 			}
 
-			WriteResponse(ctx, w, s, nil, 1, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, s, nil, 1, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -85,7 +85,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 		err = a.ReadPasswordHash(ctx)
 
 		if err != nil || a.Child {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errClientBadRequestAuthAccountMissing))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errClientBadRequestAuthAccountMissing))
 
 			return
 		}
@@ -93,7 +93,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 		// Compare passwords
 		err := p.CompareHashAndPassword(a.PasswordHash)
 		if a.PasswordHash == "" || err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errClientBadRequestPassword))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errClientBadRequestPassword))
 
 			return
 		}
@@ -101,7 +101,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 		if strings.HasPrefix(a.PasswordHash, "$2a") {
 			a.Password = p
 			if err := a.UpdatePasswordHash(ctx); err != nil {
-				WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 				return
 			}
@@ -109,12 +109,12 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 
 		// Check two-factor
 		if a.TOTPSecret != "" && (!totp.Validate(a.TOTPCode, a.TOTPSecret) && a.TOTPCode != a.TOTPBackup) {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, models.ErrClientBadRequestTOTP))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, models.ErrClientBadRequestTOTP))
 
 			return
 		}
 	default:
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errClientBadRequestPassword))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errClientBadRequestPassword))
 
 		return
 	}
@@ -132,7 +132,7 @@ func (h *Handler) AuthSignInCreate(w http.ResponseWriter, r *http.Request) { //n
 
 	ctx = setAuthSessionID(ctx, s.ID)
 
-	WriteResponse(ctx, w, s, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, s, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthSignInRead returns an AuthSession using URL parameters.
@@ -160,5 +160,5 @@ func (*Handler) AuthSignInRead(w http.ResponseWriter, r *http.Request) {
 		PermissionsHouseholds: *p.AuthHouseholdsPermissions,
 	}
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, nil))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, nil))
 }

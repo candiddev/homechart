@@ -38,7 +38,7 @@ func (b *BudgetRecurrence) create(ctx context.Context, _ CreateOpts) errs.Err {
 
 	b.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 INSERT INTO budget_recurrence (
 	  auth_household_id
 	, budget_account_id
@@ -78,7 +78,7 @@ func (b *BudgetRecurrence) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_recurrence
 SET
 	  budget_account_id = :budget_account_id

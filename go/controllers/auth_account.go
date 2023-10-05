@@ -26,7 +26,7 @@ func (h *Handler) createAuthAccount(ctx context.Context, r *http.Request, a *mod
 		ah.SubscriptionExpires = types.CivilDateToday().AddDays(h.Config.App.TrialDays)
 
 		if err := ah.Create(ctx, false); err != nil {
-			return models.AuthSession{}, logger.Log(ctx, err)
+			return models.AuthSession{}, logger.Error(ctx, err)
 		}
 	}
 
@@ -37,15 +37,15 @@ func (h *Handler) createAuthAccount(ctx context.Context, r *http.Request, a *mod
 	if err != nil {
 		// Delete the AuthHousehold created for the duplicate account
 		derr := ah.Delete(ctx)
-		if derr != nil && derr != errs.ErrClientNoContent {
-			return models.AuthSession{}, logger.Log(ctx, derr)
+		if derr != nil && derr != errs.ErrSenderNoContent {
+			return models.AuthSession{}, logger.Error(ctx, derr)
 		}
 
-		if errors.Is(err, errs.ErrClientConflictExists) {
+		if errors.Is(err, errs.ErrSenderConflict) {
 			err = errConflictAuthAccount
 		}
 
-		return models.AuthSession{}, logger.Log(ctx, err)
+		return models.AuthSession{}, logger.Error(ctx, err)
 	}
 
 	if cloudHousehold {
@@ -54,7 +54,7 @@ func (h *Handler) createAuthAccount(ctx context.Context, r *http.Request, a *mod
 			AuthHouseholdID: ah.ID,
 		}
 		if err := models.Create(ctx, &aaah, models.CreateOpts{}); err != nil {
-			return models.AuthSession{}, logger.Log(ctx, err)
+			return models.AuthSession{}, logger.Error(ctx, err)
 		}
 	}
 
@@ -76,22 +76,22 @@ func (h *Handler) createAuthAccount(ctx context.Context, r *http.Request, a *mod
 
 	// Initialize defaults
 	if err := models.InitAccount(ctx, a.ID); err != nil {
-		return models.AuthSession{}, logger.Log(ctx, err)
+		return models.AuthSession{}, logger.Error(ctx, err)
 	}
 
 	if cloudHousehold {
 		if err := models.InitHousehold(ctx, ah.ID, a.ID); err != nil {
-			return models.AuthSession{}, logger.Log(ctx, err)
+			return models.AuthSession{}, logger.Error(ctx, err)
 		}
 	}
 
 	s, err := h.createAuthSession(ctx, r, a)
 	ctx = setAuthSessionID(ctx, s.ID)
 
-	logger.LogNotice(noticeAuthAccountCreated, a.EmailAddress.String())
+	logger.Info(ctx, noticeAuthAccountCreated, a.EmailAddress.String())
 	h.sendAnalytics(analyticsEventSignUp, a.UserAgent, r)
 
-	return s, logger.Log(ctx, err)
+	return s, logger.Error(ctx, err)
 }
 
 // AuthAccountCreate creates a new AuthAccount using POST data.
@@ -107,7 +107,7 @@ func (h *Handler) AuthAccountCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
 	if h.Config.App.SignupDisabled && !getAuthSessionAdmin(ctx) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errClientBadRequestSignupDisabled))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errClientBadRequestSignupDisabled))
 
 		return
 	}
@@ -116,20 +116,20 @@ func (h *Handler) AuthAccountCreate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthAccount
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	// Check if ToS is accepted
 	if !a.ToSAccepted {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errClientBadRequestToSAccepted))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errClientBadRequestToSAccepted))
 
 		return
 	}
 
 	if a.Password == "" {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, types.ErrClientBadRequestPasswordLength))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, types.ErrClientBadRequestPasswordLength))
 
 		return
 	}
@@ -138,7 +138,7 @@ func (h *Handler) AuthAccountCreate(w http.ResponseWriter, r *http.Request) {
 
 	s, err := h.createAuthAccount(ctx, r, &a, false)
 
-	WriteResponse(ctx, w, s, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, s, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthAccountDelete deletes an AuthAccount using URL parameters.
@@ -162,13 +162,13 @@ func (*Handler) AuthAccountDelete(w http.ResponseWriter, r *http.Request) {
 
 	// Delete account
 	if err := a.Delete(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
-	logger.LogNotice(noticeAuthAccountDeleted, a.EmailAddress.String())
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, nil))
+	logger.Info(ctx, noticeAuthAccountDeleted, a.EmailAddress.String())
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, nil))
 }
 
 // AuthAccountKeysUpdate updates an AuthAccount PrivateKeys and PublicKey using PUT data.
@@ -190,7 +190,7 @@ func (*Handler) AuthAccountKeysUpdate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthAccount
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -198,7 +198,7 @@ func (*Handler) AuthAccountKeysUpdate(w http.ResponseWriter, r *http.Request) {
 	// Get Account ID
 	a.ID = getUUID(r, "auth_account_id")
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, a.UpdatePrivatePublicKeys(ctx)))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, a.UpdatePrivatePublicKeys(ctx)))
 }
 
 // AuthAccountRead reads an AuthAccount using URL parameters.
@@ -223,14 +223,14 @@ func (*Handler) AuthAccountRead(w http.ResponseWriter, r *http.Request) {
 
 	// Read Account
 	err := a.Read(ctx)
-	if err == nil && !errors.Is(err, errs.ErrClientNoContent) {
+	if err == nil && !errors.Is(err, errs.ErrSenderNoContent) {
 		a.PasswordResetToken = nil
 		a.TOTPBackup = ""
 		a.TOTPSecret = ""
 		a.VerificationToken = nil
 	}
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthAccountTOTPCreate generates a TOTP token for use with AuthAccountTOTPUpdate.
@@ -251,12 +251,12 @@ func (Handler) AuthAccountTOTPCreate(w http.ResponseWriter, r *http.Request) {
 
 	a.ID = getUUID(r, "auth_account_id")
 	if err := a.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, a.CreateTOTP(ctx)))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, a.CreateTOTP(ctx)))
 }
 
 // AuthAccountTOTPRead returns the TOTP backup token.
@@ -279,7 +279,7 @@ func (*Handler) AuthAccountTOTPRead(w http.ResponseWriter, r *http.Request) {
 
 	err := a.ReadTOTPBackup(ctx)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -287,7 +287,7 @@ func (*Handler) AuthAccountTOTPRead(w http.ResponseWriter, r *http.Request) {
 	a.PasswordResetToken = nil
 	a.VerificationToken = nil
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthAccountTOTPUpdate updates an AuthAccountTOTP using PUT data.
@@ -309,7 +309,7 @@ func (*Handler) AuthAccountTOTPUpdate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthAccount
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -318,7 +318,7 @@ func (*Handler) AuthAccountTOTPUpdate(w http.ResponseWriter, r *http.Request) {
 
 	err := a.UpdateTOTP(ctx)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -348,7 +348,7 @@ func (*Handler) AuthAccountTOTPUpdate(w http.ResponseWriter, r *http.Request) {
 	a.PasswordResetToken = nil
 	a.VerificationToken = nil
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthAccountUpdate updates an AuthAccount using PUT data.
@@ -370,7 +370,7 @@ func (h *Handler) AuthAccountUpdate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthAccount
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -382,7 +382,7 @@ func (h *Handler) AuthAccountUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := oldA.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -400,7 +400,7 @@ func (h *Handler) AuthAccountUpdate(w http.ResponseWriter, r *http.Request) {
 		if !h.Info.Cloud {
 			a.Password = password
 		} else if password != "" {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 			return
 		}
@@ -417,7 +417,7 @@ func (h *Handler) AuthAccountUpdate(w http.ResponseWriter, r *http.Request) {
 		} else {
 			_, a.OIDCID, err = h.OIDCProviders.GetClaims(ctx, a.OIDCProviderType, a.OIDCCode)
 			if err != nil {
-				WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 				return
 			}
@@ -492,7 +492,7 @@ func (h *Handler) AuthAccountUpdate(w http.ResponseWriter, r *http.Request) {
 	a.TOTPSecret = ""
 	a.VerificationToken = nil
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthAccountVerifyRead reads an auth account and resends the verification email if applicable.
@@ -515,7 +515,7 @@ func (h *Handler) AuthAccountVerifyRead(w http.ResponseWriter, r *http.Request) 
 
 	err := a.Read(ctx)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -529,7 +529,7 @@ func (h *Handler) AuthAccountVerifyRead(w http.ResponseWriter, r *http.Request) 
 		go m.Send(ctx, nil) //nolint:errcheck
 	}
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthAccountVerifyUpdate verifies the email address of an Auth Account.
@@ -551,20 +551,20 @@ func (*Handler) AuthAccountVerifyUpdate(w http.ResponseWriter, r *http.Request) 
 	token := models.ParseUUID(r.URL.Query().Get("token"))
 
 	if a.ID == uuid.Nil || token == uuid.Nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestMissing))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
 
 	// Compare tokens
 	if err := a.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	if a.VerificationToken == nil || a.VerificationToken != nil && a.VerificationToken.UUID != types.UUIDToNullUUID(token).UUID {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestMissing))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderNotFound))
 
 		return
 	}
@@ -572,8 +572,8 @@ func (*Handler) AuthAccountVerifyUpdate(w http.ResponseWriter, r *http.Request) 
 	a.Verified = true
 	err := a.Update(ctx)
 
-	if err != nil || errors.Is(err, errs.ErrClientNoContent) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	if err != nil || errors.Is(err, errs.ErrSenderNoContent) {
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -587,7 +587,7 @@ func (*Handler) AuthAccountVerifyUpdate(w http.ResponseWriter, r *http.Request) 
 
 	go m.Send(ctx, nil) //nolint:errcheck
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthAccountsRead reads all AuthAccounts account has access to.
@@ -617,5 +617,5 @@ func (*Handler) AuthAccountsRead(w http.ResponseWriter, r *http.Request) {
 		a, total, err = models.AuthAccountsRead(ctx, "", models.GetAuthAccountID(ctx), 0)
 	}
 
-	WriteResponse(ctx, w, a, nil, total, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, total, "", logger.Error(ctx, err))
 }

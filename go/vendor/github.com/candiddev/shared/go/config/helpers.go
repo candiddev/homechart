@@ -1,17 +1,17 @@
 package config
 
 import (
-	"context"
-	"encoding/json"
 	"errors"
 	"fmt"
 	"reflect"
 	"strconv"
 	"strings"
-
-	"github.com/candiddev/shared/go/errs"
-	"github.com/candiddev/shared/go/logger"
 )
+
+// HasParser is an interface for types to import strings intelligently.
+type HasParser interface {
+	ParseString(string) error
+}
 
 type lookupFunc func(key string, lookupValues any) (string, error)
 
@@ -49,7 +49,18 @@ func iterateConfig(prefix string, keys reflect.Type, values reflect.Value, lFunc
 			return err
 		}
 
-		rv, err := getValueFromString(v, value.Kind())
+		if value.CanInterface() {
+			if i, ok := value.Interface().(HasParser); ok {
+				err := i.ParseString(v)
+				if err != nil {
+					return err
+				}
+
+				continue
+			}
+		}
+
+		rv, err := getValueFromString(v, value)
 		if err != nil {
 			return err
 		}
@@ -73,9 +84,9 @@ func iterateMap(keyName, prefix string, lFunc lookupFunc, lValues any, value ref
 			return err
 		}
 
-		k := value.MapIndex(keys[i]).Kind()
-		if k == reflect.Interface {
-			k = value.MapIndex(keys[i]).Elem().Kind()
+		k := value.MapIndex(keys[i])
+		if k.Kind() == reflect.Interface {
+			k = value.MapIndex(keys[i]).Elem()
 		}
 
 		rv, err := getValueFromString(v, k)
@@ -91,9 +102,9 @@ func iterateMap(keyName, prefix string, lFunc lookupFunc, lValues any, value ref
 	return nil
 }
 
-func getValueFromString(input string, kind reflect.Kind) (reflect.Value, error) {
+func getValueFromString(input string, value reflect.Value) (reflect.Value, error) {
 	if input != "" {
-		switch kind { //nolint:exhaustive
+		switch value.Kind() { //nolint:exhaustive
 		case reflect.Bool:
 			if strings.ToLower(input) == "yes" {
 				return reflect.ValueOf(true), nil
@@ -126,9 +137,9 @@ func getValueFromString(input string, kind reflect.Kind) (reflect.Value, error) 
 				return reflect.ValueOf(int(v)), nil
 			}
 		case reflect.Slice:
-			slice := strings.Split(input, ",")
+			v := strings.Split(input, ",")
 
-			return reflect.ValueOf(slice), nil
+			return reflect.ValueOf(v), nil
 		case reflect.String:
 			return reflect.ValueOf(input), nil
 		case reflect.Uint:
@@ -144,20 +155,4 @@ func getValueFromString(input string, kind reflect.Kind) (reflect.Value, error) 
 	}
 
 	return reflect.Value{}, nil
-}
-
-// ToMap converts a config to map[string]any.
-func ToMap(ctx context.Context, config any) (map[string]any, errs.Err) {
-	b, e := json.Marshal(config)
-	if e != nil {
-		return nil, logger.Log(ctx, errs.NewCLIErr(ErrRendering, e))
-	}
-
-	var m map[string]any
-
-	if e := json.Unmarshal(b, &m); e != nil {
-		return nil, logger.Log(ctx, errs.NewCLIErr(ErrRendering, e))
-	}
-
-	return m, logger.Log(ctx, nil)
 }

@@ -216,27 +216,29 @@ func (c *WebPush) Send(ctx context.Context, m *WebPushMessage) errs.Err {
 	if c.VAPIDPrivateKey == "" || c.VAPIDPublicKey == "" {
 		metrics.Notifications.WithLabelValues("webpush", "cancelled").Add(1)
 
-		return logger.Log(ctx, NewErrCancelled("no vapid config"))
+		return logger.Error(ctx, NewErrCancelled("no vapid config"))
 	}
 
 	if m.Client == nil || (m.Client.Auth == "" || m.Client.Endpoint == "" || m.Client.P256 == "") {
 		metrics.Notifications.WithLabelValues("webpush", "cancelled").Add(1)
 
-		return logger.Log(ctx, NewErrCancelled("no valid recipients"))
+		return logger.Error(ctx, NewErrCancelled("no valid recipients"))
 	}
+
+	ctx = logger.SetAttribute(ctx, "webPushEndpoint", m.Client.Endpoint)
 
 	auth, p256, err := m.Client.decode()
 	if err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error decoding client: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error decoding client: %w", err)))
 	}
 
 	cur := elliptic.P256()
 
 	prv, x, y, err := elliptic.GenerateKey(cur, rand.Reader)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error generating private key: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error generating private key: %w", err)))
 	}
 
 	pub := elliptic.Marshal(cur, x, y)
@@ -245,21 +247,21 @@ func (c *WebPush) Send(ctx context.Context, m *WebPushMessage) errs.Err {
 	if _, err := io.ReadFull(rand.Reader, salt); err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error generating salt: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error generating salt: %w", err)))
 	}
 
 	gcm, nonce, err := getWebPushCipherNonce(p256, prv, pub, auth, salt, false)
 	if err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error generating crypto: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error generating crypto: %w", err)))
 	}
 
 	token, err := c.getJWT(m.Client.Endpoint)
 	if err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error creating jwt: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error creating jwt: %w", err)))
 	}
 
 	recordBuf := bytes.NewBuffer(salt)
@@ -277,7 +279,7 @@ func (c *WebPush) Send(ctx context.Context, m *WebPushMessage) errs.Err {
 	if err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error creating body: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error creating body: %w", err)))
 	}
 
 	b := bytes.NewBuffer(j)
@@ -292,7 +294,7 @@ func (c *WebPush) Send(ctx context.Context, m *WebPushMessage) errs.Err {
 	if err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error creating request: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error creating request: %w", err)))
 	}
 
 	req.Header.Add("Authorization", fmt.Sprintf("WebPush %s", token))
@@ -317,7 +319,7 @@ func (c *WebPush) Send(ctx context.Context, m *WebPushMessage) errs.Err {
 	if err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error performing webpush request: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error performing webpush request: %w", err)))
 	}
 
 	defer res.Body.Close()
@@ -326,7 +328,7 @@ func (c *WebPush) Send(ctx context.Context, m *WebPushMessage) errs.Err {
 	if err != nil {
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		return logger.Log(ctx, errs.NewServerErr(ErrSend, fmt.Errorf("error reading body: %w", err)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("error reading body: %w", err)))
 	}
 
 	var e errs.Err
@@ -339,22 +341,22 @@ func (c *WebPush) Send(ctx context.Context, m *WebPushMessage) errs.Err {
 	case http.StatusForbidden:
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		e = errs.NewServerErr(ErrSend, fmt.Errorf("endpoint %s reported bad request: %s", m.Client.Endpoint, body))
+		e = errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("endpoint %s reported bad request: %s", m.Client.Endpoint, body))
 	case http.StatusNotFound:
 		fallthrough
 	case http.StatusGone:
 		metrics.Notifications.WithLabelValues("webpush", "cancelled").Add(1)
 
-		e = errs.NewServerErr(ErrMissing)
+		e = errs.ErrReceiver.Wrap(ErrMissing)
 	case http.StatusRequestEntityTooLarge:
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		e = errs.NewServerErr(ErrSend, fmt.Errorf("endpoint %s reported request too large", m.Client.Endpoint))
+		e = errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("endpoint %s reported request too large", m.Client.Endpoint))
 	case http.StatusTooManyRequests:
 		metrics.Notifications.WithLabelValues("webpush", "failure").Add(1)
 
-		e = errs.NewServerErr(ErrSend, fmt.Errorf("endpoint %s is rate-limited", m.Client.Endpoint))
+		e = errs.ErrReceiver.Wrap(ErrSend, fmt.Errorf("endpoint %s is rate-limited", m.Client.Endpoint))
 	}
 
-	return logger.Log(ctx, e)
+	return logger.Error(ctx, e)
 }

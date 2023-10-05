@@ -45,7 +45,7 @@ func WriteResponse(ctx context.Context, w http.ResponseWriter, value any, ids []
 			r.Message = e.Message()
 			r.Status = e.Status()
 		} else {
-			err := logger.Log(ctx, errs.NewServerErr(err))
+			err := logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 			r.Message = err.Error()
 			r.Status = err.Status()
 		}
@@ -53,7 +53,7 @@ func WriteResponse(ctx context.Context, w http.ResponseWriter, value any, ids []
 
 	w.WriteHeader(r.Status)
 
-	if r.Status == errs.ErrStatusNoContent || (err == nil && value == nil && ids == nil) {
+	if r.Status == errs.ErrSenderNoContent.Status() || (err == nil && value == nil && ids == nil) {
 		return nil
 	}
 
@@ -99,12 +99,12 @@ func WriteResponse(ctx context.Context, w http.ResponseWriter, value any, ids []
 
 	j, err := json.Marshal(r)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	_, err = w.Write(j)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	return nil

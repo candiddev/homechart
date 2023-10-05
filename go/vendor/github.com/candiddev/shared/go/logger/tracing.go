@@ -50,7 +50,7 @@ func SetupTracing(ctx context.Context, cfg TracingConfig, baseURL, version strin
 
 	exporter, err := otlptrace.New(ctx, client)
 	if err != nil {
-		return nil, Log(ctx, errs.NewServerErr(ErrOTLPTraceInit, err))
+		return nil, Error(ctx, errs.ErrReceiver.Wrap(ErrOTLPTraceInit, err))
 	}
 
 	hostname, _ := os.Hostname()
@@ -73,5 +73,5 @@ func SetupTracing(ctx context.Context, cfg TracingConfig, baseURL, version strin
 	otel.SetTracerProvider(tp)
 	Tracer = tp.Tracer(cfg.ServiceName)
 
-	return tp, Log(ctx, nil)
+	return tp, Error(ctx, nil)
 }

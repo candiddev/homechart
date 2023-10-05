@@ -35,7 +35,7 @@ func (n *NotesPageVersion) create(ctx context.Context, _ CreateOpts) errs.Err {
 		n.Updated = GenerateTimestamp()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, n, `
+	return logger.Error(ctx, db.Query(ctx, false, n, `
 INSERT INTO notes_page_version (
 	  body
 	, created_by
@@ -61,7 +61,7 @@ func (n *NotesPageVersion) getChange(ctx context.Context) string {
 	}
 
 	if err := Read(ctx, &page, ReadOpts{}); err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return ""
 	}
@@ -121,5 +121,5 @@ WHERE id NOT IN (
 );
 `, c.App.KeepNotesPageVersions)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }

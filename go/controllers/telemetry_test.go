@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"fmt"
 	"strings"
 	"testing"
 
@@ -41,7 +40,11 @@ func TestTelemetryErrorCreate(t *testing.T) {
 
 			noError(t, r.do())
 
-			assert.Equal(t, strings.Contains(logger.ReadStd(), fmt.Sprintf("debug='%s'", want)), tc.want)
+			l := logger.ReadStd()
+
+			assert.Equal(t, strings.Contains(l, "ERROR") && strings.Contains(l, want), tc.want)
 		})
 	}
+
+	logger.SetFormat(ctx, h.Config.CLI.LogFormat)
 }

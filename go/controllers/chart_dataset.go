@@ -28,21 +28,21 @@ func (*Handler) ChartDatasetsRead(w http.ResponseWriter, r *http.Request) {
 	p := getPermissions(ctx)
 
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&ah, models.PermissionComponentBudget, models.PermissionView) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
 
 	from, err := types.YearMonthFromString(r.URL.Query().Get("from"))
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
 
 	to, err := types.YearMonthFromString(r.URL.Query().Get("to"))
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
@@ -62,5 +62,5 @@ func (*Handler) ChartDatasetsRead(w http.ResponseWriter, r *http.Request) {
 		d, e = models.ChartDatasetsReadBudgetPayees(ctx, ah, from, to)
 	}
 
-	WriteResponse(ctx, w, d, nil, len(d), "", logger.Log(ctx, e))
+	WriteResponse(ctx, w, d, nil, len(d), "", logger.Error(ctx, e))
 }

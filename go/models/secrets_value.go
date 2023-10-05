@@ -34,7 +34,7 @@ func (s *SecretsValue) create(ctx context.Context, opts CreateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	if err := s.validate(); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	s.ID = GenerateUUID()
@@ -70,7 +70,7 @@ INSERT INTO secrets_value (
 RETURNING *
 `, s)
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 func (s *SecretsValue) getChange(_ context.Context) string {
@@ -101,7 +101,7 @@ func (s *SecretsValue) update(ctx context.Context, opts UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	if err := s.validate(); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	query := fmt.Sprintf(`
@@ -123,18 +123,18 @@ RETURNING secrets_value.*
 `, opts.AuthAccountID, opts.AuthHouseholdsPermissions.GetIDs())
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, s, query, s))
+	return logger.Error(ctx, db.Query(ctx, false, s, query, s))
 }
 
 func (s *SecretsValue) validate() errs.Err {
 	for i := range s.DataEncrypted {
 		if s.DataEncrypted[i].Encryption != crypto.TypeAES128GCM {
-			return errs.ErrClientBadRequestProperty
+			return errs.ErrSenderBadRequest.Set("data encryption type must be aes128gcm")
 		}
 	}
 
 	if s.NameEncrypted.Encryption != crypto.TypeAES128GCM || s.TagsEncrypted.Encryption != crypto.TypeAES128GCM {
-		return errs.ErrClientBadRequestProperty
+		return errs.ErrSenderBadRequest.Set("name and tag encryption type must be aes128gcm")
 	}
 
 	return nil
@@ -153,5 +153,5 @@ func SecretsValuesDelete(ctx context.Context) {
 
 	query := fmt.Sprintf("DELETE FROM secrets_value WHERE deleted > '0001-01-01' AND deleted < now() - interval '%d day'", c.App.KeepDeletedDays)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }

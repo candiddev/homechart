@@ -129,7 +129,7 @@ func (AESKey) Type() Type {
 func GenerateAES128[T cli.AppConfig[any]](ctx context.Context, _ []string, _ T) errs.Err {
 	key, err := NewAESKey()
 	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	fmt.Printf("%s\n", key) //nolint:forbidigo

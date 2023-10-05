@@ -42,7 +42,7 @@ func TestPlanTaskCreate(t *testing.T) {
 
 	p.AuthAccountID = nil
 
-	assert.Equal[error](t, p.create(ctx, CreateOpts{}), errs.ErrClientBadRequestProperty)
+	assert.Equal[error](t, p.create(ctx, CreateOpts{}), errs.ErrSenderBadRequest)
 	assert.Equal(t, p.Assignees, nil)
 
 	p.AuthAccountID = &seed.AuthAccounts[0].ID

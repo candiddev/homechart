@@ -88,12 +88,12 @@ func Print(ctx context.Context, key crypto.Verifier, customClaims CustomClaims, 
 	if _, err := jwt.ParseWithClaims(token, customClaims, func(t *jwt.Token) (any, error) {
 		return key.PublicKey()
 	}, jwt.WithoutClaimsValidation()); err != nil {
-		logger.Log(ctx, errs.NewCLIErr(ErrPrintingJWT, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPrintingJWT, err)) //nolint:errcheck
 	}
 
 	j, err := json.MarshalIndent(customClaims, "", "  ")
 	if err != nil {
-		logger.Log(ctx, errs.NewCLIErr(ErrMarshalingJWT, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrMarshalingJWT, err)) //nolint:errcheck
 	}
 
 	fmt.Print(strings.TrimSpace(string(j)) + "\n") //nolint:forbidigo

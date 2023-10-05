@@ -59,7 +59,7 @@ func (c *Config) Request(ctx context.Context, dest any, method, path string, dat
 
 	r, err := http.NewRequestWithContext(ctx, method, endpoint+path, strings.NewReader(data.Encode()))
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPaddleAction, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPaddleAction, err))
 	}
 
 	r.Header.Add("Content-Type", "application/x-www-form-urlencoded")
@@ -69,14 +69,14 @@ func (c *Config) Request(ctx context.Context, dest any, method, path string, dat
 
 	res, err := client.Do(r)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPaddleAction, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPaddleAction, err))
 	}
 
 	defer res.Body.Close()
 
 	body, err := io.ReadAll(res.Body)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPaddleAction, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPaddleAction, err))
 	}
 
 	var j json.RawMessage
@@ -86,18 +86,18 @@ func (c *Config) Request(ctx context.Context, dest any, method, path string, dat
 	}
 
 	if err := json.Unmarshal(body, &pres); err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPaddleAction, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPaddleAction, err))
 	}
 
 	if !pres.Success {
-		return logger.Log(ctx, errs.NewServerErr(ErrPaddleAction, errors.New(pres.Error.Message)))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPaddleAction, errors.New(pres.Error.Message)))
 	}
 
 	if dest != nil {
 		if err := json.Unmarshal(j, dest); err != nil {
-			return logger.Log(ctx, errs.NewServerErr(ErrPaddleAction, err))
+			return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPaddleAction, err))
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }

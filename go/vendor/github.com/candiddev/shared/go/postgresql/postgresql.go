@@ -56,19 +56,19 @@ func (c *Config) Setup(ctx context.Context) errs.Err {
 
 	c.db, err = sqlx.Open("postgres", c.dsn)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLConnect, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLConnect, err))
 	}
 
 	err = c.Health()
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLConnect, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLConnect, err))
 	}
 
 	c.db.SetConnMaxLifetime(time.Duration(c.MaxLifetimeMinutes) * time.Minute)
 	c.db.SetMaxIdleConns(c.MaxIdleConnections)
 	c.db.SetMaxOpenConns(c.MaxConnections)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // BeginTx returns a transaction.
@@ -77,10 +77,10 @@ func (c *Config) BeginTx(ctx context.Context) (*sqlx.Tx, errs.Err) {
 
 	tx, err := c.db.BeginTxx(ctx, &sql.TxOptions{})
 	if err != nil {
-		return nil, logger.Log(ctx, decodeErr(ctx, err))
+		return nil, logger.Error(ctx, decodeErr(ctx, err))
 	}
 
-	return tx, logger.Log(ctx, nil)
+	return tx, logger.Error(ctx, nil)
 }
 
 // Exec runs a NamedExec function.  It will return an errs.ErrClientNoContent if no rows were returned.
@@ -108,21 +108,21 @@ func (c *Config) Exec(ctx context.Context, query string, argument any) errs.Err 
 	if err != nil {
 		pErr := decodeErr(ctx, err)
 
-		return logger.Log(ctx, pErr, err.Error())
+		return logger.Error(ctx, pErr, err.Error())
 	}
 
 	a, err := r.RowsAffected()
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err))
 	}
 
 	metrics.PostgreSQLQueryDuration.WithLabelValues(table, verb).Observe(time.Since(t).Seconds())
 
 	if a == 0 {
-		return logger.Log(ctx, errs.ErrClientNoContent)
+		return logger.Error(ctx, errs.ErrSenderNoContent)
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // Conn returns a static connection to Postgres.
@@ -141,35 +141,35 @@ func (c *Config) Health() error {
 func (c *Config) Listen(ctx context.Context, f func(context.Context, *types.TableNotify)) {
 	listener := pq.NewListener(c.dsn, 10*time.Second, time.Minute, func(ev pq.ListenerEventType, err error) {
 		if err != nil {
-			logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+			logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 		}
 	})
 
 	err := listener.Listen("changes")
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 		return
 	}
 
-	logger.Log(ctx, nil, "Database listener started") //nolint:errcheck
+	logger.Debug(ctx, "Database listener started")
 
 	for {
 		select {
 		case <-ctx.Done():
 			err := listener.Close()
 			if err != nil {
-				logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+				logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 			}
 
-			logger.Log(ctx, nil, "Database listener stopped") //nolint:errcheck
+			logger.Debug(ctx, "Database listener stopped")
 
 			return
 		case notification := <-listener.Notify:
 			if notification != nil {
 				n, err := types.TableNotifyFromString(notification.Extra)
 				if err != nil {
-					logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+					logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 					continue
 				}
@@ -188,7 +188,7 @@ func (*Config) LockAcquire(ctx context.Context, lockID int, conn *sql.Conn) bool
 
 	rows, err := conn.QueryContext(ctx, stmt)
 	if err != nil || rows.Err() != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 		return false
 	}
@@ -198,7 +198,7 @@ func (*Config) LockAcquire(ctx context.Context, lockID int, conn *sql.Conn) bool
 
 	err = rows.Scan(&l)
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 		return false
 	}
@@ -214,7 +214,7 @@ func (*Config) LockExists(ctx context.Context, lockID int, conn *sql.Conn) bool 
 
 	rows, err := conn.QueryContext(ctx, stmt)
 	if err != nil || rows.Err() != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 		return false
 	}
@@ -224,7 +224,7 @@ func (*Config) LockExists(ctx context.Context, lockID int, conn *sql.Conn) bool 
 
 	err = rows.Scan(&l)
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 		return false
 	}
@@ -240,7 +240,7 @@ func (*Config) LockRelease(ctx context.Context, lockID int, conn *sql.Conn) bool
 
 	rows, err := conn.QueryContext(ctx, stmt)
 	if err != nil || rows.Err() != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 		return false
 	}
@@ -250,7 +250,7 @@ func (*Config) LockRelease(ctx context.Context, lockID int, conn *sql.Conn) bool
 
 	err = rows.Scan(&l)
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)) //nolint:errcheck
 
 		return false
 	}
@@ -304,12 +304,12 @@ func (c *Config) Migrate(ctx context.Context, app string, triggers, migrations e
 	// Attempt to get a lock
 	conn, err := c.db.Conn(ctx)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLMigrate, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLMigrate, err))
 	}
 	defer conn.Close()
 
 	if c.LockAcquire(ctx, LockMigrations, conn) {
-		logger.Log(ctx, nil, "Acquired migration lock") //nolint:errcheck
+		logger.Debug(ctx, "Acquired migration lock")
 
 		tx := c.db.MustBegin()
 		defer tx.Rollback() //nolint: errcheck
@@ -325,7 +325,7 @@ CREATE TABLE IF NOT EXISTS migration (
 )
 `
 		if _, err := tx.ExecContext(ctx, query); err != nil {
-			return logger.Log(ctx, decodeErr(ctx, err))
+			return logger.Error(ctx, decodeErr(ctx, err))
 		}
 
 		var version int
@@ -335,22 +335,22 @@ SELECT
 	version
 FROM migration
 WHERE app = $1`, app)
-		if err != nil && decodeErr(ctx, err) != errs.ErrClientBadRequestMissing {
-			return logger.Log(ctx, decodeErr(ctx, err))
+		if err != nil && !decodeErr(ctx, err).Like(errs.ErrSenderNotFound) {
+			return logger.Error(ctx, decodeErr(ctx, err))
 		}
 
 		if rows.Err() != nil {
-			return logger.Log(ctx, decodeErr(ctx, rows.Err()))
+			return logger.Error(ctx, decodeErr(ctx, rows.Err()))
 		}
 
 		if rows.Next() {
 			if err := rows.Scan(&version); err != nil {
-				return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLMigrate, err))
+				return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLMigrate, err))
 			}
 		}
 
 		if err := rows.Close(); err != nil {
-			return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLMigrate, err))
+			return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLMigrate, err))
 		}
 
 		var lastMigration int
@@ -366,7 +366,7 @@ WHERE app = $1`, app)
 %s`, v, contents)); err != nil {
 					err := decodeErr(ctx, err)
 
-					return logger.Log(ctx, err)
+					return logger.Error(ctx, err)
 				}
 
 				migrationCount++
@@ -376,7 +376,7 @@ WHERE app = $1`, app)
 
 			return nil
 		}); err != nil {
-			return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLMigrate, err))
+			return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLMigrate, err))
 		}
 
 		if _, err := tx.ExecContext(ctx, `
@@ -392,32 +392,32 @@ ON CONFLICT (
 	app
 ) DO UPDATE SET version = $2
 `, app, lastMigration); err != nil {
-			return logger.Log(ctx, decodeErr(ctx, err))
+			return logger.Error(ctx, decodeErr(ctx, err))
 		}
 
 		if err := readAndExec(triggers, func(filename, contents string) error {
 			if _, err := tx.ExecContext(ctx, fmt.Sprintf(`--%s
 %s`, filename, contents)); err != nil {
-				return logger.Log(ctx, decodeErr(ctx, err))
+				return logger.Error(ctx, decodeErr(ctx, err))
 			}
 
 			return nil
 		}); err != nil {
-			return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLMigrate, err))
+			return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLMigrate, err))
 		}
 
 		if err := tx.Commit(); err != nil {
-			return logger.Log(ctx, decodeErr(ctx, err))
+			return logger.Error(ctx, decodeErr(ctx, err))
 		}
 
 		if !c.LockRelease(ctx, LockMigrations, conn) {
-			return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLMigrate, err))
+			return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLMigrate, err))
 		}
 
-		logger.Log(ctx, nil, "Released migration lock") //nolint:errcheck
+		logger.Debug(ctx, "Released migration lock")
 	}
 
-	return logger.Log(ctx, nil, fmt.Sprintf("%d migrations", migrationCount))
+	return logger.Error(ctx, nil, fmt.Sprintf("%d migrations", migrationCount))
 }
 
 // Query runs a Get or Select function.  This will throw an errs.ErrClientNoContent if the query includes update values and returns no rows.
@@ -439,7 +439,7 @@ func (c *Config) Query(ctx context.Context, multi bool, destination any, query s
 
 		stmt, err = c.db.PrepareNamed(query)
 		if err != nil {
-			return logger.Log(ctx, decodeErr(ctx, err))
+			return logger.Error(ctx, decodeErr(ctx, err))
 		}
 
 		if multi {
@@ -459,14 +459,14 @@ func (c *Config) Query(ctx context.Context, multi bool, destination any, query s
 
 	if err != nil {
 		pErr := decodeErr(ctx, err)
-		if pErr == errs.ErrClientBadRequestMissing && (strings.Contains(query, "updated >") || verb == "UPDATE") {
-			pErr = errs.ErrClientNoContent
+		if pErr.Like(errs.ErrSenderNotFound) && (strings.Contains(query, "updated >") || verb == "UPDATE") {
+			pErr = errs.ErrSenderNoContent
 		}
 
-		return logger.Log(ctx, pErr)
+		return logger.Error(ctx, pErr)
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func decodeErr(ctx context.Context, err error) errs.Err {
@@ -481,21 +481,21 @@ func decodeErr(ctx context.Context, err error) errs.Err {
 		case "23502": // Null constraint
 			fallthrough
 		case "23503": // Foreign key doesn't exist
-			e = errs.ErrClientBadRequestProperty.Append(err)
+			e = errs.ErrSenderBadRequest.Wrap(err)
 		case "23505": // Duplicate key
-			e = errs.ErrClientConflictExists.Append(err)
+			e = errs.ErrSenderConflict.Wrap(err)
 		default:
-			e = errs.NewServerErr(ErrPostgreSQLAction, err)
+			e = errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err)
 		}
 
-		return logger.Log(ctx, e)
+		return logger.Error(ctx, e)
 	}
 
 	switch err.Error() {
 	case "sql: no rows in result set":
-		return errs.ErrClientBadRequestMissing
+		return errs.ErrSenderNotFound.Wrap(err)
 	default:
-		return logger.Log(ctx, errs.NewServerErr(ErrPostgreSQLAction, err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(ErrPostgreSQLAction, err))
 	}
 }
 

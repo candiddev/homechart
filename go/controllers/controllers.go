@@ -77,12 +77,12 @@ func NewServer(port int, router http.Handler) *http.Server {
 // ShutdownServer stops a controller gracefully.
 func ShutdownServer(ctx context.Context, srv *http.Server, quit chan os.Signal, cancel context.CancelFunc) {
 	<-quit
-	logger.Log(ctx, nil, "Stopping server") //nolint:errcheck
+	logger.Error(ctx, nil, "Stopping server") //nolint:errcheck
 
 	srv.SetKeepAlivesEnabled(false)
 
 	if err := srv.Shutdown(ctx); err != nil {
-		logger.Log(ctx, errs.NewServerErr(errors.New("unable to stop server"), err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(errors.New("unable to stop server"), err)) //nolint:errcheck
 	}
 
 	signal.Stop(quit)
@@ -99,7 +99,7 @@ func (h *Handler) Listen(ctx context.Context, srv *http.Server) errs.Err {
 	h.SSE = newSSE()
 	go h.SSE.Listen(ctx, &h.Config.PostgreSQL)
 
-	logger.LogNotice("Starting server...")
+	logger.Info(ctx, "Starting server...")
 
 	if h.Config.App.TLSCertificate != "" {
 		err = srv.ListenAndServeTLS(h.Config.App.TLSCertificate, h.Config.App.TLSKey)
@@ -108,7 +108,7 @@ func (h *Handler) Listen(ctx context.Context, srv *http.Server) errs.Err {
 	}
 
 	if err != nil && err != http.ErrServerClosed {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	return nil
@@ -151,10 +151,10 @@ func getJSON(ctx context.Context, i any, b io.Reader) errs.Err {
 		if e, ok := errr.(errs.Err); ok {
 			err = e
 		} else {
-			err = errs.ErrClientBadRequestProperty
+			err = errs.ErrSenderBadRequest
 		}
 
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	return nil

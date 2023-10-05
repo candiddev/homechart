@@ -49,7 +49,7 @@ func (b *BudgetTransactionCategory) create(ctx context.Context, _ CreateOpts) er
 
 	b.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, b, budgetTransactionCategoryInsert+`
+	return logger.Error(ctx, db.Query(ctx, false, b, budgetTransactionCategoryInsert+`
 RETURNING *
 `, b))
 }
@@ -76,7 +76,7 @@ func (b *BudgetTransactionCategory) update(ctx context.Context, _ UpdateOpts) er
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_transaction_category
 SET
 	  amount = :amount

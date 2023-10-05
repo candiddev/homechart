@@ -19,7 +19,7 @@ func TestCookRecipeCreate(t *testing.T) {
 		notWant uuid.UUID
 	}{
 		"exists": {
-			err: errs.ErrClientConflictExists,
+			err: errs.ErrSenderConflict,
 			input: &CookRecipe{
 				AuthHouseholdID: seed.AuthHouseholds[0].ID,
 				Name:            seed.CookRecipes[0].Name,
@@ -122,7 +122,7 @@ func TestCookRecipeUpdate(t *testing.T) {
 	// Test unique
 	c.Name = seed.CookRecipes[0].Name
 
-	assert.HasErr(t, c.update(ctx, UpdateOpts{}), errs.ErrClientConflictExists)
+	assert.HasErr(t, c.update(ctx, UpdateOpts{}), errs.ErrSenderConflict)
 
 	Delete(ctx, &cn, DeleteOpts{})
 }
@@ -143,7 +143,7 @@ func TestCookRecipesDelete(t *testing.T) {
 
 	CookRecipesDelete(ctx)
 
-	assert.Equal[error](t, Read(ctx, &c1, ReadOpts{}), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, Read(ctx, &c1, ReadOpts{}), errs.ErrSenderNotFound)
 
 	c.App.KeepDeletedDays = old
 }

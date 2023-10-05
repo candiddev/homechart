@@ -118,7 +118,7 @@ func (s *sse) handleReceiver(_ context.Context, n *types.TableNotify) {
 }
 
 func (s *sse) Listen(ctx context.Context, db models.DB) {
-	logger.Log(ctx, nil, "SSE listener started") //nolint:errcheck
+	logger.Error(ctx, nil, "SSE listener started") //nolint:errcheck
 
 	receiver := make(chan *types.TableNotify)
 
@@ -142,7 +142,7 @@ func (s *sse) Listen(ctx context.Context, db models.DB) {
 			close(s.ClientRemove)
 			close(receiver)
 
-			logger.Log(ctx, nil, "SSE listener stopped") //nolint:errcheck
+			logger.Error(ctx, nil, "SSE listener stopped") //nolint:errcheck
 
 			return
 		}
@@ -166,7 +166,7 @@ func (h *Handler) SSERead(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := a.Read(ctx, true); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -174,7 +174,7 @@ func (h *Handler) SSERead(w http.ResponseWriter, r *http.Request) {
 	// Check if client supports SSE/flushing
 	flusher, ok := w.(http.Flusher)
 	if !ok {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errClientBadRequestSSEUnsupported))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errClientBadRequestSSEUnsupported))
 
 		return
 	}
@@ -208,7 +208,9 @@ func (h *Handler) SSERead(w http.ResponseWriter, r *http.Request) {
 		case <-closer:
 			return
 		case d := <-receiver:
+			//nolint:forbidigo
 			fmt.Fprintf(w, "id: %s\n\n", client.ID)
+			//nolint:forbidigo
 			fmt.Fprintf(w, "data: %s\n\n", d)
 
 			flusher.Flush()

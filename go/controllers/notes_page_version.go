@@ -21,7 +21,7 @@ import (
 func (*Handler) NotesPageVersionCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.NotesPageVersion{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.NotesPageVersion{}, w, r)) //nolint:errcheck
 }
 
 // NotesPageVersionDelete deletes a NotesPageVersion.
@@ -38,7 +38,7 @@ func (*Handler) NotesPageVersionCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) NotesPageVersionDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.NotesPageVersion{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.NotesPageVersion{}, w, r)) //nolint:errcheck
 }
 
 // NotesPageVersionRead reads a NotesPageVersion.
@@ -55,7 +55,7 @@ func (*Handler) NotesPageVersionDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) NotesPageVersionRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.NotesPageVersion{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.NotesPageVersion{}, w, r)) //nolint:errcheck
 }
 
 // NotesPageVersionsRead reads all NotesPageVersions for an AuthHousehold.
@@ -71,5 +71,5 @@ func (*Handler) NotesPageVersionRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) NotesPageVersionsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.NotesPageVersions{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.NotesPageVersions{}, w)) //nolint:errcheck
 }

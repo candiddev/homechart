@@ -1,6 +1,7 @@
 package types
 
 import (
+	"errors"
 	"fmt"
 	"strconv"
 
@@ -10,7 +11,7 @@ import (
 
 const nanoidLength = 14
 
-var ErrNanoidLength = errs.NewClientBadRequestErr(fmt.Sprintf("Value must be less than or equal to %d characters", nanoidLength))
+var ErrNanoidLength = errs.ErrSenderBadRequest.Set(fmt.Sprintf("Value must be less than or equal to %d characters", nanoidLength)).Wrap(errors.New("invalid length"))
 
 // Nanoid is a short random ID.
 type Nanoid string

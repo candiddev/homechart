@@ -24,7 +24,7 @@ func (a action) do(ctx context.Context, m models.Model, w http.ResponseWriter, r
 
 	if a != actionRead && a != actionDelete {
 		if err := getJSON(ctx, m, r.Body); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return err
 		}
@@ -33,8 +33,8 @@ func (a action) do(ctx context.Context, m models.Model, w http.ResponseWriter, r
 	if a != actionCreate {
 		id := getUUID(r, "id")
 		if id == uuid.Nil {
-			err := errs.ErrClientBadRequestProperty
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			err := errs.ErrSenderBadRequest
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return err
 		}
@@ -65,7 +65,7 @@ func (a action) do(ctx context.Context, m models.Model, w http.ResponseWriter, r
 		})
 	}
 
-	return WriteResponse(ctx, w, m, nil, 1, "", logger.Log(ctx, err))
+	return WriteResponse(ctx, w, m, nil, 1, "", logger.Error(ctx, err))
 }
 
 func readAll(ctx context.Context, m models.Models, w http.ResponseWriter) errs.Err {

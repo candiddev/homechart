@@ -120,7 +120,7 @@ func (t request) do() *Response {
 
 	r.Header.Add("x-homechart-ratelimiterkey", h.Config.App.RateLimiterKey)
 
-	logger.LogNotice(fmt.Sprintf(`"%s" method="%s" data="%s"`, t.uri, t.method, j))
+	logger.Info(ctx, fmt.Sprintf(`"%s" method="%s" data="%s"`, t.uri, t.method, j))
 
 	client := &http.Client{
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
@@ -142,7 +142,7 @@ func TestMain(m *testing.M) {
 
 	ctx = context.Background()
 	c := config.Default()
-	c.Parse(ctx, "", "../../homechart_config.yaml")
+	c.Parse(ctx, "", "../../homechart_config.jsonnet")
 
 	c.SMTP.FromAddress = "testing@homechart.app"
 	if err := models.Setup(ctx, c, true, true); err != nil {
@@ -162,8 +162,8 @@ func TestMain(m *testing.M) {
 	c.App.SystemStopKey = "stop"
 	c.SMTP.NoEmailDomains = []string{}
 
-	ctx = logger.SetDebug(ctx, true)
-	c.App.Debug = true
+	ctx = logger.SetLevel(ctx, logger.LevelDebug)
+	c.CLI.LogLevel = logger.LevelDebug
 	c.App.RateLimiterKey = "limiter"
 	c.App.TestNotifier = true
 	h = Handler{

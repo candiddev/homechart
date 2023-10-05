@@ -38,7 +38,7 @@ func (b *BudgetPayee) create(ctx context.Context, opts CreateOpts) errs.Err {
 		b.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 WITH payee AS (
 	INSERT INTO budget_payee (
 		  address
@@ -93,7 +93,7 @@ func (b *BudgetPayee) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_payee
 SET
 	  address = :address
@@ -112,7 +112,7 @@ func (b *BudgetPayee) UpdateBudgetCategoryID(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_payee
 SET
 	budget_category_id = :budget_category_id
@@ -135,7 +135,7 @@ func BudgetPayeesDelete(ctx context.Context) {
 	ctx = logger.Trace(ctx)
 
 	//nolint:errcheck
-	logger.Log(ctx, db.Exec(ctx, `
+	logger.Error(ctx, db.Exec(ctx, `
 DELETE FROM budget_payee
 WHERE
 	NOT EXISTS (

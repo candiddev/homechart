@@ -30,14 +30,14 @@ func (*Handler) BudgetTransactionCreate(w http.ResponseWriter, r *http.Request) 
 	var b models.BudgetTransaction
 
 	if err := getJSON(ctx, &b, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
 
 	// Validate entries
 	if err := b.Validate(); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -54,7 +54,7 @@ func (*Handler) BudgetTransactionCreate(w http.ResponseWriter, r *http.Request) 
 		}
 
 		if err := models.Create(ctx, &bp, opts); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -63,7 +63,7 @@ func (*Handler) BudgetTransactionCreate(w http.ResponseWriter, r *http.Request) 
 	}
 
 	// Create the BudgetTransaction
-	WriteResponse(ctx, w, b, nil, 1, "", logger.Log(ctx, models.Create(ctx, &b, opts)))
+	WriteResponse(ctx, w, b, nil, 1, "", logger.Error(ctx, models.Create(ctx, &b, opts)))
 }
 
 // BudgetTransactionDelete deletes a BudgetTransaction.
@@ -80,7 +80,7 @@ func (*Handler) BudgetTransactionCreate(w http.ResponseWriter, r *http.Request) 
 func (*Handler) BudgetTransactionDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.BudgetTransaction{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.BudgetTransaction{}, w, r)) //nolint:errcheck
 }
 
 // BudgetTransactionUpdate updates a BudgetTransaction.
@@ -102,7 +102,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 	var bnew models.BudgetTransaction
 
 	if err := getJSON(ctx, &bnew, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -112,7 +112,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 	bnew.ID = &id
 
 	if id == uuid.Nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
@@ -121,7 +121,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 
 	// Validate entries
 	if err := bnew.Validate(); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -136,7 +136,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 		if err := models.Create(ctx, &bp, models.CreateOpts{
 			PermissionsOpts: p,
 		}); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -150,7 +150,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 	bold.Categories = nil
 
 	if err := bold.Read(ctx); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -164,8 +164,8 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 			if bnew.Accounts[n].ID == bold.Accounts[o].ID {
 				if err := models.Update(ctx, &bnew.Accounts[n], models.UpdateOpts{
 					PermissionsOpts: p,
-				}); err != nil && !errors.Is(err, errs.ErrClientNoContent) {
-					WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				}); err != nil && !errors.Is(err, errs.ErrSenderNoContent) {
+					WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 					return
 				}
@@ -185,7 +185,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 			if err := models.Create(ctx, &bnew.Accounts[n], models.CreateOpts{
 				PermissionsOpts: p,
 			}); err != nil {
-				WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 				return
 			}
@@ -197,7 +197,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 		if err := models.Delete(ctx, &bold.Accounts[o], models.DeleteOpts{
 			PermissionsOpts: p,
 		}); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -212,8 +212,8 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 			if bold.Categories[o].ID == bnew.Categories[n].ID {
 				if err := models.Update(ctx, &bnew.Categories[n], models.UpdateOpts{
 					PermissionsOpts: p,
-				}); err != nil && !errors.Is(err, errs.ErrClientNoContent) {
-					WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				}); err != nil && !errors.Is(err, errs.ErrSenderNoContent) {
+					WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 					return
 				}
@@ -233,7 +233,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 			if err := models.Create(ctx, &bnew.Categories[n], models.CreateOpts{
 				PermissionsOpts: p,
 			}); err != nil {
-				WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+				WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 				return
 			}
@@ -245,7 +245,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 		if err := models.Delete(ctx, &bold.Categories[o], models.DeleteOpts{
 			PermissionsOpts: p,
 		}); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
@@ -256,7 +256,7 @@ func (*Handler) BudgetTransactionUpdate(w http.ResponseWriter, r *http.Request) 
 		PermissionsOpts: p,
 	})
 
-	WriteResponse(ctx, w, bnew, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, bnew, nil, 1, "", logger.Error(ctx, err))
 }
 
 // BudgetTransactionsRead reads all BudgetTransactions for a BudgetAccount.
@@ -292,13 +292,13 @@ func (*Handler) BudgetTransactionsRead(w http.ResponseWriter, r *http.Request) {
 	if len(b) > 0 {
 		p := getPermissions(ctx)
 		if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&b[0].AuthHouseholdID, models.PermissionComponentBudget, models.PermissionView) {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 			return
 		}
 	}
 
-	WriteResponse(ctx, w, b, nil, total, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, b, nil, total, "", logger.Error(ctx, err))
 }
 
 // BudgetTransactionsReadAccount is a placeholder.

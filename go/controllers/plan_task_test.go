@@ -100,12 +100,12 @@ func TestPlanTaskUpdate(t *testing.T) {
 			uri:  "/plan/tasks/" + p.ID.String(),
 		},
 		"non-admin trying to create a template, no changes": {
-			err:  errs.ErrClientForbidden.Message(),
+			err:  errs.ErrSenderForbidden.Message(),
 			task: globalTemplate,
 			uri:  "/plan/tasks/" + p.ID.String(),
 		},
 		"non-admin trying to update a template, not found": {
-			err:  errs.ErrClientForbidden.Message(),
+			err:  errs.ErrSenderForbidden.Message(),
 			task: pt,
 			uri:  "/plan/tasks/" + pt.ID.String(),
 		},

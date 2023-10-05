@@ -54,7 +54,7 @@ SELECT
 		) AS auth_account_count_verified
 FROM auth_account
 `, c.App.CounterTimeZone), nil); err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 	}
 
 	metrics.ModelAuthAccount.WithLabelValues("all").Set(float64(counts.AuthAccountCountAll))
@@ -89,7 +89,7 @@ SELECT
 		) AS auth_household_count_self_hosted
 FROM auth_household
 `, nil, AuthHouseholdSubscriptionProcessorPaddleLifetime, AuthHouseholdSubscriptionProcessorPaddleMonthly); err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 	}
 
 	metrics.ModelAuthHousehold.WithLabelValues("all").Set(float64(counts.AuthHouseholdCountAll))
@@ -122,7 +122,7 @@ SELECT
 		) AS auth_session_count_safari
 FROM auth_session
 `, nil); err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 	}
 
 	metrics.ModelAuthSession.WithLabelValues("all").Set(float64(counts.AuthSessionCountAll))
@@ -136,7 +136,7 @@ FROM auth_session
 	modelCounts := []pgclass{}
 
 	if err := db.Query(ctx, true, &modelCounts, "SELECT relname, reltuples FROM pg_class", nil); err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 	}
 
 	for _, count := range modelCounts {
@@ -192,7 +192,7 @@ FROM auth_session
 		}
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 }
 
 // CountsReset resets count values.
@@ -224,5 +224,5 @@ func CountsReset(ctx context.Context) {
 	metrics.ModelShopItem.Reset()
 	metrics.ModelShopList.Reset()
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 }

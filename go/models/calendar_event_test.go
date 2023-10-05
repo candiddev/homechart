@@ -498,7 +498,7 @@ func TestCalendarEventCreate(t *testing.T) {
 		input *CalendarEvent
 	}{
 		"create - fail": {
-			err:   errs.ErrClientBadRequestProperty,
+			err:   errs.ErrSenderBadRequest,
 			input: &e1,
 		},
 		"create - household": {

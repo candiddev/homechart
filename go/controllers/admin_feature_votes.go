@@ -11,7 +11,7 @@ import (
 func (*Handler) AdminFeatureVotesDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, models.AuthHouseholdsDeleteFeatureVotes(ctx)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, models.AuthHouseholdsDeleteFeatureVotes(ctx)))
 }
 
 // AdminFeatureVotesRead reads all the feature votes.
@@ -20,5 +20,5 @@ func (*Handler) AdminFeatureVotesRead(w http.ResponseWriter, r *http.Request) {
 
 	votes, err := models.AuthHouseholdsReadFeatureVotes(ctx)
 
-	WriteResponse(ctx, w, votes, nil, len(votes), "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, votes, nil, len(votes), "", logger.Error(ctx, err))
 }

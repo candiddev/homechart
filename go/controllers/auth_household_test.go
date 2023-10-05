@@ -28,7 +28,7 @@ func TestAuthHouseholdCreate(t *testing.T) {
 		want    types.CivilDate
 	}{
 		"child": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: child,
 		},
 		"not cloud": {
@@ -122,11 +122,11 @@ func TestAuthHouseholdDelete(t *testing.T) {
 		session models.AuthSession
 	}{
 		"bad - wrong account": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: seed.AuthSessions[1],
 		},
 		"bad - no permissions": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: s2,
 		},
 		"good": {
@@ -148,7 +148,7 @@ func TestAuthHouseholdDelete(t *testing.T) {
 
 	ah.Updated = time.Time{}
 
-	assert.Equal[error](t, ah.Read(ctx), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, ah.Read(ctx), errs.ErrSenderNotFound)
 
 	a1.Delete(ctx)
 	a2.Delete(ctx)
@@ -163,7 +163,7 @@ func TestAuthHouseholdExport(t *testing.T) {
 	}{
 		"not household admin": {
 			session: seed.AuthSessions[1],
-			want:    errs.ErrClientForbidden.Status(),
+			want:    errs.ErrSenderForbidden.Status(),
 		},
 		"household admin": {
 			session: seed.AuthSessions[0],
@@ -196,18 +196,18 @@ func TestAuthHouseholdImport(t *testing.T) {
 		session     models.AuthSession
 	}{
 		"not household admin": {
-			err:         errs.ErrClientForbidden.Message(),
+			err:         errs.ErrSenderForbidden.Message(),
 			householdID: seed.AuthHouseholds[1].ID,
 			session:     seed.AuthSessions[1],
 		},
 		"household admin": {
-			err:         errs.MsgServerErr,
+			err:         errs.ErrReceiver.Message(),
 			householdID: seed.AuthHouseholds[0].ID,
 			session:     seed.AuthSessions[0],
 		},
 		"hosted": {
 			cloud:       true,
-			err:         errs.ErrClientForbidden.Message(),
+			err:         errs.ErrSenderForbidden.Message(),
 			householdID: seed.AuthHouseholds[0].ID,
 			session:     seed.AuthSessions[0],
 		},
@@ -271,11 +271,11 @@ func TestAuthHouseholdInviteCreate(t *testing.T) {
 		want    int
 	}{
 		"no permissions": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: seed.AuthSessions[1],
 		},
 		"no body": {
-			err:     errs.ErrClientBadRequestProperty.Message(),
+			err:     errs.ErrSenderBadRequest.Message(),
 			session: seed.AuthSessions[0],
 		},
 		"child": {
@@ -348,7 +348,7 @@ func TestAuthHouseholdInviteDelete(t *testing.T) {
 		uri:     fmt.Sprintf("/auth/households/%s/invites/%s", seed.AuthHouseholds[0].ID, aaah.InviteToken),
 	}.do())
 
-	assert.Equal[error](t, models.Read(ctx, &aaah, models.ReadOpts{}), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, models.Read(ctx, &aaah, models.ReadOpts{}), errs.ErrSenderNotFound)
 }
 
 func TestAuthHouseholdRead(t *testing.T) {
@@ -578,7 +578,7 @@ func TestAuthHouseholdMemberRemove(t *testing.T) {
 		sessionID uuid.UUID
 	}{
 		"no permissions": {
-			err:       errs.ErrClientForbidden.Message(),
+			err:       errs.ErrSenderForbidden.Message(),
 			session:   seed.AuthSessions[1],
 			sessionID: seed.AuthAccounts[0].ID,
 		},
@@ -637,7 +637,7 @@ func TestAuthHouseholdMemberUpdate(t *testing.T) {
 			session:   seed.AuthSessions[0],
 		},
 		"self - restricted": {
-			err: errs.ErrClientForbidden.Message(),
+			err: errs.ErrSenderForbidden.Message(),
 			aaah: models.AuthAccountAuthHousehold{
 				Color: types.ColorBrown,
 			},

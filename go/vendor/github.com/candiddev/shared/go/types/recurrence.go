@@ -12,12 +12,12 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-var ErrRecurrence = errs.NewClientBadRequestErr("Invalid recurrence combination")
-var ErrRecurrenceDay = errs.NewClientBadRequestErr("Day must be less than 31 or greater than -31")
-var ErrRecurrenceMonthWeek = errs.NewClientBadRequestErr("Month Week must be less than 4 or greater than -4")
-var ErrRecurrenceSeparation = errs.NewClientBadRequestErr("Separation must be positive")
-var ErrRecurrenceWeekdayDuplicate = errs.NewClientBadRequestErr("Weekday must not include duplicate days")
-var ErrRecurrenceWeekdayValue = errs.NewClientBadRequestErr("Weekday must be less than 7 or greater than 0")
+var ErrRecurrence = errs.ErrSenderBadRequest.Set("Invalid recurrence combination")
+var ErrRecurrenceDay = errs.ErrSenderBadRequest.Set("Day must be less than 31 or greater than -31")
+var ErrRecurrenceMonthWeek = errs.ErrSenderBadRequest.Set("Month Week must be less than 4 or greater than -4")
+var ErrRecurrenceSeparation = errs.ErrSenderBadRequest.Set("Separation must be positive")
+var ErrRecurrenceWeekdayDuplicate = errs.ErrSenderBadRequest.Set("Weekday must not include duplicate days")
+var ErrRecurrenceWeekdayValue = errs.ErrSenderBadRequest.Set("Weekday must be less than 7 or greater than 0")
 
 // Recurrence represents a recurring date.
 type Recurrence struct {

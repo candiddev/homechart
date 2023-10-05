@@ -21,7 +21,7 @@ func TestChartDatasetsRead(t *testing.T) {
 		want        models.ChartDatasets
 	}{
 		"no permissions": {
-			err:         errs.ErrClientForbidden.Message(),
+			err:         errs.ErrSenderForbidden.Message(),
 			datasetType: chartDatasetsTypeBudgetCategory,
 			session:     seed.AuthSessions[1],
 		},

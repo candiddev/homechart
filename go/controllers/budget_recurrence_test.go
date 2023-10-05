@@ -25,7 +25,7 @@ func TestBudgetRecurrenceCreate(t *testing.T) {
 		recurrence models.BudgetRecurrence
 	}{
 		"missing account": {
-			err:        errs.ErrClientBadRequestProperty.Message(),
+			err:        errs.ErrSenderBadRequest.Message(),
 			recurrence: noAccount,
 		},
 		"missing recurrence": {
@@ -110,7 +110,7 @@ func TestBudgetRecurrenceUpdate(t *testing.T) {
 		uri        string
 	}{
 		"missing account": {
-			err:        errs.ErrClientBadRequestProperty.Message(),
+			err:        errs.ErrSenderBadRequest.Message(),
 			recurrence: noAccount,
 			uri:        "/budget/recurrences/" + b.ID.String(),
 		},

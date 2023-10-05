@@ -7,9 +7,6 @@ import (
 	"github.com/candiddev/shared/go/images"
 )
 
-// MsgImage is the client message for image format issues.
-const MsgImage = "Image format should be base64 encoded image data, either gif, jpeg, or png"
-
 // Image is a base64 encoded image.
 type Image string
 
@@ -33,7 +30,7 @@ func (i *Image) UnmarshalJSON(data []byte) error {
 	// Resize image
 	img, err := images.FromData(s)
 	if err != nil {
-		return errs.NewClientBadRequestErr(MsgImage, err)
+		return errs.ErrSenderBadRequest.Set("Image format should be base64 encoded image data, either gif, jpeg, or png").Wrap(err)
 	}
 
 	*i = Image(images.Resize(img))

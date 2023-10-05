@@ -69,7 +69,7 @@ func (*Handler) AuthSessionCreate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthSession
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -77,7 +77,7 @@ func (*Handler) AuthSessionCreate(w http.ResponseWriter, r *http.Request) {
 	p := getPermissions(ctx)
 	// Child accounts can't create new sessions
 	if getChild(ctx) || (p.AuthAccountPermissions != nil && !p.AuthAccountPermissions.IsPermitted(models.PermissionComponentAuth, models.PermissionEdit, true)) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -93,14 +93,14 @@ func (*Handler) AuthSessionCreate(w http.ResponseWriter, r *http.Request) {
 		}
 
 		if err := c.Read(ctx); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
 
 		// Check if child and part of household
 		if !c.Child || (c.PrimaryAuthHouseholdID != nil && p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&c.PrimaryAuthHouseholdID.UUID, models.PermissionComponentAuth, models.PermissionEdit)) {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 			return
 		}
@@ -113,7 +113,7 @@ func (*Handler) AuthSessionCreate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Create session
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, a.Create(ctx, false)))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, a.Create(ctx, false)))
 }
 
 // AuthSessionDelete deletes an AuthSession using URL parameters.
@@ -137,7 +137,7 @@ func (*Handler) AuthSessionDelete(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Delete session
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, a.Delete(ctx)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, a.Delete(ctx)))
 }
 
 // AuthSessionDeleteAll deletes an AuthSession using URL parameters.
@@ -165,7 +165,7 @@ func (*Handler) AuthSessionDeleteAll(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Delete session
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, a.DeleteAll(ctx)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, a.DeleteAll(ctx)))
 }
 
 // AuthSessionUpdate updates an AuthSession permissions.
@@ -187,7 +187,7 @@ func (*Handler) AuthSessionUpdate(w http.ResponseWriter, r *http.Request) {
 	var a models.AuthSession
 
 	if err := getJSON(ctx, &a, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -199,7 +199,7 @@ func (*Handler) AuthSessionUpdate(w http.ResponseWriter, r *http.Request) {
 	// Compare existing permissions
 	p := getPermissions(ctx)
 	if p.AuthAccountPermissions != nil && p.AuthAccountPermissions.IsEscalated(a.PermissionsAccount) || p.AuthHouseholdsPermissions != nil && p.AuthHouseholdsPermissions.IsEscalated(a.PermissionsHouseholds) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 		return
 	}
@@ -222,7 +222,7 @@ func (*Handler) AuthSessionUpdate(w http.ResponseWriter, r *http.Request) {
 	err := a.Update(ctx)
 	a.Key = uuid.Nil
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }
 
 // AuthSessionsRead reads all AuthSessions for an AuthHousehold.
@@ -243,5 +243,5 @@ func (*Handler) AuthSessionsRead(w http.ResponseWriter, r *http.Request) {
 
 	a, err := models.AuthSessionsReadAll(ctx, aa)
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, err))
 }

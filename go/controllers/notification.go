@@ -18,7 +18,7 @@ func (*Handler) NotificationCreate(w http.ResponseWriter, r *http.Request) {
 	var n models.Notification
 
 	if err := getJSON(ctx, &n, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -26,7 +26,7 @@ func (*Handler) NotificationCreate(w http.ResponseWriter, r *http.Request) {
 	if time.Now().After(n.SendAfter) {
 		go n.Send(ctx, nil) //nolint:errcheck
 
-		WriteResponse(ctx, w, n, nil, 1, "", logger.Log(ctx, nil))
+		WriteResponse(ctx, w, n, nil, 1, "", logger.Error(ctx, nil))
 
 		return
 	}
@@ -38,7 +38,7 @@ func (*Handler) NotificationCreate(w http.ResponseWriter, r *http.Request) {
 		},
 	})
 
-	WriteResponse(ctx, w, n, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, n, nil, 1, "", logger.Error(ctx, err))
 }
 
 // NotificationDelete deletes email from database.
@@ -50,13 +50,13 @@ func (*Handler) NotificationDelete(w http.ResponseWriter, r *http.Request) {
 
 	n.ID = getUUID(r, "id")
 	if n.ID == uuid.Nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
 
 	// Delete notification
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, n.Delete(ctx)))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, n.Delete(ctx)))
 }
 
 // NotificationUpdate updates an email message in database.
@@ -67,7 +67,7 @@ func (*Handler) NotificationUpdate(w http.ResponseWriter, r *http.Request) {
 	var n models.Notification
 
 	if err := getJSON(ctx, &n, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -75,7 +75,7 @@ func (*Handler) NotificationUpdate(w http.ResponseWriter, r *http.Request) {
 	// Get ID from param
 	n.ID = getUUID(r, "id")
 	if n.ID == uuid.Nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
@@ -87,7 +87,7 @@ func (*Handler) NotificationUpdate(w http.ResponseWriter, r *http.Request) {
 		},
 	})
 
-	WriteResponse(ctx, w, n, nil, 1, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, n, nil, 1, "", logger.Error(ctx, err))
 }
 
 // NotificationsRead reads all Notifications in the database.
@@ -97,5 +97,5 @@ func (*Handler) NotificationsRead(w http.ResponseWriter, r *http.Request) {
 	// Read notifications
 	n, err := models.NotificationsRead(ctx)
 
-	WriteResponse(ctx, w, n, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, n, nil, 0, "", logger.Error(ctx, err))
 }

@@ -32,13 +32,13 @@ func TestAuthResetCreate(t *testing.T) {
 		err     string
 	}{
 		"invalid": {
-			err: types.MsgEmailAddress,
+			err: types.ErrEmailAddress.Message(),
 		},
 		"bademail": {
 			account: models.AuthAccount{
 				EmailAddress: "bademail@example.com",
 			},
-			err: errs.ErrClientBadRequestMissing.Message(),
+			err: errs.ErrSenderNotFound.Message(),
 		},
 		"good": {
 			account: models.AuthAccount{
@@ -109,7 +109,7 @@ func TestAuthResetUpdate(t *testing.T) {
 		err     string
 	}{
 		"No data": {
-			err: errs.ErrClientBadRequestMissing.Message(),
+			err: errs.ErrSenderNotFound.Message(),
 		},
 		"bad data": {
 			account: &a2,

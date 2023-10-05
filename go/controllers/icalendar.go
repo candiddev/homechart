@@ -20,7 +20,7 @@ func (*Handler) ICalendarRead(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Query().Get("calendarevent") != "no" {
 		c, err := models.CalendarEventsReadICalendar(ctx, id)
 		if err != nil {
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 			w.WriteHeader(err.Status())
 
 			return
@@ -32,8 +32,8 @@ func (*Handler) ICalendarRead(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Query().Get("plantask") != "no" {
 		p, err := models.PlanTasksReadICalendar(ctx, id)
 		if err != nil {
-			logger.Log(ctx, err) //nolint:errcheck
-			w.WriteHeader(errs.ErrStatusGone)
+			logger.Error(ctx, err) //nolint:errcheck
+			w.WriteHeader(errs.ErrSenderNotFound.Status())
 
 			return
 		}
@@ -43,14 +43,14 @@ func (*Handler) ICalendarRead(w http.ResponseWriter, r *http.Request) {
 
 	b, err := e.String()
 	if err != nil {
-		w.WriteHeader(logger.Log(ctx, errs.NewServerErr(err)).Status())
+		w.WriteHeader(logger.Error(ctx, errs.ErrReceiver.Wrap(err)).Status())
 	}
 
 	w.Header().Set("Content-Type", "text/calendar")
 
 	_, err = w.Write([]byte(b))
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 	}
 }
 
@@ -62,5 +62,5 @@ func (*Handler) ICalendarUpdate(w http.ResponseWriter, r *http.Request) {
 		ID: models.GetAuthAccountID(ctx),
 	}
 
-	WriteResponse(ctx, w, a, nil, 1, "", logger.Log(ctx, a.UpdateICalendarID(ctx, r.Method == http.MethodDelete)))
+	WriteResponse(ctx, w, a, nil, 1, "", logger.Error(ctx, a.UpdateICalendarID(ctx, r.Method == http.MethodDelete)))
 }

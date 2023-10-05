@@ -41,11 +41,11 @@ func TestSecretsVaultCreate(t *testing.T) {
 		PermissionsOpts: PermissionsOpts{
 			AuthAccountID: s.AuthAccountID,
 		},
-	}), errs.ErrClientBadRequestProperty)
+	}), errs.ErrSenderBadRequest)
 
 	s.Keys = nil
 
-	assert.Equal[error](t, s.create(ctx, CreateOpts{}), errs.ErrClientBadRequestProperty)
+	assert.Equal[error](t, s.create(ctx, CreateOpts{}), errs.ErrSenderBadRequest)
 
 	s.Keys = seed.SecretsVaults[0].Keys
 
@@ -53,7 +53,7 @@ func TestSecretsVaultCreate(t *testing.T) {
 		PermissionsOpts: PermissionsOpts{
 			AuthAccountID: &seed.AuthAccounts[1].ID,
 		},
-	}), errs.ErrClientBadRequestProperty)
+	}), errs.ErrSenderBadRequest)
 }
 
 func TestSecretsVaultUpdate(t *testing.T) {

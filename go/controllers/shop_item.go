@@ -21,7 +21,7 @@ import (
 func (*Handler) ShopItemCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
 }
 
 // ShopItemDelete deletes a ShopItem.
@@ -38,7 +38,7 @@ func (*Handler) ShopItemCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopItemDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
 }
 
 // ShopItemRead reads a ShopItem.
@@ -55,7 +55,7 @@ func (*Handler) ShopItemDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopItemRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
 }
 
 // ShopItemUpdate updates a ShopItem.
@@ -73,7 +73,7 @@ func (*Handler) ShopItemRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopItemUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.ShopItem{}, w, r)) //nolint:errcheck
 }
 
 // ShopItemsRead reads all ShopItem for an AuthAccount and AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) ShopItemUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopItemsRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.ShopItems{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.ShopItems{}, w)) //nolint:errcheck
 }

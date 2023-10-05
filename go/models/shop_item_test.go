@@ -55,7 +55,7 @@ func TestShopItemCreate(t *testing.T) {
 	s.AuthAccountID = &seed.AuthAccounts[0].ID
 	s.AuthHouseholdID = &seed.AuthHouseholds[0].ID
 	err := s.create(ctx, CreateOpts{})
-	assert.HasErr(t, err, error(errs.ErrClientBadRequestProperty))
+	assert.HasErr(t, err, error(errs.ErrSenderBadRequest))
 }
 
 func TestShopItemDelete(t *testing.T) {

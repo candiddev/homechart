@@ -38,7 +38,7 @@ func TestAuthSessionCreate(t *testing.T) {
 			sessionRequest: seed.AuthSessions[0],
 		},
 		"child creating parent": {
-			err:            errs.ErrClientForbidden.Message(),
+			err:            errs.ErrSenderForbidden.Message(),
 			sessionInput:   a,
 			sessionRequest: ac,
 		},
@@ -124,7 +124,7 @@ func TestAuthSessionDeleteAll(t *testing.T) {
 
 			noError(t, r.do())
 
-			assert.Equal[error](t, tc.session.Read(ctx, false), errs.ErrClientBadRequestMissing)
+			assert.Equal[error](t, tc.session.Read(ctx, false), errs.ErrSenderNotFound)
 		})
 	}
 
@@ -168,7 +168,7 @@ func TestAuthSessionUpdate(t *testing.T) {
 		want    models.AuthHouseholdsPermissions
 	}{
 		"invalid permissions": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: aBad,
 		},
 		"valid permissions": {

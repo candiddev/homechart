@@ -22,7 +22,7 @@ func (*Handler) ImportCookRecipe(w http.ResponseWriter, r *http.Request) {
 	var i importCookRecipe
 
 	if err := getJSON(ctx, &i, r.Body); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 		return
 	}
@@ -30,7 +30,7 @@ func (*Handler) ImportCookRecipe(w http.ResponseWriter, r *http.Request) {
 	// Get the response
 	r, err := http.NewRequestWithContext(ctx, http.MethodGet, i.URL, nil)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, parse.ErrImportRecipe, err.Error()))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, parse.ErrImportRecipe, err.Error()))
 
 		return
 	}
@@ -39,7 +39,7 @@ func (*Handler) ImportCookRecipe(w http.ResponseWriter, r *http.Request) {
 
 	resp, err := client.Do(r)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, parse.ErrImportRecipe, err.Error()))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, parse.ErrImportRecipe, err.Error()))
 
 		return
 	}
@@ -49,7 +49,7 @@ func (*Handler) ImportCookRecipe(w http.ResponseWriter, r *http.Request) {
 	// Read the body
 	body, err := io.ReadAll(resp.Body)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, parse.ErrImportRecipe, err.Error()))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, parse.ErrImportRecipe, err.Error()))
 
 		return
 	}
@@ -57,7 +57,7 @@ func (*Handler) ImportCookRecipe(w http.ResponseWriter, r *http.Request) {
 	// Parse the body
 	jsonld, e := parse.HTMLToJSONLDRecipe(ctx, string(body))
 	if e != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, e))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, e))
 
 		return
 	}
@@ -67,7 +67,7 @@ func (*Handler) ImportCookRecipe(w http.ResponseWriter, r *http.Request) {
 	c.AuthHouseholdID = i.AuthHouseholdID
 
 	// Create the CookRecipe
-	WriteResponse(ctx, w, c, nil, 1, "", logger.Log(ctx, models.Create(ctx, c, models.CreateOpts{
+	WriteResponse(ctx, w, c, nil, 1, "", logger.Error(ctx, models.Create(ctx, c, models.CreateOpts{
 		PermissionsOpts: getPermissions(ctx),
 	})))
 }

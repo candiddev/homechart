@@ -58,7 +58,7 @@ func (b *BudgetTransactionAccount) create(ctx context.Context, _ CreateOpts) err
 
 	b.ID = GenerateUUID()
 
-	return logger.Log(ctx, db.Query(ctx, false, b, budgetTransactionAccountInsert+`
+	return logger.Error(ctx, db.Query(ctx, false, b, budgetTransactionAccountInsert+`
 RETURNING *
 `, b))
 }
@@ -85,7 +85,7 @@ func (b *BudgetTransactionAccount) update(ctx context.Context, _ UpdateOpts) err
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_transaction_account
 SET
 	  amount = :amount
@@ -137,7 +137,7 @@ func BudgetTransactionAccountsReconcile(ctx context.Context, p PermissionsOpts, 
 
 	f, err := getFilter(ctx, &BudgetTransactionAccount{}, p)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	r := map[string]any{
@@ -145,7 +145,7 @@ func BudgetTransactionAccountsReconcile(ctx context.Context, p PermissionsOpts, 
 		"budget_account_id":  budgetAccountID,
 	}
 
-	return logger.Log(ctx, db.Exec(ctx, `
+	return logger.Error(ctx, db.Exec(ctx, `
 UPDATE budget_transaction_account
 SET status = 2
 WHERE auth_household_id = ANY(:auth_household_ids)

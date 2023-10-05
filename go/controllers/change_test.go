@@ -56,7 +56,7 @@ func TestChangeRead(t *testing.T) {
 		want models.Change
 	}{
 		"invalid id": {
-			err: errs.ErrClientBadRequestProperty.Message(),
+			err: errs.ErrSenderBadRequest.Message(),
 			uri: "/changes/safdsafsadf",
 		},
 		"good": {

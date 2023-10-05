@@ -11,7 +11,7 @@ import (
 // TimeZone is a user or calendar TimeZone.
 type TimeZone string
 
-var ErrTimeZone = errs.NewClientBadRequestErr("Cannot find specified Time Zone")
+var ErrTimeZone = errs.ErrSenderBadRequest.Set("Cannot find specified Time Zone")
 
 func (t *TimeZone) UnmarshalJSON(data []byte) error {
 	v, err := strconv.Unquote(string(data))

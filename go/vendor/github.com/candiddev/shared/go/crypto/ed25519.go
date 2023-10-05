@@ -8,11 +8,13 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"strings"
 	"sync"
 
 	"github.com/candiddev/shared/go/cli"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
+	"github.com/candiddev/shared/go/types"
 )
 
 // Ed25519PrivateKey is a private key type.
@@ -144,11 +146,21 @@ func (Ed25519PublicKey) Type() Type {
 	return TypeEd25519
 }
 
+func (Ed25519PublicKeys) ParseString(input string) any {
+	e := Ed25519PublicKeys{}
+
+	for _, s := range strings.Split(input, ",") {
+		e = append(e, Ed25519PublicKey(s))
+	}
+
+	return e
+}
+
 // GenerateEd25519 is a helper function for CLI apps to generate an Ed25519 public/private keypair.
-func GenerateEd25519[T cli.AppConfig[any]](ctx context.Context, _ []string, c T) errs.Err {
+func GenerateEd25519[T cli.AppConfig[any]](ctx context.Context, _ []string, _ T) errs.Err {
 	prv, pub, err := NewEd25519()
 	if err != nil {
-		return logger.Log(ctx, errs.NewCLIErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	m := map[string]string{
@@ -156,7 +168,7 @@ func GenerateEd25519[T cli.AppConfig[any]](ctx context.Context, _ []string, c T)
 		"publicKey":  string(pub),
 	}
 
-	c.CLIConfig().Print(m)
+	logger.Info(ctx, types.JSONToString(m))
 
 	return nil
 }

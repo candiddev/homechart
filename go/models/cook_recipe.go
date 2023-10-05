@@ -72,7 +72,7 @@ func (c *CookRecipe) create(ctx context.Context, opts CreateOpts) errs.Err {
 		c.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, c, `
+	return logger.Error(ctx, db.Query(ctx, false, c, `
 INSERT INTO cook_recipe (
 	  auth_household_id
 	, directions
@@ -145,7 +145,7 @@ func (c *CookRecipe) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	}
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, c, `
+	return logger.Error(ctx, db.Query(ctx, false, c, `
 UPDATE cook_recipe
 SET
 	  deleted = :deleted
@@ -179,5 +179,5 @@ func CookRecipesDelete(ctx context.Context) {
 
 	query := fmt.Sprintf("DELETE FROM cook_recipe WHERE deleted > '0001-01-01' AND deleted < now() - INTERVAL '%d day'", c.App.KeepDeletedDays)
 
-	logger.Log(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
+	logger.Error(ctx, db.Exec(ctx, query, nil)) //nolint:errcheck
 }

@@ -35,32 +35,32 @@ func failAuthorization(ctx context.Context, _ *http.Request, w http.ResponseWrit
 
 		j, err := json.Marshal(&res)
 		if err != nil {
-			logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+			logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 		}
 
 		_, err = w.Write(j)
 		if err != nil {
-			logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+			logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 		}
 
-		return errs.ErrClientGone
+		return errs.ErrSenderNotFound
 	}
 
-	WriteResponse(ctx, w, nil, nil, 0, "", errs.ErrClientGone)
+	WriteResponse(ctx, w, nil, nil, 0, "", errs.ErrSenderNotFound)
 
-	return errs.ErrClientGone
+	return errs.ErrSenderNotFound
 }
 
 func parseOAuthHeader(ctx context.Context, r *http.Request) (selfHostedID, id, key uuid.UUID) {
 	// The accessToken should have the format of AuthSession.ID_AuthSession.Key
 	authParts := strings.Split(r.Header.Get("Authorization"), " ")
 	if len(authParts) != 2 {
-		logger.Log(ctx, errClientBadRequestOAuth, "authorization format invalid") //nolint:errcheck
+		logger.Error(ctx, errClientBadRequestOAuth, "authorization format invalid") //nolint:errcheck
 
 		return selfHostedID, id, key
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 
 	return parseOAuthToken(ctx, authParts[1])
 }
@@ -68,12 +68,12 @@ func parseOAuthHeader(ctx context.Context, r *http.Request) (selfHostedID, id, k
 func parseOAuthToken(ctx context.Context, token string) (selfHostedID, id, key uuid.UUID) {
 	keyParts := strings.Split(token, "_")
 	if len(keyParts) != 3 {
-		logger.Log(ctx, errClientBadRequestOAuth, "token format invalid") //nolint:errcheck
+		logger.Error(ctx, errClientBadRequestOAuth, "token format invalid") //nolint:errcheck
 
 		return selfHostedID, id, key
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 
 	return models.ParseUUID(keyParts[0]), models.ParseUUID(keyParts[1]), models.ParseUUID(keyParts[2])
 }
@@ -87,26 +87,26 @@ func (*Handler) proxySelfHostedRequest(ctx context.Context, w http.ResponseWrite
 
 	if err := ah.Read(ctx); err != nil {
 		err := failAuthorization(ctx, r, w)
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return
 	}
 
 	if ah.IsExpired() {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientPaymentRequired))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderPaymentRequired))
 
 		return
 	}
 
 	if ah.SelfHostedURL == "" {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 		return
 	}
 
 	pr, err := http.NewRequestWithContext(ctx, r.Method, fmt.Sprintf("%s%s", ah.SelfHostedURL, r.RequestURI), r.Body)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errServerProxyURL, err.Error()))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errServerProxyURL, err.Error()))
 
 		return
 	}
@@ -117,7 +117,7 @@ func (*Handler) proxySelfHostedRequest(ctx context.Context, w http.ResponseWrite
 
 	res, err := client.Do(pr)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errServerProxyURL, err.Error()))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errServerProxyURL, err.Error()))
 
 		return
 	}
@@ -129,12 +129,12 @@ func (*Handler) proxySelfHostedRequest(ctx context.Context, w http.ResponseWrite
 
 	_, err = io.Copy(w, res.Body)
 	if err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errServerProxyURL, err.Error()))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errServerProxyURL, err.Error()))
 
 		return
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 }
 
 // CheckAdmin verifies a session is admin.
@@ -143,12 +143,12 @@ func (*Handler) CheckAdmin(next http.Handler) http.Handler {
 		ctx := logger.Trace(r.Context())
 
 		if !getPermissions(ctx).Admin {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 			return
 		}
 
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		next.ServeHTTP(w, r)
 	})
 }
@@ -187,7 +187,7 @@ func (h *Handler) CheckSession(next http.Handler) http.Handler { //nolint:gocogn
 					if err == nil {
 						s = as
 					}
-				} else if errors.Is(err, errs.ErrClientBadRequestMissing) {
+				} else if errors.Is(err, errs.ErrSenderNotFound) {
 					as, err := h.createAuthAccount(ctx, r, &a, false)
 					if err == nil {
 						s = as
@@ -205,7 +205,7 @@ func (h *Handler) CheckSession(next http.Handler) http.Handler { //nolint:gocogn
 		// Check if session is valid
 		if s.ID == uuid.Nil || s.Key == uuid.Nil {
 			err := failAuthorization(ctx, r, w)
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 
 			return
 		}
@@ -213,7 +213,7 @@ func (h *Handler) CheckSession(next http.Handler) http.Handler { //nolint:gocogn
 		// Check if session exists
 		if err := s.Read(ctx, false); err != nil {
 			err := failAuthorization(ctx, r, w)
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 
 			return
 		}
@@ -223,7 +223,7 @@ func (h *Handler) CheckSession(next http.Handler) http.Handler { //nolint:gocogn
 
 		// Check if session is admin, else if the paths match.
 		if !s.Admin && ((getUUID(r, "auth_account_id") != uuid.Nil && getUUID(r, "auth_account_id") != s.AuthAccountID) || (!strings.Contains(r.URL.Path, "invites") && ah != uuid.Nil && s.PermissionsHouseholds.Get(&ah) == nil)) {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 			return
 		}
@@ -231,7 +231,7 @@ func (h *Handler) CheckSession(next http.Handler) http.Handler { //nolint:gocogn
 		sctx = setAuthSessionAdmin(sctx, s.Admin)
 		sctx = models.SetAuthAccountID(sctx, s.AuthAccountID)
 		sctx = setAuthSessionID(sctx, s.ID)
-		logger.Log(sctx, nil) //nolint:errcheck
+		logger.Error(sctx, nil) //nolint:errcheck
 
 		ctx = models.SetAuthAccountID(ctx, s.AuthAccountID)
 		ctx = setAuthSessionAdmin(ctx, s.Admin)
@@ -248,7 +248,7 @@ func (h *Handler) CheckSession(next http.Handler) http.Handler { //nolint:gocogn
 			PrimaryAuthHouseholdID:    s.PrimaryAuthHouseholdID,
 		})
 
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
@@ -278,12 +278,12 @@ func (h *Handler) CheckSystemAuth(next http.Handler) http.Handler {
 		}
 
 		if !allow {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientForbidden))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderForbidden))
 
 			return
 		}
 
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		next.ServeHTTP(w, r)
 	})
 }
@@ -292,7 +292,7 @@ func (h *Handler) CheckSystemAuth(next http.Handler) http.Handler {
 func (*Handler) GetFilter(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := logger.Trace(r.Context())
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		ctx = r.Context()
 		ctx = setFilter(ctx, r.URL.Query().Get("filter"))
 		next.ServeHTTP(w, r.WithContext(ctx))
@@ -303,7 +303,7 @@ func (*Handler) GetFilter(next http.Handler) http.Handler {
 func (*Handler) GetCacheHeaders(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := logger.Trace(r.Context())
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		ctx = r.Context()
 		ctx = setUpdated(ctx, getTimestamp(r.Header.Get(("x-homechart-updated"))))
 		ctx = setHash(ctx, r.Header.Get("x-homechart-hash"))
@@ -318,12 +318,12 @@ func (*Handler) GetOffset(next http.Handler) http.Handler {
 		offset := r.URL.Query().Get("offset")
 		o, err := strconv.Atoi(offset)
 		if offset != "" && err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errs.ErrClientBadRequestProperty))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errs.ErrSenderBadRequest))
 
 			return
 		}
 
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		ctx = r.Context()
 		ctx = setOffset(ctx, o)
 		next.ServeHTTP(w, r.WithContext(ctx))
@@ -352,7 +352,7 @@ func (*Handler) GetSession(next http.Handler) http.Handler {
 			s.Key = models.ParseUUID(c.Value)
 		}
 
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		ctx = r.Context()
 
 		// Check if session is valid
@@ -423,7 +423,7 @@ func (*Handler) SetContentType(next http.Handler) http.Handler {
 func (*Handler) SetPublic(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := logger.Trace(r.Context())
-		logger.Log(ctx, nil) //nolint:errcheck
+		logger.Error(ctx, nil) //nolint:errcheck
 		ctx = r.Context()
 		ctx = setPublic(ctx)
 		next.ServeHTTP(w, r.WithContext(ctx))
@@ -434,12 +434,12 @@ func (*Handler) SetPublic(next http.Handler) http.Handler {
 func (h *Handler) SetRequestContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
-		ctx = logger.SetDebug(ctx, h.Config.App.Debug)
+		ctx = logger.SetLevel(ctx, h.Config.CLI.LogLevel)
 		if r.URL.Query().Get("debug") != "" || r.Header.Get("x-homechart-debug") != "" {
-			ctx = logger.SetDebug(ctx, true)
+			ctx = logger.SetLevel(ctx, logger.LevelDebug)
 		}
-		ctx = logger.SetAttribute(ctx, logger.AttributeRemoteAddr, h.RateLimiter.GetIPKey(r))
-		ctx = logger.SetAttribute(ctx, logger.AttributeMethod, r.Method)
+		ctx = logger.SetAttribute(ctx, "remoteAddr", h.RateLimiter.GetIPKey(r))
+		ctx = logger.SetAttribute(ctx, "method", r.Method)
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
@@ -468,7 +468,7 @@ func (*Handler) SetTracingContext(next http.Handler) http.Handler {
 func (*Handler) SessionMetrics(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		path := uuidRegex.ReplaceAllString(r.URL.Path, ":id")
-		ctx := logger.SetAttribute(r.Context(), logger.AttributePath, path)
+		ctx := logger.SetAttribute(r.Context(), "path", path)
 		t := models.GenerateTimestamp()
 		ww := middleware.NewWrapResponseWriter(w, r.ProtoMajor)
 		next.ServeHTTP(ww, r.WithContext(ctx))

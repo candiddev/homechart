@@ -40,7 +40,7 @@ func TestCloudBackupCloud(t *testing.T) {
 		id  uuid.UUID
 	}{
 		"expired": {
-			err: errs.ErrClientPaymentRequired.Message(),
+			err: errs.ErrSenderPaymentRequired.Message(),
 			id:  ah1.SelfHostedID.UUID,
 		},
 		"good": {
@@ -154,7 +154,7 @@ func TestCloudBackupNotCloud(t *testing.T) {
 		session models.AuthSession
 	}{
 		"not owner": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: seed.AuthSessions[1],
 		},
 		"owner": {
@@ -229,7 +229,7 @@ func TestCloudBackupNotCloud(t *testing.T) {
 					ID: seed.AuthAccounts[0].ID,
 				}
 
-				assert.Equal[error](t, aa.Read(ctx), errs.ErrClientBadRequestMissing)
+				assert.Equal[error](t, aa.Read(ctx), errs.ErrSenderNotFound)
 			}
 		})
 	}

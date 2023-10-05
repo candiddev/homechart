@@ -36,12 +36,12 @@ func TestNotesPageCreate(t *testing.T) {
 	// Should fail due to duplicate name
 	w = seed.NotesPages[0]
 
-	assert.HasErr(t, w.create(ctx, CreateOpts{}), errs.ErrClientConflictExists)
+	assert.HasErr(t, w.create(ctx, CreateOpts{}), errs.ErrSenderConflict)
 
 	// Should fail due to duplicate name
 	w = seed.NotesPages[3]
 
-	assert.HasErr(t, w.create(ctx, CreateOpts{}), errs.ErrClientConflictExists)
+	assert.HasErr(t, w.create(ctx, CreateOpts{}), errs.ErrSenderConflict)
 
 	// Existing short ID
 	id := types.NewNanoid()
@@ -295,7 +295,7 @@ func TestNotesPagesDelete(t *testing.T) {
 
 	NotesPagesDelete(ctx)
 
-	assert.Equal[error](t, Read(ctx, &w1, ReadOpts{}), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, Read(ctx, &w1, ReadOpts{}), errs.ErrSenderNotFound)
 
 	c.App.KeepDeletedDays = old
 }

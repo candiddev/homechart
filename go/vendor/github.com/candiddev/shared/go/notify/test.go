@@ -53,7 +53,7 @@ func (t *test) SendSMTP(ctx context.Context, msg SMTPMessage) errs.Err {
 	t.smtpMessages = append(t.smtpMessages, msg)
 	t.mutex.Unlock()
 
-	return logger.Log(ctx, t.err)
+	return logger.Error(ctx, t.err)
 }
 
 // SendWebPush mocks sending a WebPush message.
@@ -62,5 +62,5 @@ func (t *test) SendWebPush(ctx context.Context, msg WebPushMessage) errs.Err {
 	t.webPushMessages = append(t.webPushMessages, msg)
 	t.mutex.Unlock()
 
-	return logger.Log(ctx, t.err)
+	return logger.Error(ctx, t.err)
 }

@@ -85,23 +85,23 @@ func TestAuthHouseholdsDeleteEmptyAndExpired(t *testing.T) {
 		ID: ahD.ID,
 	}
 
-	assert.Equal[error](t, ahD.Read(ctx), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, ahD.Read(ctx), errs.ErrSenderNotFound)
 
 	ahD1 = AuthHousehold{
 		ID: ahD1.ID,
 	}
 
-	assert.Equal[error](t, ahD1.Read(ctx), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, ahD1.Read(ctx), errs.ErrSenderNotFound)
 
 	ahD1a = AuthAccount{
 		ID: ahD1a.ID,
 	}
-	assert.Equal[error](t, ahD1a.Read(ctx), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, ahD1a.Read(ctx), errs.ErrSenderNotFound)
 
 	ahEa3 = AuthAccount{
 		ID: ahEa3.ID,
 	}
-	assert.Equal[error](t, ahEa3.Read(ctx), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, ahEa3.Read(ctx), errs.ErrSenderNotFound)
 
 	ahD2 = AuthHousehold{
 		ID: ahD2.ID,
@@ -683,7 +683,7 @@ func TestAuthHouseholdRead(t *testing.T) {
 	assert.Equal(t, ah.CountMembers, 3)
 	assert.Equal(t, ah.Updated, aaah3.Updated)
 	assert.Equal(t, ah.Members, ahm)
-	assert.Equal[error](t, ah.Read(ctx), errs.ErrClientNoContent)
+	assert.Equal[error](t, ah.Read(ctx), errs.ErrSenderNoContent)
 
 	output = AuthHousehold{}
 
@@ -735,7 +735,7 @@ func TestAuthHouseholdMemberDelete(t *testing.T) {
 		input PermissionsOpts
 	}{
 		"no permissions": {
-			err: errs.ErrClientForbidden,
+			err: errs.ErrSenderForbidden,
 			input: PermissionsOpts{
 				AuthHouseholdsPermissions: &AuthHouseholdsPermissions{
 					{
@@ -766,7 +766,7 @@ func TestAuthHouseholdMemberDelete(t *testing.T) {
 			assert.HasErr(t, AuthHouseholdMemberDelete(ctx, seed.AuthAccounts[4].ID, seed.AuthHouseholds[0].ID, tc.input), tc.err)
 
 			if tc.err == nil {
-				assert.Equal[error](t, Read(ctx, &aaah, ReadOpts{}), errs.ErrClientBadRequestMissing)
+				assert.Equal[error](t, Read(ctx, &aaah, ReadOpts{}), errs.ErrSenderNotFound)
 			}
 		})
 	}

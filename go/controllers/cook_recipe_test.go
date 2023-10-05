@@ -61,7 +61,7 @@ func TestCookRecipeDelete(t *testing.T) {
 		AuthHouseholdID: d.AuthHouseholdID,
 	}
 
-	assert.Equal[error](t, models.Read(ctx, &cr, models.ReadOpts{}), errs.ErrClientBadRequestMissing)
+	assert.Equal[error](t, models.Read(ctx, &cr, models.ReadOpts{}), errs.ErrSenderNotFound)
 }
 
 func TestCookRecipeRead(t *testing.T) {
@@ -77,7 +77,7 @@ func TestCookRecipeRead(t *testing.T) {
 		uri     string
 	}{
 		"not public": {
-			err:     errs.ErrClientBadRequestMissing.Message(),
+			err:     errs.ErrSenderNotFound.Message(),
 			session: models.AuthSession{},
 			uri:     "/cook/recipes/" + cr.ID.String(),
 		},

@@ -6,7 +6,7 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-var ErrStringLimit = errs.NewClientBadRequestErr("Value must be less than 1,000 characters")
+var ErrStringLimit = errs.ErrSenderBadRequest.Set("Value must be less than 1,000 characters")
 
 // StringLimit a string with a limit of 1000 characters.
 type StringLimit string

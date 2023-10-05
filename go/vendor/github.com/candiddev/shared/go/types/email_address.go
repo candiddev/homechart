@@ -10,8 +10,7 @@ import (
 	"github.com/candiddev/shared/go/errs"
 )
 
-// MsgEmailAddress is the client message for email address format issues.
-const MsgEmailAddress = "Email address format should match something@example.com"
+var ErrEmailAddress = errs.ErrSenderBadRequest.Set("Email address format should match something@example.com")
 
 // EmailAddress is a valid email address.
 type EmailAddress string
@@ -32,7 +31,7 @@ func (e EmailAddress) MarshalJSON() ([]byte, error) {
 func (e *EmailAddress) UnmarshalJSON(data []byte) error {
 	v, err := strconv.Unquote(string(data))
 	if err != nil {
-		return errs.NewClientBadRequestErr(MsgEmailAddress, err)
+		return ErrEmailAddress.Wrap(err)
 	}
 
 	v = strings.ToLower(v)
@@ -42,7 +41,7 @@ func (e *EmailAddress) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return errs.NewClientBadRequestErr(MsgEmailAddress, errors.New("regexp didn't match"))
+	return ErrEmailAddress.Wrap(errors.New("regexp didn't match"))
 }
 
 // Value returns a string representation of Email.

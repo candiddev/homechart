@@ -21,7 +21,7 @@ import (
 func (*Handler) SecretsValueCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
 }
 
 // SecretsValueDelete deletes a SecretsValue.
@@ -38,7 +38,7 @@ func (*Handler) SecretsValueCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) SecretsValueDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
 }
 
 // SecretsValueRead reads a SecretsValue.
@@ -55,7 +55,7 @@ func (*Handler) SecretsValueDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) SecretsValueRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
 }
 
 // SecretsValueUpdate updates a SecretsValue.
@@ -73,7 +73,7 @@ func (*Handler) SecretsValueRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) SecretsValueUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.SecretsValue{}, w, r)) //nolint:errcheck
 }
 
 // SecretsValuesRead reads all SecretsValues for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) SecretsValueUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) SecretsValuesRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.SecretsValues{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.SecretsValues{}, w)) //nolint:errcheck
 }

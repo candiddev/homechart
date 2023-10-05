@@ -83,27 +83,27 @@ func paddleSHASum(values url.Values) [20]byte {
 func paddleParsePublicKey(ctx context.Context, publicKeyBase64 string) errs.Err {
 	b, err := base64.StdEncoding.DecodeString(publicKeyBase64)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err), err.Error())
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err), err.Error())
 	}
 
 	der, _ := pem.Decode(b)
 	if der == nil {
-		return logger.Log(ctx, errServerWebhook, "unable to decode PEM key")
+		return logger.Error(ctx, errServerWebhook, "unable to decode PEM key")
 	}
 
 	pub, err := x509.ParsePKIXPublicKey(der.Bytes)
 	if err != nil {
-		return logger.Log(ctx, errServerWebhook, err.Error())
+		return logger.Error(ctx, errServerWebhook, err.Error())
 	}
 
 	signingKey, ok := pub.(*rsa.PublicKey)
 	if !ok {
-		return logger.Log(ctx, errServerWebhook, "invalid format for key")
+		return logger.Error(ctx, errServerWebhook, "invalid format for key")
 	}
 
 	paddlePubKey = signingKey
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 
 	return nil
 }
@@ -112,7 +112,7 @@ func paddleVerifySignature(ctx context.Context, values url.Values) bool {
 	// Decode the signature
 	sig, err := base64.StdEncoding.DecodeString(values.Get("p_signature"))
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return false
 	}
@@ -125,12 +125,12 @@ func paddleVerifySignature(ctx context.Context, values url.Values) bool {
 	// Validate the SHA sum
 	err = rsa.VerifyPKCS1v15(paddlePubKey, crypto.SHA1, sha[:], sig)
 	if err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return false
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 
 	return true
 }
@@ -141,7 +141,7 @@ func (h *Handler) paddleCancelSubscription(ctx context.Context, subscriptionID s
 	values := url.Values{}
 	values.Set("subscription_id", subscriptionID)
 
-	return logger.Log(ctx, h.Config.Paddle.Request(ctx, nil, "POST", "/api/2.0/subscription/users_cancel", values))
+	return logger.Error(ctx, h.Config.Paddle.Request(ctx, nil, "POST", "/api/2.0/subscription/users_cancel", values))
 }
 
 func (h *Handler) paddleHandlePaymentRefunded(ctx context.Context, values url.Values) errs.Err {
@@ -151,10 +151,10 @@ func (h *Handler) paddleHandlePaymentRefunded(ctx context.Context, values url.Va
 
 	id, err := uuid.Parse(values.Get("passthrough"))
 	if err != nil {
-		return logger.Log(ctx, errServerWebhook, err.Error())
+		return logger.Error(ctx, errServerWebhook, err.Error())
 	}
 
-	return logger.Log(ctx, h.setAuthHouseholdExpires(ctx, &id, "", "", "", models.AuthHouseholdSubscriptionProcessorNone, &today))
+	return logger.Error(ctx, h.setAuthHouseholdExpires(ctx, &id, "", "", "", models.AuthHouseholdSubscriptionProcessorNone, &today))
 }
 
 func (h *Handler) paddleHandlePaymentSucceeded(ctx context.Context, values url.Values) errs.Err {
@@ -162,7 +162,7 @@ func (h *Handler) paddleHandlePaymentSucceeded(ctx context.Context, values url.V
 
 	id, e := uuid.Parse(values.Get("passthrough"))
 	if e != nil {
-		return logger.Log(ctx, errServerWebhook, e.Error())
+		return logger.Error(ctx, errServerWebhook, e.Error())
 	}
 
 	var expires *types.CivilDate
@@ -198,11 +198,11 @@ func (h *Handler) paddleHandlePaymentSucceeded(ctx context.Context, values url.V
 	}
 
 	err := h.setAuthHouseholdExpires(ctx, &id, customerID, subscriptionID, transactionID, processor, expires)
-	if errors.Is(err, errs.ErrClientBadRequestMissing) {
+	if errors.Is(err, errs.ErrSenderNotFound) {
 		err = nil
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // PaymentsPaddleCreate provides a webhook for Paddle.
@@ -211,20 +211,20 @@ func (h *Handler) PaymentsPaddleCreate(w http.ResponseWriter, r *http.Request) {
 
 	if paddlePubKey == nil {
 		if err := paddleParsePublicKey(ctx, h.Config.Paddle.PublicKeyBase64); err != nil {
-			WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+			WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 
 			return
 		}
 	}
 
 	if err := r.ParseForm(); err != nil {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errServerWebhook))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errServerWebhook))
 
 		return
 	}
 
 	if !paddleVerifySignature(ctx, r.Form) {
-		WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, errServerWebhook, "unable to verify signature"))
+		WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, errServerWebhook, "unable to verify signature"))
 
 		return
 	}
@@ -242,7 +242,7 @@ func (h *Handler) PaymentsPaddleCreate(w http.ResponseWriter, r *http.Request) {
 		err = h.paddleHandlePaymentRefunded(ctx, r.Form)
 	}
 
-	WriteResponse(ctx, w, nil, nil, 0, "", logger.Log(ctx, err))
+	WriteResponse(ctx, w, nil, nil, 0, "", logger.Error(ctx, err))
 }
 
 // PaymentsPaddleRead returns a paddle config.
@@ -258,10 +258,10 @@ func (h *Handler) PaymentsPaddleRead(w http.ResponseWriter, r *http.Request) {
 			VendorID:          h.Config.Paddle.VendorID,
 		}
 
-		WriteResponse(ctx, w, p, nil, 1, "", logger.Log(ctx, nil))
+		WriteResponse(ctx, w, p, nil, 1, "", logger.Error(ctx, nil))
 
 		return
 	}
 
-	logger.Log(ctx, h.proxyCloudRequest(ctx, w, "GET", "/api/v1/payments/paddle", nil)) //nolint:errcheck
+	logger.Error(ctx, h.proxyCloudRequest(ctx, w, "GET", "/api/v1/payments/paddle", nil)) //nolint:errcheck
 }

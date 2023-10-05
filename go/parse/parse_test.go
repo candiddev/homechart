@@ -13,7 +13,7 @@ var ctx context.Context
 func TestMain(m *testing.M) {
 	ctx = context.Background()
 
-	ctx = logger.SetDebug(ctx, true)
+	ctx = logger.SetLevel(ctx, logger.LevelDebug)
 	r := m.Run()
 	os.Exit(r)
 }

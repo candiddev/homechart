@@ -68,7 +68,7 @@ func (i *InventoryItem) create(ctx context.Context, opts CreateOpts) errs.Err {
 		i.ShortID = types.NewNanoid()
 	}
 
-	return logger.Log(ctx, db.Query(ctx, false, i, `
+	return logger.Error(ctx, db.Query(ctx, false, i, `
 INSERT INTO inventory_item (
 	  auth_household_id
 	, id
@@ -114,7 +114,7 @@ func (i *InventoryItem) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, i, `
+	return logger.Error(ctx, db.Query(ctx, false, i, `
 UPDATE inventory_item
 SET
 		auth_household_id = :auth_household_id

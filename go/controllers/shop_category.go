@@ -21,7 +21,7 @@ import (
 func (*Handler) ShopCategoryCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
 }
 
 // ShopCategoryDelete deletes a ShopCategory.
@@ -38,7 +38,7 @@ func (*Handler) ShopCategoryCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopCategoryDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
 }
 
 // ShopCategoryRead reads a ShopCategory.
@@ -55,7 +55,7 @@ func (*Handler) ShopCategoryDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopCategoryRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
 }
 
 // ShopCategoryUpdate updates a ShopCategory.
@@ -73,7 +73,7 @@ func (*Handler) ShopCategoryRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopCategoryUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.ShopCategory{}, w, r)) //nolint:errcheck
 }
 
 // ShopCategoriesRead reads all ShopCategories for an AuthHousehold.
@@ -89,5 +89,5 @@ func (*Handler) ShopCategoryUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) ShopCategoriesRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.ShopCategories{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.ShopCategories{}, w)) //nolint:errcheck
 }

@@ -19,7 +19,7 @@ import (
 )
 
 // ErrServerActionHouseholdsExceeded means a self-hosted instance has exceeded the number of allowed households.
-var ErrServerActionHouseholdsExceeded = errs.NewServerErr(errors.New("self-hosted instances are limited to 5 households"))
+var ErrServerActionHouseholdsExceeded = errs.ErrReceiver.Wrap(errors.New("self-hosted instances are limited to 5 households"))
 
 // AuthHousehold defines the household fields.
 type AuthHousehold struct {
@@ -94,14 +94,14 @@ func AuthHouseholdsDeleteEmptyAndExpired(ctx context.Context) {
 	// Delete households
 	tx, err := db.BeginTx(ctx)
 	if err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return
 	}
 
 	// Triggers in this table block household deletion cascade, need to investigate further
 	if _, err := tx.Exec("ALTER TABLE budget_category DISABLE TRIGGER bd_budget_category"); err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
@@ -122,7 +122,7 @@ WHERE
 		AND created < now() - interval '1 days'
 	);
 `, c.App.KeepExpiredAuthHouseholdDays)); err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
@@ -139,24 +139,24 @@ WHERE
 			WHERE auth_account_id = auth_account.id
 	)
 `); err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
 
 	if _, err := tx.Exec("ALTER TABLE budget_category ENABLE TRIGGER bd_budget_category"); err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
 
 	if err := tx.Commit(); err != nil {
-		logger.Log(ctx, errs.NewServerErr(err)) //nolint:errcheck
+		logger.Error(ctx, errs.ErrReceiver.Wrap(err)) //nolint:errcheck
 
 		return
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 }
 
 // AuthHouseholdsDeleteFeatureVotes deletes AuthHousehold.FeatureVotes.
@@ -164,7 +164,7 @@ func AuthHouseholdsDeleteFeatureVotes(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Delete households
-	return logger.Log(ctx, db.Exec(ctx, `
+	return logger.Error(ctx, db.Exec(ctx, `
 UPDATE auth_household
 SET feature_votes = '[]'
 `, nil))
@@ -175,18 +175,18 @@ func AuthHouseholdsExceeded(ctx context.Context) bool {
 	var total int
 
 	if err := db.Query(ctx, false, &total, "SELECT count(*) FROM AUTH_HOUSEHOLD", nil); err != nil {
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 
 		return true
 	}
 
 	if total > 5 {
-		logger.Log(ctx, ErrServerActionHouseholdsExceeded, fmt.Sprintf("%d total households", total)) //nolint:errcheck
+		logger.Error(ctx, ErrServerActionHouseholdsExceeded, fmt.Sprintf("%d total households", total)) //nolint:errcheck
 
 		return true
 	}
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 
 	return false
 }
@@ -208,8 +208,8 @@ func AuthHouseholdsRead(ctx context.Context, idFilter types.UUIDs, offset int) (
 				ID: idFilter[i],
 			}
 
-			if err := ah.Read(ctx); err != nil && err != errs.ErrClientBadRequestMissing {
-				return a, 0, logger.Log(ctx, err)
+			if err := ah.Read(ctx); err != nil && err != errs.ErrSenderNotFound {
+				return a, 0, logger.Error(ctx, err)
 			}
 
 			a = append(a, ah)
@@ -236,7 +236,7 @@ OFFSET $1
 		err = db.Query(ctx, false, &total, "SELECT COUNT(*) FROM auth_household WHERE NOT auth_household.demo", nil)
 	}
 
-	return a, total, logger.Log(ctx, err)
+	return a, total, logger.Error(ctx, err)
 }
 
 // AuthHouseholdsReadFeatureVotes returns all FeatureVotes.
@@ -280,7 +280,7 @@ FROM
 		return va[i].Feature < va[j].Feature
 	})
 
-	return va, logger.Log(ctx, nil)
+	return va, logger.Error(ctx, nil)
 }
 
 // AuthHouseholdsReadNotifiedExpired returns AuthHouseholdIDs for subscriptions expiring.
@@ -299,7 +299,7 @@ RETURNING
 	  id
 	, subscription_expires
 `, nil); err != nil {
-		return n, logger.Log(ctx, err)
+		return n, logger.Error(ctx, err)
 	}
 
 	for i := range a {
@@ -311,7 +311,7 @@ RETURNING
 		}
 	}
 
-	return n, logger.Log(ctx, nil)
+	return n, logger.Error(ctx, nil)
 }
 
 // AuthHouseholdsReadNotifiedExpiring returns AuthHouseholdIDs for subscriptions that are expired.
@@ -331,7 +331,7 @@ RETURNING
 	  id
 	, subscription_expires
 `, nil); err != nil {
-		return n, logger.Log(ctx, err)
+		return n, logger.Error(ctx, err)
 	}
 
 	for i := range a {
@@ -343,7 +343,7 @@ RETURNING
 		}
 	}
 
-	return n, logger.Log(ctx, nil)
+	return n, logger.Error(ctx, nil)
 }
 
 // AuthHouseholdMemberDelete removes an AuthHousehold member.
@@ -351,12 +351,12 @@ func AuthHouseholdMemberDelete(ctx context.Context, authAccountID, authHousehold
 	ctx = logger.Trace(ctx)
 
 	if p.AuthHouseholdsPermissions != nil && !p.AuthHouseholdsPermissions.IsPermitted(&authHouseholdID, PermissionComponentAuth, PermissionEdit) {
-		err := errs.ErrClientForbidden
+		err := errs.ErrSenderForbidden
 
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
-	return logger.Log(ctx, db.Exec(ctx, `
+	return logger.Error(ctx, db.Exec(ctx, `
 DELETE FROM auth_account_auth_household
 WHERE auth_account_id = :auth_account_id
 AND auth_household_id = :auth_household_id
@@ -431,7 +431,7 @@ INSERT INTO auth_household (
 RETURNING *
 `, a)
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // CreateJWT uses a SelfHostedID to find a Household and return a JWT.
@@ -439,11 +439,11 @@ func (a *AuthHousehold) CreateJWT(ctx context.Context) (string, errs.Err) {
 	ctx = logger.Trace(ctx)
 
 	if a.SelfHostedID == nil {
-		return "", logger.Log(ctx, errs.ErrClientBadRequestProperty)
+		return "", logger.Error(ctx, errs.ErrSenderBadRequest.Set("selfHostedID is required"))
 	}
 
-	if err := a.Read(ctx); err != nil && err != errs.ErrClientNoContent {
-		return "", logger.Log(ctx, err)
+	if err := a.Read(ctx); err != nil && err != errs.ErrSenderNoContent {
+		return "", logger.Error(ctx, err)
 	}
 
 	expires := time.Now().Add(24 * time.Hour)
@@ -458,10 +458,10 @@ func (a *AuthHousehold) CreateJWT(ctx context.Context) (string, errs.Err) {
 		SubscriptionProcessor: a.SubscriptionProcessor,
 	}, expires, "Homechart", c.App.BaseURL, a.SelfHostedID.UUID.String())
 	if err != nil {
-		return "", logger.Log(ctx, errs.NewServerErr(err))
+		return "", logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
-	return t, logger.Log(ctx, nil)
+	return t, logger.Error(ctx, nil)
 }
 
 // Delete deletes an AuthHousehold database record.
@@ -471,7 +471,7 @@ func (a *AuthHousehold) Delete(ctx context.Context) errs.Err {
 	// Delete account
 	err := db.Exec(ctx, "DELETE FROM auth_household WHERE id = :id", a)
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // IsExpired checks if an AuthHousehold is expired.
@@ -495,7 +495,7 @@ func (a *AuthHousehold) Read(ctx context.Context) errs.Err {
 
 		if err := cache.Get(ctx); err == nil {
 			if ah.Updated.Equal(a.Updated) {
-				err = errs.ErrClientNoContent
+				err = errs.ErrSenderNoContent
 			} else {
 				if ah.FeatureVotes == nil {
 					ah.FeatureVotes = AuthHouseholdFeatureVotes{}
@@ -505,12 +505,12 @@ func (a *AuthHousehold) Read(ctx context.Context) errs.Err {
 			}
 
 			if !cloud {
-				if err := a.ReadJWT(ctx, false); err != nil && err != errs.ErrClientNoContent {
-					return logger.Log(ctx, err)
+				if err := a.ReadJWT(ctx, false); err != nil && err != errs.ErrSenderNoContent {
+					return logger.Error(ctx, err)
 				}
 			}
 
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
@@ -585,16 +585,16 @@ HAVING (
 	if err == nil {
 		if !cloud {
 			if err := a.ReadJWT(ctx, false); err != nil {
-				logger.Log(ctx, err) //nolint:errcheck
+				logger.Error(ctx, err) //nolint:errcheck
 			}
 		}
 
 		cache.Value = &a
 		err := cache.Set(ctx)
-		logger.Log(ctx, err) //nolint:errcheck
+		logger.Error(ctx, err) //nolint:errcheck
 	}
 
-	return logger.Log(ctx, err)
+	return logger.Error(ctx, err)
 }
 
 // ReadJWT reads a JWT entry from Homechart Cloud.
@@ -640,10 +640,10 @@ func (a *AuthHousehold) ReadJWT(ctx context.Context, force bool) errs.Err {
 	}
 
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
-	return logger.Log(ctx, db.Exec(ctx, `
+	return logger.Error(ctx, db.Exec(ctx, `
 UPDATE auth_household
 SET
 	  cloud_jwt = :cloud_jwt
@@ -658,7 +658,7 @@ func (a *AuthHousehold) ReadSubscriptionCustomerID(ctx context.Context) errs.Err
 	ctx = logger.Trace(ctx)
 
 	// Read AuthHousehold
-	return logger.Log(ctx, db.Query(ctx, false, a, "SELECT * FROM auth_household WHERE subscription_customer_id != '' AND subscription_customer_id = :subscription_customer_id", a))
+	return logger.Error(ctx, db.Query(ctx, false, a, "SELECT * FROM auth_household WHERE subscription_customer_id != '' AND subscription_customer_id = :subscription_customer_id", a))
 }
 
 // ReadReferral queries a database for an AuthHousehold using a referral code.
@@ -666,7 +666,7 @@ func (a *AuthHousehold) ReadReferral(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Read AuthHousehold
-	return logger.Log(ctx, db.Query(ctx, false, a, "SELECT * FROM auth_household WHERE subscription_referral_code = :subscription_referral_code", a))
+	return logger.Error(ctx, db.Query(ctx, false, a, "SELECT * FROM auth_household WHERE subscription_referral_code = :subscription_referral_code", a))
 }
 
 // Update updates an AuthHousehold using an ID.
@@ -676,7 +676,7 @@ func (a *AuthHousehold) Update(ctx context.Context) errs.Err {
 	a.validateFeatureVotes()
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_household
 SET
 	  backup_encryption_key = :backup_encryption_key
@@ -697,7 +697,7 @@ func (a *AuthHousehold) UpdateSelfHosted(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_household
 SET
 	  subscription_referral_code = :subscription_referral_code
@@ -713,7 +713,7 @@ func (a *AuthHousehold) UpdateSubscription(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, a, `
+	return logger.Error(ctx, db.Query(ctx, false, a, `
 UPDATE auth_household
 SET
 	  notified_expired = false

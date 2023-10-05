@@ -31,9 +31,9 @@ var ErrRun = errors.New("error running commands")
 // CmdOutput is a string of the command exec output.
 type CmdOutput string
 
-func (c *CmdOutput) String() string {
-	if *c != "" {
-		return strings.TrimSpace(string(*c))
+func (c CmdOutput) String() string {
+	if c != "" {
+		return strings.TrimSpace(string(c))
 	}
 
 	return ""
@@ -64,7 +64,7 @@ func (r *RunOpts) getCmd(ctx context.Context) (*exec.Cmd, errs.Err) {
 	} else {
 		cri, err := getContainerRuntime()
 		if err != nil {
-			return nil, errs.NewCLIErr(err)
+			return nil, errs.ErrReceiver.Wrap(err)
 		}
 
 		if cri != "" {
@@ -75,6 +75,12 @@ func (r *RunOpts) getCmd(ctx context.Context) (*exec.Cmd, errs.Err) {
 				"--rm",
 				"--name",
 				fmt.Sprintf("etcha_%s", types.RandString(10)),
+			}
+
+			if len(r.Environment) > 0 {
+				for i := range r.Environment {
+					args = append(args, "-e"+r.Environment[i])
+				}
 			}
 
 			if r.ContainerEntrypoint != "" {
@@ -126,7 +132,7 @@ type RunOpts struct {
 func (c *Config) Run(ctx context.Context, opts RunOpts) (out CmdOutput, err errs.Err) {
 	cmd, err := opts.getCmd(ctx)
 	if err != nil {
-		return "", logger.Log(ctx, errs.NewCLIErr(err))
+		return "", logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	cmd.Dir = opts.WorkDir
@@ -136,9 +142,7 @@ func (c *Config) Run(ctx context.Context, opts RunOpts) (out CmdOutput, err errs
 		cmd.Stdin = b
 	}
 
-	if c.Debug {
-		logger.LogDebug("Running commands:\n", cmd.String())
-	}
+	logger.Debug(ctx, "Running commands:\n"+cmd.String())
 
 	var e error
 
@@ -155,7 +159,7 @@ func (c *Config) Run(ctx context.Context, opts RunOpts) (out CmdOutput, err errs
 			o = []byte(c.runMock.outputs[0])
 		}
 
-		if len(c.runMock.errs) > 1 {
+		if len(c.runMock.errs) > 0 {
 			c.runMock.errs = c.runMock.errs[1:]
 		} else {
 			c.runMock.errs = nil
@@ -167,8 +171,10 @@ func (c *Config) Run(ctx context.Context, opts RunOpts) (out CmdOutput, err errs
 			WorkDir:     opts.WorkDir,
 		})
 
-		if len(c.runMock.outputs) > 1 {
+		if len(c.runMock.outputs) > 0 {
 			c.runMock.outputs = c.runMock.outputs[1:]
+		} else {
+			c.runMock.outputs = nil
 		}
 
 		c.runMock.mutex.Unlock()
@@ -181,21 +187,16 @@ func (c *Config) Run(ctx context.Context, opts RunOpts) (out CmdOutput, err errs
 	out = CmdOutput(o)
 
 	if e != nil {
-		err := errs.NewCLIErr(ErrRun, e)
+		err := errs.ErrReceiver.Wrap(ErrRun, e)
 
 		if !opts.NoErrorLog {
-			logger.Log(ctx, err) //nolint:errcheck
-			logger.LogError(out.String())
+			logger.Error(ctx, err, out.String()) //nolint:errcheck
 		}
 
 		return CmdOutput(o), err
 	}
 
-	if c.Debug {
-		logger.LogDebug(out.String())
-	}
-
-	return out, logger.Log(ctx, nil)
+	return out, logger.Error(ctx, err, out.String())
 }
 
 // RunMockInput is a log of things that were inputted into the RunMock.
@@ -206,8 +207,9 @@ type RunMockInput struct {
 }
 
 // RunMock makes the CLI Run use a mock.
-func (c *Config) RunMock(enable bool) {
-	c.runMockEnable = enable
+func (c *Config) RunMock() {
+	c.runMockEnable = true
+	c.runMock = &runMock{}
 }
 
 // RunMockErrors sets errors to respond to a CLI Run command.

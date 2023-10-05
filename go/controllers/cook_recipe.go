@@ -21,7 +21,7 @@ import (
 func (*Handler) CookRecipeCreate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionCreate.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionCreate.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
 }
 
 // CookRecipeDelete deletes a CookRecipe.
@@ -38,7 +38,7 @@ func (*Handler) CookRecipeCreate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookRecipeDelete(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionDelete.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionDelete.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
 }
 
 // CookRecipeRead reads a CookRecipe.
@@ -56,7 +56,7 @@ func (*Handler) CookRecipeDelete(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookRecipeRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionRead.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionRead.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
 }
 
 // CookRecipeUpdate updates a CookRecipe.
@@ -74,7 +74,7 @@ func (*Handler) CookRecipeRead(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookRecipeUpdate(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, actionUpdate.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
+	logger.Error(ctx, actionUpdate.do(ctx, &models.CookRecipe{}, w, r)) //nolint:errcheck
 }
 
 // CookRecipesRead reads all CookRecipe for a AuthHousehold.
@@ -90,5 +90,5 @@ func (*Handler) CookRecipeUpdate(w http.ResponseWriter, r *http.Request) {
 func (*Handler) CookRecipesRead(w http.ResponseWriter, r *http.Request) {
 	ctx := logger.Trace(r.Context())
 
-	logger.Log(ctx, readAll(ctx, &models.CookRecipes{}, w)) //nolint:errcheck
+	logger.Error(ctx, readAll(ctx, &models.CookRecipes{}, w)) //nolint:errcheck
 }

@@ -2,22 +2,17 @@ package logger
 
 import (
 	"context"
-	"strings"
+	"fmt"
+
+	"go.opentelemetry.io/otel/attribute"
+	"go.opentelemetry.io/otel/trace"
 )
 
-type contextKey string
+type ctxKey string
 
-// Context attributes.
-const (
-	AttributeDebug      = "debug"
-	AttributeMethod     = "method"
-	AttributePath       = "path"
-	AttributeRemoteAddr = "remoteAddr"
-)
-
-// GetAttribute gets a ma[string]string value for a key.
-func GetAttribute(ctx context.Context, key string) string {
-	s, ok := ctx.Value(contextKey(key)).(string)
+// GetAttributes gets all logging attributes.
+func GetAttributes(ctx context.Context) string {
+	s, ok := ctx.Value(ctxKey("attributes")).(string)
 	if !ok {
 		return ""
 	}
@@ -26,32 +21,62 @@ func GetAttribute(ctx context.Context, key string) string {
 }
 
 // SetAttribute sets a value for a key.
-func SetAttribute(ctx context.Context, key, value string) context.Context {
-	ctx = context.WithValue(ctx, contextKey(key), value)
+func SetAttribute(ctx context.Context, key string, value any) context.Context {
+	a := GetAttributes(ctx)
+	span := trace.SpanFromContext(ctx)
 
-	keys := GetAttribute(ctx, "keys")
-	if !strings.Contains(keys, key) {
-		if keys != "" {
-			keys += ","
-		}
-
-		keys += key
-		ctx = context.WithValue(ctx, contextKey("keys"), keys)
+	if a != "" {
+		a += " "
 	}
+
+	a += fmt.Sprintf("%s=%#v", key, value)
+
+	var v attribute.Value
+
+	switch t := value.(type) {
+	case bool:
+		v = attribute.BoolValue(t)
+	case int:
+		v = attribute.IntValue(t)
+	default:
+		v = attribute.StringValue(fmt.Sprintf("%#v", value))
+	}
+
+	span.SetAttributes(attribute.KeyValue{
+		Key:   attribute.Key(key),
+		Value: v,
+	})
+
+	ctx = context.WithValue(ctx, ctxKey("attributes"), a)
+	ctx = trace.ContextWithSpan(ctx, span)
 
 	return ctx
 }
 
-// GetDebug for log entry.
-func GetDebug(ctx context.Context) bool {
-	if v, ok := ctx.Value(contextKey(AttributeDebug)).(bool); ok && v {
-		return true
+// GetFormat for current context.
+func GetFormat(ctx context.Context) Format {
+	if v, ok := ctx.Value(ctxKey("logFormat")).(Format); ok && v != "" {
+		return v
 	}
 
-	return false
+	return FormatHuman
 }
 
-// SetDebug for log entry.
-func SetDebug(ctx context.Context, d bool) context.Context {
-	return context.WithValue(ctx, contextKey(AttributeDebug), d)
+// SetFormat for context.
+func SetFormat(ctx context.Context, f Format) context.Context {
+	return context.WithValue(ctx, ctxKey("logFormat"), f)
+}
+
+// GetLevel for current context.
+func GetLevel(ctx context.Context) Level {
+	if v, ok := ctx.Value(ctxKey("logLevel")).(Level); ok && v != "" {
+		return v
+	}
+
+	return LevelInfo
+}
+
+// SetLevel for context.
+func SetLevel(ctx context.Context, l Level) context.Context {
+	return context.WithValue(ctx, ctxKey("logLevel"), l)
 }

@@ -33,7 +33,7 @@ func BudgetMonthCategoriesRollup(ctx context.Context) {
 	ctx = logger.Trace(ctx)
 
 	//nolint:errcheck
-	logger.Log(ctx, db.Exec(ctx, fmt.Sprintf(`
+	logger.Error(ctx, db.Exec(ctx, fmt.Sprintf(`
 WITH deleted AS (
 	DELETE FROM budget_month_category
 	WHERE year_month < %[1]d
@@ -71,7 +71,7 @@ SET
 func (b *BudgetMonthCategory) Create(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 INSERT INTO budget_month_category (
 	  amount
 	, auth_household_id
@@ -92,7 +92,7 @@ func (b *BudgetMonthCategory) Read(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Get month category
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 SELECT *
 FROM budget_month_category
 WHERE auth_household_id  = :auth_household_id 
@@ -106,7 +106,7 @@ func (b *BudgetMonthCategory) Update(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
 	// Update database
-	return logger.Log(ctx, db.Query(ctx, false, b, `
+	return logger.Error(ctx, db.Query(ctx, false, b, `
 UPDATE budget_month_category
 SET amount = :amount
 WHERE auth_household_id = :auth_household_id

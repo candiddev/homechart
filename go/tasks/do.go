@@ -17,7 +17,7 @@ func (t *Tasks) EveryHour(ctx context.Context) {
 	} else {
 		ah, _, err := models.AuthHouseholdsRead(ctx, types.UUIDs{}, 0)
 		if err != nil {
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 
 			return
 		}
@@ -26,13 +26,13 @@ func (t *Tasks) EveryHour(ctx context.Context) {
 			if a.BackupEncryptionKey != "" {
 				d, err := models.DataFromDatabase(ctx, a.ID)
 				if err != nil {
-					logger.Log(ctx, err) //nolint:errcheck
+					logger.Error(ctx, err) //nolint:errcheck
 
 					return
 				}
 
 				err = d.Send(ctx, a.ID, string(a.BackupEncryptionKey))
-				logger.Log(ctx, err) //nolint:errcheck
+				logger.Error(ctx, err) //nolint:errcheck
 			}
 		}
 	}
@@ -51,7 +51,7 @@ func (t *Tasks) EveryHour(ctx context.Context) {
 		wg.Wait()
 	}
 
-	logger.Log(ctx, nil, "EveryHour") //nolint:errcheck
+	logger.Error(ctx, nil, "EveryHour") //nolint:errcheck
 }
 
 // EveryMinute runs tasks every minute.
@@ -105,7 +105,7 @@ func EveryMinute(ctx context.Context) {
 
 	wg.Wait()
 
-	logger.Log(ctx, nil, "EveryMinute") //nolint:errcheck
+	logger.Error(ctx, nil, "EveryMinute") //nolint:errcheck
 }
 
 // EveryDay runs daily tasks.
@@ -146,7 +146,7 @@ func (t *Tasks) EveryDay(ctx context.Context) {
 	models.BudgetMonthsDelete(ctx)
 	models.BudgetPayeesDelete(ctx)
 
-	logger.Log(ctx, nil, "EveryDay") //nolint:errcheck
+	logger.Error(ctx, nil, "EveryDay") //nolint:errcheck
 }
 
 // EveryFiveMinutes retries notifications.
@@ -162,5 +162,5 @@ func EveryFiveMinutes(ctx context.Context) {
 		}
 	}
 
-	logger.Log(ctx, nil, "EveryFiveMinutes") //nolint:errcheck
+	logger.Error(ctx, nil, "EveryFiveMinutes") //nolint:errcheck
 }

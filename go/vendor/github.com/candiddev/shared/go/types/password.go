@@ -24,10 +24,10 @@ const argonParallelism = 1
 const argonSaltSize = 16
 const argonTime = 2
 
-var ErrClientBadRequestPassword = errs.NewClientBadRequestErr("Incorrect password")
-var ErrClientBadRequestInvalidPasswordHash = errs.NewClientBadRequestErr("Unrecognized password hash format")
-var ErrClientBadRequestPasswordLength = errs.NewClientBadRequestErr("Passwords must be at least 8 characters")
-var ErrServerGeneratingPasswordHash = errs.NewServerErr(errors.New("unable to generate a secure password hash"))
+var ErrClientBadRequestPassword = errs.ErrSenderBadRequest.Set("Incorrect password")
+var ErrClientBadRequestInvalidPasswordHash = errs.ErrSenderBadRequest.Set("Unrecognized password hash format")
+var ErrClientBadRequestPasswordLength = errs.ErrSenderBadRequest.Set("Passwords must be at least 8 characters")
+var ErrServerGeneratingPasswordHash = errs.ErrReceiver.Wrap(errors.New("unable to generate a secure password hash"))
 
 func argonBase64Encode(src []byte) []byte {
 	l := base64.RawStdEncoding.EncodedLen(len(src))
@@ -53,12 +53,12 @@ func (p *Password) CompareHashAndPassword(hashedPassword string) error {
 		if len(split) == 6 {
 			out, err := base64.RawStdEncoding.DecodeString(split[4])
 			if err != nil {
-				return ErrClientBadRequestInvalidPasswordHash
+				return ErrClientBadRequestInvalidPasswordHash.Wrap(err)
 			}
 
 			hash, err := p.Hash(out)
 			if err != nil {
-				return err
+				return ErrClientBadRequestPassword.Wrap(err)
 			}
 
 			if hash == hashedPassword {
@@ -67,7 +67,7 @@ func (p *Password) CompareHashAndPassword(hashedPassword string) error {
 		}
 	}
 
-	return ErrClientBadRequestPassword
+	return ErrClientBadRequestPassword.Wrap(errors.New("unknown password format"))
 }
 
 // Hash creates a hashed password.
@@ -76,7 +76,7 @@ func (p *Password) Hash(salt []byte) (string, errs.Err) {
 		salt = make([]byte, argonSaltSize)
 
 		if _, err := io.ReadFull(rand.Reader, salt); err != nil {
-			return "", ErrServerGeneratingPasswordHash
+			return "", ErrServerGeneratingPasswordHash.Wrap(err)
 		}
 	}
 
@@ -99,7 +99,7 @@ func (p Password) MarshalJSON() ([]byte, error) {
 func (p *Password) UnmarshalJSON(data []byte) error {
 	v, err := strconv.Unquote(string(data))
 	if err != nil {
-		return ErrClientBadRequestPasswordLength
+		return ErrClientBadRequestPasswordLength.Wrap(err)
 	}
 
 	if regexp.MustCompile(`(^.{8})|^$`).MatchString(v) {
@@ -108,5 +108,5 @@ func (p *Password) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	return ErrClientBadRequestPasswordLength
+	return ErrClientBadRequestPasswordLength.Wrap(errors.New("invalid password length"))
 }

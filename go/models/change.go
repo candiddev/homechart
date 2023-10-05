@@ -156,7 +156,7 @@ INSERT INTO change (
 RETURNING *
 `, &a)
 
-	logger.Log(ctx, err) //nolint:errcheck
+	logger.Error(ctx, err) //nolint:errcheck
 }
 
 // Filter is used to filter changes after they are read.

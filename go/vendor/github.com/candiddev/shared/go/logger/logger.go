@@ -8,7 +8,6 @@ import (
 	"log"
 	"os"
 	"runtime"
-	"sort"
 	"strings"
 	"testing"
 
@@ -28,14 +27,40 @@ const (
 	ColorReset  = "\033[0m"
 )
 
-var noColor = false                                 //nolint:gochecknoglobals
-var loggerDebug logger = log.New(os.Stdout, "", 0)  //nolint:gochecknoglobals
-var loggerError logger = log.New(os.Stderr, "", 0)  //nolint:gochecknoglobals
-var loggerNotice logger = log.New(os.Stdout, "", 0) //nolint:gochecknoglobals
-var r *os.File                                      //nolint: gochecknoglobals
-var stderr = os.Stderr                              //nolint: gochecknoglobals
-var stdout = os.Stdout                              //nolint: gochecknoglobals
-var w *os.File                                      //nolint: gochecknoglobals
+// Level to produce logs for.
+type Level string
+
+// Levels for various logging levels.
+const (
+	LevelDebug Level = "debug"
+	LevelInfo  Level = "info"
+	LevelError Level = "error"
+	LevelNone  Level = "none"
+)
+
+// Format for logs.
+type Format string
+
+// Formats for logs.
+const (
+	FormatHuman Format = "human"
+	FormatKV    Format = "kv"
+	FormatRaw   Format = "raw"
+)
+
+// Stderr is a the current stderr path.
+var Stderr *os.File = os.Stderr //nolint:gochecknoglobals
+
+// Stdout is a the current stdout path.
+var Stdout *os.File = os.Stdout //nolint:gochecknoglobals
+
+var loggerOut logger = log.New(Stdout, "", 0) //nolint:gochecknoglobals
+var loggerErr logger = log.New(Stderr, "", 0) //nolint:gochecknoglobals
+
+var noColor = false //nolint:gochecknoglobals
+
+var r *os.File //nolint: gochecknoglobals
+var w *os.File //nolint: gochecknoglobals
 
 // NoColor disables colored output.
 func NoColor() {
@@ -47,12 +72,12 @@ func ReadStd() string {
 	w.Close()
 
 	out, _ := io.ReadAll(r)
-	os.Stderr = stderr
-	os.Stdout = stdout
 
-	loggerDebug.SetOutput(stdout)
-	loggerError.SetOutput(stderr)
-	loggerNotice.SetOutput(stdout)
+	Stdout = os.Stdout
+	Stderr = os.Stderr
+
+	loggerOut.SetOutput(Stdout)
+	loggerErr.SetOutput(Stderr)
 
 	return string(out)
 }
@@ -60,16 +85,14 @@ func ReadStd() string {
 // SetStd captures stdout to be used by ReadStd.
 func SetStd() {
 	r, w, _ = os.Pipe()
-	loggerDebug = log.New(os.Stdout, "", 0)
-	loggerDebug.SetOutput(w)
 
-	loggerError = log.New(os.Stderr, "", 0)
-	loggerError.SetOutput(w)
+	Stdout = w
+	Stderr = w
+	loggerOut = log.New(Stdout, "", 0)
+	loggerErr = log.New(Stderr, "", 0)
 
-	loggerNotice = log.New(os.Stderr, "", 0)
-	loggerNotice.SetOutput(w)
-	os.Stdout = w
-	os.Stderr = w
+	loggerOut.SetOutput(w)
+	loggerErr.SetOutput(w)
 }
 
 type logger interface {
@@ -88,111 +111,117 @@ func (t testLogger) Print(v ...any) {
 	t.Log(fmt.Sprint(v...))
 }
 
-// Log will log an err with debug data.
-func Log(ctx context.Context, err errs.Err, debug ...string) errs.Err {
+func writeLog(ctx context.Context, level Level, err errs.Err, message string) { //nolint:gocognit
 	span := trace.SpanFromContext(ctx)
-
-	if span.SpanContext().IsValid() {
-		defer span.End()
-	}
-
-	fn, line := getFunc()
-
-	l := fmt.Sprintf(`function='%s:%d`, fn, line)
-	span.SetAttributes(attribute.String("line", l))
-	span.SetStatus(codes.Ok, "")
-
+	f, line := getFunc(3)
+	f = fmt.Sprintf("%s:%d", f, line)
+	format := GetFormat(ctx)
+	e := ""
 	status := 200
 
 	if err != nil {
 		status = err.Status()
 
-		if err.Error() != "" {
-			l += fmt.Sprintf(" error='%s'", err.Error())
+		e = err.Error()
+
+		if err.Logged() {
+			level = LevelDebug
 		}
 	}
 
-	if status != 0 && status != errs.ErrStatusCLI {
-		l += fmt.Sprintf(" success=%t", status < errs.ErrStatusBadRequest)
-		span.SetAttributes(attribute.Bool("success", status < errs.ErrStatusBadRequest))
+	msg := message
 
-		l += fmt.Sprintf(" status=%d", status)
+	if (err == nil && level == LevelError) || (err != nil && !err.Like(errs.ErrReceiver)) {
+		level = LevelDebug
+	}
+
+	if level == LevelError && span.SpanContext().IsValid() {
 		span.SetAttributes(attribute.Int("http.status_code", status))
-	}
+		span.SetAttributes(attribute.String("level", string(level)))
+		span.SetAttributes(attribute.String("line", f))
+		span.SetAttributes(attribute.String("message", msg))
+		span.SetStatus(codes.Ok, "")
+		span.SetAttributes(attribute.Bool("success", status == 200))
 
-	if debug != nil {
-		l += fmt.Sprintf(" debug='%s'", strings.TrimSpace(strings.Join(debug, " ")))
-		span.SetAttributes(attribute.String("debug", strings.Join(debug, " ")))
-	}
-
-	if span.SpanContext().HasTraceID() {
-		l += fmt.Sprintf(" requestID='%s'", span.SpanContext().TraceID())
-	}
-
-	attributes := []string{}
-
-	if s, ok := ctx.Value(contextKey("keys")).(string); ok && s != "" {
-		for _, k := range strings.Split(s, ",") {
-			v := GetAttribute(ctx, k)
-			attributes = append(attributes, fmt.Sprintf(" %s='%s'", k, v))
-			span.SetAttributes(attribute.String(k, v))
+		if err != nil {
+			span.SetStatus(codes.Error, err.Error())
+			span.RecordError(err)
 		}
+
+		defer span.End()
 	}
 
-	sort.Strings(attributes)
+	var out string
 
-	l += strings.Join(attributes, "")
+	switch format {
+	case FormatHuman:
+		out = fmt.Sprintf("%-5s %s", strings.ToUpper(string(level)), f)
+		if e != "" {
+			out += "\n" + e
+		}
 
-	if status == 0 {
-		LogNotice(l)
+		if msg != "" {
+			out += "\n" + msg
+		}
+	case FormatKV:
+		out = fmt.Sprintf("level=%#v function=%#v status=%#v success=%#v", strings.ToUpper(string(level)), f, status, status == 200)
+		if e != "" {
+			out += fmt.Sprintf(` error="%s"`, e)
+		}
 
-		return err
-	} else if status == errs.ErrStatusInternalServerError || status == errs.ErrStatusUI || status == errs.ErrStatusCLI {
-		LogError(l)
-		span.RecordError(err)
-		span.SetStatus(codes.Error, err.Error())
+		if span.SpanContext().HasTraceID() {
+			out += fmt.Sprintf(" traceID=%#v", span.SpanContext().TraceID())
+		}
 
-		return err
+		out += " " + GetAttributes(ctx)
+
+		if msg != "" {
+			out += fmt.Sprintf(` message="%s"`, msg)
+		}
+	case FormatRaw:
+		if e != "" {
+			out += e + "\n"
+		}
+
+		out += msg
 	}
 
-	if GetDebug(ctx) {
-		LogDebug(l)
+	m := GetLevel(ctx)
+
+	switch {
+	case m == LevelNone:
+	case level == LevelError:
+		if !noColor {
+			out = ColorRed + out + ColorReset
+		}
+
+		loggerErr.Print(out)
+	case level == LevelDebug && m == LevelDebug:
+		if !noColor {
+			out = ColorBlue + out + ColorReset
+		}
+
+		loggerOut.Print(out)
+	case level == LevelInfo && m != LevelError:
+		loggerOut.Print(out)
 	}
+}
+
+// Debug writes a debug message.
+func Debug(ctx context.Context, message ...string) {
+	writeLog(ctx, LevelDebug, nil, strings.Join(message, ""))
+}
+
+// Error writes an error message.
+func Error(ctx context.Context, err errs.Err, message ...string) errs.Err {
+	writeLog(ctx, LevelError, err, strings.Join(message, ""))
 
 	return err
 }
 
-// LogDebug logs a message to the debug logger.
-func LogDebug(message ...string) {
-	msg := strings.Join(append([]string{"[DEBUG] "}, message...), "")
-
-	if noColor {
-		loggerDebug.Print(msg)
-	} else {
-		loggerDebug.Print(ColorBlue, msg, ColorReset)
-	}
-}
-
-// LogError prints a message to the Error logger.
-func LogError(message ...string) {
-	msg := strings.Join(append([]string{"[ERROR] "}, message...), "")
-
-	if noColor {
-		loggerError.Print(msg)
-	} else {
-		loggerError.Print(ColorRed, msg, ColorReset)
-	}
-}
-
-// LogNotice prints a message to the Notice logger.
-func LogNotice(message ...string) {
-	n := "[NOTICE]"
-
-	if noColor {
-		loggerNotice.Print(strings.Join(append([]string{n, " "}, message...), ""))
-	} else {
-		loggerNotice.Print(ColorGreen, strings.Join(append([]string{FontBold, n, " "}, message...), ""), ColorReset)
-	}
+// Info writes an info message.
+func Info(ctx context.Context, message ...string) {
+	writeLog(ctx, LevelInfo, nil, strings.Join(message, ""))
 }
 
 // UseTestLogger sets the logging output to the test logger.
@@ -202,15 +231,14 @@ func UseTestLogger(tb testing.TB) {
 	t := testLogger{TB: tb}
 
 	noColor = true
-	loggerDebug = t
-	loggerError = t
-	loggerNotice = t
+	loggerErr = t
+	loggerOut = t
 }
 
-func getFunc() (string, int) {
-	function, _, line, _ := runtime.Caller(2)
-	n := strings.Split(runtime.FuncForPC(function).Name(), "/")
-	f := n[len(n)-1]
+func getFunc(depth int) (string, int) {
+	_, file, line, _ := runtime.Caller(depth)
+	n := strings.Split(file, "/")
+	f := strings.Join(n[len(n)-4:], "/")
 
 	return f, line
 }

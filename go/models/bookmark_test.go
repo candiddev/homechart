@@ -18,14 +18,14 @@ func TestBookmarkCreate(t *testing.T) {
 		keepID bool
 	}{
 		"missing link": {
-			err: errs.ErrClientBadRequestProperty,
+			err: errs.ErrSenderBadRequest,
 			input: Bookmark{
 				AuthAccountID: &seed.AuthAccounts[0].ID,
 			},
 			keepID: false,
 		},
 		"missing name": {
-			err: errs.ErrClientBadRequestProperty,
+			err: errs.ErrSenderBadRequest,
 			input: Bookmark{
 				AuthAccountID: &seed.AuthAccounts[0].ID,
 				Link:          "test",
@@ -33,7 +33,7 @@ func TestBookmarkCreate(t *testing.T) {
 			keepID: false,
 		},
 		"both icons": {
-			err: errs.ErrClientBadRequestProperty,
+			err: errs.ErrSenderBadRequest,
 			input: Bookmark{
 				AuthAccountID: &seed.AuthAccounts[0].ID,
 				IconLink:      "test",
@@ -44,7 +44,7 @@ func TestBookmarkCreate(t *testing.T) {
 			keepID: false,
 		},
 		"account and household id": {
-			err: errs.ErrClientBadRequestProperty,
+			err: errs.ErrSenderBadRequest,
 			input: Bookmark{
 				AuthAccountID:   &seed.AuthAccounts[0].ID,
 				AuthHouseholdID: &seed.AuthHouseholds[0].ID,

@@ -46,6 +46,7 @@ func (h *Handler) Routes(ctx context.Context) {
 		r.Use(h.SessionMetrics)
 		r.Get("/", h.SystemInfoRead)
 		r.Get("/docs", func(w http.ResponseWriter, r *http.Request) {
+			//nolint:forbidigo
 			fmt.Fprint(w, `
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -475,5 +476,5 @@ func (h *Handler) Routes(ctx context.Context) {
 		})
 	})
 
-	logger.Log(ctx, nil) //nolint:errcheck
+	logger.Error(ctx, nil) //nolint:errcheck
 }

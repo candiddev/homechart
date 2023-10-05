@@ -110,7 +110,7 @@ func TestHealthItemsInit(t *testing.T) {
 		want    int
 	}{
 		"no access": {
-			err:     errs.ErrClientForbidden.Message(),
+			err:     errs.ErrSenderForbidden.Message(),
 			session: seed.AuthSessions[2],
 			want:    41,
 		},

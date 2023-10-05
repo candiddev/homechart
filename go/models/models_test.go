@@ -25,10 +25,9 @@ func TestMain(m *testing.M) {
 	time.Local = tz
 	ctx = context.Background()
 	c := config.Default()
-	c.Parse(ctx, "", "../../homechart_config.yaml")
+	c.Parse(ctx, "", "../../homechart_config.jsonnet")
 	c.App.TestNotifier = true
 	c.SMTP.FromAddress = c.SMTP.Username
-	ctx = logger.SetDebug(ctx, c.App.Debug)
 
 	if err := Setup(ctx, c, true, true); err != nil {
 		os.Exit(1)
@@ -38,13 +37,13 @@ func TestMain(m *testing.M) {
 
 	seed, err = Seed(ctx, false)
 	if err != nil {
-		logger.Log(ctx, err)
+		logger.Error(ctx, err)
 		os.Exit(1)
 	}
 
 	NotificationsDelete(ctx)
 
-	ctx = logger.SetDebug(ctx, true)
+	ctx = logger.SetLevel(ctx, logger.LevelDebug)
 	r := m.Run()
 
 	os.Exit(r)
@@ -186,7 +185,7 @@ func TestGetFilter(t *testing.T) {
 			},
 		},
 		"permissions - none": {
-			err: errs.ErrClientForbidden,
+			err: errs.ErrSenderForbidden,
 			input: PermissionsOpts{
 				AuthAccountID: &aa,
 				AuthAccountPermissions: &Permissions{
@@ -258,7 +257,7 @@ func TestSetIDs(t *testing.T) {
 			wantAuthAccount:  &aa,
 		},
 		"permissions - household - expired": {
-			err: errs.ErrClientPaymentRequired,
+			err: errs.ErrSenderPaymentRequired,
 			inputPermissions: PermissionsOpts{
 				AuthHouseholdsPermissions: &AuthHouseholdsPermissions{
 					{
@@ -279,7 +278,7 @@ func TestSetIDs(t *testing.T) {
 			wantAuthAccount: &id,
 		},
 		"permissions - account - denied": {
-			err: errs.ErrClientForbidden,
+			err: errs.ErrSenderForbidden,
 			inputPermissions: PermissionsOpts{
 				AuthAccountID: &id,
 				AuthAccountPermissions: &Permissions{
@@ -290,7 +289,7 @@ func TestSetIDs(t *testing.T) {
 			wantAuthAccount: &aa,
 		},
 		"permissions - denied": {
-			err: errs.ErrClientForbidden,
+			err: errs.ErrSenderForbidden,
 			inputPermissions: PermissionsOpts{
 				AuthHouseholdsPermissions: &AuthHouseholdsPermissions{},
 			},
@@ -298,7 +297,7 @@ func TestSetIDs(t *testing.T) {
 			wantAuthHousehold: &ah1,
 		},
 		"permissions - denied for household": {
-			err: errs.ErrClientForbidden,
+			err: errs.ErrSenderForbidden,
 			inputPermissions: PermissionsOpts{
 				AuthHouseholdsPermissions: &AuthHouseholdsPermissions{
 					{
@@ -311,7 +310,7 @@ func TestSetIDs(t *testing.T) {
 			wantAuthHousehold: &ah1,
 		},
 		"admin - denied": {
-			err: errs.ErrClientForbidden,
+			err: errs.ErrSenderForbidden,
 			inputPermissions: PermissionsOpts{
 				AuthHouseholdsPermissions: &AuthHouseholdsPermissions{
 					{
@@ -374,7 +373,7 @@ func TestCreate(t *testing.T) {
 		input Permission
 	}{
 		"forbidden": {
-			err:   errs.ErrClientForbidden,
+			err:   errs.ErrSenderForbidden,
 			input: PermissionView,
 		},
 		"good": {
@@ -457,7 +456,7 @@ func TestDelete(t *testing.T) {
 		permission Permission
 	}{
 		"forbidden": {
-			err:        errs.ErrClientForbidden,
+			err:        errs.ErrSenderForbidden,
 			admin:      false,
 			model:      &m,
 			permission: PermissionView,
@@ -469,7 +468,7 @@ func TestDelete(t *testing.T) {
 		},
 		"not admin": {
 			admin:      false,
-			err:        errs.ErrClientBadRequestMissing,
+			err:        errs.ErrSenderNotFound,
 			model:      &p,
 			permission: PermissionEdit,
 		},
@@ -528,7 +527,7 @@ func TestRead(t *testing.T) {
 		input Permission
 	}{
 		"forbidden": {
-			err:   errs.ErrClientForbidden,
+			err:   errs.ErrSenderForbidden,
 			input: PermissionView,
 		},
 		"good": {
@@ -589,7 +588,7 @@ func TestReadAll(t *testing.T) {
 		wantIDs             int
 	}{
 		"no access": {
-			err:                 errs.ErrClientForbidden,
+			err:                 errs.ErrSenderForbidden,
 			hash:                "",
 			permissionAccount:   PermissionNone,
 			permissionHousehold: PermissionNone,
@@ -614,7 +613,7 @@ func TestReadAll(t *testing.T) {
 			wantIDs:             0,
 		},
 		"no content": {
-			err:                 errs.ErrClientNoContent,
+			err:                 errs.ErrSenderNoContent,
 			hash:                ahHash,
 			permissionAccount:   PermissionNone,
 			permissionHousehold: PermissionView,
@@ -696,7 +695,7 @@ func TestUpdate(t *testing.T) {
 		input Permission
 	}{
 		"forbidden": {
-			err:   errs.ErrClientForbidden,
+			err:   errs.ErrSenderForbidden,
 			input: PermissionView,
 		},
 		"good": {

@@ -149,7 +149,7 @@ func TestHealthLogUpdate(t *testing.T) {
 			healthLog:       &hl0,
 		},
 		"personal not admin": {
-			err:             errs.ErrClientNoContent,
+			err:             errs.ErrSenderNoContent,
 			authHouseholdID: uuid.UUID{},
 			healthLog:       &hl3,
 		},

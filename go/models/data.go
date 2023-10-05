@@ -74,7 +74,7 @@ func DataFromByte(ctx context.Context, ba []byte, encryptionKey string) (*Data, 
 
 		block, err := aes.NewCipher(bk)
 		if err != nil {
-			return nil, logger.Log(ctx, errs.NewServerErr(err))
+			return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 		}
 
 		iv := ba[:aes.BlockSize]
@@ -91,12 +91,12 @@ func DataFromByte(ctx context.Context, ba []byte, encryptionKey string) (*Data, 
 
 	zr, err := gzip.NewReader(gzipBuffer)
 	if err != nil {
-		return nil, logger.Log(ctx, errs.NewServerErr(err))
+		return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	err = zr.Close()
 	if err != nil {
-		return nil, logger.Log(ctx, errs.NewServerErr(err))
+		return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	// Decode to struct
@@ -105,10 +105,10 @@ func DataFromByte(ctx context.Context, ba []byte, encryptionKey string) (*Data, 
 
 	err = decoder.Decode(d)
 	if err != nil {
-		return nil, logger.Log(ctx, errs.NewServerErr(err))
+		return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
-	return d, logger.Log(ctx, nil)
+	return d, logger.Error(ctx, nil)
 }
 
 // DataFromDatabase reads all data for a AuthHousehold from the database.
@@ -122,7 +122,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 	}
 
 	if err := household.Read(ctx); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.AuthHouseholds = append(d.AuthHouseholds, household)
@@ -139,7 +139,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.AuthAccountAuthHouseholds = append(d.AuthAccountAuthHouseholds, aaah...)
@@ -150,7 +150,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 		}
 
 		if err := account.Read(ctx); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if account.PrimaryAuthHouseholdID == nil || account.PrimaryAuthHouseholdID.UUID != id {
@@ -162,64 +162,64 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 		aa := household.Members[i].ID
 
 		if err := d.readAuthSessions(ctx, &aa); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readCalendarEvents(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readCalendarICalendars(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readBookmarks(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readHealthItems(ctx, &aa); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readHealthLogs(ctx, &aa); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readPlanProjects(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readPlanTasks(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readShopItems(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readShopLists(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readNotesPages(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readNotesPageVersions(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readSecretsValues(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if err := d.readSecretsVaults(ctx, &aa, nil); err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 	}
 
 	if err := d.readBookmarks(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	budgetAccounts := BudgetAccounts{}
@@ -229,7 +229,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.BudgetAccounts = append(d.BudgetAccounts, budgetAccounts...)
@@ -240,7 +240,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.BudgetCategories = append(d.BudgetCategories, budgetCategories...)
@@ -251,7 +251,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.BudgetPayees = append(d.BudgetPayees, budgetPayees...)
@@ -263,7 +263,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.BudgetRecurrences = append(d.BudgetRecurrences, budgetRecurrences...)
@@ -271,7 +271,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 	for j := range d.BudgetAccounts {
 		transactions, _, err := BudgetTransactionsReadAccount(ctx, d.BudgetAccounts[j].ID, 0, 9999999)
 		if err != nil {
-			return nil, logger.Log(ctx, err)
+			return nil, logger.Error(ctx, err)
 		}
 
 		if transactions == nil {
@@ -302,7 +302,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.CookMealPlans = append(d.CookMealPlans, cookMealPlans...)
@@ -313,7 +313,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.CookMealTimes = append(d.CookMealTimes, cookMealTimes...)
@@ -324,7 +324,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.CookRecipes = append(d.CookRecipes, cookRecipes...)
@@ -335,7 +335,7 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.InventoryCollections = append(d.InventoryCollections, inventoryCollections...)
@@ -346,17 +346,17 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.InventoryItems = append(d.InventoryItems, inventoryItems...)
 
 	if err := d.readPlanProjects(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	if err := d.readPlanTasks(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	rewardCards := RewardCards{}
@@ -366,17 +366,17 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.RewardCards = append(d.RewardCards, rewardCards...)
 
 	if err := d.readSecretsValues(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	if err := d.readSecretsVaults(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	shopCategories := ShopCategories{}
@@ -386,25 +386,25 @@ func DataFromDatabase(ctx context.Context, id uuid.UUID) (*Data, errs.Err) { //n
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	d.ShopCategories = append(d.ShopCategories, shopCategories...)
 
 	if err := d.readShopItems(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	if err := d.readShopLists(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	if err := d.readNotesPages(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	if err := d.readNotesPageVersions(ctx, nil, ahp); err != nil {
-		return nil, logger.Log(ctx, err)
+		return nil, logger.Error(ctx, err)
 	}
 
 	return d, nil
@@ -420,7 +420,7 @@ func (d *Data) ExportByte(ctx context.Context, encryptionKey string) ([]byte, er
 
 	err := encoder.Encode(d)
 	if err != nil {
-		return nil, logger.Log(ctx, errs.NewServerErr(err))
+		return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	// Compress
@@ -431,12 +431,12 @@ func (d *Data) ExportByte(ctx context.Context, encryptionKey string) ([]byte, er
 
 	_, err = zw.Write(gobBuffer.Bytes())
 	if err != nil {
-		return nil, logger.Log(ctx, errs.NewServerErr(err))
+		return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	err = zw.Close()
 	if err != nil {
-		return nil, logger.Log(ctx, errs.NewServerErr(err))
+		return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	// Encrypt if key provided
@@ -453,7 +453,7 @@ func (d *Data) ExportByte(ctx context.Context, encryptionKey string) ([]byte, er
 
 		block, err := aes.NewCipher(ba)
 		if err != nil {
-			return nil, logger.Log(ctx, errs.NewServerErr(err))
+			return nil, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 		}
 
 		// Pad input to aes block size
@@ -471,10 +471,10 @@ func (d *Data) ExportByte(ctx context.Context, encryptionKey string) ([]byte, er
 		mode := cipher.NewCBCEncrypter(block, iv)
 		mode.CryptBlocks(cipherText[aes.BlockSize:], input)
 
-		return cipherText, logger.Log(ctx, nil)
+		return cipherText, logger.Error(ctx, nil)
 	}
 
-	return gzipBuffer.Bytes(), logger.Log(ctx, nil)
+	return gzipBuffer.Bytes(), logger.Error(ctx, nil)
 }
 
 // ExportDisk copies the data to disk.  There isn't a read from disk option, so this is only used for generating data for the UI.
@@ -484,7 +484,7 @@ func (d *Data) ExportDisk(ctx context.Context, path string) errs.Err {
 	// Create file
 	f, err := os.Create(path)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	defer f.Close()
@@ -492,16 +492,16 @@ func (d *Data) ExportDisk(ctx context.Context, path string) errs.Err {
 	// Mashsall JSON and indent
 	j, err := json.MarshalIndent(d, "", "    ")
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
 	// Output to file
 	_, err = f.Write(j)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(err))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // Restore inserts the data elements into the database.
@@ -514,26 +514,26 @@ func (d *Data) Restore(ctx context.Context, seed bool) errs.Err { //nolint:gocog
 
 		a.EmailAddress = d.AuthAccounts[i].EmailAddress
 		if err := a.ReadPasswordHash(ctx); err != nil {
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 		}
 
 		if err := a.Delete(ctx); err != nil {
-			logger.Log(ctx, err) //nolint:errcheck
+			logger.Error(ctx, err) //nolint:errcheck
 		}
 	}
 
 	AuthHouseholdsDeleteEmptyAndExpired(ctx)
 
 	if err := d.createAuthHouseholds(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createAuthAccounts(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createAuthAccountAuthHouseholds(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if GetAuthAccountID(ctx) == uuid.Nil {
@@ -541,128 +541,128 @@ func (d *Data) Restore(ctx context.Context, seed bool) errs.Err { //nolint:gocog
 	}
 
 	if err := d.createAuthSessions(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createBookmarks(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createBudgetAccounts(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createBudgetCategories(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createBudgetMonthCategories(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createBudgetPayees(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createBudgetRecurrences(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createBudgetTransactions(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createCalendarICalendars(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createCalendarEvents(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createCookMealTimes(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createCookRecipes(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createCookMealPlans(ctx); err != nil { // Needs to be after recipes and meal times
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createHealthItems(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createHealthLogs(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createInventoryCollections(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createInventoryItems(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createNotesPages(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createNotesPageVersions(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createPlanProjects(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createPlanTasks(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createRewardCards(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createSecretsVaults(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createSecretsValues(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createShopCategories(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createShopLists(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if err := d.createShopItems(ctx); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	if seed {
 		for j := range d.AuthAccountAuthHouseholds {
 			if j < 3 && d.AuthAccountAuthHouseholds[j].AuthAccountID != nil {
 				if err := InitAccount(ctx, *d.AuthAccountAuthHouseholds[j].AuthAccountID); err != nil {
-					return logger.Log(ctx, err)
+					return logger.Error(ctx, err)
 				}
 			}
 		}
 
 		if err := InitHousehold(ctx, d.AuthAccountAuthHouseholds[0].AuthHouseholdID, *d.AuthAccountAuthHouseholds[0].AuthAccountID); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 // Send uploads a backup to the backup endpoint.
@@ -671,24 +671,24 @@ func (d *Data) Send(ctx context.Context, authHouseholdID uuid.UUID, backupEncryp
 
 	data, err := d.ExportByte(ctx, backupEncryptionKey)
 	if err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	r, errr := http.NewRequestWithContext(ctx, http.MethodPost, fmt.Sprintf("%s/api/v1/cloud/%s/backups", c.App.CloudEndpoint, authHouseholdID), bytes.NewBuffer(data))
 	if errr != nil {
-		return logger.Log(ctx, errs.NewServerErr(errr))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(errr))
 	}
 
 	client := &http.Client{}
 
 	res, errr := client.Do(r)
 	if err != nil {
-		return logger.Log(ctx, errs.NewServerErr(errr))
+		return logger.Error(ctx, errs.ErrReceiver.Wrap(errr))
 	}
 
 	defer res.Body.Close()
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createAuthAccounts(ctx context.Context) errs.Err { //nolint:gocognit,gocyclo
@@ -698,7 +698,7 @@ func (d *Data) createAuthAccounts(ctx context.Context) errs.Err { //nolint:gocog
 		oldID := d.AuthAccounts[i].ID
 
 		if err := d.AuthAccounts[i].Create(ctx, true); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.AuthAccounts[i].ID
@@ -826,7 +826,7 @@ func (d *Data) createAuthAccounts(ctx context.Context) errs.Err { //nolint:gocog
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createAuthAccountAuthHouseholds(ctx context.Context) errs.Err {
@@ -836,11 +836,11 @@ func (d *Data) createAuthAccountAuthHouseholds(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.AuthAccountAuthHouseholds[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createAuthHouseholds(ctx context.Context) errs.Err { //nolint:gocyclo,gocognit
@@ -850,7 +850,7 @@ func (d *Data) createAuthHouseholds(ctx context.Context) errs.Err { //nolint:goc
 		oldID := d.AuthHouseholds[i].ID
 
 		if err := d.AuthHouseholds[i].Create(ctx, true); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.AuthHouseholds[i].ID
@@ -994,7 +994,7 @@ func (d *Data) createAuthHouseholds(ctx context.Context) errs.Err { //nolint:goc
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createAuthSessions(ctx context.Context) errs.Err {
@@ -1002,11 +1002,11 @@ func (d *Data) createAuthSessions(ctx context.Context) errs.Err {
 
 	for i := range d.AuthSessions {
 		if err := d.AuthSessions[i].Create(ctx, true); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createBookmarks(ctx context.Context) errs.Err {
@@ -1016,11 +1016,11 @@ func (d *Data) createBookmarks(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.Bookmarks[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createBudgetAccounts(ctx context.Context) errs.Err {
@@ -1032,7 +1032,7 @@ func (d *Data) createBudgetAccounts(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.BudgetAccounts[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.BudgetAccounts[i].ID
@@ -1058,7 +1058,7 @@ func (d *Data) createBudgetAccounts(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createBudgetCategories(ctx context.Context) errs.Err { //nolint:gocognit
@@ -1068,13 +1068,13 @@ func (d *Data) createBudgetCategories(ctx context.Context) errs.Err { //nolint:g
 		oldID := d.BudgetCategories[i].ID
 
 		if err := d.BudgetCategories[i].Validate(); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		if err := Create(ctx, &d.BudgetCategories[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.BudgetCategories[i].ID
@@ -1114,7 +1114,7 @@ func (d *Data) createBudgetCategories(ctx context.Context) errs.Err { //nolint:g
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createBudgetMonthCategories(ctx context.Context) errs.Err {
@@ -1122,11 +1122,11 @@ func (d *Data) createBudgetMonthCategories(ctx context.Context) errs.Err {
 
 	for i := range d.BudgetMonthCategories {
 		if err := d.BudgetMonthCategories[i].Create(ctx); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createBudgetPayees(ctx context.Context) errs.Err {
@@ -1138,7 +1138,7 @@ func (d *Data) createBudgetPayees(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.BudgetPayees[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.BudgetPayees[i].ID
@@ -1168,7 +1168,7 @@ func (d *Data) createBudgetPayees(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createBudgetRecurrences(ctx context.Context) errs.Err {
@@ -1176,21 +1176,21 @@ func (d *Data) createBudgetRecurrences(ctx context.Context) errs.Err {
 
 	for i := range d.BudgetRecurrences {
 		if err := d.BudgetRecurrences[i].Recurrence.Validate(); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		if err := d.BudgetRecurrences[i].Template.Validate(); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		if err := Create(ctx, &d.BudgetRecurrences[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createBudgetTransactions(ctx context.Context) errs.Err {
@@ -1198,17 +1198,17 @@ func (d *Data) createBudgetTransactions(ctx context.Context) errs.Err {
 
 	for i := range d.BudgetTransactions {
 		if err := d.BudgetTransactions[i].Validate(); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		if err := Create(ctx, &d.BudgetTransactions[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createCalendarEvents(ctx context.Context) errs.Err {
@@ -1217,18 +1217,18 @@ func (d *Data) createCalendarEvents(ctx context.Context) errs.Err {
 	for i := range d.CalendarEvents {
 		if d.CalendarEvents[i].Recurrence != nil {
 			if err := d.CalendarEvents[i].Recurrence.Validate(); err != nil {
-				return logger.Log(ctx, err)
+				return logger.Error(ctx, err)
 			}
 		}
 
 		if err := Create(ctx, &d.CalendarEvents[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createCalendarICalendars(ctx context.Context) errs.Err {
@@ -1240,7 +1240,7 @@ func (d *Data) createCalendarICalendars(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.CalendarICalendars[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.CalendarICalendars[i].ID
@@ -1252,7 +1252,7 @@ func (d *Data) createCalendarICalendars(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createCookMealPlans(ctx context.Context) errs.Err {
@@ -1264,7 +1264,7 @@ func (d *Data) createCookMealPlans(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.CookMealPlans[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.CookMealPlans[i].ID
@@ -1276,7 +1276,7 @@ func (d *Data) createCookMealPlans(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createCookMealTimes(ctx context.Context) errs.Err {
@@ -1288,7 +1288,7 @@ func (d *Data) createCookMealTimes(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.CookMealTimes[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.CookMealTimes[i].ID
@@ -1300,7 +1300,7 @@ func (d *Data) createCookMealTimes(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createCookRecipes(ctx context.Context) errs.Err {
@@ -1312,7 +1312,7 @@ func (d *Data) createCookRecipes(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.CookRecipes[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.CookRecipes[i].ID
@@ -1330,7 +1330,7 @@ func (d *Data) createCookRecipes(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createHealthItems(ctx context.Context) errs.Err {
@@ -1342,7 +1342,7 @@ func (d *Data) createHealthItems(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.HealthItems[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.HealthItems[i].ID
@@ -1354,7 +1354,7 @@ func (d *Data) createHealthItems(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createHealthLogs(ctx context.Context) errs.Err {
@@ -1364,11 +1364,11 @@ func (d *Data) createHealthLogs(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.HealthLogs[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createInventoryCollections(ctx context.Context) errs.Err {
@@ -1378,11 +1378,11 @@ func (d *Data) createInventoryCollections(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.InventoryCollections[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createInventoryItems(ctx context.Context) errs.Err {
@@ -1394,7 +1394,7 @@ func (d *Data) createInventoryItems(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.InventoryItems[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.InventoryItems[i].ID
@@ -1406,7 +1406,7 @@ func (d *Data) createInventoryItems(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createNotesPages(ctx context.Context) errs.Err {
@@ -1418,7 +1418,7 @@ func (d *Data) createNotesPages(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.NotesPages[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.NotesPages[i].ID
@@ -1436,7 +1436,7 @@ func (d *Data) createNotesPages(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createNotesPageVersions(ctx context.Context) errs.Err {
@@ -1446,11 +1446,11 @@ func (d *Data) createNotesPageVersions(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.NotesPageVersions[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createPlanProjects(ctx context.Context) errs.Err {
@@ -1462,7 +1462,7 @@ func (d *Data) createPlanProjects(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.PlanProjects[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.PlanProjects[i].ID
@@ -1486,7 +1486,7 @@ func (d *Data) createPlanProjects(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createPlanTasks(ctx context.Context) errs.Err {
@@ -1495,7 +1495,7 @@ func (d *Data) createPlanTasks(ctx context.Context) errs.Err {
 	for i := range d.PlanTasks {
 		if d.PlanTasks[i].Recurrence != nil {
 			if err := d.PlanTasks[i].Recurrence.Validate(); err != nil {
-				return logger.Log(ctx, err)
+				return logger.Error(ctx, err)
 			}
 		}
 
@@ -1504,7 +1504,7 @@ func (d *Data) createPlanTasks(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.PlanTasks[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.PlanTasks[i].ID
@@ -1516,7 +1516,7 @@ func (d *Data) createPlanTasks(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createRewardCards(ctx context.Context) errs.Err {
@@ -1526,11 +1526,11 @@ func (d *Data) createRewardCards(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.RewardCards[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createSecretsValues(ctx context.Context) errs.Err {
@@ -1540,11 +1540,11 @@ func (d *Data) createSecretsValues(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.SecretsValues[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createSecretsVaults(ctx context.Context) errs.Err {
@@ -1556,7 +1556,7 @@ func (d *Data) createSecretsVaults(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.SecretsVaults[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.SecretsVaults[i].ID
@@ -1568,7 +1568,7 @@ func (d *Data) createSecretsVaults(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createShopCategories(ctx context.Context) errs.Err {
@@ -1580,7 +1580,7 @@ func (d *Data) createShopCategories(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.ShopCategories[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.ShopCategories[i].ID
@@ -1592,7 +1592,7 @@ func (d *Data) createShopCategories(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createShopItems(ctx context.Context) errs.Err {
@@ -1602,11 +1602,11 @@ func (d *Data) createShopItems(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.ShopItems[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) createShopLists(ctx context.Context) errs.Err {
@@ -1618,7 +1618,7 @@ func (d *Data) createShopLists(ctx context.Context) errs.Err {
 		if err := Create(ctx, &d.ShopLists[i], CreateOpts{
 			Restore: true,
 		}); err != nil {
-			return logger.Log(ctx, err)
+			return logger.Error(ctx, err)
 		}
 
 		newID := d.ShopLists[i].ID
@@ -1630,7 +1630,7 @@ func (d *Data) createShopLists(ctx context.Context) errs.Err {
 		}
 	}
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readAuthSessions(ctx context.Context, authAccountID *uuid.UUID) errs.Err {
@@ -1638,7 +1638,7 @@ func (d *Data) readAuthSessions(ctx context.Context, authAccountID *uuid.UUID) e
 
 	authSessions := AuthSessions{}
 
-	err := logger.Log(ctx, db.Query(ctx, true, &authSessions, `
+	err := logger.Error(ctx, db.Query(ctx, true, &authSessions, `
 SELECT *
 FROM auth_session
 WHERE
@@ -1661,12 +1661,12 @@ func (d *Data) readCalendarEvents(ctx context.Context, authAccountID *uuid.UUID,
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.CalendarEvents = append(d.CalendarEvents, calendarEvents...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readCalendarICalendars(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1680,12 +1680,12 @@ func (d *Data) readCalendarICalendars(ctx context.Context, authAccountID *uuid.U
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.CalendarICalendars = append(d.CalendarICalendars, calendarICalendars...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readBookmarks(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1699,12 +1699,12 @@ func (d *Data) readBookmarks(ctx context.Context, authAccountID *uuid.UUID, ahp 
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.Bookmarks = append(d.Bookmarks, bookmarks...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readHealthItems(ctx context.Context, authAccountID *uuid.UUID) errs.Err {
@@ -1717,12 +1717,12 @@ func (d *Data) readHealthItems(ctx context.Context, authAccountID *uuid.UUID) er
 			AuthAccountID: authAccountID,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.HealthItems = append(d.HealthItems, items...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readHealthLogs(ctx context.Context, authAccountID *uuid.UUID) errs.Err {
@@ -1735,12 +1735,12 @@ func (d *Data) readHealthLogs(ctx context.Context, authAccountID *uuid.UUID) err
 			AuthAccountID: authAccountID,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.HealthLogs = append(d.HealthLogs, logs...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readNotesPages(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1754,12 +1754,12 @@ func (d *Data) readNotesPages(ctx context.Context, authAccountID *uuid.UUID, ahp
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.NotesPages = append(d.NotesPages, notesPages...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readNotesPageVersions(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1773,12 +1773,12 @@ func (d *Data) readNotesPageVersions(ctx context.Context, authAccountID *uuid.UU
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.NotesPageVersions = append(d.NotesPageVersions, notesPageVersions...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readPlanProjects(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1792,12 +1792,12 @@ func (d *Data) readPlanProjects(ctx context.Context, authAccountID *uuid.UUID, a
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.PlanProjects = append(d.PlanProjects, planProjects...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readPlanTasks(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1811,12 +1811,12 @@ func (d *Data) readPlanTasks(ctx context.Context, authAccountID *uuid.UUID, ahp 
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.PlanTasks = append(d.PlanTasks, planTasks...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readSecretsValues(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1830,12 +1830,12 @@ func (d *Data) readSecretsValues(ctx context.Context, authAccountID *uuid.UUID, 
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.SecretsValues = append(d.SecretsValues, secretsValues...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readSecretsVaults(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1849,12 +1849,12 @@ func (d *Data) readSecretsVaults(ctx context.Context, authAccountID *uuid.UUID, 
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.SecretsVaults = append(d.SecretsVaults, secretsVaults...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readShopLists(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1868,12 +1868,12 @@ func (d *Data) readShopLists(ctx context.Context, authAccountID *uuid.UUID, ahp 
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.ShopLists = append(d.ShopLists, shopLists...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
 
 func (d *Data) readShopItems(ctx context.Context, authAccountID *uuid.UUID, ahp *AuthHouseholdsPermissions) errs.Err {
@@ -1887,10 +1887,10 @@ func (d *Data) readShopItems(ctx context.Context, authAccountID *uuid.UUID, ahp 
 			AuthHouseholdsPermissions: ahp,
 		},
 	}); err != nil {
-		return logger.Log(ctx, err)
+		return logger.Error(ctx, err)
 	}
 
 	d.ShopItems = append(d.ShopItems, shopItems...)
 
-	return logger.Log(ctx, nil)
+	return logger.Error(ctx, nil)
 }
