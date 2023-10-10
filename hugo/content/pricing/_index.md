@@ -37,7 +37,7 @@ weight: 30
 
 ## Additional Services
 
-Please [contact us](mailto:info@candid.dev?subject=YAML8n%20Pricing) for more information regarding:
+Please [contact us](mailto:info@candid.dev?subject=Homechart%20Pricing) for more information regarding:
 - Coaching
 - Concierge Services
 - Homechart for your Business or Agency

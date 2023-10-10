@@ -1,3 +1,3 @@
-module candiddev/yaml8n
+module candiddev/homechart
 
 go 1.20
