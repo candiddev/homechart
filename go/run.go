@@ -11,10 +11,17 @@ import (
 	"github.com/candiddev/homechart/go/tasks"
 	"github.com/candiddev/shared/go/cli"
 	"github.com/candiddev/shared/go/errs"
+	"github.com/candiddev/shared/go/logger"
 	"github.com/go-chi/chi/v5"
 )
 
 func run(ctx context.Context, _ []string, c *config.Config) errs.Err {
+	if c.CLI.LogFormat == "" {
+		ctx = logger.SetFormat(ctx, logger.FormatKV)
+	} else {
+		ctx = logger.SetFormat(ctx, c.CLI.LogFormat)
+	}
+
 	ctx, cancel, cloud, err := setup(ctx, c)
 	if err != nil {
 		return err

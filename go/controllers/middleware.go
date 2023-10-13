@@ -434,10 +434,19 @@ func (*Handler) SetPublic(next http.Handler) http.Handler {
 func (h *Handler) SetRequestContext(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		ctx := r.Context()
-		ctx = logger.SetLevel(ctx, h.Config.CLI.LogLevel)
+
+		if h.Config.CLI.LogFormat == "" {
+			ctx = logger.SetFormat(ctx, logger.FormatKV)
+		} else {
+			ctx = logger.SetFormat(ctx, h.Config.CLI.LogFormat)
+		}
+
 		if r.URL.Query().Get("debug") != "" || r.Header.Get("x-homechart-debug") != "" {
 			ctx = logger.SetLevel(ctx, logger.LevelDebug)
+		} else {
+			ctx = logger.SetLevel(ctx, h.Config.CLI.LogLevel)
 		}
+
 		ctx = logger.SetAttribute(ctx, "remoteAddr", h.RateLimiter.GetIPKey(r))
 		ctx = logger.SetAttribute(ctx, "method", r.Method)
 		next.ServeHTTP(w, r.WithContext(ctx))
