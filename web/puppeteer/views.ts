@@ -162,12 +162,23 @@ const views = {
 			await utilities.openMenu(page, "secrets", "personal", "janes-vault");
 			await utilities.screenshot(page, "#table", "secrets_values");
 		} else {
-			await utilities.openMenu(page, "secrets");
-			await utilities.waitFor(page, "#form-item-input-new-passphrase");
-			await utilities.input(page, "#form-item-input-new-passphrase", "password");
-			await utilities.input(page, "#form-item-input-confirm-new-passphrase", "password");
-			await utilities.click(page, "#button-add-private-key");
-			await utilities.click(page, "#button-account-updated-dismiss");
+			await utilities.openMenu(page, "settings", "account");
+			await utilities.click(page, "#tab-security");
+			await utilities.waitFor(page, "#table");
+			let rows = await page.$$("tr");
+			expect(rows.length)
+				.toBe(3);
+			await utilities.click(page, "#button-lock-private-key");
+			await utilities.waitFor(page, "#form-item-input-passphrase");
+			rows = await page.$$("tr");
+			expect(rows.length)
+				.toBe(0);
+			await utilities.input(page, "#form-item-input-passphrase", utilities.getUsername());
+			await utilities.click(page, "#button-unlock-private-key");
+			await utilities.waitFor(page, "#table");
+			rows = await page.$$("tr");
+			expect(rows.length)
+				.toBe(3);
 			await utilities.openMenu(page, "secrets", "all-vaults");
 			await utilities.click(page, "#app-toolbar-action-toggle");
 			await utilities.click(page, "#dropdown-item-secretsvault");

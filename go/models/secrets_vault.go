@@ -2,10 +2,11 @@ package models
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"time"
 
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
@@ -121,14 +122,14 @@ RETURNING *
 
 func (s *SecretsVault) validate(p PermissionsOpts) errs.Err {
 	if len(s.Keys) == 0 {
-		return errs.ErrSenderBadRequest
+		return errs.ErrSenderBadRequest.Wrap(errors.New("empty key list"))
 	}
 
 	if p.AuthAccountID != nil {
 		match := false
 
 		for k := range s.Keys {
-			if s.Keys[k].AuthAccountID == *p.AuthAccountID && s.Keys[k].Key.Encryption == crypto.TypeRSA2048 {
+			if s.Keys[k].AuthAccountID == *p.AuthAccountID && s.Keys[k].Key.Encryption == cryptolib.EncryptionRSA2048OAEPSHA256 {
 				match = true
 
 				break
@@ -136,7 +137,7 @@ func (s *SecretsVault) validate(p PermissionsOpts) errs.Err {
 		}
 
 		if !match {
-			return errs.ErrSenderBadRequest
+			return errs.ErrSenderBadRequest.Wrap(errors.New("no matching key found"))
 		}
 	}
 

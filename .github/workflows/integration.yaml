@@ -31,6 +31,8 @@ jobs:
           submodules: true
       - name: Setup
         uses: ./github/setup
+        with:
+          force_refresh: 'true'
 
   lint:
     name: Lint

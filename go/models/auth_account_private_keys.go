@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 )
 
 // AuthAccountPrivateKeyProvider is an enum for private key provider types.
@@ -20,7 +20,7 @@ const (
 // AuthAccountPrivateKey is the contents of a private key.
 type AuthAccountPrivateKey struct {
 	Name     string                        `json:"name"`
-	Key      crypto.EncryptedValue         `json:"key"`
+	Key      cryptolib.EncryptedValue      `json:"key"`
 	Provider AuthAccountPrivateKeyProvider `json:"provider"`
 } // @Name AuthAccountPrivateKey
 

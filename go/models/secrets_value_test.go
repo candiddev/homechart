@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/candiddev/shared/go/assert"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
 )
@@ -73,10 +73,10 @@ func TestSecretsValueUpdate(t *testing.T) {
 	s.create(ctx, CreateOpts{})
 
 	s.Deleted = &s.Updated
-	s.NameEncrypted, _ = crypto.EncryptValue(nil, "test")
-	s.NameEncrypted.Encryption = crypto.TypeAES128GCM
+	s.NameEncrypted, _ = cryptolib.None("").EncryptSymmetric([]byte("test"), "")
+	s.NameEncrypted.Encryption = cryptolib.EncryptionAES128GCM
 
-	s.DataEncrypted = crypto.EncryptedValues{
+	s.DataEncrypted = cryptolib.EncryptedValues{
 		s.NameEncrypted,
 	}
 	s.TagsEncrypted = s.NameEncrypted

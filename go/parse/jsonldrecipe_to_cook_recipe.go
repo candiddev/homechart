@@ -31,7 +31,7 @@ func (j *JSONLDRecipe) ToCookRecipe(ctx context.Context) (c *models.CookRecipe) 
 
 		img, _, err := image.Decode(resp.Body)
 		if err == nil {
-			c.Image = types.Image(images.Resize(img))
+			c.Image = images.Image(images.Resize(img))
 		}
 
 		defer resp.Body.Close()

@@ -82,9 +82,14 @@ export function CalendarDayEvent (): m.Component<CalendarDayEventAttrs> {
 						AppState.setLayoutAppForm(FormOverlayCalendarEvent, vnode.attrs.event);
 					},
 					style: {
+						"background": Timestamp.now() < end && Timestamp.now() > start ?
+							AuthAccountState.data().preferences.darkMode ?
+								"linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)" :
+								"linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0))" :
+							undefined,
 						"background-color": `var(--color_${color.toLowerCase()})`,
 						"color": `var(--color_${color.toLowerCase()}-content)`,
-						"filter": vnode.attrs.event.duration !== 0 && Timestamp.now() > Timestamp.fromString(vnode.attrs.event.timestampStart!) || CivilDate.now() > Timestamp.fromString(vnode.attrs.event.timestampStart!) // eslint-disable-line @typescript-eslint/no-non-null-assertion
+						"filter": vnode.attrs.event.duration !== 0 && Timestamp.now() > end || CivilDate.now() > Timestamp.fromString(vnode.attrs.event.timestampStart!) // eslint-disable-line @typescript-eslint/no-non-null-assertion
 							.toCivilDate() ?
 							"var(--filter_light)" :
 							undefined,

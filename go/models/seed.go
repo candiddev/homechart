@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
@@ -69,10 +69,10 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 		seed.AuthHouseholds[1].SubscriptionExpires = today
 	}
 
-	prv1, pub1, _ := crypto.NewRSA()
-	key1, _ := crypto.EncryptValue(nil, string(prv1))
-	prv2, pub2, _ := crypto.NewRSA()
-	key2, _ := crypto.EncryptValue(nil, string(prv2))
+	prv1, pub1, _ := cryptolib.NewKeysEncryptAsymmetric()
+	prv2, pub2, _ := cryptolib.NewKeysEncryptAsymmetric()
+	key1, _ := cryptolib.None("").EncryptSymmetric([]byte(prv1.String()), "")
+	key2, _ := cryptolib.None("").EncryptSymmetric([]byte(prv2.String()), "")
 
 	seed.AuthAccounts = AuthAccounts{
 		{
@@ -1032,7 +1032,7 @@ tiny pinch of salt
 		{
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
 			Home:            true,
-			IconLink:        "https://homechart.app/logo.png",
+			IconLink:        "https://homechart.app/homechart.png",
 			Link:            "https://homechart.app",
 			Name:            "Homechart",
 			NewWindow:       true,
@@ -1588,12 +1588,12 @@ Call someone!
 		},
 	}
 
-	akey1, _ := crypto.NewAESKey()
-	key1Encrypt, _ := crypto.EncryptValue(seed.AuthAccounts[0].PublicKey, string(akey1))
-	akey2, _ := crypto.NewAESKey()
-	key2Encrypt, _ := crypto.EncryptValue(seed.AuthAccounts[0].PublicKey, string(akey2))
-	akey3, _ := crypto.NewAESKey()
-	key3Encrypt, _ := crypto.EncryptValue(seed.AuthAccounts[2].PublicKey, string(akey3))
+	akey1, _ := cryptolib.NewKeyEncryptSymmetric()
+	key1Encrypt, _ := seed.AuthAccounts[0].PublicKey.EncryptAsymmetric([]byte(akey1.String()))
+	akey2, _ := cryptolib.NewKeyEncryptSymmetric()
+	key2Encrypt, _ := seed.AuthAccounts[0].PublicKey.EncryptAsymmetric([]byte(akey2.String()))
+	akey3, _ := cryptolib.NewKeyEncryptSymmetric()
+	key3Encrypt, _ := seed.AuthAccounts[0].PublicKey.EncryptAsymmetric([]byte(akey3.String()))
 
 	seed.SecretsVaults = SecretsVaults{
 		{
@@ -1631,16 +1631,17 @@ Call someone!
 		"Username": "jane",
 		"URL":      "https://homechart.app",
 	})
-	v1Encrypt, _ := crypto.EncryptValue(akey1, string(v1))
-	v1Name, _ := crypto.EncryptValue(akey1, "Homechart")
-	v1Tags, _ := crypto.EncryptValue(akey1, `["jane", "app"]`)
+
+	v1Encrypt, _ := akey1.EncryptSymmetric(v1)
+	v1Name, _ := akey1.EncryptSymmetric([]byte("Homechart"))
+	v1Tags, _ := akey1.EncryptSymmetric([]byte(`["jane", "app"]`))
 
 	v2, _ := json.Marshal(map[string]string{ //nolint: errchkjson
 		"Note": "The code is 112233, otherwise there is a key under a rock by her front door.",
 	})
-	v2Encrypt, _ := crypto.EncryptValue(akey1, string(v2))
-	v2Name, _ := crypto.EncryptValue(akey1, "Mom's Garage Code")
-	v2Tags, _ := crypto.EncryptValue(akey1, `["grandma", "garage"]`)
+	v2Encrypt, _ := akey1.EncryptSymmetric(v2)
+	v2Name, _ := akey1.EncryptSymmetric([]byte("Mom's Garage Code"))
+	v2Tags, _ := akey1.EncryptSymmetric([]byte(`["grandma", "garage"]`))
 
 	v3, _ := json.Marshal(map[string]string{ //nolint: errchkjson
 		"Password": "doefamily",
@@ -1648,21 +1649,21 @@ Call someone!
 		"Username": "doefamily",
 		"URL":      "https://example.com",
 	})
-	v3Encrypt, _ := crypto.EncryptValue(akey2, string(v3))
-	v3Name, _ := crypto.EncryptValue(akey2, "Local Credit Union")
-	v3Tags, _ := crypto.EncryptValue(akey2, `["bank", "app"]`)
+	v3Encrypt, _ := akey2.EncryptSymmetric(v3)
+	v3Name, _ := akey2.EncryptSymmetric([]byte("Local Credit Union"))
+	v3Tags, _ := akey2.EncryptSymmetric([]byte(`["bank", "app"]`))
 
 	v4, _ := json.Marshal(map[string]string{ //nolint: errchkjson
 		"SSN": "xxx-yy-zzzz",
 	})
-	v4Encrypt, _ := crypto.EncryptValue(akey2, string(v4))
-	v4Name, _ := crypto.EncryptValue(akey2, "Jennifer Doe")
-	v4Tags, _ := crypto.EncryptValue(akey2, `["person", "id"]`)
+	v4Encrypt, _ := akey2.EncryptSymmetric(v4)
+	v4Name, _ := akey2.EncryptSymmetric([]byte("Jennifer Doe"))
+	v4Tags, _ := akey2.EncryptSymmetric([]byte(`["person", "id"]`))
 
 	seed.SecretsValues = SecretsValues{
 		{
 			AuthAccountID: &seed.AuthAccounts[0].ID,
-			DataEncrypted: crypto.EncryptedValues{
+			DataEncrypted: cryptolib.EncryptedValues{
 				v1Encrypt,
 			},
 			NameEncrypted:  v1Name,
@@ -1671,7 +1672,7 @@ Call someone!
 		},
 		{
 			AuthAccountID: &seed.AuthAccounts[0].ID,
-			DataEncrypted: crypto.EncryptedValues{
+			DataEncrypted: cryptolib.EncryptedValues{
 				v2Encrypt,
 			},
 			NameEncrypted:  v2Name,
@@ -1680,7 +1681,7 @@ Call someone!
 		},
 		{
 			AuthAccountID: &seed.AuthHouseholds[0].ID,
-			DataEncrypted: crypto.EncryptedValues{
+			DataEncrypted: cryptolib.EncryptedValues{
 				v3Encrypt,
 			},
 			NameEncrypted:  v3Name,
@@ -1689,7 +1690,7 @@ Call someone!
 		},
 		{
 			AuthAccountID: &seed.AuthHouseholds[0].ID,
-			DataEncrypted: crypto.EncryptedValues{
+			DataEncrypted: cryptolib.EncryptedValues{
 				v4Encrypt,
 			},
 			NameEncrypted:  v4Name,

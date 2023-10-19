@@ -151,7 +151,7 @@ func getJSON(ctx context.Context, i any, b io.Reader) errs.Err {
 		if e, ok := errr.(errs.Err); ok {
 			err = e
 		} else {
-			err = errs.ErrSenderBadRequest.Wrap(err)
+			err = errs.ErrSenderBadRequest.Wrap(errr)
 		}
 
 		return logger.Error(ctx, err)

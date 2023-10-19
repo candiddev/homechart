@@ -9,7 +9,7 @@ import (
 	"github.com/candiddev/homechart/go/models"
 	"github.com/candiddev/homechart/go/oidc"
 	"github.com/candiddev/shared/go/assert"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/notify"
@@ -237,14 +237,14 @@ func TestAuthAccountKeysUpdate(t *testing.T) {
 	as.AuthAccountID = a.ID
 	as.Create(ctx, false)
 
-	_, pub, _ := crypto.NewRSA()
+	_, pub, _ := cryptolib.NewKeysEncryptAsymmetric()
 
 	a.PublicKey = pub
 
 	tests := map[string]struct {
 		err   string
 		input models.AuthSession
-		want  crypto.RSAPublicKey
+		want  cryptolib.KeyEncryptAsymmetric
 	}{
 		"wrong account": {
 			err:   errs.ErrSenderForbidden.Message(),
@@ -252,7 +252,7 @@ func TestAuthAccountKeysUpdate(t *testing.T) {
 		},
 		"good": {
 			input: as,
-			want:  pub,
+			want:  a.PublicKey,
 		},
 	}
 

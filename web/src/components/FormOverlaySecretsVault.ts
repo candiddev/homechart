@@ -2,8 +2,8 @@ import { FormItem } from "@lib/components/FormItem";
 import { FormItemInputIcon } from "@lib/components/FormItemInputIcon";
 import type { FormOverlayComponentAttrs } from "@lib/components/FormOverlay";
 import { FormOverlay } from "@lib/components/FormOverlay";
-import { NewAESKey } from "@lib/encryption/AES";
-import { EncryptionTypeRSA2048, EncryptValue } from "@lib/encryption/Encryption";
+import type { Key } from "@lib/encryption/Encryption";
+import { KeyTypeAES128, NewKey, ParseKey } from "@lib/encryption/Encryption";
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { Animate, Animation } from "@lib/utilities/Animate";
@@ -55,20 +55,27 @@ export function FormOverlaySecretsVault (): m.Component<FormOverlayComponentAttr
 						});
 				},
 				onSubmit: async (): Promise<SecretsVault | void | Err> => {
-					let key: string | Err = SecretsVaultState.keys()[`${vnode.attrs.data.id}`];
+					let key: Key | Err = SecretsVaultState.keys()[`${vnode.attrs.data.id}`];
 					if (key === undefined) {
-						key = await NewAESKey();
-						if (IsErr(key)) {
-							return key;
+						const k = await NewKey(KeyTypeAES128);
+						if (IsErr(k)) {
+							return k;
 						}
+
+						key = k.key as Key;
 					}
 
 					vnode.attrs.data.keys = [];
 
 					for (let i = 0; i < initMembers.length; i++) {
-						const v = await EncryptValue(EncryptionTypeRSA2048, initMembers[i] === AuthAccountState.data().id ?
+						const k = ParseKey(initMembers[i] === AuthAccountState.data().id ?
 							AuthAccountState.data().publicKey :
-							AuthHouseholdState.findMember(initMembers[i]).publicKey, key);
+							AuthHouseholdState.findMember(initMembers[i]).publicKey);
+						if (IsErr(k)) {
+							return k;
+						}
+
+						const v = await k.encrypt(key.string());
 
 						if (! IsErr(v)) {
 							vnode.attrs.data.keys.push({

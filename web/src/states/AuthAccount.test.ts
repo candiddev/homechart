@@ -1,5 +1,5 @@
 import type { EncryptedValue } from "@lib/encryption/Encryption";
-import { EncryptionTypeNone, EncryptValue } from "@lib/encryption/Encryption";
+import { Key, KeyTypeNone, KeyTypeRSA2048Private, NewKey } from "@lib/encryption/Encryption";
 import { IsErr } from "@lib/services/Log";
 import { UUID } from "@lib/types/UUID";
 
@@ -107,18 +107,37 @@ describe("Authccount", () => {
 			},
 		];
 
-		await AuthAccountState.createAccount(AuthAccountState.data(), "");
+		const account = {
+			...AuthAccountState.data(),
+		};
+
+		await AuthAccountState.createAccount(account, "");
 
 		testing.requests([
 			{
-				body: AuthAccountState.data(),
+				body: account,
 				method: "POST",
 				path: "/api/v1/auth/accounts",
 			},
 		]);
 
+		expect(account.privateKeys.length)
+			.toBe(0);
 		expect(AuthSessionState.data().admin)
 			.toBeTruthy();
+
+		account.password = "hello";
+
+		await AuthAccountState.createAccount(account, "");
+
+		expect(account.privateKeys.length)
+			.toBe(1);
+
+		AuthAccountState.data(account);
+		await AuthAccountState.decryptPrivateKeys("hello", true);
+
+		expect(AuthAccountState.privateKey().key).not.toBe("");
+		expect(await IndexedDB.get("AuthAccountPrivateKey")).not.toBe(null);
 	});
 
 	test("createReset", async () => {
@@ -214,8 +233,11 @@ describe("Authccount", () => {
 	});
 
 	test("decryptPrivateKeys/loadPrivateKey/newPrivateKeyPBKDF2/savePrivateKey", async () => {
-		const key = "Hello World!";
-		AuthAccountState.privateKey(key);
+		const keys = await NewKey(KeyTypeRSA2048Private) as {
+			privateKey: Key,
+			publicKey: Key,
+		};
+		AuthAccountState.privateKey(keys.privateKey);
 
 		AuthAccountState.data({
 			...AuthAccountState.data(),
@@ -228,7 +250,8 @@ describe("Authccount", () => {
 						provider: AuthAccountPrivateKeyProviderPasswordPBKDF2,
 					},
 					{
-						key: (await EncryptValue(EncryptionTypeNone, "", key) as EncryptedValue).string(),
+						key: ((await new Key(KeyTypeNone, "", "")
+							.encrypt(keys.privateKey.string())) as EncryptedValue).string(),
 						name: "Testing",
 						provider: AuthAccountPrivateKeyProviderNone,
 					},
@@ -236,30 +259,32 @@ describe("Authccount", () => {
 			},
 		});
 
-		AuthAccountState.privateKey("");
+		await IndexedDB.delete("AuthAccountPrivateKey");
+		AuthAccountState.privateKey(new Key("", "", ""));
 
 		await AuthAccountState.decryptPrivateKeys("password");
 
 		expect(AuthAccountState.privateKey())
-			.toBe(key);
+			.toStrictEqual(keys.privateKey);
 
-		AuthAccountState.privateKey("");
+		AuthAccountState.privateKey(new Key("", "", ""));
 
 		await AuthAccountState.decryptPrivateKeys("");
 
 		expect(AuthAccountState.privateKey())
-			.toBe(key);
+			.toStrictEqual(keys.privateKey);
 
 		await AuthAccountState.savePrivateKey();
 
-		AuthAccountState.privateKey("");
+		AuthAccountState.privateKey(new Key("", "", ""));
 
 		AuthAccountState.data().privateKeys = [];
+		await IndexedDB.delete("AuthAccountPrivateKey");
 
 		await AuthAccountState.decryptPrivateKeys("");
 
 		expect(AuthAccountState.privateKey())
-			.toBe(key);
+			.toStrictEqual(new Key("", "", ""));
 	});
 
 	test("deletePrivateKey/updatePrivatePublicKey", async () => {
@@ -393,12 +418,12 @@ describe("Authccount", () => {
 		expect(a.privateKeys)
 			.not.toBe(seed.authAccounts[0].publicKey);
 
-		AuthAccountState.privateKey("");
+		AuthAccountState.privateKey(new Key("", "", ""));
 		AuthAccountState.data(a);
 		await AuthAccountState.decryptPrivateKeys("Password");
 
 		expect(AuthAccountState.privateKey())
-			.toBe(key);
+			.toStrictEqual(key);
 	});
 
 	test("readAll", async () => {

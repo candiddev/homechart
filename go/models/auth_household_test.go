@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/candiddev/shared/go/assert"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
@@ -446,7 +446,7 @@ func TestAuthHouseholdCreateReadJWT(t *testing.T) {
 	oldPub := c.App.CloudPublicKey
 	endpoint := c.App.CloudEndpoint
 
-	prv, pub, _ := crypto.NewEd25519()
+	prv, pub, _ := cryptolib.NewKeysSign()
 	c.App.CloudPrivateKey = prv
 	c.App.CloudPublicKey = pub
 

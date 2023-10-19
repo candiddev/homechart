@@ -64,8 +64,12 @@ export function SignIn (): m.Component {
 						AuthAccountState.data().tosAccepted = true;
 
 						if (CheckForm("")) {
+							const password = AuthAccountState.data().password;
+							const remember = AuthAccountState.data().rememberMe === true;
+
 							if (m.route.get()
 								.includes("/signin")) {
+
 								return AuthAccountState.createSession(AuthAccountState.data(), state.hostname)
 									.then(async (err) => {
 										if (IsErr(err)) {
@@ -80,7 +84,10 @@ export function SignIn (): m.Component {
 											return err;
 										}
 
-										return GlobalState.signIn();
+										return GlobalState.signIn()
+											.then(async () => {
+												return AuthAccountState.decryptPrivateKeys(password, remember);
+											});
 									});
 							}
 							if (m.route.get()
@@ -99,7 +106,8 @@ export function SignIn (): m.Component {
 										}
 
 										return GlobalState.signIn()
-											.then(() => {
+											.then(async () => {
+												return AuthAccountState.decryptPrivateKeys(password, remember);
 											});
 									});
 							}

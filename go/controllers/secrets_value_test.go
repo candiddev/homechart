@@ -6,7 +6,7 @@ import (
 
 	"github.com/candiddev/homechart/go/models"
 	"github.com/candiddev/shared/go/assert"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/google/uuid"
 )
@@ -15,9 +15,9 @@ func TestSecretsValueCreate(t *testing.T) {
 	logger.UseTestLogger(t)
 
 	good := seed.SecretsValues[0]
-	good.NameEncrypted = crypto.EncryptedValue{
+	good.NameEncrypted = cryptolib.EncryptedValue{
 		Ciphertext: "testcreate",
-		Encryption: crypto.TypeAES128GCM,
+		Encryption: cryptolib.EncryptionAES128GCM,
 	}
 
 	good.ID = uuid.Nil
@@ -42,9 +42,9 @@ func TestSecretsValueDelete(t *testing.T) {
 
 	d := seed.SecretsValues[0]
 	d.ID = uuid.Nil
-	d.NameEncrypted = crypto.EncryptedValue{
+	d.NameEncrypted = cryptolib.EncryptedValue{
 		Ciphertext: "testdelete",
-		Encryption: crypto.TypeAES128GCM,
+		Encryption: cryptolib.EncryptionAES128GCM,
 	}
 	models.Create(ctx, &d, models.CreateOpts{})
 
@@ -74,17 +74,17 @@ func TestSecretsValueUpdate(t *testing.T) {
 
 	s := seed.SecretsValues[0]
 	s.ID = uuid.Nil
-	s.NameEncrypted = crypto.EncryptedValue{
+	s.NameEncrypted = cryptolib.EncryptedValue{
 		Ciphertext: "testupdate",
-		Encryption: crypto.TypeAES128GCM,
+		Encryption: cryptolib.EncryptionAES128GCM,
 	}
 
 	models.Create(ctx, &s, models.CreateOpts{})
 
 	newName := s
-	newName.NameEncrypted = crypto.EncryptedValue{
+	newName.NameEncrypted = cryptolib.EncryptedValue{
 		Ciphertext: "testupdate1",
-		Encryption: crypto.TypeAES128GCM,
+		Encryption: cryptolib.EncryptionAES128GCM,
 	}
 
 	var snew models.SecretsValues

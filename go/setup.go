@@ -2,12 +2,11 @@ package main
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/candiddev/homechart/go/config"
 	"github.com/candiddev/homechart/go/models"
 	"github.com/candiddev/shared/go/cli"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/jwt"
 	"github.com/candiddev/shared/go/logger"
@@ -16,16 +15,20 @@ import (
 func setup(ctx context.Context, config *config.Config) (outCtx context.Context, cancel context.CancelFunc, cloud bool, err errs.Err) { //nolint:revive
 	ctx, cancel = context.WithCancel(ctx)
 
-	config.App.CloudPublicKey = crypto.Ed25519PublicKey(appCloudPublicKey)
+	if e := config.App.CloudPublicKey.UnmarshalText([]byte(appCloudPublicKey)); e != nil {
+		return ctx, cancel, false, logger.Error(ctx, errs.ErrReceiver.Wrap(e))
+	}
 
 	// Check if cloud
 	if config.App.CloudJWT != "" {
 		var c jwtCloud
 
-		_, err := jwt.VerifyJWT(config.App.CloudPublicKey, &c, config.App.CloudJWT)
+		t, _, err := jwt.Parse(config.App.CloudJWT, cryptolib.KeysVerify{config.App.CloudPublicKey})
 		if err != nil {
-			err = fmt.Errorf("invalid cloud JWT: %w", err)
+			return ctx, cancel, false, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
+		}
 
+		if err := t.ParsePayload(&c, "", "", ""); err != nil {
 			return ctx, cancel, false, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 		}
 

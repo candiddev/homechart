@@ -4,20 +4,19 @@ export APP_NAME=homechart
 export BUILD_TARGETS_BINARY="linux/amd64 linux/arm64 linux/arm/v7"
 export GITHUB_REPOSITORY_ID=416805305
 export INSTALL_ALL="install-go install-golangci-lint install-hugo install-node install-shellcheck install-swag install-vault"
-export HOMECHART_APP_BASEURL=${HOMECHART_APP_BASEURL:-http://localhost}
-export HOMECHART_APP_CLOUDENDPOINT=${HOMECHART_APP_CLOUDENDPOINT:-http://localhost}
-export HOMECHART_APP_CLOUDJWT=${HOMECHART_APP_CLOUDJWT:-eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJjbG91ZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly9taWtlLWRlc2t0b3AxLmNhbmRpZC5kZXYiLCJzdWIiOiJDbG91ZCIsImF1ZCI6WyJIb21lY2hhcnQiXSwiZXhwIjoxODM3NzEwNTc3LCJuYmYiOjE2ODAwMzA1NzcsImlhdCI6MTY4MDAzMDU3NywianRpIjoiN2MzNWJlNzEtMmE0OC00NjIwLTgxMGUtMDU4Njc4ODgyODAwIn0.xLDsYa_7cQnMmLF9XuxpzSllvcQVLRNsU4wgMZrddkz_Uzwj0rnZmhrh1gdUcWO_jzPHcjiK-7LgJ2Jz7SWYDw}
-export HOMECHART_APP_CLOUDPRIVATEKEY=${HOMECHART_APP_CLOUDPRIVATEKEY:-MC4CAQAwBQYDK2VwBCIEIJzzEbJdbjgPN5Q1O75Fgfc3JivqiAeLq1F7XMj0c1hG}
-export HOMECHART_APP_CLOUDPUBLICKEY=${HOMECHART_APP_CLOUDPUBLICKEY:-MCowBQYDK2VwAyEADL5OxQve4AvYy7L2S+ypqD0/T8t9IIT/bQFkXNQCo9I=}
-export HOMECHART_APP_NOEMAILDOMAINS=${HOMECHART_APP_NOEMAILDOMAINS:-example.com}
-export HOMECHART_APP_RATELIMITERKEY=${HOMECHART_APP_RATELIMITERKEY:-homechart}
-export HOMECHART_APP_TIMEZONE=${HOMECHART_APP_TIMEZONE:-America/Chicago}
-export HOMECHART_POSTGRESQL_DATABASE=${HOMECHART_POSTGRESQL_DATABASE:-homechart}
-export HOMECHART_POSTGRESQL_HOSTNAME=${HOMECHART_POSTGRESQL_HOSTNAME:-127.0.0.1}
-export HOMECHART_POSTGRESQL_PASSWORD=${HOMECHART_POSTGRESQL_PASSWORD:-homechart}
-export HOMECHART_POSTGRESQL_USERNAME=${HOMECHART_POSTGRESQL_USERNAME:-homechart}
-export HOMECHART_WEBPUSH_VAPIDPRIVATEKEY=${HOMECHART_WEBPUSH_VAPIDPRIVATEKEY:-3-NI4eCXzQt3ILqRmOaIuEWHCl9Lp7zrOlGhhdyy7MU}
-export HOMECHART_WEBPUSH_VAPIDPUBLICKEY=${HOMECHART_WEBPUSH_VAPIDPUBLICKEY:-BMcCmv0dhitH4h1hrKHGpJbaD_kTPpaGap8AH4kjLoM7pZXPzdPgCASqZ9pMOZckHD62xvXFtfWbxLBzJGzWtU4}
+export HOMECHART_app_baseURL=${HOMECHART_app_baseURL:-http://localhost}
+export HOMECHART_app_cloudEndpoint=${HOMECHART_app_cloudEndpoint:-http://localhost}
+export HOMECHART_app_cloudJWT=${HOMECHART_app_cloudJWT:-eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJjbG91ZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly9taWtlLWRlc2t0b3AxLmNhbmRpZC5kZXYiLCJzdWIiOiJDbG91ZCIsImF1ZCI6WyJIb21lY2hhcnQiXSwiZXhwIjoxODM3NzEwNTc3LCJuYmYiOjE2ODAwMzA1NzcsImlhdCI6MTY4MDAzMDU3NywianRpIjoiN2MzNWJlNzEtMmE0OC00NjIwLTgxMGUtMDU4Njc4ODgyODAwIn0.xLDsYa_7cQnMmLF9XuxpzSllvcQVLRNsU4wgMZrddkz_Uzwj0rnZmhrh1gdUcWO_jzPHcjiK-7LgJ2Jz7SWYDw}
+export HOMECHART_app_cloudPrivateKey=${HOMECHART_app_cloudPrivateKey:-'ed25519private:MC4CAQAwBQYDK2VwBCIEIJzzEbJdbjgPN5Q1O75Fgfc3JivqiAeLq1F7XMj0c1hG'}
+export HOMECHART_app_cloudPublicKey=${HOMECHART_app_cloudPublicKey:-'ed25519public:MCowBQYDK2VwAyEADL5OxQve4AvYy7L2S+ypqD0/T8t9IIT/bQFkXNQCo9I='}
+export HOMECHART_app_rateLimiterKey=${HOMECHART_app_rateLimiterKey:-homechart}
+export HOMECHART_app_timeZone=${HOMECHART_app_timeZone:-America/Chicago}
+export HOMECHART_postgresql_database=${HOMECHART_postgresql_database:-homechart}
+export HOMECHART_postgresql_hostname=${HOMECHART_postgresql_hostname:-127.0.0.1}
+export HOMECHART_postgresql_password=${HOMECHART_postgresql_password:-homechart}
+export HOMECHART_postgresql_username=${HOMECHART_postgresql_username:-homechart}
+export HOMECHART_webPush_vapidPrivateKey=${HOMECHART_webPush_vapidPrivateKey:-3-NI4eCXzQt3ILqRmOaIuEWHCl9Lp7zrOlGhhdyy7MU}
+export HOMECHART_webPush_vapidPublicKey=${HOMECHART_webPush_vapidPublicKey:-BMcCmv0dhitH4h1hrKHGpJbaD_kTPpaGap8AH4kjLoM7pZXPzdPgCASqZ9pMOZckHD62xvXFtfWbxLBzJGzWtU4}
 export PUPPETEER_URL=${PUPPETEER_URL:-""}
 export RUN_GO_ARGS="-c ${DIR}/homechart_config.jsonnet run"
 export VAULT_GCP_HOMECHART_RELEASE=gcp/static-account/homechart-release/key
@@ -45,24 +44,20 @@ if [[ "${BUILD_SOURCE}" != "dev" ]]; then
 	export DEPLOY_HOSTS
 	echo "::add-mask::${DEPLOY_HOSTS}"
 
-	HOMECHART_APP_CLOUDPUBLICKEY=$(${EXEC_VAULT} read -field=app_cloudpublickey "${VAULT_KV_HOMECHART}")
-	export HOMECHART_APP_CLOUDPUBLICKEY
-	echo "::add-mask::${HOMECHART_APP_CLOUDPUBLICKEY}"
+	HOMECHART_app_cloudPublicKey=$(${EXEC_VAULT} read -field=app_cloudpublickey "${VAULT_KV_HOMECHART}")
+	export HOMECHART_app_cloudPublicKey
+	echo "::add-mask::${HOMECHART_app_cloudPublicKey}"
 
-	HOMECHART_APP_NOEMAILDOMAINS=$(${EXEC_VAULT} read -field=smtp_noemaildomains "${VAULT_KV_HOMECHART}")
-	export HOMECHART_APP_NOEMAILDOMAINS
-	echo "::add-mask::${HOMECHART_APP_NOEMAILDOMAINS}"
-
-	HOMECHART_APP_RATELIMITERKEY=$(${EXEC_VAULT} read -field=app_ratelimiterkey "${VAULT_KV_HOMECHART}")
-	export HOMECHART_APP_RATELIMITERKEY
-	echo "::add-mask::${HOMECHART_APP_RATELIMITERKEY}"
+	HOMECHART_app_rateLimiterKey=$(${EXEC_VAULT} read -field=app_ratelimiterkey "${VAULT_KV_HOMECHART}")
+	export HOMECHART_app_rateLimiterKey
+	echo "::add-mask::${HOMECHART_app_rateLimiterKey}"
 
 	PUPPETEER_URL=$(${EXEC_VAULT} read -field=app_baseurl "${VAULT_KV_HOMECHART}")
 	export PUPPETEER_URL
 	echo "::add-mask::${PUPPETEER_URL}"
 fi
 
-export BUILD_GO_VARS="-X main.appCloudPublicKey=${HOMECHART_APP_CLOUDPUBLICKEY}"
+export BUILD_GO_VARS="-X main.appCloudPublicKey=${HOMECHART_app_cloudPublicKey}"
 
 cmd build-homechart-config,bhc Build Homechart config
 build-homechart-config () {
@@ -76,11 +71,11 @@ local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getPath('~/.vault-token', ''
     adminEmailAddresses: [
       'jane@example.com'
     ],
-    baseURL: "${HOMECHART_APP_BASEURL}",
+    baseURL: "${HOMECHART_app_baseURL}",
     cacheControl: "no-store",
-    cloudEndpoint: "${HOMECHART_APP_CLOUDENDPOINT}",
-    cloudPrivateKey: "${HOMECHART_APP_CLOUDPRIVATEKEY}",
-    counterTimeZone: "${HOMECHART_APP_TIMEZONE}",
+    cloudEndpoint: "${HOMECHART_app_cloudEndpoint}",
+    cloudPrivateKey: "${HOMECHART_app_cloudPrivateKey}",
+    counterTimeZone: "${HOMECHART_app_timeZone}",
     debug: false,
     demo: true,
     featureVotes: [
@@ -88,7 +83,7 @@ local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getPath('~/.vault-token', ''
       "This Other Feature",
       "User Experience"
     ],
-    rateLimiterKey: "${HOMECHART_APP_RATELIMITERKEY}",
+    rateLimiterKey: "${HOMECHART_app_rateLimiterKey}",
     rateLimiterRate: "499-S",
     systemConfigKey: "config",
     systemHealthKey: "health",
@@ -115,10 +110,10 @@ local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getPath('~/.vault-token', ''
     vendorID: std.parseInt(std.get(vault, 'paddle_vendorid', '0'))
   },
   postgresql: {
-    database: "${HOMECHART_POSTGRESQL_DATABASE}",
-    hostname: "${HOMECHART_POSTGRESQL_HOSTNAME}",
-    password: "${HOMECHART_POSTGRESQL_PASSWORD}",
-    username: "${HOMECHART_POSTGRESQL_USERNAME}"
+    database: "${HOMECHART_postgresql_database}",
+    hostname: "${HOMECHART_postgresql_hostname}",
+    password: "${HOMECHART_postgresql_password}",
+    username: "${HOMECHART_postgresql_username}"
   },
   smtp: {
     noEmailDomains: [
@@ -131,8 +126,8 @@ local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getPath('~/.vault-token', ''
     serviceName: "homechart-api"
   },
   webPush: {
-    vapidPrivateKey: "${HOMECHART_WEBPUSH_VAPIDPRIVATEKEY}",
-    vapidPublicKey: "${HOMECHART_WEBPUSH_VAPIDPUBLICKEY}"
+    vapidPrivateKey: "${HOMECHART_webPush_vapidPrivateKey}",
+    vapidPublicKey: "${HOMECHART_webPush_vapidPublicKey}"
   }
 }
 EOF
@@ -178,7 +173,7 @@ cmd run-homechart-api-self-hosted,rhas Run Homechart API as a self hosted instan
 run-homechart-api-self-hosted () {
 	build-go
 
-	HOMECHART_APP_CLOUDJWT="" HOMECHART_POSTGRESQL_DATABASE=homechart_self_hosted "${DIR}/${BUILD_NAME}" -c "${DIR}/homechart_config.jsonnet" run
+	HOMECHART_app_cloudJWT="" HOMECHART_postgresql_database=homechart_self_hosted "${DIR}/${BUILD_NAME}" -c "${DIR}/homechart_config.jsonnet" run
 }
 rhas () {
 	run-homechart-api-self-hosted
@@ -195,7 +190,7 @@ run-homechart-seed () {
 sleep 1
 done
 sleep 1
-HOMECHART_APP_DEBUG=false TZ=America/Chicago ${DIR}/${BUILD_NAME} -c ${DIR}/homechart_config.jsonnet seed ${DIR}/homechart_data.json"
+TZ=America/Chicago ${DIR}/${BUILD_NAME} -c ${DIR}/homechart_config.jsonnet seed ${DIR}/homechart_data.json"
 }
 rhs () {
 	run-homechart-seed
@@ -216,8 +211,8 @@ run-homechart-start () {
 		try "mkdir -p ${DIR}/.cache
 		${CR} run \
 			-d \
-			-e HOMECHART_APP_UIHOST=http://candiddev_homechart_ui:1080 \
-			-e HOMECHART_POSTGRESQL_HOSTNAME=candiddev_postgresql \
+			-e HOMECHART_app_uiHost=http://candiddev_homechart_ui:1080 \
+			-e HOMECHART_postgresql_hostname=candiddev_postgresql \
 			${CR_LOGOPTS} \
 			${CR_USER} \
 			--name candiddev_homechart_api \
@@ -263,7 +258,7 @@ ${CR} rm -f candiddev_homechart_ui || true"
 cmd test-e2e Test Homechart E2E
 test-e2e () {
 	if [[ ${PUPPETEER_URL} == "" ]]; then
-		PUPPETEER_URL=${HOMECHART_APP_BASEURL}
+		PUPPETEER_URL=${HOMECHART_app_baseURL}
 
 		run-homechart-start
 		deploy-post

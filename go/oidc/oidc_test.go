@@ -17,7 +17,7 @@ var ctx context.Context
 func TestMain(m *testing.M) {
 	ctx = context.Background()
 	c = config.Default()
-	c.Parse(ctx, "", "../../../homechart_config.json")
+	c.Parse(ctx, nil, "../../../homechart_config.json")
 
 	ctx = logger.SetLevel(ctx, logger.LevelDebug)
 	r := m.Run()

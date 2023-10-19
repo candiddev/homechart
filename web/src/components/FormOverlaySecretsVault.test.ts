@@ -1,5 +1,5 @@
-import type { EncryptedValue } from "@lib/encryption/Encryption";
-import { ParseEncryptedValue } from "@lib/encryption/Encryption";
+import type { EncryptedValue, Key } from "@lib/encryption/Encryption";
+import { ParseEncryptedValue, ParseKey } from "@lib/encryption/Encryption";
 import { CivilDate } from "@lib/types/CivilDate";
 
 import seed from "../jest/seed";
@@ -86,10 +86,10 @@ test("FormOverlaySecretsVault", async () => {
 
 	expect(vault.keys)
 		.toHaveLength(1);
-	const keyOld = await (ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)
-		.decrypt(AuthAccountState.privateKey());
+	const keyOld = ParseKey((await AuthAccountState.privateKey()
+		.decrypt(ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)) as string) as Key;
 	SecretsVaultState.keys({
-		1: keyOld as string,
+		1: keyOld,
 	});
 	vault.id = "1";
 	testing.mount(FormOverlaySecretsVault, {
@@ -100,8 +100,8 @@ test("FormOverlaySecretsVault", async () => {
 	await testing.sleep(100);
 	expect(vault.keys)
 		.toHaveLength(2);
-	const keyNew = await (ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)
-		.decrypt(AuthAccountState.privateKey());
+	const keyNew = ParseKey((await AuthAccountState.privateKey()
+		.decrypt(ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)) as string) as Key;
 	// THIS SHOULD NEVER FAIL
 	expect(keyOld)
 		.toStrictEqual(keyNew);
@@ -117,9 +117,9 @@ test("FormOverlaySecretsVault", async () => {
 	// THIS SHOULD NEVER FAIL
 	expect(vault.keys)
 		.toHaveLength(1);
-	expect(await (ParseEncryptedValue(vault.keys[0].key) as EncryptedValue)
-		.decrypt(AuthAccountState.privateKey()))
-		.toHaveLength(24);
+	expect(await AuthAccountState.privateKey()
+		.decrypt(ParseEncryptedValue(vault.keys[0].key) as EncryptedValue))
+		.toHaveLength(42);
 
 	vault.id = null;
 	testing.mount(FormOverlaySecretsVault, {

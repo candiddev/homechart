@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
@@ -14,16 +14,16 @@ import (
 
 // SecretsValue is a value in a SecretsVault.
 type SecretsValue struct {
-	AuthAccountID   *uuid.UUID             `db:"auth_account_id" json:"authAccountID"`
-	AuthHouseholdID *uuid.UUID             `db:"auth_household_id" json:"authHouseholdID"`
-	ID              uuid.UUID              `db:"id" format:"uuid" json:"id"`
-	DataEncrypted   crypto.EncryptedValues `db:"data_encrypted" json:"dataEncrypted"`
-	NameEncrypted   crypto.EncryptedValue  `db:"name_encrypted" json:"nameEncrypted"`
-	TagsEncrypted   crypto.EncryptedValue  `db:"tags_encrypted" json:"tagsEncrypted"`
-	SecretsVaultID  uuid.UUID              `db:"secrets_vault_id" format:"uuid" json:"secretsVaultID"`
-	ShortID         types.Nanoid           `db:"short_id" json:"shortID"`
-	Deleted         *time.Time             `db:"deleted" format:"date-time" json:"deleted"`
-	Updated         time.Time              `db:"updated" format:"date-time" json:"updated"`
+	AuthAccountID   *uuid.UUID                `db:"auth_account_id" json:"authAccountID"`
+	AuthHouseholdID *uuid.UUID                `db:"auth_household_id" json:"authHouseholdID"`
+	ID              uuid.UUID                 `db:"id" format:"uuid" json:"id"`
+	DataEncrypted   cryptolib.EncryptedValues `db:"data_encrypted" json:"dataEncrypted"`
+	NameEncrypted   cryptolib.EncryptedValue  `db:"name_encrypted" json:"nameEncrypted"`
+	TagsEncrypted   cryptolib.EncryptedValue  `db:"tags_encrypted" json:"tagsEncrypted"`
+	SecretsVaultID  uuid.UUID                 `db:"secrets_vault_id" format:"uuid" json:"secretsVaultID"`
+	ShortID         types.Nanoid              `db:"short_id" json:"shortID"`
+	Deleted         *time.Time                `db:"deleted" format:"date-time" json:"deleted"`
+	Updated         time.Time                 `db:"updated" format:"date-time" json:"updated"`
 } // @Name SecretsValue
 
 func (s *SecretsValue) SetID(id uuid.UUID) {
@@ -128,12 +128,12 @@ RETURNING secrets_value.*
 
 func (s *SecretsValue) validate() errs.Err {
 	for i := range s.DataEncrypted {
-		if s.DataEncrypted[i].Encryption != crypto.TypeAES128GCM {
+		if s.DataEncrypted[i].Encryption != cryptolib.EncryptionAES128GCM {
 			return errs.ErrSenderBadRequest.Set("data encryption type must be aes128gcm")
 		}
 	}
 
-	if s.NameEncrypted.Encryption != crypto.TypeAES128GCM || s.TagsEncrypted.Encryption != crypto.TypeAES128GCM {
+	if s.NameEncrypted.Encryption != cryptolib.EncryptionAES128GCM || s.TagsEncrypted.Encryption != cryptolib.EncryptionAES128GCM {
 		return errs.ErrSenderBadRequest.Set("name and tag encryption type must be aes128gcm")
 	}
 

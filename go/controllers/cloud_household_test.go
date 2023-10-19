@@ -9,7 +9,7 @@ import (
 
 	"github.com/candiddev/homechart/go/models"
 	"github.com/candiddev/shared/go/assert"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
@@ -140,7 +140,7 @@ func TestCloudHouseholdReadJWT(t *testing.T) {
 	oldPrv := h.Config.App.CloudPrivateKey
 	oldPub := h.Config.App.CloudPublicKey
 
-	prv, pub, _ := crypto.NewEd25519()
+	prv, pub, _ := cryptolib.NewKeysSign()
 	h.Config.App.CloudPrivateKey = prv
 	h.Config.App.CloudPublicKey = pub
 
