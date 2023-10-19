@@ -1,4 +1,4 @@
-import { EncryptionTypeRSA2048, EncryptValue, ParseEncryptedValue } from "@lib/encryption/Encryption";
+import { Key, KeyTypeAES128, ParseEncryptedValue, ParseKey } from "@lib/encryption/Encryption";
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
@@ -38,7 +38,7 @@ class SecretsVaultManager extends DataArrayManager<SecretsVault> {
 		super("/api/v1/secrets/vaults", "name", false, DataTypeEnum.SecretsVault);
 
 		Stream.lift(async (key, vaults) => {
-			if (key === "") {
+			if (key.key === "") {
 				this.keys({});
 
 				return;
@@ -55,10 +55,18 @@ class SecretsVaultManager extends DataArrayManager<SecretsVault> {
 
 				const e = ParseEncryptedValue(vaults[i].keys[index].key);
 				if (! IsErr(e)) {
-					const v = await e.decrypt(key);
+					const v = await key.decrypt(e);
 					if (! IsErr(v)) {
-						keys[vaults[i].id as string] = v;
-						changed = true;
+						if (v.includes("aes128")) {
+							const key = ParseKey(v);
+							if (! IsErr(key)) {
+								keys[vaults[i].id as string] = key;
+								changed = true;
+							}
+						} else { //backwards compatibility
+							keys[vaults[i].id as string] = new Key(KeyTypeAES128, v, "");
+							changed = true;
+						}
 					}
 				}
 			}
@@ -70,7 +78,7 @@ class SecretsVaultManager extends DataArrayManager<SecretsVault> {
 	}
 
 	keys: Stream<{
-		[key: string]: string,
+		[key: string]: Key,
 	}> = Stream({});
 
 	override alertAction (a: ActionsEnum, hideAlert?: boolean, actions?: {
@@ -159,18 +167,23 @@ class SecretsVaultManager extends DataArrayManager<SecretsVault> {
 		const keys = Clone(s.keys);
 		const index = this.findKeyIndex(s.keys, authAccountID);
 
-		const key = await EncryptValue(EncryptionTypeRSA2048, m.publicKey, this.keys()[s.id as string]);
+		const key = ParseKey(m.publicKey);
 		if (IsErr(key)) {
 			return key;
+		}
+
+		const v = await key.encrypt(this.keys()[s.id as string].string());
+		if (IsErr(v)) {
+			return v;
 		}
 
 		if (index < 0) {
 			keys.push({
 				authAccountID: authAccountID as string,
-				key: key.string(),
+				key: v.string(),
 			});
-		} else if (keys[index].key !== key.string()) {
-			keys[index].key = key.string();
+		} else if (keys[index].key !== v.string()) {
+			keys[index].key = v.string();
 		}
 
 		return this.update({

@@ -5,14 +5,14 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/google/uuid"
 )
 
 // SecretsVaultKey is a key used to decrypt a vault.
 type SecretsVaultKey struct {
-	AuthAccountID uuid.UUID             `json:"authAccountID"`
-	Key           crypto.EncryptedValue `json:"key"`
+	AuthAccountID uuid.UUID                `json:"authAccountID"`
+	Key           cryptolib.EncryptedValue `json:"key"`
 } // @Name SecretsVaultKey
 
 // SecretsVaultKeys is multiple SecretsVaultKey.

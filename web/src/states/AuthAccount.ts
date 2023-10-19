@@ -1,6 +1,5 @@
-import { EncryptionTypeAES128GCM, EncryptValue, ParseEncryptedValue } from "@lib/encryption/Encryption";
+import { Key, KeyTypeAES128, KeyTypeRSA2048Private, NewKey, ParseEncryptedValue, ParseKey } from "@lib/encryption/Encryption";
 import { NewPBDKF2AES128Key } from "@lib/encryption/PBDKF2";
-import { NewRSAKey } from "@lib/encryption/RSA";
 import type { Err } from "@lib/services/Log";
 import { IsErr, NewErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
@@ -13,6 +12,7 @@ import { getUserAgent } from "@lib/types/UserAgent";
 import { ArrayBufferToBase64 } from "@lib/utilities/ArrayBuffer";
 import { Clone } from "@lib/utilities/Clone";
 import { PushPopStringArray } from "@lib/utilities/PushPopStringArray";
+import { RandString } from "@lib/utilities/RandString";
 import m from "mithril";
 import Stream from "mithril/stream";
 
@@ -129,7 +129,7 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 	keys = this.data.map((authAccount) => {
 		return authAccount.privateKeys;
 	});
-	privateKey = Stream("");
+	privateKey = Stream(new Key("", "", ""));
 
 	constructor (data?: AuthAccount) {
 		super("/api/v1/auth/accounts", DataTypeEnum.AuthAccount, data);
@@ -195,6 +195,30 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 
 	async createAccount (account: AuthAccount, hostname: string): Promise<void | Err> {
 		const err = API.setHostname(hostname);
+
+		if (account.password !== "") {
+			const keys = await NewKey(KeyTypeRSA2048Private);
+			if (IsErr(keys)) {
+				AppState.setLayoutAppAlert(keys);
+
+				return;
+			}
+
+			const key = await this.newPrivateKeyPBKDF2(account.password, (keys.privateKey as Key).string());
+
+			if (key === undefined) {
+				return;
+			}
+
+			account.privateKeys = [
+				{
+					key: key,
+					name: "Account Creation",
+					provider: AuthAccountPrivateKeyProviderPasswordPBKDF2,
+				},
+			];
+			account.publicKey = (keys.publicKey as Key).string();
+		}
 
 		if (err !== undefined) {
 			return err;
@@ -272,39 +296,57 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 			});
 	}
 
-	async decryptPrivateKeys (password: string): Promise<void> {
-		if (this.privateKey() !== "") {
+	async decryptPrivateKeys (password: string, remember?: boolean): Promise<void> {
+		if (this.privateKey().key !== "") {
 			return;
 		}
 
 		await this.loadPrivateKey();
 
-		if (this.privateKey() === "") {
+		if (this.privateKey().key === "") {
 			for (let i = 0; i < this.data().privateKeys.length; i++) {
 				const e = ParseEncryptedValue(this.data().privateKeys[i].key);
 
 				if (!IsErr(e)) {
 					if (this.data().privateKeys[i].provider === AuthAccountPrivateKeyProviderNone) {
-						this.privateKey(e.ciphertext);
+						const key = await new Key("", "", "")
+							.decrypt(e);
+						if (! IsErr(key)) {
+							const k = ParseKey(key);
+							if (! IsErr(k)) {
+								this.privateKey(k);
+							}
+						}
+
 						break;
 					}
 
-					const salt = e.ciphertext.split(":")[0];
-					e.ciphertext = e.ciphertext.split(":")[1];
-
-					const aesKey = await NewPBDKF2AES128Key(password, salt);
+					const aesKey = await NewPBDKF2AES128Key(password, e.keyID);
 
 					if (! IsErr(aesKey)) {
-						const key = await e.decrypt(aesKey);
+						const k = new Key(KeyTypeAES128, aesKey, RandString(10));
+						const key = await k.decrypt(e);
 
 						if (!IsErr(key) && key !== "") {
-							this.privateKey(key);
+							if (key.includes("rsa2048")) {
+								const pk = ParseKey(key);
+
+								if (!IsErr(pk)) {
+									this.privateKey(pk);
+								}
+							} else { // backwards compatibility
+								this.privateKey(new Key(KeyTypeRSA2048Private, key, ""));
+							}
 
 							break;
 						}
 					}
 				}
 			}
+		}
+
+		if (remember === true) {
+			await this.savePrivateKey();
 		}
 
 		m.redraw();
@@ -366,7 +408,10 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 		return IndexedDB.get("AuthAccountPrivateKey")
 			.then((key) => {
 				if (typeof key === "string") {
-					this.privateKey(key);
+					const k = ParseKey(key);
+					if (! IsErr(k)) {
+						this.privateKey(k);
+					}
 				}
 			});
 	}
@@ -445,14 +490,14 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 	}
 
 	async newPrivatePublicKey (name: string, password: string): Promise<void> {
-		const keys = await NewRSAKey();
+		const keys = await NewKey(KeyTypeRSA2048Private);
 		if (IsErr(keys)) {
 			AppState.setLayoutAppAlert(keys);
 
 			return;
 		}
 
-		const key = await this.newPrivateKeyPBKDF2(password, keys.privateKey);
+		const key = await this.newPrivateKeyPBKDF2(password, (keys.privateKey as Key).string());
 
 		if (IsErr(key)) {
 			AppState.setLayoutAppAlert(key);
@@ -471,11 +516,11 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 							provider: AuthAccountPrivateKeyProviderPasswordPBKDF2,
 						},
 					],
-					publicKey: keys.publicKey,
+					publicKey: (keys.publicKey as Key).string(),
 				},
 			})
 				.then(() => {
-					AuthAccountState.privateKey(keys.privateKey);
+					AuthAccountState.privateKey(keys.privateKey as Key);
 				});
 		}
 	}
@@ -483,15 +528,18 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 	async newPrivateKeyPBKDF2 (password: string, privateKey?: string): Promise<string | undefined> {
 		const salt = ArrayBufferToBase64(crypto.getRandomValues(new Uint8Array(12)));
 
-		const key =await NewPBDKF2AES128Key(password, salt);
+		const key = await NewPBDKF2AES128Key(password, salt);
 		if (IsErr(key)) {
 			AppState.setLayoutAppAlert(key);
 
 			return "";
 		}
 
-		const ev = await EncryptValue(EncryptionTypeAES128GCM, key, privateKey === undefined ?
-			this.privateKey() :
+		const k = new Key(KeyTypeAES128, key, salt);
+
+		const ev = await k.encrypt(privateKey === undefined ?
+			this.privateKey()
+				.string() :
 			privateKey);
 
 		if (IsErr(ev)) {
@@ -504,7 +552,7 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 			return;
 		}
 
-		return `${ev.encryption}$${salt}:${ev.ciphertext}`;
+		return ev.string();
 	}
 
 	newNotificationsHouseholds (): AuthAccountPreferencesNotificationsHouseholds {
@@ -565,7 +613,8 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 	}
 
 	async savePrivateKey (): Promise<void | Err> {
-		return IndexedDB.set("AuthAccountPrivateKey", this.privateKey());
+		return IndexedDB.set("AuthAccountPrivateKey", this.privateKey()
+			.string());
 	}
 
 	override async set (data?: AuthAccount, save?: boolean): Promise<void | Err> {

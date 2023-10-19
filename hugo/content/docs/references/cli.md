@@ -25,9 +25,9 @@ Output JSON instead of YAML.
 
 Disable colored log output.
 
-### `-x [key=value,]`
+### `-x [key=value]`
 
-Comma separated [config values](../config).
+Set [config values](../config) (can be provided multiple times)
 
 ## Commands
 

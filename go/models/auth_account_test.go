@@ -8,6 +8,7 @@ import (
 
 	"github.com/candiddev/homechart/go/oidc"
 	"github.com/candiddev/shared/go/assert"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/notify"
@@ -901,7 +902,7 @@ func TestAuthAccountUpdatePrivatePublicKeys(t *testing.T) {
 	}
 	sv2.create(ctx, CreateOpts{})
 
-	a.PublicKey = ""
+	a.PublicKey = cryptolib.KeyEncryptAsymmetric{}
 
 	assert.Equal(t, a.UpdatePrivatePublicKeys(ctx), nil)
 	assert.Equal(t, len(a.PrivateKeys), 0)

@@ -87,7 +87,7 @@ func (n *Notification) Send(ctx context.Context, wg *sync.WaitGroup) errs.Err { 
 			if c.App.TestNotifier {
 				err = notify.Test.SendWebPush(ctx, msg)
 			} else {
-				err = c.WebPush.Send(ctx, &msg)
+				err = c.WebPush.Send(ctx, c.App.BaseURL, &msg)
 			}
 
 			if err != nil {

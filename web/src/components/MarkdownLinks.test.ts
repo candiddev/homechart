@@ -1,7 +1,5 @@
-import { NewAESKey } from "@lib/encryption/AES";
-import type { EncryptedValue } from "@lib/encryption/Encryption";
-import { EncryptionTypeAES128GCM, EncryptionTypeRSA2048, EncryptValue } from "@lib/encryption/Encryption";
-import { NewRSAKey } from "@lib/encryption/RSA";
+import type { EncryptedValue, Key } from "@lib/encryption/Encryption";
+import { KeyTypeAES128, KeyTypeRSA2048Private, NewKey } from "@lib/encryption/Encryption";
 import { Icons } from "@lib/types/Icons";
 
 import { AuthAccountState } from "../states/AuthAccount";
@@ -23,21 +21,23 @@ import { ShopListState } from "../states/ShopList";
 import { MarkdownLinks } from "./MarkdownLinks";
 
 beforeAll(async () => {
-	const keys = await NewRSAKey() as {
-		publicKey: string,
-		privateKey: string,
+	const keys = await NewKey(KeyTypeRSA2048Private) as {
+		publicKey: Key,
+		privateKey: Key,
 	};
-	AuthAccountState.data().publicKey = keys.publicKey;
+	AuthAccountState.data().publicKey = keys.publicKey.string();
 	AuthAccountState.privateKey(keys.privateKey);
 
-	const key = await NewAESKey() as string;
-	const name = await EncryptValue(EncryptionTypeAES128GCM, key, "Value 1") as EncryptedValue;
+	const key = (await NewKey(KeyTypeAES128) as {
+		key: Key,
+	}).key;
+	const name = await key.encrypt("Value 1") as EncryptedValue;
 	SecretsValueState.data([
 		{
 			...SecretsValueState.data()[0],
 			...{
 				dataEncrypted: [
-					(await EncryptValue(EncryptionTypeAES128GCM, key, JSON.stringify({
+					(await key.encrypt(JSON.stringify({
 						value: "123",
 					})) as EncryptedValue).string(),
 				],
@@ -53,7 +53,7 @@ beforeAll(async () => {
 				keys: [
 					{
 						authAccountID: "1",
-						key: (await EncryptValue(EncryptionTypeRSA2048, keys.publicKey, key) as EncryptedValue).string() ,
+						key: (await keys.publicKey.encrypt(key.string()) as EncryptedValue).string() ,
 					},
 				],
 			},

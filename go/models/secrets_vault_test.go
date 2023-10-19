@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/candiddev/shared/go/assert"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
@@ -36,7 +36,7 @@ func TestSecretsVaultCreate(t *testing.T) {
 	Delete(ctx, &s, DeleteOpts{})
 
 	// Invalid
-	s.Keys[0].Key.Encryption = crypto.TypeNone
+	s.Keys[0].Key.Encryption = cryptolib.EncryptionNone
 	assert.Equal[error](t, s.create(ctx, CreateOpts{
 		PermissionsOpts: PermissionsOpts{
 			AuthAccountID: s.AuthAccountID,

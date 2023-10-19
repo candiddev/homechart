@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/candiddev/shared/go/errs"
+	"github.com/candiddev/shared/go/images"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
 	"github.com/google/uuid"
@@ -18,7 +19,7 @@ import (
 type InventoryItem struct {
 	AuthHouseholdID uuid.UUID               `db:"auth_household_id" format:"uuid" json:"authHouseholdID"`
 	ID              uuid.UUID               `db:"id" format:"uuid" json:"id"`
-	Image           types.Image             `db:"image" json:"image"`
+	Image           images.Image            `db:"image" json:"image"`
 	Name            types.StringLimit       `db:"name" json:"name"`
 	UPC             types.StringLimit       `db:"upc" json:"upc"`
 	Quantity        int                     `db:"quantity" json:"quantity"`

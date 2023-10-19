@@ -5,22 +5,22 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/types"
 	"github.com/google/uuid"
 )
 
 // AuthHouseholdMember is limited AuthAccount fields.
 type AuthHouseholdMember struct {
-	AuthHouseholdID uuid.UUID           `json:"authHouseholdID"`
-	Color           types.Color         `json:"color"`
-	Child           bool                `json:"child"`
-	EmailAddress    types.EmailAddress  `format:"email" json:"emailAddress"`
-	Name            string              `json:"name"`
-	PublicKey       crypto.RSAPublicKey `json:"publicKey"`
-	Permissions     Permissions         `json:"permissions"`
-	ID              uuid.UUID           `json:"id"`
-	InviteToken     types.StringLimit   `json:"inviteToken"`
+	AuthHouseholdID uuid.UUID                      `json:"authHouseholdID"`
+	Color           types.Color                    `json:"color"`
+	Child           bool                           `json:"child"`
+	EmailAddress    types.EmailAddress             `format:"email" json:"emailAddress"`
+	Name            string                         `json:"name"`
+	PublicKey       cryptolib.KeyEncryptAsymmetric `json:"publicKey"`
+	Permissions     Permissions                    `json:"permissions"`
+	ID              uuid.UUID                      `json:"id"`
+	InviteToken     types.StringLimit              `json:"inviteToken"`
 } // @Name AuthHouseholdMember
 
 // AuthHouseholdMembers is an AuthHouseholdMember slice.

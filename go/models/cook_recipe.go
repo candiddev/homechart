@@ -7,6 +7,7 @@ import (
 
 	"github.com/candiddev/homechart/go/yaml8n"
 	"github.com/candiddev/shared/go/errs"
+	"github.com/candiddev/shared/go/images"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/types"
 	"github.com/google/uuid"
@@ -28,7 +29,7 @@ type CookRecipe struct {
 	TimePrep          types.PositiveInt `db:"time_prep" json:"timePrep"`
 	Complexity        types.ScaleInt    `db:"complexity" json:"complexity"`
 	Rating            types.ScaleInt    `db:"rating" json:"rating"`
-	Image             types.Image       `db:"image" json:"image"`
+	Image             images.Image      `db:"image" json:"image"`
 	Directions        string            `db:"directions" json:"directions"`
 	Ingredients       string            `db:"ingredients" json:"ingredients"`
 	Name              types.StringLimit `db:"name" json:"name"`

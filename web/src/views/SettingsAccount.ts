@@ -6,6 +6,7 @@ import { FormItem } from "@lib/components/FormItem";
 import { FormItemNewPassword } from "@lib/components/FormItemNewPassword";
 import { Table } from "@lib/components/Table";
 import { Title } from "@lib/components/Title";
+import { Key } from "@lib/encryption/Encryption";
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { Telemetry } from "@lib/services/Telemetry";
@@ -53,7 +54,7 @@ function setLayoutApp (): void {
 				name: AuthAccountState.translate(ObjectAccount),
 			},
 		],
-		toolbarActionButtons: AuthAccountState.privateKey() === "" ?
+		toolbarActionButtons: AuthAccountState.privateKey().key === "" ?
 			[] :
 			[
 				{
@@ -326,7 +327,7 @@ export function SettingsAccount (): m.Component {
 						m(TableComponents) :
 						state.tab === tabs.security ?
 							[
-								AuthAccountState.privateKey() === "" ?
+								AuthAccountState.privateKey().key === "" ?
 									m(Form, {
 										buttons: [
 											{
@@ -353,7 +354,7 @@ export function SettingsAccount (): m.Component {
 
 													return AuthAccountState.decryptPrivateKeys(state.passphrase)
 														.then(async () => {
-															if (AuthAccountState.privateKey() === "") {
+															if (AuthAccountState.privateKey().key === "") {
 																AppState.setLayoutAppAlert({
 																	message: AuthAccountState.translate(WebSettingsAccountPrivateKeyUnlockFail),
 																});
@@ -445,14 +446,14 @@ export function SettingsAccount (): m.Component {
 										}),
 									]) :
 									m(Table, {
-										actions: AuthAccountState.privateKey() === "" ?
+										actions: AuthAccountState.privateKey().key === "" ?
 											[] :
 											[
 												{
 													accent: true,
 													name: AuthAccountState.translate(WebSettingsAccountPrivateKeyLock),
 													onclick: async (): Promise<void | Err> => {
-														AuthAccountState.privateKey("");
+														AuthAccountState.privateKey(new Key("", "", ""));
 
 														return AuthAccountState.savePrivateKey();
 													},

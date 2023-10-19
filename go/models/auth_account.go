@@ -17,7 +17,7 @@ import (
 	"github.com/candiddev/homechart/go/oidc"
 	"github.com/candiddev/homechart/go/templates"
 	"github.com/candiddev/homechart/go/yaml8n"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/logger"
 	"github.com/candiddev/shared/go/notify"
@@ -119,7 +119,7 @@ type AuthAccount struct {
 	PrivateKeys AuthAccountPrivateKeys `db:"private_keys" json:"privateKeys"`
 
 	// PublicKey for encrypting secrets.
-	PublicKey crypto.RSAPublicKey `db:"public_key" json:"publicKey"`
+	PublicKey cryptolib.KeyEncryptAsymmetric `db:"public_key" json:"publicKey"`
 
 	// Subscription referrer when account was setup.
 	SubscriptionReferrerCode string `db:"subscription_referrer_code" json:"subscriptionReferrerCode"`
@@ -954,9 +954,9 @@ RETURNING *
 func (a *AuthAccount) UpdatePrivatePublicKeys(ctx context.Context) errs.Err {
 	ctx = logger.Trace(ctx)
 
-	if len(a.PrivateKeys) == 0 || a.PublicKey == "" {
+	if len(a.PrivateKeys) == 0 || a.PublicKey.IsNil() {
 		a.PrivateKeys = nil
-		a.PublicKey = ""
+		a.PublicKey = cryptolib.KeyEncryptAsymmetric{}
 	}
 
 	// Update database

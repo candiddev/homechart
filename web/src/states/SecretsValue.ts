@@ -1,4 +1,4 @@
-import { EncryptionTypeAES128GCM, EncryptValue, ParseEncryptedValue } from "@lib/encryption/Encryption";
+import { ParseEncryptedValue } from "@lib/encryption/Encryption";
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
@@ -112,7 +112,7 @@ class SecretsValueManager extends DataArrayManager<SecretsValue> {
 					e = ParseEncryptedValue(values[i].dataEncrypted[j]);
 
 					if (!IsErr(e)) {
-						const s = await e.decrypt(key);
+						const s = await key.decrypt(e);
 
 						if (!IsErr(s)) {
 							data.push(JSON.parse(s));
@@ -124,7 +124,7 @@ class SecretsValueManager extends DataArrayManager<SecretsValue> {
 				let name = "";
 				e = ParseEncryptedValue(values[i].nameEncrypted);
 				if (! IsErr(e)) {
-					const s = await e.decrypt(key);
+					const s = await key.decrypt(e);
 					if (! IsErr(s)) {
 						name = s;
 					}
@@ -134,7 +134,7 @@ class SecretsValueManager extends DataArrayManager<SecretsValue> {
 				if (values[i].tagsEncrypted !== "") {
 					e = ParseEncryptedValue(values[i].tagsEncrypted);
 					if (! IsErr(e)) {
-						const s = await e.decrypt(key);
+						const s = await key.decrypt(e);
 						if (! IsErr(s)) {
 							tags = s;
 						}
@@ -212,9 +212,9 @@ class SecretsValueManager extends DataArrayManager<SecretsValue> {
 
 	async encryptValue (s: SecretsValueDecrypted): Promise<SecretsValue | Err> {
 		const key = SecretsVaultState.keys()[s.secretsVaultID as string];
-		const data = await EncryptValue(EncryptionTypeAES128GCM, key, JSON.stringify(s.data[0]));
-		const name = await EncryptValue(EncryptionTypeAES128GCM, key, s.name);
-		const tags = await EncryptValue(EncryptionTypeAES128GCM, key, JSON.stringify(s.tags));
+		const data = await key.encrypt(JSON.stringify(s.data[0]));
+		const name = await key.encrypt(s.name);
+		const tags = await key.encrypt(JSON.stringify(s.tags));
 
 		if (IsErr(data)) {
 			AppState.setLayoutAppAlert(data);

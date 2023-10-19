@@ -14,8 +14,8 @@ test("FormOverlaySecretsValue", async () => {
 	AuthAccountState.data(seed.authAccounts[0]);
 	AuthHouseholdState.data(seed.authHouseholds);
 	AuthSessionState.data(seed.authSessions[0]);
-	await AuthAccountState.decryptPrivateKeys("");
 	SecretsVaultState.data(seed.secretsVaults);
+	await AuthAccountState.decryptPrivateKeys("");
 
 	SecretsValueState.create = vi.fn(async () => {
 		return Promise.resolve({

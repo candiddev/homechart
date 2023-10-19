@@ -111,6 +111,7 @@ func EveryMinute(ctx context.Context) {
 // EveryDay runs daily tasks.
 func (t *Tasks) EveryDay(ctx context.Context) {
 	if t.Cloud {
+		models.AuthAccountsDeleteInactive(ctx)
 		models.AuthHouseholdsDeleteEmptyAndExpired(ctx)
 
 		n, err := models.AuthHouseholdsReadNotifiedExpiring(ctx)

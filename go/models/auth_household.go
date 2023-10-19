@@ -11,6 +11,7 @@ import (
 
 	"github.com/candiddev/homechart/go/templates"
 	"github.com/candiddev/homechart/go/yaml8n"
+	"github.com/candiddev/shared/go/cryptolib"
 	"github.com/candiddev/shared/go/errs"
 	"github.com/candiddev/shared/go/jwt"
 	"github.com/candiddev/shared/go/logger"
@@ -82,6 +83,10 @@ type AuthHouseholdJWT struct {
 
 func (a *AuthHouseholdJWT) GetRegisteredClaims() *jwt.RegisteredClaims {
 	return &a.RegisteredClaims
+}
+
+func (*AuthHouseholdJWT) Valid() error {
+	return nil
 }
 
 // AuthHouseholds is multiple AuthHousehold.
@@ -451,17 +456,21 @@ func (a *AuthHousehold) CreateJWT(ctx context.Context) (string, errs.Err) {
 		expires = time.Now().Add(1 * time.Hour)
 	}
 
-	t, err := jwt.SignJWT(c.App.CloudPrivateKey, &AuthHouseholdJWT{
+	t, err := jwt.New(&AuthHouseholdJWT{
 		ID:                    a.ID,
 		SelfHostedID:          a.SelfHostedID,
 		SubscriptionExpires:   a.SubscriptionExpires,
 		SubscriptionProcessor: a.SubscriptionProcessor,
-	}, expires, "Homechart", c.App.BaseURL, a.SelfHostedID.UUID.String())
+	}, expires, []string{"Homechart"}, "", c.App.BaseURL, a.SelfHostedID.UUID.String())
 	if err != nil {
 		return "", logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 	}
 
-	return t, logger.Error(ctx, nil)
+	if err := t.Sign(c.App.CloudPrivateKey); err != nil {
+		return "", logger.Error(ctx, errs.ErrReceiver.Wrap(err))
+	}
+
+	return t.String(), logger.Error(ctx, nil)
 }
 
 // Delete deletes an AuthHousehold database record.
@@ -605,7 +614,14 @@ func (a *AuthHousehold) ReadJWT(ctx context.Context, force bool) errs.Err {
 
 	var ah AuthHouseholdJWT
 
-	if e, err := jwt.VerifyJWT(c.App.CloudPublicKey, &ah, a.CloudJWT); err != nil || time.Now().Add(1*time.Hour).After(e) || ah.SelfHostedID == nil || ah.SelfHostedID.UUID != a.ID || force {
+	t, _, err := jwt.Parse(a.CloudJWT, []cryptolib.KeyVerify{
+		c.App.CloudPublicKey,
+	})
+	if err == nil {
+		err = t.ParsePayload(&ah, "", "", "")
+	}
+
+	if err != nil || time.Now().Add(1*time.Hour).After(time.Unix(ah.ExpiresAt, 0)) || ah.SelfHostedID == nil || ah.SelfHostedID.UUID != a.ID || force {
 		r, err = http.NewRequestWithContext(ctx, http.MethodGet, fmt.Sprintf("%s/api/v1/cloud/%s/jwt", c.App.CloudEndpoint, a.ID), nil)
 		if err == nil {
 			client := &http.Client{}
@@ -622,9 +638,13 @@ func (a *AuthHousehold) ReadJWT(ctx context.Context, force bool) errs.Err {
 				if err == nil {
 					s := AuthHouseholdJWT{}
 
-					if _, err := jwt.VerifyJWT(c.App.CloudPublicKey, &s, string(b)); err == nil {
-						a.CloudJWT = string(b)
-						ah = s
+					if t, _, err := jwt.Parse(string(b), cryptolib.KeysVerify{
+						c.App.CloudPublicKey,
+					}); err == nil {
+						if err := t.ParsePayload(&s, "", "", ""); err == nil {
+							a.CloudJWT = string(b)
+							ah = s
+						}
 					}
 				}
 			}

@@ -88,7 +88,7 @@ describe("SecretsValue", () => {
 			.toBe(seed.secretsValues[3].id);
 		expect(se.secretsVaultID)
 			.toBe(seed.secretsValues[3].secretsVaultID);
-		expect(await (ParseEncryptedValue(se.nameEncrypted) as EncryptedValue).decrypt(SecretsVaultState.keys()[se.secretsVaultID as string]))
+		expect(await SecretsVaultState.keys()[se.secretsVaultID as string].decrypt(ParseEncryptedValue(se.nameEncrypted) as EncryptedValue))
 			.toBe("testing");
 
 		// findName

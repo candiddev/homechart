@@ -213,8 +213,7 @@ export const API = {
 			method: method,
 		})
 			.then(async (response: Response) => {
-				// 404 should mean that the API is older and doesn't have the correct path
-				if (response.status === 204 || response.status === 404) {
+				if (response.status === 204) {
 					Log.debug(`API.fetch ${method} ${path} returned ${response.status}`);
 
 					return {

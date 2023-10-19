@@ -571,7 +571,7 @@ AuthAccountState.data.map((authAccount) => {
 			link: "secrets",
 			name: AuthAccountState.translate(ObjectSecrets),
 			onclick: async (): Promise<void> => {
-				if (AuthAccountState.privateKey() === "") {
+				if (AuthAccountState.privateKey().key === "") {
 					m.route.set("/settings/account?security");
 
 					if (AppState.getSessionDisplay() !== DisplayEnum.XLarge) {
@@ -590,7 +590,7 @@ AuthAccountState.data.map((authAccount) => {
 					matchExact: true,
 					name: AuthAccountState.translate(WebGlobalAllVaults),
 				},
-				SecretsVaultState.data().length > 0 && AuthAccountState.privateKey() !== "" ?
+				SecretsVaultState.data().length > 0 && AuthAccountState.privateKey().key !== "" ?
 					{
 						icon: Icons.SecretsValue,
 						link: "/all",

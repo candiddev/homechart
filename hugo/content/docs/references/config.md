@@ -13,9 +13,9 @@ Homechart can be configured using [command line arguments](../cli#-x-keyvalue), 
 - <a href="#smtp">SMTP</a>
 - <a href="#webpush">Web Push</a>
 
-**For command line values**, every configuration key can be set using `-x <section>_<key>="a value",<section>_<key>="another value"`, i.e. `cli_debug=true,postgresql_username=homechart`
+**For command line values**, every configuration key can be set using `-x <a_config_key1>="a value" -x <a_config_key2>="another value"`, i.e. `-x cli_debug=true -x postgresql_username=homechart`.  Config values can also be set using JSON, i.e. `-x webPush='{"vapidPrivateKey": ""}'`
 
-**For environment variables**, every configuration key can be set using `HOMECHART_<SECTION>_<KEY>=a value`, i.e. `HOMECHART_CLI_DEBUG=true`
+**For environment variables**, every configuration key can be set using `HOMECHART_section_key=a value`, i.e. `HOMECHART_cli_debug=true`
 
 **For a JSON configuration files**, the keys are camelCase and nested under each section:
 

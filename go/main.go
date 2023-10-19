@@ -6,7 +6,7 @@ import (
 
 	"github.com/candiddev/homechart/go/config"
 	"github.com/candiddev/shared/go/cli"
-	"github.com/candiddev/shared/go/crypto"
+	"github.com/candiddev/shared/go/cryptolib"
 )
 
 //nolint:gochecknoglobals
@@ -20,8 +20,8 @@ func main() {
 			"generate-cloud": {
 				Run: generateCloud,
 			},
-			"generate-ed25519": {
-				Run: crypto.GenerateEd25519[*config.Config],
+			"generate-keys": {
+				Run: cryptolib.GenerateKeys[*config.Config]().Run,
 			},
 			"generate-vapid": {
 				Run:   generateVAPID,
