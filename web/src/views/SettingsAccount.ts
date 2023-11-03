@@ -345,6 +345,12 @@ export function SettingsAccount (): m.Component {
 													AuthAccountState.translate(WebSettingsAccountPrivateKeyAdd) :
 													AuthAccountState.translate(WebSettingsAccountPrivateKeyUnlock),
 												onclick: async (): Promise<void | Err> => {
+													if (crypto.subtle === undefined) {
+														AuthAccountState.alertWebCrypto();
+
+														return;
+													}
+
 													if (AuthAccountState.data().publicKey === "") {
 														return AuthAccountState.newPrivatePublicKey(`${AuthAccountState.translate(WebSettingsAccountPrivateKeyName)} ${AppState.formatCivilDate(CivilDate.now())}`, state.passphrase)
 															.then(() => {

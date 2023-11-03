@@ -165,15 +165,15 @@ Boolean, disables new account signups.  Accounts can still be created/invited un
 
 Default: false
 
-### `tlsCertificate`
+### `tlsCertificate` (recommended)
 
-String, path to a SSL/TLS certificate file.  Should work for the domain in your [baseURL](#baseurl-recommended).  If set, along with [tlsKey](#tlsKey), Homechart will listen for HTTPS connections only.
+String, path to a SSL/TLS certificate file.  Should work for the domain in your [baseURL](#baseurl-recommended).  If set, along with [tlsKey](#tlsKey), Homechart will listen for HTTPS connections only.  HTTPS is necessary for certain Homechart functionality, you should enable HTTPS within Homechart or your reverse proxy.
 
 Default: ""
 
-### `tlsKey`
+### `tlsKey` (recommended)
 
-String, path to a SSL/TLS private key file.  Should work for the domain in your [baseURL](#baseurl-recommended).  If set, along with [tlsCertificate](#tlscertificate), Homechart will listen for HTTPS connections only.
+String, path to a SSL/TLS private key file.  Should work for the domain in your [baseURL](#baseurl-recommended).  If set, along with [tlsCertificate](#tlscertificate), Homechart will listen for HTTPS connections only.  HTTPS is necessary for certain Homechart functionality, you should enable HTTPS within Homechart or your reverse proxy.
 
 Default: ""
 

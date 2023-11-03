@@ -101,6 +101,10 @@ Homechart containers are available on [GitHub](https://github.com/candiddev/home
 
 Homechart can be configured using a configuration file, environment variables, or command line arguments.  See the [Config Reference](/docs/references/config) for details.
 
+{{% alert title="HTTPS" color="warning" %}}
+Homechart should be accessed over HTTPS.  Certain functionality will only work this way.  By default, Homechart is only available using HTTP, you'll need to add a certificate to Homechart or your reverse proxy.
+{{% /alert %}}
+
 ## 5. (Optional) Link Households to Homechart Cloud
 
 Using [households](/pricing/) in Homechart requires a subscription, even for self-hosted users. You can subscribe monthly or buy a lifetime subscription/one time purchase, too.

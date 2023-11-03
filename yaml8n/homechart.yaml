@@ -3082,6 +3082,23 @@ translations:
     nl: Voltooi het instellen van uw Homechart-abonnement om huishoudelijke functies
       te gebruiken
     zh: 完成设置您的 Homechart 订阅以使用家庭功能
+  WebAlertWebCrypto:
+    ar: أنت تصل إلى Homechart باستخدام HTTP، ولن تعمل هذه الوظيفة إلا إذا قمت بالوصول
+      إلى Homechart باستخدام HTTPS.
+    context: Alert shown when Web Crypto isn't working and encryption doesn't work
+    de: Sie greifen über HTTP auf Homechart zu. Diese Funktion funktioniert nur, wenn
+      Sie über HTTPS auf Homechart zugreifen.
+    en: You're accessing Homechart using HTTP, this functionality won't work unless
+      you access Homechart using HTTPS.
+    es: Estás accediendo a Homechart mediante HTTP; esta funcionalidad no funcionará
+      a menos que accedas a Homechart mediante HTTPS.
+    fr: Vous accédez à Homechart via HTTP, cette fonctionnalité ne fonctionnera que
+      si vous accédez à Homechart via HTTPS.
+    hi: आप HTTP का उपयोग करके होमचार्ट तक पहुंच रहे हैं, यह कार्यक्षमता तब तक काम
+      नहीं करेगी जब तक आप HTTPS का उपयोग करके होमचार्ट तक नहीं पहुंचते।
+    nl: U heeft toegang tot Homechart via HTTP. Deze functionaliteit werkt alleen
+      als u Homechart opent via HTTPS.
+    zh: 您正在使用 HTTP 访问 Homechart，除非您使用 HTTPS 访问 Homechart，否则此功能将不起作用。
   WebAppDemoWelcome1:
     ar: مرحبًا بك في العرض التوضيحي لـ Homechart!
     context: Welcome message displayed in demo mode

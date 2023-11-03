@@ -22,7 +22,7 @@ import { DataTypeEnum } from "../types/DataType";
 import type { Permissions, PermissionsHousehold } from "../types/Permission";
 import { Permission } from "../types/Permission";
 import type { Translation } from "../yaml8n";
-import { ObjectAccountCreated, ObjectAccountDeleted, ObjectAccountUpdated, ObjectAccountVerified, Translate, WebAuthAccountPasswordReset, WebAuthAccountVerificationSent, WebAuthAccountVerifyEmail, WebGlobalActionResend } from "../yaml8n";
+import { ObjectAccountCreated, ObjectAccountDeleted, ObjectAccountUpdated, ObjectAccountVerified, Translate, WebAlertWebCrypto, WebAuthAccountPasswordReset, WebAuthAccountVerificationSent, WebAuthAccountVerifyEmail, WebGlobalActionResend } from "../yaml8n";
 import { AuthSessionState } from "./AuthSession";
 import { DataManager } from "./Data";
 
@@ -169,6 +169,17 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 		});
 	}
 
+	alertWebCrypto (err?: Err): void {
+		if (window.location.protocol === "http:") {
+			AppState.setLayoutAppAlert({
+				message: AuthAccountState.translate(WebAlertWebCrypto),
+				persist: true,
+			});
+		} else if (err !== undefined) {
+			AppState.setLayoutAppAlert(err);
+		}
+	}
+
 	async collapsePlanProject (id: NullUUID): Promise<void | Err> {
 		const a = this.data();
 
@@ -199,25 +210,21 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 		if (account.password !== "") {
 			const keys = await NewKey(KeyTypeRSA2048Private);
 			if (IsErr(keys)) {
-				AppState.setLayoutAppAlert(keys);
+				this.alertWebCrypto(keys);
+			} else {
+				const key = await this.newPrivateKeyPBKDF2(account.password, (keys.privateKey as Key).string());
 
-				return;
+				if (key !== undefined) {
+					account.privateKeys = [
+						{
+							key: key,
+							name: "Account Creation",
+							provider: AuthAccountPrivateKeyProviderPasswordPBKDF2,
+						},
+					];
+					account.publicKey = (keys.publicKey as Key).string();
+				}
 			}
-
-			const key = await this.newPrivateKeyPBKDF2(account.password, (keys.privateKey as Key).string());
-
-			if (key === undefined) {
-				return;
-			}
-
-			account.privateKeys = [
-				{
-					key: key,
-					name: "Account Creation",
-					provider: AuthAccountPrivateKeyProviderPasswordPBKDF2,
-				},
-			];
-			account.publicKey = (keys.publicKey as Key).string();
 		}
 
 		if (err !== undefined) {
@@ -492,7 +499,7 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 	async newPrivatePublicKey (name: string, password: string): Promise<void> {
 		const keys = await NewKey(KeyTypeRSA2048Private);
 		if (IsErr(keys)) {
-			AppState.setLayoutAppAlert(keys);
+			this.alertWebCrypto(keys);
 
 			return;
 		}
@@ -527,6 +534,12 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 
 	async newPrivateKeyPBKDF2 (password: string, privateKey?: string): Promise<string | undefined> {
 		const salt = ArrayBufferToBase64(crypto.getRandomValues(new Uint8Array(12)));
+
+		if (crypto.subtle === undefined) {
+			this.alertWebCrypto();
+
+			return;
+		}
 
 		const key = await NewPBDKF2AES128Key(password, salt);
 		if (IsErr(key)) {

@@ -18,6 +18,7 @@ var ErrImportRecipe = errs.ErrSenderBadRequest.Set(("Unable to import recipe fro
 type JSONLDHowTo struct {
 	ItemListElement []JSONLDText `json:"itemListElement"`
 	Name            string       `json:"name"`
+	Text            string       `json:"text"`
 }
 
 // JSONLDText contains text.
@@ -117,10 +118,12 @@ func HTMLToJSONLDRecipe(ctx context.Context, input string) (jsonld *JSONLDRecipe
 
 						if err := json.Unmarshal(jsonld.RecipeInstructionsRaw, &howTo); err == nil && len(howTo) > 0 && howTo[0].Name != "" {
 							for i := range howTo {
-								jsonld.RecipeInstructions += "## " + howTo[0].Name + "\n"
-
-								for j := range howTo[i].ItemListElement {
-									jsonld.RecipeInstructions += howTo[i].ItemListElement[j].Text + "\n"
+								if len(howTo[i].ItemListElement) > 0 {
+									for j := range howTo[i].ItemListElement {
+										jsonld.RecipeInstructions += howTo[i].ItemListElement[j].Text + "\n"
+									}
+								} else if howTo[i].Text != "" {
+									jsonld.RecipeInstructions += howTo[i].Text + "\n"
 								}
 							}
 						} else if err := json.Unmarshal(jsonld.RecipeInstructionsRaw, &text); err == nil && len(text) > 0 {
