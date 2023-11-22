@@ -21,4 +21,6 @@ We are changing our environment variable format.  The old format of uppercase sn
 ## Fixes
 
 - Fixed WebCrypto errors when signing in or signing up for Homechart on self-hosted instances using HTTP.  **It is highly recommended to switch your self-hosted instances to access Homechart using HTTPS**
+- Fixed Budget > Transaction account and category names disappearing when multiple are added in a transaction
 - Fixed Cook > Recipes importing certain websites and missing directions.
+- Fixed Settings > Households not being able to select AUD currency

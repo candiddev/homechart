@@ -64,7 +64,7 @@ build-homechart-config () {
 	cat > "${DIR}/homechart_config.jsonnet" << EOF
 local n = import "./shared/go/jsonnet/native.libsonnet";
 
-local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getPath('~/.vault-token', '') == '' then {} else std.parseJson(n.getPath(n.getEnv('VAULT_ADDR')+'/v1/${VAULT_KV_HOMECHART}#x-vault-token:'+(if n.getEnv('VAULT_TOKEN') == '' then n.getPath('~/.vault-token') else n.getEnv('VAULT_TOKEN')), '{"data":{}}')).data);
+local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getFile('~/.vault-token', '') == '' then {} else std.parseJson(n.getFile(n.getEnv('VAULT_ADDR')+'/v1/${VAULT_KV_HOMECHART}#x-vault-token:'+(if n.getEnv('VAULT_TOKEN') == '' then n.getFile('~/.vault-token') else n.getEnv('VAULT_TOKEN')), '{"data":{}}')).data);
 
 {
   app: {
@@ -269,6 +269,7 @@ test-e2e () {
 
 
 test-go-pre () {
+	run-postgresql-start
 	build-homechart-config
 }
 
