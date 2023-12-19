@@ -17,7 +17,6 @@ We are changing our environment variable format.  The old format of uppercase sn
 ## Features
 
 - All Homechart color options can now accept arbitrary colors via a color picker.  Create your own themes, or keep the defaults for an ever-changing set of seasonal Homechart themes.
-- 
 
 ## Enhancements
 
