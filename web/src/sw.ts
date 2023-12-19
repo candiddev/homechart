@@ -41,7 +41,7 @@ function showNotification (data: webPushData): void {
 		badge: "/homechart_badge_202202261.png",
 		body: data.body,
 		data: data,
-		icon: "/homechart_512_202202261.png",
+		icon: "/homechart_512_202312171.png",
 	});
 }
 
@@ -50,15 +50,6 @@ const webPushActionTypes: {
 	onclick: (data: webPushData) => Promise<void>,
 	title: string,
 }[] = [
-	{
-		action: "snooze",
-		onclick: async (data): Promise<void> => {
-			self.setTimeout(async () => {
-				showNotification(data);
-			}, 1000 * 60 * 5); // 5 minutes
-		},
-		title: "Snooze",
-	},
 	{
 		action: "task-complete",
 		onclick: async (data): Promise<void> => {
@@ -71,6 +62,15 @@ const webPushActionTypes: {
 			}
 		},
 		title: "Mark Complete",
+	},
+	{
+		action: "snooze",
+		onclick: async (data): Promise<void> => {
+			self.setTimeout(async () => {
+				showNotification(data);
+			}, 1000 * 60 * 5); // 5 minutes
+		},
+		title: "Snooze",
 	},
 ];
 

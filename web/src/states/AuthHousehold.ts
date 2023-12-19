@@ -3,7 +3,6 @@ import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { CurrencyEnum } from "@lib/types/Currency";
 import { Clone } from "@lib/utilities/Clone";
 import { Sort } from "@lib/utilities/Sort";
@@ -48,10 +47,10 @@ export interface AuthHouseholdFeatureVote {
 }
 
 interface AuthHouseholdPreferences {
-	[key: string]: boolean | number | string[],
-	colorBudgetRecurrenceEvents: ColorEnum,
-	colorCookMealPlanEvents: ColorEnum,
-	colorPlanTaskEvents: ColorEnum,
+	[key: string]: number | string | string[],
+	colorBudgetRecurrenceEvents: string,
+	colorCookMealPlanEvents: string,
+	colorPlanTaskEvents: string,
 	currency: CurrencyEnum,
 	hideComponents: string[],
 }
@@ -59,7 +58,7 @@ interface AuthHouseholdPreferences {
 export interface AuthHouseholdMember {
 	authHouseholdID: NullUUID,
 	child: boolean,
-	color: ColorEnum,
+	color: string,
 	emailAddress: string,
 	id: NullUUID,
 	inviteToken: string,
@@ -248,10 +247,10 @@ class AuthHouseholdManager extends DataArrayManager<AuthHousehold> {
 			members: [],
 			name: "",
 			preferences: {
-				colorBudgetRecurrenceEvents: ColorEnum.Teal,
-				colorCookMealPlanEvents: ColorEnum.Orange,
-				colorHealthLogsEvents: ColorEnum.Indigo,
-				colorPlanTaskEvents: ColorEnum.Pink,
+				colorBudgetRecurrenceEvents: "",
+				colorCookMealPlanEvents: "",
+				colorHealthLogsEvents: "",
+				colorPlanTaskEvents: "",
 				currency: CurrencyEnum.USD,
 				hideComponents: [],
 			},
@@ -281,7 +280,7 @@ class AuthHouseholdManager extends DataArrayManager<AuthHousehold> {
 		return {
 			authHouseholdID: null,
 			child: false,
-			color: ColorEnum.Default,
+			color: "",
 			emailAddress: "",
 			id: null,
 			inviteToken: "",

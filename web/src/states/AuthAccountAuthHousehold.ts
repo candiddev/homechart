@@ -1,7 +1,6 @@
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
-import { ColorEnum } from "@lib/types/Color";
 
 import { API } from "../services/API";
 import type { Permissions } from "../types/Permission";
@@ -17,7 +16,7 @@ export interface AuthAccountAuthHousehold {
 	authAccountID: NullUUID,
 	authHouseholdID: NullUUID,
 	child: boolean,
-	color: ColorEnum,
+	color: string,
 	created: NullTimestamp,
 	emailAddress: string,
 	id: NullUUID,
@@ -120,7 +119,7 @@ export const AuthAccountAuthHouseholdState = {
 			authAccountID: null,
 			authHouseholdID: null,
 			child: false,
-			color: ColorEnum.Default,
+			color: "",
 			created: null,
 			emailAddress: "",
 			id: null,

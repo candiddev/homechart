@@ -5,7 +5,6 @@ import { IsErr, NewErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
 import { CivilDateOrderEnum, CivilDateSeparatorEnum } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { OIDCProviderTypeEnum } from "@lib/types/OIDCProviderType";
 import type { UserAgent } from "@lib/types/UserAgent";
 import { getUserAgent } from "@lib/types/UserAgent";
@@ -69,12 +68,12 @@ export interface AuthAccount {
 }
 
 interface AuthAccountPreferences {
-	[key: string]: AuthAccountPreferencesNotificationsHouseholds[] | boolean | number | string[] | null | undefined,
-	colorAccent: ColorEnum,
-	colorNegative: ColorEnum,
-	colorPositive: ColorEnum,
-	colorPrimary: ColorEnum,
-	colorSecondary: ColorEnum,
+	[key: string]: AuthAccountPreferencesNotificationsHouseholds[] | boolean | number | string | string[] | null | undefined,
+	colorAccent: string,
+	colorNegative: string,
+	colorPositive: string,
+	colorPrimary: string,
+	colorSecondary: string,
 	darkMode: boolean,
 	formatDateOrder: CivilDateOrderEnum,
 	formatDateSeparator: CivilDateSeparatorEnum,
@@ -446,11 +445,11 @@ export class AuthAccountManager extends DataManager<AuthAccount> {
 			permissionsAccount: Permission.new(),
 			permissionsHouseholds: [],
 			preferences: {
-				colorAccent: ColorEnum.Default,
-				colorNegative: ColorEnum.Default,
-				colorPositive: ColorEnum.Default,
-				colorPrimary: ColorEnum.Default,
-				colorSecondary: ColorEnum.Default,
+				colorAccent: "",
+				colorNegative: "",
+				colorPositive: "",
+				colorPrimary: "",
+				colorSecondary: "",
 				darkMode: typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches,
 				formatDateOrder: CivilDateOrderEnum.MDY,
 				formatDateSeparator: CivilDateSeparatorEnum.ForwardSlash,

@@ -119,7 +119,7 @@ type AuthAccount struct {
 	PrivateKeys AuthAccountPrivateKeys `db:"private_keys" json:"privateKeys"`
 
 	// PublicKey for encrypting secrets.
-	PublicKey cryptolib.KeyEncryptAsymmetric `db:"public_key" json:"publicKey"`
+	PublicKey cryptolib.Key[cryptolib.KeyProviderPublic] `db:"public_key" json:"publicKey"`
 
 	// Subscription referrer when account was setup.
 	SubscriptionReferrerCode string `db:"subscription_referrer_code" json:"subscriptionReferrerCode"`
@@ -956,7 +956,7 @@ func (a *AuthAccount) UpdatePrivatePublicKeys(ctx context.Context) errs.Err {
 
 	if len(a.PrivateKeys) == 0 || a.PublicKey.IsNil() {
 		a.PrivateKeys = nil
-		a.PublicKey = cryptolib.KeyEncryptAsymmetric{}
+		a.PublicKey = cryptolib.Key[cryptolib.KeyProviderPublic]{}
 	}
 
 	// Update database

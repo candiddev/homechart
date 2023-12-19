@@ -1,5 +1,4 @@
 import { CivilDateOrderEnum, CivilDateSeparator, CivilDateSeparatorEnum } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 
 import { AuthAccountState } from "../states/AuthAccount";
 import { FormAuthAccountPreferences } from "./FormAuthAccountPreferences";
@@ -40,21 +39,21 @@ test("FormAuthAccountPreferences", async () => {
 	testing.click("#form-checkbox-input-dark-mode");
 	expect(state.preferences.darkMode)
 		.toBeFalsy();
-	testing.input("#form-item-select-primary-color", `${ColorEnum.Red}`);
+	testing.input("#form-item-select-primary-color", "red");
 	expect(state.preferences.colorPrimary)
-		.toBe(ColorEnum.Red);
-	testing.input("#form-item-select-secondary-color", `${ColorEnum.Yellow}`);
+		.toBe("red");
+	testing.input("#form-item-select-secondary-color", "yellow");
 	expect(state.preferences.colorSecondary)
-		.toBe(ColorEnum.Yellow);
-	testing.input("#form-item-select-accent-color", `${ColorEnum.Blue}`);
+		.toBe("yellow");
+	testing.input("#form-item-select-accent-color", "blue");
 	expect(state.preferences.colorAccent)
-		.toBe(ColorEnum.Blue);
-	testing.input("#form-item-select-positive-color", `${ColorEnum.Teal}`);
+		.toBe("blue");
+	testing.input("#form-item-select-positive-color", "teal");
 	expect(state.preferences.colorPositive)
-		.toBe(ColorEnum.Teal);
-	testing.input("#form-item-select-negative-color", `${ColorEnum.Pink}`);
+		.toBe("teal");
+	testing.input("#form-item-select-negative-color", "pink");
 	expect(state.preferences.colorNegative)
-		.toBe(ColorEnum.Pink);
+		.toBe("pink");
 	testing.find("#button-randomize-colors");
 
 	state.child = true;

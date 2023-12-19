@@ -12,15 +12,15 @@ import (
 
 // AuthHouseholdMember is limited AuthAccount fields.
 type AuthHouseholdMember struct {
-	AuthHouseholdID uuid.UUID                      `json:"authHouseholdID"`
-	Color           types.Color                    `json:"color"`
-	Child           bool                           `json:"child"`
-	EmailAddress    types.EmailAddress             `format:"email" json:"emailAddress"`
-	Name            string                         `json:"name"`
-	PublicKey       cryptolib.KeyEncryptAsymmetric `json:"publicKey"`
-	Permissions     Permissions                    `json:"permissions"`
-	ID              uuid.UUID                      `json:"id"`
-	InviteToken     types.StringLimit              `json:"inviteToken"`
+	AuthHouseholdID uuid.UUID                                  `json:"authHouseholdID"`
+	Color           types.Color                                `json:"color"`
+	Child           bool                                       `json:"child"`
+	EmailAddress    types.EmailAddress                         `format:"email" json:"emailAddress"`
+	Name            string                                     `json:"name"`
+	PublicKey       cryptolib.Key[cryptolib.KeyProviderPublic] `json:"publicKey"`
+	Permissions     Permissions                                `json:"permissions"`
+	ID              uuid.UUID                                  `json:"id"`
+	InviteToken     types.StringLimit                          `json:"inviteToken"`
 } // @Name AuthHouseholdMember
 
 // AuthHouseholdMembers is an AuthHouseholdMember slice.

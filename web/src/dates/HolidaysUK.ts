@@ -36,33 +36,25 @@ export const HolidaysUK = [
 	},
 ];
 
-export const HolidaysUK2023 = [
+export const HolidaysUK2024 = [
 	{
-		date: "2022-01-02",
-		name: "New Year's Day (substitute day)",
-	},
-	{
-		date: "2023-04-07",
+		date: "2023-03-29",
 		name: "Good Friday",
 	},
 	{
-		date: "2023-04-10",
+		date: "2023-03-31",
 		name: "Easter Monday",
 	},
 	{
-		date: "2023-05-01",
+		date: "2023-05-06",
 		name: "Early May Bank Holiday",
 	},
 	{
-		date: "2023-05-08",
-		name: "Bank Holiday for the Coronation of King Charles III",
-	},
-	{
-		date: "2023-05-29",
+		date: "2023-05-27",
 		name: "Spring Bank Holiday",
 	},
 	{
-		date: "2023-08-28",
+		date: "2023-08-26",
 		name: "Summer Bank Holiday",
 	},
 ];

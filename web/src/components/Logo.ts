@@ -1,6 +1,6 @@
 import "./Logo.css";
 
-import { AppState } from "@lib/states/App";
+import { Color } from "@lib/types/Color";
 import { SetClass } from "@lib/utilities/SetClass";
 import m from "mithril";
 
@@ -47,13 +47,10 @@ export function Logo (): m.Component<LogoAttrs> {
 			}, [
 				m("img.Logo__img", {
 					alt: "Homechart",
-					src: AppState.preferences().darkMode ?
+					src: getComputedStyle(document.getElementById("app") as Element)
+						.getPropertyValue("--color_primary-content") === Color.content.black ?
 						HomechartDark :
-						HomechartLight, /* TODO change this and the logo getComputedStyle(document.getElementById("app") as Element)
-						.getPropertyValue("--color_primary-content")
-						.endsWith("101010") ?
-						HomechartDark :
-						HomechartLight, */
+						HomechartLight,
 				}),
 				vnode.attrs.noTitle === true ?
 					[] :

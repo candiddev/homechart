@@ -245,7 +245,7 @@ export function SettingsHouseholdsID (): m.Component {
 								state.authHousehold.preferences.colorCookMealPlanEvents = e;
 							},
 							value: state.authHousehold.preferences.colorCookMealPlanEvents === undefined ?
-								0 :
+								"" :
 								state.authHousehold.preferences.colorCookMealPlanEvents,
 						}),
 						m(FormItemSelectColor, {
@@ -255,7 +255,7 @@ export function SettingsHouseholdsID (): m.Component {
 								state.authHousehold.preferences.colorBudgetRecurrenceEvents = e;
 							},
 							value: state.authHousehold.preferences.colorBudgetRecurrenceEvents === undefined ?
-								0 :
+								"" :
 								state.authHousehold.preferences.colorBudgetRecurrenceEvents,
 						}),
 						m(FormItemSelectColor, {
@@ -265,7 +265,7 @@ export function SettingsHouseholdsID (): m.Component {
 								state.authHousehold.preferences.colorPlanTaskEvents = e;
 							},
 							value: state.authHousehold.preferences.colorPlanTaskEvents === undefined ?
-								0 :
+								"" :
 								state.authHousehold.preferences.colorPlanTaskEvents,
 						}),
 						m(FormItemSelectCurrencyFormat, {

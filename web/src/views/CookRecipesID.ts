@@ -538,27 +538,39 @@ export function CookRecipesID (): m.Component {
 						},
 						tooltip: AuthAccountState.translate(WebCookRecipesIDDirectionsTooltip),
 					}),
-					!state.edit() && AppState.isSessionAuthenticated() ?
+					AppState.isSessionAuthenticated() ?
 						[
 							m(FormItem, {
 								input: {
-									disabled: true,
-									oninput: (): void => {},
-									type: "text",
+									disabled: !state.edit(),
+									oninput: (e: string): void => {
+										const i = parseInt(e);
+
+										if (! isNaN(i)) {
+											state.cookRecipe.cookMealPlanCount = i;
+										}
+									},
+									type: "number",
 									value: state.cookRecipe.cookMealPlanCount,
 								},
 								name: AuthAccountState.translate(WebGlobalRecipeTimesMade),
-								tooltip: "",
+								tooltip: "Manually adjust the number of times the recipe has been made",
 							}),
 							m(FormItem, {
 								input: {
-									disabled: true,
-									oninput: (): void => {},
-									type: "text",
-									value: state.cookRecipe.cookMealPlanLast === null ?
-										AuthAccountState.translate(WebGlobalNever) :
-										CivilDate.fromString(state.cookRecipe.cookMealPlanLast)
-											.toString(AuthAccountState.data().preferences.formatDateOrder, AuthAccountState.data().preferences.formatDateSeparator),
+									disabled: !state.edit(),
+									oninput: (e: string): void => {
+										state.cookRecipe.cookMealPlanLast = e;
+									},
+									type: state.edit() ?
+										"date" :
+										"text",
+									value: state.edit() ?
+										state.cookRecipe.cookMealPlanLast :
+										state.cookRecipe.cookMealPlanLast === null ?
+											AuthAccountState.translate(WebGlobalNever) :
+											CivilDate.fromString(state.cookRecipe.cookMealPlanLast)
+												.toString(AuthAccountState.data().preferences.formatDateOrder, AuthAccountState.data().preferences.formatDateSeparator),
 								},
 								name: AuthAccountState.translate(WebGlobalRecipeLastMade),
 								tooltip: "",

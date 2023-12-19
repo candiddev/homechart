@@ -237,14 +237,14 @@ func TestAuthAccountKeysUpdate(t *testing.T) {
 	as.AuthAccountID = a.ID
 	as.Create(ctx, false)
 
-	_, pub, _ := cryptolib.NewKeysEncryptAsymmetric()
+	_, pub, _ := cryptolib.NewKeysAsymmetric(cryptolib.AlgorithmRSA2048)
 
 	a.PublicKey = pub
 
 	tests := map[string]struct {
 		err   string
 		input models.AuthSession
-		want  cryptolib.KeyEncryptAsymmetric
+		want  cryptolib.Key[cryptolib.KeyProviderPublic]
 	}{
 		"wrong account": {
 			err:   errs.ErrSenderForbidden.Message(),

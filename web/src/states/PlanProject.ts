@@ -4,7 +4,6 @@ import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
-import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import { Clone } from "@lib/utilities/Clone";
 import { FilterSortChildren } from "@lib/utilities/FilterSortChildren";
@@ -25,7 +24,7 @@ export interface PlanProject {
 	authHouseholdID: NullUUID,
 	budgetCategoryID: NullUUID,
 	children?: PlanProject[], // not sent by API
-	color: ColorEnum,
+	color: string,
 	created: NullTimestamp,
 	icon: IconName,
 	id: NullUUID,
@@ -288,7 +287,7 @@ class PlanProjectManager extends DataArrayManager<PlanProject> {
 					AuthAccountState.data().primaryAuthHouseholdID :
 					null,
 			budgetCategoryID: null,
-			color: ColorEnum.Default,
+			color: "",
 			created: null,
 			icon: "" as IconName,
 			id: null,

@@ -1,6 +1,5 @@
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
-import { ColorEnum } from "@lib/types/Color";
 import { Clone } from "@lib/utilities/Clone";
 
 import { API } from "../services/API";
@@ -11,7 +10,7 @@ import { DataArrayManager } from "./DataArray";
 
 export interface HealthItem {
 	authAccountID: NullUUID,
-	color: ColorEnum,
+	color: string,
 	correlations: {
 		[key: string]: number | undefined,
 	},
@@ -80,7 +79,7 @@ class HealthItemManager extends DataArrayManager<HealthItem> {
 	override new (): HealthItem {
 		return {
 			authAccountID: AuthAccountState.data().id,
-			color: ColorEnum.Default,
+			color: "",
 			correlations: {},
 			created: null,
 			id: null,

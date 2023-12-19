@@ -32,6 +32,7 @@ const devices = [
 			width: 1920,
 		},
 	},
+	/*
 	// 5.5" iPhone (1242 x 2208)
 	{
 		append: "_5-5",
@@ -58,7 +59,7 @@ const devices = [
 			height: 1366,
 			width: 1024,
 		},
-	},
+	},*/
 ];
 
 test("homechart.app", async () => {

@@ -33,9 +33,11 @@ const (
 )
 
 func getAuthAccountName(ctx context.Context) string {
-	r, _ := ctx.Value(authAccountName).(string)
+	if r, ok := ctx.Value(authAccountName).(string); ok {
+		return r
+	}
 
-	return r
+	return ""
 }
 
 func setAuthAccountName(ctx context.Context, name string) context.Context {
@@ -69,9 +71,11 @@ func setAuthSessionID(ctx context.Context, id uuid.UUID) context.Context {
 }
 
 func getChild(ctx context.Context) bool {
-	f, _ := ctx.Value(child).(bool)
+	if f, ok := ctx.Value(child).(bool); ok {
+		return f
+	}
 
-	return f
+	return false
 }
 
 func setChild(ctx context.Context, f bool) context.Context {
@@ -79,9 +83,11 @@ func setChild(ctx context.Context, f bool) context.Context {
 }
 
 func getFilter(ctx context.Context) string {
-	r, _ := ctx.Value(filter).(string)
+	if r, ok := ctx.Value(filter).(string); ok {
+		return r
+	}
 
-	return r
+	return ""
 }
 
 func setFilter(ctx context.Context, s string) context.Context {
@@ -89,9 +95,11 @@ func setFilter(ctx context.Context, s string) context.Context {
 }
 
 func getHash(ctx context.Context) string {
-	f, _ := ctx.Value(hash).(string)
+	if f, ok := ctx.Value(hash).(string); ok {
+		return f
+	}
 
-	return f
+	return ""
 }
 
 func setHash(ctx context.Context, f string) context.Context {
@@ -99,9 +107,11 @@ func setHash(ctx context.Context, f string) context.Context {
 }
 
 func getOffset(ctx context.Context) int {
-	r, _ := ctx.Value(offset).(int)
+	if r, ok := ctx.Value(offset).(int); ok {
+		return r
+	}
 
-	return r
+	return 0
 }
 
 func setOffset(ctx context.Context, i int) context.Context {
@@ -109,9 +119,11 @@ func setOffset(ctx context.Context, i int) context.Context {
 }
 
 func getPermissions(ctx context.Context) models.PermissionsOpts {
-	r, _ := ctx.Value(permissions).(models.PermissionsOpts)
+	if r, ok := ctx.Value(permissions).(models.PermissionsOpts); ok {
+		return r
+	}
 
-	return r
+	return models.PermissionsOpts{}
 }
 
 func setPermissions(ctx context.Context, p models.PermissionsOpts) context.Context {
@@ -127,9 +139,11 @@ func setRequestID(ctx context.Context, requestID string) context.Context {
 }
 
 func getPublic(ctx context.Context) bool {
-	r, _ := ctx.Value(public).(bool)
+	if r, ok := ctx.Value(public).(bool); ok {
+		return r
+	}
 
-	return r
+	return false
 }
 
 func setPublic(ctx context.Context) context.Context {
@@ -137,9 +151,11 @@ func setPublic(ctx context.Context) context.Context {
 }
 
 func getSubscriptionTrial(ctx context.Context) bool {
-	f, _ := ctx.Value(subscriptionTrial).(bool)
+	if f, ok := ctx.Value(subscriptionTrial).(bool); ok {
+		return f
+	}
 
-	return f
+	return false
 }
 
 func setSubscriptionTrial(ctx context.Context, f bool) context.Context {
@@ -147,9 +163,11 @@ func setSubscriptionTrial(ctx context.Context, f bool) context.Context {
 }
 
 func getUpdated(ctx context.Context) time.Time {
-	r, _ := ctx.Value(updated).(time.Time)
+	if r, ok := ctx.Value(updated).(time.Time); ok {
+		return r
+	}
 
-	return r
+	return time.Time{}
 }
 
 func setUpdated(ctx context.Context, d time.Time) context.Context {
@@ -157,9 +175,11 @@ func setUpdated(ctx context.Context, d time.Time) context.Context {
 }
 
 func getWebPush(ctx context.Context) *notify.WebPushClient {
-	f, _ := ctx.Value(webPush).(*notify.WebPushClient)
+	if f, ok := ctx.Value(webPush).(*notify.WebPushClient); ok {
+		return f
+	}
 
-	return f
+	return nil
 }
 
 func setWebPush(ctx context.Context, f *notify.WebPushClient) context.Context {

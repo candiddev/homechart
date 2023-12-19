@@ -4,7 +4,6 @@ import "@lib/css/style.css";
 import type { TelemetryOptions } from "@lib/services/Telemetry";
 import type { AppPreferences } from "@lib/states/App";
 import { AppState } from "@lib/states/App";
-import { ColorEnum } from "@lib/types/Color";
 import m from "mithril";
 
 import { FormItemAutocomplete } from "./components/FormItemAutocomplete";
@@ -16,6 +15,7 @@ import { AuthSessionState } from "./states/AuthSession";
 import { GlobalState } from "./states/Global";
 import { InfoState } from "./states/Info";
 import { TelemetryState } from "./states/Telemetry";
+import { Colors } from "./types/Colors";
 import { WebAppDemoWelcome1, WebAppDemoWelcome2 } from "./yaml8n";
 
 
@@ -113,21 +113,11 @@ AppState.init(
 	// preferences
 	AuthAccountState.data.map((account) => {
 		return {
-			colorAccent: account.preferences.colorAccent === ColorEnum.Default ?
-				ColorEnum.Red :
-				account.preferences.colorAccent,
-			colorNegative: account.preferences.colorNegative === ColorEnum.Default ?
-				ColorEnum.Pink :
-				account.preferences.colorNegative,
-			colorPositive: account.preferences.colorPositive === ColorEnum.Default ?
-				ColorEnum.Teal :
-				account.preferences.colorPositive,
-			colorPrimary: account.preferences.colorPrimary === ColorEnum.Default ?
-				ColorEnum.Yellow :
-				account.preferences.colorPrimary,
-			colorSecondary: account.preferences.colorSecondary === ColorEnum.Default ?
-				ColorEnum.Blue :
-				account.preferences.colorSecondary,
+			colorAccent: Colors.accent(account.preferences.colorAccent),
+			colorNegative: Colors.negative(account.preferences.colorNegative),
+			colorPositive: Colors.positive(account.preferences.colorPositive),
+			colorPrimary: Colors.primary(account.preferences.colorPrimary),
+			colorSecondary: Colors.secondary(account.preferences.colorSecondary),
 			darkMode: account.preferences.darkMode,
 			formatDateOrder: account.preferences.formatDateOrder,
 			formatDateSeparator: account.preferences.formatDateSeparator,

@@ -902,7 +902,7 @@ func TestAuthAccountUpdatePrivatePublicKeys(t *testing.T) {
 	}
 	sv2.create(ctx, CreateOpts{})
 
-	a.PublicKey = cryptolib.KeyEncryptAsymmetric{}
+	a.PublicKey = cryptolib.Key[cryptolib.KeyProviderPublic]{}
 
 	assert.Equal(t, a.UpdatePrivatePublicKeys(ctx), nil)
 	assert.Equal(t, len(a.PrivateKeys), 0)

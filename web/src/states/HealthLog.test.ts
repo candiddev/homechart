@@ -1,5 +1,4 @@
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import { Timestamp } from "@lib/types/Timestamp";
 
@@ -136,7 +135,7 @@ describe("HealthLogState", () => {
 					...CalendarEventState.new(),
 					...{
 						authAccountID: "1",
-						color: ColorEnum.Indigo,
+						color: "indigo",
 						duration: 0,
 						healthLogInputs: [
 							HealthLogState.data()[0],
@@ -157,7 +156,7 @@ describe("HealthLogState", () => {
 					...CalendarEventState.new(),
 					...{
 						authAccountID: "2",
-						color: ColorEnum.Indigo,
+						color: "indigo",
 						duration: 0,
 						healthLogInputs: [
 							HealthLogState.data()[4],

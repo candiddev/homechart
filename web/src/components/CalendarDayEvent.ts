@@ -16,6 +16,7 @@ import { AuthHouseholdState } from "../states/AuthHousehold";
 import type { CalendarEvent } from "../states/CalendarEvent";
 import { CookRecipeState } from "../states/CookRecipe";
 import { HealthItemState } from "../states/HealthItem";
+import { Colors } from "../types/Colors";
 import { FormOverlayBudgetTransaction } from "./FormOverlayBudgetTransaction";
 import { FormOverlayCalendarEvent } from "./FormOverlayCalendarEvent";
 import { FormOverlayCookMealPlan } from "./FormOverlayCookMealPlan";
@@ -43,11 +44,11 @@ export function CalendarDayEvent (): m.Component<CalendarDayEventAttrs> {
 			const end = Timestamp.fromString(vnode.attrs.event.timestampStart!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
 			end.addMinutes(vnode.attrs.event.travelTime + vnode.attrs.event.duration);
 
-			const color = vnode.attrs.event.color > 0 ?
-				Color.values[vnode.attrs.event.color] :
-				vnode.attrs.event.participants.length > 0 && AuthHouseholdState.findMember(vnode.attrs.event.participants[0]).color > 0 ?
-					Color.values[AuthHouseholdState.findMember(vnode.attrs.event.participants[0]).color] :
-					"primary";
+			const color = vnode.attrs.event.color === "" ?
+				vnode.attrs.event.participants.length > 0 && AuthHouseholdState.findMember(vnode.attrs.event.participants[0]).color === "" ?
+					AuthAccountState.data().preferences.colorPrimary :
+					AuthHouseholdState.findMember(vnode.attrs.event.participants[0]).color :
+				vnode.attrs.event.color;
 
 			return vnode.attrs.loaded ?
 				m("div.CalendarDayEvent__item", {
@@ -83,12 +84,10 @@ export function CalendarDayEvent (): m.Component<CalendarDayEventAttrs> {
 					},
 					style: {
 						"background": Timestamp.now() < end && Timestamp.now() > start ?
-							AuthAccountState.data().preferences.darkMode ?
-								"linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0)" :
-								"linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0))" :
+							"linear-gradient(rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0))" :
 							undefined,
-						"background-color": `var(--color_${color.toLowerCase()})`,
-						"color": `var(--color_${color.toLowerCase()}-content)`,
+						"background-color": Color.toHex(Colors.calendarEvent(color)),
+						"color": Color.contentColor(color),
 						"filter": vnode.attrs.event.duration !== 0 && Timestamp.now() > end || CivilDate.now() > Timestamp.fromString(vnode.attrs.event.timestampStart!) // eslint-disable-line @typescript-eslint/no-non-null-assertion
 							.toCivilDate() ?
 							"var(--filter_light)" :

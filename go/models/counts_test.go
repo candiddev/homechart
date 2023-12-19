@@ -45,11 +45,11 @@ func TestCountsReadReset(t *testing.T) {
 
 		if n == "homechart_model_auth_household" {
 			for _, label := range v {
-				switch *label.Label[0].Value {
+				switch *label.Label[0].Value { //nolint:protogetter
 				case "demo":
-					assert.Equal(t, *label.Gauge.Value, float64(1))
+					assert.Equal(t, *label.Gauge.Value, float64(1)) //nolint:protogetter
 				case "all":
-					assert.Equal(t, *label.Gauge.Value, float64(2))
+					assert.Equal(t, *label.Gauge.Value, float64(2)) //nolint:protogetter
 				}
 			}
 		}

@@ -614,7 +614,7 @@ func (a *AuthHousehold) ReadJWT(ctx context.Context, force bool) errs.Err {
 
 	var ah AuthHouseholdJWT
 
-	t, _, err := jwt.Parse(a.CloudJWT, []cryptolib.KeyVerify{
+	t, _, err := jwt.Parse(a.CloudJWT, cryptolib.Keys[cryptolib.KeyProviderPublic]{
 		c.App.CloudPublicKey,
 	})
 	if err == nil {
@@ -638,7 +638,7 @@ func (a *AuthHousehold) ReadJWT(ctx context.Context, force bool) errs.Err {
 				if err == nil {
 					s := AuthHouseholdJWT{}
 
-					if t, _, err := jwt.Parse(string(b), cryptolib.KeysVerify{
+					if t, _, err := jwt.Parse(string(b), cryptolib.Keys[cryptolib.KeyProviderPublic]{
 						c.App.CloudPublicKey,
 					}); err == nil {
 						if err := t.ParsePayload(&s, "", "", ""); err == nil {

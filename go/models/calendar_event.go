@@ -229,7 +229,7 @@ func (c *CalendarEvent) ToICalendarEvents() types.ICalendarEvents {
 	n := b
 	n.Duration = c.Duration
 	n.ID = types.StringLimit(c.ID.String())
-	n.Name = types.StringLimit("Event: " + string(c.Name))
+	n.Name = types.StringLimit("Event: " + string(c.Name)) //nolint:goconst
 	n.TimestampStart = &c.TimestampStart
 
 	if end != nil {

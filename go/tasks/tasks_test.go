@@ -23,7 +23,8 @@ var seed *models.Data
 func TestMain(m *testing.M) {
 	ctx = context.Background()
 	c = config.Default()
-	c.Parse(ctx, nil, "../../homechart_config.jsonnet")
+	c.CLI.ConfigPath = "../../homechart_config.jsonnet"
+	c.Parse(ctx, nil)
 
 	if err := models.Setup(ctx, c, true, true); err != nil {
 		os.Exit(1)
