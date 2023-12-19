@@ -12,7 +12,7 @@ import { IsErr } from "@lib/services/Log";
 import { Telemetry } from "@lib/services/Telemetry";
 import { AppState } from "@lib/states/App";
 import { CivilDate } from "@lib/types/CivilDate";
-import { Color, ColorEnum } from "@lib/types/Color";
+import { Color } from "@lib/types/Color";
 import { Currency } from "@lib/types/Currency";
 import { Duration } from "@lib/types/Duration";
 import { Icons } from "@lib/types/Icons";
@@ -557,10 +557,9 @@ function RenderObjects (): m.Component<{
 													});
 											},
 											style: {
-												color: `var(--color_${Color.getValue(task.color) === "Default" ?
+												color: Color.toHex(task.color) === "" ?
 													"black" :
-													Color.getValue(task.color)
-														.toLowerCase()})`,
+													Color.toHex(task.color),
 												display: task.template ?
 													"none" :
 													undefined,
@@ -597,7 +596,7 @@ function RenderObjects (): m.Component<{
 													m(Icon, {
 														icon:Icons.PlanProject,
 														style: {
-															color: `var(--color_${Color.values[PlanProjectState.findID(task.planProjectID).color].toLowerCase()})`,
+															color: Color.toHex(PlanProjectState.findID(task.planProjectID).color),
 														},
 													}),
 													m("span", task.planProjectID === null ?
@@ -656,7 +655,7 @@ function RenderObjects (): m.Component<{
 													m(Icon, {
 														icon: Icons.Personal,
 														style: {
-															color: Color.toString(AuthHouseholdState.findMember(task.authAccountID).color),
+															color: Color.toHex(AuthHouseholdState.findMember(task.authAccountID).color),
 														},
 													}),
 													m("span", AuthHouseholdState.findMemberName(task.authAccountID)),
@@ -928,9 +927,9 @@ function RenderHeaders (): m.Component<{
 											Icons.PlanProject :
 											header.icon,
 										style: {
-											color: `var(--color_${header.color === ColorEnum.Default ?
-												"content" :
-												Color.values[header.color].toLowerCase()})`,
+											color: header.color === "" ?
+												undefined :
+												Color.toHex(header.color),
 										},
 									}),
 								m("div.PlanTasks__name", [
@@ -1301,8 +1300,8 @@ export function PlanTasks (): m.Component {
 							...PlanProjectState.new(),
 							...{
 								authAccountID: AuthAccountState.data().id,
-								color: AuthAccountState.data().preferences.colorPrimary === 0 ?
-									ColorEnum.Teal :
+								color: AuthAccountState.data().preferences.colorPrimary === "" ?
+									"teal" :
 									AuthAccountState.data().preferences.colorPrimary,
 								id: "personal",
 								name: AuthAccountState.translate(WebGlobalPersonal),
@@ -1313,8 +1312,8 @@ export function PlanTasks (): m.Component {
 							...PlanProjectState.new(),
 							...{
 								authHouseholdID: AuthAccountState.data().primaryAuthHouseholdID,
-								color: AuthAccountState.data().preferences.colorPrimary === 0 ?
-									ColorEnum.Indigo :
+								color: AuthAccountState.data().preferences.colorSecondary === "" ?
+									"indigo" :
 									AuthAccountState.data().preferences.colorSecondary,
 								id: "household",
 								name: AuthAccountState.translate(ObjectHousehold),
@@ -1327,8 +1326,8 @@ export function PlanTasks (): m.Component {
 								authAccountID: AuthSessionState.data().admin === true ?
 									null : // null for value
 									AuthAccountState.data().id,
-								color: AuthAccountState.data().preferences.colorPrimary === 0 ?
-									ColorEnum.Pink :
+								color: AuthAccountState.data().preferences.colorAccent === "" ?
+									"pink" :
 									AuthAccountState.data().preferences.colorAccent,
 								id: "homechart",
 								name: "Homechart",

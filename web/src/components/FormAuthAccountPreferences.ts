@@ -5,7 +5,7 @@ import { FormItem } from "@lib/components/FormItem";
 import { FormItemSelectColor } from "@lib/components/FormItemSelectColor";
 import type { CivilDateSeparatorEnum } from "@lib/types/CivilDate";
 import { CivilDate, CivilDateSeparator } from "@lib/types/CivilDate";
-import { Color } from "@lib/types/Color";
+import { ColorEnum } from "@lib/types/Color";
 import { StringToID } from "@lib/utilities/StringToID";
 import { WeekdayMonday, WeekdaySunday } from "@lib/yaml8n";
 import m from "mithril";
@@ -19,7 +19,7 @@ interface FormAuthAccountPreferencesAttrs {
 }
 
 function getRandomColor (): number {
-	return Math.floor(Math.random() * Color.values.length);
+	return Math.floor(Math.random() * (Object.keys(ColorEnum).length - 1)) + 1;
 }
 
 export function FormAuthAccountPreferences (): m.Component<FormAuthAccountPreferencesAttrs> {
@@ -344,11 +344,13 @@ export function FormAuthAccountPreferences (): m.Component<FormAuthAccountPrefer
 										secondary = getRandomColor();
 									}
 
+									console.log(getRandomColor());
+
 									const darkMode = Math.random() < 0.5;
 
-									vnode.attrs.authAccount.preferences.colorAccent = accent;
-									vnode.attrs.authAccount.preferences.colorPrimary = primary;
-									vnode.attrs.authAccount.preferences.colorSecondary = secondary;
+									vnode.attrs.authAccount.preferences.colorAccent = Object.keys(ColorEnum)[accent];
+									vnode.attrs.authAccount.preferences.colorPrimary = Object.keys(ColorEnum)[primary];
+									vnode.attrs.authAccount.preferences.colorSecondary = Object.keys(ColorEnum)[secondary];
 									vnode.attrs.authAccount.preferences.darkMode = darkMode;
 
 									AuthAccountState.data({
@@ -356,9 +358,9 @@ export function FormAuthAccountPreferences (): m.Component<FormAuthAccountPrefer
 										...{
 											preferences: {
 												...AuthAccountState.data().preferences,
-												colorAccent: accent,
-												colorPrimary: primary,
-												colorSecondary: secondary,
+												colorAccent: vnode.attrs.authAccount.preferences.colorAccent,
+												colorPrimary: vnode.attrs.authAccount.preferences.colorPrimary,
+												colorSecondary: vnode.attrs.authAccount.preferences.colorSecondary,
 												darkMode: darkMode,
 											},
 										},

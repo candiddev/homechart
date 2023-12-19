@@ -2,6 +2,7 @@ import "./OIDCButtons.css";
 
 import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
+import { Color } from "@lib/types/Color";
 import { OIDCProviderType, OIDCProviderTypeEnum } from "@lib/types/OIDCProviderType";
 import m from "mithril";
 
@@ -54,6 +55,9 @@ export function OIDCButtons (): m.Component<OIDCButtonsAttrs> {
 
 									return;
 								});
+						},
+						style: {
+							color: Color.content.black,
 						},
 						type: "button",
 					}, [

@@ -1,11 +1,11 @@
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import { Timestamp } from "@lib/types/Timestamp";
 import type Stream from "mithril/stream";
 
+import { Colors } from "../types/Colors";
 import { DataTypeEnum } from "../types/DataType";
 import { ObjectLogCreated, ObjectLogDeleted, ObjectLogUpdated } from "../yaml8n";
 import { AuthAccountState } from "./AuthAccount";
@@ -78,9 +78,7 @@ class HealthLogManager extends DataArrayManager<HealthLog> {
 							...CalendarEventState.new(),
 							...{
 								authAccountID: log.authAccountID,
-								color: AuthHouseholdState.findMember(log.authAccountID).color === ColorEnum.Default ?
-									ColorEnum.Indigo :
-									AuthHouseholdState.findMember(log.authAccountID).color,
+								color: Colors.healthLog(AuthHouseholdState.findMember(log.authAccountID).color),
 								duration: 0,
 								healthLogInputs: item.output ?
 									[] :

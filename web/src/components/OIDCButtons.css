@@ -6,11 +6,10 @@
 
 .OIDCButtons__button {
 	align-items: flex-end;
-	background-color: var(--color_white-dark);
+	background-color: #ffffff;
 	border: var(--border);
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
-	color: var(--color_black-light);
 	cursor: pointer;
 	display: flex;
 	font-family: inherit;

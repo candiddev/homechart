@@ -1,5 +1,4 @@
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { UUID } from "@lib/types/UUID";
 
 import seed from "../jest/seed";
@@ -56,9 +55,9 @@ test("FormOverlayHealthItem", async () => {
 	expect(healthItem.name)
 		.toBe("Name");
 
-	testing.input("#form-item-select-color", `${ColorEnum.Gray}`);
+	testing.input("#form-item-select-color", "gray");
 	expect(healthItem.color)
-		.toBe(ColorEnum.Gray);
+		.toBe("gray");
 
 	testing.click("#form-checkbox-input-output");
 	expect(healthItem.output)

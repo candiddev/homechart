@@ -1,5 +1,4 @@
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import { Recurrence } from "@lib/types/Recurrence";
 import { Timestamp } from "@lib/types/Timestamp";
@@ -90,7 +89,7 @@ describe("BudgetRecurrenceState", () => {
 								[],
 								null,
 							),
-							color: ColorEnum.Teal,
+							color: "teal",
 							details: `#budgetaccount/${BudgetAccountState.findID(recurrence.budgetAccountID).shortID}`,
 							duration: 0,
 							icon: Icons.BudgetTransaction,

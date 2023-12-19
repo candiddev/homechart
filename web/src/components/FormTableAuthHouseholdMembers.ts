@@ -11,7 +11,7 @@ import { DisplayEnum } from "@lib/types/Display";
 import type { FilterType } from "@lib/types/Filter";
 import { Filter } from "@lib/types/Filter";
 import { Icons } from "@lib/types/Icons";
-import { ActionAdd, ActionCancel, ActionDelete, ActionDeleteConfirm, ActionNew, ActionUpdate, FormItemSelectColorName } from "@lib/yaml8n";
+import { ActionAdd, ActionCancel, ActionDelete, ActionDeleteConfirm, ActionNew, ActionUpdate } from "@lib/yaml8n";
 import m from "mithril";
 import Stream from "mithril/stream";
 
@@ -37,7 +37,6 @@ export function FormTableAuthHouseholdMembers (): m.Component<FormTableAuthHouse
 			emailAddress: "", // eslint-disable-line sort-keys
 			owner: "",
 			child: "", // eslint-disable-line sort-keys
-			color: "", // eslint-disable-line sort-keys
 		}),
 		form: {
 			data: AuthAccountAuthHouseholdState.new(),
@@ -57,6 +56,23 @@ export function FormTableAuthHouseholdMembers (): m.Component<FormTableAuthHouse
 	let members: Stream<AuthHouseholdMember[]>;
 
 	let expandPermissions = false;
+
+	function name (): m.Component<AuthHouseholdMember> {
+		return {
+			view: (vnode): m.Children => {
+				return m("span", {
+					style: {
+						"color": vnode.attrs.color === "" ?
+							undefined :
+							Color.toHex(vnode.attrs.color, AuthAccountState.data().preferences.darkMode),
+						"font-weight": "var(--font-weight_bold)",
+					},
+				}, vnode.attrs.name === "" ?
+					vnode.attrs.emailAddress :
+					vnode.attrs.name);
+			},
+		};
+	}
 
 	return {
 		oninit: (vnode): void => {
@@ -115,15 +131,13 @@ export function FormTableAuthHouseholdMembers (): m.Component<FormTableAuthHouse
 					staticColumns: true,
 					tableColumns: [
 						{
-							formatter: (e: AuthHouseholdMember): string => {
-								if (e.name === "") {
-									return e.emailAddress;
-								}
-								return e.name;
-							},
 							name: AuthAccountState.translate(WebGlobalName),
 							noFilter: true,
 							property: "name",
+							render: name,
+							sortFormatter: (a: AuthHouseholdMember): string => {
+								return a.name;
+							},
 						},
 						{
 							formatter: (e: AuthHouseholdMember): string => {
@@ -153,14 +167,6 @@ export function FormTableAuthHouseholdMembers (): m.Component<FormTableAuthHouse
 							noFilter: true,
 							property: "child",
 							type: TableDataType.Checkbox,
-						},
-						{
-							formatter: (e: AuthHouseholdMember): string => {
-								return Color.values[e.color];
-							},
-							name: AuthAccountState.translate(FormItemSelectColorName),
-							noFilter: true,
-							property: "color",
 						},
 					],
 					tableColumnsNameEnabled: state.columns,

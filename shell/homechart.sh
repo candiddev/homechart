@@ -3,7 +3,7 @@
 export APP_NAME=homechart
 export BUILD_TARGETS_BINARY="linux/amd64 linux/arm64 linux/arm/v7"
 export GITHUB_REPOSITORY_ID=416805305
-export INSTALL_ALL="install-go install-golangci-lint install-hugo install-node install-shellcheck install-swag install-vault"
+export INSTALL_ALL="install-go install-golangci-lint install-hugo install-node install-shellcheck install-swag install-vault install-yaml8n"
 export HOMECHART_app_baseURL=${HOMECHART_app_baseURL:-http://localhost}
 export HOMECHART_app_cloudEndpoint=${HOMECHART_app_cloudEndpoint:-http://localhost}
 export HOMECHART_app_cloudJWT=${HOMECHART_app_cloudJWT:-eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJjbG91ZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly9taWtlLWRlc2t0b3AxLmNhbmRpZC5kZXYiLCJzdWIiOiJDbG91ZCIsImF1ZCI6WyJIb21lY2hhcnQiXSwiZXhwIjoxODM3NzEwNTc3LCJuYmYiOjE2ODAwMzA1NzcsImlhdCI6MTY4MDAzMDU3NywianRpIjoiN2MzNWJlNzEtMmE0OC00NjIwLTgxMGUtMDU4Njc4ODgyODAwIn0.xLDsYa_7cQnMmLF9XuxpzSllvcQVLRNsU4wgMZrddkz_Uzwj0rnZmhrh1gdUcWO_jzPHcjiK-7LgJ2Jz7SWYDw}
@@ -62,10 +62,6 @@ export BUILD_GO_VARS="-X main.appCloudPublicKey=${HOMECHART_app_cloudPublicKey}"
 cmd build-homechart-config,bhc Build Homechart config
 build-homechart-config () {
 	cat > "${DIR}/homechart_config.jsonnet" << EOF
-local n = import "./shared/go/jsonnet/native.libsonnet";
-
-local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getFile('~/.vault-token', '') == '' then {} else std.parseJson(n.getFile(n.getEnv('VAULT_ADDR')+'/v1/${VAULT_KV_HOMECHART}#x-vault-token:'+(if n.getEnv('VAULT_TOKEN') == '' then n.getFile('~/.vault-token') else n.getEnv('VAULT_TOKEN')), '{"data":{}}')).data);
-
 {
   app: {
     adminEmailAddresses: [
@@ -91,23 +87,6 @@ local vault= (if n.getEnv('VAULT_TOKEN') == '' && n.getFile('~/.vault-token', ''
     systemPprofKey: "pprof",
     systemStopKey: "stop",
     uiDir: "web/dist/homechart"
-  },
-  oidc: {
-    appleClientID: std.get(vault, 'oidc_appleclientid'),
-    appleKeyID: std.get(vault, 'oidc_applekeyid'),
-    appleKeyPEMBase64: std.get(vault, 'oidc_applekeypembase64'),
-    appleTeamID: std.get(vault, 'oidc_appleteamid'),
-    googleClientID: std.get(vault, 'oidc_googleclientid'),
-    googleClientSecret: std.get(vault, 'oidc_googleclientsecret')
-  },
-  paddle: {
-    planIDMonthly: std.parseInt(std.get(vault, 'paddle_planidmonthly', '0')),
-    planIDMonthlyReferral: std.parseInt(std.get(vault, 'paddle_planidmonthlyreferral', '0')),
-    productIDLifetime: std.parseInt(std.get(vault, 'paddle_productidlifetime', '0')),
-    publicKeyBase64: std.get(vault, 'paddle_publickeybase64'),
-    sandbox: std.get(vault, 'paddle_sandbox') == 'true',
-    vendorAuthCode: std.get(vault, 'paddle_vendorauthcode'),
-    vendorID: std.parseInt(std.get(vault, 'paddle_vendorid', '0'))
   },
   postgresql: {
     database: "${HOMECHART_postgresql_database}",
@@ -201,10 +180,13 @@ run-homechart-start () {
 	install-air
 	install-go
 	install-node
+	install-rot
 
 	build-homechart-config
 	run-postgresql-start
 	run-yaml8n-start
+
+	ROT_privateKey="$(${EXEC_ROT} show-private-key || echo "")"
 
 	if not-running candiddev_homechart_api; then
 		printf "Running Homechart API..."
@@ -213,6 +195,7 @@ run-homechart-start () {
 			-d \
 			-e HOMECHART_app_uiHost=http://candiddev_homechart_ui:1080 \
 			-e HOMECHART_postgresql_hostname=candiddev_postgresql \
+			-e ROT_privateKey=${ROT_privateKey} \
 			${CR_LOGOPTS} \
 			${CR_USER} \
 			--name candiddev_homechart_api \

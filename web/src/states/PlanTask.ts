@@ -3,7 +3,6 @@ import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
 import { CivilDate } from "@lib/types/CivilDate";
-import type { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import type { RecurrenceInterval } from "@lib/types/Recurrence";
 import { Recurrence } from "@lib/types/Recurrence";
@@ -41,7 +40,7 @@ export interface PlanTask {
 	authAccountID: NullUUID,
 	authHouseholdID: NullUUID,
 	children?: PlanTask[], // not sent by API
-	color: ColorEnum,
+	color: string,
 	created: NullTimestamp,
 	dateEnd: NullCivilDate,
 	details: string,
@@ -456,7 +455,7 @@ class PlanTaskManager extends DataArrayManager<PlanTask> {
 				p ?
 					AuthAccountState.data().primaryAuthHouseholdID :
 					null,
-			color: 0,
+			color: "",
 			created: null,
 			dateEnd: null,
 			details: "",

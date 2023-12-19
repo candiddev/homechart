@@ -29,53 +29,53 @@ type Config struct {
 
 // App contains config options.
 type App struct {
-	DisableTasks                          bool                `json:"disableTasks,omitempty"`
-	IgnorePaymentFailures                 bool                `json:"ignorePaymentFailures,omitempty"`
-	Demo                                  bool                `json:"demo,omitempty"`
-	SignupDisabled                        bool                `json:"signupDisabled"`
-	TestNotifier                          bool                `json:"-"`
-	CacheTTLMinutes                       int                 `json:"cacheTTLMinutes"`
-	KeepCalendarEventDays                 int                 `json:"keepCalendarEventDays"`
-	KeepCookMealPlanDays                  int                 `json:"keepCookMealPlanDays"`
-	KeepDeletedDays                       int                 `json:"keepDeletedDays"`
-	KeepExpiredAuthHouseholdDays          int                 `json:"keepExpiredAuthHouseholdDays,omitempty"`
-	KeepHealthLogDays                     int                 `json:"keepHealthLogDays"`
-	KeepInactiveAuthAccountDays           int                 `json:"keepInactiveAuthAccountDays,omitempty"`
-	KeepNotesPageVersions                 int                 `json:"keepNotesPageVersions"`
-	KeepPlanTaskDays                      int                 `json:"keepPlanTaskDays"`
-	Port                                  int                 `json:"port"`
-	RollupBudgetTransactionsBalanceMonths int                 `json:"rollupBudgetTransactionsBalanceMonths"`
-	RollupBudgetTransactionsSummaryMonths int                 `json:"rollupBudgetTransactionsSummaryMonths"`
-	SessionExpirationDefaultSeconds       int                 `json:"sessionExpirationDefaultSeconds"`
-	SessionExpirationRememberSeconds      int                 `json:"sessionExpirationRememberSeconds"`
-	TrialDays                             int                 `json:"trialDays,omitempty"`
-	BaseURL                               string              `json:"baseURL"`
-	CacheControl                          string              `json:"cacheControl,omitempty"`
-	ContactFeedback                       string              `json:"contactFeedback,omitempty"`
-	ContactSupport                        string              `json:"contactSupport,omitempty"`
-	CounterTimeZone                       string              `json:"counterTimeZone,omitempty"`
-	CloudEndpoint                         string              `json:"cloudEndpoint"`
-	CloudJWT                              string              `json:"cloudJWT,omitempty"`        //nolint: tagliatelle
-	CloudPrivateKey                       cryptolib.KeySign   `json:"cloudPrivateKey,omitempty"` //nolint: tagliatelle
-	CloudPublicKey                        cryptolib.KeyVerify `json:"-"`
-	GTMID                                 string              `json:"gtmID,omitempty"`
-	MOTD                                  string              `json:"motd"`
-	RateLimiterKey                        string              `json:"rateLimiterKey,omitempty"`
-	RateLimiterRate                       string              `json:"rateLimiterRate"`
-	ProxyHeaderEmail                      string              `json:"proxyHeaderEmail"`
-	ProxyHeaderName                       string              `json:"proxyHeaderName"`
-	ProxyAddress                          string              `json:"proxyAddress"`
-	SystemConfigKey                       string              `json:"systemConfigKey,omitempty"`
-	SystemHealthKey                       string              `json:"systemHealthKey,omitempty"`
-	SystemMetricsKey                      string              `json:"systemMetricsKey,omitempty"`
-	SystemPprofKey                        string              `json:"systemPprofKey,omitempty"`
-	SystemStopKey                         string              `json:"systemStopKey,omitempty"`
-	TLSCertificate                        string              `json:"tlsCertificate"`
-	TLSKey                                string              `json:"tlsKey"`
-	UIDir                                 string              `json:"uiDir,omitempty"`
-	UIHost                                string              `json:"uiHost,omitempty"`
-	AdminEmailAddresses                   []string            `json:"adminEmailAddresses"`
-	FeatureVotes                          []string            `json:"featureVotes,omitempty"`
+	DisableTasks                          bool                                        `json:"disableTasks,omitempty"`
+	IgnorePaymentFailures                 bool                                        `json:"ignorePaymentFailures,omitempty"`
+	Demo                                  bool                                        `json:"demo,omitempty"`
+	SignupDisabled                        bool                                        `json:"signupDisabled"`
+	TestNotifier                          bool                                        `json:"-"`
+	CacheTTLMinutes                       int                                         `json:"cacheTTLMinutes"`
+	KeepCalendarEventDays                 int                                         `json:"keepCalendarEventDays"`
+	KeepCookMealPlanDays                  int                                         `json:"keepCookMealPlanDays"`
+	KeepDeletedDays                       int                                         `json:"keepDeletedDays"`
+	KeepExpiredAuthHouseholdDays          int                                         `json:"keepExpiredAuthHouseholdDays,omitempty"`
+	KeepHealthLogDays                     int                                         `json:"keepHealthLogDays"`
+	KeepInactiveAuthAccountDays           int                                         `json:"keepInactiveAuthAccountDays,omitempty"`
+	KeepNotesPageVersions                 int                                         `json:"keepNotesPageVersions"`
+	KeepPlanTaskDays                      int                                         `json:"keepPlanTaskDays"`
+	Port                                  int                                         `json:"port"`
+	RollupBudgetTransactionsBalanceMonths int                                         `json:"rollupBudgetTransactionsBalanceMonths"`
+	RollupBudgetTransactionsSummaryMonths int                                         `json:"rollupBudgetTransactionsSummaryMonths"`
+	SessionExpirationDefaultSeconds       int                                         `json:"sessionExpirationDefaultSeconds"`
+	SessionExpirationRememberSeconds      int                                         `json:"sessionExpirationRememberSeconds"`
+	TrialDays                             int                                         `json:"trialDays,omitempty"`
+	BaseURL                               string                                      `json:"baseURL"`
+	CacheControl                          string                                      `json:"cacheControl,omitempty"`
+	ContactFeedback                       string                                      `json:"contactFeedback,omitempty"`
+	ContactSupport                        string                                      `json:"contactSupport,omitempty"`
+	CounterTimeZone                       string                                      `json:"counterTimeZone,omitempty"`
+	CloudEndpoint                         string                                      `json:"cloudEndpoint"`
+	CloudJWT                              string                                      `json:"cloudJWT,omitempty"`        //nolint: tagliatelle
+	CloudPrivateKey                       cryptolib.Key[cryptolib.KeyProviderPrivate] `json:"cloudPrivateKey,omitempty"` //nolint: tagliatelle
+	CloudPublicKey                        cryptolib.Key[cryptolib.KeyProviderPublic]  `json:"-"`
+	GTMID                                 string                                      `json:"gtmID,omitempty"`
+	MOTD                                  string                                      `json:"motd"`
+	RateLimiterKey                        string                                      `json:"rateLimiterKey,omitempty"`
+	RateLimiterRate                       string                                      `json:"rateLimiterRate"`
+	ProxyHeaderEmail                      string                                      `json:"proxyHeaderEmail"`
+	ProxyHeaderName                       string                                      `json:"proxyHeaderName"`
+	ProxyAddress                          string                                      `json:"proxyAddress"`
+	SystemConfigKey                       string                                      `json:"systemConfigKey,omitempty"`
+	SystemHealthKey                       string                                      `json:"systemHealthKey,omitempty"`
+	SystemMetricsKey                      string                                      `json:"systemMetricsKey,omitempty"`
+	SystemPprofKey                        string                                      `json:"systemPprofKey,omitempty"`
+	SystemStopKey                         string                                      `json:"systemStopKey,omitempty"`
+	TLSCertificate                        string                                      `json:"tlsCertificate"`
+	TLSKey                                string                                      `json:"tlsKey"`
+	UIDir                                 string                                      `json:"uiDir,omitempty"`
+	UIHost                                string                                      `json:"uiHost,omitempty"`
+	AdminEmailAddresses                   []string                                    `json:"adminEmailAddresses"`
+	FeatureVotes                          []string                                    `json:"featureVotes,omitempty"`
 }
 
 // OAuth contains config options.
@@ -138,6 +138,6 @@ func (c *Config) CLIConfig() *cli.Config {
 	return &c.CLI
 }
 
-func (c *Config) Parse(ctx context.Context, configArgs []string, paths string) errs.Err {
-	return config.Parse(ctx, c, configArgs, "HOMECHART", "", paths)
+func (c *Config) Parse(ctx context.Context, configArgs []string) errs.Err {
+	return config.Parse(ctx, c, configArgs, "HOMECHART", c.CLI.ConfigPath)
 }

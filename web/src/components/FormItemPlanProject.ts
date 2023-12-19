@@ -1,5 +1,4 @@
 import { FormItemSelectNested } from "@lib/components/FormItemSelectNested";
-import { ColorEnum } from "@lib/types/Color";
 import { Animate, Animation } from "@lib/utilities/Animate";
 import { ActionNone } from "@lib/yaml8n";
 import m from "mithril";
@@ -81,7 +80,7 @@ export function FormItemPlanProject (): m.Component<FormItemPlanProjectAttrs> {
 					PlanProjectState.getColorNamesIDs() :
 					[
 						{
-							color: ColorEnum.Default,
+							color: "",
 							id: null,
 							level: 0,
 							name: AuthAccountState.translate(ActionNone),

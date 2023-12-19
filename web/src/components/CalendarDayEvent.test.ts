@@ -50,7 +50,7 @@ test("CalendarDayEvent", async () => {
 		...{
 			authAccountID: null,
 			authHouseholdID: seed.authHouseholds[0].id,
-			color: 2,
+			color: "red",
 			duration: 30,
 			name: "Drop kids off",
 			participants: [

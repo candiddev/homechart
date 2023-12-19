@@ -16,11 +16,7 @@ import (
 )
 
 func run(ctx context.Context, _ []string, c *config.Config) errs.Err {
-	if c.CLI.LogFormat == "" {
-		ctx = logger.SetFormat(ctx, logger.FormatKV)
-	} else {
-		ctx = logger.SetFormat(ctx, c.CLI.LogFormat)
-	}
+	ctx = logger.SetFormat(ctx, logger.FormatKV)
 
 	ctx, cancel, cloud, err := setup(ctx, c)
 	if err != nil {

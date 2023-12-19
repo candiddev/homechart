@@ -64,7 +64,6 @@
 
 .CalendarDayEvent__item {
 	border-radius: var(--border-radius);
-	border-width: 2px;
 	box-shadow: var(--box-shadow);
 	cursor: pointer;
 	display: flex;
@@ -73,7 +72,7 @@
 	margin-bottom: 8px;
 	margin-top: 8px;
 	min-width: 150px;
-	padding: var(--padding);
+	padding: 5px;
 	text-align: left;
 	width: 100%;
 }

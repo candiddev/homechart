@@ -14,7 +14,7 @@ import type { Err } from "@lib/services/Log";
 import { Telemetry } from "@lib/services/Telemetry";
 import { AppState } from "@lib/states/App";
 import { CivilDate } from "@lib/types/CivilDate";
-import { Color, ColorEnum } from "@lib/types/Color";
+import { Color } from "@lib/types/Color";
 import { DisplayEnum } from "@lib/types/Display";
 import type { FilterType } from "@lib/types/Filter";
 import { Icons } from "@lib/types/Icons";
@@ -420,10 +420,9 @@ export function Calendar (): m.Component {
 												[] :
 												m("span", {
 													style: {
-														color: range[date.toJSON()][0].color === ColorEnum.Default || range[date.toJSON()][0].id !== null ?
+														color: range[date.toJSON()][0].color === "" || range[date.toJSON()][0].id !== null ?
 															"var(--color_primary)" :
-															`var(--color_${Color.getValue(range[date.toJSON()][0].color)
-																.toLowerCase()})`,
+															Color.toHex(range[date.toJSON()][0].color),
 													},
 												}, "•");
 										}),
@@ -654,7 +653,7 @@ export function Calendar (): m.Component {
 										[] :
 										[
 											{
-												color: Colors.planTask(AuthHouseholdState.findID(AuthAccountState.data().primaryAuthHouseholdID).preferences.colorPlanTaskEvents, ColorEnum.Default),
+												color: Colors.planTask(AuthHouseholdState.findID(AuthAccountState.data().primaryAuthHouseholdID).preferences.colorPlanTaskEvents, ""),
 												icon: Icons.PlanTask,
 												id: "tasks",
 												name: AuthAccountState.translate(ObjectTasks),

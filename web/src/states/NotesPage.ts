@@ -1,7 +1,6 @@
 import type { FormItemSelectNestedSelector } from "@lib/components/FormItemSelectNested";
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
-import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import { FilterSortChildren } from "@lib/utilities/FilterSortChildren";
 import { Sort } from "@lib/utilities/Sort";
@@ -17,7 +16,7 @@ export interface NotesPage {
 	authAccountID: NullUUID,
 	authHouseholdID: NullUUID,
 	children?: NotesPage[], // not sent by API
-	color: ColorEnum,
+	color: string,
 	created: NullTimestamp,
 	deleted: NullTimestamp,
 	icon: string,
@@ -145,7 +144,7 @@ class NotesPageManager extends DataArrayManager<NotesPage> {
 		return {
 			authAccountID: null,
 			authHouseholdID: null,
-			color: ColorEnum.Default,
+			color: "",
 			created: null,
 			deleted: null,
 			icon: "",

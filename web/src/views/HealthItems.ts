@@ -3,7 +3,6 @@ import { Table } from "@lib/components/Table";
 import type { TableHeaderSortAttrs } from "@lib/components/TableHeader";
 import { Telemetry } from "@lib/services/Telemetry";
 import { AppState } from "@lib/states/App";
-import type { ColorEnum } from "@lib/types/Color";
 import type { FilterType } from "@lib/types/Filter";
 import { Filter } from "@lib/types/Filter";
 import { Icons } from "@lib/types/Icons";
@@ -41,7 +40,7 @@ export function HealthItems (): m.Component {
 
 	function render (): m.Component<HealthItem> {
 		let correlations: {
-			color: ColorEnum,
+			color: string,
 			id: NullUUID,
 			name: string,
 		}[] = [];

@@ -140,7 +140,7 @@ func TestCloudHouseholdReadJWT(t *testing.T) {
 	oldPrv := h.Config.App.CloudPrivateKey
 	oldPub := h.Config.App.CloudPublicKey
 
-	prv, pub, _ := cryptolib.NewKeysSign()
+	prv, pub, _ := cryptolib.NewKeysAsymmetric(cryptolib.AlgorithmEd25519)
 	h.Config.App.CloudPrivateKey = prv
 	h.Config.App.CloudPublicKey = pub
 

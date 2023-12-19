@@ -20,18 +20,18 @@ export default viteDefaultConfig({
 		icons: [
 			{
 				sizes: "192x192",
-				src: "homechart_192_202202261.png",
+				src: "homechart_192_202312171.png",
 				type: "image/png",
 			},
 			{
 				sizes: "512x512",
-				src: "homechart_512_202202261.png",
+				src: "homechart_512_202312171.png",
 				type: "image/png",
 			},
 			{
 				purpose: "maskable",
 				sizes: "512x512",
-				src: "homechart_512_mask_202202261.png",
+				src: "homechart_512_mask_202312171.png",
 				type: "image/png",
 			},
 		],

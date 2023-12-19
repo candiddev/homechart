@@ -446,7 +446,7 @@ func TestAuthHouseholdCreateReadJWT(t *testing.T) {
 	oldPub := c.App.CloudPublicKey
 	endpoint := c.App.CloudEndpoint
 
-	prv, pub, _ := cryptolib.NewKeysSign()
+	prv, pub, _ := cryptolib.NewKeysAsymmetric(cryptolib.EncryptionBest)
 	c.App.CloudPrivateKey = prv
 	c.App.CloudPublicKey = pub
 

@@ -14,12 +14,12 @@ import (
 type assistantRequest interface {
 	budgetPayeeName() string
 	cookMealTimeName() string
-	date(context.Context) (date types.CivilDate, dateOriginal string)
+	date(ctx context.Context) (date types.CivilDate, dateOriginal string)
 	intent() string
 	inventoryItemName() string
 	next() bool
 	overdue() bool
-	timeZone(context.Context) string
+	timeZone(ctx context.Context) string
 }
 
 func getAssistantResponse(ctx context.Context, request assistantRequest) (speech string, url string, list []string) {
