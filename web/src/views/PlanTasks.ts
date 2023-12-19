@@ -558,8 +558,8 @@ function RenderObjects (): m.Component<{
 											},
 											style: {
 												color: Color.toHex(task.color) === "" ?
-													"black" :
-													Color.toHex(task.color),
+													"var(--color_content)" :
+													Color.toHex(task.color, AuthAccountState.data().preferences.darkMode),
 												display: task.template ?
 													"none" :
 													undefined,
@@ -596,7 +596,7 @@ function RenderObjects (): m.Component<{
 													m(Icon, {
 														icon:Icons.PlanProject,
 														style: {
-															color: Color.toHex(PlanProjectState.findID(task.planProjectID).color),
+															color: Color.toHex(PlanProjectState.findID(task.planProjectID).color, AuthAccountState.data().preferences.darkMode),
 														},
 													}),
 													m("span", task.planProjectID === null ?
@@ -655,7 +655,7 @@ function RenderObjects (): m.Component<{
 													m(Icon, {
 														icon: Icons.Personal,
 														style: {
-															color: Color.toHex(AuthHouseholdState.findMember(task.authAccountID).color),
+															color: Color.toHex(AuthHouseholdState.findMember(task.authAccountID).color, AuthAccountState.data().preferences.darkMode),
 														},
 													}),
 													m("span", AuthHouseholdState.findMemberName(task.authAccountID)),
@@ -929,7 +929,7 @@ function RenderHeaders (): m.Component<{
 										style: {
 											color: header.color === "" ?
 												undefined :
-												Color.toHex(header.color),
+												Color.toHex(header.color, AuthAccountState.data().preferences.darkMode),
 										},
 									}),
 								m("div.PlanTasks__name", [
