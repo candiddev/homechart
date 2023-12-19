@@ -23,7 +23,7 @@ func setup(ctx context.Context, config *config.Config) (outCtx context.Context, 
 	if config.App.CloudJWT != "" {
 		var c jwtCloud
 
-		t, _, err := jwt.Parse(config.App.CloudJWT, cryptolib.KeysVerify{config.App.CloudPublicKey})
+		t, _, err := jwt.Parse(config.App.CloudJWT, cryptolib.Keys[cryptolib.KeyProviderPublic]{config.App.CloudPublicKey})
 		if err != nil {
 			return ctx, cancel, false, logger.Error(ctx, errs.ErrReceiver.Wrap(err))
 		}

@@ -1,5 +1,6 @@
 import { AppState } from "@lib/states/App";
 import { CivilDate } from "@lib/types/CivilDate";
+import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import { Timestamp } from "@lib/types/Timestamp";
 
@@ -89,7 +90,7 @@ test("CalendarDay", async () => {
 			...CalendarEventState.new(),
 			...{
 				authHouseholdID: seed.authHouseholds[0].id,
-				color: 2,
+				color: Object.keys(ColorEnum)[2],
 				duration: 30,
 				name: "Drop kids off",
 				participants: [
@@ -118,7 +119,7 @@ test("CalendarDay", async () => {
 			...{
 				authAccountID: seed.authAccounts[0].id,
 				authHouseholdID: null,
-				color: 4,
+				color: Object.keys(ColorEnum)[4],
 				cookMealPlans: [
 					seed.cookMealPlans[0],
 				],

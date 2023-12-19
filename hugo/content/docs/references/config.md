@@ -15,21 +15,24 @@ Homechart can be configured using [command line arguments](../cli#-x-keyvalue), 
 
 **For command line values**, every configuration key can be set using `-x <a_config_key1>="a value" -x <a_config_key2>="another value"`, i.e. `-x cli_debug=true -x postgresql_username=homechart`.  Config values can also be set using JSON, i.e. `-x webPush='{"vapidPrivateKey": ""}'`
 
-**For environment variables**, every configuration key can be set using `HOMECHART_section_key=a value`, i.e. `HOMECHART_cli_debug=true`
+**For environment variables**, every configuration key can be set using `HOMECHART_section_key=a value`, i.e. `HOMECHART_cli_logLevel=debug`
 
-**For a JSON configuration files**, the keys are camelCase and nested under each section:
+**For configuration files**, they can be formatted using JSON or Jsonnet.  Homechart will look for `homechart.jsonnet` by default, ascending the directory tree to find it.  See [the Jsonnet reference](../jsonnet/) for more information.  **Configuration files are rendered at startup**, allowing you to use [dynamic Jsonnet functions](../jsonnet#native-functions) to dynamically alter the config, i.e.:
 
 {{< highlight json >}}
+local getRecord(type, name, fallback=null) = std.native('getRecord')(type, name, fallback);
+local adminEmailAddress = getRecord('txt', 'adminemail.local');
+
 {
-  "app": {
-    "baseURL": "example.com"
-  }
+  app: {
+    adminEmailAddresses: [
+      adminEmailAddress
+    ],
+  },
 }
 {{< /highlight >}}
 
-Configuration values can be booleans (true/false), integers (1/2/3), lists (1,2,3/a,b,c), and strings (a/b/c).
-
-The configuration file can also be formatted using Jsonnet.  See [the Jsonnet reference](../jsonnet/) for more information.
+You can view the rendered configuration by running [`homechart show-config`](../cli#show-config).
 
 ## `app`
 
@@ -179,11 +182,23 @@ Default: ""
 
 ## `cli`
 
-### `debug`
+### `configPath`
 
-Boolean, enable debug logging.
+String, path to the configuration file.  If a filename without a path is specified, Homechart will search parent directories for the filename and use the first one found.
 
-Default: false
+**Default:** `"homechart.jsonnet"`
+
+### `logFormat`
+
+String, log format to use for logging: human, kv, or raw.
+
+**Default:** `"human"`
+
+### `logLevel`
+
+String, log level to use for logging: none, debug, info, or error.
+
+**Default:** `"info"`
 
 ### `noColor`
 

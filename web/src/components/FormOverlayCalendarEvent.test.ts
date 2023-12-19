@@ -190,10 +190,10 @@ describe("FormOverlayCalendarEvent", () => {
 
 		// Color
 		const color = testing.find("#form-item-select-color");
-		testing.input(color, "2");
+		testing.input(color, "red");
 		expect(data.color)
-			.toBe(2);
-		testing.value(color, "2");
+			.toBe("red");
+		testing.value(color, "red");
 
 		// Time Zone
 		const timeZone = testing.find("#form-item-select-time-zone");

@@ -2,16 +2,15 @@ import type { IconName } from "@lib/components/Icon";
 import { AppState } from "@lib/states/App";
 import { ActionsEnum } from "@lib/types/Actions";
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import type { RecurrenceInterval } from "@lib/types/Recurrence";
 import { Recurrence } from "@lib/types/Recurrence";
 import { Timestamp } from "@lib/types/Timestamp";
 import type Stream from "mithril/stream";
 
-import { Astronomy2022, Astronomy2023, HolidaysUS } from "../dates";
-import { HolidaysCA, HolidaysCA2023 } from "../dates/HolidaysCA";
-import { HolidaysUK, HolidaysUK2023 } from "../dates/HolidaysUK";
+import { Astronomy2023, Astronomy2024, HolidaysUS } from "../dates";
+import { HolidaysCA, HolidaysCA2024 } from "../dates/HolidaysCA";
+import { HolidaysUK, HolidaysUK2024 } from "../dates/HolidaysUK";
 import { DataTypeEnum } from "../types/DataType";
 import { Permission, PermissionComponentsEnum, PermissionEnum } from "../types/Permission";
 import { ObjectEventCreated, ObjectEventDeleted, ObjectEventUpdated } from "../yaml8n";
@@ -28,7 +27,7 @@ export interface CalendarEvent {
 	authHouseholdID: NullUUID,
 	budgetRecurrence?: BudgetRecurrence, // not sent by API
 	calendarICalendarID: NullUUID,
-	color: ColorEnum,
+	color: string,
 	cookMealPlans?: CookMealPlan[], // not sent by API
 	created: NullTimestamp,
 	dateStart: string,
@@ -110,12 +109,12 @@ class CalendarEventManager extends DataArrayManager<CalendarEvent> {
 					time?: string,
 				}[] = [];
 
-				if (from.year === 2022 || to.year === 2022) {
-					events = Astronomy2022;
-				}
-
 				if (from.year === 2023 || to.year === 2023) {
 					events = Astronomy2023;
+				}
+
+				if (from.year === 2024 || to.year === 2024) {
+					events = Astronomy2024;
 				}
 
 				for (const event of events) {
@@ -160,8 +159,8 @@ class CalendarEventManager extends DataArrayManager<CalendarEvent> {
 
 				let holidays = HolidaysCA;
 
-				if (from.year === 2023 || to.year === 2023) {
-					holidays = holidays.concat(HolidaysCA2023 as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+				if (from.year === 2024 || to.year === 2024) {
+					holidays = holidays.concat(HolidaysCA2024 as any); // eslint-disable-line @typescript-eslint/no-explicit-any
 				}
 
 				const timestamp = t.toString();
@@ -205,8 +204,8 @@ class CalendarEventManager extends DataArrayManager<CalendarEvent> {
 
 				let holidays = HolidaysUK;
 
-				if (from.year === 2023 || to.year === 2023) {
-					holidays = holidays.concat(HolidaysUK2023 as any); // eslint-disable-line @typescript-eslint/no-explicit-any
+				if (from.year === 2024 || to.year === 2024) {
+					holidays = holidays.concat(HolidaysUK2024 as any); // eslint-disable-line @typescript-eslint/no-explicit-any
 				}
 
 				const timestamp = t.toString();
@@ -392,7 +391,7 @@ class CalendarEventManager extends DataArrayManager<CalendarEvent> {
 					AuthAccountState.data().primaryAuthHouseholdID :
 					null,
 			calendarICalendarID: null,
-			color: ColorEnum.Default,
+			color: "",
 			created: null,
 			dateEnd: null,
 			dateStart: "",

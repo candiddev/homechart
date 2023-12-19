@@ -1,5 +1,4 @@
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 
 import seed from "../jest/seed";
 import { AuthAccountState } from "../states/AuthAccount";
@@ -102,9 +101,9 @@ test("FormOverlayPlanTask", async () => {
 	testing.notHasClass(assignee[2], "ButtonArray__selected");
 
 	// Color
-	testing.input("#form-item-select-color", `${ColorEnum.Red}`);
+	testing.input("#form-item-select-color", "red");
 	expect(planTask.color)
-		.toBe(ColorEnum.Red);
+		.toBe("red");
 
 	// Tags
 	const tags = testing.find("#form-item-input-tags");

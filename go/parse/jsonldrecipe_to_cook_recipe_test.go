@@ -1,7 +1,7 @@
 package parse
 
 import (
-	"fmt"
+	"strconv"
 	"testing"
 
 	"github.com/candiddev/homechart/go/models"
@@ -15,7 +15,7 @@ func TestJSONLDRecipeToCookRecipe(t *testing.T) {
 	}
 
 	for i := range tests {
-		t.Run(fmt.Sprint(i), func(t *testing.T) {
+		t.Run(strconv.Itoa(i), func(t *testing.T) {
 			c := tests[i].ToCookRecipe(ctx)
 
 			assert.Equal(t, c.Image != "", true)

@@ -185,7 +185,6 @@ const views = {
 			await utilities.input(page, "#form-item-input-name", "My Vault");
 			await utilities.screenshot(page, "#table", "secrets_vaults");
 			await utilities.click(page, "#button-add");
-			await utilities.click(page, "#button-vault-created-dismiss");
 			await utilities.openMenu(page, "secrets", "all-vaults");
 			await utilities.screenshot(page, "#table", "secrets_vaults");
 
@@ -201,7 +200,6 @@ const views = {
 			await utilities.input(page, "#form-item-input-properties-key-2", "Password");
 			await utilities.input(page, "#form-item-input-properties-value-2", "password");
 			await utilities.click(page, "#button-add");
-			await utilities.click(page, "#button-value-created-dismiss");
 			await utilities.screenshot(page, "#table", "secrets_values");
 		}
 	},

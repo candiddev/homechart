@@ -35,9 +35,11 @@ func SetAuthAccountID(ctx context.Context, id uuid.UUID) context.Context {
 
 // GetISO639Code returns the ISO639Code attribute.
 func GetISO639Code(ctx context.Context) yaml8n.ISO639Code {
-	f, _ := ctx.Value(iso639Code).(yaml8n.ISO639Code)
+	if f, ok := ctx.Value(iso639Code).(yaml8n.ISO639Code); ok {
+		return f
+	}
 
-	return f
+	return ""
 }
 
 // SetISO639Code sets the ISO639Code attribute.

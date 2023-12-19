@@ -6,6 +6,7 @@
 /go/controllers/ui
 /go/coverage.out
 /go/tmp
+/go/vendor/github.com/candiddev
 /hugo/.hugo_build.lock
 /hugo/public
 /hugo/resources

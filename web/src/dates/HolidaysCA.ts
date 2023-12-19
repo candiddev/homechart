@@ -119,17 +119,17 @@ export const HolidaysCA = [
 	},
 ];
 
-export const HolidaysCA2023 = [
+export const HolidaysCA2024 = [
 	{
-		date: "2023-04-07",
+		date: "2024-03-29",
 		name: "Good Friday",
 	},
 	{
-		date: "2023-04-09",
+		date: "2023-03-31",
 		name: "Easter Sunday",
 	},
 	{
-		date: "2023-05-22",
+		date: "2024-05-20",
 		name: "Victoria Day",
 	},
 ];

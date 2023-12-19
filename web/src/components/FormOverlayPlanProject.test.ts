@@ -1,4 +1,4 @@
-import { Color } from "@lib/types/Color";
+import { ColorEnum } from "@lib/types/Color";
 
 import seed from "../jest/seed";
 import { AuthAccountState } from "../states/AuthAccount";
@@ -72,11 +72,11 @@ test("FormOverlayPlanProject", async () => {
 
 	// Color
 	const color = testing.find("#form-item-select-color");
-	testing.value(color, "0");
-	testing.input(color, "2");
+	testing.value(color, "default");
+	testing.input(color, "red");
 	expect(planProject.color)
-		.toBe(2);
-	testing.findAll(`#${color.id} option`, Color.values.length);
+		.toBe("red");
+	testing.findAll(`#${color.id} option`, Object.keys(ColorEnum).length + 1);
 
 	// Parent Project
 	testing.click(`#form-item-option-parent-project-${seed.planProjects[1].id}`);

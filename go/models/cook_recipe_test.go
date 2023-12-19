@@ -83,7 +83,8 @@ func TestCookRecipeUpdate(t *testing.T) {
 
 	c := seed.CookRecipes[0]
 	c.Name = "TestCookRecipeUpdate"
-	c.CookMealPlanLast = types.CivilDate{}
+	c.CookMealPlanCount = 1000
+	c.CookMealPlanLast = types.CivilDateToday()
 	c.create(ctx, CreateOpts{})
 	c.Directions = "test"
 	c.Image = "test"

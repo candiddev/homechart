@@ -663,7 +663,7 @@ describe("PlanTasks", () => {
 
 		// label
 		testing.text(entertainment.getElementsByTagName("i")[1], "videogame_asset");
-		testing.hasStyle(entertainment.getElementsByTagName("i")[1], `color: ${Color.toString(seed.planProjects[0].color)}`);
+		testing.hasStyle(entertainment.getElementsByTagName("i")[1], `color: ${Color.toHex(seed.planProjects[0].color)}`);
 
 		// name
 		const name = entertainment.getElementsByTagName("a")[0];

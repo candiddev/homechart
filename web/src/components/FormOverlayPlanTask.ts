@@ -155,7 +155,7 @@ export function FormOverlayPlanTask (): m.Component<FormOverlayComponentAttrs<Pl
 						vnode.attrs.data.color = e;
 					},
 					value: vnode.attrs.data.color === undefined ?
-						0 :
+						"" :
 						vnode.attrs.data.color,
 				}),
 				m(FormItem, {

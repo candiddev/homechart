@@ -9,17 +9,13 @@ title: CLI
 
 Arguments must be entered before commands.
 
-### `-c [path]`
+### `-c [paths]` {#c}
 
-Path to a [config file](../config).
+Path to the JSON/Jsonnet [configuration file](../config).
 
 ### `-d`
 
 Enable debug logging.
-
-### `-j`
-
-Output JSON instead of YAML.
 
 ### `-n`
 

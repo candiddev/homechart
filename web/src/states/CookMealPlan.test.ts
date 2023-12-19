@@ -1,5 +1,4 @@
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { Icons } from "@lib/types/Icons";
 import { Timestamp } from "@lib/types/Timestamp";
 
@@ -153,7 +152,7 @@ describe("CookMealPlanState", () => {
 				{
 					...CalendarEventState.new(),
 					...{
-						color: ColorEnum.Orange,
+						color: "orange",
 						cookMealPlans: [
 							CookMealPlanState.data()[0],
 						],
@@ -171,7 +170,7 @@ describe("CookMealPlanState", () => {
 				{
 					...CalendarEventState.new(),
 					...{
-						color: ColorEnum.Orange,
+						color: "orange",
 						cookMealPlans: [
 							CookMealPlanState.data()[0],
 						],
@@ -189,7 +188,7 @@ describe("CookMealPlanState", () => {
 				{
 					...CalendarEventState.new(),
 					...{
-						color: ColorEnum.Orange,
+						color: "orange",
 						cookMealPlans: [
 							CookMealPlanState.data()[0],
 							CookMealPlanState.data()[1],
@@ -211,7 +210,7 @@ describe("CookMealPlanState", () => {
 				{
 					...CalendarEventState.new(),
 					...{
-						color: ColorEnum.Orange,
+						color: "orange",
 						cookMealPlans: [
 							CookMealPlanState.data()[3],
 						],
@@ -227,7 +226,7 @@ describe("CookMealPlanState", () => {
 				{
 					...CalendarEventState.new(),
 					...{
-						color: ColorEnum.Orange,
+						color: "orange",
 						cookMealPlans: [
 							CookMealPlanState.data()[4],
 						],

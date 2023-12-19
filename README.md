@@ -1,11 +1,11 @@
-# [Homechart](https://homechart.app)
+# <img alt=logo src=homechart.png width=40px> Homechart
 
 > Your Handy Home Assistant
 
 [![Integration](https://github.com/candiddev/homechart/actions/workflows/integration.yaml/badge.svg?branch=main)](https://github.com/candiddev/homechart/actions/workflows/integration.yaml)
 
 [:book: Docs](https://homechart.app/docs/)\
-[:motorway: Roadmap](https://github.com/orgs/candiddev/projects/6/views/23)
+[:motorway: Roadmap](https://github.com/orgs/candiddev/projects/6/views/36)
 
 ## Features
 

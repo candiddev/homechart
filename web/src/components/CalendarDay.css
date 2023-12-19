@@ -3,7 +3,7 @@
 	border-left: var(--border);
 	flex-direction: column;
 	display: flex;
-	min-width: 17%;
+	min-width: 100px;
 	width: 100%;
 }
 

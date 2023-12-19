@@ -69,8 +69,8 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 		seed.AuthHouseholds[1].SubscriptionExpires = today
 	}
 
-	prv1, pub1, _ := cryptolib.NewKeysEncryptAsymmetric()
-	prv2, pub2, _ := cryptolib.NewKeysEncryptAsymmetric()
+	prv1, pub1, _ := cryptolib.NewKeysAsymmetric(cryptolib.AlgorithmRSA2048)
+	prv2, pub2, _ := cryptolib.NewKeysAsymmetric(cryptolib.AlgorithmRSA2048)
 	key1, _ := cryptolib.None("").EncryptSymmetric([]byte(prv1.String()), "")
 	key2, _ := cryptolib.None("").EncryptSymmetric([]byte(prv2.String()), "")
 
@@ -577,7 +577,6 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 		{
 			AuthAccountID: &seed.AuthAccounts[0].ID,
 			Location:      "School",
-			Color:         types.ColorBlue,
 			DateStart:     today.AddDays(-5),
 			Duration:      60,
 			Name:          "Pickup kids",
@@ -1349,7 +1348,7 @@ tiny pinch of salt
 	seed.PlanTasks = PlanTasks{
 		{
 			AuthAccountID: seed.PlanProjects[2].AuthAccountID,
-			Color:         4,
+			Color:         types.ColorYellow,
 			DueDate:       &tomorrowTime,
 			Name:          "Idiots Guide to Homechart",
 			Position:      "0",
@@ -1361,7 +1360,7 @@ tiny pinch of salt
 		},
 		{
 			AuthAccountID: seed.PlanProjects[2].AuthAccountID,
-			Color:         3,
+			Color:         types.ColorOrange,
 			Details:       "Remember to scan favorites into Homechart!",
 			Done:          true,
 			DueDate:       &tomorrowTime,
@@ -1375,7 +1374,7 @@ tiny pinch of salt
 		},
 		{
 			AuthAccountID: seed.PlanProjects[4].AuthAccountID,
-			Color:         2,
+			Color:         types.ColorPink,
 			DueDate:       &nextWeek,
 			Duration:      60,
 			Name:          "Finish removing old magazines",
@@ -1388,7 +1387,7 @@ tiny pinch of salt
 		},
 		{
 			AuthAccountID: seed.PlanProjects[2].AuthAccountID,
-			Color:         3,
+			Color:         types.ColorOrange,
 			DueDate:       &nextWeek,
 			Duration:      20,
 			Name:          "Walk the dog",
@@ -1408,7 +1407,7 @@ tiny pinch of salt
 			},
 			AuthAccountID:   &seed.AuthAccounts[0].ID,
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
-			Color:           2,
+			Color:           types.ColorPink,
 			Details:         "Kids need to help!",
 			DueDate:         &tomorrowTime1,
 			Duration:        120,
@@ -1430,7 +1429,7 @@ tiny pinch of salt
 		},
 		{
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
-			Color:           3,
+			Color:           types.ColorOrange,
 			DueDate:         &tomorrowTime2,
 			Duration:        5,
 			Name:            "Empty trash",
@@ -1444,7 +1443,7 @@ tiny pinch of salt
 		},
 		{
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
-			Color:           4,
+			Color:           types.ColorYellow,
 			Done:            true,
 			DueDate:         &nextWeek,
 			Duration:        25,
@@ -1459,7 +1458,7 @@ tiny pinch of salt
 		},
 		{
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
-			Color:           2,
+			Color:           types.ColorPink,
 			DueDate:         &tomorrowTime3,
 			Duration:        5,
 			Name:            "Clean gargbage disposal",
@@ -1473,7 +1472,7 @@ tiny pinch of salt
 		},
 		{
 			AuthHouseholdID: &seed.AuthHouseholds[0].ID,
-			Color:           3,
+			Color:           types.ColorOrange,
 			DueDate:         &nextWeek,
 			Duration:        240,
 			Name:            "Clean the stove",
@@ -1588,12 +1587,12 @@ Call someone!
 		},
 	}
 
-	akey1, _ := cryptolib.NewKeyEncryptSymmetric()
-	key1Encrypt, _ := seed.AuthAccounts[0].PublicKey.EncryptAsymmetric([]byte(akey1.String()))
-	akey2, _ := cryptolib.NewKeyEncryptSymmetric()
-	key2Encrypt, _ := seed.AuthAccounts[0].PublicKey.EncryptAsymmetric([]byte(akey2.String()))
-	akey3, _ := cryptolib.NewKeyEncryptSymmetric()
-	key3Encrypt, _ := seed.AuthAccounts[0].PublicKey.EncryptAsymmetric([]byte(akey3.String()))
+	akey1, _ := cryptolib.NewKeySymmetric(cryptolib.AlgorithmAES128)
+	key1Encrypt, _ := seed.AuthAccounts[0].PublicKey.Key.EncryptAsymmetric([]byte(akey1.String()), akey1.ID, cryptolib.EncryptionBest)
+	akey2, _ := cryptolib.NewKeySymmetric(cryptolib.AlgorithmAES128)
+	key2Encrypt, _ := seed.AuthAccounts[0].PublicKey.Key.EncryptAsymmetric([]byte(akey2.String()), akey2.ID, cryptolib.EncryptionBest)
+	akey3, _ := cryptolib.NewKeySymmetric(cryptolib.AlgorithmAES128)
+	key3Encrypt, _ := seed.AuthAccounts[0].PublicKey.Key.EncryptAsymmetric([]byte(akey3.String()), akey3.ID, cryptolib.EncryptionBest)
 
 	seed.SecretsVaults = SecretsVaults{
 		{
@@ -1632,16 +1631,16 @@ Call someone!
 		"URL":      "https://homechart.app",
 	})
 
-	v1Encrypt, _ := akey1.EncryptSymmetric(v1)
-	v1Name, _ := akey1.EncryptSymmetric([]byte("Homechart"))
-	v1Tags, _ := akey1.EncryptSymmetric([]byte(`["jane", "app"]`))
+	v1Encrypt, _ := akey1.Key.EncryptSymmetric(v1, akey1.ID)
+	v1Name, _ := akey1.Key.EncryptSymmetric([]byte("Homechart"), akey1.ID)
+	v1Tags, _ := akey1.Key.EncryptSymmetric([]byte(`["jane", "app"]`), akey1.ID)
 
 	v2, _ := json.Marshal(map[string]string{ //nolint: errchkjson
 		"Note": "The code is 112233, otherwise there is a key under a rock by her front door.",
 	})
-	v2Encrypt, _ := akey1.EncryptSymmetric(v2)
-	v2Name, _ := akey1.EncryptSymmetric([]byte("Mom's Garage Code"))
-	v2Tags, _ := akey1.EncryptSymmetric([]byte(`["grandma", "garage"]`))
+	v2Encrypt, _ := akey1.Key.EncryptSymmetric(v2, akey1.ID)
+	v2Name, _ := akey1.Key.EncryptSymmetric([]byte("Mom's Garage Code"), akey1.ID)
+	v2Tags, _ := akey1.Key.EncryptSymmetric([]byte(`["grandma", "garage"]`), akey1.ID)
 
 	v3, _ := json.Marshal(map[string]string{ //nolint: errchkjson
 		"Password": "doefamily",
@@ -1649,16 +1648,16 @@ Call someone!
 		"Username": "doefamily",
 		"URL":      "https://example.com",
 	})
-	v3Encrypt, _ := akey2.EncryptSymmetric(v3)
-	v3Name, _ := akey2.EncryptSymmetric([]byte("Local Credit Union"))
-	v3Tags, _ := akey2.EncryptSymmetric([]byte(`["bank", "app"]`))
+	v3Encrypt, _ := akey2.Key.EncryptSymmetric(v3, akey2.ID)
+	v3Name, _ := akey2.Key.EncryptSymmetric([]byte("Local Credit Union"), akey2.ID)
+	v3Tags, _ := akey2.Key.EncryptSymmetric([]byte(`["bank", "app"]`), akey2.ID)
 
 	v4, _ := json.Marshal(map[string]string{ //nolint: errchkjson
 		"SSN": "xxx-yy-zzzz",
 	})
-	v4Encrypt, _ := akey2.EncryptSymmetric(v4)
-	v4Name, _ := akey2.EncryptSymmetric([]byte("Jennifer Doe"))
-	v4Tags, _ := akey2.EncryptSymmetric([]byte(`["person", "id"]`))
+	v4Encrypt, _ := akey2.Key.EncryptSymmetric(v4, akey2.ID)
+	v4Name, _ := akey2.Key.EncryptSymmetric([]byte("Jennifer Doe"), akey2.ID)
+	v4Tags, _ := akey2.Key.EncryptSymmetric([]byte(`["person", "id"]`), akey2.ID)
 
 	seed.SecretsValues = SecretsValues{
 		{

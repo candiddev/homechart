@@ -790,7 +790,7 @@ AuthAccountState.data.map((authAccount) => {
 				},
 				{
 					icon: Icons.Roadmap,
-					link: "https://github.com/orgs/candiddev/projects/6/views/23",
+					link: "https://github.com/orgs/candiddev/projects/6/views/36",
 					name: AuthAccountState.translate(WebGlobalAboutRoadmap),
 				},
 				{

@@ -149,7 +149,9 @@ func (c *CookRecipe) update(ctx context.Context, _ UpdateOpts) errs.Err {
 	return logger.Error(ctx, db.Query(ctx, false, c, `
 UPDATE cook_recipe
 SET
-	  deleted = :deleted
+	  cook_meal_plan_count = :cook_meal_plan_count
+	, cook_meal_plan_last = :cook_meal_plan_last
+	, deleted = :deleted
 	, directions = :directions
 	, image = :image
 	, ingredients = :ingredients

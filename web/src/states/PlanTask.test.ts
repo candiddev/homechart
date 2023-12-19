@@ -1,6 +1,5 @@
 import { AppState } from "@lib/states/App";
 import { CivilDate } from "@lib/types/CivilDate";
-import { ColorEnum } from "@lib/types/Color";
 import { Recurrence } from "@lib/types/Recurrence";
 import { Timestamp } from "@lib/types/Timestamp";
 import { Clone } from "@lib/utilities/Clone";
@@ -372,7 +371,7 @@ describe("PlanTaskState", () => {
 				...{
 					authAccountID: "1",
 					authHouseholdID: null,
-					color: ColorEnum.Blue,
+					color: "blue",
 					dueDate: from.toString(),
 					name: "test 1",
 					shortID: "1",
@@ -434,7 +433,7 @@ describe("PlanTaskState", () => {
 					...{
 						authAccountID: "1",
 						authHouseholdID: null,
-						color: ColorEnum.Blue,
+						color: "blue",
 						details: "[icon@label Personal](/tasks?filter=personal)",
 						duration: 30,
 						icon: "done_all",
@@ -451,7 +450,7 @@ describe("PlanTaskState", () => {
 					...{
 						authAccountID: "1",
 						authHouseholdID: "1",
-						color: ColorEnum.Pink,
+						color: "blue",
 						details: "[icon@label Household](/tasks?filter=household)",
 						duration: 0,
 						icon: "done_all",
@@ -472,7 +471,7 @@ describe("PlanTaskState", () => {
 					...{
 						authAccountID: "1",
 						authHouseholdID: null,
-						color: ColorEnum.Pink,
+						color: "blue",
 						details: "[icon@label Personal](/tasks?filter=personal)",
 						duration: 30,
 						icon: "done_all",

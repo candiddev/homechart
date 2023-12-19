@@ -187,7 +187,7 @@ func TestPlanTaskUpdate(t *testing.T) {
 	p.Notify = true
 	p.ParentID = &seed.PlanTasks[4].ID
 	p.Position = "10:a"
-	p.Color = 4
+	p.Color = types.ColorBrown
 	p.PlanProjectID = &seed.PlanProjects[7].ID
 	p.RecurOnDone = true
 	p.Recurrence = &types.Recurrence{
