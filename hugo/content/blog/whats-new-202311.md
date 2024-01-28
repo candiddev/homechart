@@ -15,7 +15,7 @@ We have deprecated YAML support for Homechart configurations in this release.  P
 {{% /alert %}}
 
 {{% alert title="Deprecation Warning" color="warning" %}}
-We are changing our environment variable format.  The old format of uppercase snake case `HOMECHART_CLI_DEBUG` will no longer work in future versions.  Please convert your environment variables to camel case snake case (`HOMECHART_cli_debug`).  Visit [the config docs](../../docs/references/config) for more information.
+We are changing our environment variable format.  The old format of uppercase snake case `HOMECHART_CLI_DEBUG` will no longer work in future versions.  Please convert your environment variables to camel case snake case (`HOMECHART_cli_debug`).  Visit [the config docs]({{< ref "/docs/references/config" >}}) for more information.
 {{% /alert %}}
 
 ## Fixes

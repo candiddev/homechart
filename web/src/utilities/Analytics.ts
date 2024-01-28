@@ -16,9 +16,7 @@ export const Analytics = {
 			event: "login",
 			method: type === OIDCProviderTypeEnum.Google ?
 				"google" :
-				type === OIDCProviderTypeEnum.Apple ?
-					"apple" :
-					"email",
+				"email",
 		});
 	},
 	purchase: (processor: AuthHouseholdSubscriptionProcessorEnum): void => {
@@ -32,9 +30,7 @@ export const Analytics = {
 			event: "sign_up",
 			method: type === OIDCProviderTypeEnum.Google ?
 				"google" :
-				type === OIDCProviderTypeEnum.Apple ?
-					"apple" :
-					"email",
+				"email",
 		});
 	},
 };

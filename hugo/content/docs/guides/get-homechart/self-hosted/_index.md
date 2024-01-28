@@ -12,7 +12,7 @@ Self-Hosting Homechart is easy:
 - Determine if you'll use binaries or containers
 - Install and setup PostgreSQL
 - Install and setup Homechart
-- If using [Households](/pricing/), link your self-hosted instance to Homechart Cloud
+- If using [Households]({{< ref "/pricing" >}}), link your self-hosted instance to Homechart Cloud
 
 ## 1. Requirements
 
@@ -99,7 +99,7 @@ Homechart containers are available on [GitHub](https://github.com/candiddev/home
 
 ### Setup Homechart
 
-Homechart can be configured using a configuration file, environment variables, or command line arguments.  See the [Config Reference](/docs/references/config) for details.
+Homechart can be configured using a configuration file, environment variables, or command line arguments.  See the [Config Reference]({{< ref "/docs/references/config" >}}) for details.
 
 {{% alert title="HTTPS" color="warning" %}}
 Homechart should be accessed over HTTPS.  Certain functionality will only work this way.  By default, Homechart is only available using HTTP, you'll need to add a certificate to Homechart or your reverse proxy.
@@ -107,11 +107,11 @@ Homechart should be accessed over HTTPS.  Certain functionality will only work t
 
 ## 5. (Optional) Link Households to Homechart Cloud
 
-Using [households](/pricing/) in Homechart requires a subscription, even for self-hosted users. You can subscribe monthly or buy a lifetime subscription/one time purchase, too.
+Using [households]({{< ref "/pricing" >}}) in Homechart requires a subscription, even for self-hosted users. You can subscribe monthly or buy a lifetime subscription/one time purchase, too.
 
 You’ll need to link your self-hosted instance household to a household on Homechart Cloud to use your subscription. No data is transferred to Homechart Cloud, it’s just used to transfer the subscription details.
 
-- [Sign up](/docs/guides/get-homechart/sign-up) for a new account on Homechart Cloud
+- [Sign up]({{< ref "/docs/guides/get-homechart/sign-up" >}}) for a new account on Homechart Cloud
 - On Homechart Cloud, create a household and setup a subscription (either during setup or under https://web.homechart.app/subscription)
 - On your self-hosted instance, go to **Subscription** in the menu and copy the **Self-Hosted ID**
 - On Homechart Cloud, paste the **Self-Hosted ID** into the appropriate field. Your household should now be linked!

@@ -420,9 +420,7 @@ export function Calendar (): m.Component {
 												[] :
 												m("span", {
 													style: {
-														color: range[date.toJSON()][0].color === "" || range[date.toJSON()][0].id !== null ?
-															"var(--color_primary)" :
-															Color.toHex(range[date.toJSON()][0].color),
+														color: Color.toHex(Colors.calendarEvent(range[date.toJSON()][0].color)),
 													},
 												}, "•");
 										}),

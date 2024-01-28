@@ -236,6 +236,8 @@ export const BudgetTransactionState = {
 				if (BudgetTransactionState.inResponse(response)) {
 					BudgetTransactionState.data(response.dataValue);
 					BudgetTransactionState.total = response.dataTotal;
+
+					m.redraw();
 					return;
 				}
 

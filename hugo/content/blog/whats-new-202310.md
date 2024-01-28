@@ -15,12 +15,12 @@ We have deprecated YAML support for Homechart configurations in this release.  P
 {{% /alert %}}
 
 {{% alert title="Deprecation Warning" color="warning" %}}
-We are changing our environment variable format.  The old format of uppercase snake case `HOMECHART_CLI_DEBUG` will no longer work in future versions.  Please convert your environment variables to camel case snake case (`HOMECHART_cli_debug`).  Visit [the config docs](../../docs/references/config) for more information.
+We are changing our environment variable format.  The old format of uppercase snake case `HOMECHART_CLI_DEBUG` will no longer work in future versions.  Please convert your environment variables to camel case snake case (`HOMECHART_cli_debug`).  Visit [the config docs]({{< ref " /docs/references/config" >}}) for more information.
 {{% /alert %}}
 
 ## Enhancements
 
 - Calendar Events now partially dim if they are in progress.
-- Homechart now uses JSON/Jsonnet for configuration.  See the [documentation](../../docs/references/config) for more information.
-- Homechart now uses camel case instead of uppercase for environment variables.  See the [documentation](../../docs/references/config) for more information.
+- Homechart now uses JSON/Jsonnet for configuration.  See the [documentation]({{< ref "/docs/references/config" >}}) for more information.
+- Homechart now uses camel case instead of uppercase for environment variables.  See the [documentation]({{< ref "/docs/references/config" >}}) for more information.
 - Improved logging verbosity and formatting for self-hosted users.

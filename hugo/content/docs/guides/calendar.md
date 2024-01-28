@@ -13,7 +13,7 @@ Events are things that are happening within your household.
 
 ### Participants
 
-Events can have participants, members of your household that will be at the event.  When this is set, only those members will be notified of the Event, and the Event will use the [household member's colors](../settings#household).
+Events can have participants, members of your household that will be at the event.  When this is set, only those members will be notified of the Event, and the Event will use the [household member's colors]({{< ref "/docs/guides/settings#household" >}}).
 
 ### Location and Travel
 
@@ -37,8 +37,8 @@ For your convenience, Homechart comes with a few calendars for common holidays a
 
 Calendar integrates with:
 
-- [Budget](../budget): Calendar will display **Budget > Recurring Transactions**
-- [Cook](../plan): Calendar will manage your **Cook > Meal Plans**
-- [Health](../health): Calendar will manage your **Health > Logs**
-- [Plan](../plan): Calendar will display **Plan > Tasks**
-- [Shop](../shop): Calendar can add your **Cook > Meal Plan** Ingredients to your **Shop > Pick Up** list
+- [Budget]({{< ref "/docs/guides/budget" >}}): Calendar will display **Budget > Recurring Transactions**
+- [Cook]({{< ref "/docs/guides/plan" >}}): Calendar will manage your **Cook > Meal Plans**
+- [Health]({{< ref "/docs/guides/health" >}}): Calendar will manage your **Health > Logs**
+- [Plan]({{< ref "/docs/guides/plan" >}}): Calendar will display **Plan > Tasks**
+- [Shop]({{< ref "/docs/guides/shop" >}}): Calendar can add your **Cook > Meal Plan** Ingredients to your **Shop > Pick Up** list

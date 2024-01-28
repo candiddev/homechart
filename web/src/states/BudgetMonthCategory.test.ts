@@ -59,12 +59,12 @@ describe("BudgetMonthCategoryState", () => {
 				budgetTransactionAmount: -25000,
 				created: null,
 				id: null,
-				targetAmount: 55000,
+				targetAmount: 42500,
 				yearMonth: 0,
 			});
 
 		expect(c.targetAmount)
-			.toBe(112500);
+			.toBe(100000);
 		expect(output[12])
 			.toStrictEqual({
 				...BudgetMonthCategoryState.new(),
@@ -99,7 +99,6 @@ describe("BudgetMonthCategoryState", () => {
 						},
 					},
 				},
-				5000,
 				201912,
 			),
 		)
@@ -120,7 +119,6 @@ describe("BudgetMonthCategoryState", () => {
 						},
 					},
 				},
-				5000,
 				201909,
 			),
 		)
@@ -142,7 +140,6 @@ describe("BudgetMonthCategoryState", () => {
 						},
 					},
 				},
-				5000,
 				201908,
 			),
 		)

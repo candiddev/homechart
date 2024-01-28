@@ -27,10 +27,10 @@ You'll likely see a lot of Correlations over time, the best way to interpret it 
 
 ## Logs
 
-Health > Logs are the way you record an Input or an Output occurring.  Logs are date specific, so you can enter all of your Inputs/Outputs at the end of the day if necessary.  You create Logs in [Calendar](../calendar).
+Health > Logs are the way you record an Input or an Output occurring.  Logs are date specific, so you can enter all of your Inputs/Outputs at the end of the day if necessary.  You create Logs in [Calendar]({{< ref "/docs/guides/calendar" >}}).
 
 ## Integrations
 
 Health integrates with:
 
-- [Calendar](../calendar): Health > Logs are managed and displayed in **Calendar**
+- [Calendar]({{< ref "/docs/guides/calendar" >}}): Health > Logs are managed and displayed in **Calendar**

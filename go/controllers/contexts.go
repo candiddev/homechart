@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"context"
-	"strconv"
 	"time"
 
 	"github.com/candiddev/homechart/go/models"
@@ -45,29 +44,19 @@ func setAuthAccountName(ctx context.Context, name string) context.Context {
 }
 
 func getAuthSessionAdmin(ctx context.Context) bool {
-	b, err := strconv.ParseBool(logger.GetAttribute(ctx, contextAuthSessionAdmin))
-	if err == nil && b {
-		return b
-	}
-
-	return false
+	return logger.GetAttribute[bool](ctx, contextAuthSessionAdmin)
 }
 
 func setAuthSessionAdmin(ctx context.Context, admin bool) context.Context {
-	return logger.SetAttribute(ctx, contextAuthSessionAdmin, strconv.FormatBool(admin))
+	return logger.SetAttribute(ctx, contextAuthSessionAdmin, admin)
 }
 
 func getAuthSessionID(ctx context.Context) uuid.UUID {
-	u, err := uuid.Parse(logger.GetAttribute(ctx, contextAuthSessionID))
-	if err == nil && u != uuid.Nil {
-		return u
-	}
-
-	return uuid.Nil
+	return logger.GetAttribute[uuid.UUID](ctx, contextAuthSessionID)
 }
 
 func setAuthSessionID(ctx context.Context, id uuid.UUID) context.Context {
-	return logger.SetAttribute(ctx, contextAuthSessionID, id.String())
+	return logger.SetAttribute(ctx, contextAuthSessionID, id)
 }
 
 func getChild(ctx context.Context) bool {
@@ -131,7 +120,7 @@ func setPermissions(ctx context.Context, p models.PermissionsOpts) context.Conte
 }
 
 func getRequestID(ctx context.Context) string {
-	return logger.GetAttribute(ctx, contextRequestID)
+	return logger.GetAttribute[string](ctx, contextRequestID)
 }
 
 func setRequestID(ctx context.Context, requestID string) context.Context {

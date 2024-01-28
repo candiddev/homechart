@@ -85,7 +85,7 @@ export const BudgetMonthCategoryState = {
 		];
 
 		for (const budget of b.budgetMonthCategories) {
-			budget.targetAmount = BudgetMonthCategoryState.targetAmount(budget, budget.amount, b.yearMonth);
+			budget.targetAmount = BudgetMonthCategoryState.targetAmount(budget, b.yearMonth);
 
 			if (budget.budgetCategory.grouping === "") {
 				if (b.yearMonth === budget.yearMonth) {
@@ -161,7 +161,7 @@ export const BudgetMonthCategoryState = {
 			yearMonth: 0,
 		};
 	},
-	targetAmount: (category: BudgetMonthCategory, init: number, y: number): number => {
+	targetAmount: (category: BudgetMonthCategory, y: number): number => {
 		if (category.budgetCategory.targetAmount === 0) {
 			return 0;
 		}
@@ -185,7 +185,7 @@ export const BudgetMonthCategoryState = {
 			return category.budgetCategory.targetAmount;
 		}
 
-		const amount = category.budgetCategory.targetAmount - (category.balance + init);
+		const amount = category.budgetCategory.targetAmount - category.balance - category.amount;
 
 		if (m <= 0 || category.budgetCategory.targetMonth === 0 && category.budgetCategory.targetYear === 0) {
 			return amount;

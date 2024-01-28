@@ -5,7 +5,7 @@ description: Adding or Updating Translations
 title: Translations
 ---
 
-Translating Homechart is an ongoing process.  You can help us out by [updating or adding translations](#updating-or-adding-translations) or [contacting support](/docs/guides/getting-help/paid-support) with the language you want or corrected translations.
+Translating Homechart is an ongoing process.  You can help us out by [updating or adding translations](#updating-or-adding-translations) or contacting support with the language you want or corrected translations.
 
 ## Updating or Adding Translations
 

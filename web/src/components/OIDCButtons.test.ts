@@ -12,7 +12,6 @@ test("OIDCButtons", async () => {
 		{
 			dataType: "OIDCProviders",
 			dataValue: [
-				OIDCProviderTypeEnum.Apple,
 				OIDCProviderTypeEnum.Google,
 			],
 		},
@@ -22,7 +21,6 @@ test("OIDCButtons", async () => {
 	await testing.sleep(100);
 
 	testing.find("#button-google");
-	testing.find("#button-apple");
 
 	testing.mocks.responses = [
 		{

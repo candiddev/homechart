@@ -1,7 +1,9 @@
 import { YearMonth } from "@lib/types/YearMonth";
+import { Clone } from "@lib/utilities/Clone";
 
 import seed from "../jest/seed";
 import { BudgetMonthState } from "./BudgetMonth";
+import { BudgetMonthCategoryState } from "./BudgetMonthCategory";
 
 describe("BudgetMonthState", () => {
 	test("load/set", async () => {
@@ -25,12 +27,16 @@ describe("BudgetMonthState", () => {
 
 		await BudgetMonthState.read(seed.authHouseholds[0].id);
 
+		const bm = Clone(seed.budgetMonths[0]);
+
+		BudgetMonthCategoryState.groupingSort(bm);
+
 		expect(BudgetMonthState.data())
 			.toStrictEqual({
 				...seed.budgetMonths[0],
 				...{
 					budgetMonthCategories: BudgetMonthState.data().budgetMonthCategories,
-					targetAmount: 112500,
+					targetAmount: (bm as any).targetAmount,
 				},
 			});
 

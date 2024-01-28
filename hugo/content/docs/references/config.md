@@ -5,7 +5,7 @@ description: Reference documentation for Homechart's configuration
 title: Config
 ---
 
-Homechart can be configured using [command line arguments](../cli#-x-keyvalue), environment variables or a JSON/Jsonnet configuration file.  The configuration is divided into sections:
+Homechart can be configured using [command line arguments]({{< ref "/docs/references/cli#-x-keyvalue" >}}), environment variables or a JSON/Jsonnet configuration file.  The configuration is divided into sections:
 
 - <a href="#app">App</a>
 - <a href="#cli">App</a>
@@ -17,7 +17,7 @@ Homechart can be configured using [command line arguments](../cli#-x-keyvalue), 
 
 **For environment variables**, every configuration key can be set using `HOMECHART_section_key=a value`, i.e. `HOMECHART_cli_logLevel=debug`
 
-**For configuration files**, they can be formatted using JSON or Jsonnet.  Homechart will look for `homechart.jsonnet` by default, ascending the directory tree to find it.  See [the Jsonnet reference](../jsonnet/) for more information.  **Configuration files are rendered at startup**, allowing you to use [dynamic Jsonnet functions](../jsonnet#native-functions) to dynamically alter the config, i.e.:
+**For configuration files**, they can be formatted using JSON or Jsonnet.  Homechart will look for `homechart.jsonnet` by default, ascending the directory tree to find it.  See [the Jsonnet reference]({{< ref "/docs/references/jsonnet" >}} for more information.  **Configuration files are rendered at startup**, allowing you to use [dynamic Jsonnet functions]({{< ref "/docs/references/jsonnet#native-functions" >}}) to dynamically alter the config, i.e.:
 
 {{< highlight json >}}
 local getRecord(type, name, fallback=null) = std.native('getRecord')(type, name, fallback);
@@ -32,7 +32,7 @@ local adminEmailAddress = getRecord('txt', 'adminemail.local');
 }
 {{< /highlight >}}
 
-You can view the rendered configuration by running [`homechart show-config`](../cli#show-config).
+You can view the rendered configuration by running [`homechart show-config`]({{< ref "/docs/references/cli#show-config" >}}).
 
 ## `app`
 
@@ -116,19 +116,19 @@ Default: 3000
 
 ### `proxyAddress` {#app-proxyaddress}
 
-String, Upstream IPv4 or IPv6 address of a trusted proxy.  See the [Single Sign-On (SSO) guide](/docs/guides/get-homechart/self-hosted/sso) for usage details.
+String, Upstream IPv4 or IPv6 address of a trusted proxy.  See the [Single Sign-On (SSO) guide]({{< ref "/docs/guides/get-homechart/self-hosted/sso" >}}) for usage details.
 
 Default: ""
 
 ### `proxyHeaderEmail` {#app-proxyheaderemail}
 
-String, proxy header that should be associated with an account email address.  See [Single Sign-On (SSO) guide](/docs/guides/get-homechart/self-hosted/sso) for usage details.
+String, proxy header that should be associated with an account email address.  See [Single Sign-On (SSO) guide]({{< ref "/docs/guides/get-homechart/self-hosted/sso" >}}) for usage details.
 
 Default: ""
 
 ### `proxyHeaderName` {#app-proxyheadername}
 
-String, proxy header that should be associated with an account name.  See [Single Sign-On (SSO) guide](/docs/guides/get-homechart/self-hosted/sso) for usage details.
+String, proxy header that should be associated with an account name.  See [Single Sign-On (SSO) guide]({{< ref "/docs/guides/get-homechart/self-hosted/sso" >}}) for usage details.
 
 Default: ""
 

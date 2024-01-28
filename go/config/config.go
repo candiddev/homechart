@@ -86,11 +86,6 @@ type OAuth struct {
 
 // OIDC contains config options.
 type OIDC struct {
-	AppleClientID string `json:"appleClientID,omitempty"` // AppleClientID is used for web-based sign ins and should have the right URL for the environment
-	AppleKeyID    string `json:"appleKeyID,omitempty"`
-	//nolint:tagliatelle
-	AppleKeyPEMBase64  string `json:"appleKeyPEMBase64,omitempty"` // openssl pkcs8 -nocrypt -in <key>.p8 | base64 -w0
-	AppleTeamID        string `json:"appleTeamID,omitempty"`
 	GoogleClientID     string `json:"googleClientID,omitempty"`
 	GoogleClientSecret string `json:"googleClientSecret,omitempty"`
 }

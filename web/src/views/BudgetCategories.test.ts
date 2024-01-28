@@ -52,7 +52,7 @@ test("BudgetCategories", async () => {
 	testing.text("#subtitle-carryover", "Carryover: $0.00");
 	testing.text("#subtitle-income", "Income: $1,000.00");
 	testing.text("#subtitle-budgeted", "Budgeted:-$600.00");
-	testing.text("#subtitle-target-amount", "Target Amount:-$1,125.00");
+	testing.text("#subtitle-target-amount", "Target Amount:-$1,000.00");
 	testing.text("#subtitle-remaining", "Remaining: $400.00");
 	testing.findAll("tbody tr", 19);
 	testing.text("#table-data-home-budgetcategoryname", "Homeexpand_less");

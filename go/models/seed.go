@@ -526,7 +526,7 @@ func Seed(ctx context.Context, demo bool) (*Data, errs.Err) { //nolint:gocognit,
 				{
 					Amount:           -10000,
 					BudgetCategoryID: &seed.BudgetCategories[0].ID,
-					YearMonth:        today.AddMonths(1).YearMonth(),
+					YearMonth:        nextMonth.YearMonth(),
 				},
 			},
 			Note: "Lunch",

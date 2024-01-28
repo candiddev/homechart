@@ -10,7 +10,6 @@ require (
 	github.com/candiddev/shared v0.0.0-00010101000000-000000000000
 	github.com/coreos/go-oidc v2.2.1+incompatible
 	github.com/go-chi/chi/v5 v5.0.10
-	github.com/golang-jwt/jwt/v4 v4.5.0
 	github.com/google/uuid v1.3.0
 	github.com/jmoiron/sqlx v1.3.5
 	github.com/pquerna/otp v1.4.0

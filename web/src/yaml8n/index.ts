@@ -419,17 +419,6 @@ export const EmailPushTaskReminderSubject: Translation = {
 	zh: `任务提醒`,
 };
 
-export const EmailReferralBodyApple: Translation = {
-	ar: `أنت مشترك حاليًا في Homechart باستخدام متجر التطبيقات. للأسف ، لا يسمحون لنا بإلغاء اشتراكك ، لذا يجب عليك القيام بذلك يدويًا.`,
-	de: `Sie haben derzeit Homechart über den App Store abonniert. Leider erlauben sie uns nicht, Ihr Abonnement zu kündigen, also müssen Sie dies manuell tun.`,
-	en: `You're currently subscribed to Homechart using the App Store.  Unfortunately, they don't allow us to cancel your subscription so you must do this manually.`,
-	es: `Actualmente estás suscrito a Homechart usando la App Store. Lamentablemente, no nos permiten cancelar su suscripción, por lo que debe hacerlo manualmente.`,
-	fr: `Vous êtes actuellement abonné à Homechart via l'App Store. Malheureusement, ils ne nous permettent pas d'annuler votre abonnement, vous devez donc le faire manuellement.`,
-	hi: `आपने वर्तमान में ऐप स्टोर का उपयोग करके होमचार्ट की सदस्यता ली है। दुर्भाग्य से, वे हमें आपकी सदस्यता रद्द करने की अनुमति नहीं देते हैं, इसलिए आपको इसे मैन्युअल रूप से करना होगा।`,
-	nl: `U bent momenteel geabonneerd op Homechart via de App Store. Helaas staan ze ons niet toe om uw abonnement op te zeggen, dus u moet dit handmatig doen.`,
-	zh: `您目前已使用 App Store 订阅了 Homechart。不幸的是，他们不允许我们取消您的订阅，因此您必须手动执行此操作。`,
-};
-
 export const EmailReferralBodyCancelled: Translation = {
 	ar: `لقد ألغينا اشتراكك السابق في Homechart.`,
 	de: `Wir haben Ihr vorheriges Homechart-Abonnement gekündigt.`,
@@ -7445,28 +7434,6 @@ export const WebGlobalSubscriptionProcessorLifetime: Translation = {
 	zh: `寿命`,
 };
 
-export const WebGlobalSubscriptionProcessorMonthlyApple: Translation = {
-	ar: `شهريًا (عبر Apple App Store)`,
-	de: `Monatlich (über Apple App Store)`,
-	en: `Monthly (via Apple App Store)`,
-	es: `Mensual (a través de Apple App Store)`,
-	fr: `Mensuel (via Apple App Store)`,
-	hi: `मासिक (एप्पल ऐप स्टोर के माध्यम से)`,
-	nl: `Maandelijks (via Apple App Store)`,
-	zh: `每月（通过 Apple App Store）`,
-};
-
-export const WebGlobalSubscriptionProcessorMonthlyGoogle: Translation = {
-	ar: `شهريًا (عبر متجر Google Play)`,
-	de: `Monatlich (über Google Play Store)`,
-	en: `Monthly (via Google Play Store)`,
-	es: `Mensual (a través de Google Play Store)`,
-	fr: `Mensuel (via Google Play Store)`,
-	hi: `मासिक (Google Play Store के माध्यम से)`,
-	nl: `Maandelijks (via Google Play Store)`,
-	zh: `每月（通过 Google Play 商店）`,
-};
-
 export const WebGlobalSubscriptionProcessorMonthlyPaddle: Translation = {
 	ar: `شهريًا (عبر Paddle)`,
 	de: `Monatlich (über Paddel)`,
@@ -7476,17 +7443,6 @@ export const WebGlobalSubscriptionProcessorMonthlyPaddle: Translation = {
 	hi: `मासिक (पैडल के माध्यम से)`,
 	nl: `Maandelijks (via Paddle)`,
 	zh: `每月（通过 Paddle）`,
-};
-
-export const WebGlobalSubscriptionProcessorYearlyPaddle: Translation = {
-	ar: `سنويًا (عبر Paddle)`,
-	de: `Jährlich (über Paddel)`,
-	en: `Yearly (via Paddle)`,
-	es: `Anual (a través de Paddle)`,
-	fr: `Annuel (via Paddle)`,
-	hi: `वार्षिक (पैडल के माध्यम से)`,
-	nl: `Jaarlijks (via Paddle)`,
-	zh: `每年（通过 Paddle）`,
 };
 
 export const WebGlobalTOTPCode: Translation = {

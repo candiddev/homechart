@@ -3,10 +3,9 @@ import "./OIDCButtons.css";
 import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
 import { Color } from "@lib/types/Color";
-import { OIDCProviderType, OIDCProviderTypeEnum } from "@lib/types/OIDCProviderType";
+import { OIDCProviderType } from "@lib/types/OIDCProviderType";
 import m from "mithril";
 
-import Apple from "../images/apple.png?format=webp";
 import Google from "../images/google.png?format=webp";
 import { AuthAccountState } from "../states/AuthAccount";
 import { OIDCAction, OIDCState } from "../states/OIDC";
@@ -63,9 +62,7 @@ export function OIDCButtons (): m.Component<OIDCButtonsAttrs> {
 					}, [
 						m("img.OIDCButtons__img", {
 							alt: OIDCProviderType.values[provider],
-							src: provider === OIDCProviderTypeEnum.Apple ?
-								Apple :
-								Google,
+							src: Google,
 						}),
 						m("p", `${m.route.get()
 							.includes("/signup") ?
