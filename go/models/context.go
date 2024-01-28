@@ -20,17 +20,12 @@ const (
 
 // GetAuthAccountID returns the AuthAccountID attribute.
 func GetAuthAccountID(ctx context.Context) uuid.UUID {
-	u, err := uuid.Parse(logger.GetAttribute(ctx, contextAuthAccountID))
-	if err == nil && u != uuid.Nil {
-		return u
-	}
-
-	return uuid.Nil
+	return logger.GetAttribute[uuid.UUID](ctx, contextAuthAccountID)
 }
 
 // SetAuthAccountID sets the AuthAccountID attribute.
 func SetAuthAccountID(ctx context.Context, id uuid.UUID) context.Context {
-	return logger.SetAttribute(ctx, contextAuthAccountID, id.String())
+	return logger.SetAttribute(ctx, contextAuthAccountID, id)
 }
 
 // GetISO639Code returns the ISO639Code attribute.

@@ -30,7 +30,6 @@ describe("OIDCState", () => {
 			{
 				dataType: "OIDCProviders",
 				dataValue: [
-					OIDCProviderTypeEnum.Apple,
 					OIDCProviderTypeEnum.Google,
 				],
 			},
@@ -47,7 +46,6 @@ describe("OIDCState", () => {
 
 		expect(OIDCState.data())
 			.toStrictEqual([
-				OIDCProviderTypeEnum.Apple,
 				OIDCProviderTypeEnum.Google,
 			]);
 	});

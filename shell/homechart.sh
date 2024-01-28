@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 export APP_NAME=homechart
+export APP_URL=https://homechart.app
 export BUILD_TARGETS_BINARY="linux/amd64 linux/arm64 linux/arm/v7"
 export GITHUB_REPOSITORY_ID=416805305
-export INSTALL_ALL="install-go install-golangci-lint install-hugo install-node install-shellcheck install-swag install-vault install-yaml8n"
 export HOMECHART_app_baseURL=${HOMECHART_app_baseURL:-http://localhost}
 export HOMECHART_app_cloudEndpoint=${HOMECHART_app_cloudEndpoint:-http://localhost}
 export HOMECHART_app_cloudJWT=${HOMECHART_app_cloudJWT:-eyJhbGciOiJFZERTQSIsInR5cCI6IkpXVCJ9.eyJjbG91ZCI6dHJ1ZSwiaXNzIjoiaHR0cHM6Ly9taWtlLWRlc2t0b3AxLmNhbmRpZC5kZXYiLCJzdWIiOiJDbG91ZCIsImF1ZCI6WyJIb21lY2hhcnQiXSwiZXhwIjoxODM3NzEwNTc3LCJuYmYiOjE2ODAwMzA1NzcsImlhdCI6MTY4MDAzMDU3NywianRpIjoiN2MzNWJlNzEtMmE0OC00NjIwLTgxMGUtMDU4Njc4ODgyODAwIn0.xLDsYa_7cQnMmLF9XuxpzSllvcQVLRNsU4wgMZrddkz_Uzwj0rnZmhrh1gdUcWO_jzPHcjiK-7LgJ2Jz7SWYDw}
@@ -17,6 +17,7 @@ export HOMECHART_postgresql_password=${HOMECHART_postgresql_password:-homechart}
 export HOMECHART_postgresql_username=${HOMECHART_postgresql_username:-homechart}
 export HOMECHART_webPush_vapidPrivateKey=${HOMECHART_webPush_vapidPrivateKey:-3-NI4eCXzQt3ILqRmOaIuEWHCl9Lp7zrOlGhhdyy7MU}
 export HOMECHART_webPush_vapidPublicKey=${HOMECHART_webPush_vapidPublicKey:-BMcCmv0dhitH4h1hrKHGpJbaD_kTPpaGap8AH4kjLoM7pZXPzdPgCASqZ9pMOZckHD62xvXFtfWbxLBzJGzWtU4}
+export INSTALL_ALL="install-go install-hugo install-node install-shellcheck install-swag install-vault install-yaml8n"
 export PUPPETEER_URL=${PUPPETEER_URL:-""}
 export RUN_GO_ARGS="-c ${DIR}/homechart_config.jsonnet run"
 export VAULT_GCP_HOMECHART_RELEASE=gcp/static-account/homechart-release/key
@@ -243,6 +244,7 @@ test-e2e () {
 	if [[ ${PUPPETEER_URL} == "" ]]; then
 		PUPPETEER_URL=${HOMECHART_app_baseURL}
 
+		build-go
 		run-homechart-start
 		deploy-post
 	fi

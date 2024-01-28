@@ -48,6 +48,9 @@ jobs:
       - name: Lint Go
         if: steps.setup.outputs.change_go == 'true' || github.ref_name == 'main'
         run: ./m lint-go
+      - name: Lint Hugo
+        if: steps.setup.outputs.change_hugo == 'true' || github.ref_name == 'main'
+        run: ./m lint-hugo
       - name: Lint Shell
         if: steps.setup.outputs.change_shell == 'true' || github.ref_name == 'main'
         run: ./m lint-shell

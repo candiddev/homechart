@@ -39,6 +39,6 @@ Collections and Items can generate **QR Codes** that you can print/affix to the 
 
 Inventory integrates with:
 
-- [Cook](../inventory): Inventory > Items you have a Quantity > 0 of will be displayed next to **Cook > Recipe** Ingredients
-- [Plan](../plan): Inventory Items can be associated with **Plan > Tasks**, such as having a Lawn Mower Item and a Change Oil Task
-- [Shop](../shop): Inventory can add Items to your **Shop > Pick Up** list
+- [Cook]({{< ref "/docs/guides/inventory" >}}): Inventory > Items you have a Quantity > 0 of will be displayed next to **Cook > Recipe** Ingredients
+- [Plan]({{< ref "/docs/guides/plan" >}}): Inventory Items can be associated with **Plan > Tasks**, such as having a Lawn Mower Item and a Change Oil Task
+- [Shop]({{< ref "/docs/guides/shop" >}}): Inventory can add Items to your **Shop > Pick Up** list

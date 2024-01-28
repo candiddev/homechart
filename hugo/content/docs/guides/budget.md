@@ -23,7 +23,7 @@ A Budget > Category that has money in is money that can be "spent" for something
 
 Most households budget for the next month, and adjust accordingly throughout the current month.  Your goal should be to have the **Remaining** amount be 0.
 
-[Plan > Projects](../plan#projects) and [Shop > Lists](../shop#lists) can be associated with Budget > Categories, so you can save for Vacations and Wishlists.
+[Plan > Projects]({{< ref "/docs/guides/plan#projects" >}}) and [Shop > Lists]({{< ref "/docs/guides/shop#lists" >}}) can be associated with Budget > Categories, so you can save for Vacations and Wishlists.
 
 ### Groupings
 
@@ -41,7 +41,7 @@ Monthly targets are used to simplify recurring expenses like cell phone or inter
 
 ## Payees
 
-Budget > Payees represents stores, businesses, or people you exchange money with.  Payees can be used as Stores for [Shop](../shop) by ticking **Shopping Store**.
+Budget > Payees represents stores, businesses, or people you exchange money with.  Payees can be used as Stores for [Shop]({{< ref "/docs/guides/shop" >}}) by ticking **Shopping Store**.
 
 ## Transactions
 
@@ -66,6 +66,6 @@ Eventually, Homechart will start rolling up transactions into monthly summaries,
 
 Budget integrates with:
 
-- [Calendar](../calendar): Budget > Recurring Transactions will display on your **Calendar**
-- [Plan](../plan): Budget > Categories can be associated to **Plan > Projects** so you can save for household projects
-- [Shop](../shop): Budget > Categories can be associated to **Shop > Lists** so you can save for your wishlists
+- [Calendar]({{< ref "/docs/guides/calendar" >}}): Budget > Recurring Transactions will display on your **Calendar**
+- [Plan]({{< ref "/docs/guides/plan" >}}): Budget > Categories can be associated to **Plan > Projects** so you can save for household projects
+- [Shop]({{< ref "/docs/guides/shop" >}}): Budget > Categories can be associated to **Shop > Lists** so you can save for your wishlists

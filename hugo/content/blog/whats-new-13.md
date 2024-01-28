@@ -13,7 +13,7 @@ type: blog
 ## Features
 
 ### Plan Launch
-Organize your tasks and projects with [Plan](/plan/tasks).  Create tasks, assign them to your household, get notifications, and more!
+Organize your tasks and projects with Plan.  Create tasks, assign them to your household, get notifications, and more!
 
 ### Markdown support
 Cook > Recipe ingredients and details now understand Markdown.  Markdown can apply text formatting and link to other recipes (using `#`).

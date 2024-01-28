@@ -351,6 +351,7 @@ export function BudgetTransactions (): m.Component {
 
 			if (m.route.param().import === undefined) {
 				BudgetTransactionState.data([]);
+				m.redraw();
 			} else {
 				state.importID(m.route.param().import);
 			}

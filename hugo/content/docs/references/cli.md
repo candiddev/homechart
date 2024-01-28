@@ -11,7 +11,7 @@ Arguments must be entered before commands.
 
 ### `-c [paths]` {#c}
 
-Path to the JSON/Jsonnet [configuration file](../config).
+Path to the JSON/Jsonnet [configuration file]({{< ref "/docs/references/config" >}}).
 
 ### `-d`
 
@@ -23,13 +23,13 @@ Disable colored log output.
 
 ### `-x [key=value]`
 
-Set [config values](../config) (can be provided multiple times)
+Set [config values]({{< ref "/docs/references/config" >}}) (can be provided multiple times)
 
 ## Commands
 
 ### `generate-vapid`
 
-Generate a private and public key for use with Web Push.  See the [config docs](../config/#web-push) for more information.
+Generate a private and public key for use with Web Push.  See the [config docs]({{< ref "/docs/references/config#web-push" >}}) for more information.
 
 ### `run`
 

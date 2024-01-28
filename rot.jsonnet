@@ -14,30 +14,6 @@
   },
   publicKey: 'ed25519public:MCowBQYDK2VwAyEA89Oh7hiJi1RZ0WUHf8wSPdLqOdjvD9diMvd5udN7KXw=:nSPt4fVdij',
   values: {
-    HOMECHART_oidc_appleClientID: {
-      comment: '',
-      key: 'ecdhx25519:MCowBQYDK2VwAyEASdMOvL5aQ5ro11O3kew0tnh7ExRxzcAIvmVnBH/yz10=@xchacha20poly1305:IEHcgad7eWccEY+5tjOdck64hwvkgobzeA0FyB9WU3XnmasaVY+alv9I2kRtbpeMZDCtMoqtwXTF2I2vBPo49of8WlmmPXZjIuH5heKmWwN36srVjNcH8dUVM94R/NCcaJYj+drFqp0=:nSPt4fVdij',
-      modified: '2023-12-18T19:57:16.653671628-06:00',
-      value: 'xchacha20poly1305:07yY1JfVbRDICwpESzhHrjNh+QJpmetfsd9DjYmZKhbvc6Z4C94BLE/KVI2t3VaQW3fo0pmlbezJUA==:d5B9HmHdBl',
-    },
-    HOMECHART_oidc_appleKeyID: {
-      comment: '',
-      key: 'ecdhx25519:MCowBQYDK2VwAyEA9luc5Ni8LCYrlVBeI9ldn4T+oYb2GtVcS3qk0jfqNM4=@xchacha20poly1305:Maq+6clqOjQXGMfx+BsEKVvqkpCel9LGQ8NYwnT/6Qlse0pV8m0qMxZWkfM4ZPGQC9vMvAvNfkbVvsHRvRK53DvICUWQrZ76bWq7jTQiso3H/4BeyIsoolqxOwImfpv2GhFv9pTRKv0=:nSPt4fVdij',
-      modified: '2023-12-17T13:22:27.043117623-06:00',
-      value: 'xchacha20poly1305:jSqFZ1jaHtUPLsJB9bvcbnum8RBCOAqsz6XYmnW1GXPaxremQiQsU48aJ9AmvQ03xDk=:oz5mOCOTfo',
-    },
-    HOMECHART_oidc_appleKeyPEMBase64: {
-      comment: '',
-      key: 'ecdhx25519:MCowBQYDK2VwAyEA5FuB9IY1yHJFb0LOqDPou3j820zmEXA3JtL58pETicg=@xchacha20poly1305:XFzMMpQ5wQp07VC6hIqozbYMUKNz9Tm5XQaGQVd2Hrcdu8yEEjBn6mzQ6BIdzMmvtBZ38x5lWVDfCz1Iu0hYd0fscUv/5SyI0Z2W2ySVtaCcjr76RhVWlgY/3wnFn2w3yWYD98029bI=:nSPt4fVdij',
-      modified: '2023-12-17T13:22:47.358488297-06:00',
-      value: 'xchacha20poly1305:ln3FC7/fUnjrES420B7CjbB5AKweWb9oBCasahofmQnebXq5NfFaco+lbm6lGPjcYmeM55gKXzVd/NY3linj+cU3+J8eNz9e6Z/3aG4dg7y/Mj4TIOEwgvwIOsB4e+aycPA3e+38UerJrLo2OJkJvfOlIfAjVBNEdHIJQ1OAmDpxpcRuf6EfJVBVU1jRT9SMUiCMEdza61BOaAyB6fy6C+pEITdFpwQL0lKlZaNXM27zSoYQe1/hGGiNA6rNrgXuftOSv2Q6Ju2PVDlptsZTtDqPDZGIYUzpkz3RRKuzjD4yiwTATL/eEh4Rkq7xR7lUI9ApLrX0fVzo6+GGqQ/aOE8pLyOlLPrHEi0SXFUuKPatVJ4RSK1UJa0D72X+nV1kkinb8MQywMLLY9HzS+RV3X5SMUvLB+hkAra9wypnCaKY2T9kjsjdjsegiAwZwcFrL4yGKkako1hmCykOv+id161M6Oftb3mFAYtWLq1G5ou0fIgr6JdcPeChFdVlrLGV:MBYFhkhCPJ',
-    },
-    HOMECHART_oidc_appleTeamID: {
-      comment: '',
-      key: 'ecdhx25519:MCowBQYDK2VwAyEAPhadG6qcwxs0M6Mf372IdKxAJZkCDlhPPdvPuJbf+vg=@xchacha20poly1305:dFggUUTCRf9F048aimDhGdDLRpd+u7OQpPT3WSAEiwPJmg14btqBaOMU0yAHeF2071790EMnjILCD+4GiCzglM4kk4YuoqAMoS6EAgs6HPmWSU46Ks7WkM0hGkCCwM8d2Pr8OO5OG60=:nSPt4fVdij',
-      modified: '2023-12-18T19:57:22.935794292-06:00',
-      value: 'xchacha20poly1305:WnTpebZ+IZlyx3JwPcfwimwlZuo9RSZ7De3GqH+SdPyErCbXGGoGyKIqgyfEccFBE+Y=:2YjtfPYHv9',
-    },
     HOMECHART_oidc_googleClientID: {
       comment: '',
       key: 'ecdhx25519:MCowBQYDK2VwAyEA3Ne5ZRO4FYhNIYDgfpDSKdNc3cfY1CUZq8AIUtyk2jM=@xchacha20poly1305:F0Z+0pfMRQcIakyERE2BHG7/xcIo6JqeVigxVl/I2ngeya6/w/B4c5Z6SuxZ6kUOP74F3X5MJL8VdT1D9DbZDigIYJ94xD4dP0Gz10XKGCAbf7Z7Xrvbe/UbXeK3ZXpubuXxDOskqMs=:nSPt4fVdij',

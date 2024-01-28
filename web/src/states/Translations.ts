@@ -3,7 +3,7 @@ import m from "mithril";
 
 import { PermissionComponentsEnum } from "../types/Permission";
 import { Alerts } from "../utilities/Alerts";
-import { ObjectBookmarks, ObjectBudget, ObjectCalendar, ObjectCook, ObjectHealth, ObjectInventory, ObjectNotes, ObjectPlan, ObjectReward, ObjectSecrets, ObjectShop,WebFormOverlayCalendarEventReminder1Day, WebFormOverlayCalendarEventReminder1Hour, WebFormOverlayCalendarEventReminder10Minutes, WebFormOverlayCalendarEventReminder30Minutes, WebFormPermissionsBudgetTooltip, WebFormPermissionsCalendarTooltip,WebFormPermissionsCookTooltip,WebFormPermissionsHealthTooltip,WebFormPermissionsInventoryTooltip, WebFormPermissionsNotesTooltip,WebFormPermissionsPlanTooltip,WebFormPermissionsRewardTooltip,WebFormPermissionsSecretsTooltip,WebFormPermissionsSettingsTooltip,WebFormPermissionsShopTooltip, WebGlobalCustom, WebGlobalMonthApril, WebGlobalMonthAugust, WebGlobalMonthDecember,WebGlobalMonthFebruary, WebGlobalMonthJanuary, WebGlobalMonthJuly, WebGlobalMonthJune, WebGlobalMonthMarch, WebGlobalMonthMay, WebGlobalMonthNovember, WebGlobalMonthOctober, WebGlobalMonthSeptember, WebGlobalNever, WebGlobalSettings, WebGlobalSubscriptionProcessorFreeTrial,WebGlobalSubscriptionProcessorLifetime,WebGlobalSubscriptionProcessorMonthlyApple, WebGlobalSubscriptionProcessorMonthlyGoogle, WebGlobalSubscriptionProcessorMonthlyPaddle, WebGlobalSubscriptionProcessorYearlyPaddle, WebGlobalTransactionStatusCleared, WebGlobalTransactionStatusReconciled, WebGlobalTransactionStatusUncleared } from "../yaml8n";
+import { ObjectBookmarks, ObjectBudget, ObjectCalendar, ObjectCook, ObjectHealth, ObjectInventory, ObjectNotes, ObjectPlan, ObjectReward, ObjectSecrets, ObjectShop,WebFormOverlayCalendarEventReminder1Day, WebFormOverlayCalendarEventReminder1Hour, WebFormOverlayCalendarEventReminder10Minutes, WebFormOverlayCalendarEventReminder30Minutes, WebFormPermissionsBudgetTooltip, WebFormPermissionsCalendarTooltip,WebFormPermissionsCookTooltip,WebFormPermissionsHealthTooltip,WebFormPermissionsInventoryTooltip, WebFormPermissionsNotesTooltip,WebFormPermissionsPlanTooltip,WebFormPermissionsRewardTooltip,WebFormPermissionsSecretsTooltip,WebFormPermissionsSettingsTooltip,WebFormPermissionsShopTooltip, WebGlobalCustom, WebGlobalMonthApril, WebGlobalMonthAugust, WebGlobalMonthDecember,WebGlobalMonthFebruary, WebGlobalMonthJanuary, WebGlobalMonthJuly, WebGlobalMonthJune, WebGlobalMonthMarch, WebGlobalMonthMay, WebGlobalMonthNovember, WebGlobalMonthOctober, WebGlobalMonthSeptember, WebGlobalNever, WebGlobalSettings, WebGlobalSubscriptionProcessorFreeTrial,WebGlobalSubscriptionProcessorLifetime,WebGlobalSubscriptionProcessorMonthlyPaddle, WebGlobalTransactionStatusCleared, WebGlobalTransactionStatusReconciled, WebGlobalTransactionStatusUncleared } from "../yaml8n";
 import { AuthAccountState } from "./AuthAccount";
 
 let t = AuthAccountState.data().iso639Code;
@@ -232,9 +232,10 @@ AuthAccountState.data.map((authAccount) => {
 		],
 		subscriptionProcessors: [
 			AuthAccountState.translate(WebGlobalSubscriptionProcessorFreeTrial),
-			AuthAccountState.translate(WebGlobalSubscriptionProcessorYearlyPaddle),
-			AuthAccountState.translate(WebGlobalSubscriptionProcessorMonthlyApple),
-			AuthAccountState.translate(WebGlobalSubscriptionProcessorMonthlyGoogle),
+			// TODO: remove these when enums are cleaned up
+			"",
+			"",
+			"",
 			AuthAccountState.translate(WebGlobalSubscriptionProcessorMonthlyPaddle),
 			AuthAccountState.translate(WebGlobalSubscriptionProcessorLifetime),
 		],

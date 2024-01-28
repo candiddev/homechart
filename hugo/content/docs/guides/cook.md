@@ -56,11 +56,11 @@ You can import recipes from a website by tapping **Add > Import Recipe from Webs
 
 ### Ingredients and Directions
 
-When adding ingredients and directions, you can use text formatting via [Markdown](../markdown) to make your recipe easier to read.  You can also reference other recipes by using `#cookrecipe` and typing the recipe name.  By adding other recipes, you can include them in your Meal Planning.
+When adding ingredients and directions, you can use text formatting via [Markdown]({{< ref "/docs/guides/markdown" >}}) to make your recipe easier to read.  You can also reference other recipes by using `#cookrecipe` and typing the recipe name.  By adding other recipes, you can include them in your Meal Planning.
 
-Homechart will check your [Inventory](../inventory) to see if you have any Ingredients in stock.  You'll see the Inventory icon next to the ingredient if you do.
+Homechart will check your [Inventory]({{< ref "/docs/guides/inventory" >}}) to see if you have any Ingredients in stock.  You'll see the Inventory icon next to the ingredient if you do.
 
-You can add Ingredients for a Recipe to your [Shop > Pick Up](../shop#pick-up) list by tapping **Add > Ingredients to Shopping List**.
+You can add Ingredients for a Recipe to your [Shop > Pick Up]({{< ref "/docs/guides/shop#pick-up" >}}) list by tapping **Add > Ingredients to Shopping List**.
 
 ### Notes
 
@@ -74,5 +74,5 @@ You can share your recipes publicly by ticking **Public**.  You can then share t
 
 Cook integrates with:
 
-- [Inventory](../inventory): Cook > Recipes will show you what Ingredients you have in your **Inventory**
-- [Shop](../shop.md): Cook > Recipes ingredients can be added to your **Shop > Pick Up** list.  Homechart will consult your **Inventory** and exclude the ones you have in stock.
+- [Inventory]({{< ref "/docs/guides/inventory" >}}): Cook > Recipes will show you what Ingredients you have in your **Inventory**
+- [Shop]({{< ref "/docs/guides/shop" >}}): Cook > Recipes ingredients can be added to your **Shop > Pick Up** list.  Homechart will consult your **Inventory** and exclude the ones you have in stock.
