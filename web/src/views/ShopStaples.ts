@@ -24,151 +24,166 @@ import type { ShopItem } from "../states/ShopItem";
 import { ShopItemState } from "../states/ShopItem";
 import { PermissionComponentsEnum } from "../types/Permission";
 import { GetHelp } from "../utilities/GetHelp";
-import { ObjectCategory, ObjectShop, ObjectStaples, ObjectStore, WebGlobalName, WebGlobalRecurringNextDate, WebShopStaplesPickUpNow } from "../yaml8n";
+import {
+  ObjectCategory,
+  ObjectShop,
+  ObjectStaples,
+  ObjectStore,
+  WebGlobalName,
+  WebGlobalRecurringNextDate,
+  WebShopStaplesPickUpNow,
+} from "../yaml8n";
 
-function shopStaplePickUp (): m.Component<ShopItem> {
-	const today = CivilDate.now();
+function shopStaplePickUp(): m.Component<ShopItem> {
+  const today = CivilDate.now();
 
-	return {
-		view: (vnode): m.Children => {
-			return m("div.TableData__buttons", [
-				m("span", AppState.formatCivilDate(vnode.attrs.nextDate)),
-				CivilDate.fromString(`${vnode.attrs.nextDate}`) > today ?
-					m(Button, {
-						accent: true,
-						name: AuthAccountState.translate(WebShopStaplesPickUpNow),
-						onclick: async (): Promise<void | Err> => {
-							const item = Clone(vnode.attrs);
-							item.nextDate = CivilDate.now()
-								.toJSON();
+  return {
+    view: (vnode): m.Children => {
+      return m("div.TableData__buttons", [
+        m("span", AppState.formatCivilDate(vnode.attrs.nextDate)),
+        CivilDate.fromString(`${vnode.attrs.nextDate}`) > today
+          ? m(Button, {
+              accent: true,
+              name: AuthAccountState.translate(WebShopStaplesPickUpNow),
+              onclick: async (): Promise<void | Err> => {
+                const item = Clone(vnode.attrs);
+                item.nextDate = CivilDate.now().toJSON();
 
-							return ShopItemState.update(item);
-						},
-						permitted: GlobalState.permitted(PermissionComponentsEnum.Shop, true, vnode.attrs.authHouseholdID),
-						requireOnline: true,
-					}) :
-					[],
-			]);
-		},
-	};
+                return ShopItemState.update(item);
+              },
+              permitted: GlobalState.permitted(
+                PermissionComponentsEnum.Shop,
+                true,
+                vnode.attrs.authHouseholdID,
+              ),
+              requireOnline: true,
+            })
+          : [],
+      ]);
+    },
+  };
 }
 
-export function ShopStaples (): m.Component {
-	const state = {
-		columns: Stream({
-			name: "",
-			nextDate: "",
-		} as FilterType),
-		sort: Stream({
-			invert: false,
-			property: "nextDate",
-		}),
-	};
+export function ShopStaples(): m.Component {
+  const state = {
+    columns: Stream({
+      name: "",
+      nextDate: "",
+    } as FilterType),
+    sort: Stream({
+      invert: false,
+      property: "nextDate",
+    }),
+  };
 
-	if (AppState.getSessionDisplay() >= DisplayEnum.Small) {
-		state.columns({
-			name: "",
-			budgetPayeeID: "", // eslint-disable-line sort-keys
-			shopCategoryID: "",
-			nextDate: "", // eslint-disable-line sort-keys
-		});
-	}
+  if (AppState.getSessionDisplay() >= DisplayEnum.Small) {
+    state.columns({
+      name: "",
+      budgetPayeeID: "", // eslint-disable-line sort-keys
+      shopCategoryID: "",
+      nextDate: "", // eslint-disable-line sort-keys
+    });
+  }
 
-	let data: Stream<ShopItem[]>;
+  let data: Stream<ShopItem[]>;
 
-	return {
-		oninit: async (): Promise<void> => {
-			Telemetry.spanStart("ShopStaples");
+  return {
+    oninit: async (): Promise<void> => {
+      Telemetry.spanStart("ShopStaples");
 
-			data = Stream.lift((items, columns, sort) => {
-				m.redraw();
+      data = Stream.lift(
+        (items, columns, sort) => {
+          m.redraw();
 
-				return Filter.array(items, columns, sort);
-			}, ShopItemState.getStaples(), state.columns, state.sort);
+          return Filter.array(items, columns, sort);
+        },
+        ShopItemState.getStaples(),
+        state.columns,
+        state.sort,
+      );
 
-			AppState.setLayoutApp({
-				...GetHelp("shop"),
-				breadcrumbs: [
-					{
-						link: "/shop/items",
-						name: AuthAccountState.translate(ObjectShop),
-					},
-					{
-						name: AuthAccountState.translate(ObjectStaples),
-					},
-				],
-				toolbarActionButtons: [
-					{
-						...AppToolbarActions().newShopItem,
-						...{
-							onclick: (): void => {
-								AppState.setLayoutAppForm(FormOverlayShopItem, {
-									...ShopItemState.new(),
-									...{
-										nextDate: CivilDate.now()
-											.toJSON(),
-										recurrence: Recurrence.new(),
-									},
-								});
-							},
-						},
-					},
-				],
-			});
+      AppState.setLayoutApp({
+        ...GetHelp("shop"),
+        breadcrumbs: [
+          {
+            link: "/shop/items",
+            name: AuthAccountState.translate(ObjectShop),
+          },
+          {
+            name: AuthAccountState.translate(ObjectStaples),
+          },
+        ],
+        toolbarActionButtons: [
+          {
+            ...AppToolbarActions().newShopItem,
+            ...{
+              onclick: (): void => {
+                AppState.setLayoutAppForm(FormOverlayShopItem, {
+                  ...ShopItemState.new(),
+                  ...{
+                    nextDate: CivilDate.now().toJSON(),
+                    recurrence: Recurrence.new(),
+                  },
+                });
+              },
+            },
+          },
+        ],
+      });
 
-			Telemetry.spanEnd("ShopStaples");
-		},
-		onremove: (): void => {
-			data.end(true);
-		},
-		view: (): m.Children => {
-			return m(Table, {
-				actions: [],
-				data: data(),
-				editOnclick: (s: ShopItem) => {
-					AppState.setLayoutAppForm(FormOverlayShopItem, s);
-				},
-				filters: [],
-				loaded: ShopItemState.isLoaded(),
-				sort: state.sort,
-				tableColumns: [
-					{
-						name: AuthAccountState.translate(WebGlobalName),
-						noFilter: true,
-						property: "name",
-					},
-					{
-						formatter: (e: ShopItem): string => {
-							return ShopCategoryState.findID(e.shopCategoryID).name;
-						},
-						name: AuthAccountState.translate(ObjectCategory),
-						noFilter: true,
-						property: "shopCategoryID",
-						type: TableDataType.Link,
-					},
-					{
-						formatter: (e: ShopItem): string => {
-							return BudgetPayeeState.findID(e.budgetPayeeID).name;
-						},
-						linkFormatter: (e: ShopItem): string => {
-							const payee = BudgetPayeeState.findID(e.budgetPayeeID);
-							return `/shop/items?store=${payee.shortID}`;
-						},
-						name: AuthAccountState.translate(ObjectStore),
-						noFilter: true,
-						property: "budgetPayeeID",
-						type: TableDataType.Link,
-					},
-					{
-						name: AuthAccountState.translate(WebGlobalRecurringNextDate),
-						noFilter: true,
-						property: "nextDate",
-						render: shopStaplePickUp,
-					},
-					TableColumnHousehold(),
-				],
-				tableColumnsNameEnabled: state.columns,
-			});
-		},
-	};
+      Telemetry.spanEnd("ShopStaples");
+    },
+    onremove: (): void => {
+      data.end(true);
+    },
+    view: (): m.Children => {
+      return m(Table, {
+        actions: [],
+        data: data(),
+        editOnclick: (s: ShopItem) => {
+          AppState.setLayoutAppForm(FormOverlayShopItem, s);
+        },
+        filters: [],
+        loaded: ShopItemState.isLoaded(),
+        sort: state.sort,
+        tableColumns: [
+          {
+            name: AuthAccountState.translate(WebGlobalName),
+            noFilter: true,
+            property: "name",
+          },
+          {
+            formatter: (e: ShopItem): string => {
+              return ShopCategoryState.findID(e.shopCategoryID).name;
+            },
+            name: AuthAccountState.translate(ObjectCategory),
+            noFilter: true,
+            property: "shopCategoryID",
+            type: TableDataType.Link,
+          },
+          {
+            formatter: (e: ShopItem): string => {
+              return BudgetPayeeState.findID(e.budgetPayeeID).name;
+            },
+            linkFormatter: (e: ShopItem): string => {
+              const payee = BudgetPayeeState.findID(e.budgetPayeeID);
+              return `/shop/items?store=${payee.shortID}`;
+            },
+            name: AuthAccountState.translate(ObjectStore),
+            noFilter: true,
+            property: "budgetPayeeID",
+            type: TableDataType.Link,
+          },
+          {
+            name: AuthAccountState.translate(WebGlobalRecurringNextDate),
+            noFilter: true,
+            property: "nextDate",
+            render: shopStaplePickUp,
+          },
+          TableColumnHousehold(),
+        ],
+        tableColumnsNameEnabled: state.columns,
+      });
+    },
+  };
 }

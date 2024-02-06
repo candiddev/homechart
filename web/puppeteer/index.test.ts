@@ -8,31 +8,31 @@ import views from "./views";
 let browser: Browser;
 
 beforeAll(async () => {
-	browser = await puppeteer.launch({
-		args: [
-			"--no-sandbox",
-			"--disable-setuid-sandbox",
-			"--disable-web-security",
-		],
-		dumpio: true,
-		ignoreHTTPSErrors: true,
-	});
+  browser = await puppeteer.launch({
+    args: [
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--disable-web-security",
+    ],
+    dumpio: true,
+    ignoreHTTPSErrors: true,
+  });
 });
 
 afterAll(async () => {
-	await browser.close();
+  await browser.close();
 });
 
 const devices = [
-	// Desktop (1920 x 1080)
-	{
-		append: "",
-		viewport: {
-			height: 1080,
-			width: 1920,
-		},
-	},
-	/*
+  // Desktop (1920 x 1080)
+  {
+    append: "",
+    viewport: {
+      height: 1080,
+      width: 1920,
+    },
+  },
+  /*
 	// 5.5" iPhone (1242 x 2208)
 	{
 		append: "_5-5",
@@ -62,71 +62,79 @@ const devices = [
 	},*/
 ];
 
-test("homechart.app", async () => {
-	const page = await browser.newPage();
-	await page.setExtraHTTPHeaders({
-		"x-homechart-ratelimiterkey": process.env.HOMECHART_APP_RATELIMITERKEY === undefined ?
-			"" :
-			process.env.HOMECHART_APP_RATELIMITERKEY,
-	});
-	await page.setBypassCSP(true);
+test(
+  "homechart.app",
+  async () => {
+    const page = await browser.newPage();
+    await page.setExtraHTTPHeaders({
+      "x-homechart-ratelimiterkey":
+        process.env.HOMECHART_APP_RATELIMITERKEY === undefined
+          ? ""
+          : process.env.HOMECHART_APP_RATELIMITERKEY,
+    });
+    await page.setBypassCSP(true);
 
-	fs.mkdir("screenshots", () => {});
+    fs.mkdir("screenshots", () => {});
 
-	let i = 0;
+    let i = 0;
 
-	for (const device of devices) {
-		if (! utilities.modeScreenshot() && device.append !== "") {
-			continue;
-		}
+    for (const device of devices) {
+      if (!utilities.modeScreenshot() && device.append !== "") {
+        continue;
+      }
 
-		utilities.setAppend(device.append);
+      utilities.setAppend(device.append);
 
-		await page.setViewport(device.viewport);
-		await page.goto(`${process.env.PUPPETEER_URL === undefined || process.env.PUPPETEER_URL=== "" ?
-			"http://localhost" :
-			process.env.PUPPETEER_URL}`);
+      await page.setViewport(device.viewport);
+      await page.goto(
+        `${
+          process.env.PUPPETEER_URL === undefined ||
+          process.env.PUPPETEER_URL === ""
+            ? "http://localhost"
+            : process.env.PUPPETEER_URL
+        }`,
+      );
 
-		if (! utilities.modeScreenshot()) {
-			await utilities.click(page, "#button-sign-up");
-			await views.signUp(page);
+      if (!utilities.modeScreenshot()) {
+        await utilities.click(page, "#button-sign-up");
+        await views.signUp(page);
 
-			await views.setup(page);
+        await views.setup(page);
 
-			// SignOut
-			await utilities.openMenu(page, "signout");
-			await utilities.waitFor(page, "#button-sign-in-with-email-address");
-		}
+        // SignOut
+        await utilities.openMenu(page, "signout");
+        await utilities.waitFor(page, "#button-sign-in-with-email-address");
+      }
 
-		if (i === 0) {
-			// SignIn
-			await views.signIn(page);
-		}
+      if (i === 0) {
+        // SignIn
+        await views.signIn(page);
+      }
 
-		i++;
+      i++;
 
-		// Home
-		await utilities.screenshot(page, "#home", "home");
+      // Home
+      await utilities.screenshot(page, "#home", "home");
 
-		await views.budgetAccounts(page);
-		await views.budgetCategories(page);
-		await views.budgetTransactions(page);
-		await views.calendar(page);
-		await views.cookMeals(page);
-		await views.cookRecipes(page);
-		await views.healthItems(page);
-		await views.inventoryCollections(page);
-		await views.inventoryItems(page);
-		await views.notesPages(page);
-		await views.planTasks(page);
-		await views.rewardCards(page);
-		await views.secretsValue(page);
-		await views.shopCategories(page);
-		await views.shopItems(page);
-		await views.settingsHousehold(page);
-		await views.subscription(page);
-		await views.settingsAccount(page);
-	}
-}, utilities.modeScreenshot() ?
-	900000 :
-	90000);
+      await views.budgetAccounts(page);
+      await views.budgetCategories(page);
+      await views.budgetTransactions(page);
+      await views.calendar(page);
+      await views.cookMeals(page);
+      await views.cookRecipes(page);
+      await views.healthItems(page);
+      await views.inventoryCollections(page);
+      await views.inventoryItems(page);
+      await views.notesPages(page);
+      await views.planTasks(page);
+      await views.rewardCards(page);
+      await views.secretsValue(page);
+      await views.shopCategories(page);
+      await views.shopItems(page);
+      await views.settingsHousehold(page);
+      await views.subscription(page);
+      await views.settingsAccount(page);
+    }
+  },
+  utilities.modeScreenshot() ? 900000 : 90000,
+);

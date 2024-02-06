@@ -6,28 +6,29 @@ import type { WorkerMessage, WorkerResponse } from "./Handler";
 import { WorkerAction } from "./Handler";
 
 export interface WorkerMessageRead extends WorkerMessage {
-	/** Using the Read function. */
-	action: WorkerAction.Read,
+  /** Using the Read function. */
+  action: WorkerAction.Read;
 
-	/** Arguments to pass to the Read function. */
-	arguments: ReadArguments,
+  /** Arguments to pass to the Read function. */
+  arguments: ReadArguments;
 }
 
 export interface WorkerResponseRead extends WorkerResponse {
-	/** Using the Read action. */
-	action: WorkerAction.Read,
+  /** Using the Read action. */
+  action: WorkerAction.Read;
 
-	/** Response from the Read function. */
-	data: ReadResponse<any> | Err, // eslint-disable-line @typescript-eslint/no-explicit-any
+  /** Response from the Read function. */
+  data: ReadResponse<any> | Err; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
-export async function ReadWkr (msg: WorkerMessageRead): Promise<WorkerResponseRead> {
-	return read(msg.arguments)
-		.then((res) => {
-			return {
-				action: WorkerAction.Read,
-				data: res,
-				type: msg.type,
-			};
-		});
+export async function ReadWkr(
+  msg: WorkerMessageRead,
+): Promise<WorkerResponseRead> {
+  return read(msg.arguments).then((res) => {
+    return {
+      action: WorkerAction.Read,
+      data: res,
+      type: msg.type,
+    };
+  });
 }

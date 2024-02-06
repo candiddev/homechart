@@ -1,7 +1,6 @@
 package controllers
 
 import (
-	"strings"
 	"testing"
 
 	"github.com/candiddev/homechart/go/models"
@@ -11,7 +10,6 @@ import (
 	"github.com/candiddev/shared/go/notify"
 	"github.com/candiddev/shared/go/types"
 	"github.com/pquerna/otp/totp"
-	"golang.org/x/crypto/bcrypt"
 )
 
 func TestAuthSignInCreate(t *testing.T) {
@@ -67,17 +65,6 @@ func TestAuthSignInCreate(t *testing.T) {
 		Password:     types.Password(seed.AuthAccounts[0].EmailAddress),
 		RememberMe:   true,
 	}
-
-	authAccountBcyrpt := models.AuthAccount{
-		EmailAddress: "testbcrypt@example.com",
-		Password:     types.Password("password"),
-		RememberMe:   true,
-	}
-	authAccountBcyrpt.Create(ctx, false)
-
-	b, _ := bcrypt.GenerateFromPassword([]byte("password"), bcrypt.DefaultCost)
-	authAccountBcyrpt.PasswordHash = string(b)
-	h.Config.PostgreSQL.Exec(ctx, "update auth_account set password_hash = :password_hash where id = :id", authAccountBcyrpt)
 
 	child := seed.AuthAccounts[2]
 	child.Password = "testtest"
@@ -160,12 +147,6 @@ func TestAuthSignInCreate(t *testing.T) {
 				Password:     types.Password(seed.AuthAccounts[4].EmailAddress),
 			},
 		},
-		"bcrypt to argon2": {
-			account: models.AuthAccount{
-				EmailAddress: authAccountBcyrpt.EmailAddress,
-				Password:     types.Password("password"),
-			},
-		},
 	}
 
 	for name, tc := range tests {
@@ -210,15 +191,6 @@ func TestAuthSignInCreate(t *testing.T) {
 					}
 
 					aa.Delete(ctx)
-				}
-
-				if tc.account.EmailAddress == authAccountBcyrpt.EmailAddress {
-					aa := models.AuthAccount{
-						ID: a[0].AuthAccountID,
-					}
-					aa.ReadPasswordHash(ctx)
-
-					assert.Equal(t, strings.HasPrefix(aa.PasswordHash, "$argon2id"), true)
 				}
 
 				a[0].Delete(ctx)

@@ -1,19 +1,19 @@
 export interface TableNotify {
-	/** ID of the object being notified about. */
-	id: string,
+  /** ID of the object being notified about. */
+  id: string;
 
-	/** Operation being performed. */
-	operation: TableNotifyOperationEnum,
+  /** Operation being performed. */
+  operation: TableNotifyOperationEnum;
 
-	/** Table being acted upon. */
-	table: string,
+  /** Table being acted upon. */
+  table: string;
 
-	/** Updated timestamp of the object. */
-	updated: NullTimestamp,
+  /** Updated timestamp of the object. */
+  updated: NullTimestamp;
 }
 
 export enum TableNotifyOperationEnum {
-	Create,
-	Delete,
-	Update,
+  Create,
+  Delete,
+  Update,
 }

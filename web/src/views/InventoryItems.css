@@ -1,34 +1,34 @@
 .InventoryItems__buttons {
-	align-items: center;
-	display: flex;
+  align-items: center;
+  display: flex;
 }
 
 .InventoryItems__buttons i:hover {
-	filter: var(--filter_focus);
+  filter: var(--filter_focus);
 }
 
 .InventoryItems__buttons > span {
-	text-align: center;
-	width: 40px;
+  text-align: center;
+  width: 40px;
 }
 
 .InventoryItems__scanner {
-	display: flex;
-	position: relative;
+  display: flex;
+  position: relative;
 }
 
 .InventoryItems__scanner + .Button {
-	margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .InventoryItems__scanner ~ .Table__container {
-	margin-top: 0 !important;
+  margin-top: 0 !important;
 }
 
 .InventoryItems__scanner > canvas {
-	position: absolute;
+  position: absolute;
 }
 
 .InventoryItems__shop {
-	margin-left: var(--padding);
+  margin-left: var(--padding);
 }

@@ -5,9 +5,9 @@ import { BudgetTransactionState } from "../states/BudgetTransaction";
 import { OFXToBudgetTransactions } from "./OFXToBudgetTransactions";
 
 test("OFXToBudgetTransactions", async () => {
-	BudgetCategoryState.data(seed.budgetCategories);
-	BudgetPayeeState.data(seed.budgetPayees);
-	const input = `
+  BudgetCategoryState.data(seed.budgetCategories);
+  BudgetPayeeState.data(seed.budgetPayees);
+  const input = `
 
 OFXHEADER:100
 DATA:OFXSGML
@@ -92,35 +92,38 @@ NEWFILEUID:NONE
 </CREDITCARDMSGSRSV1>
 </OFX>
 `;
-	const output = await OFXToBudgetTransactions(input, seed.budgetAccounts[0].id);
-	expect(output)
-		.toHaveLength(4);
-	output[0].id = null;
-	expect(output[0])
-		.toStrictEqual({
-			...BudgetTransactionState.new(),
-			...{
-				accounts: [
-					{ ...BudgetTransactionState.newAccount(),
-						...{
-							amount: -2020,
-							budgetAccountID: seed.budgetAccounts[0].id,
-							status: 1,
-						},
-					},
-				],
-				amount: -2020,
-				budgetPayeeID: seed.budgetPayees[0].id,
-				categories: [
-					{
-						...BudgetTransactionState.newCategory(),
-						...{
-							amount: -2020,
-							budgetCategoryID: seed.budgetPayees[0].budgetCategoryID,
-							yearMonth: 201911,
-						},
-					},
-				],
-				date: "2019-11-29",
-			} });
+  const output = await OFXToBudgetTransactions(
+    input,
+    seed.budgetAccounts[0].id,
+  );
+  expect(output).toHaveLength(4);
+  output[0].id = null;
+  expect(output[0]).toStrictEqual({
+    ...BudgetTransactionState.new(),
+    ...{
+      accounts: [
+        {
+          ...BudgetTransactionState.newAccount(),
+          ...{
+            amount: -2020,
+            budgetAccountID: seed.budgetAccounts[0].id,
+            status: 1,
+          },
+        },
+      ],
+      amount: -2020,
+      budgetPayeeID: seed.budgetPayees[0].id,
+      categories: [
+        {
+          ...BudgetTransactionState.newCategory(),
+          ...{
+            amount: -2020,
+            budgetCategoryID: seed.budgetPayees[0].budgetCategoryID,
+            yearMonth: 201911,
+          },
+        },
+      ],
+      date: "2019-11-29",
+    },
+  });
 });

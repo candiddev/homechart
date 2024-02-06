@@ -5,15 +5,15 @@ import { AuthHouseholdState } from "../states/AuthHousehold";
 import { ObjectHousehold } from "../yaml8n";
 
 interface TableColumnHouseholdData {
-	authHouseholdID: NullUUID,
+  authHouseholdID: NullUUID;
 }
 
-export function TableColumnHousehold (): TableColumnAttrs {
-	return {
-		formatter: (b: TableColumnHouseholdData): string => {
-			return AuthHouseholdState.findID(b.authHouseholdID).name;
-		},
-		name: AuthAccountState.translate(ObjectHousehold),
-		property: "authHouseholdID",
-	};
+export function TableColumnHousehold(): TableColumnAttrs {
+  return {
+    formatter: (b: TableColumnHouseholdData): string => {
+      return AuthHouseholdState.findID(b.authHouseholdID).name;
+    },
+    name: AuthAccountState.translate(ObjectHousehold),
+    property: "authHouseholdID",
+  };
 }

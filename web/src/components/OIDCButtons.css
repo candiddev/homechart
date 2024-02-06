@@ -1,33 +1,33 @@
 .OIDCButtons {
-	display: flex;
-	flex-direction: column;
-	padding-top: var(--padding);
+  display: flex;
+  flex-direction: column;
+  padding-top: var(--padding);
 }
 
 .OIDCButtons__button {
-	align-items: flex-end;
-	background-color: #ffffff;
-	border: var(--border);
-	border-radius: var(--border-radius);
-	box-shadow: var(--box-shadow);
-	cursor: pointer;
-	display: flex;
-	font-family: inherit;
-	font-size: var(--font-size);
-	font-weight: var(--font-weight_bold);
-	justify-content: center;
-	margin: 5px;
-	padding: 10px;
-	transition: filter var(--animation) linear;
-	width: 300px;
+  align-items: flex-end;
+  background-color: #ffffff;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  cursor: pointer;
+  display: flex;
+  font-family: inherit;
+  font-size: var(--font-size);
+  font-weight: var(--font-weight_bold);
+  justify-content: center;
+  margin: 5px;
+  padding: 10px;
+  transition: filter var(--animation) linear;
+  width: 300px;
 }
 
 .OIDCButtons__button:hover {
-	filter: var(--filter_focus);
+  filter: var(--filter_focus);
 }
 
 .OIDCButtons__img {
-	height: auto;
-	margin-right: 20px;
-	width: 20px;
+  height: auto;
+  margin-right: 20px;
+  width: 20px;
 }

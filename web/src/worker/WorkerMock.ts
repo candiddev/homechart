@@ -4,23 +4,27 @@ import { Handler } from "./Handler";
 IndexedDB.init();
 
 export default class {
-	addEventListener (_type: string, listener: (event: any) => any): void { // eslint-disable-line
-		self.postMessage = (msg: any) => { // eslint-disable-line
-			listener({
-				data: msg,
-			});
-		};
-	}
+  // eslint-disable-next-line
+  addEventListener(_type: string, listener: (event: any) => any): void {
+    // eslint-disable-next-line
+    self.postMessage = (msg: any) => {
+      listener({
+        data: msg,
+      });
+    };
+  }
 
-	onmessage (_event: any): void { // eslint-disable-line
-		return;
-	}
+  // eslint-disable-next-line
+  onmessage(_event: any): void {
+    return;
+  }
 
-	async postMessage (msg: any): Promise<void> { // eslint-disable-line
-		return Handler({ ...msg });
-	}
+  // eslint-disable-next-line
+  async postMessage(msg: any): Promise<void> {
+    return Handler({ ...msg });
+  }
 
-	terminate (): void {
-		return;
-	}
+  terminate(): void {
+    return;
+  }
 }

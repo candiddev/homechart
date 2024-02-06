@@ -1,135 +1,135 @@
 .Calendar__calendar {
-	border: var(--border);
-	border-radius: var(--border-radius);
-	display: grid;
-	grid-template-columns: repeat(var(--grid-columns_Calendar), 1fr);
-	position: relative;
-	min-width: 300px;
+  border: var(--border);
+  border-radius: var(--border-radius);
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns_Calendar), 1fr);
+  position: relative;
+  min-width: 300px;
 }
 
 .Calendar__calendar > :only-child {
-	grid-column: 1/-1;
+  grid-column: 1/-1;
 }
 
 .Calendar__calendar--picker {
-	align-items: center;
-	grid-gap: 0;
-	grid-auto-rows: 1fr;
-	grid-template-columns: repeat(7, 1fr);
-	height: 250px;
-	justify-items: center;
-	width: 400px;
+  align-items: center;
+  grid-gap: 0;
+  grid-auto-rows: 1fr;
+  grid-template-columns: repeat(7, 1fr);
+  height: 250px;
+  justify-items: center;
+  width: 400px;
 }
 
 .Calendar__calendar--picker > a {
-	cursor: pointer;
-	text-align: center;
-	width: 100%;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
 }
 
 .Calendar__calendar--picker > span {
-	text-align: center;
+  text-align: center;
 }
 
 .Calendar__container {
-	background-color: var(--color_base-1);
-	display: flex;
-	flex-direction: column;
-	width: 100%;
+  background-color: var(--color_base-1);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .Calendar__date {
-	align-items: center;
-	border-top: var(--border);
-	border-left: var(--border);
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	line-height: 0.7;
-	min-height: 0;
-	min-width: 0;
-	padding: 4px;
-	padding-bottom: 0;
+  align-items: center;
+  border-top: var(--border);
+  border-left: var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  line-height: 0.7;
+  min-height: 0;
+  min-width: 0;
+  padding: 4px;
+  padding-bottom: 0;
 }
 
 .Calendar__date > div {
-	display: flex;
-	flex-wrap: wrap;
-	font-size: var(--font-size_3);
-	line-height: 0.5;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: var(--font-size_3);
+  line-height: 0.5;
 }
 
 .Calendar__date:nth-child(7n + 1) {
-	border-left-width: 0;
+  border-left-width: 0;
 }
 
 .Calendar__date--active {
-	background-color: var(--color_base-2);
-	font-weight: var(--font-weight_bold);
+  background-color: var(--color_base-2);
+  font-weight: var(--font-weight_bold);
 }
 
 .Calendar__date--active span {
-	font-weight: var(--font-weight_normal);
+  font-weight: var(--font-weight_normal);
 }
 
 .Calendar__date--day {
-	background-color: var(--color_base-2);
-	border-top: 0;
-	cursor: inherit;
-	font-weight: var(--font-weight_bold);
-	justify-content: center;
-	width: 100%;
+  background-color: var(--color_base-2);
+  border-top: 0;
+  cursor: inherit;
+  font-weight: var(--font-weight_bold);
+  justify-content: center;
+  width: 100%;
 }
 
 .Calendar__date--day:nth-child(1) {
-	border-top-left-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
 }
 
 .Calendar__date--day:nth-child(7) {
-	border-top-right-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
 }
 
 .Calendar__date--day > span {
-	filter: var(--filter_light);
+  filter: var(--filter_light);
 }
 
 .Calendar__date--outside {
-	background-color: var(--color_base-3);
-	filter: var(--filter_light)
+  background-color: var(--color_base-3);
+  filter: var(--filter_light);
 }
 
 .Calendar__date--outside.Calendar__date--active {
-	filter: var(--filter_light)
+  filter: var(--filter_light);
 }
 
 .Calendar__date--today {
-	color: var(--color_accent);
+  color: var(--color_accent);
 }
 
 .Calendar__picker {
-	background-color: var(--color_base-1);
-	display: flex;
-	flex-direction: column;
-	max-width: 400px;
+  background-color: var(--color_base-1);
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
 }
 
 .Calendar__title {
-	margin-left: var(--padding);
-	margin-right: var(--padding);
-	width: 200px;
+  margin-left: var(--padding);
+  margin-right: var(--padding);
+  width: 200px;
 }
 
 .Calendar__title-container {
-	align-items: center;
-	display: flex;
-	flex-shrink: 0;
-	font-size: var(--font-size-label);
-	font-weight: var(--font-weight_bold);
-	justify-content: space-between;
-	padding: 5px;
+  align-items: center;
+  display: flex;
+  flex-shrink: 0;
+  font-size: var(--font-size-label);
+  font-weight: var(--font-weight_bold);
+  justify-content: space-between;
+  padding: 5px;
 }
 
 .Calendar__title-container > i {
-	cursor: pointer;
-	filter: var(--filter_light);
+  cursor: pointer;
+  filter: var(--filter_light);
 }

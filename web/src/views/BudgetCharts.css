@@ -1,62 +1,62 @@
 .BudgetCharts__chart {
-	display: flex;
-	flex-direction: column;
-	max-width: var(--width_input);
+  display: flex;
+  flex-direction: column;
+  max-width: var(--width_input);
 }
 
 .BudgetCharts__date-ranges {
-	align-items: center;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	min-width: var(--width_input);
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-width: var(--width_input);
 }
 
 .BudgetCharts__date-ranges > span {
-	background-color: var(--color_secondary);
-	border: var(--border);
-	border-radius: var(--border-radius);
-	border-width: 1px;
-	box-shadow: var(--box-shadow);
-	color: var(--color_secondary-content);
-	cursor: pointer;
-	display: flex;
-	font-weight: var(--font-weight_bold);
-	margin-bottom: 5px;
-	margin-right: 10px;
-	margin-top: 5px;
-	padding: 3px;
-	transition: background-color var(--animation) ease-in-out;
+  background-color: var(--color_secondary);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  border-width: 1px;
+  box-shadow: var(--box-shadow);
+  color: var(--color_secondary-content);
+  cursor: pointer;
+  display: flex;
+  font-weight: var(--font-weight_bold);
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-top: 5px;
+  padding: 3px;
+  transition: background-color var(--animation) ease-in-out;
 }
 
 .BudgetCharts__date-ranges > span:hover {
-	filter: var(--filter_focus);
+  filter: var(--filter_focus);
 }
 
 span.BudgetCharts__date-range--active {
-	background-color: var(--color_primary);
-	color: var(--color_primary-content);
+  background-color: var(--color_primary);
+  color: var(--color_primary-content);
 }
 
 .BudgetCharts__loading {
-	background-color: var(--color_base-3);
-	min-height: var(--width_input);
-	min-width: var(--width_input);
+  background-color: var(--color_base-3);
+  min-height: var(--width_input);
+  min-width: var(--width_input);
 }
 
 .BudgetCharts__none {
-	align-items: center;
-	font-weight: var(--font-weight_bold);
-	display: flex;
-	height: var(--width_input);
-	justify-content: center;
-	margin: auto;
-	padding: var(--padding);
-	text-align: center;
-	width: var(--width_input);
+  align-items: center;
+  font-weight: var(--font-weight_bold);
+  display: flex;
+  height: var(--width_input);
+  justify-content: center;
+  margin: auto;
+  padding: var(--padding);
+  text-align: center;
+  width: var(--width_input);
 }
 
 .BudgetCharts__table > .Table__div {
-	height: 100%;
-	width: 100%;
+  height: 100%;
+  width: 100%;
 }

@@ -1,11 +1,11 @@
 /* eslint-disable jsdoc/require-jsdoc */
 
-export function GetHelp (path?: string): {
-	helpLink: string,
+export function GetHelp(path?: string): {
+  helpLink: string;
 } {
-	return {
-		helpLink: `https://homechart.app/docs/guides/${path === undefined ?
-			"" :
-			path}`,
-	};
+  return {
+    helpLink: `https://homechart.app/docs/guides/${
+      path === undefined ? "" : path
+    }`,
+  };
 }

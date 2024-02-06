@@ -1,5 +1,5 @@
 export enum BudgetTransactionAccountStatusEnum {
-	Uncleared,
-	Cleared,
-	Reconciled,
+  Uncleared,
+  Cleared,
+  Reconciled,
 }

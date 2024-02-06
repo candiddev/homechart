@@ -18,102 +18,119 @@ import { BudgetCategoryState } from "../states/BudgetCategory";
 import type { BudgetPayee } from "../states/BudgetPayee";
 import { BudgetPayeeState } from "../states/BudgetPayee";
 import { GetHelp } from "../utilities/GetHelp";
-import { ObjectBudget, ObjectPayees, WebFormOverlayBudgetPayeeDefaultCategory, WebGlobalBudgetBalance, WebGlobalName } from "../yaml8n";
+import {
+  ObjectBudget,
+  ObjectPayees,
+  WebFormOverlayBudgetPayeeDefaultCategory,
+  WebGlobalBudgetBalance,
+  WebGlobalName,
+} from "../yaml8n";
 
-export function BudgetPayees (): m.Component {
-	const state = {
-		columns: Stream<FilterType>({
-			name: "",
-			budgetTransactionAmount: "", // eslint-disable-line sort-keys
-			budgetCategoryID: "", // eslint-disable-line sort-keys
-		}),
-		sort: Stream<TableHeaderSortAttrs>({
-			formatter: (b: BudgetPayee): string => {
-				return b.name;
-			},
-			invert: false,
-			property: "name",
-		}),
-	};
+export function BudgetPayees(): m.Component {
+  const state = {
+    columns: Stream<FilterType>({
+      name: "",
+      budgetTransactionAmount: "", // eslint-disable-line sort-keys
+      budgetCategoryID: "", // eslint-disable-line sort-keys
+    }),
+    sort: Stream<TableHeaderSortAttrs>({
+      formatter: (b: BudgetPayee): string => {
+        return b.name;
+      },
+      invert: false,
+      property: "name",
+    }),
+  };
 
-	const p = Stream.lift((payees, columns, sort) => {
-		m.redraw();
+  const p = Stream.lift(
+    (payees, columns, sort) => {
+      m.redraw();
 
-		return Filter.array(payees, columns, sort);
-	}, BudgetPayeeState.data, state.columns, state.sort);
+      return Filter.array(payees, columns, sort);
+    },
+    BudgetPayeeState.data,
+    state.columns,
+    state.sort,
+  );
 
-	if (AppState.getSessionDisplay() <= DisplayEnum.Medium) {
-		state.columns({
-			name: "",
-			budgetTransactionAmount: "", // eslint-disable-line sort-keys
-		});
-	}
+  if (AppState.getSessionDisplay() <= DisplayEnum.Medium) {
+    state.columns({
+      name: "",
+      budgetTransactionAmount: "", // eslint-disable-line sort-keys
+    });
+  }
 
-	return {
-		oninit: async (): Promise<void> => {
-			AppState.setLayoutApp({
-				...GetHelp("budget"),
-				breadcrumbs: [
-					{
-						link: "/budget/accounts",
-						name: AuthAccountState.translate(ObjectBudget),
-					},
-					{
-						name: AuthAccountState.translate(ObjectPayees),
-					},
-				],
-				toolbarActionButtons: [
-					AppToolbarActions().newBudgetPayee,
-				],
-			});
-		},
-		view: (): m.Children => {
-			return m(Table, {
-				actions: [],
-				data: p(),
-				editOnclick: (b: BudgetPayee) => {
-					AppState.setLayoutAppForm(FormOverlayBudgetPayee, b);
-				},
-				filters: [],
-				loaded: BudgetPayeeState.isLoaded(),
-				sort: state.sort,
-				tableColumns: [
-					{
-						linkRequireOnline: true,
-						name: AuthAccountState.translate(WebGlobalName),
-						property: "name",
-					},
-					{
-						formatter: (payee: BudgetPayee): string => {
-							return Currency.toString(payee.budgetTransactionAmount, AuthHouseholdState.findID(payee.authHouseholdID).preferences.currency);
-						},
-						linkFormatter: (payee: BudgetPayee): string => {
-							return `/budget/transactions?payee=${payee.id}`;
-						},
-						linkRequireOnline: true,
-						name: AuthAccountState.translate(WebGlobalBudgetBalance),
-						property: "budgetTransactionAmount",
-						sortFormatter: (payee: BudgetPayee): number => {
-							return payee.budgetTransactionAmount;
-						},
-						type: TableDataType.Link,
-					},
-					{
-						formatter: (payee: BudgetPayee): string => {
-							return BudgetCategoryState.findIDHeaderName(payee.budgetCategoryID);
-						},
-						linkFormatter: (): string => {
-							return "/budget/categories";
-						},
-						linkRequireOnline: true,
-						name: AuthAccountState.translate(WebFormOverlayBudgetPayeeDefaultCategory),
-						property: "budgetCategoryID",
-						type: TableDataType.Link,
-					},
-					TableColumnHousehold(),
-				],
-				tableColumnsNameEnabled: state.columns,
-			});
-		},
-	};
+  return {
+    oninit: async (): Promise<void> => {
+      AppState.setLayoutApp({
+        ...GetHelp("budget"),
+        breadcrumbs: [
+          {
+            link: "/budget/accounts",
+            name: AuthAccountState.translate(ObjectBudget),
+          },
+          {
+            name: AuthAccountState.translate(ObjectPayees),
+          },
+        ],
+        toolbarActionButtons: [AppToolbarActions().newBudgetPayee],
+      });
+    },
+    view: (): m.Children => {
+      return m(Table, {
+        actions: [],
+        data: p(),
+        editOnclick: (b: BudgetPayee) => {
+          AppState.setLayoutAppForm(FormOverlayBudgetPayee, b);
+        },
+        filters: [],
+        loaded: BudgetPayeeState.isLoaded(),
+        sort: state.sort,
+        tableColumns: [
+          {
+            linkRequireOnline: true,
+            name: AuthAccountState.translate(WebGlobalName),
+            property: "name",
+          },
+          {
+            formatter: (payee: BudgetPayee): string => {
+              return Currency.toString(
+                payee.budgetTransactionAmount,
+                AuthHouseholdState.findID(payee.authHouseholdID).preferences
+                  .currency,
+              );
+            },
+            linkFormatter: (payee: BudgetPayee): string => {
+              return `/budget/transactions?payee=${payee.id}`;
+            },
+            linkRequireOnline: true,
+            name: AuthAccountState.translate(WebGlobalBudgetBalance),
+            property: "budgetTransactionAmount",
+            sortFormatter: (payee: BudgetPayee): number => {
+              return payee.budgetTransactionAmount;
+            },
+            type: TableDataType.Link,
+          },
+          {
+            formatter: (payee: BudgetPayee): string => {
+              return BudgetCategoryState.findIDHeaderName(
+                payee.budgetCategoryID,
+              );
+            },
+            linkFormatter: (): string => {
+              return "/budget/categories";
+            },
+            linkRequireOnline: true,
+            name: AuthAccountState.translate(
+              WebFormOverlayBudgetPayeeDefaultCategory,
+            ),
+            property: "budgetCategoryID",
+            type: TableDataType.Link,
+          },
+          TableColumnHousehold(),
+        ],
+        tableColumnsNameEnabled: state.columns,
+      });
+    },
+  };
 }

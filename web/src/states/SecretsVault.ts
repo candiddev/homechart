@@ -1,4 +1,9 @@
-import { Key, KeyTypeAES128, ParseEncryptedValue, ParseKey } from "@lib/encryption/Encryption";
+import {
+  Key,
+  KeyTypeAES128,
+  ParseEncryptedValue,
+  ParseKey,
+} from "@lib/encryption/Encryption";
 import type { Err } from "@lib/services/Log";
 import { IsErr } from "@lib/services/Log";
 import { AppState } from "@lib/states/App";
@@ -8,191 +13,225 @@ import { Clone } from "@lib/utilities/Clone";
 import Stream from "mithril/stream";
 
 import { DataTypeEnum } from "../types/DataType";
-import { Permission, PermissionComponentsEnum, PermissionEnum } from "../types/Permission";
-import { ObjectVaultCreated, ObjectVaultDeleted, ObjectVaultUpdated } from "../yaml8n";
+import {
+  Permission,
+  PermissionComponentsEnum,
+  PermissionEnum,
+} from "../types/Permission";
+import {
+  ObjectVaultCreated,
+  ObjectVaultDeleted,
+  ObjectVaultUpdated,
+} from "../yaml8n";
 import { AuthAccountState } from "./AuthAccount";
 import { AuthHouseholdState } from "./AuthHousehold";
 import { AuthSessionState } from "./AuthSession";
 import { DataArrayManager } from "./DataArray";
 
 export interface SecretsVault {
-	[key: string]: SecretsVaultKey[] | boolean | null | number | string | undefined,
-	authAccountID: NullUUID,
-	authHouseholdID: NullUUID,
-	created: NullTimestamp,
-	icon: string,
-	id: NullUUID,
-	keys: SecretsVaultKey[],
-	name: string,
-	shortID: string,
-	updated: NullTimestamp,
+  [key: string]:
+    | SecretsVaultKey[]
+    | boolean
+    | null
+    | number
+    | string
+    | undefined;
+  authAccountID: NullUUID;
+  authHouseholdID: NullUUID;
+  created: NullTimestamp;
+  icon: string;
+  id: NullUUID;
+  keys: SecretsVaultKey[];
+  name: string;
+  shortID: string;
+  updated: NullTimestamp;
 }
 
 export interface SecretsVaultKey {
-	authAccountID: string,
-	key: string,
+  authAccountID: string;
+  key: string;
 }
 
 class SecretsVaultManager extends DataArrayManager<SecretsVault> {
-	constructor () {
-		super("/api/v1/secrets/vaults", "name", false, DataTypeEnum.SecretsVault);
+  constructor() {
+    super("/api/v1/secrets/vaults", "name", false, DataTypeEnum.SecretsVault);
 
-		Stream.lift(async (key, vaults) => {
-			if (key.key === "") {
-				this.keys({});
+    Stream.lift(
+      async (key, vaults) => {
+        if (key.key === "") {
+          this.keys({});
 
-				return;
-			}
+          return;
+        }
 
-			const keys = Clone(this.keys());
-			let changed = false;
+        const keys = Clone(this.keys());
+        let changed = false;
 
-			for (let i = 0; i < vaults.length; i++) {
-				const index = this.findKeyIndex(vaults[i].keys);
-				if (index < 0 || this.keys()[vaults[i].id as string] !== undefined) {
-					continue;
-				}
+        for (let i = 0; i < vaults.length; i++) {
+          const index = this.findKeyIndex(vaults[i].keys);
+          if (index < 0 || this.keys()[vaults[i].id as string] !== undefined) {
+            continue;
+          }
 
-				const e = ParseEncryptedValue(vaults[i].keys[index].key);
-				if (! IsErr(e)) {
-					const v = await key.decrypt(e);
-					if (! IsErr(v)) {
-						if (v.includes("aes128")) {
-							const key = ParseKey(v);
-							if (! IsErr(key)) {
-								keys[vaults[i].id as string] = key;
-								changed = true;
-							}
-						} else { //backwards compatibility
-							keys[vaults[i].id as string] = new Key(KeyTypeAES128, v, "");
-							changed = true;
-						}
-					}
-				}
-			}
+          const e = ParseEncryptedValue(vaults[i].keys[index].key);
+          if (!IsErr(e)) {
+            const v = await key.decrypt(e);
+            if (!IsErr(v)) {
+              if (v.includes("aes128")) {
+                const key = ParseKey(v);
+                if (!IsErr(key)) {
+                  keys[vaults[i].id as string] = key;
+                  changed = true;
+                }
+              } else {
+                //backwards compatibility
+                keys[vaults[i].id as string] = new Key(KeyTypeAES128, v, "");
+                changed = true;
+              }
+            }
+          }
+        }
 
-			if (changed) {
-				this.keys(keys);
-			}
-		}, AuthAccountState.privateKey, this.data);
-	}
+        if (changed) {
+          this.keys(keys);
+        }
+      },
+      AuthAccountState.privateKey,
+      this.data,
+    );
+  }
 
-	keys: Stream<{
-		[key: string]: Key,
-	}> = Stream({});
+  keys: Stream<{
+    [key: string]: Key;
+  }> = Stream({});
 
-	override alertAction (a: ActionsEnum, hideAlert?: boolean, actions?: {
-		name: string,
-		onclick(): Promise<void>,
-	}[]): void {
-		let msg = "";
+  override alertAction(
+    a: ActionsEnum,
+    hideAlert?: boolean,
+    actions?: {
+      name: string;
+      onclick(): Promise<void>;
+    }[],
+  ): void {
+    let msg = "";
 
-		switch (a) {
-		case ActionsEnum.Create:
-			msg = AuthAccountState.translate(ObjectVaultCreated);
-			break;
-		case ActionsEnum.Delete:
-			msg = AuthAccountState.translate(ObjectVaultDeleted);
-			break;
-		case ActionsEnum.Update:
-			msg = AuthAccountState.translate(ObjectVaultUpdated);
-			break;
-		}
+    switch (a) {
+      case ActionsEnum.Create:
+        msg = AuthAccountState.translate(ObjectVaultCreated);
+        break;
+      case ActionsEnum.Delete:
+        msg = AuthAccountState.translate(ObjectVaultDeleted);
+        break;
+      case ActionsEnum.Update:
+        msg = AuthAccountState.translate(ObjectVaultUpdated);
+        break;
+    }
 
-		AppState.setLayoutAppAlert({
-			actions: actions,
-			message: msg,
-		}, hideAlert);
-	}
+    AppState.setLayoutAppAlert(
+      {
+        actions: actions,
+        message: msg,
+      },
+      hideAlert,
+    );
+  }
 
-	async deleteKey (s: SecretsVault, authAccountID: NullUUID): Promise<void | Err> {
-		const keys = Clone(s.keys);
-		const index = this.findKeyIndex(s.keys, authAccountID);
+  async deleteKey(
+    s: SecretsVault,
+    authAccountID: NullUUID,
+  ): Promise<void | Err> {
+    const keys = Clone(s.keys);
+    const index = this.findKeyIndex(s.keys, authAccountID);
 
-		if (index >= 0) {
-			keys.splice(index, 1);
+    if (index >= 0) {
+      keys.splice(index, 1);
 
-			return this.update({
-				...s,
-				...{
-					keys: keys,
-				},
-			});
-		}
-	}
+      return this.update({
+        ...s,
+        ...{
+          keys: keys,
+        },
+      });
+    }
+  }
 
-	findKeyIndex (keys: SecretsVaultKey[], authAccountID?: NullUUID): number {
-		return keys.findIndex((key) => {
-			return key.authAccountID === (authAccountID === undefined ?
-				AuthAccountState.data().id :
-				authAccountID);
-		});
-	}
+  findKeyIndex(keys: SecretsVaultKey[], authAccountID?: NullUUID): number {
+    return keys.findIndex((key) => {
+      return (
+        key.authAccountID ===
+        (authAccountID === undefined
+          ? AuthAccountState.data().id
+          : authAccountID)
+      );
+    });
+  }
 
-	getIcon (s: SecretsVault): string {
-		return s.icon === "" ?
-			Icons.SecretsVault :
-			s.icon;
-	}
+  getIcon(s: SecretsVault): string {
+    return s.icon === "" ? Icons.SecretsVault : s.icon;
+  }
 
-	override new (): SecretsVault {
-		const p = Permission.isPermitted(AuthSessionState.data().permissionsHouseholds, PermissionComponentsEnum.Shop, PermissionEnum.Edit, AuthAccountState.data().primaryAuthHouseholdID);
+  override new(): SecretsVault {
+    const p = Permission.isPermitted(
+      AuthSessionState.data().permissionsHouseholds,
+      PermissionComponentsEnum.Shop,
+      PermissionEnum.Edit,
+      AuthAccountState.data().primaryAuthHouseholdID,
+    );
 
-		return {
-			authAccountID:
-				p ?
-					null :
-					AuthAccountState.data().id,
-			authHouseholdID:
-				p ?
-					AuthAccountState.data().primaryAuthHouseholdID :
-					null,
-			created: null,
-			icon: "",
-			id: null,
-			keys: [],
-			name: "",
-			shortID: "",
-			updated: null,
-		};
-	}
+    return {
+      authAccountID: p ? null : AuthAccountState.data().id,
+      authHouseholdID: p
+        ? AuthAccountState.data().primaryAuthHouseholdID
+        : null,
+      created: null,
+      icon: "",
+      id: null,
+      keys: [],
+      name: "",
+      shortID: "",
+      updated: null,
+    };
+  }
 
-	async setKey (s: SecretsVault, authAccountID: NullUUID): Promise<void | Err> {
-		const m = AuthHouseholdState.findMember(authAccountID);
+  async setKey(s: SecretsVault, authAccountID: NullUUID): Promise<void | Err> {
+    const m = AuthHouseholdState.findMember(authAccountID);
 
-		if (SecretsVaultState.keys()[s.id as string] === undefined || m.publicKey === "") {
-			return;
-		}
+    if (
+      SecretsVaultState.keys()[s.id as string] === undefined ||
+      m.publicKey === ""
+    ) {
+      return;
+    }
 
-		const keys = Clone(s.keys);
-		const index = this.findKeyIndex(s.keys, authAccountID);
+    const keys = Clone(s.keys);
+    const index = this.findKeyIndex(s.keys, authAccountID);
 
-		const key = ParseKey(m.publicKey);
-		if (IsErr(key)) {
-			return key;
-		}
+    const key = ParseKey(m.publicKey);
+    if (IsErr(key)) {
+      return key;
+    }
 
-		const v = await key.encrypt(this.keys()[s.id as string].string());
-		if (IsErr(v)) {
-			return v;
-		}
+    const v = await key.encrypt(this.keys()[s.id as string].string());
+    if (IsErr(v)) {
+      return v;
+    }
 
-		if (index < 0) {
-			keys.push({
-				authAccountID: authAccountID as string,
-				key: v.string(),
-			});
-		} else if (keys[index].key !== v.string()) {
-			keys[index].key = v.string();
-		}
+    if (index < 0) {
+      keys.push({
+        authAccountID: authAccountID as string,
+        key: v.string(),
+      });
+    } else if (keys[index].key !== v.string()) {
+      keys[index].key = v.string();
+    }
 
-		return this.update({
-			...s,
-			...{
-				keys: keys,
-			},
-		});
-	}
+    return this.update({
+      ...s,
+      ...{
+        keys: keys,
+      },
+    });
+  }
 }
 
 export const SecretsVaultState = new SecretsVaultManager();

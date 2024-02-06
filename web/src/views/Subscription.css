@@ -1,23 +1,23 @@
 .Subscription__features {
-	display: flex;
-	flex-direction: column;
-	font-size: var(--font-size_2);
-	width: var(--width_input);
+  display: flex;
+  flex-direction: column;
+  font-size: var(--font-size_2);
+  width: var(--width_input);
 }
 
 .Subscription__features p {
-	align-items: center;
-	display: flex;
-	padding: 10px;
+  align-items: center;
+  display: flex;
+  padding: 10px;
 }
 
 .Subscription__features i {
-	background-color: var(--color_accent);
-	border-radius: 1rem;
-	box-shadow: var(--box-shadow);
-	color: var(--color_accent-content);
-	cursor: text;
-	font-weight: var(--font-weight_normal);
-	margin-right: var(--padding);
-	padding: 5px;
+  background-color: var(--color_accent);
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  color: var(--color_accent-content);
+  cursor: text;
+  font-weight: var(--font-weight_normal);
+  margin-right: var(--padding);
+  padding: 5px;
 }

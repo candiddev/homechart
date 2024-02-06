@@ -8,33 +8,31 @@ import type { AuthHouseholdFeatureVote } from "./AuthHousehold";
 import { AuthHouseholdState } from "./AuthHousehold";
 
 export const AdminFeatureVoteState = {
-	data: Stream<AuthHouseholdFeatureVote[]>([]),
-	delete: async (): Promise<void | Err> => {
-		return API.delete("/api/v1/admin/feature-votes")
-			.then((err) => {
-				if (IsErr(err)) {
-					return err;
-				}
+  data: Stream<AuthHouseholdFeatureVote[]>([]),
+  delete: async (): Promise<void | Err> => {
+    return API.delete("/api/v1/admin/feature-votes").then((err) => {
+      if (IsErr(err)) {
+        return err;
+      }
 
-				AppState.setLayoutAppAlert({
-					message: "Feature Votes Deleted",
-				});
+      AppState.setLayoutAppAlert({
+        message: "Feature Votes Deleted",
+      });
 
-				return;
-			});
-	},
-	read: async (): Promise<void | Err> => {
-		return API.read("/api/v1/admin/feature-votes", {})
-			.then((response) => {
-				if (IsErr(response)) {
-					return response;
-				}
+      return;
+    });
+  },
+  read: async (): Promise<void | Err> => {
+    return API.read("/api/v1/admin/feature-votes", {}).then((response) => {
+      if (IsErr(response)) {
+        return response;
+      }
 
-				if (AuthHouseholdState.inResponseFeatureVotes(response)) {
-					AdminFeatureVoteState.data(response.dataValue);
-				}
+      if (AuthHouseholdState.inResponseFeatureVotes(response)) {
+        AdminFeatureVoteState.data(response.dataValue);
+      }
 
-				return;
-			});
-	},
+      return;
+    });
+  },
 };

@@ -1,49 +1,46 @@
 import { AdminFeatureVoteState } from "./AdminFeatureVote";
 
 describe("AdminFeatureVoteState", () => {
-	test("delete", async () => {
-		testing.mocks.responses = [
-			{},
-		];
+  test("delete", async () => {
+    testing.mocks.responses = [{}];
 
-		await AdminFeatureVoteState.delete();
+    await AdminFeatureVoteState.delete();
 
-		testing.requests([
-			{
-				method: "DELETE",
-				path: "/api/v1/admin/feature-votes",
-			},
-		]);
-	});
+    testing.requests([
+      {
+        method: "DELETE",
+        path: "/api/v1/admin/feature-votes",
+      },
+    ]);
+  });
 
-	test("read", async () => {
-		testing.mocks.responses = [
-			{
-				dataType: "AuthHouseholdFeatureVotes",
-				dataValue: [
-					{
-						feature: 1,
-					},
-				],
-			},
-		];
+  test("read", async () => {
+    testing.mocks.responses = [
+      {
+        dataType: "AuthHouseholdFeatureVotes",
+        dataValue: [
+          {
+            feature: 1,
+          },
+        ],
+      },
+    ];
 
-		await AdminFeatureVoteState.read();
+    await AdminFeatureVoteState.read();
 
-		await testing.sleep(100);
+    await testing.sleep(100);
 
-		expect(AdminFeatureVoteState.data())
-			.toStrictEqual([
-				{
-					feature: 1,
-				},
-			]);
+    expect(AdminFeatureVoteState.data()).toStrictEqual([
+      {
+        feature: 1,
+      },
+    ]);
 
-		testing.requests([
-			{
-				method: "GET",
-				path: "/api/v1/admin/feature-votes",
-			},
-		]);
-	});
+    testing.requests([
+      {
+        method: "GET",
+        path: "/api/v1/admin/feature-votes",
+      },
+    ]);
+  });
 });

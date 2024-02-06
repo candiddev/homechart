@@ -11,111 +11,112 @@ import type { AuthHousehold } from "./AuthHousehold";
 import { AuthHouseholdState } from "./AuthHousehold";
 
 export const CloudHouseholdState = {
-	create: async (authHouseholdID: NullUUID, emailAddress: string, password: string): Promise<void | Err> => {
-		return API.create(`/api/v1/cloud/${authHouseholdID}`, {
-			emailAddress: emailAddress,
-			password: password,
-		})
-			.then((err) => {
-				if (IsErr(err)) {
-					AppState.setLayoutAppAlert(err);
+  create: async (
+    authHouseholdID: NullUUID,
+    emailAddress: string,
+    password: string,
+  ): Promise<void | Err> => {
+    return API.create(`/api/v1/cloud/${authHouseholdID}`, {
+      emailAddress: emailAddress,
+      password: password,
+    }).then((err) => {
+      if (IsErr(err)) {
+        AppState.setLayoutAppAlert(err);
 
-					return err;
-				}
+        return err;
+      }
 
-				return;
-			});
-	},
-	data: Stream([] as AuthHousehold[]),
-	findID: (authHouseholdID: NullUUID): AuthHousehold => {
-		const i = CloudHouseholdState.data()
-			.findIndex((household) => {
-				return household.selfHostedID === authHouseholdID;
-			});
+      return;
+    });
+  },
+  data: Stream([] as AuthHousehold[]),
+  findID: (authHouseholdID: NullUUID): AuthHousehold => {
+    const i = CloudHouseholdState.data().findIndex((household) => {
+      return household.selfHostedID === authHouseholdID;
+    });
 
-		if (i < 0) {
-			return AuthHouseholdState.new();
-		}
+    if (i < 0) {
+      return AuthHouseholdState.new();
+    }
 
-		return CloudHouseholdState.data()[i];
-	},
-	isExpired (authHouseholdID?: NullUUID): boolean {
-		if (authHouseholdID === undefined) {
-			return false;
-		}
+    return CloudHouseholdState.data()[i];
+  },
+  isExpired(authHouseholdID?: NullUUID): boolean {
+    if (authHouseholdID === undefined) {
+      return false;
+    }
 
-		const ah = CloudHouseholdState.findID(authHouseholdID);
-		return ah.subscriptionExpires === null || CivilDate.fromString(ah.subscriptionExpires) <= CivilDate.now(); // eslint-disable-line @typescript-eslint/no-non-null-assertion
-	},
-	read: async (authHousheoldID: NullUUID): Promise<void | Err> => {
-		return API.read(`/api/v1/cloud/${authHousheoldID}`, {})
-			.then((response) => {
-				if (IsErr(response)) {
-					return response;
-				}
+    const ah = CloudHouseholdState.findID(authHouseholdID);
+    return (
+      ah.subscriptionExpires === null ||
+      CivilDate.fromString(ah.subscriptionExpires) <= CivilDate.now()
+    ); // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  },
+  read: async (authHousheoldID: NullUUID): Promise<void | Err> => {
+    return API.read(`/api/v1/cloud/${authHousheoldID}`, {}).then((response) => {
+      if (IsErr(response)) {
+        return response;
+      }
 
-				if (AuthHouseholdState.containsResponse(response)) {
-					CloudHouseholdState.set(response.dataValue[0]);
+      if (AuthHouseholdState.containsResponse(response)) {
+        CloudHouseholdState.set(response.dataValue[0]);
 
-					return;
-				}
+        return;
+      }
 
-				return ErrUnknownResponse;
-			});
-	},
-	readJWT: async (authHousheoldID: NullUUID): Promise<void | Err> => {
-		return API.read(`/api/v1/cloud/${authHousheoldID}/jwt`, {})
-			.then((response) => {
-				if (IsErr(response)) {
-					return response;
-				}
+      return ErrUnknownResponse;
+    });
+  },
+  readJWT: async (authHousheoldID: NullUUID): Promise<void | Err> => {
+    return API.read(`/api/v1/cloud/${authHousheoldID}/jwt`, {}).then(
+      (response) => {
+        if (IsErr(response)) {
+          return response;
+        }
 
-				if (AuthHouseholdState.containsResponse(response)) {
-					AuthHouseholdState.set(response.dataValue[0]);
+        if (AuthHouseholdState.containsResponse(response)) {
+          AuthHouseholdState.set(response.dataValue[0]);
 
-					return;
-				}
+          return;
+        }
 
-				return ErrUnknownResponse;
-			});
-	},
-	set: (authHousehold: AuthHousehold): void => {
-		const ah = CloudHouseholdState.data();
+        return ErrUnknownResponse;
+      },
+    );
+  },
+  set: (authHousehold: AuthHousehold): void => {
+    const ah = CloudHouseholdState.data();
 
-		const i = ah.findIndex((household) => {
-			return household.id === authHousehold.id;
-		});
+    const i = ah.findIndex((household) => {
+      return household.id === authHousehold.id;
+    });
 
-		if (i < 0) {
-			CloudHouseholdState.data([
-				...ah,
-				authHousehold,
-			]);
-		} else {
-			ah[i] = authHousehold;
-			CloudHouseholdState.data(ah);
-		}
-	},
-	update: async (data: AuthHousehold): Promise<void | Err> => {
-		return API.update(`/api/v1/cloud/${data.id}`, data)
-			.then((response) => {
-				if (IsErr(response)) {
-					AppState.setLayoutAppAlert(response);
+    if (i < 0) {
+      CloudHouseholdState.data([...ah, authHousehold]);
+    } else {
+      ah[i] = authHousehold;
+      CloudHouseholdState.data(ah);
+    }
+  },
+  update: async (data: AuthHousehold): Promise<void | Err> => {
+    return API.update(`/api/v1/cloud/${data.id}`, data).then((response) => {
+      if (IsErr(response)) {
+        AppState.setLayoutAppAlert(response);
 
-					return response;
-				}
+        return response;
+      }
 
-				if (AuthHouseholdState.containsResponse(response)) {
-					CloudHouseholdState.set(response.dataValue[0]);
+      if (AuthHouseholdState.containsResponse(response)) {
+        CloudHouseholdState.set(response.dataValue[0]);
 
-					AppState.setLayoutAppAlert({
-						message: AuthAccountState.translate(ObjectHouseholdUpdated),
-					});
+        AppState.setLayoutAppAlert({
+          message: AuthAccountState.translate(ObjectHouseholdUpdated),
+        });
 
-					return;
-				}
+        return;
+      }
 
-				return;
-			});
-	},
+      return;
+    });
+  },
 };

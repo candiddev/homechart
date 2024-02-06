@@ -1,103 +1,102 @@
 .CookRecipesID__form #form-item-label-ingredients,
 .CookRecipesID__form #form-item-label-directions {
-	filter: none;
-	font-size: var(--font-size_2);
+  filter: none;
+  font-size: var(--font-size_2);
 }
 
-
 .CookRecipesID__heading {
-	display: flex;
-	flex-direction: column;
-	flex-wrap: wrap;
-	padding: 0 !important;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0 !important;
 }
 
 .CookRecipesID__heading > * {
-	align-items: flex-start;
+  align-items: flex-start;
 }
 
 .CookRecipesID__notes {
-	display: flex;
-	flex-basis: auto !important;
-	flex-direction: column;
-	flex-shrink: 0 !important;
-	padding-top: var(--padding);
-	width: 100%;
+  display: flex;
+  flex-basis: auto !important;
+  flex-direction: column;
+  flex-shrink: 0 !important;
+  padding-top: var(--padding);
+  width: 100%;
 }
 
 .CookRecipesID__notes > div {
-	width: 100%;
+  width: 100%;
 }
 
 .CookRecipesID__notes > div > div {
-	border: var(--border);
-	border-radius: var(--border-radius);
-	margin-bottom: var(--padding);
-	margin-top: var(--padding);
+  border: var(--border);
+  border-radius: var(--border-radius);
+  margin-bottom: var(--padding);
+  margin-top: var(--padding);
 }
 
 .CookRecipesID__notes > div > div .Title {
-	border-radius: var(--border-radius);
+  border-radius: var(--border-radius);
 }
 
 .CookRecipesID__notes > div:first-child {
-	align-items: center;
-	border-bottom: var(--border);
-	display: flex;
-	font-size: var(--font-size_3);
-	font-weight: var(--font-weight_bold);
-	justify-content: space-between;
-	padding-bottom: 10px;
-	width: 100%;
+  align-items: center;
+  border-bottom: var(--border);
+  display: flex;
+  font-size: var(--font-size_3);
+  font-weight: var(--font-weight_bold);
+  justify-content: space-between;
+  padding-bottom: 10px;
+  width: 100%;
 }
 
 .CookRecipesID__notes > div:first-child > .Button {
-	font-size: var(--font-size_2);
-	margin: 0;
+  font-size: var(--font-size_2);
+  margin: 0;
 }
 
 .CookRecipesID__title {
-	justify-content: space-between;
+  justify-content: space-between;
 }
 
 .CookRecipesID__title i {
-	cursor: pointer;
-	padding-left: var(--padding);
+  cursor: pointer;
+  padding-left: var(--padding);
 }
 
 .CookRecipesID__wrap {
-	align-items: center;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	width: 100%;
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .CookRecipesID__title + .CookRecipesID__wrap {
-	padding: var(--padding);
+  padding: var(--padding);
 }
 
 .CookRecipesID__title + .CookRecipesID__wrap > :first-child {
-	flex-basis: 50%;
-	flex-direction: column;
+  flex-basis: 50%;
+  flex-direction: column;
 }
 
 .CookRecipesID__wrap > *:not(button) {
-	align-items: flex-start;
-	flex-basis: 50%;
-	flex-shrink: 1;
-	max-width: var(--width_input);
+  align-items: flex-start;
+  flex-basis: 50%;
+  flex-shrink: 1;
+  max-width: var(--width_input);
 }
 
 .CookRecipesID__wrap > * > *:not(button) {
-	min-width: calc(var(--width_input) - 40px);
-	width: 100%;
+  min-width: calc(var(--width_input) - 40px);
+  width: 100%;
 }
 
 .CookRecipesID__title > *:first-child {
-	justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 .CookRecipesID__title > *:last-child {
-	justify-content: flex-end;
+  justify-content: flex-end;
 }
