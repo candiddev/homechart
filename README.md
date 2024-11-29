@@ -7,7 +7,6 @@
 [:speech_balloon: Discussions](https://github.com/candiddev/homechart/discussions)\
 [:book: Docs](https://homechart.app/docs/)\
 [:arrow_down: Get Homechart](https://homechart.app/docs/guides/get-homechart/)\
-[:motorway: Roadmap](https://github.com/orgs/candiddev/projects/6/views/36)
 
 Homechart is a web-based platform for organizing and managing your household.
 
