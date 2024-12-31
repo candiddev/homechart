@@ -2,11 +2,12 @@
 
 > Your Family's Mission Control
 
-**Latest Release Notes: [v2024.11](https://homechart.app/blog/whats-new-202411/)**
+**Latest Release Notes: [v2024.12](https://homechart.app/blog/whats-new-202412/)**
 
 [:speech_balloon: Discussions](https://github.com/candiddev/homechart/discussions)\
 [:book: Docs](https://homechart.app/docs/)\
 [:arrow_down: Get Homechart](https://homechart.app/docs/guides/get-homechart/)\
+[:eyes: Open Source Details](https://candid.dev/open-source)
 
 Homechart is a web-based platform for organizing and managing your household.
 
