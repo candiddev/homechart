@@ -151,7 +151,7 @@ translations:
     en: Someone (hopefully you!) changed a Homechart account to use this email address.
     es: Alguien (¡con suerte tú!) cambió una cuenta de Homechart para usar esta dirección
       de correo electrónico.
-    fr: Quelqu'un (vous, espérons-le!) a modifié un compte Homechart pour utiliser
+    fr: Quelqu'un (vous, espérons-le !) a modifié un compte Homechart pour utiliser
       cette adresse e-mail.
     hi: इस ईमेल पते का उपयोग करने के लिए किसी ने (उम्मीद है कि आपने!) होमचार्ट खाता
       बदल दिया है।
@@ -191,7 +191,7 @@ translations:
     es: Alguien (¡esperemos que usted!) cambió la dirección de correo electrónico
       de una cuenta de Homechart asociada con esta dirección de correo electrónico.
       La nueva dirección de correo electrónico es
-    fr: Quelqu'un (vous, espérons-le!) a changé l'adresse e-mail d'un compte Homechart
+    fr: Quelqu'un (vous, espérons-le !) a changé l'adresse e-mail d'un compte Homechart
       associé à cette adresse e-mail. La nouvelle adresse e-mail est
     hi: किसी ने (उम्मीद है कि आपने!) इस ईमेल पते से जुड़े होमचार्ट खाते का ईमेल पता
       बदल दिया है। नया ईमेल पता है
@@ -361,7 +361,7 @@ translations:
       below to accept or decline the invite
     es: Hola %s, %s te invitó a su hogar Homechart. Haga clic en el enlace a continuación
       para aceptar o rechazar la invitación.
-    fr: Bonjour %s, %s vous a invité dans son foyer Homechart! Veuillez cliquer sur
+    fr: Bonjour %s, %s vous a invité dans son foyer Homechart ! Veuillez cliquer sur
       le lien ci-dessous pour accepter ou refuser l'invitation
     hi: हैलो %s, %s ने आपको अपने होमचार्ट हाउस में आमंत्रित किया! आमंत्रण स्वीकार
       या अस्वीकार करने के लिए कृपया नीचे दिए गए लिंक पर क्लिक करें
@@ -422,7 +422,7 @@ translations:
       associated with this email address.
     es: Alguien (¡esperemos que usted!) Habilitó Iniciar sesión con %s para la cuenta
       de Homechart asociada con esta dirección de correo electrónico.
-    fr: Quelqu'un (vous, espérons-le!) a activé la connexion avec %s pour le compte
+    fr: Quelqu'un (vous, espérons-le !) a activé la connexion avec %s pour le compte
       Homechart associé à cette adresse e-mail.
     hi: इस ईमेल पते से जुड़े होमचार्ट खाते के लिए किसी ने (उम्मीद है कि आपने!) %s
       के साथ साइन इन करने में सक्षम किया है।
@@ -457,7 +457,7 @@ translations:
       with this email address.
     es: Alguien (¡ojalá seas tú!) cambió la contraseña de una cuenta de Homechart
       asociada con esta dirección de correo electrónico.
-    fr: Quelqu'un (vous, espérons-le!) a changé le mot de passe d'un compte Homechart
+    fr: Quelqu'un (vous, espérons-le !) a changé le mot de passe d'un compte Homechart
       associé à cette adresse e-mail.
     hi: किसी ने (उम्मीद है कि आपने!) इस ईमेल पते से जुड़े होमचार्ट खाते का पासवर्ड
       बदल दिया है।
@@ -492,7 +492,7 @@ translations:
       associated with this email address.
     es: Alguien (¡esperemos que usted!) Solicitó un restablecimiento de contraseña
       para una cuenta de Homechart asociada con esta dirección de correo electrónico.
-    fr: Quelqu'un (vous, espérons-le!) a demandé la réinitialisation du mot de passe
+    fr: Quelqu'un (vous, espérons-le !) a demandé la réinitialisation du mot de passe
       d'un compte Homechart associé à cette adresse e-mail.
     hi: किसी ने (उम्मीद है कि आपने!) इस ईमेल पते से जुड़े होमचार्ट खाते के लिए पासवर्ड
       रीसेट करने का अनुरोध किया है।
@@ -584,9 +584,9 @@ translations:
     es: ¡Gracias por suscribirte a Homechart Cloud! Realmente apreciamos su apoyo
       y esperamos que Homechart marque la diferencia con la administración de su hogar.
       ¡Gracias por suscribirse!
-    fr: Merci de vous être abonné à Homechart Cloud! Nous apprécions vraiment votre
+    fr: Merci de vous être abonné à Homechart Cloud ! Nous apprécions vraiment votre
       soutien et nous espérons que Homechart fera une différence dans la gestion de
-      votre foyer. Merci de vous être abonné!
+      votre foyer. Merci de vous être abonné !
     hi: होमचार्ट क्लाउड की सदस्यता लेने के लिए धन्यवाद! हम वास्तव में आपके समर्थन
       की सराहना करते हैं, और हम आशा करते हैं कि होमचार्ट आपके घरेलू प्रबंधन में बदलाव
       लाएगा। सदस्यता लेने के लिए धन्यवाद!
@@ -606,7 +606,7 @@ translations:
     de: Danke fürs Abonnieren!
     en: Thank You for Subscribing!
     es: ¡Gracias por suscribirse!
-    fr: Merci de vous être abonné!
+    fr: Merci de vous être abonné !
     hi: सदस्यता लेने के लिए धन्यवाद!
     ja: 登録ありがとうございます！
     nl: Bedankt voor je inschrijving!
@@ -727,7 +727,7 @@ translations:
       far
     es: ¡Alguien usó su referencia para registrarse en Homechart! Has recomendado
       a %d hasta ahora
-    fr: Quelqu'un a utilisé votre parrainage pour s'inscrire à Homechart! Vous avez
+    fr: Quelqu'un a utilisé votre parrainage pour s'inscrire à Homechart ! Vous avez
       parrainé %d jusqu'à présent
     hi: होमचार्ट के लिए साइन अप करने के लिए किसी ने आपके रेफ़रल का उपयोग किया! आपने
       अभी तक %d का उल्लेख किया है
@@ -745,7 +745,7 @@ translations:
     de: und haben ein lebenslanges Abonnement für Homechart erhalten! Glückwunsch!
     en: and have received a lifetime subscription to Homechart!  Congratulations!
     es: ¡y he recibido una suscripción de por vida a Homechart! ¡Felicidades!
-    fr: et avez reçu un abonnement à vie à Homechart! Toutes nos félicitations!
+    fr: et avez reçu un abonnement à vie à Homechart ! Toutes nos félicitations !
     hi: और होमचार्ट की आजीवन सदस्यता प्राप्त की है! बधाई हो!
     ja: Homechart の生涯サブスクリプションを受け取りました! おめでとうございます!
     nl: en een levenslang abonnement op Homechart hebben gekregen! Gefeliciteerd!
@@ -759,7 +759,7 @@ translations:
       erhalten.
     en: and only need %d more to receive a lifetime subscription to Homechart.
     es: y solo necesita %d más para recibir una suscripción de por vida a Homechart.
-    fr: et n'avez besoin que de %dplus pour recevoir un abonnement à vie à Homechart.
+    fr: et n'avez besoin que de %d plus pour recevoir un abonnement à vie à Homechart.
     hi: और होमचार्ट के लिए आजीवन सदस्यता प्राप्त करने के लिए केवल %d अधिक की आवश्यकता
       है।
     ja: Homechart の生涯サブスクリプションを受け取るには、あと %d だけ必要です。
@@ -804,10 +804,10 @@ translations:
       cambiar la contraseña de su cuenta de Homechart. ¿No estás seguro de qué hacer?
       Responde a este correo electrónico, ¡estamos aquí para ayudarte!'
     fr: |
-      'Quelqu'un (vous, espérons-le!) vient de se connecter à votre compte Homechart:
+      'Quelqu'un (vous, espérons-le !) vient de se connecter à votre compte Homechart:
       **Type d'appareil**: %s **Adresse IP**: %s Si ce n'était pas vous, veuillez
       envisager de modifier le mot de passe de votre compte Homechart. Vous ne savez
-      pas quoi faire? Répondez à cet e-mail, nous sommes là pour vous aider!'
+      pas quoi faire ? Répondez à cet e-mail, nous sommes là pour vous aider !'
     hi: 'किसी ने (उम्मीद है कि आपने!) अभी-अभी आपके होमचार्ट खाते में प्रवेश किया है:
       **डिवाइस प्रकार**: %s **IP पता**: %s यदि यह आप नहीं थे, तो कृपया अपने होमचार्ट
       खाते का पासवर्ड बदलने पर विचार करें। पता नहीं कि क्या करना है? इस ईमेल का उत्तर
@@ -994,7 +994,7 @@ translations:
     de: Wir freuen uns sehr, dass Sie hier sind!
     en: We're really glad you're here!
     es: ¡Estamos muy contentos de que estés aquí!
-    fr: Nous sommes vraiment heureux que vous soyez ici!
+    fr: Nous sommes vraiment heureux que vous soyez ici !
     hi: हम वास्तव में खुश हैं कि आप यहां हैं!
     ja: 来てくれて本当に嬉しいです！
     nl: We zijn echt blij dat je er bent!
@@ -1447,7 +1447,7 @@ translations:
     de: Ersparnisse
     en: Savings
     es: Ahorros
-    fr: Des économies
+    fr: Économies
     hi: जमा पूंजी
     ja: 貯蓄
     nl: Besparingen
@@ -1551,7 +1551,7 @@ translations:
     de: Ersparnisse
     en: Savings
     es: Ahorros
-    fr: Des économies
+    fr: Économies
     hi: जमा पूंजी
     ja: 貯蓄
     nl: Spaargeld
@@ -2032,7 +2032,7 @@ translations:
     de: Haushalt
     en: Household
     es: Familiar
-    fr: Ménage
+    fr: Foyer
     hi: परिवार
     ja: 家庭
     nl: Huishouden
@@ -2045,7 +2045,7 @@ translations:
     de: Haushalt erstellt
     en: Household created
     es: Hogar creado
-    fr: Ménage créé
+    fr: Foyer créé
     hi: घरेलू बनाया
     ja: 世帯が作成されました
     nl: Huishouden gemaakt
@@ -2071,7 +2071,7 @@ translations:
     de: Haushalt aktualisiert
     en: Household updated
     es: Hogar actualizado
-    fr: Ménage mis à jour
+    fr: Foyer mis à jour
     hi: घरेलू अपडेट किया गया
     ja: 世帯を更新しました
     nl: Huishouden bijgewerkt
@@ -2084,7 +2084,7 @@ translations:
     de: Haushalte
     en: Households
     es: Hogares
-    fr: Ménages
+    fr: Foyer
     hi: परिवारों
     ja: 世帯
     nl: Huishoudens
@@ -2097,7 +2097,7 @@ translations:
     de: Eingang
     en: Input
     es: Aporte
-    fr: Saisir
+    fr: Entrée
     hi: इनपुट
     ja: 入力
     nl: Invoer
@@ -2266,7 +2266,7 @@ translations:
     de: Abholen
     en: Pick Up
     es: Levantar
-    fr: Ramasser
+    fr: Récupérer
     hi: उठाना
     ja: 選び出す
     nl: Ophalen
@@ -2305,7 +2305,7 @@ translations:
     de: Protokoll
     en: Log
     es: Registro
-    fr: Enregistrer
+    fr: Journal
     hi: लकड़ी का लट्ठा
     ja: ログ
     nl: Logboek
@@ -2617,7 +2617,7 @@ translations:
     de: Notizen
     en: Notes
     es: notas
-    fr: Remarques
+    fr: Notes
     hi: टिप्पणियाँ
     ja: ノート
     nl: Notities
@@ -2643,7 +2643,7 @@ translations:
     de: Benachrichtigung erstellt
     en: Notification created
     es: Notificación creada
-    fr: Avis créé
+    fr: Notification créé
     hi: अधिसूचना बनाई गई
     ja: 通知が作成されました
     nl: Melding gemaakt
@@ -2656,7 +2656,7 @@ translations:
     de: Benachrichtigung gelöscht
     en: Notification deleted
     es: Notificación eliminada
-    fr: Avis supprimé
+    fr: Notification supprimée
     hi: सूचना मिटाई गई
     ja: 通知を削除しました
     nl: Melding verwijderd
@@ -2669,7 +2669,7 @@ translations:
     de: Benachrichtigung aktualisiert
     en: Notification updated
     es: Notificación actualizada
-    fr: Avis mis à jour
+    fr: Notification mise à jour
     hi: अधिसूचना अपडेट की गई
     ja: 通知が更新されました
     nl: Melding bijgewerkt
@@ -2682,7 +2682,7 @@ translations:
     de: Benachrichtigungen
     en: Notifications
     es: Notificaciones
-    fr: Avis
+    fr: Notifications
     hi: सूचनाएं
     ja: 通知
     nl: Meldingen
@@ -2695,7 +2695,7 @@ translations:
     de: Ausgang
     en: Output
     es: Producción
-    fr: Sortir
+    fr: Sotie
     hi: उत्पादन
     ja: 出力
     nl: Terugkoppeling
@@ -2708,7 +2708,7 @@ translations:
     de: Ausgänge
     en: Outputs
     es: Salidas
-    fr: Les sorties
+    fr: Sorties
     hi: आउटपुट
     ja: 出力
     nl: Terugkoppelingen
@@ -3072,7 +3072,7 @@ translations:
     de: Sicherheit
     en: Secrets
     es: Misterios
-    fr: secrets
+    fr: Secrets
     hi: रहस्य
     ja: 秘密
     nl: Geheimen
@@ -3137,7 +3137,7 @@ translations:
     de: Sitzungen
     en: Sessions
     es: Sesiones
-    fr: Séances
+    fr: Sessions
     hi: सत्र
     ja: セッション
     nl: Sessies
@@ -3462,7 +3462,7 @@ translations:
     de: Tresor
     en: Vault
     es: Bóveda
-    fr: Sauter
+    fr: Coffre-fort
     hi: मेहराब
     ja: 金庫
     nl: Kluis
@@ -3514,7 +3514,7 @@ translations:
     de: Gewölbe
     en: Vaults
     es: Bóvedas
-    fr: coffres
+    fr: Coffres
     hi: वाल्टों
     ja: 金庫
     nl: Kluizen
@@ -3670,7 +3670,7 @@ translations:
     de: Tagesordnung für
     en: Agenda for
     es: Agenda para
-    fr: Ordre du jour pour
+    fr: Agenda pour
     hi: के लिए एजेंडा
     ja: 議題
     nl: Agenda voor
@@ -3983,7 +3983,7 @@ translations:
     de: Bitte erneuern Sie es, um Homechart weiterhin zu verwenden!
     en: Please renew it to keep using Homechart!
     es: ¡Renuévala para seguir usando Homechart!
-    fr: Veuillez le renouveler pour continuer à utiliser Homechart!
+    fr: Veuillez le renouveler pour continuer à utiliser Homechart !
     hi: होमचार्ट का उपयोग जारी रखने के लिए कृपया इसे नवीनीकृत करें!
     ja: Homechartを引き続きご利用いただくには、更新してください。
     nl: Verleng het abonnement deze om Homechart te blijven gebruiken!
@@ -4009,7 +4009,7 @@ translations:
     de: Bitte erneuern Sie es, um Homechart weiterhin zu verwenden!
     en: Please renew it to keep using Homechart!
     es: ¡Renuévala para seguir usando Homechart!
-    fr: Veuillez le renouveler pour continuer à utiliser Homechart!
+    fr: Veuillez le renouveler pour continuer à utiliser Homechart !
     hi: होमचार्ट का उपयोग जारी रखने के लिए कृपया इसे नवीनीकृत करें!
     ja: Homechartを引き続きご利用いただくには、更新してください。
     nl: Verlengen om Homechart te blijven gebruiken!
@@ -4062,7 +4062,7 @@ translations:
     de: Willkommen zur Homechart-Demo!
     en: Welcome to the Homechart demo!
     es: ¡Bienvenido a la demostración de Homechart!
-    fr: Bienvenue dans la démo Homechart!
+    fr: Bienvenue dans la démo Homechart !
     hi: होमचार्ट डेमो में आपका स्वागत है!
     ja: Homechart デモへようこそ!
     nl: Welkom bij de Homechart-demo!
@@ -4388,7 +4388,7 @@ translations:
     de: ICS-Datei importiert!
     en: ICS File Imported!
     es: ¡Archivo ICS importado!
-    fr: Fichier ICS importé!
+    fr: Fichier ICS importé !
     hi: आईसीएस फ़ाइल आयात की गई!
     ja: ICS ファイルがインポートされました!
     nl: ICS-bestand geïmporteerd!
@@ -4674,7 +4674,7 @@ translations:
     de: Kommentare
     en: Comments
     es: Comentarios
-    fr: commentaires
+    fr: Commentaires
     hi: टिप्पणियाँ
     ja: コメント
     nl: Opmerkingen
@@ -4802,7 +4802,7 @@ translations:
     de: Rückmeldung
     en: Feedback
     es: Comentario
-    fr: Retour
+    fr: Commentaire
     hi: प्रतिक्रिया
     ja: フィードバック
     nl: Feedback
@@ -4828,7 +4828,7 @@ translations:
     de: Probleme haben? Wir sind hier um zu helfen!
     en: Having problems?  We're here to help!
     es: ¿Teniendo problemas? ¡Estamos aquí para ayudar!
-    fr: Avoir des problèmes? Nous sommes là pour vous aider !
+    fr: Vous rencontrez des problèmes ? Nous sommes là pour vous aider !
     hi: समस्याएं आ रही हैं? हमलोग यहां सहायता करने के लिए हैं!
     ja: 問題がありますか? 私たちがお手伝いします!
     nl: Heeft u problemen? We zijn er om te helpen!
@@ -4854,7 +4854,7 @@ translations:
     de: Was ist los?
     en: What's going on?
     es: ¿Qué está sucediendo?
-    fr: Que se passe-t-il?
+    fr: Que se passe-t-il ?
     hi: क्या चल रहा है?
     ja: どうしたの？
     nl: Wat gebeurd er?
@@ -4945,7 +4945,7 @@ translations:
     de: Wem gehört der Artikel
     en: Who owns the item
     es: Quién es el propietario del artículo
-    fr: A qui appartient l'objet
+    fr: À qui appartient l'objet
     hi: वस्तु का स्वामी कौन है
     ja: アイテムの所有者
     nl: Wie is de eigenaar van het item
@@ -5648,7 +5648,7 @@ translations:
     de: Teilnehmer
     en: Participants
     es: Participantes
-    fr: Intervenants
+    fr: Participants
     hi: प्रतिभागियों
     ja: 参加者
     nl: Deelnemers
@@ -5830,7 +5830,7 @@ translations:
     de: Filtern Sie nach Tags
     en: Filter for Tags
     es: Filtrar por Etiquetas
-    fr: Filtrer les balises
+    fr: Filtrer les étiquettes
     hi: टैग के लिए फ़िल्टर करें
     ja: タグのフィルター
     nl: Filteren op labels
@@ -5843,7 +5843,7 @@ translations:
     de: Leerzeichengetrennte Liste von Tags
     en: Space separated list of tags
     es: Lista de etiquetas separadas por espacios
-    fr: Liste de balises séparées par des espaces
+    fr: Liste d'étiquette séparées par des espaces
     hi: अंतरिक्ष से अलग टैग की सूची
     ja: スペースで区切られたタグのリスト
     nl: Door spaties gescheiden lijst met tags
@@ -6156,7 +6156,7 @@ translations:
     de: UPC des Artikels, der zum Scannen verwendet wird
     en: UPC of the item, used for scanning
     es: UPC del artículo, utilizado para escanear
-    fr: UPC de l'article, utilisé pour la numérisation
+    fr: CUP de l'article, utilisé pour le scan
     hi: आइटम का UPC, स्कैन करने के लिए उपयोग किया गया
     ja: スキャンに使用される商品のUPC
     nl: UPC van het item, gebruikt voor scannen
@@ -6386,7 +6386,7 @@ translations:
     de: Einlösbar
     en: Redeemable
     es: Redimible
-    fr: Rachetable
+    fr: Échangeable
     hi: प्रतिदेय
     ja: 交換可能
     nl: Inwisselbaar
@@ -6412,7 +6412,7 @@ translations:
     de: Anzahl der zum Einlösen verfügbaren Stempel
     en: Number of stamps available for redemption
     es: Número de sellos disponibles para redención
-    fr: Nombre de timbres disponibles pour l'échange
+    fr: Nombre de tampons disponibles pour l'échange
     hi: मोचन के लिए उपलब्ध टिकटों की संख्या
     ja: 交換可能なスタンプの数
     nl: Aantal zegels beschikbaar voor inwisseling
@@ -6425,7 +6425,7 @@ translations:
     de: Stempelziel
     en: Stamp Goal
     es: Meta del sello
-    fr: Tampon Objectif
+    fr: Tampons Objectif
     hi: स्टाम्प लक्ष्य
     ja: スタンプゴール
     nl: Stempel doel
@@ -6581,7 +6581,7 @@ translations:
     de: Großbuchstaben
     en: Uppercase Letters
     es: Letras mayúsculas
-    fr: Lettres capitales
+    fr: Majuscules
     hi: बड़ी वर्तनी के अक्षर
     ja: 大文字
     nl: Hoofdletters
@@ -6620,7 +6620,7 @@ translations:
     de: Tresor, um den Wert unter zu speichern
     en: Vault to store the Value under
     es: Bóveda para almacenar el valor bajo
-    fr: Vault pour stocker la valeur sous
+    fr: Coffre-fort pour stocker la valeur sous
     hi: वैल्यू को स्टोर करने के लिए वॉल्ट
     ja: 価値を保存するVault
     nl: Kluis om de waarde onder op te slaan
@@ -6633,7 +6633,7 @@ translations:
     de: Zugang zum Haushalt
     en: Household Access
     es: Acceso del hogar
-    fr: Accès domestique
+    fr: Accès du foyer
     hi: घरेलू पहुंच
     ja: 家庭アクセス
     nl: Huishoudelijke toegang
@@ -6915,7 +6915,7 @@ translations:
     es: ¡Configure su suscripción para seguir usando Homechart después de que finalice
       su prueba gratuita!
     fr: Configurez votre abonnement pour continuer à utiliser Homechart après la fin
-      de votre essai gratuit!
+      de votre essai gratuit !
     hi: आपका निःशुल्क परीक्षण समाप्त होने के बाद होमचार्ट का उपयोग जारी रखने के लिए
       अपना सब्सक्रिप्शन सेटअप करें!
     ja: 無料トライアル期間終了後も Homechart を使い続けるには、サブスクリプションを設定してください。
@@ -6948,7 +6948,7 @@ translations:
     es: Su código de referencia personalizado, siéntase libre de cambiarlo por algo
       más memorable.
     fr: Votre code de parrainage personnalisé, n'hésitez pas à le changer pour quelque
-      chose de plus mémorable.
+      chose de plus mémorisable.
     hi: आपका कस्टम रेफ़रल कोड, बेझिझक इसे कुछ और यादगार में बदल सकते हैं।
     ja: カスタム紹介コードなので、覚えやすいものに自由に変更してください。
     nl: Uw aangepaste verwijzingscode, verander deze gerust in iets gedenkwaardigs.
@@ -6963,7 +6963,7 @@ translations:
     de: Sie haben verwiesen
     en: You've referred
     es: te has referido
-    fr: Vous avez référé
+    fr: Vous avez parrainé
     hi: आपने संदर्भित किया है
     ja: 参照しました
     nl: Aantal verwijzingen
@@ -7008,7 +7008,7 @@ translations:
     es: más para suscribirse a Homechart y recibir una suscripción gratuita de por
       vida. Los usuarios que recomiendes obtienen un mes gratis. Aquí hay un enlace
       para las redes sociales.
-    fr: plus pour vous abonner à Homechart et recevoir un abonnement à vie gratuit!
+    fr: de plus pour vous abonner à Homechart et recevoir un abonnement à vie gratuit !
       Les utilisateurs que vous parrainez bénéficient d'un mois gratuit. Voici un
       lien pour les réseaux sociaux
     hi: होमचार्ट की सदस्यता लेने के लिए और अधिक मुफ्त लाइफटाइम सब्सक्रिप्शन प्राप्त
@@ -7049,7 +7049,7 @@ translations:
     es: Si alguien lo refirió a Homechart, ingrese su código aquí para recibir su
       descuento.
     fr: Si quelqu'un vous a référé à Homechart, entrez son code ici pour recevoir
-      sa réduction!
+      sa réduction !
     hi: अगर किसी ने आपको होमचार्ट के लिए रेफर किया है, तो उनकी छूट प्राप्त करने के
       लिए उनका कोड यहां दर्ज करें!
     ja: 誰かがあなたを Homechart に紹介した場合は、その人のコードをここに入力して割引を受けてください。
@@ -7165,7 +7165,7 @@ translations:
     de: Monatlich abonnieren
     en: Subscribe Monthly
     es: Suscríbete mensualmente
-    fr: Abonnez-vous mensuellement
+    fr: Abonnement mensuelle
     hi: मासिक सदस्यता लें
     ja: 毎月購読
     nl: Abonneer maandelijks
@@ -7178,7 +7178,7 @@ translations:
     de: Jährlich abonnieren
     en: Subscribe Yearly
     es: Suscríbete Anualmente
-    fr: Abonnez-vous annuellement
+    fr: Abonnement annuelle
     hi: वार्षिक सदस्यता लें
     ja: 年間購読
     nl: Abonneer je jaarlijks
@@ -7321,7 +7321,7 @@ translations:
     de: Erlauben
     en: Allow
     es: Permitir
-    fr: Permettre
+    fr: Autoriser
     hi: अनुमति देना
     ja: 許可する
     nl: Toestaan
@@ -7334,7 +7334,7 @@ translations:
     de: Budgetzielbetrag
     en: Budget Target Amount
     es: Importe objetivo del presupuesto
-    fr: Montant cible budgétaire
+    fr: Montant cible du budget
     hi: बजट लक्ष्य राशि
     ja: 予算目標額
     nl: Begrotingsdoelbedrag
@@ -7360,7 +7360,7 @@ translations:
     de: Jetzt löschen
     en: Delete Now
     es: Elimina ahora
-    fr: Effacer maintenant
+    fr: Supprimer maintenant
     hi: इसे अभी मिटाओ
     ja: 今すぐ削除
     nl: Nu verwijderen
@@ -7581,7 +7581,7 @@ translations:
     de: Haushalt beigetreten
     en: Joined household
     es: hogar unido
-    fr: Ménage joint
+    fr: Foyer joint
     hi: गृहस्थी में शामिल हो गए
     ja: 世帯に加わった
     nl: Gezamenlijk huishouden
@@ -7594,7 +7594,7 @@ translations:
     de: Haushalt wurde verlassen
     en: Leave Household
     es: Salir del hogar
-    fr: Quitter le ménage
+    fr: Quitter le foyer
     hi: गृहस्थी छोड़ो
     ja: 家庭を離れる
     nl: Huishouden verlaten
@@ -7607,7 +7607,7 @@ translations:
     de: Haushalt verlassen
     en: Left household
     es: hogar izquierdo
-    fr: A quitté le ménage
+    fr: A quitté le foyer
     hi: गृहस्थी छोड़ दी
     ja: 世帯を離れた
     nl: Huishouden verlaten
@@ -7711,7 +7711,7 @@ translations:
     de: Passwort zurücksetzen
     en: Reset Password
     es: Restablecer la contraseña
-    fr: réinitialiser le mot de passe
+    fr: Réinitialiser le mot de passe
     hi: पासवर्ड रीसेट
     ja: パスワードを再設定する
     nl: Wachtwoord opnieuw instellen
@@ -7841,7 +7841,7 @@ translations:
     de: Tag anzeigen
     en: Show Tag
     es: Mostrar etiqueta
-    fr: Afficher la balise
+    fr: Afficher la étiquette
     hi: टैग दिखाएं
     ja: タグを表示
     nl: Tag tonen
@@ -7958,7 +7958,7 @@ translations:
     de: Überspringen
     en: Skip
     es: Saltar
-    fr: Sauter
+    fr: Passer
     hi: छोडना
     ja: スキップ
     nl: Overslaan
@@ -7984,7 +7984,7 @@ translations:
     de: Rückgängig
     en: Undo
     es: Deshacer
-    fr: annuler
+    fr: Annuler
     hi: पूर्ववत
     ja: 元に戻す
     nl: Ongedaan maken
@@ -8049,7 +8049,7 @@ translations:
     de: Alle Transaktionen
     en: All Transactions
     es: Todas las transacciones
-    fr: toutes transactions
+    fr: Toutes les transactions
     hi: सभी लेन - देन
     ja: 全取引
     nl: Alle transacties
@@ -8231,7 +8231,7 @@ translations:
     de: Brauch
     en: Custom
     es: Costumbre
-    fr: Coutume
+    fr: Personnalisé
     hi: रिवाज़
     ja: カスタム
     nl: Aangepast
@@ -8400,7 +8400,7 @@ translations:
     de: Gruppierung
     en: Grouping
     es: Agrupamiento
-    fr: Regroupement
+    fr: Groupement
     hi: समूहन
     ja: グループ化
     nl: Groepering
@@ -8413,7 +8413,7 @@ translations:
     de: Gruppieren, um Artikel darunter zu platzieren
     en: Grouping to put item underneath
     es: Agrupación para poner el elemento debajo
-    fr: Regroupement pour mettre l'article en dessous
+    fr: Groupement pour mettre l'article en dessous
     hi: आइटम को नीचे रखने के लिए समूह बनाना
     ja: アイテムを下にグループ化する
     nl: Groeperen om item eronder te plaatsen
@@ -8452,7 +8452,7 @@ translations:
     de: Haushaltsmitglied
     en: Household Member
     es: Miembro del hogar
-    fr: Membre du ménage
+    fr: Membre du foyer
     hi: घर का सदस्य
     ja: 世帯員
     nl: Gezinslid
@@ -8465,7 +8465,7 @@ translations:
     de: Haushaltsmitglied, dem der Artikel zugeordnet werden soll.
     en: Household member to associate item with.
     es: Miembro del hogar con el que asociar el artículo.
-    fr: Membre du ménage auquel associer l'article.
+    fr: Membre du foyer auquel associer l'article.
     hi: आइटम को संबद्ध करने के लिए घरेलू सदस्य।
     ja: アイテムを関連付ける世帯員。
     nl: Lid van het huishouden om het item mee te associëren.
@@ -8669,7 +8669,7 @@ translations:
     de: Mai
     en: May
     es: Mayo
-    fr: Peut
+    fr: Mai
     hi: मई
     ja: 5月
     nl: Mei
@@ -8786,7 +8786,7 @@ translations:
     de: von
     en: of
     es: de
-    fr: de
+    fr: sur
     hi: का
     ja: の
     nl: van
@@ -8851,7 +8851,7 @@ translations:
     de: Primär
     en: Primary
     es: Primario
-    fr: Primaire
+    fr: Principale
     hi: प्राथमिक
     ja: 主要な
     nl: Primair
@@ -8942,7 +8942,7 @@ translations:
     de: Zuletzt gemacht
     en: Last Made
     es: Último hecho
-    fr: Dernière fabrication
+    fr: Dernière préparation
     hi: लास्ट मेड
     ja: 最終製造
     nl: Laatst gemaakt
@@ -8981,7 +8981,7 @@ translations:
     de: Rezeptbewertung
     en: Recipe Rating
     es: Clasificación de recetas
-    fr: Évaluation de la recette
+    fr: Notation de la recette
     hi: पकाने की विधि रेटिंग
     ja: レシピの評価
     nl: Recept Beoordeling
@@ -8994,7 +8994,7 @@ translations:
     de: Skala
     en: Scale
     es: Escala
-    fr: Escalader
+    fr: Ajuster
     hi: पैमाना
     ja: 規模
     nl: Schaal
@@ -9033,7 +9033,7 @@ translations:
     de: Mal gemacht
     en: Times Made
     es: Veces Hecho
-    fr: Fois faites
+    fr: Nombre de fois préparé
     hi: टाइम्स मेड
     ja: タイムズメイド
     nl: Aantal keren gemaakt
@@ -9246,7 +9246,7 @@ translations:
     es: Ingrese el código de dos factores que se muestra en su dispositivo después
       de ingresar el código QR o el texto anterior
     fr: Entrez le code à deux facteurs affiché sur votre appareil après avoir saisi
-      le code QR ou le texte ci-dessus
+      le QR code ou le texte ci-dessus
     hi: उपरोक्त क्यूआर कोड या पाठ दर्ज करने के बाद आपके डिवाइस पर प्रदर्शित दो कारक
       कोड दर्ज करें
     ja: 上記のQRコードまたはテキストを入力後、デバイスに表示される2要素コードを入力してください
@@ -9263,7 +9263,7 @@ translations:
     de: Schild
     en: Tag
     es: Etiqueta
-    fr: Étiqueter
+    fr: Étiquette
     hi: उपनाम
     ja: 鬼ごっこ
     nl: Tag
@@ -9276,7 +9276,7 @@ translations:
     de: Stichworte
     en: Tags
     es: Etiquetas
-    fr: Mots clés
+    fr: Étiquettes
     hi: टैग
     ja: タグ
     nl: Tags
@@ -9289,7 +9289,7 @@ translations:
     de: Leerzeichengetrennte Liste von Tags
     en: Space separated list of tags
     es: Lista de etiquetas separadas por espacios
-    fr: Liste de balises séparées par des espaces
+    fr: Liste d'étiquettes séparées par des espaces
     hi: अंतरिक्ष से अलग टैग की सूची
     ja: スペースで区切られたタグのリスト
     nl: Door spaties gescheiden lijst met tags
@@ -9380,7 +9380,7 @@ translations:
     de: Typ
     en: Type
     es: Tipo
-    fr: Taper
+    fr: Type
     hi: प्रकार
     ja: タイプ
     nl: Type
@@ -9419,7 +9419,7 @@ translations:
     de: Kommend
     en: Upcoming
     es: próximos
-    fr: A venir
+    fr: À venir
     hi: आगामी
     ja: 今後の予定
     nl: Binnenkort
@@ -9591,7 +9591,7 @@ translations:
     de: Artikel aus Barcode
     en: Item From Barcode
     es: Artículo de código de barras
-    fr: Article du code-barres
+    fr: Article provenant d'un code-barres
     hi: बारकोड से आइटम
     ja: バーコードからのアイテム
     nl: Items van streepjescode
@@ -9670,7 +9670,7 @@ translations:
     de: Stoppen Sie das Scannen
     en: Stop Scanning
     es: Dejar de escanear
-    fr: Arrêter la numérisation
+    fr: Arrêter le scan
     hi: स्कैन करना बंद करें
     ja: スキャンを停止
     nl: Stop met scannen
@@ -9683,7 +9683,7 @@ translations:
     de: Sammlung aktualisieren
     en: Update Collection
     es: Actualizar colección
-    fr: Mettre à jour la collecte
+    fr: Mettre à jour la collection
     hi: अद्यतन संग्रह
     ja: コレクションの更新
     nl: Verzameling bijwerken
@@ -9950,7 +9950,7 @@ translations:
     de: Datumsreihenfolge
     en: Date Order
     es: Orden de fecha
-    fr: Date Commande
+    fr: Format de Date
     hi: दिनांक आदेश
     ja: 日付順
     nl: Datum Notatie
@@ -9963,7 +9963,7 @@ translations:
     de: Von Homechart verwendete Datumsreihenfolge
     en: Date order used by Homechart
     es: Orden de fecha utilizado por Homechart
-    fr: Ordre des dates utilisé par Homechart
+    fr: Format de Date par Homechart
     hi: होमचार्ट द्वारा प्रयुक्त तिथि क्रम
     ja: Homechart で使用される日付順序
     nl: Datumvolgorde gebruikt door Homechart
@@ -10210,7 +10210,7 @@ translations:
     de: Passphrase merken
     en: Remember Passphrase
     es: Recordar frase de contraseña
-    fr: Mémoriser la phrase de passe
+    fr: Mémoriser le mot de passe
     hi: पदबंध याद रखें
     ja: パスフレーズを覚えておく
     nl: Onthoud wachtwoordzin
@@ -10275,7 +10275,7 @@ translations:
     de: Löschen Sie meine Schlüssel!
     en: Erase My Keys!
     es: ¡Borrar mis llaves!
-    fr: Effacez mes clés!
+    fr: Effacez mes clés !
     hi: मेरी कुंजियाँ मिटा दें!
     ja: 私のキーを消去してください！
     nl: Wis mijn sleutels!
@@ -10392,7 +10392,7 @@ translations:
     de: Beginn der Woche
     en: Start of the Week
     es: Comienzo de la semana
-    fr: Début de semaine
+    fr: Premier jour de la semaine
     hi: सप्ताह की शुरुआत
     ja: 週の始まり
     nl: Begin van de Week
@@ -10405,7 +10405,7 @@ translations:
     de: An welchem Tag soll eine Woche beginnen
     en: Which day to start a week on
     es: ¿Qué día para empezar una semana en
-    fr: Quel jour commencer une semaine
+    fr: Premier jour de la semaine
     hi: सप्ताह की शुरुआत किस दिन से करें
     ja: 週の始まりは何曜日か
     nl: Op welke dag de week moet beginnen
@@ -10431,7 +10431,7 @@ translations:
     de: Manuelle geheime Eingabe
     en: Manual Secret Entry
     es: Entrada secreta manual
-    fr: Entrée secrète manuelle
+    fr: Saisie manuelle
     hi: मैनुअल गुप्त प्रविष्टि
     ja: 手動シークレットエントリ
     nl: Handmatige geheime invoer
@@ -10457,7 +10457,7 @@ translations:
     de: Von Homechart verwendetes Zeitformat
     en: Time format used by Homechart
     es: Formato de hora utilizado por Homechart
-    fr: Format d'heure utilisé par Homechart
+    fr: Format  de l'heure utilisé par Homechart
     hi: होमचार्ट द्वारा उपयोग किया जाने वाला समय प्रारूप
     ja: Homechart で使用される時間形式
     nl: Tijdformaat gebruikt door Homechart
@@ -10483,7 +10483,7 @@ translations:
     de: Haushalt exportieren
     en: Export Household
     es: Hogar de exportación
-    fr: Ménage d'exportation
+    fr: Exporter un foyer
     hi: निर्यात घरेलू
     ja: 輸出世帯
     nl: Huishouden exporteren
@@ -10496,7 +10496,7 @@ translations:
     de: Haushalt importieren
     en: Import Household
     es: Hogar importado
-    fr: Ménage d'importation
+    fr: Importer un foyer
     hi: घरेलू आयात करें
     ja: 輸入世帯
     nl: Huishouden importeren
@@ -10509,7 +10509,7 @@ translations:
     de: Tagesordnung
     en: Daily Agenda
     es: Agenda diaria
-    fr: Ordre du jour quotidien
+    fr: Récapitulatif quotidien
     hi: दैनिक एजेंडा
     ja: 毎日の予定
     nl: Dagelijkse Agenda
@@ -10522,7 +10522,7 @@ translations:
     de: Tagesordnung Zeit
     en: Daily Agenda Time
     es: Hora de la agenda diaria
-    fr: Heure de l'agenda quotidien
+    fr: Heure du récapitulatif quotidien
     hi: दैनिक एजेंडा समय
     ja: 毎日の予定の時間
     nl: Dagelijkse agendatijd
@@ -10535,7 +10535,7 @@ translations:
     de: Senden Sie zu dieser Zeit jeden Tag eine Tagesordnung
     en: Send a daily agenda everyday at this time
     es: Enviar una agenda diaria todos los días a esta hora
-    fr: Envoyer un agenda quotidien tous les jours à cette heure
+    fr: Envoyer un récapitulatif tous les jours à cette heure
     hi: इस समय प्रतिदिन एक दैनिक एजेंडा भेजें
     ja: 毎日この時間に毎日の予定表を送信します
     nl: Verzend op dit moment elke dag een dagelijkse agenda
@@ -10561,7 +10561,7 @@ translations:
     de: Gerätebenachrichtigungen deaktivieren
     en: Disable Device Notifications
     es: Deshabilitar notificaciones de dispositivos
-    fr: Désactiver les notifications de périphérique
+    fr: Désactiver les notifications de d'appareil
     hi: डिवाइस सूचनाएं अक्षम करें
     ja: デバイス通知を無効にする
     nl: Schakel apparaatmeldingen uit
@@ -10587,7 +10587,7 @@ translations:
     de: Aktivieren Sie Gerätebenachrichtigungen
     en: Enable Device Notifications
     es: Habilitar notificaciones de dispositivos
-    fr: Activer les notifications de périphérique
+    fr: Activer les notifications d'appareil
     hi: डिवाइस सूचनाएं सक्षम करें
     ja: デバイス通知を有効にする
     nl: Apparaatmeldingen inschakelen
@@ -10743,7 +10743,7 @@ translations:
     de: Willkommen
     en: Welcome
     es: Bienvenido
-    fr: Accueillir
+    fr: Bienvenue
     hi: स्वागत
     ja: いらっしゃいませ
     nl: Welkom
@@ -10834,7 +10834,7 @@ translations:
     de: Gekauft löschen
     en: Clear Purchased
     es: Borrar Comprado
-    fr: Effacer Acheté
+    fr: Effacer les achats
     hi: साफ खरीदा
     ja: 購入済みをクリア
     nl: Gekocht legen
@@ -10847,7 +10847,7 @@ translations:
     de: Gekauft gelöscht
     en: Purchased cleared
     es: Comprado liquidado
-    fr: Acheté dédouané
+    fr: Achat effacé
     hi: ख़रीदे गए साफ़ कर दिए गए हैं
     ja: 購入完了
     nl: Gekocht geleegd
@@ -10873,7 +10873,7 @@ translations:
     de: Im Einkaufswagen
     en: In Cart
     es: En el carrito
-    fr: Dans un chariot
+    fr: Dans le panier
     hi: गाड़ी में
     ja: カートに追加
     nl: In winkelmandje
@@ -10925,7 +10925,7 @@ translations:
     de: Passwort vergessen?
     en: Forgot Password?
     es: ¿Has olvidado tu contraseña?
-    fr: Mot de passe oublié?
+    fr: Mot de passe oublié ?
     hi: पासवर्ड भूल गए?
     ja: パスワードをお忘れですか？
     nl: Wachtwoord vergeten?
@@ -11029,7 +11029,7 @@ translations:
     de: Angemeldet bleiben
     en: Remember Me
     es: Acuérdate de mí
-    fr: Souviens-toi de moi
+    fr: Se souvenir de moi
     hi: पहचाना की नहीं
     ja: 私を覚えてますか
     nl: Onthoud mij
@@ -11068,7 +11068,7 @@ translations:
     de: Backup-Verschlüsselungsschlüssel
     en: Backup Encryption Key
     es: Clave de cifrado de copia de seguridad
-    fr: Clé de chiffrement de sauvegarde
+    fr: Clé de chiffrement de la sauvegarde
     hi: बैकअप एन्क्रिप्शन कुंजी
     ja: バックアップ暗号化キー
     nl: Back-up versleutelingssleutel
@@ -11087,7 +11087,7 @@ translations:
     es: Habilite las copias de seguridad en la nube proporcionando una clave de cifrado
       aquí. Los datos se cifran antes de enviarse a Homechart Cloud.
     fr: Activez les sauvegardes dans le cloud en fournissant une clé de chiffrement
-      ici. Les données sont cryptées avant d'être envoyées à Homechart Cloud.
+      ici. Les données sont chiffrée avant d'être envoyées à Homechart Cloud.
     hi: यहां एन्क्रिप्शन कुंजी प्रदान करके क्लाउड बैकअप सक्षम करें। होमचार्ट क्लाउड
       पर भेजे जाने से पहले डेटा को एन्क्रिप्ट किया जाता है।
     ja: ここで暗号化キーを入力してクラウド バックアップを有効にします。データは Homechart Cloud に送信される前に暗号化されます。
@@ -11104,7 +11104,7 @@ translations:
     de: Cloud-Backups
     en: Cloud Backups
     es: Copias de seguridad en la nube
-    fr: Sauvegardes en nuage
+    fr: Sauvegardes cloud
     hi: क्लाउड बैकअप
     ja: クラウドバックアップ
     nl: Cloud-back-ups
