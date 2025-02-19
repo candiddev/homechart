@@ -399,6 +399,19 @@ translations:
     pt: É hora de começar a cozinhar
     ru: Пришло время начать готовить
     zh: 是时候开始做饭了
+  EmailMealPlanReminderLeaveBody:
+    ar: لقد حان وقت المغادرة
+    context: Body for leave emails
+    de: Es ist Zeit aufzubrechen für
+    en: It's time to leave for
+    es: Es hora de partir para
+    fr: Il est temps de partir pour
+    hi: अब जाने का समय है
+    ja: 出発の時間です
+    nl: Het is tijd om te vertrekken
+    pt: É hora de partir para
+    ru: Пришло время уходить
+    zh: 是时候离开
   EmailMealPlanReminderPrepBody:
     ar: حان الوقت لبدء الاستعداد
     context: Body for Prep Reminder email
@@ -678,6 +691,19 @@ translations:
     pt: Lembrete de cozinheiro
     ru: Напоминание о поваре
     zh: 厨师提醒
+  EmailPushMealPlanReminderLeaveSubject:
+    ar: اترك تذكيرًا
+    context: Subject for Leave Reminder email and push notification
+    de: Erinnerung hinterlassen
+    en: Leave Reminder
+    es: Dejar recordatorio
+    fr: Rappel de congé
+    hi: अनुस्मारक छोड़ें
+    ja: リマインダーを残す
+    nl: Herinnering achterlaten
+    pt: Deixe um lembrete
+    ru: Оставить напоминание
+    zh: 留言提醒
   EmailPushMealPlanReminderPrepSubject:
     ar: تذكير الإعدادية
     context: Subject for Prep Reminder email and push notification
@@ -1584,19 +1610,6 @@ translations:
     pt: Hipoteca/Aluguel
     ru: Ипотека/Аренда
     zh: 抵押/出租
-  ObjectBudgetCategoryRestaurants:
-    ar: مطاعم
-    context: Category for restaurants
-    de: Restaurants
-    en: Restaurants
-    es: Restaurantes
-    fr: Restaurants
-    hi: रेस्टोरेंट
-    ja: レストラン
-    nl: Restaurants
-    pt: Restaurantes
-    ru: Рестораны
-    zh: 餐馆
   ObjectBudgetCategorySalary:
     ar: مرتب
     context: Category for salary
@@ -2013,6 +2026,136 @@ translations:
     pt: Eventos
     ru: События
     zh: 事件
+  ObjectFeature:
+    ar: ميزة
+    context: Reactions and opinions on things.
+    de: Besonderheit
+    en: Feature
+    es: Característica
+    fr: Fonctionnalité
+    hi: विशेषता
+    ja: 特徴
+    nl: Functie
+    pt: Recurso
+    ru: Особенность
+    zh: 特征
+  ObjectFeatureCandidate:
+    ar: مُرَشَّح
+    context: A candidate for feature.
+    de: Kandidat
+    en: Candidate
+    es: Candidato
+    fr: Candidat
+    hi: उम्मीदवार
+    ja: 候補者
+    nl: Kandidaat
+    pt: Candidato
+    ru: Кандидат
+    zh: 候选人
+  ObjectFeatureCandidateCreated:
+    ar: تم إنشاء المرشح
+    context: Message when FeatureCandidate is created
+    de: Kandidat erstellt
+    en: Candidate created
+    es: Candidato creado
+    fr: Candidat créé
+    hi: उम्मीदवार बनाया गया
+    ja: 候補者が作成されました
+    nl: Kandidaat gecreëerd
+    pt: Candidato criado
+    ru: Кандидат создан
+    zh: 已创建候选
+  ObjectFeatureCandidateDeleted:
+    ar: تم حذف المرشح
+    context: Message when FeatureCandidate is deleted
+    de: Kandidat gelöscht
+    en: Candidate deleted
+    es: Candidato eliminado
+    fr: Candidat supprimé
+    hi: उम्मीदवार हटाया गया
+    ja: 候補者を削除しました
+    nl: Kandidaat verwijderd
+    pt: Candidato eliminado
+    ru: Кандидат удален
+    zh: 候选人已删除
+  ObjectFeatureCandidateUpdated:
+    ar: تم تحديث المرشح
+    context: Message when FeatureCandidate is updated
+    de: Kandidat aktualisiert
+    en: Candidate updated
+    es: Candidato actualizado
+    fr: Candidat mis à jour
+    hi: उम्मीदवार अपडेट
+    ja: 候補者が更新されました
+    nl: Kandidaat bijgewerkt
+    pt: Candidato atualizado
+    ru: Кандидат обновлен
+    zh: 候选人已更新
+  ObjectFeatureVote:
+    ar: تصويت
+    context: A response for feature.
+    de: Abstimmung
+    en: Vote
+    es: Votar
+    fr: Voter
+    hi: वोट
+    ja: 投票する
+    nl: Stemmen
+    pt: Voto
+    ru: Голосование
+    zh: 投票
+  ObjectFeatureVoteCreated:
+    ar: تم إنشاء التصويت
+    context: Message when FeatureVote is created
+    de: Abstimmung erstellt
+    en: Vote created
+    es: Voto creado
+    fr: Vote créé
+    hi: वोट बनाया गया
+    ja: 投票が作成されました
+    nl: Stem gemaakt
+    pt: Voto criado
+    ru: Голосование создано
+    zh: 已创建投票
+  ObjectFeatureVoteDeleted:
+    ar: تم حذف التصويت
+    context: Message when FeatureVote is deleted
+    de: Stimme gelöscht
+    en: Vote deleted
+    es: Voto eliminado
+    fr: Vote supprimé
+    hi: वोट हटा दिया गया
+    ja: 投票を削除しました
+    nl: Stem verwijderd
+    pt: Voto excluído
+    ru: Голосование удалено
+    zh: 投票已删除
+  ObjectFeatureVoteUpdated:
+    ar: تم تحديث التصويت
+    context: Message when FeatureVote is updated
+    de: Abstimmung aktualisiert
+    en: Vote updated
+    es: Votación actualizada
+    fr: Vote mis à jour
+    hi: वोट अपडेट किया गया
+    ja: 投票が更新されました
+    nl: Stem bijgewerkt
+    pt: Votação atualizada
+    ru: Голосование обновлено
+    zh: 投票已更新
+  ObjectFeatureVotes:
+    ar: الأصوات
+    context: Multiple response for feature.
+    de: Stimmen
+    en: Votes
+    es: Votos
+    fr: Votes
+    hi: वोट
+    ja: 投票数
+    nl: Stemmen
+    pt: Votos
+    ru: Голоса
+    zh: 投票
   ObjectHealth:
     ar: صحة
     context: Things that deal with your body/mind
@@ -3053,6 +3196,32 @@ translations:
     pt: Transações recorrentes
     ru: Регулярные транзакции
     zh: 经常性交易
+  ObjectRestaurant:
+    ar: مطعم
+    context: A restaurant
+    de: Restaurant
+    en: Restaurant
+    es: Restaurante
+    fr: Restaurant
+    hi: रेस्टोरेंट
+    ja: レストラン
+    nl: Restaurant
+    pt: Restaurante
+    ru: Ресторан
+    zh: 餐厅
+  ObjectRestaurants:
+    ar: مطاعم
+    context: Multiple restaurants
+    de: Restaurants
+    en: Restaurants
+    es: Restaurantes
+    fr: Restaurants
+    hi: रेस्टोरेंट
+    ja: レストラン
+    nl: Restaurants
+    pt: Restaurantes
+    ru: Рестораны
+    zh: 餐馆
   ObjectReward:
     ar: جائزة
     context: Praising someone for doing something
@@ -3690,6 +3859,19 @@ translations:
     pt: Pressione aqui para ver o evento
     ru: Нажмите здесь, чтобы просмотреть событие
     zh: 按此查看活动
+  PushMealPlanLeaveBody:
+    ar: اضغط هنا لعرض المطعم
+    context: Body for Meal Plan leave push notification
+    de: Klicken Sie hier, um das Restaurant anzuzeigen
+    en: Press here to view restaurant
+    es: Pulse aquí para ver el restaurante
+    fr: Appuyez ici pour voir le restaurant
+    hi: रेस्तरां देखने के लिए यहां दबाएं
+    ja: レストランを見るにはここをクリック
+    nl: Klik hier om het restaurant te bekijken
+    pt: Clique aqui para ver o restaurante
+    ru: Нажмите здесь, чтобы просмотреть ресторан
+    zh: 点击这里查看餐厅
   PushMealPlanReminderBody:
     ar: اضغط هنا لعرض الوصفة
     context: Body for Meal Plan reminder push notification
@@ -3769,6 +3951,19 @@ translations:
     pt: Pesquisar conta
     ru: Поиск аккаунта
     zh: 搜索帐号
+  WebAdminConfig:
+    ar: تكوين
+    context: Configure Homechart via web interface
+    de: Konfiguration
+    en: Config
+    es: Configuración
+    fr: Configuration
+    hi: कॉन्फ़िग
+    ja: 設定
+    nl: Configuratie
+    pt: Configuração
+    ru: Конфигурация
+    zh: 配置
   WebAdminHouseholdsLastTransactionID:
     ar: معرّف آخر معاملة
     context: Last transaction ID field
@@ -3925,32 +4120,6 @@ translations:
     pt: Para
     ru: К
     zh: 到
-  WebAlertOffline:
-    ar: Homechart غير متصل
-    context: Message when Homechart is offline
-    de: Homechart ist offline
-    en: Homechart is offline
-    es: Homechart está fuera de línea
-    fr: Homechart est hors ligne
-    hi: होमचार्ट ऑफ़लाइन है
-    ja: ホームチャートはオフラインです
-    nl: Homechart is offline
-    pt: Homechart está desligada
-    ru: Главная диаграмма не в сети
-    zh: 主页图表处于离线状态
-  WebAlertOnline:
-    ar: Homechart على الإنترنت
-    context: Message when Homechart is online
-    de: Homechart ist online
-    en: Homechart is online
-    es: Homechart está en línea
-    fr: Homechart est en ligne
-    hi: होमचार्ट ऑनलाइन है
-    ja: ホームチャートはオンラインです
-    nl: Homechart is online
-    pt: Homechart está online
-    ru: Главная диаграмма онлайн
-    zh: 主页图表已上线
   WebAlertPurchase:
     ar: شكرا لشرائك Homechart!
     context: Message when someone subscribes to Homechart
@@ -4668,134 +4837,19 @@ translations:
     pt: Pesquise por nome ou ingrediente
     ru: Поиск по названию или ингредиенту
     zh: 按名称或成分搜索
-  WebFeatureVotingComment:
-    ar: تعليقات
-    context: Feedback and comments for a feature
-    de: Kommentare
-    en: Comments
-    es: Comentarios
-    fr: Commentaires
-    hi: टिप्पणियाँ
-    ja: コメント
-    nl: Opmerkingen
-    pt: Comentários
-    ru: Комментарии
-    zh: 评论
-  WebFeatureVotingCommentTooltip:
-    ar: أي مدخلات إضافية حول الكيفية التي تريد أن تعمل بها هذه الميزة / وظيفة
-    context: Feedback and comments for a feature tooltip
-    de: Jede zusätzliche Eingabe darüber, wie diese Funktion funktionieren/funktionieren
-      soll
-    en: Any additional input on how you'd want this feature to work/function
-    es: Cualquier entrada adicional sobre cómo le gustaría que esta característica
-      funcione/funcione
-    fr: Toute entrée supplémentaire sur la façon dont vous voudriez que cette fonctionnalité
-      fonctionne/fonctionne
-    hi: आप इस सुविधा को कैसे काम/कार्य करना चाहते हैं, इस पर कोई अतिरिक्त इनपुट
-    ja: この機能をどのように動作させたいかについての追加情報
-    nl: Eventuele aanvullende toevoeging over hoe u wilt dat deze functie werkt/functioneert
-    pt: Qualquer entrada adicional sobre como você deseja que esse recurso funcione/funcione
-    ru: Любая дополнительная информация о том, как вы хотите, чтобы эта функция работала/функционировала.
-    zh: 关于您希望此功能如何工作/发挥作用的任何其他输入
-  WebFeatureVotingDescription:
-    ar: وصف
-    context: Description of a feature to vote on
-    de: Beschreibung
-    en: Description
-    es: Descripción
-    fr: Description
-    hi: विवरण
-    ja: 説明
-    nl: Beschrijving
-    pt: Descrição
-    ru: Описание
-    zh: 描述
-  WebFeatureVotingFeatureVote:
-    ar: ميزة التصويت
-    context: Feature vote object
-    de: Feature-Abstimmung
-    en: Feature Vote
-    es: Voto destacado
-    fr: Voter pour les fonctionnalités
-    hi: फ़ीचर वोट
-    ja: 特集投票
-    nl: Functie stemmen
-    pt: Votação de recurso
-    ru: Голосование за функцию
-    zh: 特色投票
-  WebFeatureVotingSubtitle1:
-    ar: فيما يلي قائمة بأفكار Homechart. نحتاج إلى مساعدتك لتحويل هذه الميزات إلى
-      ميزات وتحديد أولوياتها.
-    context: Instructions for feature voting
-    de: Nachfolgend finden Sie eine Liste mit Ideen für Homechart. Wir brauchen Ihre
-      Hilfe, um diese in Funktionen umzuwandeln und sie zu priorisieren.
-    en: Below is a list of ideas for Homechart.  We need your help to turn these into
-      features and get them prioritized.
-    es: A continuación se muestra una lista de ideas para Homechart. Necesitamos su
-      ayuda para convertirlas en características y priorizarlas.
-    fr: Vous trouverez ci-dessous une liste d'idées pour Homechart. Nous avons besoin
-      de votre aide pour les transformer en fonctionnalités et les prioriser.
-    hi: होमचार्ट के लिए विचारों की सूची नीचे दी गई है। इन्हें सुविधाओं में बदलने और
-      उन्हें प्राथमिकता देने के लिए हमें आपकी सहायता की आवश्यकता है।
-    ja: 以下は Homechart のアイデアのリストです。これらを機能として実現し、優先順位を付けるには、皆様のご協力が必要です。
-    nl: Hieronder vindt u een lijst met ideeën voor Homechart. We hebben uw hulp nodig
-      om deze in functies om te zetten en prioriteit te geven.
-    pt: Abaixo está uma lista de ideias para Homechart. Precisamos da sua ajuda para
-      transformar isso em recursos e priorizá-los.
-    ru: Ниже приведен список идей для Homechart. Нам нужна ваша помощь, чтобы превратить
-      их в функции и расставить приоритеты.
-    zh: 以下是 Homechart 的想法列表。我们需要您的帮助来将这些转化为功能并确定它们的优先级。
-  WebFeatureVotingSubtitle2:
-    ar: كل أسرة لديها خمسة أصوات لتنفقها على الأفكار التي تحبها أكثر من غيرها ، ولكن
-      يمكنك التعليق عليها جميعًا.
-    context: Instructions for feature voting
-    de: Jeder Haushalt hat fünf Stimmen für die Ideen, die ihm am besten gefallen,
-      aber Sie können alle kommentieren.
-    en: Each household has five votes to spend on the ideas they like the most, but
-      you can comment on all of them.
-    es: Cada hogar tiene cinco votos para gastar en las ideas que más les gustan,
-      pero puedes comentarlas todas.
-    fr: Chaque ménage dispose de cinq votes à dépenser pour les idées qu'il aime le
-      plus, mais vous pouvez tous les commenter.
-    hi: प्रत्येक परिवार के पास उन विचारों पर खर्च करने के लिए पाँच वोट हैं जिन्हें
-      वे सबसे अधिक पसंद करते हैं, लेकिन आप उन सभी पर टिप्पणी कर सकते हैं।
-    ja: 各世帯は、最も気に入ったアイデアに 5 票を投じることができますが、すべてのアイデアに対してコメントすることができます。
-    nl: Elk huishouden heeft vijf stemmen om te besteden aan de ideeën die ze het
-      leukst vinden, maar je kunt op ze allemaal reageren.
-    pt: Cada família tem cinco votos para gastar nas ideias que mais gosta, mas você
-      pode comentar todas elas.
-    ru: Каждая семья имеет пять голосов, которые она может потратить на идеи, которые
-      им нравятся больше всего, но вы можете прокомментировать их все.
-    zh: 每个家庭有五票可以投给他们最喜欢的想法，但您可以对所有想法进行评论。
-  WebFeatureVotingVotes:
-    ar: الأصوات
-    context: Number of votes for a feature
-    de: Stimmen
-    en: Votes
-    es: Votos
-    fr: Votes
-    hi: वोट
-    ja: 投票数
-    nl: stemmen
-    pt: Votos
-    ru: Голоса
-    zh: 票数
-  WebFeatureVotingVotesTooltip:
-    ar: كم عدد الأصوات التي تمنحها لهذه الميزة - تحصل على خمسة أصوات لإنفاقها
-    context: Number of votes for a feature tooltip
-    de: Wie viele Stimmen Sie dieser Funktion geben – Sie können fünf Stimmen ausgeben
-    en: How many votes you give this feature--you get five votes to spend
-    es: 'Cuántos votos le das a esta función: obtienes cinco votos para gastar'
-    fr: Combien de votes vous donnez à cette fonctionnalité - vous obtenez cinq votes
-      à dépenser
-    hi: आप इस फीचर को कितने वोट देते हैं--आपको खर्च करने के लिए पांच वोट मिलते हैं
-    ja: この機能に何票投票するか - 投票できるのは5票
-    nl: |
-      Hoeveel stemmen u deze functie geeft: u krijgt vijf stemmen om uit te geven
-    pt: 'Quantos votos você atribui a esse recurso: você recebe cinco votos para gastar'
-    ru: Сколько голосов вы отдаете этой функции — вы получаете пять голосов, которые
-      можно потратить.
-    zh: How many votes you give this feature——你有五票可以花
+  WebCookRestaurantsSearch:
+    ar: البحث حسب الاسم أو الوجبة
+    context: Search placeholder for cook restaurants
+    de: Suche nach Namen oder Gericht
+    en: Search by name or meal
+    es: Buscar por nombre o comida
+    fr: Recherche par nom ou par repas
+    hi: नाम या भोजन के आधार पर खोजें
+    ja: 名前または食事で検索
+    nl: Zoeken op naam of maaltijd
+    pt: Pesquise por nome ou refeição
+    ru: Поиск по имени или блюду
+    zh: 按名称或餐点搜索
   WebFormContactUsButtonFeedback:
     ar: تعليق
     context: Feedback button
@@ -4952,6 +5006,32 @@ translations:
     pt: Quem é o dono do item
     ru: Кому принадлежит предмет
     zh: 谁拥有该物品
+  WebFormItemsFeatureVotesCommentTooltip:
+    ar: أضف تعليقًا إلى تصويتك.
+    context: Tooltip for feature vote comment
+    de: Fügen Sie Ihrer Abstimmung einen Kommentar hinzu.
+    en: Add a comment to your vote.
+    es: Añade un comentario a tu voto.
+    fr: Ajoutez un commentaire à votre vote.
+    hi: अपने वोट में एक टिप्पणी जोड़ें.
+    ja: 投票にコメントを追加します。
+    nl: Voeg een opmerking toe aan uw stem.
+    pt: Adicione um comentário ao seu voto.
+    ru: Добавьте комментарий к вашему голосу.
+    zh: 为您的投票添加评论。
+  WebFormItemsFeatureVotingComment:
+    ar: تعليقات
+    context: Feedback and comments for a feature
+    de: Kommentare
+    en: Comments
+    es: Comentarios
+    fr: commentaires
+    hi: टिप्पणियाँ
+    ja: コメント
+    nl: Opmerkingen
+    pt: Comentários
+    ru: Комментарии
+    zh: 评论
   WebFormItemsShopItemCategoryTooltip:
     ar: الفئة المرتبطة بها عنصر
     context: Category of the ShopItem tooltip
@@ -5115,45 +5195,19 @@ translations:
     pt: Senha
     ru: Парольная фраза
     zh: 密码
-  WebFormOverlayBookmarkIconImage:
-    ar: عنوان URL لصورة الرمز
-    context: Icon image field
-    de: URL des Symbolbilds
-    en: URL of Icon Image
-    es: URL de la imagen del icono
-    fr: URL de l'image de l'icône
-    hi: आइकॉन इमेज का यूआरएल
-    ja: アイコン画像のURL
-    nl: URL van pictogramafbeelding
-    pt: URL da imagem do ícone
-    ru: URL-адрес изображения значка
-    zh: 图标图片的网址
-  WebFormOverlayBookmarkIconImageTooltip:
-    ar: عنوان URL لصورة الرمز المراد عرضها
-    context: Icon image field tooltip
-    de: URL des anzuzeigenden Symbolbildes
-    en: URL of the icon image to be displayed
-    es: URL de la imagen del icono que se mostrará
-    fr: URL de l'image de l'icône à afficher
-    hi: प्रदर्शित की जाने वाली आइकन छवि का URL
-    ja: 表示するアイコン画像のURL
-    nl: URL van de pictogramafbeelding die moet worden weergegeven
-    pt: URL da imagem do ícone a ser exibida
-    ru: URL изображения значка, который будет отображаться
-    zh: 要显示的图标图像的 URL
-  WebFormOverlayBookmarkImageIcon:
-    ar: استخدم الصورة كرمز
-    context: Toggle to use an image as icon
-    de: Verwenden Sie Bild als Symbol
-    en: Use Image as Icon
-    es: Usar imagen como icono
-    fr: Utiliser l'image comme icône
-    hi: छवि को चिह्न के रूप में उपयोग करें
-    ja: 画像をアイコンとして使用する
-    nl: Gebruik afbeelding als pictogram
-    pt: Use imagem como ícone
-    ru: Использовать изображение в качестве значка
-    zh: 使用图像作为图标
+  WebFormOverlayBookmarkIconImageName:
+    ar: اسم الرمز أو عنوان URL
+    context: Icon image field name
+    de: Symbolname oder URL
+    en: Icon name or URL
+    es: Nombre del icono o URL
+    fr: Nom de l&#39;icône ou URL
+    hi: आइकन का नाम या URL
+    ja: アイコン名またはURL
+    nl: Icoonnaam of URL
+    pt: Nome do ícone ou URL
+    ru: Имя значка или URL
+    zh: 图标名称或 URL
   WebFormOverlayBookmarkLinkTooltip:
     ar: ما يجب أن ترتبط به الإشارة المرجعية
     context: Bookmark link field tooltip
@@ -5258,6 +5312,19 @@ translations:
     pt: Valor alvo
     ru: Целевая сумма
     zh: 目标金额
+  WebFormOverlayBudgetCategoryTargetAmountMonthlyTooltip:
+    ar: المبلغ الذي يجب وضعه في هذه الفئة كل شهر
+    context: Target amount monthly tooltip
+    de: Betrag, der jeden Monat in diese Kategorie eingegeben werden soll
+    en: Amount to put in this category every month
+    es: Cantidad a depositar en esta categoría cada mes
+    fr: Montant à mettre dans cette catégorie chaque mois
+    hi: इस श्रेणी में हर महीने डाली जाने वाली राशि
+    ja: 毎月このカテゴリーに入れる金額
+    nl: Bedrag dat u elke maand in deze categorie wilt plaatsen
+    pt: Valor a ser colocado nesta categoria todo mês
+    ru: Сумма, которую нужно вносить в эту категорию каждый месяц
+    zh: 每月归入此类别的金额
   WebFormOverlayBudgetCategoryTargetAmountTooltip:
     ar: المبلغ المطلوب في هذه الفئة في نهاية الهدف
     context: Target amount tooltip
@@ -5297,6 +5364,32 @@ translations:
     pt: Data para ter o valor alvo até
     ru: Дата, к которой будет достигнута целевая сумма
     zh: 达到目标金额的日期
+  WebFormOverlayBudgetCategoryTargetLimit:
+    ar: حد الهدف
+    context: Target limit field
+    de: Zielgrenze
+    en: Target Limit
+    es: Límite objetivo
+    fr: Limite cible
+    hi: लक्ष्य सीमा
+    ja: ターゲット制限
+    nl: Doellimiet
+    pt: Limite de Alvo
+    ru: Целевой предел
+    zh: 目标限制
+  WebFormOverlayBudgetCategoryTargetLimitTooltip:
+    ar: الحد الأقصى للمبلغ الذي يجب أن يكون في هذه الفئة
+    context: Target limit tooltip
+    de: Maximaler Betrag in dieser Kategorie
+    en: Maximum amount to have in this category
+    es: Cantidad máxima a tener en esta categoría
+    fr: Montant maximum à avoir dans cette catégorie
+    hi: इस श्रेणी में अधिकतम राशि
+    ja: このカテゴリーの最大金額
+    nl: Maximaal bedrag dat in deze categorie mag worden opgenomen
+    pt: Valor máximo para ter nesta categoria
+    ru: Максимальное количество в этой категории
+    zh: 此类别的最大数量
   WebFormOverlayBudgetCategoryTargetMonth:
     ar: الشهر المستهدف
     context: Target month field
@@ -5375,19 +5468,32 @@ translations:
     pt: Endereço do beneficiário
     ru: Адрес получателя платежа
     zh: 收款人地址
+  WebFormOverlayBudgetPayeeCookRestaurant:
+    ar: استخدم كطاهي &gt; مطعم
+    context: Toggle to set a payee as a restaurant
+    de: Verwendung als Koch &gt; Restaurant
+    en: Use as Cook > Restaurant
+    es: Usar como cocinero &gt; Restaurante
+    fr: Utiliser comme cuisinier &gt; Restaurant
+    hi: कुक के रूप में उपयोग करें &gt; रेस्तरां
+    ja: 料理人として使う &gt; レストラン
+    nl: Gebruik als Kok &gt; Restaurant
+    pt: Use como Cozinheiro &gt; Restaurante
+    ru: Использовать как повар &gt; Ресторан
+    zh: 用作厨师 &gt; 餐厅
   WebFormOverlayBudgetPayeeDefaultCategory:
-    ar: الفئة الافتراضية
+    ar: الميزانية الافتراضية &gt; الفئة
     context: Default Budget Category for Payee field
-    de: Standardkategorie
-    en: Default Category
-    es: Categoría predeterminada
-    fr: Catégorie par défaut
-    hi: डिफ़ॉल्ट श्रेणी
-    ja: デフォルトカテゴリ
-    nl: Standaard categorie
-    pt: Categoria padrão
-    ru: Категория по умолчанию
-    zh: 默认类别
+    de: Standardbudget &gt; Kategorie
+    en: Default Budget > Category
+    es: Presupuesto predeterminado &gt; Categoría
+    fr: Budget par défaut &gt; Catégorie
+    hi: डिफ़ॉल्ट बजट &gt; श्रेणी
+    ja: デフォルトの予算 &gt; カテゴリ
+    nl: Standaardbudget &gt; Categorie
+    pt: Orçamento Padrão &gt; Categoria
+    ru: Бюджет по умолчанию &gt; Категория
+    zh: 默认预算 &gt; 类别
   WebFormOverlayBudgetPayeeDefaultCategoryTooltip:
     ar: الفئة الافتراضية لتعبئة المعاملات
     context: Default Budget Category for Payee tooltip
@@ -5401,19 +5507,218 @@ translations:
     pt: Categoria padrão a ser preenchida para transações
     ru: Категория по умолчанию для заполнения для транзакций
     zh: 为交易填充的默认类别
-  WebFormOverlayBudgetPayeeShoppingStore:
-    ar: متجر التسوق
+  WebFormOverlayBudgetPayeeLastVisited:
+    ar: آخر زيارة
+    context: The last time a place was visited
+    de: Zuletzt besucht
+    en: Last Visited
+    es: Última visita
+    fr: Dernière visite
+    hi: अंतिम बार देखा गया
+    ja: 最終訪問
+    nl: Laatst bezocht
+    pt: Última visita
+    ru: Последний раз посетил
+    zh: 上次访问
+  WebFormOverlayBudgetPayeeMealsDisLiked:
+    ar: الوجبات - غير المفضلة
+    context: A list of disliked meals for a restaurant
+    de: Mahlzeiten - Nicht gemocht
+    en: Meals - Disliked
+    es: Comidas - No me gustaron
+    fr: Repas - Je n&#39;ai pas aimé
+    hi: भोजन - नापसंद
+    ja: 食事 - 嫌い
+    nl: Maaltijden - Niet leuk
+    pt: Refeições - Não gostei
+    ru: Еда - Не понравилось
+    zh: 餐食 - 不喜欢
+  WebFormOverlayBudgetPayeeMealsDislikedTooltip:
+    ar: أضف الوجبات التي لم تعجب أسرتك في هذا المطعم، مفصولة بفواصل
+    context: A list of disliked meals for a restaurant tooltip
+    de: Fügen Sie die Gerichte hinzu, die Ihrem Haushalt in diesem Restaurant nicht
+      geschmeckt haben, durch Kommas getrennt
+    en: Add the meals that your household disliked at this restaurant, comma-separated
+    es: Añade las comidas que a tu familia no le gustaron en este restaurante, separadas
+      por comas.
+    fr: Ajoutez les plats que votre famille n&#39;a pas aimés dans ce restaurant,
+      séparés par des virgules
+    hi: इस रेस्तरां में आपके परिवार को जो खाना पसंद नहीं आया, उसे अल्पविराम से अलग
+      करके जोड़ें
+    ja: このレストランで家族が嫌いだった料理をカンマで区切って追加してください
+    nl: Voeg de maaltijden toe die uw huishouden niet lekker vond in dit restaurant,
+      gescheiden door komma&#39;s
+    pt: Adicione as refeições que sua família não gostou neste restaurante, separadas
+      por vírgulas
+    ru: Добавьте блюда, которые не понравились вашей семье в этом ресторане, разделив
+      их запятыми.
+    zh: 添加您家人不喜欢这家餐厅的菜品（以逗号分隔）
+  WebFormOverlayBudgetPayeeMealsLiked:
+    ar: الوجبات - المفضلة
+    context: A list of liked meals for a restaurant
+    de: Mahlzeiten - Gefällt mir
+    en: Meals - Liked
+    es: Comidas - Me gustó
+    fr: Repas - J&#39;ai aimé
+    hi: भोजन - पसंद आया
+    ja: 食事 - 気に入った
+    nl: Maaltijden - Geliked
+    pt: Refeições - Gostei
+    ru: Еда - Понравилось
+    zh: 餐食 - 喜欢
+  WebFormOverlayBudgetPayeeMealsLikedTooltip:
+    ar: أضف الوجبات التي أحبها أفراد أسرتك في هذا المطعم، مفصولة بفواصل
+    context: A list of liked meals for a restaurant tooltip
+    de: Fügen Sie die Mahlzeiten hinzu, die Ihrem Haushalt in diesem Restaurant geschmeckt
+      haben, durch Kommas getrennt
+    en: Add the meals that your household liked at this restaurant, comma-separated
+    es: Agregue las comidas que a su familia le gustaron en este restaurante, separadas
+      por comas.
+    fr: Ajoutez les plats que votre famille a appréciés dans ce restaurant, séparés
+      par des virgules
+    hi: इस रेस्तरां में आपके परिवार को जो भोजन पसंद आया उसे अल्पविराम से अलग करके
+      जोड़ें
+    ja: このレストランで家族が気に入った料理をカンマで区切って追加してください
+    nl: Voeg de maaltijden toe die uw huishouden in dit restaurant lekker vond, gescheiden
+      door komma&#39;s
+    pt: Adicione as refeições que sua família gostou neste restaurante, separadas
+      por vírgulas
+    ru: Добавьте блюда, которые понравились вашей семье в этом ресторане, разделенные
+      запятыми.
+    zh: 添加您家人在这家餐厅喜欢的菜品（以逗号分隔）
+  WebFormOverlayBudgetPayeeMenuLink:
+    ar: رابط القائمة
+    context: A link to the restaurant's menu
+    de: Menü-Link
+    en: Menu Link
+    es: Enlace de menú
+    fr: Lien vers le menu
+    hi: मेनू लिंक
+    ja: メニューリンク
+    nl: Menu-koppeling
+    pt: Link do menu
+    ru: Ссылка на меню
+    zh: 菜单链接
+  WebFormOverlayBudgetPayeeMenuLinkTooltip:
+    ar: أضف رابطًا إلى قائمة الطعام عبر الإنترنت أو منصة الطلب الخاصة بالمطعم
+    context: A link to the restaurant's menu tooltip
+    de: Fügen Sie einen Link zum Online-Menü oder zur Bestellplattform des Restaurants
+      hinzu
+    en: Add a link to the restaurant's online menu or ordering platform
+    es: Agregue un enlace al menú en línea del restaurante o a la plataforma de pedidos.
+    fr: Ajoutez un lien vers le menu en ligne du restaurant ou vers la plateforme
+      de commande
+    hi: रेस्तरां के ऑनलाइन मेनू या ऑर्डरिंग प्लेटफ़ॉर्म का लिंक जोड़ें
+    ja: レストランのオンラインメニューまたは注文プラットフォームへのリンクを追加します
+    nl: Voeg een link toe naar het online menu of bestelplatform van het restaurant
+    pt: Adicione um link para o menu online do restaurante ou para a plataforma de
+      pedidos
+    ru: Добавьте ссылку на онлайн-меню ресторана или платформу заказов
+    zh: 添加餐厅在线菜单或订餐平台的链接
+  WebFormOverlayBudgetPayeePhoneNumber:
+    ar: رقم التليفون
+    context: Phone number of Budget Payee
+    de: Telefonnummer
+    en: Phone Number
+    es: Número de teléfono
+    fr: Numéro de téléphone
+    hi: फ़ोन नंबर
+    ja: 電話番号
+    nl: Telefoonnummer
+    pt: Número de telefone
+    ru: Номер телефона
+    zh: 电话号码
+  WebFormOverlayBudgetPayeePhoneNumberTooltip:
+    ar: رقم هاتف الشركة
+    context: Phone number of Budget Payee tooltip
+    de: Telefonnummer des Unternehmens
+    en: Phone number of the business
+    es: Número de teléfono de la empresa
+    fr: Numéro de téléphone de l&#39;entreprise
+    hi: व्यवसाय का फ़ोन नंबर
+    ja: 事業所の電話番号
+    nl: Telefoonnummer van het bedrijf
+    pt: Número de telefone da empresa
+    ru: Номер телефона компании
+    zh: 商家电话号码
+  WebFormOverlayBudgetPayeePrice:
+    ar: سعر
+    context: The price of a business
+    de: Preis
+    en: Price
+    es: Precio
+    fr: Prix
+    hi: कीमत
+    ja: 価格
+    nl: Prijs
+    pt: Preço
+    ru: Цена
+    zh: 价格
+  WebFormOverlayBudgetPayeePriceTooltip:
+    ar: كم تكلفة العمل
+    context: Tooltip for restaurant price
+    de: Wie teuer ist das Geschäft
+    en: How expensive is the business
+    es: ¿Qué tan caro es el negocio?
+    fr: Combien coûte l&#39;entreprise
+    hi: यह व्यवसाय कितना महंगा है?
+    ja: ビジネスはどれくらい費用がかかるのか
+    nl: Hoe duur is het bedrijf?
+    pt: Quão caro é o negócio
+    ru: Насколько дорог бизнес?
+    zh: 生意有多贵
+  WebFormOverlayBudgetPayeeRating:
+    ar: تصنيف
+    context: The rating of a business
+    de: Bewertungen
+    en: Rating
+    es: Clasificación
+    fr: Notation
+    hi: रेटिंग
+    ja: 評価
+    nl: Beoordeling
+    pt: Avaliação
+    ru: Рейтинг
+    zh: 等级
+  WebFormOverlayBudgetPayeeRatingTooltip:
+    ar: تصنيف الأعمال
+    context: Tooltip for business rating
+    de: Unternehmensbewertung
+    en: Business rating
+    es: Calificación empresarial
+    fr: Notation des entreprises
+    hi: व्यवसाय रेटिंग
+    ja: ビジネス評価
+    nl: Bedrijfsbeoordeling
+    pt: Avaliação de negócios
+    ru: Бизнес-рейтинг
+    zh: 业务评级
+  WebFormOverlayBudgetPayeeShopStore:
+    ar: استخدم كمتجر &gt; متجر
     context: Toggle to set a payee as a store
-    de: Einkaufsladen
-    en: Shopping Store
-    es: Tienda
-    fr: Magasin
-    hi: खरीददारी की दुकान
-    ja: ショッピングストア
-    nl: Winkel
-    pt: Loja de compras
-    ru: Магазин покупок
-    zh: 购物商店
+    de: Als Shop &gt; Store verwenden
+    en: Use as Shop > Store
+    es: Usar como Tienda &gt; Tienda
+    fr: Utiliser comme Boutique &gt; Magasin
+    hi: दुकान &gt; स्टोर के रूप में उपयोग करें
+    ja: ショップとして使用する &gt; ストア
+    nl: Gebruik als Winkel &gt; Winkel
+    pt: Usar como Loja &gt; Loja
+    ru: Использовать как Магазин &gt; Магазин
+    zh: 用作商店 &gt; 店铺
+  WebFormOverlayBudgetPayeeTimesVisited:
+    ar: عدد مرات الزيارة
+    context: Number of times a place was visited
+    de: Besuchszeiten
+    en: Times Visited
+    es: Veces visitadas
+    fr: Fois visités
+    hi: दौरा किये गये समय
+    ja: 訪問回数
+    nl: Aantal keer bezocht
+    pt: Vezes visitadas
+    ru: Количество посещений
+    zh: 访问次数
   WebFormOverlayBudgetTransactionAmountTooltip:
     ar: مبلغ من المال ، استخدم رمز الطرح (-) لإنشاء مبلغ سلبي أو رمز الجمع (+) لإنشاء
       مبلغ موجب
@@ -5759,32 +6064,6 @@ translations:
     pt: Fuso horário do evento
     ru: Часовой пояс для мероприятия
     zh: 事件的时区
-  WebFormOverlayCalendarEventTravelTime:
-    ar: وقت السفر
-    context: Event travel time field
-    de: Reisezeit
-    en: Travel Time
-    es: Tiempo de viaje
-    fr: Temps de voyage
-    hi: यात्रा के समय
-    ja: 移動時間
-    nl: Reistijd
-    pt: Tempo de viagem
-    ru: Время в пути
-    zh: 旅行时间
-  WebFormOverlayCalendarEventTravelTimeTooltip:
-    ar: كم من الوقت للسفر إلى الموقع
-    context: Event travel time tooltip
-    de: Wie lange zum Standort reisen
-    en: How long to travel to location
-    es: Cuánto tiempo para viajar a la ubicación
-    fr: Combien de temps pour se rendre à l'emplacement
-    hi: स्थान की यात्रा करने में कितना समय लगता है
-    ja: 目的地までの移動時間
-    nl: Hoe lang is het reizen naar de locatie
-    pt: Quanto tempo viajar para o local
-    ru: Как долго ехать до места
-    zh: 多长时间到目的地
   WebFormOverlayCookMealPlanChef:
     ar: طاه
     context: Chef field for cook meal plan
@@ -5876,20 +6155,40 @@ translations:
     pt: Detalhes da receita
     ru: Подробности рецепта
     zh: 食谱详情
-  WebFormOverlayCookMealPlanRecipeTooltip:
-    ar: اسم وصفة موجودة في Homechart ، أو وصفة / مطعم مخصص
+  WebFormOverlayCookMealPlanRecipeRestaurant:
+    ar: وصفة أو مطعم
     context: Tooltip for meal plan meal
-    de: Name eines bestehenden Rezepts in Homechart oder eines benutzerdefinierten
-      Rezepts/Restaurants
-    en: Name of an existing recipe in Homechart, or a custom recipe/restaurant
-    es: Nombre de una receta existente en Homechart, o una receta/restaurante personalizado
-    fr: Nom d'une recette existante dans Homechart, ou d'une recette/restaurant personnalisée
-    hi: होमचार्ट में मौजूदा रेसिपी का नाम, या कस्टम रेसिपी/रेस्तरां
-    ja: Homechart の既存のレシピの名前、またはカスタム レシピ/レストランの名前
-    nl: Naam van een bestaand recept in Homechart, of een aangepast recept/restaurant
-    pt: Nome de uma receita existente no Homechart ou de uma receita/restaurante personalizado
-    ru: Название существующего рецепта в Homechart или пользовательского рецепта/ресторана.
-    zh: Homechart 中现有食谱的名称，或自定义食谱/餐厅
+    de: Rezept oder Restaurant
+    en: Recipe or Restaurant
+    es: Receta o Restaurante
+    fr: Recette ou Restaurant
+    hi: रेसिपी या रेस्तरां
+    ja: レシピまたはレストラン
+    nl: Recept of restaurant
+    pt: Receita ou Restaurante
+    ru: Рецепт или Ресторан
+    zh: 菜谱或餐厅
+  WebFormOverlayCookMealPlanRecipeRestaurantTooltip:
+    ar: اسم وصفة أو مطعم موجود في Homechart، أو وصفة أو مطعم مخصص
+    context: Tooltip for meal plan meal
+    de: Name eines vorhandenen Rezepts oder Restaurants in Homechart oder eines benutzerdefinierten
+      Rezepts oder Restaurants
+    en: Name of an existing recipe or restaurant in Homechart, or a custom recipe
+      or restaurant
+    es: Nombre de una receta o restaurante existente en Homechart, o una receta o
+      restaurante personalizado
+    fr: Nom d&#39;une recette ou d&#39;un restaurant existant dans Homechart, ou d&#39;une
+      recette ou d&#39;un restaurant personnalisé
+    hi: होमचार्ट में किसी मौजूदा रेसिपी या रेस्तरां का नाम, या कोई कस्टम रेसिपी या
+      रेस्तरां
+    ja: Homechart の既存のレシピまたはレストランの名前、またはカスタムのレシピまたはレストランの名前
+    nl: Naam van een bestaand recept of restaurant in Homechart, of een aangepast
+      recept of restaurant
+    pt: Nome de uma receita ou restaurante existente no Homechart, ou uma receita
+      ou restaurante personalizado
+    ru: Название существующего рецепта или ресторана в Homechart или пользовательского
+      рецепта или ресторана
+    zh: Homechart 中现有食谱或餐厅的名称，或自定义食谱或餐厅的名称
   WebFormOverlayCookMealPlanReminderCook:
     ar: إرسال تذكير بالطبخ على
     context: Time field to send a cook reminder for a meal plan
@@ -5903,6 +6202,19 @@ translations:
     pt: Enviar lembrete de cozinheiro em
     ru: Отправить напоминание повару на
     zh: 发送厨师提醒至
+  WebFormOverlayCookMealPlanReminderLeave:
+    ar: إرسال الإجازة عن طريق التذكير في
+    context: Time field to send a cook reminder for a meal plan
+    de: Senden Sie Urlaub per Erinnerung an
+    en: Send Leave By Reminder At
+    es: Enviar recordatorio de permiso a
+    fr: Envoyer un rappel de congé à
+    hi: अनुस्मारक द्वारा छुट्टी भेजें
+    ja: 休暇通知の送信先
+    nl: Stuur verlof per herinnering op
+    pt: Enviar licença por lembrete em
+    ru: Отправить напоминание об отъезде в
+    zh: 发送请假提醒
   WebFormOverlayCookMealPlanReminderPrep:
     ar: إرسال تذكير الإعدادية في
     context: Time field to send a prep reminder for a meal plan
@@ -6926,6 +7238,98 @@ translations:
     ru: Настройте подписку, чтобы продолжать использовать Homechart после окончания
       бесплатного пробного периода!
     zh: 设置您的订阅以在免费试用结束后继续使用 Homechart！
+  WebFormSubscriptionHelp:
+    ar: يتطلب وجود أسرة في Homechart اشتراكًا، حتى بالنسبة للمستخدمين الذين يستضيفون
+      أنفسهم. يجب عليك ربط معرف الاستضافة الذاتية أدناه للأسرة التي تستضيفها ذاتيًا
+      بأسرة جديدة أو موجودة على Homechart Cloud
+    context: Help on how/why you need to link an account.
+    de: Für einen Haushalt in Homechart ist ein Abonnement erforderlich, auch für
+      selbstgehostete Benutzer. Sie müssen die unten stehende selbstgehostete ID für
+      Ihren selbstgehosteten Haushalt mit einem neuen oder bestehenden Haushalt in
+      der Homechart Cloud verknüpfen.
+    en: Having a household in Homechart requires a subscription, even for self-hosted
+      users. You must link the Self-Hosted ID below for your self-hosted household
+      to a new or existing household on Homechart Cloud
+    es: Para tener un hogar en Homechart se necesita una suscripción, incluso para
+      usuarios alojados por cuenta propia. Debe vincular la ID de alojamiento por
+      cuenta propia que aparece a continuación para su hogar alojado por cuenta propia
+      a un hogar nuevo o existente en Homechart Cloud
+    fr: Avoir un foyer dans Homechart nécessite un abonnement, même pour les utilisateurs
+      auto-hébergés. Vous devez associer l&#39;ID auto-hébergé ci-dessous pour votre
+      foyer auto-hébergé à un foyer nouveau ou existant sur Homechart Cloud
+    hi: होमचार्ट में घर रखने के लिए सदस्यता की आवश्यकता होती है, यहाँ तक कि स्व-होस्टेड
+      उपयोगकर्ताओं के लिए भी। आपको अपने स्व-होस्टेड घर के लिए नीचे दी गई स्व-होस्टेड
+      आईडी को होमचार्ट क्लाउड पर नए या मौजूदा घर से लिंक करना होगा
+    ja: Homechart に世帯を持つには、セルフホスト ユーザーであってもサブスクリプションが必要です。セルフホスト世帯の以下のセルフホスト ID を、Homechart
+      Cloud の新規または既存の世帯にリンクする必要があります。
+    nl: Om een huishouden in Homechart te hebben, is een abonnement vereist, zelfs
+      voor self-hosted gebruikers. U moet de Self-Hosted ID hieronder voor uw self-hosted
+      huishouden koppelen aan een nieuw of bestaand huishouden op Homechart Cloud
+    pt: Ter uma casa no Homechart requer uma assinatura, mesmo para usuários auto-hospedados.
+      Você deve vincular o ID auto-hospedado abaixo para sua casa auto-hospedada a
+      uma casa nova ou existente no Homechart Cloud
+    ru: Наличие домохозяйства в Homechart требует подписки, даже для пользователей
+      с самостоятельным размещением. Вы должны связать идентификатор Self-Hosted ниже
+      для вашего самостоятельным размещением домохозяйства с новым или существующим
+      домохозяйством в Homechart Cloud
+    zh: 在 Homechart 中拥有家庭需要订阅，即使是自托管用户也是如此。您必须将以下自托管家庭的自托管 ID 链接到 Homechart Cloud
+      上的新家庭或现有家庭
+  WebFormSubscriptionHelpCopyID:
+    ar: انقر فوق الزر أعلاه إذا كنت قد أنشأت حسابًا بالفعل على Homechart Cloud (https://web.homechart.app).
+      ستضيف معرف الاستضافة الذاتية ضمن خيار قائمة الاشتراك على Homechart Cloud.
+    context: Help for copy ID button
+    de: Tippen Sie auf die Schaltfläche oben, wenn Sie bereits ein Konto bei Homechart
+      Cloud (https://web.homechart.app) erstellt haben. Sie fügen die Self-Hosted-ID
+      unter der Menüoption „Abonnement“ bei Homechart Cloud hinzu.
+    en: Tap the button above if you have already created an account on Homechart Cloud
+      (https://web.homechart.app).  You'll add the Self-Hosted ID under the Subscription
+      menu option on Homechart Cloud.
+    es: Pulsa el botón de arriba si ya has creado una cuenta en Homechart Cloud (https://web.homechart.app).
+      Añadirás la ID alojada en la opción del menú Suscripción en Homechart Cloud.
+    fr: Appuyez sur le bouton ci-dessus si vous avez déjà créé un compte sur Homechart
+      Cloud (https://web.homechart.app). Vous ajouterez l&#39;ID auto-hébergé sous
+      l&#39;option de menu Abonnement sur Homechart Cloud.
+    hi: अगर आपने पहले ही होमचार्ट क्लाउड (https://web.homechart.app) पर अकाउंट बना
+      लिया है, तो ऊपर दिए गए बटन पर टैप करें। आप होमचार्ट क्लाउड पर सब्सक्रिप्शन मेनू
+      विकल्प के अंतर्गत सेल्फ़-होस्टेड आईडी जोड़ेंगे।
+    ja: Homechart Cloud (https://web.homechart.app) にすでにアカウントを作成している場合は、上のボタンをタップしてください。Homechart
+      Cloud のサブスクリプション メニュー オプションでセルフホスト ID を追加します。
+    nl: Tik op de knop hierboven als u al een account hebt aangemaakt op Homechart
+      Cloud (https://web.homechart.app). U voegt de Self-Hosted ID toe onder de menuoptie
+      Abonnement op Homechart Cloud.
+    pt: Toque no botão acima se você já criou uma conta no Homechart Cloud (https://web.homechart.app).
+      Você adicionará o Self-Hosted ID na opção de menu Subscription no Homechart
+      Cloud.
+    ru: Нажмите кнопку выше, если вы уже создали учетную запись в Homechart Cloud
+      (https://web.homechart.app). Вы добавите Self-Hosted ID в меню «Подписка» в
+      Homechart Cloud.
+    zh: 如果您已经在 Homechart Cloud (https://web.homechart.app) 上创建了帐户，请点击上面的按钮。您将在 Homechart
+      Cloud 上的订阅菜单选项下添加自托管 ID。
+  WebFormSubscriptionHelpCreateNew:
+    ar: اضغط على الزر أعلاه حتى يقوم Homechart بإنشاء أسرة جديدة لك على Homechart
+      Cloud، باستخدام عنوان البريد الإلكتروني الذي قمت بالتسجيل به.
+    context: Help for create new button
+    de: Tippen Sie auf die Schaltfläche oben, damit Homechart unter Verwendung der
+      E-Mail-Adresse, mit der Sie sich registriert haben, einen neuen Haushalt in
+      der Homechart Cloud für Sie erstellt.
+    en: Tap the button above to have Homechart create a new household on Homechart
+      Cloud for you, using the email address you signed up with.
+    es: Toque el botón de arriba para que Homechart cree un nuevo hogar en Homechart
+      Cloud para usted, usando la dirección de correo electrónico con la que se registró.
+    fr: Appuyez sur le bouton ci-dessus pour que Homechart crée un nouveau foyer sur
+      Homechart Cloud pour vous, en utilisant l&#39;adresse e-mail avec laquelle vous
+      vous êtes inscrit.
+    hi: होमचार्ट द्वारा आपके लिए होमचार्ट क्लाउड पर एक नया परिवार बनाने के लिए ऊपर
+      दिए गए बटन पर टैप करें, जिस ईमेल पते से आपने साइन अप किया था उसका उपयोग करके।
+    ja: 上のボタンをタップすると、サインアップ時に使用したメール アドレスを使用して、Homechart が Homechart Cloud に新しい世帯を作成します。
+    nl: Tik op de knop hierboven, zodat Homechart een nieuw huishouden voor u aanmaakt
+      op Homechart Cloud. Hiervoor gebruikt u het e-mailadres waarmee u zich hebt
+      geregistreerd.
+    pt: Toque no botão acima para que o Homechart crie uma nova casa no Homechart
+      Cloud para você, usando o endereço de e-mail com o qual você se inscreveu.
+    ru: Нажмите кнопку выше, чтобы Homechart создал для вас новое домохозяйство в
+      Homechart Cloud, используя адрес электронной почты, указанный вами при регистрации.
+    zh: 点击上面的按钮，Homechart 将使用您注册时使用的电子邮件地址在 Homechart Cloud 上为您创建一个新的家庭。
   WebFormSubscriptionReferralCode:
     ar: رمز الإحالة الخاص بك
     context: Referral code field
@@ -7008,8 +7412,8 @@ translations:
     es: más para suscribirse a Homechart y recibir una suscripción gratuita de por
       vida. Los usuarios que recomiendes obtienen un mes gratis. Aquí hay un enlace
       para las redes sociales.
-    fr: de plus pour vous abonner à Homechart et recevoir un abonnement à vie gratuit !
-      Les utilisateurs que vous parrainez bénéficient d'un mois gratuit. Voici un
+    fr: de plus pour vous abonner à Homechart et recevoir un abonnement à vie gratuit
+      ! Les utilisateurs que vous parrainez bénéficient d'un mois gratuit. Voici un
       lien pour les réseaux sociaux
     hi: होमचार्ट की सदस्यता लेने के लिए और अधिक मुफ्त लाइफटाइम सब्सक्रिप्शन प्राप्त
       करें! आप जिन उपयोगकर्ताओं को संदर्भित करते हैं उन्हें एक निःशुल्क महीना मिलता
@@ -7060,19 +7464,19 @@ translations:
     ru: Если кто-то порекомендовал вас на Homechart, введите здесь его код, чтобы
       получить скидку!
     zh: 如果有人将您推荐给 Homechart，请在此处输入他们的代码以获得折扣！
-  WebFormSubscriptionRetryLink:
-    ar: أعد محاولة الارتباط
-    context: Retry linking a household to Homechart Cloud
-    de: Link erneut versuchen
-    en: Retry Link
-    es: Vínculo de reintento
-    fr: Réessayer le lien
-    hi: लिंक का पुनः प्रयास करें
-    ja: 再試行リンク
-    nl: Link opnieuw proberen
-    pt: Tentar novamente o link
-    ru: Повторить ссылку
-    zh: 重试链接
+  WebFormSubscriptionRefreshSubscription:
+    ar: تجديد الاشتراك
+    context: Refresh linking a household to Homechart Cloud
+    de: Abonnement aktualisieren
+    en: Refresh Subscription
+    es: Actualizar suscripción
+    fr: Rafraîchir l&#39;abonnement
+    hi: सदस्यता ताज़ा करें
+    ja: サブスクリプションの更新
+    nl: Abonnement vernieuwen
+    pt: Atualizar assinatura
+    ru: Обновить подписку
+    zh: 刷新订阅
   WebFormSubscriptionSelfHostedID:
     ar: هوية ذاتية الاستضافة
     context: ID for self hosted account
@@ -7100,18 +7504,31 @@ translations:
     ru: Идентификатор скопирован
     zh: 身份证件已复制
   WebFormSubscriptionSelfHostedIDCopy:
-    ar: انسخ المعرّف وقم بزيارة Homechart Cloud
+    ar: انسخ معرفك وقم بزيارة Homechart Cloud
     context: Copy ID for self hosted account
     de: ID kopieren und Homechart Cloud besuchen
     en: Copy ID and Visit Homechart Cloud
-    es: Copie la identificación y visite la nube de Homechart
-    fr: Copiez l'ID et visitez Homechart Cloud
-    hi: कॉपी आईडी और होमचार्ट क्लाउड पर जाएं
+    es: Copiar ID y visitar Homechart Cloud
+    fr: Copiez l&#39;ID et visitez Homechart Cloud
+    hi: आईडी कॉपी करें और होमचार्ट क्लाउड पर जाएँ
     ja: IDをコピーしてHomechart Cloudにアクセス
     nl: Kopieer ID en bezoek Homechart Cloud
     pt: Copie o ID e visite o Homechart Cloud
-    ru: Скопируйте идентификатор и посетите облако Homechart
+    ru: Скопируйте идентификатор и посетите Homechart Cloud
     zh: 复制 ID 并访问 Homechart Cloud
+  WebFormSubscriptionSelfHostedIDNew:
+    ar: إنشاء أسرة جديدة باستخدام عنوان بريدي الإلكتروني
+    context: Option to create a new Household ID for self hosted account
+    de: Neuen Haushalt mit meiner E-Mail-Adresse erstellen
+    en: Create New Household with My Email Address
+    es: Crear un nuevo hogar con mi dirección de correo electrónico
+    fr: Créer un nouveau foyer avec mon adresse e-mail
+    hi: मेरे ईमेल पते से नया घर बनाएं
+    ja: 私のメールアドレスで新しい世帯を作成
+    nl: Nieuw huishouden aanmaken met mijn e-mailadres
+    pt: Crie uma nova família com meu endereço de e-mail
+    ru: Создать новую семью с моим адресом электронной почты
+    zh: 使用我的电子邮件地址创建新家庭
   WebFormSubscriptionSelfHostedIDTooltip:
     ar: إذا كنت تقوم بتشغيل خادم Homechart على شبكتك ، فقم بتغيير المعرّف المستضاف
       ذاتيًا هنا.
@@ -7186,18 +7603,67 @@ translations:
     ru: Подписаться ежегодно
     zh: 每年订阅
   WebFormSubscriptionTitle:
-    ar: إقران الخادم المستضاف ذاتيًا باشتراك Homechart
+    ar: قم بربط معرف الاستضافة الذاتية الخاص بك بـ Homechart Cloud
     context: A title that is displayed for self hosted instances
-    de: Verknüpfen Sie Ihren selbst gehosteten Server mit dem Homechart-Abonnement
-    en: Associate Your Self-Hosted Server to Homechart Subscription
-    es: Asocie su servidor autohospedado a la suscripción de Homechart
-    fr: Associez votre serveur auto-hébergé à l'abonnement Homechart
-    hi: होमचार्ट सब्सक्रिप्शन के साथ अपने सेल्फ-होस्टेड सर्वर को संबद्ध करें
-    ja: セルフホストサーバーをHomechartサブスクリプションに関連付ける
-    nl: Koppel uw zelfgehoste server aan het Homechart-abonnement
-    pt: Associe seu servidor auto-hospedado à assinatura do Homechart
-    ru: Свяжите свой собственный сервер с подпиской Homechart
-    zh: 将您的自托管服务器关联到 Homechart 订阅
+    de: Verknüpfen Sie Ihre selbstgehostete ID mit Homechart Cloud
+    en: Associate Your Self-Hosted ID to Homechart Cloud
+    es: Asocie su ID alojada en su dispositivo a Homechart Cloud
+    fr: Associez votre identifiant auto-hébergé à Homechart Cloud
+    hi: अपनी स्वयं-होस्टेड आईडी को होमचार्ट क्लाउड से संबद्ध करें
+    ja: セルフホストIDをHomechart Cloudに関連付ける
+    nl: Koppel uw zelfgehoste ID aan Homechart Cloud
+    pt: Associe seu ID auto-hospedado ao Homechart Cloud
+    ru: Свяжите свой собственный идентификатор с Homechart Cloud
+    zh: 将您的自托管 ID 关联到 Homechart Cloud
+  WebFormSubscriptionhelpDisclaimer:
+    ar: لا يتم نقل أي بيانات إلى Homechart Cloud، بل يتم استخدامها فقط لنقل تفاصيل
+      الاشتراك إلى مثيلك المستضاف ذاتيًا. هذا إجراء لمرة واحدة، ولن تحتاج أبدًا إلى
+      ربط معرف الاستضافة الذاتية الخاص بك مرة أخرى. يُرجى الاتصال بنا على [support@homechart.app](mailto:support@homechart.app)
+      في حالة وجود أي مشكلات.
+    context: Bottom disclaimer for subscription help
+    de: Es werden keine Daten an Homechart Cloud übertragen, sie werden nur verwendet,
+      um die Abonnementdetails an Ihre selbstgehostete Instanz zu übertragen. Dies
+      ist eine einmalige Aktion, Sie sollten Ihre selbstgehostete ID nie wieder verknüpfen
+      müssen. Bei Problemen kontaktieren Sie uns bitte unter [support@homechart.app](mailto:support@homechart.app).
+    en: No data is transferred to Homechart Cloud, it’s just used to transfer the
+      subscription details to your self-hosted instance.  This is a one-time action,
+      you should never have to link your Self-Hosted ID again.  Please contact us
+      at [support@homechart.app](mailto:support@homechart.app) with any problems.
+    es: No se transfieren datos a Homechart Cloud, solo se utilizan para transferir
+      los detalles de la suscripción a su instancia alojada en su dispositivo. Esta
+      es una acción única, nunca debería tener que vincular su ID alojada en su dispositivo
+      nuevamente. Comuníquese con nosotros a [support@homechart.app](mailto:support@homechart.app)
+      si tiene algún problema.
+    fr: Aucune donnée n&#39;est transférée vers Homechart Cloud, elle est simplement
+      utilisée pour transférer les détails de l&#39;abonnement vers votre instance
+      auto-hébergée. Il s&#39;agit d&#39;une action ponctuelle, vous ne devriez plus
+      jamais avoir à lier votre identifiant auto-hébergé. Veuillez nous contacter
+      à [support@homechart.app](mailto:support@homechart.app) en cas de problème.
+    hi: होमचार्ट क्लाउड में कोई डेटा ट्रांसफर नहीं किया जाता है, इसका उपयोग केवल आपके
+      सेल्फ़-होस्टेड इंस्टेंस में सब्सक्रिप्शन विवरण ट्रांसफर करने के लिए किया जाता
+      है। यह एक बार की कार्रवाई है, आपको अपनी सेल्फ़-होस्टेड आईडी को फिर से लिंक करने
+      की आवश्यकता नहीं होगी। किसी भी समस्या के लिए कृपया हमसे [support@homechart.app](mailto:support@homechart.app)
+      पर संपर्क करें।
+    ja: Homechart Cloud にデータは転送されません。サブスクリプションの詳細をセルフホスト インスタンスに転送するために使用されます。これは
+      1 回限りのアクションであり、セルフホスト ID を再度リンクする必要はありません。問題がある場合は、[support@homechart.app](mailto:support@homechart.app)
+      までご連絡ください。
+    nl: Er worden geen gegevens naar Homechart Cloud overgebracht, ze worden alleen
+      gebruikt om de abonnementsgegevens naar uw zelfgehoste instantie over te brengen.
+      Dit is een eenmalige actie, u hoeft uw zelfgehoste ID nooit meer te koppelen.
+      Neem contact met ons op via [support@homechart.app](mailto:support@homechart.app)
+      als u problemen ondervindt.
+    pt: Nenhum dado é transferido para o Homechart Cloud, ele é usado apenas para
+      transferir os detalhes da assinatura para sua instância auto-hospedada. Esta
+      é uma ação única, você nunca mais precisará vincular seu ID auto-hospedado.
+      Entre em contato conosco em [support@homechart.app](mailto:support@homechart.app)
+      com quaisquer problemas.
+    ru: Никакие данные не передаются в Homechart Cloud, они просто используются для
+      передачи данных подписки в ваш экземпляр с собственным хостингом. Это одноразовое
+      действие, вам больше никогда не придется привязывать свой идентификатор с собственным
+      хостингом. Пожалуйста, свяжитесь с нами по адресу [support@homechart.app](mailto:support@homechart.app)
+      в случае возникновения каких-либо проблем.
+    zh: 没有数据传输到 Homechart Cloud，它仅用于将订阅详细信息传输到您的自托管实例。这是一次性操作，您永远不必再次链接您的自托管 ID。如有任何问题，请通过
+      [support@homechart.app](mailto:support@homechart.app) 与我们联系。
   WebFormTableAuthHouseholdMembersInviteToken:
     ar: دعوة رمز
     context: Token used to invite a member to household
@@ -7250,19 +7716,6 @@ translations:
     pt: política de Privacidade
     ru: политика конфиденциальности
     zh: 隐私政策
-  WebGlobalAboutRoadmap:
-    ar: خريطة الطريق
-    context: Upcoming features that will be added to Homechart
-    de: Roadmap
-    en: Roadmap
-    es: Mapa vial
-    fr: Feuille de route
-    hi: रोडमैप
-    ja: ロードマップ
-    nl: Roadmap
-    pt: Roteiro
-    ru: Дорожная карта
-    zh: 路线图
   WebGlobalAboutTermsService:
     ar: شروط الخدمة
     context: Service policy for using Homechart
@@ -8186,6 +8639,19 @@ translations:
     pt: Orçado
     ru: Запланированный в бюджете
     zh: 预算
+  WebGlobalColors:
+    ar: الألوان
+    context: Multiple colors
+    de: Farben
+    en: Colors
+    es: Bandera
+    fr: Couleurs
+    hi: रंग
+    ja: 色
+    nl: Kleuren
+    pt: Cores
+    ru: Цвета
+    zh: 颜色
   WebGlobalCompleted:
     ar: مكتمل
     context: Task completed
@@ -9079,32 +9545,6 @@ translations:
     pt: Procura por nome
     ru: Поиск по имени
     zh: 按名称搜索
-  WebGlobalSelfHostedAddress:
-    ar: عنوان الاستضافة الذاتية
-    context: A field to input the self-hosted server address
-    de: Selbst gehostete Adresse
-    en: Self-Hosted Address
-    es: Dirección autohospedada
-    fr: Adresse auto-hébergée
-    hi: स्व-होस्टेड पता
-    ja: セルフホストアドレス
-    nl: Zelf gehost adres
-    pt: Endereço auto-hospedado
-    ru: Автономный адрес
-    zh: 自托管地址
-  WebGlobalSelfHostedAddressTooltip:
-    ar: عنوان المثيل المُستضاف ذاتيًا ، مثل https://example.com
-    context: Tooltip to input the self-hosted server address
-    de: Die Adresse Ihrer selbst gehosteten Instanz, z. B. https://example.com
-    en: The address of your self-hosted instance, like https://example.com
-    es: La dirección de su instancia autohospedada, como https://example.com
-    fr: L'adresse de votre instance auto-hébergée, comme https://example.com
-    hi: आपके द्वारा होस्ट किए गए इंस्टेंस का पता, जैसे https://example.com
-    ja: セルフホストインスタンスのアドレス（https://example.com など）
-    nl: Het adres van uw zelfgehoste instantie, zoals https://example.com
-    pt: O endereço da sua instância auto-hospedada, como https://example.com
-    ru: Адрес вашего локального экземпляра, например https://example.com.
-    zh: 您的自托管实例的地址，例如 https://example.com
   WebGlobalSendReminder:
     ar: يرسل تذكير
     context: Field to input reminder delay
@@ -9374,6 +9814,32 @@ translations:
     pt: Não limpo
     ru: Неочищено
     zh: 未清除
+  WebGlobalTravelTime:
+    ar: وقت السفر
+    context: Event travel time field
+    de: Reisezeit
+    en: Travel Time
+    es: Tiempo de viaje
+    fr: Temps de voyage
+    hi: यात्रा के समय
+    ja: 移動時間
+    nl: Reistijd
+    pt: Tempo de viagem
+    ru: Время в пути
+    zh: 旅行时间
+  WebGlobalTravelTimeTooltip:
+    ar: كم من الوقت للسفر إلى الموقع
+    context: Event travel time tooltip
+    de: Wie lange zum Standort reisen
+    en: How long to travel to location
+    es: Cuánto tiempo para viajar a la ubicación
+    fr: Combien de temps pour se rendre à l'emplacement
+    hi: स्थान की यात्रा करने में कितना समय लगता है
+    ja: 目的地までの移動時間
+    nl: Hoe lang is het reizen naar de locatie
+    pt: Quanto tempo viajar para o local
+    ru: Как долго ехать до места
+    zh: 多长时间到目的地
   WebGlobalType:
     ar: يكتب
     context: The type of something
@@ -9788,19 +10254,6 @@ translations:
     pt: Cliente OAuth desconhecido
     ru: Неизвестный клиент OAuth
     zh: 未知的 OAuth 客户端
-  WebPlanTasksNone:
-    ar: لا توجد مشاريع أو مهام
-    context: Message when no projects or tasks are found
-    de: Keine Projekte oder Aufgaben gefunden
-    en: No Projects or Tasks Found
-    es: No se encontraron proyectos o tareas
-    fr: Aucun projet ou tâche trouvé
-    hi: कोई परियोजना या कार्य नहीं मिला
-    ja: プロジェクトまたはタスクが見つかりません
-    nl: Geen projecten of taken gevonden
-    pt: Nenhum projeto ou tarefa encontrada
-    ru: Проекты или задачи не найдены
-    zh: 未找到项目或任务
   WebPlanTasksOverdue:
     ar: متأخر
     context: Tasks that are past their due date
@@ -10087,6 +10540,19 @@ translations:
     pt: Idioma a ser usado para a IU
     ru: Язык, используемый для пользовательского интерфейса
     zh: 用于 UI 的语言
+  WebSettingsAccountLightMode:
+    ar: وضع الضوء
+    context: Light mode
+    de: Lichtmodus
+    en: Light Mode
+    es: Modo claro
+    fr: Mode lumière
+    hi: लाइट मोड
+    ja: ライトモード
+    nl: Lichtmodus
+    pt: Modo de luz
+    ru: Режим света
+    zh: 灯光模式
   WebSettingsAccountNameTooltip:
     ar: اسمك في Homechart
     context: Account name field tooltip
@@ -10620,6 +11086,19 @@ translations:
     pt: Lembretes de receitas para cozinhar
     ru: Напоминания о приготовлении рецептов
     zh: 食谱厨师提醒
+  WebSettingsNotificationsRecipeLeaveReminders:
+    ar: وصفة تركها بالتذكير
+    context: Toggle for recipe leave by reminder notifications
+    de: Rezept verlassen durch Erinnerungen
+    en: Recipe Leave By Reminders
+    es: Receta Dejar Recordatorios
+    fr: Rappels de recette à laisser
+    hi: रेसिपी रिमाइंडर द्वारा छोड़ें
+    ja: レシピを残すリマインダー
+    nl: Recept achterlaten via herinneringen
+    pt: Receita Deixe por Lembretes
+    ru: Рецепт Оставить Напоминания
+    zh: 菜谱留言提醒
   WebSettingsNotificationsRecipePrepReminders:
     ar: وصفة تذكير الإعدادية
     context: Toggle for recipe prep reminder notifications
@@ -11137,16 +11616,55 @@ translations:
     pt: Habilitar backups na nuvem
     ru: Включить облачное резервное копирование
     zh: 启用云备份
-  WebSubscriptionEnableCloudProxy:
-    ar: تفعيل Cloud Voice Assistant Proxy
-    context: Toggle for enabling proxying from the cloud
-    de: Aktivieren Sie den Cloud Voice Assistant-Proxy
-    en: Enable Cloud Voice Assistant Proxy
-    es: Habilitar el proxy del asistente de voz en la nube
-    fr: Activer le proxy Cloud Voice Assistant
-    hi: क्लाउड वॉयस सहायक प्रॉक्सी सक्षम करें
-    ja: クラウド音声アシスタントプロキシを有効にする
-    nl: Cloud Voice Assistant-proxy inschakelen
-    pt: Ativar proxy do Cloud Voice Assistant
-    ru: Включить прокси-сервер Cloud Voice Assistant
-    zh: 启用云语音助手代理
+  WebTableConfigApply:
+    ar: تطبيق التكوين
+    context: Apply config if needed
+    de: Konfiguration anwenden
+    en: Apply Config
+    es: Aplicar configuración
+    fr: Appliquer la configuration
+    hi: कॉन्फ़िगरेशन लागू करें
+    ja: 設定を適用
+    nl: Configuratie toepassen
+    pt: Aplicar configuração
+    ru: Применить конфигурацию
+    zh: 应用配置
+  WebTableConfigKey:
+    ar: مفتاح
+    context: Key to a value
+    de: Schlüssel
+    en: Key
+    es: Llave
+    fr: Clé
+    hi: चाबी
+    ja: 鍵
+    nl: Sleutel
+    pt: Chave
+    ru: Ключ
+    zh: 钥匙
+  WebTableConfigSetValue:
+    ar: تعيين القيمة
+    context: Set value of a config key
+    de: Wert festlegen
+    en: Set Value
+    es: Establecer valor
+    fr: Définir la valeur
+    hi: मान सेट करें
+    ja: 値の設定
+    nl: Waarde instellen
+    pt: Definir valor
+    ru: Установить значение
+    zh: 设定值
+  WebTableConfigStartupValue:
+    ar: قيمة بدء التشغيل
+    context: Startup value of a config key
+    de: Startup-Wert
+    en: Startup Value
+    es: Valor de puesta en marcha
+    fr: Valeur de démarrage
+    hi: स्टार्टअप मूल्य
+    ja: スタートアップの価値
+    nl: Opstartwaarde
+    pt: Valor Inicial
+    ru: Начальная стоимость
+    zh: 初创价值
