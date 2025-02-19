@@ -2,7 +2,7 @@
 
 > Your Family's Mission Control
 
-**Latest Release Notes: [v2025.01](https://homechart.app/blog/whats-new-202501/)**
+**Latest Release Notes: [v2025.02](https://homechart.app/blog/whats-new-202502/)**
 
 [:speech_balloon: Discussions](https://github.com/candiddev/homechart/discussions)\
 [:book: Docs](https://homechart.app/docs/)\
