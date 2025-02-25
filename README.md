@@ -4,7 +4,7 @@
 
 **Latest Release Notes: [v2025.02](https://homechart.app/blog/whats-new-202502/)**
 
-[:speech_balloon: Discussions](https://github.com/candiddev/homechart/discussions)\
+[:speech_balloon: Mailing Lists](https://homechart.app/docs/references/mailing-lists/)\
 [:book: Docs](https://homechart.app/docs/)\
 [:arrow_down: Get Homechart](https://homechart.app/docs/guides/get-homechart/)\
 [:eyes: Open Source Details](https://candid.dev/open-source)
