@@ -1337,6 +1337,19 @@ translations:
     pt: Contas
     ru: Счета
     zh: 帐户
+  ObjectAuth:
+    ar: المصادقة
+    context: Authentication related things
+    de: Authentifizierung
+    en: Auth
+    es: Autorización
+    fr: Authentification
+    hi: प्रमाणीकरण
+    ja: 認証
+    nl: Auth
+    pt: Autor
+    ru: Аутентификация
+    zh: 授权
   ObjectBackup:
     ar: دعم
     context: A copy of Homechart data
@@ -1961,6 +1974,19 @@ translations:
     pt: Cozinhar
     ru: Готовить
     zh: 厨师
+  ObjectDatabase:
+    ar: قاعدة البيانات
+    context: Database explorer
+    de: Datenbank
+    en: Database
+    es: Base de datos
+    fr: Base de données
+    hi: डेटाबेस
+    ja: データベース
+    nl: Databank
+    pt: Banco de dados
+    ru: База данных
+    zh: 数据库
   ObjectEvent:
     ar: حدث
     context: Something that is happening at a certain time
@@ -2208,6 +2234,19 @@ translations:
     pt: Família excluída
     ru: Семья удалена
     zh: 家庭已删除
+  ObjectHouseholdMembers:
+    ar: أفراد الأسرة
+    context: Multiple accounts in a household.
+    de: Haushaltsmitglieder
+    en: Household Members
+    es: Miembros del hogar
+    fr: Membres du ménage
+    hi: घर के सदस्य
+    ja: 世帯員
+    nl: Huishoudleden
+    pt: Membros da família
+    ru: Члены семьи
+    zh: 家庭成员
   ObjectHouseholdUpdated:
     ar: تحديث الأسرة
     context: Message when household is updated
@@ -2650,6 +2689,19 @@ translations:
     pt: Horário das refeições
     ru: Время приема пищи
     zh: 用餐时间
+  ObjectMember:
+    ar: عضو
+    context: Single household member
+    de: Mitglied
+    en: Member
+    es: Miembro
+    fr: Membre
+    hi: सदस्य
+    ja: メンバー
+    nl: Lid
+    pt: Membro
+    ru: Член
+    zh: 成员
   ObjectMemberDeleted:
     ar: تم حذف العضو
     context: Message when deleting a household member
@@ -2873,7 +2925,7 @@ translations:
     zh: 所有者
   ObjectPage:
     ar: صفحة
-    context: A single instance of something
+    context: A single page of a document
     de: Blatt
     en: Page
     es: Página
@@ -2884,6 +2936,19 @@ translations:
     pt: Página
     ru: Страница
     zh: 页
+  ObjectPages:
+    ar: الصفحات
+    context: A multiple pages of a document
+    de: Seiten
+    en: Pages
+    es: Páginas
+    fr: Pages
+    hi: पृष्ठों
+    ja: ページ
+    nl: Pagina&#39;s
+    pt: Páginas
+    ru: Страницы
+    zh: 页面
   ObjectParentPage:
     ar: الصفحة الأصل
     context: The page that owns another page
@@ -3326,6 +3391,19 @@ translations:
     pt: Comprar
     ru: Магазин
     zh: 店铺
+  ObjectShortID:
+    ar: معرف مختصر
+    context: Short ID of an object
+    de: Kurzkennung
+    en: Short ID
+    es: Identificación corta
+    fr: ID court
+    hi: लघु आईडी
+    ja: 短縮ID
+    nl: Korte ID
+    pt: ID curto
+    ru: Короткий идентификатор
+    zh: 短 ID
   ObjectStaples:
     ar: مشبك الورق
     context: Recurring items to buy
@@ -9986,6 +10064,19 @@ translations:
       antiga do Homechart
     ru: На сервере, к которому вы подключаетесь, установлена более старая версия Homechart.
     zh: 您要连接的服务器正在运行旧版本的 Homechart
+  WebHash:
+    ar: هاش
+    context: Hash value of a thing
+    de: Hash
+    en: Hash
+    es: Picadillo
+    fr: Hacher
+    hi: हैश
+    ja: ハッシュ
+    nl: Hasj
+    pt: Rachadura
+    ru: Хэш
+    zh: 哈希
   WebHealthItemsTotalCorrelations:
     ar: إجمالي الارتباطات
     context: Total number of correlations for a health itme
@@ -10267,6 +10358,19 @@ translations:
     pt: Atrasado
     ru: Просрочено
     zh: 逾期
+  WebPlanTasksSort:
+    ar: فرز المهام
+    context: Sort button for PlanTasks
+    de: Aufgaben sortieren
+    en: Sort Tasks
+    es: Ordenar tareas
+    fr: Trier les tâches
+    hi: कार्य क्रमबद्ध करें
+    ja: タスクを並べ替える
+    nl: Taken sorteren
+    pt: Classificar tarefas
+    ru: Сортировать задачи
+    zh: 排序任务
   WebPlanTasksTomorrow:
     ar: غداً
     context: Tasks that are due tomorrow
@@ -11528,6 +11632,19 @@ translations:
     pt: Experimente o Homechart no modo de demonstração
     ru: Попробуйте Homechart в демонстрационном режиме
     zh: 在演示模式下试用 Homechart
+  WebSize:
+    ar: مقاس
+    context: Size of something
+    de: Größe
+    en: Size
+    es: Tamaño
+    fr: Taille
+    hi: आकार
+    ja: サイズ
+    nl: Maat
+    pt: Tamanho
+    ru: Размер
+    zh: 尺寸
   WebSubscriptionActions:
     ar: أجراءات
     context: Actions that can be performed on a backup
