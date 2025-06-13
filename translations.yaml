@@ -1688,6 +1688,19 @@ translations:
     pt: Calendário
     ru: Календарь
     zh: 日历
+  ObjectCalendars:
+    ar: التقويمات
+    context: Multiple calendars of events
+    de: Kalender
+    en: Calendars
+    es: Calendarios
+    fr: Calendriers
+    hi: CALENDARS
+    ja: カレンダー
+    nl: Kalenders
+    pt: Calendários
+    ru: Календари
+    zh: 日历
   ObjectCard:
     ar: بطاقة
     context: A small piece of paper
@@ -1870,32 +1883,6 @@ translations:
     pt: Alteração atualizada
     ru: Изменение обновлено
     zh: 更改已更新
-  ObjectChild:
-    ar: طفل
-    context: A child account
-    de: Kind
-    en: Child
-    es: Niño
-    fr: Enfant
-    hi: बच्चा
-    ja: 子供
-    nl: Kind
-    pt: Criança
-    ru: Ребенок
-    zh: 孩子
-  ObjectChildCreated:
-    ar: خلق الطفل
-    context: Message when child is created
-    de: Kind erstellt
-    en: Child created
-    es: Niño creado
-    fr: Enfant créé
-    hi: बच्चा बनाया
-    ja: 子が作成されました
-    nl: Kind gemaakt
-    pt: Filho criado
-    ru: Дочерний создан
-    zh: 孩子创建
   ObjectCollection:
     ar: مجموعة
     context: A grouping of objects
@@ -1987,6 +1974,32 @@ translations:
     pt: Banco de dados
     ru: База данных
     zh: 数据库
+  ObjectDelegation:
+    ar: وفد
+    context: Delgation for an account
+    de: Delegation
+    en: Delegation
+    es: Delegación
+    fr: Délégation
+    hi: प्रतिनिधि मंडल
+    ja: 委任
+    nl: Delegatie
+    pt: Delegação
+    ru: Делегация
+    zh: 代表团
+  ObjectDelegations:
+    ar: الوفود
+    context: Delgations for an account
+    de: Delegationen
+    en: Delegations
+    es: Delegaciones
+    fr: Délégations
+    hi: प्रतिनिधि मंडल
+    ja: 代表団
+    nl: Delegaties
+    pt: Delegações
+    ru: Делегации
+    zh: 代表团
   ObjectEvent:
     ar: حدث
     context: Something that is happening at a certain time
@@ -2390,6 +2403,84 @@ translations:
     pt: Unid
     ru: Предметы
     zh: 项目
+  ObjectLabel:
+    ar: ملصق
+    context: A single label of an object
+    de: Etikett
+    en: Label
+    es: Etiqueta
+    fr: Étiquette
+    hi: लेबल
+    ja: ラベル
+    nl: Label
+    pt: Rótulo
+    ru: Этикетка
+    zh: 标签
+  ObjectLabelCreated:
+    ar: تم إنشاء الملصق
+    context: Message when a label is created
+    de: Etikett erstellt
+    en: Label created
+    es: Etiqueta creada
+    fr: Étiquette créée
+    hi: लेबल बनाया गया
+    ja: ラベルを作成しました
+    nl: Label aangemaakt
+    pt: Rótulo criado
+    ru: Создан ярлык
+    zh: 标签已创建
+  ObjectLabelDeleted:
+    ar: تم حذف العلامة
+    context: Message when a label is deleted
+    de: Etikett gelöscht
+    en: Label deleted
+    es: Etiqueta eliminada
+    fr: Étiquette supprimée
+    hi: लेबल हटाया गया
+    ja: ラベルを削除しました
+    nl: Label verwijderd
+    pt: Rótulo excluído
+    ru: Метка удалена
+    zh: 标签已删除
+  ObjectLabelUpdated:
+    ar: تم تحديث الملصق
+    context: Message when a label is updated
+    de: Etikett aktualisiert
+    en: Label updated
+    es: Etiqueta actualizada
+    fr: Étiquette mise à jour
+    hi: लेबल अपडेट किया गया
+    ja: ラベルが更新されました
+    nl: Label bijgewerkt
+    pt: Etiqueta atualizada
+    ru: Метка обновлена
+    zh: 标签已更新
+  ObjectLabels:
+    ar: العلامات
+    context: Multiples labels of an object
+    de: Labels
+    en: Labels
+    es: Etiquetas
+    fr: Étiquettes
+    hi: लेबल
+    ja: ラベル
+    nl: Etiketten
+    pt: Etiquetas
+    ru: Этикетки
+    zh: 标签
+  ObjectLabelsUpdated:
+    ar: تم تحديث العلامات
+    context: Message when labels are updated
+    de: Etiketten aktualisiert
+    en: Labels updated
+    es: Etiquetas actualizadas
+    fr: Étiquettes mises à jour
+    hi: लेबल अपडेट किए गए
+    ja: ラベルが更新されました
+    nl: Labels bijgewerkt
+    pt: Etiquetas atualizadas
+    ru: Метки обновлены
+    zh: 标签已更新
   ObjectLink:
     ar: وصلة
     context: A link to another website
@@ -2702,6 +2793,19 @@ translations:
     pt: Membro
     ru: Член
     zh: 成员
+  ObjectMemberCreated:
+    ar: تم إنشاء العضو
+    context: Message when member is created
+    de: Mitglied erstellt
+    en: Member created
+    es: Miembro creado
+    fr: Membre créé
+    hi: सदस्य बनाया गया
+    ja: メンバーを作成しました
+    nl: Lid aangemaakt
+    pt: Membro criado
+    ru: Участник создан
+    zh: 已创建会员
   ObjectMemberDeleted:
     ar: تم حذف العضو
     context: Message when deleting a household member
@@ -3782,18 +3886,18 @@ translations:
     ru: Версия
     zh: 版本
   ObjectVersionCreated:
-    ar: تم إنشاء الفئة
+    ar: تم إنشاء الإصدار
     context: Message when Version is created
-    de: Kategorie erstellt
-    en: Category created
-    es: Categoría creada
-    fr: Catégorie créée
-    hi: श्रेणी बनाई गई
-    ja: カテゴリを作成しました
-    nl: Categorie aangemaakt
-    pt: Categoria criada
-    ru: Категория создана
-    zh: 已创建类别
+    de: Version erstellt
+    en: Version created
+    es: Versión creada
+    fr: Version créée
+    hi: संस्करण बनाया गया
+    ja: 作成されたバージョン
+    nl: Versie gemaakt
+    pt: Versão criada
+    ru: Версия создана
+    zh: 版本已创建
   ObjectVersionDeleted:
     ar: تم حذف الإصدار
     context: Message when Version is deleted
@@ -4146,19 +4250,6 @@ translations:
     pt: Corpo
     ru: Тело
     zh: 身体
-  WebAdminNotificationsNewsletter:
-    ar: النشرة الإخبارية
-    context: Newsletter toggle for a message
-    de: Newsletter
-    en: Newsletter
-    es: Boletin informativo
-    fr: Bulletin
-    hi: समाचार पत्रिका
-    ja: ニュースレター
-    nl: Nieuwsbrief
-    pt: Boletim de Notícias
-    ru: Новостная рассылка
-    zh: 通讯
   WebAdminNotificationsSendAfter:
     ar: أرسل بعد
     context: Delay message send
@@ -4330,6 +4421,45 @@ translations:
     pt: Aqui você pode ver como Jane Doe e sua família usam o Homechart
     ru: Здесь вы можете увидеть, как Джейн Доу и ее семья используют Homechart.
     zh: 在这里您可以看到 Jane Doe 和她的家人如何使用 Homechart
+  WebAuthAccountDelegationCreated:
+    ar: تم إنشاء الوفد
+    context: Message for creating a delegation
+    de: Delegation erstellt
+    en: Delegation created
+    es: Delegación creada
+    fr: Délégation créée
+    hi: प्रतिनिधिमंडल बनाया गया
+    ja: 委任が作成されました
+    nl: Delegatie gecreëerd
+    pt: Delegação criada
+    ru: Делегация создана
+    zh: 已创建委托
+  WebAuthAccountDelegationDeleted:
+    ar: تم حذف الوفد
+    context: Message for deleting a delegation
+    de: Delegation gelöscht
+    en: Delegation deleted
+    es: Delegación eliminada
+    fr: Délégation supprimée
+    hi: प्रतिनिधिमंडल हटाया गया
+    ja: 委任を削除しました
+    nl: Delegatie verwijderd
+    pt: Delegação eliminada
+    ru: Делегация удалена
+    zh: 已删除委托
+  WebAuthAccountDelegationUpdated:
+    ar: تم تحديث الوفد
+    context: Message for updating a delegation
+    de: Delegation aktualisiert
+    en: Delegation updated
+    es: Delegación actualizada
+    fr: Délégation mise à jour
+    hi: प्रतिनिधिमंडल अद्यतन
+    ja: 代表団が更新されました
+    nl: Delegatie bijgewerkt
+    pt: Delegação atualizada
+    ru: Делегация обновлена
+    zh: 代表团更新
   WebAuthAccountPasswordReset:
     ar: تم إرسال بريد إلكتروني لإعادة تعيين كلمة المرور
     context: Message for sending password reset email
@@ -4603,6 +4733,19 @@ translations:
     pt: Habilitar iCalendar
     ru: Включить iCalendar
     zh: 启用 iCalendar
+  WebCalendarExpand:
+    ar: توسيع الأحداث
+    context: Expand toggle
+    de: Ereignisse erweitern
+    en: Expand Events
+    es: Expandir eventos
+    fr: Développer les événements
+    hi: इवेंट का विस्तार करें
+    ja: イベントを展開
+    nl: Evenementen uitbreiden
+    pt: Expandir Eventos
+    ru: Развернуть События
+    zh: 展开活动
   WebCalendarGenerateNewiCalendarURL:
     ar: قم بإنشاء عنوان URL جديد لـ iCalendar
     context: Button to generate a new URL for iCalendar
@@ -4655,45 +4798,6 @@ translations:
     pt: Importar feed do iCalendar
     ru: Импортировать ленту iCalendar
     zh: 导入 iCalendar Feed
-  WebCalendarOtherCalendars:
-    ar: تقاويم أخرى
-    context: Other calendar picker
-    de: Andere Kalender
-    en: Other Calendars
-    es: Otros calendarios
-    fr: Autres calendriers
-    hi: अन्य कैलेंडर
-    ja: その他のカレンダー
-    nl: Andere kalenders
-    pt: Outros calendários
-    ru: Другие календари
-    zh: 其他日历
-  WebCalendarOtherCalendarsAstronomy:
-    ar: الفلك
-    context: Other calendar picker for astronomy
-    de: Astronomie
-    en: Astronomy
-    es: Astronomía
-    fr: Astronomie
-    hi: खगोल
-    ja: 天文学
-    nl: Astronomie
-    pt: Astronomia
-    ru: Астрономия
-    zh: 天文学
-  WebCalendarShowCalendars:
-    ar: إظهار التقاويم
-    context: Show calendars button
-    de: Kalender anzeigen
-    en: Show Calendars
-    es: Mostrar calendarios
-    fr: Afficher les calendriers
-    hi: कैलेंडर दिखाएं
-    ja: カレンダーを表示
-    nl: Kalenders tonen
-    pt: Mostrar calendários
-    ru: Показать календари
-    zh: 显示日历
   WebCalendariCalendarDisabled:
     ar: تم تعطيل الوصول إلى iCalendar
     context: Message shown when iCalendar access is disabled
@@ -5045,6 +5149,27 @@ translations:
     pt: Endereço do website
     ru: Адрес веб-сайта
     zh: 网站地址
+  WebFormItemLabelsTooltip:
+    ar: العلامات التي يتم ربطها بالكائن، والتي يتم استخدامها للحصول على أذونات دقيقة
+      والتنظيم.
+    context: Tooltip for labels.
+    de: Dem Objekt zuzuordnende Bezeichnungen, die für detaillierte Berechtigungen
+      und die Organisation verwendet werden.
+    en: Labels to associate with the object, used for granular permissions and organization.
+    es: Etiquetas para asociar con el objeto, utilizadas para permisos granulares
+      y organización.
+    fr: Étiquettes à associer à l&#39;objet, utilisées pour les autorisations et l&#39;organisation
+      granulaires.
+    hi: ऑब्जेक्ट के साथ संबद्ध करने के लिए लेबल, विस्तृत अनुमतियों और संगठन के लिए
+      उपयोग किए जाते हैं।
+    ja: オブジェクトに関連付けるラベル。きめ細かな権限と組織化に使用されます。
+    nl: Labels die aan het object moeten worden gekoppeld, gebruikt voor gedetailleerde
+      machtigingen en organisatie.
+    pt: Rótulos a serem associados ao objeto, usados para permissões granulares e
+      organização.
+    ru: Метки, связанные с объектом, используемые для детализированных разрешений
+      и организации.
+    zh: 与对象关联的标签，用于细粒度的权限和组织。
   WebFormItemPlanProjectParentTooltip:
     ar: المشروع الرئيسي لهذا المشروع
     context: Tooltip for Parent Project
@@ -5248,18 +5373,104 @@ translations:
     ru: Токен присоединения семьи
     zh: 家庭加入令牌
   WebFormJoinHouseholdJoinTokenTooltip:
-    ar: أدخل رمز الانضمام للأسرة
+    ar: إذا تلقيت رمزًا من أحد أفراد الأسرة الآخرين، فأدخله هنا للانضمام إلى أسرته
     context: Join token field tooltip
-    de: Geben Sie einen Beitrittscode für einen Haushalt ein
-    en: Enter a join code for a household
-    es: Ingrese un código de unión para un hogar
-    fr: Saisir un code d'adhésion pour un foyer
-    hi: एक घर के लिए एक ज्वाइन कोड दर्ज करें
-    ja: 世帯の参加コードを入力してください
-    nl: Voer een deelnamecode in voor een huishouden
-    pt: Insira um código de adesão para uma família
-    ru: Введите код присоединения для семьи
-    zh: 输入家庭的加入代码
+    de: Wenn Sie ein Token von einem anderen Haushaltsmitglied erhalten haben, geben
+      Sie es hier ein, um seinem Haushalt beizutreten
+    en: If you received a token from another household member, enter it here to join
+      their household
+    es: Si recibió un token de otro miembro del hogar, ingréselo aquí para unirse
+      a su hogar
+    fr: Si vous avez reçu un jeton d&#39;un autre membre du foyer, saisissez-le ici
+      pour rejoindre son foyer
+    hi: यदि आपको किसी अन्य घरेलू सदस्य से टोकन प्राप्त हुआ है, तो उनके घर में शामिल
+      होने के लिए उसे यहाँ दर्ज करें
+    ja: 他の世帯員からトークンを受け取った場合は、ここで入力してその世帯に参加してください
+    nl: Als u een token van een ander gezinslid hebt ontvangen, voer deze dan hier
+      in om lid te worden van hun huishouden
+    pt: Se você recebeu um token de outro membro da família, insira-o aqui para ingressar
+      na família dele.
+    ru: Если вы получили токен от другого члена семьи, введите его здесь, чтобы присоединиться
+      к его семье.
+    zh: 如果您收到了来自其他家庭成员的代币，请在此处输入以加入他们的家庭
+  WebFormOverlayAuthAccountDelegationAdd:
+    ar: إضافة وفد
+    context: Add a new delegation
+    de: Delegierung hinzufügen
+    en: Add Delegation
+    es: Agregar delegación
+    fr: Ajouter une délégation
+    hi: प्रतिनिधि मंडल जोड़ें
+    ja: 委任を追加
+    nl: Delegatie toevoegen
+    pt: Adicionar Delegação
+    ru: Добавить делегацию
+    zh: 添加委托
+  WebFormOverlayAuthAccountDelegationHealthAccess:
+    ar: الوصول إلى الصحة
+    context: Whether a delegation can access health information
+    de: Zugang zur Gesundheitsversorgung
+    en: Health Access
+    es: Acceso a la salud
+    fr: Accès à la santé
+    hi: स्वास्थ्य पहुंच
+    ja: 健康アクセス
+    nl: Toegang tot gezondheidszorg
+    pt: Acesso à saúde
+    ru: Доступ к здравоохранению
+    zh: 健康通道
+  WebFormOverlayAuthAccountDelegationSource:
+    ar: حساب المصدر
+    context: Source account for delegation
+    de: Quellkonto
+    en: Source Account
+    es: Cuenta fuente
+    fr: Compte source
+    hi: स्रोत खाता
+    ja: ソースアカウント
+    nl: Bronaccount
+    pt: Conta de origem
+    ru: Исходный счет
+    zh: 源帐户
+  WebFormOverlayAuthAccountDelegationTarget:
+    ar: حساب الهدف
+    context: Target account for delegation
+    de: Zielkonto
+    en: Target Account
+    es: Cuenta objetivo
+    fr: Compte cible
+    hi: लक्ष्य खाता
+    ja: ターゲットアカウント
+    nl: Doelaccount
+    pt: Conta de destino
+    ru: Целевой счет
+    zh: 目标帐户
+  WebFormOverlayAuthAccountDelegationTargetManaged:
+    ar: الهدف المُدار
+    context: Whether a delegation is managed by the target
+    de: Ziel verwaltet
+    en: Target Managed
+    es: Objetivo gestionado
+    fr: Cible gérée
+    hi: लक्ष्य प्रबंधित
+    ja: ターゲット管理
+    nl: Doelbeheerd
+    pt: Alvo Gerenciado
+    ru: Цель Управляемая
+    zh: 目标管理
+  WebFormOverlayAuthAccountDelegationTargetTooltip:
+    ar: حدد الحساب المستهدف الذي سيستقبل التفويض.
+    context: Target account for delegation tooltip
+    de: Wählen Sie das Zielkonto aus, das die Delegierung erhalten soll.
+    en: Select the target account that will receive the delegation.
+    es: Seleccione la cuenta de destino que recibirá la delegación.
+    fr: Sélectionnez le compte cible qui recevra la délégation.
+    hi: उस लक्ष्य खाते का चयन करें जिसे प्रत्यायोजन प्राप्त होगा.
+    ja: 委任を受け取るターゲットアカウントを選択します。
+    nl: Selecteer het doelaccount dat de delegatie zal ontvangen.
+    pt: Selecione a conta de destino que receberá a delegação.
+    ru: Выберите целевую учетную запись, которая получит делегирование.
+    zh: 选择将接收委托的目标账户。
   WebFormOverlayAuthAccountPrivateKeyPassphrase:
     ar: عبارة المرور
     context: Passphrase field
@@ -5273,6 +5484,33 @@ translations:
     pt: Senha
     ru: Парольная фраза
     zh: 密码
+  WebFormOverlayAuthHouseholdMemberLabel:
+    ar: السماح أو رفض الوصول إلى كائنات Homechart المختلفة عبر العلامات
+    context: Allow access to labels
+    de: Zugriff auf verschiedene Homechart-Objekte über Labels erlauben oder verweigern
+    en: Allow or deny access to various Homechart objects via Labels
+    es: Permitir o denegar el acceso a varios objetos de Homechart mediante etiquetas
+    fr: Autoriser ou refuser l&#39;accès à divers objets Homechart via des étiquettes
+    hi: लेबल के माध्यम से विभिन्न होमचार्ट ऑब्जेक्ट तक पहुंच की अनुमति दें या अस्वीकार
+      करें
+    ja: ラベルを介してさまざまな Homechart オブジェクトへのアクセスを許可または拒否します
+    nl: Toegang tot verschillende Homechart-objecten toestaan of weigeren via labels
+    pt: Permitir ou negar acesso a vários objetos Homechart por meio de rótulos
+    ru: Разрешить или запретить доступ к различным объектам Homechart с помощью меток
+    zh: 通过标签允许或拒绝访问各种 Homechart 对象
+  WebFormOverlayAuthHouseholdMemberNoEmail:
+    ar: لا يوجد عنوان بريد إلكتروني
+    context: No email toggle for members
+    de: Keine E-Mail-Adresse
+    en: No Email Address
+    es: Sin dirección de correo electrónico
+    fr: Aucune adresse e-mail
+    hi: कोई ईमेल पता नहीं
+    ja: メールアドレスなし
+    nl: Geen e-mailadres
+    pt: Nenhum endereço de e-mail
+    ru: Нет адреса электронной почты
+    zh: 没有电子邮件地址
   WebFormOverlayBookmarkIconImageName:
     ar: اسم الرمز أو عنوان URL
     context: Icon image field name
@@ -8314,6 +8552,19 @@ translations:
     pt: Compartilhar
     ru: Делиться
     zh: 分享
+  WebGlobalActionShowCategory:
+    ar: إظهار الفئة
+    context: Category toggle button
+    de: Kategorie anzeigen
+    en: Show Category
+    es: Mostrar categoría
+    fr: Afficher la catégorie
+    hi: श्रेणी दिखाएँ
+    ja: カテゴリを表示
+    nl: Categorie weergeven
+    pt: Mostrar categoria
+    ru: Показать категорию
+    zh: 显示类别
   WebGlobalActionShowCompleted:
     ar: عرض مكتمل
     context: Show completed items
@@ -8392,19 +8643,6 @@ translations:
     pt: Entrar
     ru: Войти
     zh: 登入
-  WebGlobalActionSignInChild:
-    ar: تسجيل الدخول كطفل
-    context: Sign in as a child to Homechart account button
-    de: Melden Sie sich als Kind an
-    en: Sign In as Child
-    es: Iniciar sesión como niño
-    fr: Se connecter en tant qu'enfant
-    hi: बच्चे के रूप में साइन इन करें
-    ja: 子供としてサインイン
-    nl: Log in als kind
-    pt: Faça login como criança
-    ru: Войти как ребенок
-    zh: 以儿童身份登录
   WebGlobalActionSignInFail:
     ar: فشل تسجيل الدخول
     context: Sign in to your Homechart account button failed
@@ -8782,6 +9020,19 @@ translations:
     pt: Personalizado
     ru: Обычай
     zh: 风俗
+  WebGlobalCustomColors:
+    ar: الألوان المخصصة
+    context: Multiple custom colors
+    de: Benutzerdefinierte Farben
+    en: Custom Colors
+    es: Colores personalizados
+    fr: Couleurs personnalisées
+    hi: कस्टम रंग
+    ja: カスタムカラー
+    nl: Aangepaste kleuren
+    pt: Cores personalizadas
+    ru: Пользовательские цвета
+    zh: 自定义颜色
   WebGlobalDate:
     ar: تاريخ
     context: The date of something
@@ -9043,18 +9294,18 @@ translations:
     ru: В ходе выполнения
     zh: 进行中
   WebGlobalInstallHomechart:
-    ar: قم بتثبيت Homechart
+    ar: تثبيت التطبيق
     context: Button to Install Homechart onto your machine
-    de: Homechart installieren
-    en: Install Homechart
-    es: Instalar Homechart
-    fr: Installer Homechart
-    hi: होमचार्ट स्थापित करें
-    ja: Homechartをインストールする
-    nl: Homechart installeren
-    pt: Instale o Homechart
-    ru: Установить домашнюю диаграмму
-    zh: 安装 Homechart
+    de: App installieren
+    en: Install App
+    es: Instalar aplicación
+    fr: Installer l&#39;application
+    hi: एप्लिकेशन इंस्टॉल करो
+    ja: アプリをインストール
+    nl: App installeren
+    pt: Instalar aplicativo
+    ru: Установить приложение
+    zh: 安装应用程序
   WebGlobalInstallHomechartiOS:
     ar: قم بتثبيت Homechart على iOS من خلال النقر على زر المشاركة في الأسفل والنقر
       فوق إضافة إلى الشاشة الرئيسية.
@@ -9350,6 +9601,19 @@ translations:
     pt: Mostrar senha
     ru: Показать пароль
     zh: 显示密码
+  WebGlobalPermission:
+    ar: إذن
+    context: Access controls
+    de: Erlaubnis
+    en: Permission
+    es: Permiso
+    fr: Autorisation
+    hi: अनुमति
+    ja: 許可
+    nl: Toestemming
+    pt: Permissão
+    ru: Разрешение
+    zh: 允许
   WebGlobalPermissions:
     ar: أذونات
     context: Access controls
@@ -9675,6 +9939,19 @@ translations:
     pt: Configurações
     ru: Настройки
     zh: 设置
+  WebGlobalShowExpanded:
+    ar: إظهار الموسع
+    context: Show the expanded version
+    de: Erweiterte anzeigen
+    en: Show Expanded
+    es: Mostrar ampliado
+    fr: Afficher étendu
+    hi: विस्तृत दिखाएँ
+    ja: 拡大表示
+    nl: Uitgebreid weergeven
+    pt: Mostrar expandido
+    ru: Показать развернуто
+    zh: 显示扩展
   WebGlobalStatus:
     ar: حالة
     context: The state of something
@@ -10009,19 +10286,6 @@ translations:
     pt: Mudar para uma versão mais antiga
     ru: Перейти на более старую версию
     zh: 切换到旧版本
-  WebGlobalWrongLocale:
-    ar: قم بتغيير لغة Homechart إلى
-    context: Alert when the locale doesn't match account
-    de: Ändern Sie die Homechart-Sprache in
-    en: Change Homechart language to
-    es: Cambiar el idioma de Homechart a
-    fr: Changer la langue de Homechart en
-    hi: होमचार्ट भाषा को इसमें बदलें
-    ja: ホームチャートの言語を変更する
-    nl: Verander de Homechart-taal in
-    pt: Alterar o idioma do Homechart para
-    ru: Измените язык домашней диаграммы на
-    zh: 将主页图表语言更改为
   WebGlobalWrongTimeZone1:
     ar: المنطقة الزمنية لحسابك
     context: Alert when time zone doesn't match account
@@ -10091,18 +10355,18 @@ translations:
     ru: Общие корреляции
     zh: 总相关
   WebHomeAgenda:
-    ar: أجندة اليوم
+    ar: جدول الأعمال
     context: Agenda for today
-    de: Die heutige Tagesordnung
-    en: Today's Agenda
-    es: Agenda de hoy
-    fr: L'ordre du jour d'aujourd'hui
-    hi: आज का एजेंडा
-    ja: 本日の議題
-    nl: Agenda van vandaag
-    pt: Agenda de hoje
-    ru: Повестка дня на сегодня
-    zh: 今天的议程
+    de: Agenda
+    en: Agenda
+    es: Orden del día
+    fr: Ordre du jour
+    hi: कार्यसूची
+    ja: 議題
+    nl: Agenda
+    pt: Agenda
+    ru: Повестка дня
+    zh: 议程
   WebHomeAgendaNothing:
     ar: لا شيء مجدول
     context: Agenda for today when nothing is scheduled
@@ -10761,19 +11025,6 @@ translations:
     pt: Senha criada em
     ru: Парольная фраза создана
     zh: 密码创建于
-  WebSettingsAccountPrivateKeyPassphrase:
-    ar: عبارة المرور
-    context: Passphrase for a private key
-    de: Passphrase
-    en: Passphrase
-    es: Frase de contraseña
-    fr: Mot de passe
-    hi: पदबंध
-    ja: パスフレーズ
-    nl: Wachtwoordzin
-    pt: Senha
-    ru: Парольная фраза
-    zh: 密码
   WebSettingsAccountPrivateKeyPassphraseRemember:
     ar: تذكر عبارة المرور
     context: Toggle to remember passphrase for a private key
@@ -10787,19 +11038,6 @@ translations:
     pt: Lembre-se da senha
     ru: Запомнить парольную фразу
     zh: 记住密码
-  WebSettingsAccountPrivateKeyPassphrases:
-    ar: عبارات المرور الخاصة بالمفتاح
-    context: Passphrases for a private key
-    de: Passphrasen für private Schlüssel
-    en: Private Key Passphrases
-    es: Contraseñas de clave privada
-    fr: Mots de passe de clé privée
-    hi: निजी कुंजी पासफ़्रेज़
-    ja: 秘密鍵のパスフレーズ
-    nl: Wachtwoordzinnen voor privésleutels
-    pt: Senhas de chave privada
-    ru: Парольные фразы закрытого ключа
-    zh: 私钥密码
   WebSettingsAccountPrivateKeyReset:
     ar: إعادة تعيين المفاتيح الخاصة
     context: Button to reset private keys
@@ -10878,6 +11116,19 @@ translations:
     pt: Senha incorreta
     ru: Неверная парольная фраза
     zh: 密码不正确
+  WebSettingsAccountPrivateKeys:
+    ar: المفاتيح الخاصة
+    context: Multiple private keys
+    de: Private Schlüssel
+    en: Private Keys
+    es: Claves privadas
+    fr: Clés privées
+    hi: निजी कुंजियाँ
+    ja: 秘密鍵
+    nl: Privésleutels
+    pt: Chaves privadas
+    ru: Закрытые ключи
+    zh: 私钥
   WebSettingsAccountRandomizeColors:
     ar: ترتيب الألوان عشوائيًا
     context: Randomize colors button
@@ -11308,18 +11559,18 @@ translations:
     ru: Чтобы продолжить, создайте семью или присоединитесь к ней.
     zh: 请创建或加入家庭以继续
   WebSetupOverview:
-    ar: لنقم بإعداد تفضيلات حسابك وأسرتك.
+    ar: دعونا نقوم بإعداد حسابك وأسرتك.
     context: Message displayed at setup
-    de: Lassen Sie uns Ihre Kontoeinstellungen und Ihren Haushalt einrichten.
-    en: Let's setup your account preferences and your household.
-    es: Configuremos las preferencias de su cuenta y su hogar.
-    fr: Configurons vos préférences de compte et votre foyer.
-    hi: आइए आपकी खाता प्राथमिकताएं और आपका घर सेट करें।
-    ja: アカウントの設定と世帯を設定しましょう。
-    nl: Laten we uw accountvoorkeuren en uw huishouden instellen.
-    pt: Vamos configurar as preferências da sua conta e da sua família.
-    ru: Давайте настроим настройки вашей учетной записи и вашей семьи.
-    zh: 让我们设置您的帐户首选项和您的家庭。
+    de: Lassen Sie uns Ihr Konto und Ihren Haushalt einrichten.
+    en: Let's setup your account and household.
+    es: Configuremos su cuenta y hogar.
+    fr: Configurons votre compte et votre foyer.
+    hi: आइये आपका खाता और घर सेटअप करें।
+    ja: アカウントと世帯を設定しましょう。
+    nl: Laten we uw account en huishouden instellen.
+    pt: Vamos configurar sua conta e família.
+    ru: Давайте настроим вашу учетную запись и семью.
+    zh: 让我们设置您的帐户和家庭。
   WebSetupWelcome:
     ar: مرحباً
     context: Message displayed at setup
@@ -11733,6 +11984,19 @@ translations:
     pt: Habilitar backups na nuvem
     ru: Включить облачное резервное копирование
     zh: 启用云备份
+  WebSwitchAccount:
+    ar: تبديل الحساب
+    context: Switch current account
+    de: Konto wechseln
+    en: Switch Account
+    es: Cambiar de cuenta
+    fr: Changer de compte
+    hi: खाता स्थानांतरित करें
+    ja: アカウントを切り替える
+    nl: Account wisselen
+    pt: Trocar de conta
+    ru: Сменить аккаунт
+    zh: 切换账户
   WebTableConfigApply:
     ar: تطبيق التكوين
     context: Apply config if needed
