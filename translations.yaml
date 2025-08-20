@@ -730,83 +730,6 @@ translations:
     pt: Lembrete de tarefa
     ru: Напоминание о задаче
     zh: 任务提醒
-  EmailReferralBodyCancelled:
-    ar: لقد ألغينا اشتراكك السابق في Homechart.
-    context: Email body for receiving a lifetime subscription from referrals and have
-      previous subscription cancelled
-    de: Wir haben Ihr vorheriges Homechart-Abonnement gekündigt.
-    en: We cancelled your previous Homechart subscription.
-    es: Cancelamos tu suscripción anterior a Homechart.
-    fr: Nous avons annulé votre précédent abonnement Homechart.
-    hi: हमने आपकी पिछली होमचार्ट सदस्यता रद्द कर दी है।
-    ja: 以前の Homechart サブスクリプションをキャンセルしました。
-    nl: We hebben uw vorige Homechart-abonnement opgezegd.
-    pt: Cancelamos sua assinatura anterior do Homechart.
-    ru: Мы отменили вашу предыдущую подписку на Homechart.
-    zh: 我们取消了您之前的 Homechart 订阅。
-  EmailReferralBodyHeader:
-    ar: استخدم شخص ما إحالتك للتسجيل في Homechart! لقد قمت بإحالة٪ d حتى الآن
-    context: Header for body of referral email
-    de: Jemand hat Ihre Empfehlung verwendet, um sich bei Homechart anzumelden! Sie
-      haben bisher %d geworben
-    en: Someone used your referral to sign up for Homechart!  You've referred %d so
-      far
-    es: ¡Alguien usó su referencia para registrarse en Homechart! Has recomendado
-      a %d hasta ahora
-    fr: Quelqu'un a utilisé votre parrainage pour s'inscrire à Homechart ! Vous avez
-      parrainé %d jusqu'à présent
-    hi: होमचार्ट के लिए साइन अप करने के लिए किसी ने आपके रेफ़रल का उपयोग किया! आपने
-      अभी तक %d का उल्लेख किया है
-    ja: あなたの紹介を利用して誰かが Homechart に登録しました。これまでに %d 人を紹介しています
-    nl: Iemand heeft uw verwijzing gebruikt om zich aan te melden voor Homechart!
-      Je hebt tot nu toe %d doorverwezen
-    pt: Alguém usou sua indicação para se inscrever no Homechart! Você indicou %d
-      até agora
-    ru: Кто-то использовал ваш реферал, чтобы зарегистрироваться на Homechart! Вы
-      уже направили %d
-    zh: 有人使用您的推荐注册了 Homechart！到目前为止你已经推荐了 %d
-  EmailReferralBodyLifetime:
-    ar: وحصلوا على اشتراك مدى الحياة في Homechart! تهانينا!
-    context: Email body for receiving a lifetime subscription from referrals
-    de: und haben ein lebenslanges Abonnement für Homechart erhalten! Glückwunsch!
-    en: and have received a lifetime subscription to Homechart!  Congratulations!
-    es: ¡y he recibido una suscripción de por vida a Homechart! ¡Felicidades!
-    fr: et avez reçu un abonnement à vie à Homechart ! Toutes nos félicitations !
-    hi: और होमचार्ट की आजीवन सदस्यता प्राप्त की है! बधाई हो!
-    ja: Homechart の生涯サブスクリプションを受け取りました! おめでとうございます!
-    nl: en een levenslang abonnement op Homechart hebben gekregen! Gefeliciteerd!
-    pt: e recebi uma assinatura vitalícia do Homechart! Parabéns!
-    ru: и получили пожизненную подписку на Homechart! Поздравляем!
-    zh: 并获得了 Homechart 的终生订阅！恭喜！
-  EmailReferralBodyRemaining:
-    ar: وتحتاج فقط٪ d أكثر لتلقي اشتراك مدى الحياة في Homechart.
-    context: Email body for remaining referrals
-    de: und brauchen nur noch %d, um ein lebenslanges Abonnement für Homechart zu
-      erhalten.
-    en: and only need %d more to receive a lifetime subscription to Homechart.
-    es: y solo necesita %d más para recibir una suscripción de por vida a Homechart.
-    fr: et n'avez besoin que de %d plus pour recevoir un abonnement à vie à Homechart.
-    hi: और होमचार्ट के लिए आजीवन सदस्यता प्राप्त करने के लिए केवल %d अधिक की आवश्यकता
-      है।
-    ja: Homechart の生涯サブスクリプションを受け取るには、あと %d だけ必要です。
-    nl: en heb nog maar %d meer nodig om een levenslang abonnement op Homechart te
-      krijgen.
-    pt: e só precisa de mais %d para receber uma assinatura vitalícia do Homechart.
-    ru: и нужно всего лишь на %d больше, чтобы получить пожизненную подписку на Homechart.
-    zh: 只需要再增加 %d 就可以终生订阅 Homechart。
-  EmailReferralSubject:
-    ar: موضوع البريد الإلكتروني للإحالة
-    context: Thank You for the Referral!
-    de: Betreff der Empfehlungs-E-Mail
-    en: Subject for referral email
-    es: Asunto del correo electrónico de referencia
-    fr: Objet de l'e-mail de recommandation
-    hi: रेफरल ईमेल के लिए विषय
-    ja: 紹介メールの件名
-    nl: Onderwerp voor verwijzingsmail
-    pt: Assunto do e-mail de indicação
-    ru: Тема реферального письма
-    zh: 推荐电子邮件的主题
   EmailSignInBody:
     ar: 'شخص ما (آمل أن تكون أنت!) قام للتو بتسجيل الدخول إلى حساب Homechart الخاص
       بك: ** نوع الجهاز **:٪ s ** عنوان IP **:٪ s إذا لم تكن أنت ، فالرجاء التفكير
@@ -3677,6 +3600,19 @@ translations:
     pt: Tarefas
     ru: Задания
     zh: 任务
+  ObjectTasksCompleted:
+    ar: المهام - مكتملة
+    context: Multiple things that are done
+    de: Aufgaben – Abgeschlossen
+    en: Tasks - Completed
+    es: Tareas - Completadas
+    fr: Tâches - Terminées
+    hi: कार्य - पूर्ण
+    ja: タスク - 完了
+    nl: Taken - Voltooid
+    pt: Tarefas - Concluídas
+    ru: Задачи - выполнены
+    zh: 任务 - 已完成
   ObjectTransaction:
     ar: عملية
     context: The transfer of money/value between two things
@@ -4028,6 +3964,32 @@ translations:
     pt: Agenda para
     ru: Повестка дня
     zh: 议程
+  PushEnableBody:
+    ar: سيستقبل جهازك الآن تذكيرات من Homechart
+    context: Body for when push notifications are enabled
+    de: Ihr Gerät erhält nun Erinnerungen von Homechart
+    en: Your device will now receive reminders from Homechart
+    es: Su dispositivo ahora recibirá recordatorios de Homechart
+    fr: Votre appareil recevra désormais des rappels de Homechart
+    hi: अब आपका डिवाइस होमचार्ट से अनुस्मारक प्राप्त करेगा
+    ja: あなたのデバイスはHomechartからリマインダーを受け取るようになります
+    nl: Uw apparaat ontvangt nu herinneringen van Homechart
+    pt: Seu dispositivo agora receberá lembretes do Homechart
+    ru: Теперь ваше устройство будет получать напоминания от Homechart
+    zh: 您的设备现在将收到来自 Homechart 的提醒
+  PushEnableSubject:
+    ar: تم تمكين إشعارات Homechart
+    context: Subject for when push notifications are enabled
+    de: Homechart-Benachrichtigungen aktiviert
+    en: Homechart Notifications Enabled
+    es: Notificaciones de Homechart habilitadas
+    fr: Notifications Homechart activées
+    hi: होमचार्ट अधिसूचनाएँ सक्षम
+    ja: ホームチャート通知が有効
+    nl: Homechart-meldingen ingeschakeld
+    pt: Notificações do Homechart habilitadas
+    ru: Уведомления Homechart включены
+    zh: Homechart 通知已启用
   PushEventReminderBody:
     ar: اضغط هنا لعرض الحدث
     context: Body for Event reminder push notification
@@ -6622,19 +6584,6 @@ translations:
     ru: Типичное время подачи еды. При планировании еды Homechart будет использовать
       это время по умолчанию, но его всегда можно изменить для каждого рецепта.
     zh: 用餐的典型时间。安排用餐时，Homechart 将默认使用此时间，但始终可以根据食谱进行更改
-  WebFormOverlayHealthLogDateTooltip:
-    ar: تاريخ ووقت إدخالات السجل
-    context: Date tooltip for the health log
-    de: Datum und Uhrzeit der Protokolleinträge
-    en: Date and time for the log entries
-    es: Fecha y hora de las entradas de registro
-    fr: Date et heure des entrées du journal
-    hi: लॉग प्रविष्टियों के लिए दिनांक और समय
-    ja: ログエントリの日付と時刻
-    nl: Datum en tijd voor de logboekvermeldingen
-    pt: Data e hora das entradas de log
-    ru: Дата и время для записей журнала
-    zh: 日志条目的日期和时间
   WebFormOverlayHealthLogInputsTooltip:
     ar: المدخلات تحدث في هذا التاريخ
     context: Inputs tooltip for a Health Log
@@ -7590,196 +7539,6 @@ translations:
       домохозяйством в Homechart Cloud
     zh: 在 Homechart 中拥有家庭需要订阅，即使是自托管用户也是如此。您必须将以下自托管家庭的自托管 ID 链接到 Homechart Cloud
       上的新家庭或现有家庭
-  WebFormSubscriptionHelpCopyID:
-    ar: انقر فوق الزر أعلاه إذا كنت قد أنشأت حسابًا بالفعل على Homechart Cloud (https://web.homechart.app).
-      ستضيف معرف الاستضافة الذاتية ضمن خيار قائمة الاشتراك على Homechart Cloud.
-    context: Help for copy ID button
-    de: Tippen Sie auf die Schaltfläche oben, wenn Sie bereits ein Konto bei Homechart
-      Cloud (https://web.homechart.app) erstellt haben. Sie fügen die Self-Hosted-ID
-      unter der Menüoption „Abonnement“ bei Homechart Cloud hinzu.
-    en: Tap the button above if you have already created an account on Homechart Cloud
-      (https://web.homechart.app).  You'll add the Self-Hosted ID under the Subscription
-      menu option on Homechart Cloud.
-    es: Pulsa el botón de arriba si ya has creado una cuenta en Homechart Cloud (https://web.homechart.app).
-      Añadirás la ID alojada en la opción del menú Suscripción en Homechart Cloud.
-    fr: Appuyez sur le bouton ci-dessus si vous avez déjà créé un compte sur Homechart
-      Cloud (https://web.homechart.app). Vous ajouterez l&#39;ID auto-hébergé sous
-      l&#39;option de menu Abonnement sur Homechart Cloud.
-    hi: अगर आपने पहले ही होमचार्ट क्लाउड (https://web.homechart.app) पर अकाउंट बना
-      लिया है, तो ऊपर दिए गए बटन पर टैप करें। आप होमचार्ट क्लाउड पर सब्सक्रिप्शन मेनू
-      विकल्प के अंतर्गत सेल्फ़-होस्टेड आईडी जोड़ेंगे।
-    ja: Homechart Cloud (https://web.homechart.app) にすでにアカウントを作成している場合は、上のボタンをタップしてください。Homechart
-      Cloud のサブスクリプション メニュー オプションでセルフホスト ID を追加します。
-    nl: Tik op de knop hierboven als u al een account hebt aangemaakt op Homechart
-      Cloud (https://web.homechart.app). U voegt de Self-Hosted ID toe onder de menuoptie
-      Abonnement op Homechart Cloud.
-    pt: Toque no botão acima se você já criou uma conta no Homechart Cloud (https://web.homechart.app).
-      Você adicionará o Self-Hosted ID na opção de menu Subscription no Homechart
-      Cloud.
-    ru: Нажмите кнопку выше, если вы уже создали учетную запись в Homechart Cloud
-      (https://web.homechart.app). Вы добавите Self-Hosted ID в меню «Подписка» в
-      Homechart Cloud.
-    zh: 如果您已经在 Homechart Cloud (https://web.homechart.app) 上创建了帐户，请点击上面的按钮。您将在 Homechart
-      Cloud 上的订阅菜单选项下添加自托管 ID。
-  WebFormSubscriptionHelpCreateNew:
-    ar: اضغط على الزر أعلاه حتى يقوم Homechart بإنشاء أسرة جديدة لك على Homechart
-      Cloud، باستخدام عنوان البريد الإلكتروني الذي قمت بالتسجيل به.
-    context: Help for create new button
-    de: Tippen Sie auf die Schaltfläche oben, damit Homechart unter Verwendung der
-      E-Mail-Adresse, mit der Sie sich registriert haben, einen neuen Haushalt in
-      der Homechart Cloud für Sie erstellt.
-    en: Tap the button above to have Homechart create a new household on Homechart
-      Cloud for you, using the email address you signed up with.
-    es: Toque el botón de arriba para que Homechart cree un nuevo hogar en Homechart
-      Cloud para usted, usando la dirección de correo electrónico con la que se registró.
-    fr: Appuyez sur le bouton ci-dessus pour que Homechart crée un nouveau foyer sur
-      Homechart Cloud pour vous, en utilisant l&#39;adresse e-mail avec laquelle vous
-      vous êtes inscrit.
-    hi: होमचार्ट द्वारा आपके लिए होमचार्ट क्लाउड पर एक नया परिवार बनाने के लिए ऊपर
-      दिए गए बटन पर टैप करें, जिस ईमेल पते से आपने साइन अप किया था उसका उपयोग करके।
-    ja: 上のボタンをタップすると、サインアップ時に使用したメール アドレスを使用して、Homechart が Homechart Cloud に新しい世帯を作成します。
-    nl: Tik op de knop hierboven, zodat Homechart een nieuw huishouden voor u aanmaakt
-      op Homechart Cloud. Hiervoor gebruikt u het e-mailadres waarmee u zich hebt
-      geregistreerd.
-    pt: Toque no botão acima para que o Homechart crie uma nova casa no Homechart
-      Cloud para você, usando o endereço de e-mail com o qual você se inscreveu.
-    ru: Нажмите кнопку выше, чтобы Homechart создал для вас новое домохозяйство в
-      Homechart Cloud, используя адрес электронной почты, указанный вами при регистрации.
-    zh: 点击上面的按钮，Homechart 将使用您注册时使用的电子邮件地址在 Homechart Cloud 上为您创建一个新的家庭。
-  WebFormSubscriptionReferralCode:
-    ar: رمز الإحالة الخاص بك
-    context: Referral code field
-    de: Ihr Empfehlungscode
-    en: Your Referral Code
-    es: Su código de referencia
-    fr: Votre code de parrainage
-    hi: आपका रेफरल कोड
-    ja: 紹介コード
-    nl: Uw verwijzingscode
-    pt: Seu código de referência
-    ru: Ваш реферальный код
-    zh: 您的推荐码
-  WebFormSubscriptionReferralCodeTooltip:
-    ar: رمز الإحالة المخصص الخاص بك ، لا تتردد في تغييره إلى شيء لا يُنسى.
-    context: Referral code tooltip
-    de: Ihren benutzerdefinierten Empfehlungscode können Sie gerne in etwas einprägsameres
-      ändern.
-    en: Your custom referral code, feel free to change it to something more memorable.
-    es: Su código de referencia personalizado, siéntase libre de cambiarlo por algo
-      más memorable.
-    fr: Votre code de parrainage personnalisé, n'hésitez pas à le changer pour quelque
-      chose de plus mémorisable.
-    hi: आपका कस्टम रेफ़रल कोड, बेझिझक इसे कुछ और यादगार में बदल सकते हैं।
-    ja: カスタム紹介コードなので、覚えやすいものに自由に変更してください。
-    nl: Uw aangepaste verwijzingscode, verander deze gerust in iets gedenkwaardigs.
-    pt: Seu código de referência personalizado, fique à vontade para alterá-lo para
-      algo mais memorável.
-    ru: Ваш собственный реферальный код. Не стесняйтесь менять его на что-то более
-      запоминающееся.
-    zh: 您的自定义推荐代码，请随时将其更改为更令人难忘的内容。
-  WebFormSubscriptionReferralStatus1:
-    ar: لقد أشرت
-    context: The number of referrals so far
-    de: Sie haben verwiesen
-    en: You've referred
-    es: te has referido
-    fr: Vous avez parrainé
-    hi: आपने संदर्भित किया है
-    ja: 参照しました
-    nl: Aantal verwijzingen
-    pt: Você se referiu
-    ru: Вы упомянули
-    zh: 你提到了
-  WebFormSubscriptionReferralStatus2:
-    ar: حتى الآن
-    context: The number of referrals so far
-    de: bis jetzt
-    en: so far
-    es: hasta ahora
-    fr: jusqu'à présent
-    hi: अब तक
-    ja: これまでのところ
-    nl: Tot zo ver
-    pt: até aqui
-    ru: до сих пор
-    zh: 迄今为止
-  WebFormSubscriptionReferralStatus3:
-    ar: يشير إلى
-    context: The number of referrals so far
-    de: Verweisen
-    en: Refer
-    es: Referirse
-    fr: Se référer à
-    hi: उद्घृत करना
-    ja: 参照する
-    nl: Refereren
-    pt: Referir
-    ru: Ссылаться
-    zh: 参考
-  WebFormSubscriptionReferralStatus4:
-    ar: المزيد للاشتراك في Homechart والحصول على اشتراك مجاني مدى الحياة! يحصل المستخدمون
-      الذين تقوم بإحالتهم على شهر مجاني. هذا رابط لوسائل التواصل الاجتماعي
-    context: The number of referrals so far
-    de: mehr, um Homechart zu abonnieren und ein kostenloses lebenslanges Abonnement
-      zu erhalten! Die von Ihnen geworbenen Benutzer erhalten einen kostenlosen Monat.
-      Hier ist ein Link für soziale Medien
-    en: more to subscribe to Homechart and receive a free lifetime subscription!  The
-      users you refer get a free month.  Here's a link for social media
-    es: más para suscribirse a Homechart y recibir una suscripción gratuita de por
-      vida. Los usuarios que recomiendes obtienen un mes gratis. Aquí hay un enlace
-      para las redes sociales.
-    fr: de plus pour vous abonner à Homechart et recevoir un abonnement à vie gratuit
-      ! Les utilisateurs que vous parrainez bénéficient d'un mois gratuit. Voici un
-      lien pour les réseaux sociaux
-    hi: होमचार्ट की सदस्यता लेने के लिए और अधिक मुफ्त लाइफटाइम सब्सक्रिप्शन प्राप्त
-      करें! आप जिन उपयोगकर्ताओं को संदर्भित करते हैं उन्हें एक निःशुल्क महीना मिलता
-      है। यहां सोशल मीडिया के लिए एक लिंक दिया गया है
-    ja: Homechart にご登録いただくと、生涯無料購読が受けられます。紹介していただいたユーザーは 1 か月無料でご利用いただけます。こちらがソーシャル
-      メディアのリンクです。
-    nl: meer om u te abonneren op Homechart en een gratis levenslang abonnement te
-      ontvangen! De gebruikers die u doorverwijst, krijgen een gratis maand. Hier
-      is een link voor sociale media
-    pt: mais para assinar o Homechart e receber uma assinatura vitalícia gratuita!
-      Os usuários que você indicar ganham um mês grátis. Aqui está um link para mídia
-      social
-    ru: больше, чтобы подписаться на Homechart и получить бесплатную пожизненную подписку!
-      Привлеченные вами пользователи получают месяц бесплатного использования. Вот
-      ссылка на соцсети
-    zh: 更多订阅 Homechart 并获得终身免费订阅！您推荐的用户可免费使用一个月。这是社交媒体的链接
-  WebFormSubscriptionReferrerCode:
-    ar: كود المرجع
-    context: Referrer code field
-    de: Referrer-Code
-    en: Referrer Code
-    es: Código referente
-    fr: Code de référence
-    hi: संदर्भ कोड
-    ja: 紹介者コード
-    nl: Verwijscode
-    pt: Código de referência
-    ru: Код реферера
-    zh: 推荐人代码
-  WebFormSubscriptionReferrerCodeTooltip:
-    ar: إذا قام شخص ما بإحالتك إلى Homechart ، فأدخل رمزه هنا للحصول على خصمه!
-    context: Referrer code
-    de: Wenn Sie jemand auf Homechart verwiesen hat, geben Sie hier seinen Code ein,
-      um seinen Rabatt zu erhalten!
-    en: If someone referred you to Homechart, enter their code here to receive their
-      discount!
-    es: Si alguien lo refirió a Homechart, ingrese su código aquí para recibir su
-      descuento.
-    fr: Si quelqu'un vous a référé à Homechart, entrez son code ici pour recevoir
-      sa réduction !
-    hi: अगर किसी ने आपको होमचार्ट के लिए रेफर किया है, तो उनकी छूट प्राप्त करने के
-      लिए उनका कोड यहां दर्ज करें!
-    ja: 誰かがあなたを Homechart に紹介した場合は、その人のコードをここに入力して割引を受けてください。
-    nl: Als iemand u naar Homechart heeft verwezen, voert u hier zijn code in om zijn
-      korting te ontvangen!
-    pt: Se alguém indicou o Homechart para você, insira o código aqui para receber
-      o desconto!
-    ru: Если кто-то порекомендовал вас на Homechart, введите здесь его код, чтобы
-      получить скидку!
-    zh: 如果有人将您推荐给 Homechart，请在此处输入他们的代码以获得折扣！
   WebFormSubscriptionRefreshSubscription:
     ar: تجديد الاشتراك
     context: Refresh linking a household to Homechart Cloud
@@ -7820,18 +7579,18 @@ translations:
     ru: Идентификатор скопирован
     zh: 身份证件已复制
   WebFormSubscriptionSelfHostedIDCopy:
-    ar: انسخ معرفك وقم بزيارة Homechart Cloud
+    ar: انسخ معرف الاستضافة الذاتية وقم بزيارة Homechart Cloud
     context: Copy ID for self hosted account
-    de: ID kopieren und Homechart Cloud besuchen
-    en: Copy ID and Visit Homechart Cloud
-    es: Copiar ID y visitar Homechart Cloud
-    fr: Copiez l&#39;ID et visitez Homechart Cloud
-    hi: आईडी कॉपी करें और होमचार्ट क्लाउड पर जाएँ
-    ja: IDをコピーしてHomechart Cloudにアクセス
-    nl: Kopieer ID en bezoek Homechart Cloud
-    pt: Copie o ID e visite o Homechart Cloud
-    ru: Скопируйте идентификатор и посетите Homechart Cloud
-    zh: 复制 ID 并访问 Homechart Cloud
+    de: Kopieren Sie die selbstgehostete ID und besuchen Sie Homechart Cloud
+    en: Copy Self-Hosted ID and Visit Homechart Cloud
+    es: Copiar la identificación autoalojada y visitar Homechart Cloud
+    fr: Copiez l&#39;ID auto-hébergé et visitez Homechart Cloud
+    hi: स्व-होस्टेड आईडी कॉपी करें और होमचार्ट क्लाउड पर जाएं
+    ja: セルフホストIDをコピーしてHomechart Cloudにアクセスしてください
+    nl: Kopieer de zelfgehoste ID en bezoek Homechart Cloud
+    pt: Copie o ID auto-hospedado e visite o Homechart Cloud
+    ru: Скопируйте идентификатор собственного хостинга и посетите Homechart Cloud
+    zh: 复制自托管 ID 并访问 Homechart Cloud
   WebFormSubscriptionSelfHostedIDNew:
     ar: إنشاء أسرة جديدة باستخدام عنوان بريدي الإلكتروني
     context: Option to create a new Household ID for self hosted account
@@ -7846,26 +7605,27 @@ translations:
     ru: Создать новую семью с моим адресом электронной почты
     zh: 使用我的电子邮件地址创建新家庭
   WebFormSubscriptionSelfHostedIDTooltip:
-    ar: إذا كنت تقوم بتشغيل خادم Homechart على شبكتك ، فقم بتغيير المعرّف المستضاف
-      ذاتيًا هنا.
+    ar: إذا كنت تقوم بتشغيل خادم Homechart على شبكتك، فحدد معرف الاستضافة الذاتية
+      الخاص بك هنا.
     context: ID for self hosted account tooltip
-    de: Wenn Sie den Homechart-Server in Ihrem Netzwerk ausführen, ändern Sie hier
-      Ihre selbst gehostete ID.
-    en: If you're running Homechart server on your network, change your self-hosted
+    de: Wenn Sie in Ihrem Netzwerk einen Homechart-Server ausführen, geben Sie hier
+      Ihre selbst gehostete ID an.
+    en: If you're running Homechart server on your network, specify your self-hosted
       ID here.
-    es: Si está ejecutando el servidor Homechart en su red, cambie su ID alojada aquí.
-    fr: Si vous utilisez le serveur Homechart sur votre réseau, modifiez votre ID
+    es: Si está ejecutando el servidor Homechart en su red, especifique aquí su ID
+      autohospedado.
+    fr: Si vous exécutez le serveur Homechart sur votre réseau, spécifiez votre ID
       auto-hébergé ici.
-    hi: यदि आप अपने नेटवर्क पर होमचार्ट सर्वर चला रहे हैं, तो अपनी स्व-होस्टेड आईडी
-      यहां बदलें।
-    ja: ネットワーク上で Homechart サーバーを実行している場合は、ここでセルフホスト ID を変更してください。
-    nl: Als u een Homechart-server op uw netwerk gebruikt, wijzigt u hier uw door
-      uzelf gehoste ID.
-    pt: Se você estiver executando o servidor Homechart em sua rede, altere seu ID
-      auto-hospedado aqui.
-    ru: Если вы используете сервер Homechart в своей сети, измените здесь свой собственный
+    hi: यदि आप अपने नेटवर्क पर होमचार्ट सर्वर चला रहे हैं, तो यहां अपनी स्व-होस्टेड
+      आईडी निर्दिष्ट करें।
+    ja: ネットワーク上で Homechart サーバーを実行している場合は、ここでセルフホスト ID を指定します。
+    nl: Als u een Homechart-server op uw netwerk gebruikt, geeft u hier uw zelfgehoste
+      ID op.
+    pt: Se você estiver executando o servidor Homechart na sua rede, especifique seu
+      ID de auto-hospedagem aqui.
+    ru: Если в вашей сети используется сервер Homechart, укажите здесь свой собственный
       идентификатор.
-    zh: 如果您在网络上运行 Homechart 服务器，请在此处更改您的自托管 ID。
+    zh: 如果您在网络上运行 Homechart 服务器，请在此处指定您的自托管 ID。
   WebFormSubscriptionStatus:
     ar: حالة الاشتراك
     context: Subscription status field
@@ -7879,6 +7639,19 @@ translations:
     pt: Status de inscrição
     ru: Статус подписки
     zh: 订阅状态
+  WebFormSubscriptionStatusUnknown:
+    ar: مجهول
+    context: Subscription status unknown value
+    de: Unbekannt
+    en: Unknown
+    es: Desconocido
+    fr: Inconnu
+    hi: अज्ञात
+    ja: 未知
+    nl: Onbekend
+    pt: Desconhecido
+    ru: Неизвестный
+    zh: 未知
   WebFormSubscriptionSubscribeLifetime:
     ar: اشتراك مدى الحياة
     context: Purchase a lifetime subscription
@@ -7918,68 +7691,53 @@ translations:
     pt: Assine anualmente
     ru: Подписаться ежегодно
     zh: 每年订阅
-  WebFormSubscriptionTitle:
-    ar: قم بربط معرف الاستضافة الذاتية الخاص بك بـ Homechart Cloud
-    context: A title that is displayed for self hosted instances
-    de: Verknüpfen Sie Ihre selbstgehostete ID mit Homechart Cloud
-    en: Associate Your Self-Hosted ID to Homechart Cloud
-    es: Asocie su ID alojada en su dispositivo a Homechart Cloud
-    fr: Associez votre identifiant auto-hébergé à Homechart Cloud
-    hi: अपनी स्वयं-होस्टेड आईडी को होमचार्ट क्लाउड से संबद्ध करें
-    ja: セルフホストIDをHomechart Cloudに関連付ける
-    nl: Koppel uw zelfgehoste ID aan Homechart Cloud
-    pt: Associe seu ID auto-hospedado ao Homechart Cloud
-    ru: Свяжите свой собственный идентификатор с Homechart Cloud
-    zh: 将您的自托管 ID 关联到 Homechart Cloud
   WebFormSubscriptionhelpDisclaimer:
-    ar: لا يتم نقل أي بيانات إلى Homechart Cloud، بل يتم استخدامها فقط لنقل تفاصيل
-      الاشتراك إلى مثيلك المستضاف ذاتيًا. هذا إجراء لمرة واحدة، ولن تحتاج أبدًا إلى
-      ربط معرف الاستضافة الذاتية الخاص بك مرة أخرى. يُرجى الاتصال بنا على [support@homechart.app](mailto:support@homechart.app)
-      في حالة وجود أي مشكلات.
+    ar: لا يتم نقل أي بيانات إلى Homechart Cloud، بل تُستخدم فقط لنقل تفاصيل الاشتراك
+      إلى النسخة المُستضافة ذاتيًا. هذا إجراء لمرة واحدة فقط، ولن تحتاج إلى ربط مُعرّف
+      النسخة المُستضافة ذاتيًا مرة أخرى. يُرجى التواصل معنا عبر [support@homechart.app](mailto:support@homechart.app)
+      في حال وجود أي مشاكل أو استفسارات.
     context: Bottom disclaimer for subscription help
-    de: Es werden keine Daten an Homechart Cloud übertragen, sie werden nur verwendet,
-      um die Abonnementdetails an Ihre selbstgehostete Instanz zu übertragen. Dies
-      ist eine einmalige Aktion, Sie sollten Ihre selbstgehostete ID nie wieder verknüpfen
-      müssen. Bei Problemen kontaktieren Sie uns bitte unter [support@homechart.app](mailto:support@homechart.app).
+    de: Es werden keine Daten an die Homechart Cloud übertragen. Sie dienen lediglich
+      der Übertragung der Abonnementdaten an Ihre selbstgehostete Instanz. Dies ist
+      eine einmalige Aktion. Sie müssen Ihre selbstgehostete ID nie wieder verknüpfen.
+      Bei Problemen oder Anliegen kontaktieren Sie uns bitte unter [support@homechart.app](mailto:support@homechart.app).
     en: No data is transferred to Homechart Cloud, it’s just used to transfer the
       subscription details to your self-hosted instance.  This is a one-time action,
       you should never have to link your Self-Hosted ID again.  Please contact us
-      at [support@homechart.app](mailto:support@homechart.app) with any problems.
-    es: No se transfieren datos a Homechart Cloud, solo se utilizan para transferir
-      los detalles de la suscripción a su instancia alojada en su dispositivo. Esta
-      es una acción única, nunca debería tener que vincular su ID alojada en su dispositivo
-      nuevamente. Comuníquese con nosotros a [support@homechart.app](mailto:support@homechart.app)
-      si tiene algún problema.
-    fr: Aucune donnée n&#39;est transférée vers Homechart Cloud, elle est simplement
-      utilisée pour transférer les détails de l&#39;abonnement vers votre instance
-      auto-hébergée. Il s&#39;agit d&#39;une action ponctuelle, vous ne devriez plus
-      jamais avoir à lier votre identifiant auto-hébergé. Veuillez nous contacter
-      à [support@homechart.app](mailto:support@homechart.app) en cas de problème.
-    hi: होमचार्ट क्लाउड में कोई डेटा ट्रांसफर नहीं किया जाता है, इसका उपयोग केवल आपके
-      सेल्फ़-होस्टेड इंस्टेंस में सब्सक्रिप्शन विवरण ट्रांसफर करने के लिए किया जाता
-      है। यह एक बार की कार्रवाई है, आपको अपनी सेल्फ़-होस्टेड आईडी को फिर से लिंक करने
-      की आवश्यकता नहीं होगी। किसी भी समस्या के लिए कृपया हमसे [support@homechart.app](mailto:support@homechart.app)
-      पर संपर्क करें।
-    ja: Homechart Cloud にデータは転送されません。サブスクリプションの詳細をセルフホスト インスタンスに転送するために使用されます。これは
-      1 回限りのアクションであり、セルフホスト ID を再度リンクする必要はありません。問題がある場合は、[support@homechart.app](mailto:support@homechart.app)
-      までご連絡ください。
-    nl: Er worden geen gegevens naar Homechart Cloud overgebracht, ze worden alleen
-      gebruikt om de abonnementsgegevens naar uw zelfgehoste instantie over te brengen.
-      Dit is een eenmalige actie, u hoeft uw zelfgehoste ID nooit meer te koppelen.
+      at [support@homechart.app](mailto:support@homechart.app) with any problems or
+      concerns.
+    es: No se transfieren datos a Homechart Cloud; solo se utilizan para transferir
+      los detalles de la suscripción a su instancia alojada. Esta acción es única;
+      no debería tener que volver a vincular su ID alojada. Si tiene algún problema
+      o inquietud, contáctenos en [support@homechart.app](mailto:support@homechart.app).
+    fr: Aucune donnée n&#39;est transférée vers Homechart Cloud; elle sert uniquement
+      à transférer les informations d&#39;abonnement vers votre instance auto-hébergée.
+      Cette action est ponctuelle; vous n&#39;aurez plus jamais besoin de lier votre
+      identifiant auto-hébergé. Pour toute question ou tout problème, veuillez nous
+      contacter à l&#39;adresse [support@homechart.app](mailto:support@homechart.app).
+    hi: होमचार्ट क्लाउड में कोई डेटा ट्रांसफर नहीं किया जाता, इसका इस्तेमाल सिर्फ़
+      आपकी सेल्फ़-होस्टेड इंस्टेंस में सब्सक्रिप्शन विवरण ट्रांसफर करने के लिए किया
+      जाता है। यह एक बार की कार्रवाई है, आपको अपनी सेल्फ़-होस्टेड आईडी को दोबारा लिंक
+      करने की ज़रूरत नहीं पड़ेगी। किसी भी समस्या या चिंता के लिए कृपया [support@homechart.app](mailto:support@homechart.app)
+      पर हमसे संपर्क करें।
+    ja: Homechart Cloudにはデータは転送されません。サブスクリプション情報をセルフホストインスタンスに転送するために使用されます。これは1回限りの操作で、セルフホストIDを再度リンクする必要はありません。何か問題やご不明な点がございましたら、[support@homechart.app](mailto:support@homechart.app)までお問い合わせください。
+    nl: Er worden geen gegevens naar Homechart Cloud overgedragen, ze worden alleen
+      gebruikt om de abonnementsgegevens over te zetten naar uw zelfgehoste instantie.
+      Dit is een eenmalige actie; u hoeft uw zelfgehoste ID nooit meer te koppelen.
       Neem contact met ons op via [support@homechart.app](mailto:support@homechart.app)
-      als u problemen ondervindt.
+      als u problemen of opmerkingen heeft.
     pt: Nenhum dado é transferido para o Homechart Cloud, ele é usado apenas para
       transferir os detalhes da assinatura para sua instância auto-hospedada. Esta
-      é uma ação única, você nunca mais precisará vincular seu ID auto-hospedado.
-      Entre em contato conosco em [support@homechart.app](mailto:support@homechart.app)
-      com quaisquer problemas.
-    ru: Никакие данные не передаются в Homechart Cloud, они просто используются для
-      передачи данных подписки в ваш экземпляр с собственным хостингом. Это одноразовое
-      действие, вам больше никогда не придется привязывать свой идентификатор с собственным
-      хостингом. Пожалуйста, свяжитесь с нами по адресу [support@homechart.app](mailto:support@homechart.app)
-      в случае возникновения каких-либо проблем.
-    zh: 没有数据传输到 Homechart Cloud，它仅用于将订阅详细信息传输到您的自托管实例。这是一次性操作，您永远不必再次链接您的自托管 ID。如有任何问题，请通过
-      [support@homechart.app](mailto:support@homechart.app) 与我们联系。
+      é uma ação única e você nunca mais precisará vincular seu ID auto-hospedado.
+      Entre em contato conosco pelo e-mail [support@homechart.app](mailto:support@homechart.app)
+      caso tenha algum problema ou preocupação.
+    ru: Никакие данные не передаются в Homechart Cloud, они используются только для
+      переноса данных подписки в ваш экземпляр на собственном сервере. Это действие
+      выполняется один раз, и вам больше не придётся привязывать свой идентификатор
+      на собственном сервере. Если у вас возникнут какие-либо проблемы или вопросы,
+      свяжитесь с нами по адресу [support@homechart.app](mailto:support@homechart.app).
+    zh: 不会有任何数据传输到 Homechart Cloud，它仅用于将订阅详情传输到您的自托管实例。此操作为一次性操作，您无需再次关联您的自托管 ID。如有任何疑问或顾虑，请通过
+      [support@homechart.app](mailto:support@homechart.app) 联系我们。
   WebFormTableAuthHouseholdMembersInviteToken:
     ar: دعوة رمز
     context: Token used to invite a member to household
@@ -8657,18 +8415,18 @@ translations:
     ru: Ошибка входа
     zh: 登录失败
   WebGlobalActionSignInWith:
-    ar: تسجيل الدخول ب
+    ar: تسجيل الدخول باستخدام
     context: Sign in with a provider to your Homechart account button
-    de: Melden Sie sich an mit
-    en: Sign in with
-    es: Inicia sesión con
-    fr: Se connecter avec
+    de: Anmelden mit
+    en: Sign In with
+    es: Iniciar sesión con
+    fr: Connectez-vous avec
     hi: के साथ साइन इन करें
     ja: サインイン
-    nl: Inloggen met
+    nl: Aanmelden met
     pt: Entrar com
-    ru: Войти в систему с
-    zh: 登陆使用
+    ru: Войти с помощью
+    zh: 使用以下方式登录
   WebGlobalActionSignOut:
     ar: خروج
     context: Sign out of your Homechart account button
@@ -8711,15 +8469,15 @@ translations:
   WebGlobalActionSignUpWith:
     ar: سجل مع
     context: Sign up with a provider to your Homechart account button
-    de: Anmelden mit
-    en: Sign up with
-    es: Registrarte con
-    fr: Se connecter avec
+    de: Registrieren mit
+    en: Sign Up with
+    es: Regístrate con
+    fr: Inscrivez-vous avec
     hi: इसके साथ साइन अप करें
-    ja: に登録する
-    nl: Registreren met
+    ja: サインアップ
+    nl: Meld je aan met
     pt: Inscreva-se com
-    ru: Зарегистрируйтесь с помощью
+    ru: Зарегистрироваться с
     zh: 注册
   WebGlobalActionSkip:
     ar: يتخطى
@@ -9046,6 +8804,19 @@ translations:
     pt: Data
     ru: Дата
     zh: 日期
+  WebGlobalDateTooltip:
+    ar: تاريخ الدخول
+    context: Date tooltip for an entry
+    de: Datum für die Einreise
+    en: Date for the entry
+    es: Fecha de entrada
+    fr: Date d&#39;entrée
+    hi: प्रवेश की तिथि
+    ja: 入国日
+    nl: Datum voor de inzending
+    pt: Data de entrada
+    ru: Дата вступления
+    zh: 入境日期
   WebGlobalDeleted:
     ar: تم الحذف
     context: Date when something was deleted
@@ -9991,32 +9762,97 @@ translations:
     pt: Teste grátis
     ru: Бесплатная пробная версия
     zh: 免费试用
-  WebGlobalSubscriptionProcessorLifetime:
-    ar: حياة
+  WebGlobalSubscriptionProcessorLifetimePaddle:
+    ar: مدى الحياة (باستخدام Paddle)
     context: A lifetime subscription
-    de: Lebensdauer
-    en: Lifetime
-    es: Toda la vida
-    fr: Durée de vie
-    hi: जीवनभर
-    ja: 一生
-    nl: Levenslang
-    pt: Vida
-    ru: Продолжительность жизни
-    zh: 寿命
+    de: Lebensdauer (mit Paddle)
+    en: Lifetime (using Paddle)
+    es: De por vida (usando Paddle)
+    fr: Durée de vie (en utilisant Paddle)
+    hi: आजीवन (पैडल का उपयोग करके)
+    ja: 生涯（パドルを使用）
+    nl: Levensduur (met Paddle)
+    pt: Vida útil (usando Paddle)
+    ru: Пожизненная (с использованием Paddle)
+    zh: 终身（使用 Paddle）
+  WebGlobalSubscriptionProcessorMonthlyApple:
+    ar: شهريًا (باستخدام Apple)
+    context: A monthly subscription provided by Apple
+    de: Monatlich (mit Apple)
+    en: Monthly (using Apple)
+    es: Mensual (usando Apple)
+    fr: Mensuel (avec Apple)
+    hi: मासिक (Apple का उपयोग करके)
+    ja: 月額（Appleを使用）
+    nl: Maandelijks (met Apple)
+    pt: Mensal (usando Apple)
+    ru: Ежемесячно (с использованием Apple)
+    zh: 每月（使用 Apple）
+  WebGlobalSubscriptionProcessorMonthlyGoogle:
+    ar: شهريًا (باستخدام جوجل)
+    context: A monthly subscription provided by Google
+    de: Monatlich (mit Google)
+    en: Monthly (using Google)
+    es: Mensualmente (usando Google)
+    fr: Mensuel (en utilisant Google)
+    hi: मासिक (Google का उपयोग करके)
+    ja: 月次（Google を使用）
+    nl: Maandelijks (via Google)
+    pt: Mensal (usando o Google)
+    ru: Ежемесячно (с помощью Google)
+    zh: 每月（使用 Google）
   WebGlobalSubscriptionProcessorMonthlyPaddle:
-    ar: شهريًا (عبر Paddle)
+    ar: شهريًا (باستخدام Paddle)
     context: A monthly subscription provided by Paddle
-    de: Monatlich (über Paddel)
-    en: Monthly (via Paddle)
-    es: Mensual (a través de Paddle)
-    fr: Mensuel (via Paddle)
-    hi: मासिक (पैडल के माध्यम से)
-    ja: 毎月（Paddle経由）
-    nl: Maandelijks (via Paddle)
-    pt: Mensalmente (via Paddle)
-    ru: Ежемесячно (через Paddle)
-    zh: 每月（通过 Paddle）
+    de: Monatlich (mit Paddle)
+    en: Monthly (using Paddle)
+    es: Mensual (usando Paddle)
+    fr: Mensuel (en utilisant Paddle)
+    hi: मासिक (पैडल का उपयोग करके)
+    ja: 月額（Paddle を使用）
+    nl: Maandelijks (met Paddle)
+    pt: Mensal (usando Paddle)
+    ru: Ежемесячно (с использованием Paddle)
+    zh: 每月（使用 Paddle）
+  WebGlobalSubscriptionProcessorYearlyApple:
+    ar: سنويًا (باستخدام Apple)
+    context: A yearly subscription provided by Apple
+    de: Jährlich (mit Apple)
+    en: Yearly (using Apple)
+    es: Anual (usando Apple)
+    fr: Annuel (avec Apple)
+    hi: वार्षिक (Apple का उपयोग करके)
+    ja: 年間（Appleを使用）
+    nl: Jaarlijks (met Apple)
+    pt: Anual (usando Apple)
+    ru: Ежегодно (с использованием Apple)
+    zh: 每年（使用 Apple）
+  WebGlobalSubscriptionProcessorYearlyGoogle:
+    ar: سنويًا (باستخدام جوجل)
+    context: A yearly subscription provided by Google
+    de: Jährlich (mit Google)
+    en: Yearly (using Google)
+    es: Anualmente (usando Google)
+    fr: Annuel (en utilisant Google)
+    hi: वार्षिक (गूगल का उपयोग करके)
+    ja: 年間（Google を使用）
+    nl: Jaarlijks (met behulp van Google)
+    pt: Anual (usando o Google)
+    ru: Ежегодно (с использованием Google)
+    zh: 每年（使用 Google）
+  WebGlobalSubscriptionProcessorYearlyPaddle:
+    ar: سنويًا (باستخدام Paddle)
+    context: A yearly subscription provided by Paddle
+    de: Jährlich (mit Paddle)
+    en: Yearly (using Paddle)
+    es: Anual (usando Paddle)
+    fr: Annuel (en utilisant Paddle)
+    hi: वार्षिक (पैडल का उपयोग करके)
+    ja: 年間（パドルを使用）
+    nl: Jaarlijks (met Paddle)
+    pt: Anualmente (usando Paddle)
+    ru: Ежегодно (с использованием Paddle)
+    zh: 每年（使用 Paddle）
   WebGlobalTOTPCode:
     ar: كود TOTP
     context: TOTP code field
@@ -10537,6 +10373,20 @@ translations:
     pt: Pesquise por nome ou conteúdo
     ru: Поиск по названию или содержимому
     zh: 按名称或内容搜索
+  WebNotificationsBlocked:
+    ar: جهازك يحظر الإشعارات، يرجى السماح لها بـ Homechart
+    context: Message when notifications are blocked
+    de: Ihr Gerät blockiert Benachrichtigungen. Bitte erlauben Sie diese für Homechart.
+    en: Your device is blocking notifications, please allow them for Homechart
+    es: Su dispositivo está bloqueando notificaciones, permítalas para Homechart
+    fr: Votre appareil bloque les notifications, veuillez les autoriser pour Homechart
+    hi: आपका डिवाइस नोटिफ़िकेशन ब्लॉक कर रहा है, कृपया उन्हें होमचार्ट के लिए अनुमति
+      दें
+    ja: お使いのデバイスは通知をブロックしています。Homechartの通知を許可してください。
+    nl: Uw apparaat blokkeert meldingen. Sta ze toe voor Homechart.
+    pt: Seu dispositivo está bloqueando notificações, permita-as para o Homechart
+    ru: Ваше устройство блокирует уведомления, пожалуйста, разрешите их для Homechart
+    zh: 您的设备已屏蔽通知，请允许 Homechart 发出通知
   WebOAuthGrant:
     ar: منح حق الوصول
     context: Button to grant access to an OAuth client
@@ -11831,32 +11681,6 @@ translations:
     pt: política de Privacidade
     ru: политика конфиденциальности
     zh: 隐私政策
-  WebSignInReferralCode:
-    ar: كود الإحالة
-    context: A field to add a referral code
-    de: Referenzcode
-    en: Referral Code
-    es: código de referencia
-    fr: Code de Parrainage
-    hi: रेफरल कोड
-    ja: 紹介コード
-    nl: Referentie Code
-    pt: Código de Referencia
-    ru: Промо-код
-    zh: 推荐码
-  WebSignInReferralCodeTooltip:
-    ar: إذا قام شخص ما بإحالتك إلى Homechart ، فأدخل رمزه هنا
-    context: Tooltip to add a referral code
-    de: Wenn Sie jemand auf Homechart verwiesen hat, geben Sie hier seinen Code ein
-    en: If someone referred you to Homechart, enter their code here
-    es: Si alguien lo refirió a Homechart, ingrese su código aquí
-    fr: Si quelqu'un vous a référé à Homechart, entrez son code ici
-    hi: यदि किसी ने आपको होमचार्ट के लिए रेफर किया है, तो उनका कोड यहां दर्ज करें
-    ja: 誰かがあなたをHomechartに紹介した場合は、その人のコードをここに入力してください
-    nl: Als iemand u naar Homechart heeft verwezen, voert u hier zijn code in
-    pt: Se alguém indicou o Homechart para você, insira o código aqui
-    ru: Если кто-то порекомендовал вас на Homechart, введите здесь его код.
-    zh: 如果有人将您推荐给 Homechart，请在此处输入他们的代码
   WebSignInRememberMe:
     ar: تذكرنى
     context: A toggle to remember a sign in
@@ -11870,6 +11694,32 @@ translations:
     pt: Lembre de mim
     ru: Запомнить меня
     zh: 记住账号
+  WebSignInSelfHostedEndpoint:
+    ar: نقطة نهاية ذاتية الاستضافة
+    context: URL of a self hosted Homechart instance
+    de: Selbstgehosteter Endpunkt
+    en: Self-Hosted Endpoint
+    es: Punto final autoalojado
+    fr: Point de terminaison auto-hébergé
+    hi: स्व-होस्टेड एंडपॉइंट
+    ja: セルフホストエンドポイント
+    nl: Zelf-gehoste eindpunt
+    pt: Ponto de extremidade auto-hospedado
+    ru: Самостоятельно размещенная конечная точка
+    zh: 自托管端点
+  WebSignInSelfHostedEndpointTooltip:
+    ar: عنوان URL لنسخة Homechart المستضافة ذاتيًا، مثل https://web.homechart.app
+    context: URL of a self hosted Homechart instance
+    de: URL Ihrer selbst gehosteten Homechart-Instanz, z. B. https://web.homechart.app
+    en: URL of your self-hosted Homechart instance, like https://web.homechart.app
+    es: URL de su instancia de Homechart autohospedada, como https://web.homechart.app
+    fr: URL de votre instance Homechart auto-hébergée, comme https://web.homechart.app
+    hi: आपके स्व-होस्टेड होमचार्ट इंस्टेंस का URL, जैसे https://web.homechart.app
+    ja: 'セルフホスト型 Homechart インスタンスの URL (例: https://web.homechart.app)'
+    nl: URL van uw zelf-gehoste Homechart-instantie, zoals https://web.homechart.app
+    pt: URL da sua instância Homechart auto-hospedada, como https://web.homechart.app
+    ru: URL-адрес вашего собственного экземпляра Homechart, например https://web.homechart.app
+    zh: 您自托管的 Homechart 实例的 URL，例如 https://web.homechart.app
   WebSignInTryDemo:
     ar: جرب Homechart في الوضع التجريبي
     context: Button to use Homechart in demo mode
@@ -11958,19 +11808,19 @@ translations:
     pt: Backups na nuvem
     ru: Облачные резервные копии
     zh: 云备份
-  WebSubscriptionCloudFeatures:
-    ar: قم بتمكين ميزات السحابة لمثيلتك ذاتية الاستضافة
-    context: Title for configuring cloud features for self-hosted
-    de: Aktivieren Sie Cloud-Funktionen für Ihre selbstgehostete Instanz
-    en: Enable Cloud Features For Your Self-Hosted Instance
-    es: Habilite las características de la nube para su instancia autohospedada
-    fr: Activer les fonctionnalités cloud pour votre instance auto-hébergée
-    hi: अपने स्व-होस्ट किए गए उदाहरण के लिए क्लाउड सुविधाएँ सक्षम करें
-    ja: セルフホストインスタンスのクラウド機能を有効にする
-    nl: Schakel cloudfuncties in voor uw zelfgehoste instantie
-    pt: Habilite recursos de nuvem para sua instância auto-hospedada
-    ru: Включите облачные функции для вашего локального экземпляра
-    zh: 为您的自托管实例启用云功能
+  WebSubscriptionEnableCloudAPN:
+    ar: تمكين وكيل إشعارات الدفع السحابي من Apple
+    context: Enable cloud APN proxying
+    de: Aktivieren Sie den Cloud Apple Push Notification Proxy
+    en: Enable Cloud Apple Push Notification Proxy
+    es: Habilitar el proxy de notificaciones push de Apple en la nube
+    fr: Activer le proxy de notification push Apple Cloud
+    hi: क्लाउड एप्पल पुश नोटिफिकेशन प्रॉक्सी सक्षम करें
+    ja: クラウドAppleプッシュ通知プロキシを有効にする
+    nl: Cloud Apple Push Notification Proxy inschakelen
+    pt: Habilitar Proxy de Notificação Push da Apple na Nuvem
+    ru: Включить облачный прокси-сервер Apple Push Notification
+    zh: 启用云 Apple 推送通知代理
   WebSubscriptionEnableCloudBackups:
     ar: تفعيل النسخ الاحتياطية السحابية
     context: Toggle for enabling backups to the cloud

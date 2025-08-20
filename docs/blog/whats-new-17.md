@@ -1,0 +1,17 @@
+---
+author: Candid Development
+date: 2020-09-30
+description: Release notes for Homechart v1.7.
+tags:
+  - release
+title: "What's New in Homechart: v1.7"
+type: blog
+---
+
+## Features
+
+### Notes Launch
+Start your personal or household knowledgebase with Notes.  Create beautiful pages in markdown containing links to your budgets, tasks, recipes and more.
+
+### Speed Enhancements
+We've made Homechart faster than ever with extensive speed enhancements throughout the app.

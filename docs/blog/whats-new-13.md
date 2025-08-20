@@ -1,0 +1,17 @@
+---
+author: Candid Development
+date: 2020-04-23
+description: Release notes for Homechart v1.3.
+tags:
+  - release
+title: "What's New in Homechart: v1.3"
+type: blog
+---
+
+## Features
+
+### Plan Launch
+Organize your tasks and projects with Plan.  Create tasks, assign them to your household, get notifications, and more!
+
+### Markdown support
+Cook > Recipe ingredients and details now understand Markdown.  Markdown can apply text formatting and link to other recipes (using `#`).
