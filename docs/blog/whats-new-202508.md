@@ -12,13 +12,22 @@ type: blog
 
 ## Features
 
+### Inventory > Item Expirations
+
+Inventory > Items can now have expirations added to them.  Expired items will show as a number next to the Inventory menu, and within the Expired view.
+
 ## Enhancements
 
 - Changed Calendar to automatically refresh.  See [Calendar]({{% ref "/docs/guides/calendar" %}}) for more details.
+- Forms now have "Add and Duplicate" buttons to keep the form open after adding a new item.
+- Health Item Logs can now be tracked per second instead of per day.
+- Health correlation window can now be customized under Settings > Account.  The default is 72 hours/3 days.
+- Table filters now support Comparands (<, >, <=, >=), i.e. for a column containing dates, you can have a filter of `> 2025-08-01`.
 - Updated Go to 1.24.6
 - Updated the UI to be more performant and snappier.
 
 ## Fixes
 
+- Fixed Budget > Transaction form not adding custom Payees.
 - Fixed Plan > Tasks not being marked completed using the form.
 - Fixed SMTP notifications not working using SMTP relays like Google Workspace.

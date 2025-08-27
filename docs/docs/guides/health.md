@@ -21,13 +21,15 @@ Health > Outputs represent how you or your household member feel.  Homechart com
 
 ### Correlations
 
-After you've created a few Health > Logs, Homechart will start calculating correlations between your outputs and inputs.  The way Homechart does this isn't complicated: for each Output you Log, Homechart will look back at the Inputs you logged previous and add a correlation.
+After you've created a few Health > Logs, Homechart will start calculating correlations between your outputs and inputs.  The way Homechart does this isn't complicated: for each Output you Log, Homechart will look back at the Inputs you logged previously and add a correlation.
 
 You'll likely see a lot of Correlations over time, the best way to interpret it is to look for things with the _highest number_ of correlations.  Correlations are removed over time, so things with a high correlation should remain high.
 
+You can set your correlation window under Settings > Account.  The default is 72 hours (3 days).
+
 ## Logs
 
-Health > Logs are the way you record an Input or an Output occurring.  Logs are date specific, so you can enter all of your Inputs/Outputs at the end of the day if necessary.  You create Logs in [Calendar]({{< ref "/docs/guides/calendar" >}}).
+Health > Logs are the way you record an Input or an Output occurring.  Logs are timestamp specific, so you can enter all of your Inputs/Outputs at the end of the day if necessary.  You create Logs in [Calendar]({{< ref "/docs/guides/calendar" >}}).
 
 ## Integrations
 

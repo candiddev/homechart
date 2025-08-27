@@ -6584,32 +6584,45 @@ translations:
     ru: Типичное время подачи еды. При планировании еды Homechart будет использовать
       это время по умолчанию, но его всегда можно изменить для каждого рецепта.
     zh: 用餐的典型时间。安排用餐时，Homechart 将默认使用此时间，但始终可以根据食谱进行更改
-  WebFormOverlayHealthLogInputsTooltip:
-    ar: المدخلات تحدث في هذا التاريخ
+  WebFormOverlayHealthLogItemTooltip:
+    ar: عنصر صحي لسجل الصحة
     context: Inputs tooltip for a Health Log
-    de: Eingaben erfolgen an diesem Datum
-    en: Inputs happening on this date
-    es: Entradas que suceden en esta fecha
-    fr: Entrées ayant lieu à cette date
-    hi: इस तारीख को इनपुट हो रहे हैं
-    ja: この日に発生する入力
-    nl: Invoer gebeurt op deze datum
-    pt: Entradas acontecendo nesta data
-    ru: Вводы происходят в этот день
-    zh: 在此日期发生的输入
-  WebFormOverlayHealthLogOutputsTooltip:
-    ar: النواتج تحدث في هذا التاريخ
-    context: Outputs tooltip for a Health Log
-    de: Ausgaben, die an diesem Datum stattfinden
-    en: Outputs happening on this date
-    es: Salidas que suceden en esta fecha
-    fr: Sorties ayant lieu à cette date
-    hi: इस तारीख को हो रहे आउटपुट
-    ja: この日に発生する出力
-    nl: Uitvoer gebeurt op deze datum
-    pt: Saídas acontecendo nesta data
-    ru: Мероприятия, происходящие в этот день
-    zh: 输出发生在这个日期
+    de: Gesundheitselement für das Gesundheitsprotokoll
+    en: Health item for the Health Log
+    es: Elemento de salud para el Registro de salud
+    fr: Élément de santé pour le journal de santé
+    hi: स्वास्थ्य लॉग के लिए स्वास्थ्य आइटम
+    ja: ヘルスログの健康項目
+    nl: Gezondheidsitem voor het gezondheidslogboek
+    pt: Item de saúde para o Registro de Saúde
+    ru: Пункт «Здоровье» для журнала здоровья
+    zh: 健康日志的健康项目
+  WebFormOverlayHealthLogTimestamp:
+    ar: الطابع الزمني
+    context: Timestamp for when the health log occurred
+    de: Zeitstempel
+    en: Timestamp
+    es: Marca de tiempo
+    fr: Horodatage
+    hi: समय-चिह्न
+    ja: タイムスタンプ
+    nl: Tijdstempel
+    pt: Carimbo de data e hora
+    ru: Метка времени
+    zh: 时间戳
+  WebFormOverlayHealthLogTimestampTooltip:
+    ar: الطابع الزمني لوقت حدوث سجل الصحة
+    context: Timestamp for when the health log occurred tooltip
+    de: Zeitstempel für die Erstellung des Integritätsprotokolls
+    en: Timestamp for when the Health Log occurred
+    es: Marca de tiempo de cuándo se produjo el registro de salud
+    fr: Horodatage du moment où le journal de santé s&#39;est produit
+    hi: स्वास्थ्य लॉग कब हुआ, इसका टाइमस्टैम्प
+    ja: ヘルスログが発生したときのタイムスタンプ
+    nl: Tijdstempel voor het moment waarop het gezondheidslogboek is opgetreden
+    pt: Carimbo de data e hora de quando o Registro de Saúde ocorreu
+    ru: Метка времени, когда был создан журнал состояния здоровья
+    zh: 健康日志发生时的时间戳
   WebFormOverlayInventoryCollectionPropertyFilters:
     ar: مرشحات الملكية
     context: Property filter list for an Inventory Collection
@@ -6649,6 +6662,32 @@ translations:
     pt: Tarefas Associadas
     ru: Связанные задачи
     zh: 相关任务
+  WebFormOverlayInventoryItemExpiration:
+    ar: انتهاء
+    context: Expiration of an inventory item
+    de: Ablauf
+    en: Expiration
+    es: Vencimiento
+    fr: Expiration
+    hi: समय सीमा समाप्ति
+    ja: 有効期限
+    nl: Vervaldatum
+    pt: Vencimento
+    ru: Истечение срока действия
+    zh: 到期
+  WebFormOverlayInventoryItemExpirationTooltip:
+    ar: التاريخ الذي تنتهي فيه صلاحية العنصر.
+    context: Expiration of an inventory item tooltip
+    de: Das Datum, an dem der Artikel abläuft.
+    en: The date when the item expires.
+    es: La fecha en la que vence el artículo.
+    fr: La date à laquelle l&#39;article expire.
+    hi: वह तिथि जब आइटम समाप्त हो जाता है.
+    ja: アイテムの有効期限が切れる日付。
+    nl: De datum waarop het item vervalt.
+    pt: Data em que o item expira.
+    ru: Дата истечения срока годности товара.
+    zh: 物品过期的日期。
   WebFormOverlayInventoryItemProperties:
     ar: ملكيات
     context: Plural name of a property
@@ -8934,6 +8973,19 @@ translations:
     pt: Endereço de e-mail para convidar
     ru: Адрес электронной почты для приглашения
     zh: 要邀请的电子邮件地址
+  WebGlobalExpired:
+    ar: منتهي الصلاحية
+    context: Something that has expired
+    de: Abgelaufen
+    en: Expired
+    es: Venció
+    fr: Expiré
+    hi: खत्म हो चुका
+    ja: 期限切れ
+    nl: Verlopen
+    pt: Expirado
+    ru: Истекший
+    zh: 已到期
   WebGlobalExpires:
     ar: تنتهي
     context: Date a thing expires
@@ -10732,6 +10784,39 @@ translations:
     pt: Alterar endereço de e-mail associado à conta
     ru: Изменить адрес электронной почты, связанный с учетной записью
     zh: 更改与帐户关联的电子邮件地址
+  WebSettingsAccountHealthItemCorrelationHours:
+    ar: ساعات ارتباط العناصر الصحية
+    context: Hour input for health item correlation
+    de: Gesundheitsartikel-Korrelationsstunden
+    en: Health Item Correlation Hours
+    es: Horas de correlación de elementos de salud
+    fr: Heures de corrélation des éléments de santé
+    hi: स्वास्थ्य आइटम सहसंबंध घंटे
+    ja: 健康アイテム相関時間
+    nl: Correlatie-uren met gezondheidsitems
+    pt: Horas de correlação de itens de saúde
+    ru: Часы корреляции предметов здравоохранения
+    zh: 健康项目相关时间
+  WebSettingsAccountHealthItemCorrelationHoursTooltip:
+    ar: عدد الساعات اللازمة لربط تفاعلات العناصر الصحية باستخدام سجلات الصحة
+    context: Hour input for health item correlation tooltip
+    de: Die Anzahl der Stunden, um Gesundheitselementinteraktionen mithilfe von Gesundheitsprotokollen
+      zu korrelieren
+    en: The number of hours to correlate Health Item interactions using Health Logs
+    es: La cantidad de horas para correlacionar las interacciones de los elementos
+      de salud mediante registros de salud
+    fr: Le nombre d&#39;heures nécessaires pour corréler les interactions des éléments
+      de santé à l&#39;aide des journaux de santé
+    hi: स्वास्थ्य लॉग का उपयोग करके स्वास्थ्य आइटम इंटरैक्शन को सहसंबंधित करने के
+      लिए घंटों की संख्या
+    ja: ヘルスログを使用してヘルスアイテムのインタラクションを相関させる時間数
+    nl: Het aantal uren om interacties met gezondheidsitems te correleren met behulp
+      van gezondheidslogboeken
+    pt: O número de horas para correlacionar interações de itens de saúde usando registros
+      de saúde
+    ru: Количество часов для корреляции взаимодействий предметов здоровья с использованием
+      журналов здоровья
+    zh: 使用健康日志关联健康物品互动的小时数
   WebSettingsAccountLanguageDateTime:
     ar: اللغة والتاريخ والوقت
     context: Account settings language date and time expander
