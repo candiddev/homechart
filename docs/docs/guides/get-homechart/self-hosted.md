@@ -15,7 +15,7 @@ Self-Hosting Homechart is easy:
 - If using [Households]({{< ref "/pricing" >}}), link your self-hosted instance to Homechart Cloud
 
 {{% alert title="App Store and Play Store Apps" color="primary" %}}
-The Homechart apps on the App Store and Play Store will work with Self-Hosted instances, but you **must** keep your Homechart instance up to date.  Homechart typically has at least monthly releases.  We try to maintain ~2 months of compatibility, so clients +/- 2 months of versions should work with any Homechart server.
+The Homechart apps on the App Store and Play Store will work with Self-Hosted instances, but you **must** keep your Homechart instance up to date.  Homechart typically has at least monthly releases.  We try to maintain ~3 months of compatibility, so client versions +/- 3 months should work with any Homechart server.
 {{% /alert %}}
 
 ## 1. Requirements

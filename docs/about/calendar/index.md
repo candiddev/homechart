@@ -16,7 +16,7 @@ type: docs
 
 ## Easy Event Scheduling
 
-{{% image calendar_month "Calendar Month" %}}
+{{% image calendar_picker "Calendar Picker" %}}
 
 - 📅 Create calendar events and recurring dates
 - 🚗 Know exactly when to leave with travel time reminders

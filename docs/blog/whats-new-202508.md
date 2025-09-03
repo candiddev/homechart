@@ -31,3 +31,14 @@ Inventory > Items can now have expirations added to them.  Expired items will sh
 - Fixed Budget > Transaction form not adding custom Payees.
 - Fixed Plan > Tasks not being marked completed using the form.
 - Fixed SMTP notifications not working using SMTP relays like Google Workspace.
+
+## Removals
+
+- Removed `app_port` config, use {{% config httpServer_listenAddress %}} instead
+- Removed `app_rateLimiterKey` config, use {{% config httpServer_rateLimitKey %}} instead
+- Removed `app_rateLimiterRate` config, use {{% config httpServer_rateLimitPatterns %}} instead
+- Removed `app_signupDisabled` config, use {{% config app_disableSignup %}} instead
+- Removed `app_tlsCertificate` config, use {{% config httpServer_tlsCertificateBase64 %}} instead
+- Removed `app_tlsKey` config, use {{% config httpServer_tlsKeyBase64 %}} instead
+- Removed `http` config, use {{% config httpServer %}} instead
+- Removed `postgresql` config, use {{% config database %}} instead
