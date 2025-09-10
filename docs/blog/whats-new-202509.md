@@ -18,4 +18,7 @@ type: blog
 
 ## Fixes
 
+- Fixed an issue where views like Plan > Tasks and Shop > Items would only show a loading screen.
+- Fixed an issue where household members could not be deleted.
+
 ## Removals
