@@ -4643,6 +4643,19 @@ translations:
     pt: No acumulado do ano
     ru: С начала года
     zh: 今年迄今为止
+  WebBudgetTransactionsImportCSVDateTooltip:
+    ar: ترتيب التاريخ لحقل التاريخ في ملف CSV
+    context: Date order field tooltip for import csv
+    de: Datumsreihenfolge für das CSV-Datumsfeld
+    en: Date order for the CSV date field
+    es: Orden de fecha para el campo de fecha CSV
+    fr: Ordre des dates pour le champ de date CSV
+    hi: CSV दिनांक फ़ील्ड के लिए दिनांक क्रम
+    ja: CSV日付フィールドの日付順序
+    nl: Datumvolgorde voor het CSV-datumveld
+    pt: Ordem de data para o campo de data CSV
+    ru: Порядок дат для поля даты CSV
+    zh: CSV 日期字段的日期顺序
   WebBudgetTransactionsTransferFrom:
     ar: تحويل من
     context: Transfer from a certain account
