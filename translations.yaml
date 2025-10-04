@@ -2821,18 +2821,18 @@ translations:
     ru: Примечание удалено.
     zh: 注释已删除
   ObjectNoteUpdated:
-    ar: تم تحديث الفئة
+    ar: ملاحظة تم تحديثها
     context: Message when Note is updated
-    de: Kategorie aktualisiert
-    en: Category updated
-    es: Categoría actualizada
-    fr: Catégorie mise à jour
-    hi: श्रेणी अपडेट की गई
-    ja: カテゴリを更新しました
-    nl: Categorie bijgewerkt
-    pt: Categoria atualizada
-    ru: Категория обновлена
-    zh: 类别已更新
+    de: Hinweis aktualisiert
+    en: Note updated
+    es: Nota actualizada
+    fr: Note mise à jour
+    hi: नोट अपडेट किया गया
+    ja: メモを更新しました
+    nl: Notitie bijgewerkt
+    pt: Nota atualizada
+    ru: Примечание обновлено
+    zh: 注释已更新
   ObjectNotes:
     ar: ملحوظات
     context: Multiple knowledge articles
@@ -10412,6 +10412,19 @@ translations:
     pt: Atualizar coleção
     ru: Обновить коллекцию
     zh: 更新收藏
+  WebMarkdownHelp:
+    ar: مساعدة Markdown
+    context: Markdown help page
+    de: Markdown-Hilfe
+    en: Markdown Help
+    es: Ayuda de Markdown
+    fr: Aide Markdown
+    hi: मार्कडाउन सहायता
+    ja: マークダウンヘルプ
+    nl: Markdown-hulp
+    pt: Ajuda com Markdown
+    ru: Помощь с разметкой
+    zh: Markdown 帮助
   WebNotesPagesIDParentPageTooltip:
     ar: الصفحة الرئيسية لهذه الصفحة
     context: Tooltip for parent page selector
