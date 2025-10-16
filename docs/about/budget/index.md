@@ -10,15 +10,15 @@ type: docs
 
 {{% image budget_categories "Budget Categories" %}}
 
-- 🗂 Use categories and goals to help you save for what matters
-- 📬 Automatically distribute money into your categories
-- 🥅 Set goals to save for your next vacation or payoff debt
-- 🛒 Budget for Shopping Lists and Projects
+- Use categories and goals to help you save for what matters
+- Automatically distribute money into your categories
+- Set goals to save for your next vacation or payoff debt
+- Budget for Shopping Lists and Projects
 
 ## Easy Money Management
 
 {{% image budget_transactions "Budget Transactions" %}}
 
-- 😌 Import transactions and automatically categorize them
-- 💰 Rollover balances to save long term or defer expenses
-- 📈 Charts and graphs to visualize where your money is going
+- Import transactions and automatically categorize them
+- Rollover balances to save long term or defer expenses
+- Charts and graphs to visualize where your money is going

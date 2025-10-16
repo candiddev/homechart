@@ -10,14 +10,14 @@ type: docs
 
 {{% image notes_page "Notes Page" %}}
 
-- 📔 Markdown-based notes to create beautiful pages
-- 📎 Reference anything in Homechart, like Inventory or Tasks
-- 🗑 Each edit is a version which can be reverted
+- Markdown-based notes to create beautiful pages
+- Reference anything in Homechart, like Inventory or Tasks
+- Each edit is a version which can be reverted
 
 ## Organize Your Household Knowledge Base
 
 {{% image notes_pages "Notes Pages" %}}
 
-- 🧠 Household and personal notes
-- 🗂 Use tags to organize your notes into different views
-- 🔍 Easily search across your notes
+- Household and personal notes
+- Use tags to organize your notes into different views
+- Easily search across your notes

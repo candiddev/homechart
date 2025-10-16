@@ -10,14 +10,14 @@ type: docs
 
 {{% image calendar_week "Calendar Week" %}}
 
-- 👀 Ultimate household calendar
-- 🌈 Differentiate events for your household members with colors
-- 📅 See everything in Homechart: events, meals, tasks, and more
+- Ultimate household calendar
+- Differentiate events for your household members with colors
+- See everything in Homechart: events, meals, tasks, and more
 
 ## Easy Event Scheduling
 
 {{% image calendar_picker "Calendar Picker" %}}
 
-- 📅 Create calendar events and recurring dates
-- 🚗 Know exactly when to leave with travel time reminders
-- 📱 Import and export calendars using iCalendar/ICS
+- Create calendar events and recurring dates
+- Know exactly when to leave with travel time reminders
+- Import and export calendars using iCalendar/ICS

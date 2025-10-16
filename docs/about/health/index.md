@@ -10,14 +10,14 @@ type: docs
 
 {{% image health_inputs "Health Inputs" %}}
 
-- 🧍 Track your health with inputs and outputs
-- 🍕 Inputs are foods, exercise, vitamins, and medicine
-- 🥴 Outputs are symptoms like reactions, behaviors, and moods
+- Track your health with inputs and outputs
+- Inputs are foods, exercise, vitamins, and medicine
+- Outputs are symptoms like reactions, behaviors, and moods
 
 ## Discover Health Insights
 
 {{% image health_outputs "Health Outputs" %}}
 
-- 💡 Discover correlations between inputs and outputs
-- 📅 Track your health in Calendar to see correlations
-- 🧒 Parents can track their kids health, too
+- Discover correlations between inputs and outputs
+- Track your health in Calendar to see correlations
+- Parents can track their kids health, too

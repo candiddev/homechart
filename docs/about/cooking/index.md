@@ -10,15 +10,15 @@ type: docs
 
 {{% image cook_recipe "Cook Recipe" %}}
 
-- 🍲 Schedule meals and customize meal times
-- 👂 Notifications when it's time to cook or prepare a meal
-- 😋 Have Homechart pick meals using the recipe randomizer
-- 🛒 Automatically add ingredients to Shopping Lists
+- Schedule meals and customize meal times
+- Notifications when it's time to cook or prepare a meal
+- Have Homechart pick meals using the recipe randomizer
+- Automatically add ingredients to Shopping Lists
 
 ## Organize and Import Recipes
 
 {{% image cook_recipes "Cook Recipes" %}}
 
-- 🗂 Get your recipes organized with tags and filters
-- 🏠 Know which ingredients are in your Inventory
-- 😌 Import recipes from your favorite cookbooks and websites
+- Get your recipes organized with tags and filters
+- Know which ingredients are in your Inventory
+- Import recipes from your favorite cookbooks and websites

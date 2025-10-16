@@ -116,6 +116,50 @@ translations:
     pt: Execute manualmente tarefas que ocorrem a cada cinco minutos
     ru: Вручную запускайте задачи, которые происходят каждые пять минут.
     zh: 手动运行每五分钟发生一次的任务
+  EmailAuthBody:
+    ar: يحاول شخص ما (أرجو أن تكون أنت!) تسجيل الدخول إلى حساب Homechart المرتبط بهذا
+      البريد الإلكتروني. استخدم هذا الرابط لتسجيل الدخول إلى Homechart، وسينتهي صلاحيته
+      خلال ساعة.
+    context: Body for email auth
+    de: Jemand (hoffentlich Sie!) versucht, sich bei einem Homechart-Konto anzumelden,
+      das mit dieser E-Mail-Adresse verknüpft ist. Verwenden Sie diesen Link, um sich
+      bei Homechart anzumelden. Er läuft in einer Stunde ab.
+    en: Someone (hopefully you!) is attempting to login to a Homechart account associated
+      with this email address.  Use this link to sign into Homechart, it will expire
+      in one hour
+    es: Alguien (¡ojalá seas tú!) está intentando iniciar sesión en una cuenta de
+      Homechart asociada a esta dirección de correo electrónico. Usa este enlace para
+      iniciar sesión en Homechart; caducará en una hora.
+    fr: Quelqu&#39;un (vous, espérons-le!) tente de se connecter à un compte Homechart
+      associé à cette adresse e-mail. Utilisez ce lien pour vous connecter à Homechart;
+      il expirera dans une heure.
+    hi: कोई व्यक्ति (उम्मीद है आप!) इस ईमेल पते से जुड़े होमचार्ट खाते में लॉग इन
+      करने की कोशिश कर रहा है। होमचार्ट में साइन इन करने के लिए इस लिंक का इस्तेमाल
+      करें, यह एक घंटे में खत्म हो जाएगा।
+    ja: 誰か（あなただといいのですが！）がこのメールアドレスに関連付けられたHomechartアカウントにログインしようとしています。このリンクを使用してHomechartにログインしてください。このリンクは1時間後に有効期限が切れます。
+    nl: Iemand (hopelijk jij!) probeert in te loggen op een Homechart-account dat
+      aan dit e-mailadres is gekoppeld. Gebruik deze link om in te loggen bij Homechart.
+      Deze verloopt over een uur.
+    pt: Alguém (espero que você!) está tentando acessar uma conta do Homechart associada
+      a este endereço de e-mail. Use este link para acessar o Homechart. Ele expirará
+      em uma hora.
+    ru: Кто-то (надеюсь, вы!) пытается войти в учётную запись Homechart, связанную
+      с этим адресом электронной почты. Используйте эту ссылку для входа в Homechart.
+      Срок её действия истекает через час.
+    zh: 有人（希望是你！）正在尝试登录与此电子邮件地址关联的 Homechart 帐户。请使用此链接登录 Homechart，该链接将在一小时后过期
+  EmailAuthSubject:
+    ar: مصادقة البريد الإلكتروني
+    context: Subject for email auth
+    de: E-Mail-Authentifizierung
+    en: Email Authentication
+    es: Autenticación de correo electrónico
+    fr: Authentification des e-mails
+    hi: ईमेल प्रमाणीकरण
+    ja: メール認証
+    nl: E-mailverificatie
+    pt: Autenticação de e-mail
+    ru: Аутентификация по электронной почте
+    zh: 电子邮件认证
   EmailDailyAgendaHeader:
     ar: فيما يلي ملخص لجدول أعمالك اليومي
     context: Heading for daily agenda emails
@@ -495,95 +539,6 @@ translations:
     pt: Confirmação de alteração de senha
     ru: Подтверждение смены пароля
     zh: 密码更改确认
-  EmailPasswordResetBodyHeader:
-    ar: طلب شخص ما (نأمل أنت!) إعادة تعيين كلمة المرور لحساب Homechart المرتبط بعنوان
-      البريد الإلكتروني هذا.
-    context: Heading for password reset email
-    de: Jemand (hoffentlich Sie!) hat das Zurücksetzen des Passworts für ein Homechart-Konto
-      angefordert, das dieser E-Mail-Adresse zugeordnet ist.
-    en: Someone (hopefully you!) requested a password reset for a Homechart account
-      associated with this email address.
-    es: Alguien (¡esperemos que usted!) Solicitó un restablecimiento de contraseña
-      para una cuenta de Homechart asociada con esta dirección de correo electrónico.
-    fr: Quelqu'un (vous, espérons-le !) a demandé la réinitialisation du mot de passe
-      d'un compte Homechart associé à cette adresse e-mail.
-    hi: किसी ने (उम्मीद है कि आपने!) इस ईमेल पते से जुड़े होमचार्ट खाते के लिए पासवर्ड
-      रीसेट करने का अनुरोध किया है।
-    ja: 誰か（おそらくあなた！）がこのメール アドレスに関連付けられた Homechart アカウントのパスワード リセットをリクエストしました。
-    nl: Iemand (hopelijk jij!) heeft een wachtwoordherstel aangevraagd voor een Homechart-account
-      dat aan dit e-mailadres is gekoppeld.
-    pt: Alguém (espero que você!) solicitou uma redefinição de senha para uma conta
-      Homechart associada a este endereço de e-mail.
-    ru: Кто-то (надеюсь, вы!) запросил сброс пароля для учетной записи Homechart,
-      связанной с этим адресом электронной почты.
-    zh: 有人（希望是您！）请求重置与此电子邮件地址关联的 Homechart 帐户的密码。
-  EmailPasswordResetBodyMissing:
-    ar: للأسف ، لم نتمكن من العثور على حساب مرتبط بعنوان البريد الإلكتروني هذا. إذا
-      كنت تواجه مشكلات في استرداد حساب Homechart الخاص بك ، فيرجى الرد على هذا البريد
-      الإلكتروني. إذا لم تطلب هذا البريد الإلكتروني ، فيرجى تجاهله.
-    context: Body for missing account password reset email
-    de: Leider konnten wir kein mit dieser E-Mail-Adresse verknüpftes Konto finden.
-      Wenn Sie Probleme bei der Wiederherstellung Ihres Homechart-Kontos haben, antworten
-      Sie bitte auf diese E-Mail. Wenn Sie diese E-Mail nicht angefordert haben, ignorieren
-      Sie sie bitte.
-    en: Unfortunately, we couldn't find an account associated with this email address.  If
-      you're having problems recovering your Homechart account, please reply to this
-      email.  If you did not request this email, please disregard it.
-    es: Desafortunadamente, no pudimos encontrar una cuenta asociada con esta dirección
-      de correo electrónico. Si tiene problemas para recuperar su cuenta de Homechart,
-      responda a este correo electrónico. Si no solicitó este correo electrónico,
-      ignórelo.
-    fr: Malheureusement, nous n'avons pas trouvé de compte associé à cette adresse
-      e-mail. Si vous rencontrez des problèmes pour récupérer votre compte Homechart,
-      veuillez répondre à cet e-mail. Si vous n'avez pas demandé cet e-mail, veuillez
-      ne pas en tenir compte.
-    hi: दुर्भाग्य से, हम इस ईमेल पते से जुड़ा कोई खाता नहीं ढूंढ सके। यदि आपको अपना
-      होमचार्ट खाता पुनर्प्राप्त करने में समस्या हो रही है, तो कृपया इस ईमेल का उत्तर
-      दें। यदि आपने इस ईमेल का अनुरोध नहीं किया है, तो कृपया इसे अनदेखा करें।
-    ja: 残念ながら、このメール アドレスに関連付けられたアカウントは見つかりませんでした。Homechart アカウントの回復に問題がある場合は、このメールに返信してください。このメールをリクエストしていない場合は、無視してください。
-    nl: Helaas konden we geen account vinden dat aan dit e-mailadres is gekoppeld.
-      Beantwoord deze e-mail als u problemen ondervindt bij het herstellen van uw
-      Homechart-account. Als u deze e-mail niet heeft aangevraagd, kunt u deze negeren.
-    pt: Infelizmente, não conseguimos encontrar uma conta associada a este endereço
-      de e-mail. Se você estiver tendo problemas para recuperar sua conta Homechart,
-      responda a este e-mail. Se você não solicitou este e-mail, desconsidere-o.
-    ru: К сожалению, нам не удалось найти учетную запись, связанную с этим адресом
-      электронной почты. Если у вас возникли проблемы с восстановлением учетной записи
-      Homechart, ответьте на это письмо. Если вы не запрашивали это письмо, проигнорируйте
-      его.
-    zh: 遗憾的是，我们找不到与此电子邮件地址关联的帐户。如果您在恢复 Homechart 帐户时遇到问题，请回复此电子邮件。如果您没有请求此电子邮件，请忽略它。
-  EmailPasswordResetBodySuccess:
-    ar: استخدم هذا الرابط لإعادة تعيينه ، وسوف تنتهي صلاحيته خلال ساعة واحدة
-    context: Body for successful password reset email
-    de: Verwenden Sie diesen Link, um es zurückzusetzen, es läuft in einer Stunde
-      ab
-    en: Use this link to reset it, it will expire in one hour
-    es: Use este enlace para restablecerlo, caducará en una hora
-    fr: Utilisez ce lien pour le réinitialiser, il expirera dans une heure
-    hi: इसे रीसेट करने के लिए इस लिंक का उपयोग करें, यह एक घंटे में समाप्त हो जाएगा
-    ja: このリンクを使用してリセットしてください。1時間後に期限切れになります。
-    nl: Gebruik deze link om het te resetten, het verloopt over een uur
-    pt: Use este link para redefini-lo, ele expirará em uma hora
-    ru: Используйте эту ссылку, чтобы сбросить ее, срок ее действия истечет через
-      час.
-    zh: 使用此链接重置它，它将在一小时后过期
-  EmailPasswordResetSubject:
-    ar: '[مطلوب اتخاذ إجراء] طلب إعادة تعيين كلمة المرور'
-    context: Subject for password reset email
-    de: '[Aktion erforderlich] Anfrage zum Zurücksetzen des Kennworts'
-    en: |
-      [Action Required] Password Reset Request
-    es: '[Acción requerida] Solicitud de restablecimiento de contraseña'
-    fr: '[Action requise] Demande de réinitialisation du mot de passe'
-    hi: '[कार्रवाई आवश्यक] पासवर्ड रीसेट अनुरोध'
-    ja: |
-      [アクションが必要] パスワードリセットリクエスト
-    nl: '[Actie vereist] Verzoek om wachtwoord opnieuw in te stellen'
-    pt: |
-      [Ação necessária] Solicitação de redefinição de senha
-    ru: |
-      [Требуется действие] Запрос на сброс пароля
-    zh: '[需要采取行动] 密码重置请求'
   EmailPaymentBody:
     ar: شكرًا لك على الاشتراك في Homechart Cloud! نحن نقدر دعمك حقًا ، ونأمل أن تحدث
       Homechart فرقًا في إدارة أسرتك. شكرا لك على الاشتراك!
@@ -730,49 +685,62 @@ translations:
     pt: Lembrete de tarefa
     ru: Напоминание о задаче
     zh: 任务提醒
-  EmailSignInBody:
-    ar: 'شخص ما (آمل أن تكون أنت!) قام للتو بتسجيل الدخول إلى حساب Homechart الخاص
-      بك: ** نوع الجهاز **:٪ s ** عنوان IP **:٪ s إذا لم تكن أنت ، فالرجاء التفكير
-      في تغيير كلمة مرور حساب Homechart الخاص بك. لست متأكدا ما يجب القيام به؟ رد
-      على هذا البريد الإلكتروني ، نحن هنا لمساعدتك!'
+  EmailSignInBody1:
+    ar: لقد قام شخص ما (نأمل أن تكون أنت!) للتو بتسجيل الدخول إلى حساب Homechart الخاص
+      بك
     context: Body for new device sign in email
-    de: 'Jemand (hoffentlich Sie!) hat sich gerade bei Ihrem Homechart-Konto angemeldet:
-      **Gerätetyp**: %s **IP-Adresse**: %s Wenn Sie das nicht waren, ändern Sie bitte
-      das Passwort Ihres Homechart-Kontos. Nicht sicher, was zu tun ist? Antworten
-      Sie auf diese E-Mail, wir helfen Ihnen gerne weiter!'
-    en: |
-      Someone (hopefully you!) just signed into your Homechart account:
-
-      **Device Type**: %s
-
-      **IP Address**: %s
-
-      If this wasn't you, please consider changing your Homechart account password.  Not sure what to do?  Reply to this email, we're here to help!
-    es: 'Alguien (¡esperemos que usted!) acaba de iniciar sesión en su cuenta de Homechart:
-      **Tipo de dispositivo**: %s **Dirección IP**: %s Si no fue usted, considere
-      cambiar la contraseña de su cuenta de Homechart. ¿No estás seguro de qué hacer?
-      Responde a este correo electrónico, ¡estamos aquí para ayudarte!'
-    fr: |
-      'Quelqu'un (vous, espérons-le !) vient de se connecter à votre compte Homechart:
-      **Type d'appareil**: %s **Adresse IP**: %s Si ce n'était pas vous, veuillez
-      envisager de modifier le mot de passe de votre compte Homechart. Vous ne savez
-      pas quoi faire ? Répondez à cet e-mail, nous sommes là pour vous aider !'
-    hi: 'किसी ने (उम्मीद है कि आपने!) अभी-अभी आपके होमचार्ट खाते में प्रवेश किया है:
-      **डिवाइस प्रकार**: %s **IP पता**: %s यदि यह आप नहीं थे, तो कृपया अपने होमचार्ट
-      खाते का पासवर्ड बदलने पर विचार करें। पता नहीं कि क्या करना है? इस ईमेल का उत्तर
-      दें, हम यहां सहायता के लिए हैं!'
-    ja: |
-      誰か (おそらくあなた!) があなたの Homechart アカウントにサインインしました: **デバイス タイプ**: %s **IP アドレス**: %s 心当たりがない場合は、Homechart アカウントのパスワードを変更することを検討してください。 何をすればよいか分からない場合は、このメールに返信してください。お手伝いいたします。
-    nl: 'Iemand (hopelijk u!) heeft zich zojuist aangemeld bij uw Homechart-account:
-      **Apparaattype**: %s **IP-adres**: %s Als u dit niet was, overweeg dan om het
-      wachtwoord van uw Homechart-account te wijzigen. Weet u niet zeker wat u moet
-      doen? Beantwoord deze e-mail. We zijn er om u te helpen!'
-    pt: |
-      Alguém (espero que você!) acabou de entrar na sua conta do Homechart: **Tipo de dispositivo**: %s **Endereço IP**: %s Se não foi você, considere alterar a senha da sua conta do Homechart. Não sabe o que fazer? Responda a este e-mail. Estamos aqui para ajudar!
-    ru: |
-      Кто-то (надеюсь, вы!) только что вошел в вашу учетную запись Homechart: **Тип устройства**: %s **IP-адрес**: %s Если это были не вы, рассмотрите возможность изменения пароля учетной записи Homechart. Не знаете, что делать? Ответьте на это письмо, мы здесь, чтобы помочь!
-    zh: 有人（希望是您！）刚刚登录到您的 Homechart 帐户：**设备类型**：%s **IP 地址**：%s 如果这不是您，请考虑更改您的 Homechart
-      帐户密码。不知道该怎么办？回复此电子邮件，我们随时为您提供帮助！
+    de: Jemand (hoffentlich Sie!) hat sich gerade bei Ihrem Homechart-Konto angemeldet
+    en: Someone (hopefully you!) just signed into your Homechart account
+    es: Alguien (¡ojalá seas tú!) acaba de iniciar sesión en tu cuenta de Homechart
+    fr: Quelqu&#39;un (j&#39;espère que vous !) vient de se connecter à votre compte
+      Homechart
+    hi: किसी ने (उम्मीद है आपने!) अभी-अभी आपके होमचार्ट खाते में साइन इन किया है
+    ja: 誰か（あなただといいのですが！）があなたのHomechartアカウントにサインインしました
+    nl: Iemand (hopelijk jij!) heeft zojuist ingelogd op je Homechart-account
+    pt: Alguém (espero que você!) acabou de entrar na sua conta Homechart
+    ru: Кто-то (надеюсь, вы!) только что вошел в вашу учетную запись Homechart
+    zh: 有人（希望是你！）刚刚登录了你的 Homechart 帐户
+  EmailSignInBody2:
+    ar: نوع الجهاز
+    context: Body for new device sign in email
+    de: Gerätetyp
+    en: Device Type
+    es: Tipo de dispositivo
+    fr: Type d&#39;appareil
+    hi: डिवाइस का प्रकार
+    ja: デバイスタイプ
+    nl: Apparaattype
+    pt: Tipo de dispositivo
+    ru: Тип устройства
+    zh: 设备类型
+  EmailSignInBody3:
+    ar: إذا لم تكن أنت من قام بذلك، يُرجى تغيير كلمة مرور حساب Homechart الخاص بك.
+      لست متأكدًا مما يجب فعله؟ رد على هذه الرسالة، نحن هنا لمساعدتك!
+    context: Body for new device sign in email
+    de: Wenn das nicht der Fall ist, ändern Sie bitte Ihr Homechart-Kontopasswort.
+      Sie sind sich nicht sicher, was Sie tun sollen? Antworten Sie auf diese E-Mail,
+      wir helfen Ihnen gerne weiter!
+    en: If this wasn't you, please consider changing your Homechart account password.  Not
+      sure what to do?  Reply to this email, we're here to help!
+    es: Si no te ha pasado, considera cambiar la contraseña de tu cuenta de Homechart.
+      ¿No sabes qué hacer? Responde a este correo electrónico. ¡Estamos aquí para
+      ayudarte!
+    fr: Si ce n&#39;est pas vous, pensez à changer le mot de passe de votre compte
+      Homechart. Vous ne savez pas quoi faire? Répondez à cet e-mail, nous sommes
+      là pour vous aider!
+    hi: अगर यह आपके साथ नहीं हुआ है, तो कृपया अपने होमचार्ट खाते का पासवर्ड बदलने
+      पर विचार करें। समझ नहीं आ रहा कि क्या करें? इस ईमेल का जवाब दें, हम आपकी मदद
+      के लिए मौजूद हैं!
+    ja: 心当たりがない場合は、Homechartアカウントのパスワード変更をご検討ください。どうすればよいかお困りの場合は、このメールにご返信ください。喜んでお手伝いさせていただきます。
+    nl: Als dit niet het geval was, overweeg dan om het wachtwoord van uw Homechart-account
+      te wijzigen. Weet u niet wat u moet doen? Reageer dan op deze e-mail, we helpen
+      u graag!
+    pt: Se não foi você, considere alterar a senha da sua conta Homechart. Não sabe
+      o que fazer? Responda a este e-mail. Estamos aqui para ajudar!
+    ru: Если это были не вы, пожалуйста, рассмотрите возможность смены пароля вашей
+      учётной записи Homechart. Не знаете, что делать? Ответьте на это письмо, мы
+      готовы помочь!
+    zh: 如果您不是本人，请考虑更改您的 Homechart 帐户密码。不知道该怎么办？请回复此邮件，我们将竭诚为您服务！
   EmailSignInSubject:
     ar: جهاز جديد تسجيل الدخول
     context: Subject for new device sign in email
@@ -937,6 +905,93 @@ translations:
     pt: Conta verificada
     ru: Аккаунт проверен
     zh: 帐户已验证
+  EmailWebAuthnModifiedBody1:
+    ar: لقد تغيرت بيانات اعتماد WebAuthn المرتبطة بحساب Homechart الخاص بك
+    context: Body of email for modifying a webauthn credential
+    de: Die mit Ihrem Homechart-Konto verknüpften WebAuthn-Anmeldeinformationen haben
+      sich geändert
+    en: The WebAuthn credentials associated with your Homechart account have changed
+    es: Las credenciales de WebAuthn asociadas con su cuenta de Homechart han cambiado
+    fr: Les informations d&#39;identification WebAuthn associées à votre compte Homechart
+      ont changé
+    hi: आपके Homechart खाते से संबद्ध WebAuthn क्रेडेंशियल बदल गए हैं
+    ja: Homechartアカウントに関連付けられたWebAuthn認証情報が変更されました
+    nl: De WebAuthn-inloggegevens die aan uw Homechart-account zijn gekoppeld, zijn
+      gewijzigd
+    pt: As credenciais do WebAuthn associadas à sua conta Homechart foram alteradas
+    ru: Учетные данные WebAuthn, связанные с вашей учетной записью Homechart, изменились.
+    zh: 与您的 Homechart 帐户关联的 WebAuthn 凭据已更改
+  EmailWebAuthnModifiedBody2:
+    ar: تمت الإضافة
+    context: Body of email for modifying a webauthn credential
+    de: Hinzugefügt
+    en: Added
+    es: Agregado
+    fr: Ajouté
+    hi: जोड़ा
+    ja: 追加した
+    nl: Toegevoegd
+    pt: Adicionado
+    ru: Добавлен
+    zh: 额外
+  EmailWebAuthnModifiedBody3:
+    ar: تمت الإزالة
+    context: Body of email for modifying a webauthn credential
+    de: ENTFERNT
+    en: Removed
+    es: Remoto
+    fr: Supprimé
+    hi: निकाला गया
+    ja: 削除されました
+    nl: VERWIJDERD
+    pt: Removido
+    ru: Удаленный
+    zh: 已移除
+  EmailWebAuthnModifiedBody4:
+    ar: إذا لم تكن أنت من قام بذلك، يُرجى تغيير كلمة مرورك ومراجعة بيانات اعتماد WebAuthn
+      من الإعدادات &gt; الحساب. لست متأكدًا مما يجب فعله؟ ردّ على هذه الرسالة، نحن
+      هنا لمساعدتك!
+    context: Body of email for adding a webauthn credential
+    de: Wenn das nicht der Fall ist, ändern Sie bitte Ihr Passwort und überprüfen
+      Sie Ihre WebAuthn-Anmeldeinformationen unter „Einstellungen &gt; Konto“. Sie
+      sind sich nicht sicher, was Sie tun sollen? Antworten Sie auf diese E-Mail,
+      wir helfen Ihnen gerne weiter!
+    en: If this wasn't you, please consider changing your password and reviewing your
+      WebAuthn credentials under Settings > Account.  Not sure what to do?  Reply
+      to this email, we're here to help!
+    es: Si no es tu caso, considera cambiar tu contraseña y revisar tus credenciales
+      de WebAuthn en Configuración &gt; Cuenta. ¿No sabes qué hacer? Responde a este
+      correo electrónico; estamos aquí para ayudarte.
+    fr: Si ce n&#39;est pas vous, pensez à changer votre mot de passe et à vérifier
+      vos identifiants WebAuthn dans Paramètres &gt; Compte. Vous ne savez pas quoi
+      faire? Répondez à cet e-mail, nous sommes là pour vous aider!
+    hi: अगर यह आपके साथ नहीं हुआ है, तो कृपया अपना पासवर्ड बदलने और सेटिंग्स &gt;
+      अकाउंट में अपने WebAuthn क्रेडेंशियल्स की समीक्षा करने पर विचार करें। समझ नहीं
+      आ रहा कि क्या करें? इस ईमेल का जवाब दें, हम आपकी मदद के लिए मौजूद हैं!
+    ja: 心当たりがない場合は、パスワードの変更と「設定」&gt;「アカウント」でWebAuthnの認証情報の確認をご検討ください。どうすればよいかお困りの場合は、このメールにご返信ください。喜んでお手伝いさせていただきます。
+    nl: Als dit niet het geval was, overweeg dan om je wachtwoord te wijzigen en je
+      WebAuthn-gegevens te controleren onder Instellingen &gt; Account. Weet je niet
+      wat je moet doen? Reageer dan op deze e-mail, we helpen je graag!
+    pt: Se não foi você, considere alterar sua senha e revisar suas credenciais do
+      WebAuthn em Configurações &gt; Conta. Não sabe o que fazer? Responda a este
+      e-mail. Estamos aqui para ajudar!
+    ru: Если это не вы, пожалуйста, смените пароль и проверьте учётные данные WebAuthn
+      в разделе «Настройки» &gt; «Учётная запись». Не знаете, что делать? Ответьте
+      на это письмо, мы готовы помочь!
+    zh: 如果您不是本人，请考虑更改密码，并在“设置”&gt;“帐户”下查看您的 WebAuthn 凭据。不知道该怎么办？请回复此邮件，我们将竭诚为您服务！
+  EmailWebAuthnModifiedSubject:
+    ar: تم تعديل بيانات اعتماد WebAuthn
+    context: Body of email for adding a webauthn credential
+    de: WebAuthn-Anmeldeinformationen geändert
+    en: WebAuthn Credentials Modified
+    es: Credenciales de WebAuthn modificadas
+    fr: Informations d&#39;identification WebAuthn modifiées
+    hi: WebAuthn क्रेडेंशियल संशोधित
+    ja: WebAuthn 認証情報が変更されました
+    nl: WebAuthn-referenties gewijzigd
+    pt: Credenciais WebAuthn modificadas
+    ru: Учетные данные WebAuthn изменены
+    zh: WebAuthn 凭证已修改
   EmailWelcomeBodyHeader:
     ar: يسعدنا حقًا أنك هنا!
     context: Header body for welcome email
@@ -1260,19 +1315,19 @@ translations:
     pt: Contas
     ru: Счета
     zh: 帐户
-  ObjectAuth:
+  ObjectAuthentication:
     ar: المصادقة
     context: Authentication related things
     de: Authentifizierung
-    en: Auth
-    es: Autorización
+    en: Authentication
+    es: Autenticación
     fr: Authentification
     hi: प्रमाणीकरण
     ja: 認証
-    nl: Auth
-    pt: Autor
+    nl: Authenticatie
+    pt: Autenticação
     ru: Аутентификация
-    zh: 授权
+    zh: 验证
   ObjectBackup:
     ar: دعم
     context: A copy of Homechart data
@@ -2209,6 +2264,19 @@ translations:
     pt: Famílias
     ru: Домохозяйства
     zh: 住户
+  ObjectIPAddress:
+    ar: عنوان IP
+    context: An IP address
+    de: IP-Adresse
+    en: IP Address
+    es: Dirección IP
+    fr: Adresse IP
+    hi: आईपी पता
+    ja: IPアドレス
+    nl: IP-adres
+    pt: Endereço IP
+    ru: IP-адрес
+    zh: IP 地址
   ObjectInput:
     ar: مدخل
     context: Something that is added to something
@@ -3873,6 +3941,19 @@ translations:
     pt: Versões
     ru: Версии
     zh: 版本
+  ObjectWebAuthnCredential:
+    ar: بيانات اعتماد WebAuthn
+    context: A credential for WebAuthn
+    de: WebAuthn-Anmeldeinformationen
+    en: WebAuthn Credential
+    es: Credencial de autenticación web
+    fr: Informations d&#39;identification WebAuthn
+    hi: वेबऑथन क्रेडेंशियल
+    ja: WebAuthn認証情報
+    nl: WebAuthn-referentie
+    pt: Credencial WebAuthn
+    ru: Учетные данные WebAuthn
+    zh: WebAuthn 凭证
   ObjectiCalendarCreated:
     ar: تم إنشاء iCalendar
     context: Message when iCalendar is created
@@ -4251,6 +4332,19 @@ translations:
     pt: Para
     ru: К
     zh: 到
+  WebAlertAccountMissing:
+    ar: لم يتم العثور على الحساب
+    context: Alert when an account doesn't exist
+    de: Konto nicht gefunden
+    en: Account not found
+    es: Cuenta no encontrada
+    fr: Compte non trouvé
+    hi: खाता नहीं मिला
+    ja: アカウントが見つかりません
+    nl: Account niet gevonden
+    pt: Conta não encontrada
+    ru: Аккаунт не найден
+    zh: 未找到帐户
   WebAlertPurchase:
     ar: شكرا لشرائك Homechart!
     context: Message when someone subscribes to Homechart
@@ -5446,6 +5540,19 @@ translations:
     pt: Selecione a conta de destino que receberá a delegação.
     ru: Выберите целевую учетную запись, которая получит делегирование.
     zh: 选择将接收委托的目标账户。
+  WebFormOverlayAuthAccountPassword:
+    ar: كلمة المرور
+    context: Password form
+    de: Passwort
+    en: Password
+    es: Contraseña
+    fr: Mot de passe
+    hi: पासवर्ड
+    ja: パスワード
+    nl: Wachtwoord
+    pt: Senha
+    ru: Пароль
+    zh: 密码
   WebFormOverlayAuthAccountPrivateKeyPassphrase:
     ar: عبارة المرور
     context: Passphrase field
@@ -8466,6 +8573,20 @@ translations:
     pt: A entrada falhou
     ru: Ошибка входа
     zh: 登录失败
+  WebGlobalActionSignInNone:
+    ar: لا توجد طرق تسجيل دخول متاحة، يرجى الاتصال بالدعم
+    context: No available methods for auth
+    de: Keine Anmeldemethoden verfügbar. Bitte wenden Sie sich an den Support.
+    en: No available sign in methods, please contact support
+    es: No hay métodos de inicio de sesión disponibles, comuníquese con el soporte
+      técnico
+    fr: Aucune méthode de connexion disponible, veuillez contacter le support
+    hi: साइन इन करने का कोई तरीका उपलब्ध नहीं है, कृपया सहायता से संपर्क करें
+    ja: 利用できるサインイン方法はありません。サポートにお問い合わせください。
+    nl: Er zijn geen aanmeldmethoden beschikbaar. Neem contact op met de ondersteuning.
+    pt: Nenhum método de login disponível, entre em contato com o suporte
+    ru: Нет доступных способов входа, обратитесь в службу поддержки.
+    zh: 没有可用的登录方法，请联系支持
   WebGlobalActionSignInWith:
     ar: تسجيل الدخول باستخدام
     context: Sign in with a provider to your Homechart account button
@@ -8960,6 +9081,19 @@ translations:
     pt: Semana
     ru: Неделя
     zh: 星期
+  WebGlobalEmail:
+    ar: بريد إلكتروني
+    context: Email method
+    de: E-Mail
+    en: Email
+    es: Correo electrónico
+    fr: E-mail
+    hi: ईमेल
+    ja: メール
+    nl: E-mail
+    pt: E-mail
+    ru: Электронная почта
+    zh: 电子邮件
   WebGlobalEmailAddress:
     ar: عنوان البريد الإلكتروني
     context: Email address field
@@ -10667,6 +10801,45 @@ translations:
     pt: Cor de destaque
     ru: Акцентный цвет
     zh: 强调色
+  WebSettingsAccountAuthenticationAdd:
+    ar: إضافة بيانات اعتماد WebAuthn
+    context: Add a new WebAuthn credential
+    de: WebAuthn-Anmeldeinformationen hinzufügen
+    en: Add WebAuthn Credential
+    es: Agregar credencial de WebAuthn
+    fr: Ajouter les informations d&#39;identification WebAuthn
+    hi: WebAuthn क्रेडेंशियल जोड़ें
+    ja: WebAuthn認証情報を追加する
+    nl: WebAuthn-referentie toevoegen
+    pt: Adicionar credencial WebAuthn
+    ru: Добавить учетные данные WebAuthn
+    zh: 添加 WebAuthn 凭证
+  WebSettingsAccountAuthenticationEnabled:
+    ar: مُمَكَّن
+    context: If the method is enabled for authentication
+    de: Ermöglicht
+    en: Enabled
+    es: Activado
+    fr: Activé
+    hi: सक्रिय
+    ja: 有効
+    nl: Ingeschakeld
+    pt: Habilitado
+    ru: Включено
+    zh: 已启用
+  WebSettingsAccountAuthenticationMethod:
+    ar: طريقة
+    context: The method for authentication
+    de: Verfahren
+    en: Method
+    es: Método
+    fr: Méthode
+    hi: तरीका
+    ja: 方法
+    nl: Methode
+    pt: Método
+    ru: Метод
+    zh: 方法
   WebSettingsAccountColorTheme:
     ar: اللون والموضوع
     context: Account settings color theme expander
@@ -11350,19 +11523,6 @@ translations:
     pt: Desativar notificações de dispositivos
     ru: Отключить уведомления устройства
     zh: 禁用设备通知
-  WebSettingsNotificationsEmail:
-    ar: بريد إلكتروني
-    context: Settings for Email
-    de: Email
-    en: Email
-    es: Correo electrónico
-    fr: E-mail
-    hi: ईमेल
-    ja: Eメール
-    nl: E-mail
-    pt: E-mail
-    ru: Электронная почта
-    zh: 电子邮件
   WebSettingsNotificationsEnableDevice:
     ar: قم بتمكين إشعارات الجهاز
     context: Toggle for enabling device notifications

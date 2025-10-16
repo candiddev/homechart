@@ -10,13 +10,13 @@ type: docs
 
 {{% image reward_sent "Reward Sent" %}}
 
-- 👍 Positive reinforcement for everyone in your household
-- 💳 Create stamp cards with details, stamp goals, and a reward
-- 👏 Track progress by stamping the card for good behavior
+- Positive reinforcement for everyone in your household
+- Create stamp cards with details, stamp goals, and a reward
+- Track progress by stamping the card for good behavior
 
 ## Show Your Household Members Some Love
 
 {{% image reward_inprogress "Reward In Progress" %}}
 
-- 🙌 Give out praise by gifting stamp cards
-- 😘 Be appreciative or flirty by sending cards to your partner
+- Give out praise by gifting stamp cards
+- Be appreciative or flirty by sending cards to your partner

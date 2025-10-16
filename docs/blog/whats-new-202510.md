@@ -16,6 +16,10 @@ type: blog
 
 Homechart now stores most page settings (like table columns and filters) in the URL.  This makes it easy to bookmark and share customized views and filters.
 
+### WebAuthn
+
+Users can now sign in to Homechart using WebAuthn, Passkeys, and FIDO2 keys.  Users can also disable password and email authentication for extra security.
+
 ## Enhancements
 
 - Budget > Transactions can now jump to specific pages.
