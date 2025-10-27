@@ -105,6 +105,12 @@ String, informational message to display on the UI for all users.
 
 **Default:** `""`
 
+{{% snippet config_key "app_privateKeys" %}}
+
+List of private keys to use for signing and other cryptographic operations.  Users shouldn't set this value--Homechart will generate keys at startup and store them in a database.  Users can rotate these keys by removing them from Admin > Config--Homechart will generate new keys after restarting.
+
+**Default:** `[]`
+
 {{% snippet config_key "app_port" %}}
 
 Number, listening port for Homechart.  Setup port forwarding to this port to expose Homechart externally.

@@ -1861,6 +1861,71 @@ translations:
     pt: Alteração atualizada
     ru: Изменение обновлено
     zh: 更改已更新
+  ObjectClient:
+    ar: عميل
+    context: Client for OIDC
+    de: Kunde
+    en: Client
+    es: Cliente
+    fr: Client
+    hi: ग्राहक
+    ja: クライアント
+    nl: Cliënt
+    pt: Cliente
+    ru: Клиент
+    zh: 客户
+  ObjectClientCreated:
+    ar: تم إنشاء العميل
+    context: Message when client is created
+    de: Kunde erstellt
+    en: Client created
+    es: Cliente creado
+    fr: Client créé
+    hi: क्लाइंट बनाया गया
+    ja: クライアント作成
+    nl: Klant aangemaakt
+    pt: Cliente criado
+    ru: Клиент создан
+    zh: 客户端已创建
+  ObjectClientDeleted:
+    ar: تم حذف العميل
+    context: Message when client is deleted
+    de: Kunde gelöscht
+    en: Client deleted
+    es: Cliente eliminado
+    fr: Client supprimé
+    hi: क्लाइंट हटा दिया गया
+    ja: クライアントを削除しました
+    nl: Client verwijderd
+    pt: Cliente excluído
+    ru: Клиент удален
+    zh: 客户端已删除
+  ObjectClientUpdated:
+    ar: تم تحديث العميل
+    context: Message when client is updated
+    de: Client aktualisiert
+    en: Client updated
+    es: Cliente actualizado
+    fr: Client mis à jour
+    hi: क्लाइंट अपडेट किया गया
+    ja: クライアントが更新されました
+    nl: Client bijgewerkt
+    pt: Cliente atualizado
+    ru: Клиент обновлен
+    zh: 客户端已更新
+  ObjectClients:
+    ar: العملاء
+    context: Clients for OIDC
+    de: Kunden
+    en: Clients
+    es: Clientela
+    fr: Clients
+    hi: ग्राहकों
+    ja: クライアント
+    nl: Klanten
+    pt: Clientes
+    ru: Клиенты
+    zh: 客户
   ObjectCollection:
     ar: مجموعة
     context: A grouping of objects
@@ -2979,6 +3044,32 @@ translations:
     pt: Notificações
     ru: Уведомления
     zh: 通知
+  ObjectOIDCClient:
+    ar: عميل OIDC
+    context: An OIDC client
+    de: OIDC-Client
+    en: OIDC Client
+    es: Cliente OIDC
+    fr: Client OIDC
+    hi: OIDC क्लाइंट
+    ja: OIDCクライアント
+    nl: OIDC-client
+    pt: Cliente OIDC
+    ru: Клиент OIDC
+    zh: OIDC 客户端
+  ObjectOIDCClients:
+    ar: عملاء OIDC
+    context: Multiple OIDC client
+    de: OIDC-Clients
+    en: OIDC Clients
+    es: Clientes de OIDC
+    fr: Clients OIDC
+    hi: ओआईडीसी ग्राहक
+    ja: OIDCクライアント
+    nl: OIDC-klanten
+    pt: Clientes OIDC
+    ru: Клиенты OIDC
+    zh: OIDC客户
   ObjectOutput:
     ar: انتاج |
     context: What something did
@@ -4019,6 +4110,33 @@ translations:
     pt: iCalendar atualizado
     ru: iCalendar обновлен
     zh: iCalendar 已更新
+  PushCreateBody:
+    ar: مخلوق
+    context: Body for create push notification, will contain object name and member
+      who created it
+    de: erstellt
+    en: created
+    es: creado
+    fr: créé
+    hi: बनाया था
+    ja: 作成された
+    nl: gecreëerd
+    pt: criado
+    ru: созданный
+    zh: 创建
+  PushCreateSubject:
+    ar: تمت الإضافة
+    context: Subject of push notification when something gets created
+    de: Hinzugefügt
+    en: Added
+    es: Agregado
+    fr: Ajouté
+    hi: जोड़ा
+    ja: 追加した
+    nl: Toegevoegd
+    pt: Adicionado
+    ru: Добавлен
+    zh: 额外
   PushDailyAgendaBodyNothing:
     ar: لا شيء مجدول اليوم!
     context: Body for empty Daily Agenda push notification
@@ -4555,6 +4673,72 @@ translations:
     pt: Verifique seu endereço de e-mail para receber notificações
     ru: Пожалуйста, подтвердите свой адрес электронной почты, чтобы получать уведомления
     zh: 请验证您的电子邮件地址以接收通知
+  WebAuthorizeGrant:
+    ar: منح حق الوصول
+    context: Button to grant access to an OAuth client
+    de: Zugriff gewähren
+    en: Grant Access
+    es: Autorizará el acceso
+    fr: Accorder l'accès
+    hi: अनुदान पहुँच
+    ja: アクセス許可
+    nl: Toegang verlenen
+    pt: Garantir acesso
+    ru: Предоставление доступа
+    zh: 授予访问权限
+  WebAuthorizeRequest:
+    ar: يريد الوصول إلى تفاصيل حساب Homechart الخاص بك
+    context: OAuth access request message
+    de: Möchte auf Ihre Homechart-Kontodaten zugreifen
+    en: Wants to access your Homechart account details
+    es: Quiere acceder a los detalles de su cuenta de Homechart
+    fr: Souhaite accéder aux détails de votre compte Homechart
+    hi: आपके होमचार्ट खाते के विवरण तक पहुँच चाहता है
+    ja: Homechartアカウントの詳細にアクセスしたい
+    nl: Wil toegang tot uw Homechart-accountgegevens
+    pt: Quer acessar os detalhes da sua conta Homechart
+    ru: Хочет получить доступ к данным вашей учетной записи Homechart
+    zh: 想要访问您的 Homechart 帐户详细信息
+  WebAuthorizeRequestFooter:
+    ar: من خلال النقر فوق &quot;السماح&quot;، فإنك تسمح لهذا التطبيق وHomechart باستخدام
+      معلوماتك وفقًا لشروط الخدمة وسياسات الخصوصية الخاصة بكل منهما.
+    context: Footer of OAuth access request message
+    de: Indem Sie auf „Zulassen“ klicken, gestatten Sie dieser App und Homechart,
+      Ihre Informationen gemäß den jeweiligen Servicebedingungen und Datenschutzrichtlinien
+      zu verwenden.
+    en: By clicking Allow, you allow this app and Homechart to use your information
+      in accordance with their respective terms of service and privacy policies.
+    es: Al hacer clic en Permitir, permite que esta aplicación y Homechart utilicen
+      su información de acuerdo con sus respectivos términos de servicio y políticas
+      de privacidad.
+    fr: En cliquant sur Autoriser, vous autorisez cette application et Homechart à
+      utiliser vos informations conformément à leurs conditions de service et politiques
+      de confidentialité respectives.
+    hi: अनुमति दें पर क्लिक करके, आप इस ऐप और होमचार्ट को उनकी संबंधित सेवा की शर्तों
+      और गोपनीयता नीतियों के अनुसार आपकी जानकारी का उपयोग करने की अनुमति देते हैं।
+    ja: 「許可」をクリックすると、このアプリと Homechart がそれぞれの利用規約とプライバシー ポリシーに従ってあなたの情報を使用することを許可したことになります。
+    nl: Door op Toestaan te klikken, geeft u deze app en Homechart toestemming om
+      uw gegevens te gebruiken in overeenstemming met hun respectievelijke servicevoorwaarden
+      en privacybeleid.
+    pt: Ao clicar em Permitir, você permite que este aplicativo e o Homechart usem
+      suas informações de acordo com seus respectivos termos de serviço e políticas
+      de privacidade.
+    ru: Нажимая «Разрешить», вы разрешаете этому приложению и Homechart использовать
+      вашу информацию в соответствии с их условиями обслуживания и политикой конфиденциальности.
+    zh: 单击“允许”即表示您允许此应用程序和 Homechart 根据各自的服务条款和隐私政策使用您的信息。
+  WebAuthorizeUnknown:
+    ar: عميل OAuth غير معروف
+    context: Message when someone tries to authenticate with an unknown OAuth client
+    de: Unbekannter OAuth-Client
+    en: Unknown OAuth client
+    es: Cliente OAuth desconocido
+    fr: Client OAuth inconnu
+    hi: अज्ञात OAuth क्लाइंट
+    ja: 不明なOAuthクライアント
+    nl: Onbekende OAuth-client
+    pt: Cliente OAuth desconhecido
+    ru: Неизвестный клиент OAuth
+    zh: 未知的 OAuth 客户端
   WebBookmarksSearch:
     ar: البحث بالاسم أو الارتباط
     context: Search placeholder for Bookmarks
@@ -4750,6 +4934,19 @@ translations:
     pt: Ordem de data para o campo de data CSV
     ru: Порядок дат для поля даты CSV
     zh: CSV 日期字段的日期顺序
+  WebBudgetTransactionsImportMissingCategory:
+    ar: يجب تحديد فئة محددة لجميع المعاملات
+    context: Alert when budget transaction import is missing categories
+    de: Für alle Transaktionen muss eine Kategorie ausgewählt sein
+    en: All transactions must have a category selected
+    es: Todas las transacciones deben tener una categoría seleccionada
+    fr: Toutes les transactions doivent avoir une catégorie sélectionnée
+    hi: सभी लेन-देनों के लिए एक श्रेणी चयनित होनी चाहिए
+    ja: すべての取引でカテゴリを選択する必要があります
+    nl: Voor alle transacties moet een categorie geselecteerd zijn
+    pt: Todas as transações devem ter uma categoria selecionada
+    ru: Для всех транзакций должна быть выбрана категория.
+    zh: 所有交易都必须选择一个类别
   WebBudgetTransactionsTransferFrom:
     ar: تحويل من
     context: Transfer from a certain account
@@ -5593,6 +5790,45 @@ translations:
     pt: Nenhum endereço de e-mail
     ru: Нет адреса электронной почты
     zh: 没有电子邮件地址
+  WebFormOverlayAuthOIDCClientRedirectURI:
+    ar: إعادة توجيه URI
+    context: Redirect URI field for AuthOIDC
+    de: Umleitungs-URI
+    en: Redirect URI
+    es: URI de redirección
+    fr: URI de redirection
+    hi: रीडायरेक्ट URI
+    ja: リダイレクトURI
+    nl: Omleidings-URI
+    pt: URI de redirecionamento
+    ru: URI перенаправления
+    zh: 重定向 URI
+  WebFormOverlayAuthOIDCClientRedirectURIs:
+    ar: عناوين URI لإعادة التوجيه
+    context: Redirect URI field for AuthOIDC
+    de: Umleitungs-URIs
+    en: Redirect URIs
+    es: URI de redireccionamiento
+    fr: URI de redirection
+    hi: पुनर्निर्देशित URIs
+    ja: リダイレクトURI
+    nl: Omleidings-URI&#39;s
+    pt: URIs de redirecionamento
+    ru: Перенаправление URI
+    zh: 重定向 URI
+  WebFormOverlayAuthOIDCClientRedirectURIsTooltip:
+    ar: عناوين إعادة التوجيه المسموح بها لعميل OIDC.
+    context: Redirect URI field for AuthOIDC tooltip
+    de: Die zulässigen Umleitungs-URIs für den OIDC-Client.
+    en: The allowed redirect URIs for the OIDC client.
+    es: Las URI de redirección permitidas para el cliente OIDC.
+    fr: Les URI de redirection autorisés pour le client OIDC.
+    hi: OIDC क्लाइंट के लिए स्वीकृत रीडायरेक्ट URI.
+    ja: OIDC クライアントに許可されたリダイレクト URI。
+    nl: De toegestane omleidings-URI&#39;s voor de OIDC-client.
+    pt: Os URIs de redirecionamento permitidos para o cliente OIDC.
+    ru: Разрешенные URI перенаправления для клиента OIDC.
+    zh: OIDC 客户端允许的重定向 URI。
   WebFormOverlayBookmarkIconImageName:
     ar: اسم الرمز أو عنوان URL
     context: Icon image field name
@@ -10599,78 +10835,6 @@ translations:
     pt: Seu dispositivo está bloqueando notificações, permita-as para o Homechart
     ru: Ваше устройство блокирует уведомления, пожалуйста, разрешите их для Homechart
     zh: 您的设备已屏蔽通知，请允许 Homechart 发出通知
-  WebOAuthGrant:
-    ar: منح حق الوصول
-    context: Button to grant access to an OAuth client
-    de: Zugriff gewähren
-    en: Grant Access
-    es: Autorizará el acceso
-    fr: Accorder l'accès
-    hi: अनुदान पहुँच
-    ja: アクセス許可
-    nl: Toegang verlenen
-    pt: Garantir acesso
-    ru: Предоставление доступа
-    zh: 授予访问权限
-  WebOAuthRequest:
-    ar: يريد الوصول إلى حساب Homechart الخاص بك
-    context: OAuth access request message
-    de: möchte auf Ihr Homechart-Konto zugreifen
-    en: wants to access your Homechart account
-    es: quiere acceder a su cuenta de Homechart
-    fr: veut accéder à votre compte Homechart
-    hi: आपके होमचार्ट खाते तक पहुंचना चाहता है
-    ja: Homechartアカウントにアクセスしたい
-    nl: wilt toegang tot uw Homechart-account
-    pt: deseja acessar sua conta Homechart
-    ru: хочет получить доступ к вашей учетной записи Homechart
-    zh: 想要访问您的 Homechart 帐户
-  WebOAuthRequestFooter:
-    ar: بالنقر فوق السماح ، أنت تسمح لهذا التطبيق و Homechart باستخدام معلوماتك وفقًا
-      لشروط الخدمة وسياسات الخصوصية الخاصة بكل منهما. يمكنك تغيير وإلغاء هذه الأذونات
-      ضمن
-    context: Footer of OAuth access request message
-    de: Indem Sie auf Zulassen klicken, gestatten Sie dieser App und Homechart, Ihre
-      Informationen in Übereinstimmung mit ihren jeweiligen Nutzungsbedingungen und
-      Datenschutzrichtlinien zu verwenden. Sie können diese Berechtigungen unter ändern
-      und widerrufen
-    en: By clicking Allow, you allow this app and Homechart to use your information
-      in accordance with their respective terms of service and privacy policies.  You
-      can change and revoke these permissions under
-    es: Al hacer clic en Permitir, permite que esta aplicación y Homechart usen su
-      información de acuerdo con sus respectivos términos de servicio y políticas
-      de privacidad. Puede cambiar y revocar estos permisos en
-    fr: En cliquant sur Autoriser, vous autorisez cette application et Homechart à
-      utiliser vos informations conformément à leurs conditions d'utilisation et politiques
-      de confidentialité respectives. Vous pouvez modifier et révoquer ces autorisations
-      sous
-    hi: अनुमति दें पर क्लिक करके, आप इस ऐप और होमचार्ट को अपनी संबंधित सेवा शर्तों
-      और गोपनीयता नीतियों के अनुसार अपनी जानकारी का उपयोग करने की अनुमति देते हैं।
-      आप इन अनुमतियों को बदल सकते हैं और रद्द कर सकते हैं
-    ja: 「許可」をクリックすると、このアプリとHomechartがそれぞれの利用規約とプライバシーポリシーに従ってあなたの情報を使用することを許可したことになります。これらの許可は、以下の方法で変更したり取り消したりできます。
-    nl: Door op Toestaan te klikken, staat u deze app en Homechart toe uw informatie
-      te gebruiken in overeenstemming met hun respectievelijke servicevoorwaarden
-      en privacybeleid. U kunt deze machtigingen wijzigen en intrekken onder
-    pt: Ao clicar em Permitir, você permite que este aplicativo e o Homechart usem
-      suas informações de acordo com seus respectivos termos de serviço e políticas
-      de privacidade. Você pode alterar e revogar essas permissões em
-    ru: Нажимая «Разрешить», вы разрешаете этому приложению и Homechart использовать
-      вашу информацию в соответствии с их условиями обслуживания и политикой конфиденциальности.
-      Вы можете изменить и отозвать эти разрешения в разделе
-    zh: 单击允许，即表示您允许此应用程序和 Homechart 根据各自的服务条款和隐私政策使用您的信息。您可以在下面更改和撤销这些权限
-  WebOAuthUnknown:
-    ar: عميل OAuth غير معروف
-    context: Message when someone tries to authenticate with an unknown OAuth client
-    de: Unbekannter OAuth-Client
-    en: Unknown OAuth client
-    es: Cliente OAuth desconocido
-    fr: Client OAuth inconnu
-    hi: अज्ञात OAuth क्लाइंट
-    ja: 不明な OAuth クライアント
-    nl: Onbekende OAuth-client
-    pt: Cliente OAuth desconhecido
-    ru: Неизвестный клиент OAuth
-    zh: 未知的 OAuth 客户端
   WebPlanTasksOverdue:
     ar: متأخر
     context: Tasks that are past their due date
@@ -11445,6 +11609,19 @@ translations:
     pt: Exportar Família
     ru: Экспортное домашнее хозяйство
     zh: 出口户
+  WebSettingsHouseholdIDAddOIDCClient:
+    ar: إضافة عميل OIDC
+    context: Add OIDC client button
+    de: OIDC-Client hinzufügen
+    en: Add OIDC Client
+    es: Agregar cliente OIDC
+    fr: Ajouter un client OIDC
+    hi: OIDC क्लाइंट जोड़ें
+    ja: OIDCクライアントを追加する
+    nl: OIDC-client toevoegen
+    pt: Adicionar cliente OIDC
+    ru: Добавить клиента OIDC
+    zh: 添加 OIDC 客户端
   WebSettingsHouseholdImportHousehold:
     ar: استيراد منزلية
     context: Button to import a household
@@ -11458,6 +11635,71 @@ translations:
     pt: Importar família
     ru: Импортное домашнее хозяйство
     zh: 进口户
+  WebSettingsNotificationsCalendarEventReminders:
+    ar: التقويم &gt; تذكيرات الأحداث
+    context: Toggle for event reminder notifications
+    de: Kalender &gt; Ereigniserinnerungen
+    en: Calendar > Event Reminders
+    es: Calendario &gt; Recordatorios de eventos
+    fr: Calendrier &gt; Rappels d&#39;événements
+    hi: कैलेंडर &gt; ईवेंट रिमाइंडर
+    ja: カレンダー &gt; イベントリマインダー
+    nl: Kalender &gt; Gebeurtenisherinneringen
+    pt: Calendário &gt; Lembretes de Eventos
+    ru: Календарь &gt; Напоминания о событиях
+    zh: 日历 &gt; 事件提醒
+  WebSettingsNotificationsCookRecipeCookReminders:
+    ar: طبخ &gt; وصفات تذكير الطبخ
+    context: Toggle for recipe cook reminder notifications
+    de: Kochen &gt; Rezept-Koch-Erinnerungen
+    en: Cook > Recipe Cook Reminders
+    es: Cocinar &gt; Recordatorios de recetas
+    fr: Cuisiner &gt; Rappels de recettes
+    hi: खाना पकाना &gt; रेसिपी पकाने के अनुस्मारक
+    ja: クック &gt; レシピ クックリマインダー
+    nl: Koken &gt; Recepten Kookherinneringen
+    pt: Cozinheiro &gt; Lembretes de Receitas
+    ru: Готовить &gt; Напоминания о приготовлении блюд
+    zh: 烹饪 &gt; 食谱烹饪提醒
+  WebSettingsNotificationsCookRecipeLeaveReminders:
+    ar: طبخ &gt; وصفة اتركها مع التذكيرات
+    context: Toggle for recipe leave by reminder notifications
+    de: Kochen &gt; Rezept verlassen durch Erinnerungen
+    en: Cook > Recipe Leave By Reminders
+    es: Cocinar &gt; Receta Dejar por Recordatorios
+    fr: Cuisiner &gt; Rappels de recette à laisser avant
+    hi: खाना पकाना &gt; रेसिपी रिमाइंडर द्वारा छोड़ें
+    ja: 料理 &gt; レシピ リマインダーで保存
+    nl: Koken &gt; Recept achterlaten via herinneringen
+    pt: Cozinhar &gt; Receita Deixar por Lembretes
+    ru: Готовить &gt; Рецепты Оставить Напоминания
+    zh: 烹饪 &gt; 食谱留言提醒
+  WebSettingsNotificationsCookRecipePrepReminders:
+    ar: طبخ &gt; تذكيرات تحضير الوصفات
+    context: Toggle for recipe prep reminder notifications
+    de: Kochen &gt; Erinnerungen zur Rezeptvorbereitung
+    en: Cook > Recipe Prep Reminders
+    es: Cocinar &gt; Recordatorios de preparación de recetas
+    fr: Cuisiner &gt; Rappels de préparation de recettes
+    hi: खाना पकाना &gt; रेसिपी तैयार करने के अनुस्मारक
+    ja: 料理 &gt; レシピ準備リマインダー
+    nl: Koken &gt; Herinneringen voor receptvoorbereiding
+    pt: Cozinhe &gt; Lembretes de preparação de receitas
+    ru: Готовить &gt; Напоминания о приготовлении рецептов
+    zh: 烹饪 &gt; 食谱准备提醒
+  WebSettingsNotificationsCreate:
+    ar: إنشاء التحديثات
+    context: Table row for Create notifications
+    de: Updates erstellen
+    en: Create Updates
+    es: Crear actualizaciones
+    fr: Créer des mises à jour
+    hi: अपडेट बनाएँ
+    ja: 更新を作成する
+    nl: Updates maken
+    pt: Criar atualizações
+    ru: Создать обновления
+    zh: 创建更新
   WebSettingsNotificationsDailyAgenda:
     ar: الأجندة اليومية
     context: Table row for Agenda settings
@@ -11536,84 +11778,32 @@ translations:
     pt: Ativar notificações de dispositivos
     ru: Включить уведомления устройства
     zh: 启用设备通知
-  WebSettingsNotificationsEventReminders:
-    ar: تذكير الحدث
-    context: Toggle for event reminder notifications
-    de: Ereigniserinnerungen
-    en: Event Reminders
-    es: Recordatorios de eventos
-    fr: Rappels d'événements
-    hi: घटना अनुस्मारक
-    ja: イベントリマインダー
-    nl: Gebeurtenisherinneringen
-    pt: Lembretes de eventos
-    ru: Напоминания о событиях
-    zh: 活动提醒
-  WebSettingsNotificationsRecipeCookReminders:
-    ar: وصفة تذكير الطبخ
-    context: Toggle for recipe cook reminder notifications
-    de: Rezept-Koch-Erinnerungen
-    en: Recipe Cook Reminders
-    es: Recordatorios de cocina de recetas
-    fr: Rappels de recettes de cuisine
-    hi: पकाने की विधि कुक अनुस्मारक
-    ja: レシピ調理リマインダー
-    nl: Herinneringen voor recept koken
-    pt: Lembretes de receitas para cozinhar
-    ru: Напоминания о приготовлении рецептов
-    zh: 食谱厨师提醒
-  WebSettingsNotificationsRecipeLeaveReminders:
-    ar: وصفة تركها بالتذكير
-    context: Toggle for recipe leave by reminder notifications
-    de: Rezept verlassen durch Erinnerungen
-    en: Recipe Leave By Reminders
-    es: Receta Dejar Recordatorios
-    fr: Rappels de recette à laisser
-    hi: रेसिपी रिमाइंडर द्वारा छोड़ें
-    ja: レシピを残すリマインダー
-    nl: Recept achterlaten via herinneringen
-    pt: Receita Deixe por Lembretes
-    ru: Рецепт Оставить Напоминания
-    zh: 菜谱留言提醒
-  WebSettingsNotificationsRecipePrepReminders:
-    ar: وصفة تذكير الإعدادية
-    context: Toggle for recipe prep reminder notifications
-    de: Rezeptvorbereitungserinnerungen
-    en: Recipe Prep Reminders
-    es: Recordatorios de preparación de recetas
-    fr: Rappels de préparation de recettes
-    hi: पकाने की विधि तैयारी अनुस्मारक
-    ja: レシピ準備リマインダー
-    nl: Recept bereid Herinneringen
-    pt: Lembretes de preparação de receitas
-    ru: Напоминания о приготовлении рецептов
-    zh: 食谱准备提醒
-  WebSettingsNotificationsTaskCompleteUpdates:
-    ar: تحديثات المهمة الكاملة
+  WebSettingsNotificationsPlanTaskCompleteUpdates:
+    ar: الخطة &gt; تحديثات إكمال المهمة
     context: Toggle for task complete updates notifications
-    de: Aufgaben abgeschlossen Aktualisierungen
-    en: Task Complete Updates
-    es: Actualizaciones de tareas completadas
-    fr: Mises à jour des tâches terminées
-    hi: कार्य पूर्ण अद्यतन
-    ja: タスク完了の更新
-    nl: Voltooide taken Update
-    pt: Atualizações completas de tarefas
-    ru: Обновления выполнения задачи
-    zh: 任务完成更新
-  WebSettingsNotificationsTaskReminders:
-    ar: تذكير المهام
+    de: Planen &gt; Aktualisierungen zu abgeschlossenen Aufgaben
+    en: Plan > Task Complete Updates
+    es: Plan &gt; Actualizaciones de tareas completadas
+    fr: Plan &gt; Mises à jour des tâches terminées
+    hi: योजना &gt; कार्य पूर्ण अपडेट
+    ja: 計画 &gt; タスク完了の更新
+    nl: Plan &gt; Taak voltooid Updates
+    pt: Plano &gt; Atualizações de tarefas concluídas
+    ru: План &gt; Обновления завершения задачи
+    zh: 计划 &gt; 任务完成更新
+  WebSettingsNotificationsPlanTaskReminders:
+    ar: الخطة &gt; تذكيرات المهام
     context: Toggle for task reminder notifications
-    de: Aufgabenerinnerungen
-    en: Task Reminders
-    es: Recordatorios de tareas
-    fr: Rappels de tâches
-    hi: टास्क रिमाइंडर
-    ja: タスクリマインダー
-    nl: Taak herinneringen
-    pt: Lembretes de tarefas
-    ru: Напоминания о задачах
-    zh: 任务提醒
+    de: Planen &gt; Aufgabenerinnerungen
+    en: Plan > Task Reminders
+    es: Plan &gt; Recordatorios de tareas
+    fr: Plan &gt; Rappels de tâches
+    hi: योजना &gt; कार्य अनुस्मारक
+    ja: プラン &gt; タスクリマインダー
+    nl: Plan &gt; Taakherinneringen
+    pt: Plano &gt; Lembretes de Tarefas
+    ru: План &gt; Напоминания о задачах
+    zh: 计划 &gt; 任务提醒
   WebSettingsSessionsClearAll:
     ar: مسح كافة الجلسات
     context: Clear all sessions button
@@ -11965,6 +12155,19 @@ translations:
     pt: Lembre de mim
     ru: Запомнить меня
     zh: 记住账号
+  WebSignInSelfHosted:
+    ar: استضافة ذاتية
+    context: Toggle for self hosted address
+    de: Selbst gehostet
+    en: Self-Hosted
+    es: Autoalojado
+    fr: Auto-hébergé
+    hi: स्वयं होस्ट किया गया
+    ja: セルフホスト
+    nl: Zelf gehost
+    pt: Auto-hospedado
+    ru: Самостоятельное размещение
+    zh: 自托管
   WebSignInSelfHostedEndpoint:
     ar: نقطة نهاية ذاتية الاستضافة
     context: URL of a self hosted Homechart instance
@@ -11979,18 +12182,18 @@ translations:
     ru: Самостоятельно размещенная конечная точка
     zh: 自托管端点
   WebSignInSelfHostedEndpointTooltip:
-    ar: عنوان URL لنسخة Homechart المستضافة ذاتيًا، مثل https://web.homechart.app
+    ar: عنوان URL لنسخة Homechart المستضافة ذاتيًا، مثل https://example.com
     context: URL of a self hosted Homechart instance
-    de: URL Ihrer selbst gehosteten Homechart-Instanz, z. B. https://web.homechart.app
-    en: URL of your self-hosted Homechart instance, like https://web.homechart.app
-    es: URL de su instancia de Homechart autohospedada, como https://web.homechart.app
-    fr: URL de votre instance Homechart auto-hébergée, comme https://web.homechart.app
-    hi: आपके स्व-होस्टेड होमचार्ट इंस्टेंस का URL, जैसे https://web.homechart.app
-    ja: 'セルフホスト型 Homechart インスタンスの URL (例: https://web.homechart.app)'
-    nl: URL van uw zelf-gehoste Homechart-instantie, zoals https://web.homechart.app
-    pt: URL da sua instância Homechart auto-hospedada, como https://web.homechart.app
-    ru: URL-адрес вашего собственного экземпляра Homechart, например https://web.homechart.app
-    zh: 您自托管的 Homechart 实例的 URL，例如 https://web.homechart.app
+    de: URL Ihrer selbst gehosteten Homechart-Instanz, z. B. https://example.com
+    en: URL of your self-hosted Homechart instance, like https://example.com
+    es: URL de su instancia de Homechart autohospedada, como https://example.com
+    fr: URL de votre instance Homechart auto-hébergée, comme https://example.com
+    hi: आपके स्व-होस्टेड होमचार्ट इंस्टेंस का URL, जैसे https://example.com
+    ja: セルフホスト型 Homechart インスタンスの URL（https://example.com など）
+    nl: URL van uw zelf-gehoste Homechart-instantie, zoals https://example.com
+    pt: URL da sua instância Homechart auto-hospedada, como https://example.com
+    ru: URL-адрес вашего собственного экземпляра Homechart, например https://example.com
+    zh: 您自托管的 Homechart 实例的 URL，例如 https://example.com
   WebSignInTryDemo:
     ar: جرب Homechart في الوضع التجريبي
     context: Button to use Homechart in demo mode

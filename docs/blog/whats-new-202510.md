@@ -12,6 +12,14 @@ type: blog
 
 ## Features
 
+### Create Notifications
+
+Household members will now receive push notifications when various objects are created.  These can be disabled under Settings > Notifications.
+
+### OIDC Provider
+
+Homechart can now act as an OpenID Connect (OIDC) provider.  You can configure various applications to use Homechart accounts for authentication, similar to Google or Microsoft IDs, using OIDC.  See [SSO]({{% ref "/docs/guides/sso" %}}) for more details.
+
 ### URL State Tracking
 
 Homechart now stores most page settings (like table columns and filters) in the URL.  This makes it easy to bookmark and share customized views and filters.
@@ -22,7 +30,8 @@ Users can now sign in to Homechart using WebAuthn, Passkeys, and FIDO2 keys.  Us
 
 ## Enhancements
 
-- Budget > Transactions can now jump to specific pages.
+- Changed Budget > Transactions can now jump to specific pages.
+- Changed the self-hosted toggle to be more obvious during Sign In and Sign Up
 - Updated Go and web dependencies to latest versions
 
 ## Fixes

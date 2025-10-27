@@ -29,6 +29,7 @@ type: docs
 - Separate accounts for everyone in your household
 - Be part of one or multiple households with customizable, granular permissions
 - Control access to Homechart for each account or device
+- Authenticate into your applications using Homechart accounts with OIDC for [Single Sign-On (SSO)]({{% ref "/docs/guides/sso" %}})
 - Protect your account with WebAuthn, TOTP, OIDC, Passkeys, and FIDO keys
 - Use our cloud service or self-host Homechart [on your network]({{% ref "/docs/guides/get-homechart/self-hosted" %}})
 - No ads and your data is kept private and secure

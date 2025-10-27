@@ -41,6 +41,7 @@ weight: 30
 - Inventory and pantry
 - Rewards and gifts
 - Accounts for everyone in your household
+- Single Sign-On (SSO) for your apps
 - Support and feature requests
 - Automated and encrypted offsite backups
 - 14 day free trial (no credit card required)

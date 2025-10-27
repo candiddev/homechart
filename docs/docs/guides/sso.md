@@ -7,12 +7,60 @@ title: Single Sign-On (SSO)
 
 Homechart can integrate with third-party Identity Providers (IdP) to authenticate users.  In the future, Homechart will also act as an Identity Provider (IdP), allowing applications to use Homechart for authentication via OpenID Connect (OIDC).
 
-## Homechart as an Identity Provider
+## Homechart as an Identity Provider {#provider}
 
-Coming soon!
+Applications can use Homechart as an IdP using [OpenID Connect](https://openid.net/developers/how-connect-works/).  Applications will transfer users to Homechart, where they will authorize the application to use their Homechart account, and then transfer back to the application for a seamless login process.  The application can then grab various details from Homechart about the user, like their email address, name, or household permissions.
+
+### OIDC Clients
+
+OIDC Applications need to be registered within Homechart to allow users to authenticate with them.  Under Settings > Households, tap the **OIDC** tab to add new clients.  Once a client is created, you can copy the OIDC **Client ID** and **Client Secret** and add it to your application's configuration.  The OIDC issuer URL will be the base URL of your Homechart instance, like `https://example.com`.
+
+Homechart exposes the following details to OIDC applications via the OIDC identity token:
+
+- `email` String, the user's email address
+- `email_verified` Boolean, whether the user's email has been verified
+- `locale` String, the user's ISO 639 code
+- `name` String, the user's name
+- `permissions` Map of strings to numbers, contains the household permissions for the user.  The number values indicate the level of access:
+  - `0`: Edit
+  - `1`: View
+  - `2`: None
+- `permissions_labels` Map of household label names to numbers for the user.  The number values indicate the level of access, and follow the same mapping as `permissions`.
+- `updated_at` Timestamp for when the user was last updated.
+
+Here is an example OIDC identity token:
+
+```json
+{
+  "email": "jennifer@no-email.example.com",
+  "email_verified": true,
+  "locale": "en",
+  "name": "Jennifer",
+  "permissions": {
+    "auth": 1,
+    "bookmarks": 2,
+    "budget": 2,
+    "calendar": 2,
+    "cook": 2,
+    "health": 0,
+    "inventory": 2,
+    "notes": 2,
+    "plan": 2,
+    "reward": 2,
+    "secrets": 2,
+    "shop": 2
+  },
+  "permissions_labels": {
+    "Kids - Edit": 0,
+    "Kids - None": 2,
+    "Kids - View": 1
+  },
+  "updated_at": "2025-10-22T18:58:51.643851Z"
+}
+```
 
 {{% alert title="Candid Commentary" color="info" %}}
-While a lot of self-hosted users may have an authentication solution like Active Directory or LDAP, it may be overkill for most folks.  Homechart should be a good choice for identity in the near future, and it will expose things like label access, email addresses, etc for your users.
+Homechart provides industry leading security for accounts with methods like FIDO, TOTP, and WebAuthn.  You already have all of your household members in Homechart, why not use it for Single Sign-On with the rest of your applications?
 {{% /alert %}}
 
 ## Homechart with an Identity Provider

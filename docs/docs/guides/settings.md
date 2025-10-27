@@ -62,3 +62,7 @@ You can adjust your household **Name**, **Colors**, and **Currency** under **Pre
 ### Members
 
 You can add, remove, and change the permissions of household members under **Members**.
+
+### OIDC
+
+You can add, remove, and change OIDC clients for your household.  See [Homechart as an Identity Provider]({{% ref "/docs/guides/sso#provider" %}}) for more details.
