@@ -40,8 +40,9 @@ Likewise, Homechart can import calendars from other applications that expose an 
 
 ### iCalendar Providers
 
-We recommend the following iCalendar providers for additional Calendars like holidays or religious observances:
+We recommend the following iCalendar providers for additional Calendars like weather, holidays, or religious observances:
 
+- https://weather-in-calendar.com
 - https://www.officeholidays.com
 - https://www.calendarlabs.com
 

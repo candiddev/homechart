@@ -45,6 +45,12 @@ Number, number of minutes to keep entries in cache.
 
 **Default:** `15`
 
+{{% snippet config_key "app_disableNotifications" %}}
+
+Boolean, disables notifications from being sent.
+
+**Default:** `false`
+
 {{% snippet config_key "app_disableSignup" "(recommended)" %}}
 
 Boolean, disables new account signups.  Accounts can still be created/invited under the Admin > Accounts.  Self-hosted instances should enable this after they have setup their initial account.

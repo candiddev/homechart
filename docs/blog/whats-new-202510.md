@@ -30,9 +30,10 @@ Users can now sign in to Homechart using WebAuthn, Passkeys, and FIDO2 keys.  Us
 
 ## Enhancements
 
+- Added WebCal (`webcal://`) support for Calendar imports.
 - Changed Budget > Transactions can now jump to specific pages.
-- Changed the self-hosted toggle to be more obvious during Sign In and Sign Up
-- Updated Go and web dependencies to latest versions
+- Changed the self-hosted toggle to be more obvious during Sign In and Sign Up.
+- Updated Go and web dependencies to latest versions.
 
 ## Fixes
 
