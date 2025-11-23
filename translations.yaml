@@ -116,6 +116,19 @@ translations:
     pt: Execute manualmente tarefas que ocorrem a cada cinco minutos
     ru: Вручную запускайте задачи, которые происходят каждые пять минут.
     zh: 手动运行每五分钟发生一次的任务
+  CalendarTravelTo:
+    ar: السفر إلى %s
+    context: Travel to a location
+    de: Reise nach %s
+    en: Travel to %s
+    es: Viaje a %s
+    fr: Voyagez jusqu&#39;à %s
+    hi: '%s तक यात्रा करें'
+    ja: '%sへの旅行'
+    nl: Reizen naar %s
+    pt: Viaje para %s
+    ru: Путешествие в %s
+    zh: 前往 %s
   EmailAuthBody:
     ar: يحاول شخص ما (أرجو أن تكون أنت!) تسجيل الدخول إلى حساب Homechart المرتبط بهذا
       البريد الإلكتروني. استخدم هذا الرابط لتسجيل الدخول إلى Homechart، وسينتهي صلاحيته
@@ -581,45 +594,114 @@ translations:
     pt: Obrigado por se inscrever!
     ru: Спасибо за подписку!
     zh: 感谢您的订阅！
-  EmailPushEventReminderBodyHeader:
-    ar: هذا هو تذكيرك بالحدث القادم
-    context: Header text for body for Event reminder email and push notification
-    de: Dies ist Ihre Erinnerung für die bevorstehende Veranstaltung
+  EmailPushEventReminderBodyEndsAt:
+    ar: ينتهي الحدث عند %s
+    context: Ends text for body for Event reminder email and push notification
+    de: Die Veranstaltung endet um %s
+    en: Event ends at %s
+    es: El evento finaliza a las %s
+    fr: L&#39;événement se termine à %s
+    hi: इवेंट %s पर समाप्त होगा
+    ja: イベントは%sに終了します
+    nl: Evenement eindigt om %s
+    pt: O evento termina em %s
+    ru: Событие заканчивается в %s
+    zh: 活动将于 %s 结束。
+  EmailPushEventReminderBodyEndsOn:
+    ar: ينتهي الحدث في %s عند %s
+    context: Ends text for body for Event reminder email and push notification
+    de: Die Veranstaltung endet am %s um %s.
+    en: Event ends on %s at %s
+    es: El evento finaliza el %s a las %s
+    fr: L&#39;événement se termine le %s à %s
+    hi: इवेंट %s पर %s पर समाप्त होगा
+    ja: イベントは%sの%sに終了します
+    nl: Evenement eindigt op %s om %s
+    pt: O evento termina em %s às %s
+    ru: Событие заканчивается %s в %s
+    zh: 事件于 %s 结束，时间为 %s
+  EmailPushEventReminderBodyHeaderEnd:
+    ar: هذا هو تذكيرك للحدث الحالي
+    context: Header text for body for Event reminder email and push notification at
+      end
+    de: Dies ist Ihre Erinnerung an das aktuelle Ereignis.
+    en: This is your reminder for the current event
+    es: Este es un recordatorio del evento actual.
+    fr: Ceci est votre rappel concernant l&#39;événement actuel
+    hi: यह वर्तमान घटना के लिए आपका अनुस्मारक है
+    ja: これは現在のイベントのリマインダーです
+    nl: Dit is uw herinnering voor de huidige gebeurtenis
+    pt: Este é o seu lembrete para o evento atual.
+    ru: Это ваше напоминание о текущем событии.
+    zh: 这是您关于当前活动的提醒。
+  EmailPushEventReminderBodyHeaderStart:
+    ar: هذا هو تذكيرك للحدث القادم
+    context: Header text for body for Event reminder email and push notification at
+      start
+    de: Dies ist Ihre Erinnerung an die bevorstehende Veranstaltung.
     en: This is your reminder for the upcoming event
-    es: Este es su recordatorio para el próximo evento.
-    fr: Ceci est votre rappel pour l'événement à venir
+    es: Este es un recordatorio para el próximo evento.
+    fr: Ceci est un rappel pour l&#39;événement à venir
     hi: यह आगामी कार्यक्रम के लिए आपका अनुस्मारक है
     ja: これは今後のイベントのお知らせです
     nl: Dit is uw herinnering voor het komende evenement
-    pt: Este é o seu lembrete para o próximo evento
+    pt: Este é o seu lembrete para o próximo evento.
     ru: Это напоминание о предстоящем событии.
-    zh: 这是您对即将举行的活动的提醒
-  EmailPushEventReminderBodyLeave:
-    ar: غادر قبل
+    zh: 这是即将到来的活动的提醒
+  EmailPushEventReminderBodyLeaveAt:
+    ar: اترك في %s
     context: Leave by text for body for Event reminder email and push notification
-    de: Lass vorbei
-    en: Leave by
-    es: dejar por
-    fr: Partir par
-    hi: द्वारा छोड़ दो
-    ja: 出発時刻
-    nl: Laat langs
-    pt: Sair por
-    ru: Оставьте
-    zh: 离开
-  EmailPushEventReminderBodyStarts:
-    ar: يبدأ الحدث
-    context: Starts text for body for Event reminder email and push notification
-    de: Veranstaltung beginnt
-    en: Event starts
-    es: Comienza el evento
-    fr: L'événement commence
-    hi: घटना शुरू होती है
-    ja: イベント開始
-    nl: Evenement begint
-    pt: Início do evento
-    ru: Событие начинается
-    zh: 活动开始
+    de: Verlassen Sie den Bereich %s
+    en: Leave at %s
+    es: Salga a las %s
+    fr: Départ à %s
+    hi: '%s पर निकलें'
+    ja: '%s で出発'
+    nl: Vertrek om %s
+    pt: Saída em %s
+    ru: Оставить в %s
+    zh: 离开时间为 %s
+  EmailPushEventReminderBodyLeaveOn:
+    ar: اترك %s في %s
+    context: Leave by text for body for Event reminder email and push notification
+    de: Verlassen Sie die Umgebungsseite %s um %s
+    en: Leave on %s at %s
+    es: Salga en %s a las %s
+    fr: Départ le %s à %s
+    hi: '%s पर %s पर छोड़ दें'
+    ja: '%s に %s を残す'
+    nl: Laat %s staan op %s
+    pt: Deixe em %s às %s
+    ru: Оставить на %s в %s
+    zh: 离开时间：%s
+  EmailPushEventReminderBodyStartsAt:
+    ar: يبدأ الحدث عند %s
+    context: Starts text for body for Event reminder email and push notification,
+      if event starts today
+    de: Die Veranstaltung beginnt bei %s
+    en: Event starts at %s
+    es: El evento comienza a las %s
+    fr: L&#39;événement commence à %s
+    hi: इवेंट %s पर शुरू होगा
+    ja: イベントは%sに始まります
+    nl: Evenement begint om %s
+    pt: O evento começa em %s
+    ru: Событие начинается в %s
+    zh: 事件于 %s 开始。
+  EmailPushEventReminderBodyStartsOn:
+    ar: يبدأ الحدث في %s عند %s
+    context: Starts text for body for Event reminder email and push notification,
+      if event starts later
+    de: Die Veranstaltung beginnt am %s um %s
+    en: Event starts on %s at %s
+    es: El evento comienza el %s a las %s
+    fr: L&#39;événement commence le %s à %s
+    hi: इवेंट %s को %s पर शुरू होगा
+    ja: イベントは%sの%sに始まります
+    nl: Evenement start op %s om %s
+    pt: O evento começa em %s às %s
+    ru: Событие начинается %s в %s
+    zh: 事件于 %s 开始，时间为 %s
   EmailPushEventReminderSubject:
     ar: تذكير الحدث
     context: Subject for Event reminder email and push notification
@@ -5013,18 +5095,18 @@ translations:
     ru: Развернуть События
     zh: 展开活动
   WebCalendarGenerateNewiCalendarURL:
-    ar: قم بإنشاء عنوان URL جديد لـ iCalendar
+    ar: إنشاء عناوين URL جديدة لـ iCalendar
     context: Button to generate a new URL for iCalendar
-    de: Neue iCalendar-URL generieren
-    en: Generate New iCalendar URL
-    es: Generar nueva URL de iCalendar
-    fr: Générer une nouvelle URL iCalendar
-    hi: नया आईकैलेंडर URL जनरेट करें
+    de: Neue iCalendar-URLs generieren
+    en: Generate New iCalendar URLs
+    es: Generar nuevas URL de iCalendar
+    fr: Générer de nouvelles URL iCalendar
+    hi: नए iCalendar URL जनरेट करें
     ja: 新しい iCalendar URL を生成する
-    nl: Genereer een nieuwe iCalendar-URL
-    pt: Gerar novo URL do iCalendar
-    ru: Создать новый URL-адрес iCalendar
-    zh: 生成新的 iCalendar URL
+    nl: Nieuwe iCalendar-URL&#39;s genereren
+    pt: Gerar novos URLs do iCalendar
+    ru: Генерация новых URL-адресов iCalendar
+    zh: 生成新的iCalendar URL
   WebCalendarICSImport:
     ar: استيراد ملف ICS
     context: Button to import an ICS file
@@ -5077,6 +5159,32 @@ translations:
     pt: Acesso ao iCalendar desativado
     ru: Доступ к iCalendar отключен
     zh: iCalendar 访问被禁用
+  WebCalendariCalendarURLEvents:
+    ar: عنوان URL لـ iCalendar - الأحداث
+    context: Field to add a URL for iCalendar
+    de: iCalendar-URL - Ereignisse
+    en: iCalendar URL - Events
+    es: URL de iCalendar - Eventos
+    fr: URL iCalendar - Événements
+    hi: iCalendar URL - ईवेंट
+    ja: iCalendar URL - イベント
+    nl: iCalendar URL - Evenementen
+    pt: URL do iCalendar - Eventos
+    ru: URL-адрес iCalendar — События
+    zh: iCalendar URL - 活动
+  WebCalendariCalendarURLTasks:
+    ar: عنوان URL لـ iCalendar - المهام
+    context: Field to add a URL for iCalendar
+    de: iCalendar-URL - Aufgaben
+    en: iCalendar URL - Tasks
+    es: URL de iCalendar - Tareas
+    fr: URL iCalendar - Tâches
+    hi: iCalendar URL - कार्य
+    ja: iCalendar URL - タスク
+    nl: iCalendar URL - Taken
+    pt: URL do iCalendar - Tarefas
+    ru: URL-адрес iCalendar — Задачи
+    zh: iCalendar URL - 任务
   WebCalendariCalendarURLTooltip:
     ar: URL لموجز iCalendar
     context: Field to add a URL for iCalendar
@@ -5298,6 +5406,19 @@ translations:
     pt: Pesquise por nome ou refeição
     ru: Поиск по имени или блюду
     zh: 按名称或餐点搜索
+  WebCount:
+    ar: عدد
+    context: Count of the number of items
+    de: Zählen
+    en: Count
+    es: Contar
+    fr: Compter
+    hi: गिनती करना
+    ja: カウント
+    nl: Graaf
+    pt: Contar
+    ru: Считать
+    zh: 数数
   WebFormContactUsButtonFeedback:
     ar: تعليق
     context: Feedback button
@@ -6503,32 +6624,6 @@ translations:
     pt: Dia todo
     ru: Весь день
     zh: 一整天
-  WebFormOverlayCalendarEventCustomReminder:
-    ar: تذكير مخصص
-    context: Field to input custom reminder
-    de: Benutzerdefinierte Erinnerung
-    en: Custom Reminder
-    es: Recordatorio personalizado
-    fr: Rappel personnalisé
-    hi: कस्टम अनुस्मारक
-    ja: カスタムリマインダー
-    nl: Aangepaste herinnering
-    pt: Lembrete personalizado
-    ru: Пользовательское напоминание
-    zh: 自定义提醒
-  WebFormOverlayCalendarEventCustomReminderTooltip:
-    ar: متى ترسل تذكير مخصص
-    context: Tooltip to input custom reminder
-    de: Wann eine benutzerdefinierte Erinnerung gesendet werden soll
-    en: When to send a custom reminder
-    es: Cuándo enviar un recordatorio personalizado
-    fr: Quand envoyer un rappel personnalisé
-    hi: कस्टम रिमाइंडर कब भेजें
-    ja: カスタムリマインダーを送信するタイミング
-    nl: Wanneer stuur je een aangepaste herinnering?
-    pt: Quando enviar um lembrete personalizado
-    ru: Когда отправлять индивидуальное напоминание
-    zh: 何时发送自定义提醒
   WebFormOverlayCalendarEventEndTime:
     ar: وقت النهاية
     context: Event end date and time
@@ -6607,6 +6702,19 @@ translations:
     pt: Quem participará do evento
     ru: Кто будет присутствовать на мероприятии
     zh: 谁将参加活动
+  WebFormOverlayCalendarEventReminder:
+    ar: تذكير
+    context: Field to input reminder
+    de: Erinnerung
+    en: Reminder
+    es: Recordatorio
+    fr: Rappel
+    hi: अनुस्मारक
+    ja: リマインダー
+    nl: Herinnering
+    pt: Lembrete
+    ru: Напоминание
+    zh: 提醒
   WebFormOverlayCalendarEventReminder10Minutes:
     ar: قبل 10 دقائق
     context: A reminder option for an event
@@ -6659,6 +6767,97 @@ translations:
     pt: 30 minutos antes
     ru: за 30 минут до
     zh: 30分钟前
+  WebFormOverlayCalendarEventReminderBeforeEnd:
+    ar: قبل النهاية
+    context: End time
+    de: Vor dem Ende
+    en: Before End
+    es: Antes del final
+    fr: Avant la fin
+    hi: अंत से पहले
+    ja: 終了前
+    nl: Voor het einde
+    pt: Antes do Fim
+    ru: Перед концом
+    zh: 结束前
+  WebFormOverlayCalendarEventReminderBeforeStart:
+    ar: قبل البدء
+    context: Start time
+    de: Vor dem Start
+    en: Before Start
+    es: Antes de comenzar
+    fr: Avant de commencer
+    hi: शुरू करने से पहले
+    ja: 開始前
+    nl: Voor aanvang
+    pt: Antes de começar
+    ru: Перед началом
+    zh: 开始之前
+  WebFormOverlayCalendarEventReminderDays:
+    ar: أيام
+    context: Field to input reminder
+    de: Tage
+    en: Days
+    es: Días
+    fr: Jours
+    hi: दिन
+    ja: 日数
+    nl: Dagen
+    pt: Dias
+    ru: Дни
+    zh: 天
+  WebFormOverlayCalendarEventReminderHours:
+    ar: ساعات
+    context: Field to input reminder
+    de: Std
+    en: Hours
+    es: Horas
+    fr: Heures
+    hi: घंटे
+    ja: 営業時間
+    nl: Uren
+    pt: Horas
+    ru: Часы
+    zh: 小时
+  WebFormOverlayCalendarEventReminderMinutes:
+    ar: دقائق
+    context: Field to input reminder
+    de: Minuten
+    en: Minutes
+    es: Minutos
+    fr: Minutes
+    hi: मिनट
+    ja: 分
+    nl: Notulen
+    pt: Minutos
+    ru: Минуты
+    zh: 分钟
+  WebFormOverlayCalendarEventReminders:
+    ar: تذكيرات
+    context: Field to input reminders
+    de: Erinnerungen
+    en: Reminders
+    es: Recordatorios
+    fr: Rappels
+    hi: अनुस्मारक
+    ja: リマインダー
+    nl: Herinneringen
+    pt: Lembretes
+    ru: Напоминания
+    zh: 提醒
+  WebFormOverlayCalendarEventRemindersTooltip:
+    ar: متى ترسل التذكيرات
+    context: Tooltip to input reminders
+    de: Wann sollen Erinnerungen versendet werden?
+    en: When to send reminders
+    es: Cuándo enviar recordatorios
+    fr: Quand envoyer des rappels
+    hi: रिमाइंडर कब भेजें
+    ja: リマインダーを送信するタイミング
+    nl: Wanneer u herinneringen moet versturen
+    pt: Quando enviar lembretes
+    ru: Когда отправлять напоминания
+    zh: 何时发送提醒
   WebFormOverlayCalendarEventStartTime:
     ar: وقت البدء
     context: Event start date and time

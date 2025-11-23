@@ -32,6 +32,10 @@ Adding a **Location** to the event will give you a handy Google Maps link for di
 
 Events can be recurring by ticking **Recurring** at the bottom.  You can then set the recurring schedule.
 
+### Reminders
+
+Events can send multiple reminders before the event starts or ends.  These can be added under **Reminders**.
+
 ## Export/Import Calendars
 
 Homechart can export your calendar for use with other calendaring applications via ICS/iCalendar Feed.  Tap **Add > Export Calendar** to get a URL that you can add to your calendaring tool.

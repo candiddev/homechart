@@ -19,5 +19,6 @@ type: docs
 {{% image calendar_picker "Calendar Picker" %}}
 
 - Create calendar events and recurring dates
+- Add multiple reminders before your event starts or ends
 - Know exactly when to leave with travel time reminders
 - Import and export calendars using iCalendar/ICS
