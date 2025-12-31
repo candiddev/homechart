@@ -9699,18 +9699,18 @@ translations:
     ru: В ходе выполнения
     zh: 进行中
   WebGlobalInstallHomechart:
-    ar: تثبيت التطبيق
+    ar: قم بتثبيت Homechart
     context: Button to Install Homechart onto your machine
-    de: App installieren
-    en: Install App
-    es: Instalar aplicación
-    fr: Installer l&#39;application
-    hi: एप्लिकेशन इंस्टॉल करो
-    ja: アプリをインストール
-    nl: App installeren
-    pt: Instalar aplicativo
-    ru: Установить приложение
-    zh: 安装应用程序
+    de: Homechart installieren
+    en: Install Homechart
+    es: Instalar Homechart
+    fr: Installer Homechart
+    hi: होमचार्ट इंस्टॉल करें
+    ja: Homechartをインストールする
+    nl: Installeer Homechart
+    pt: Instalar o Homechart
+    ru: Установите Homechart
+    zh: 安装 Homechart
   WebGlobalInstallHomechartiOS:
     ar: قم بتثبيت Homechart على iOS من خلال النقر على زر المشاركة في الأسفل والنقر
       فوق إضافة إلى الشاشة الرئيسية.
@@ -10756,6 +10756,19 @@ translations:
     pt: Mudar para uma versão mais antiga
     ru: Перейти на более старую версию
     zh: 切换到旧版本
+  WebGlobalWriteAReview:
+    ar: اكتب مراجعة
+    context: Add a review of Homechart
+    de: Schreiben Sie eine Rezension
+    en: Write a Review
+    es: Escribe una reseña
+    fr: Rédiger un avis
+    hi: एक समीक्षा लिखे
+    ja: レビューを書く
+    nl: Schrijf een recensie
+    pt: Escreva uma avaliação
+    ru: Написать отзыв
+    zh: 撰写评论
   WebGlobalWrongTimeZone1:
     ar: المنطقة الزمنية لحسابك
     context: Alert when time zone doesn't match account
