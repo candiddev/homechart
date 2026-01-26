@@ -1748,6 +1748,45 @@ translations:
     pt: Calendário
     ru: Календарь
     zh: 日历
+  ObjectCalendarCreated:
+    ar: تم إنشاء التقويم
+    context: Message when Calendar is created
+    de: Kalender erstellt
+    en: Calendar created
+    es: Calendario creado
+    fr: Calendrier créé
+    hi: कैलेंडर बनाया गया
+    ja: カレンダーを作成しました
+    nl: Kalender aangemaakt
+    pt: Calendário criado
+    ru: Календарь создан
+    zh: 创建日历
+  ObjectCalendarDeleted:
+    ar: تم حذف التقويم
+    context: Message when Calendar is deleted
+    de: Kalender gelöscht
+    en: Calendar deleted
+    es: Calendario eliminado
+    fr: Calendrier supprimé
+    hi: कैलेंडर हटा दिया गया
+    ja: カレンダーを削除しました
+    nl: Agenda verwijderd
+    pt: Calendário excluído
+    ru: Календарь удален
+    zh: 日历已删除
+  ObjectCalendarUpdated:
+    ar: تم تحديث التقويم
+    context: Message when Calendar is updated
+    de: Kalender aktualisiert
+    en: Calendar updated
+    es: Calendario actualizado
+    fr: Calendrier mis à jour
+    hi: कैलेंडर अपडेट हो गया
+    ja: カレンダーを更新しました
+    nl: Kalender bijgewerkt
+    pt: Calendário atualizado
+    ru: Календарь обновлен
+    zh: 日历已更新
   ObjectCalendars:
     ar: التقويمات
     context: Multiple calendars of events
@@ -4127,71 +4166,6 @@ translations:
     pt: Credencial WebAuthn
     ru: Учетные данные WebAuthn
     zh: WebAuthn 凭证
-  ObjectiCalendarCreated:
-    ar: تم إنشاء iCalendar
-    context: Message when iCalendar is created
-    de: iCalendar erstellt
-    en: iCalendar created
-    es: iCalendar creado
-    fr: iCalendar créé
-    hi: आईकैलेंडर बनाया
-    ja: iCalendar を作成しました
-    nl: iCalendar gemaakt
-    pt: iCalendar criado
-    ru: iCalendar создан
-    zh: iCalendar 已创建
-  ObjectiCalendarDeleted:
-    ar: تم حذف iCalendar
-    context: Message when iCalendar is deleted
-    de: iCalendar gelöscht
-    en: iCalendar deleted
-    es: iCalendar eliminado
-    fr: iCalendar supprimé
-    hi: iCalendar हटा दिया गया
-    ja: iCalendar を削除しました
-    nl: iCalendar verwijderd
-    pt: iCalendar excluído
-    ru: iCalendar удален
-    zh: iCalendar 已删除
-  ObjectiCalendarFeed:
-    ar: موجز iCalendar
-    context: A URL for an iCalendar Feed
-    de: iCalendar-Feed
-    en: iCalendar Feed
-    es: Fuente iCalendar
-    fr: Flux iCalendar
-    hi: आईकैलेंडर फ़ीड
-    ja: iCalendar フィード
-    nl: iCalendar-feed
-    pt: Feed do iCalendar
-    ru: Лента iCalendar
-    zh: iCalendar 订阅
-  ObjectiCalendarFeeds:
-    ar: موجز iCalendar
-    context: Multiple URLs for an iCalendar Feed
-    de: iCalendar-Feeds
-    en: iCalendar Feeds
-    es: Fuentes iCalendar
-    fr: Flux iCalendar
-    hi: iकैलेंडर फ़ीड्स
-    ja: iCalendar フィード
-    nl: iCalendar-feeds
-    pt: Feeds do iCalendar
-    ru: Ленты iCalendar
-    zh: iCalendar 源
-  ObjectiCalendarUpdated:
-    ar: تم تحديث iCalendar
-    context: Message when iCalendar is updated
-    de: iCalendar aktualisiert
-    en: iCalendar updated
-    es: iCalendar actualizado
-    fr: iCalendar mis à jour
-    hi: आईकैलेंडर अपडेट किया गया
-    ja: iCalendar が更新されました
-    nl: iCalendar bijgewerkt
-    pt: iCalendar atualizado
-    ru: iCalendar обновлен
-    zh: iCalendar 已更新
   PushCreateBody:
     ar: مخلوق
     context: Body for create push notification, will contain object name and member
@@ -5159,6 +5133,19 @@ translations:
     pt: Acesso ao iCalendar desativado
     ru: Доступ к iCalendar отключен
     zh: iCalendar 访问被禁用
+  WebCalendariCalendarURL:
+    ar: رابط التقويم الإلكتروني
+    context: Field to add a URL for iCalendar
+    de: iCalendar-URL
+    en: iCalendar URL
+    es: URL de iCalendar
+    fr: URL iCalendar
+    hi: iCalendar URL
+    ja: iCalendar URL
+    nl: iCalendar-URL
+    pt: URL do iCalendar
+    ru: URL iCalendar
+    zh: iCalendar URL
   WebCalendariCalendarURLEvents:
     ar: عنوان URL لـ iCalendar - الأحداث
     context: Field to add a URL for iCalendar
@@ -5186,18 +5173,57 @@ translations:
     ru: URL-адрес iCalendar — Задачи
     zh: iCalendar URL - 任务
   WebCalendariCalendarURLTooltip:
-    ar: URL لموجز iCalendar
+    ar: عنوان URL الاختياري لموجز iCalendar
     context: Field to add a URL for iCalendar
-    de: URL des iCalendar-Feeds
-    en: URL of the iCalendar Feed
-    es: URL de la fuente iCalendar
-    fr: URL du flux iCalendar
-    hi: आईकैलेंडर फ़ीड का URL
-    ja: iCalendar フィードの URL
-    nl: URL van de iCalendar-feed
-    pt: URL do feed do iCalendar
-    ru: URL-адрес ленты iCalendar
-    zh: iCalendar Feed 的 URL
+    de: Die optionale URL des iCalendar-Feeds
+    en: An optional URL of the iCalendar Feed
+    es: La URL opcional del feed de iCalendar
+    fr: URL facultative du flux iCalendar
+    hi: आईकैलेंडर फ़ीड का वैकल्पिक यूआरएल
+    ja: iCalendarフィードのオプションのURL
+    nl: De optionele URL van de iCalendar-feed
+    pt: O URL opcional do Feed iCalendar
+    ru: Необязательный URL-адрес ленты iCalendar
+    zh: iCalendar Feed 的可选 URL
+  WebChangeAdded:
+    ar: تمت الإضافة
+    context: Added change
+    de: hinzugefügt
+    en: added
+    es: agregado
+    fr: ajouté
+    hi: जोड़ा
+    ja: 追加した
+    nl: toegevoegd
+    pt: adicionado
+    ru: добавлен
+    zh: 额外
+  WebChangeDeleted:
+    ar: تم الحذف
+    context: Deleted change
+    de: gelöscht
+    en: deleted
+    es: eliminado
+    fr: supprimé
+    hi: हटाए गए
+    ja: 削除されました
+    nl: verwijderd
+    pt: deletado
+    ru: удалено
+    zh: 已删除
+  WebChangeUpdated:
+    ar: تم التحديث
+    context: Updated change
+    de: aktualisiert
+    en: updated
+    es: actualizado
+    fr: mis à jour
+    hi: अद्यतन
+    ja: 更新
+    nl: bijgewerkt
+    pt: atualizado
+    ru: обновлено
+    zh: 更新
   WebCookRecipesIDCookTime:
     ar: وقت الطبخ
     context: How long a recipe takes to cook
@@ -6611,6 +6637,84 @@ translations:
     pt: Status da transação na conta
     ru: Статус транзакции в аккаунте
     zh: 账户中的交易状态
+  WebFormOverlayCalendarCalDAVClientExpires:
+    ar: انتهاء صلاحية عميل CalDAV
+    context: CalDAV client expires input
+    de: CalDAV-Client läuft ab
+    en: CalDAV Client Expires
+    es: El cliente CalDAV expira
+    fr: Expiration du client CalDAV
+    hi: CalDAV क्लाइंट की समय सीमा समाप्त हो गई है
+    ja: CalDAVクライアントの有効期限
+    nl: CalDAV-client verloopt
+    pt: Cliente CalDAV expira
+    ru: Срок действия клиента CalDAV истекает.
+    zh: CalDAV客户端过期
+  WebFormOverlayCalendarCalDAVClientName:
+    ar: اسم عميل CalDAV
+    context: CalDAV client name input
+    de: CalDAV-Clientname
+    en: CalDAV Client Name
+    es: Nombre del cliente de CalDAV
+    fr: Nom du client CalDAV
+    hi: CalDAV क्लाइंट का नाम
+    ja: CalDAVクライアント名
+    nl: CalDAV-clientnaam
+    pt: Nome do cliente CalDAV
+    ru: Имя клиента CalDAV
+    zh: CalDAV客户端名称
+  WebFormOverlayCalendarCalDAVClientNameTooltip:
+    ar: اسم عميل CalDAV
+    context: CalDAV client name input tooltip
+    de: Name des CalDAV-Clients
+    en: Name of the CalDAV client
+    es: Nombre del cliente CalDAV
+    fr: Nom du client CalDAV
+    hi: CalDAV क्लाइंट का नाम
+    ja: CalDAVクライアントの名前
+    nl: Naam van de CalDAV-client
+    pt: Nome do cliente CalDAV
+    ru: Название клиента CalDAV
+    zh: CalDAV客户端的名称
+  WebFormOverlayCalendarCalDAVPassword:
+    ar: كلمة مرور CalDAV
+    context: CalDAV password
+    de: CalDAV-Passwort
+    en: CalDAV Password
+    es: Contraseña de CalDAV
+    fr: Mot de passe CalDAV
+    hi: CalDAV पासवर्ड
+    ja: CalDAVパスワード
+    nl: CalDAV-wachtwoord
+    pt: Senha CalDAV
+    ru: Пароль CalDAV
+    zh: CalDAV 密码
+  WebFormOverlayCalendarCalDAVURL:
+    ar: عنوان URL لـ CalDAV
+    context: CalDAV URL
+    de: CalDAV-URL
+    en: CalDAV URL
+    es: URL de CalDAV
+    fr: URL CalDAV
+    hi: CalDAV URL
+    ja: CalDAV URL
+    nl: CalDAV-URL
+    pt: URL CalDAV
+    ru: URL CalDAV
+    zh: CalDAV URL
+  WebFormOverlayCalendarCalDAVUsername:
+    ar: اسم مستخدم CalDAV
+    context: CalDAV username
+    de: CalDAV-Benutzername
+    en: CalDAV Username
+    es: Nombre de usuario de CalDAV
+    fr: Nom d&#39;utilisateur CalDAV
+    hi: CalDAV उपयोगकर्ता नाम
+    ja: CalDAVユーザー名
+    nl: CalDAV-gebruikersnaam
+    pt: Nome de usuário CalDAV
+    ru: Имя пользователя CalDAV
+    zh: CalDAV 用户名
   WebFormOverlayCalendarEventAllDay:
     ar: طوال اليوم
     context: Toggle to set event to all day
@@ -6624,6 +6728,19 @@ translations:
     pt: Dia todo
     ru: Весь день
     zh: 一整天
+  WebFormOverlayCalendarEventCalendarTooltip:
+    ar: التقويم لربط هذا الحدث به
+    context: Calendar tooltip
+    de: Kalender, um dieses Ereignis zu verknüpfen
+    en: Calendar to associate this event with
+    es: Calendario para asociar este evento con
+    fr: Calendrier auquel associer cet événement
+    hi: इस घटना को कैलेंडर से संबद्ध करें
+    ja: このイベントを関連付けるカレンダー
+    nl: Kalender om dit evenement aan te koppelen
+    pt: Calendário para associar este evento
+    ru: Календарь для привязки этого события
+    zh: 将此事件与日历关联
   WebFormOverlayCalendarEventEndTime:
     ar: وقت النهاية
     context: Event end date and time
@@ -6884,19 +7001,19 @@ translations:
     pt: Defina o início do evento
     ru: Установите начало мероприятия
     zh: 设置事件的开始
-  WebFormOverlayCalendarEventTimeZoneTooltip:
-    ar: المنطقة الزمنية للحدث
-    context: Time zone tooltip for event
-    de: Zeitzone für das Ereignis
-    en: Time zone for the event
-    es: Zona horaria del evento
-    fr: Fuseau horaire de l'événement
-    hi: घटना के लिए समय क्षेत्र
-    ja: イベントのタイムゾーン
-    nl: Tijdzone voor het evenement
-    pt: Fuso horário do evento
-    ru: Часовой пояс для мероприятия
-    zh: 事件的时区
+  WebFormOverlayCalendarGenerateCalDAV:
+    ar: إعداد CalDAV
+    context: Setup CalDAV button
+    de: CalDAV einrichten
+    en: Setup CalDAV
+    es: Configurar CalDAV
+    fr: Configuration de CalDAV
+    hi: CalDAV सेटअप करें
+    ja: CalDAVの設定
+    nl: CalDAV instellen
+    pt: Configurar CalDAV
+    ru: Настройка CalDAV
+    zh: 设置 CalDAV
   WebFormOverlayCookMealPlanChef:
     ar: طاه
     context: Chef field for cook meal plan
@@ -8462,6 +8579,19 @@ translations:
     pt: Valor alvo do orçamento
     ru: Целевая сумма бюджета
     zh: 预算目标金额
+  WebGlobalActionCopiedToClipboard:
+    ar: تم نسخها إلى الحافظة
+    context: When something is copied to clipboard
+    de: In die Zwischenablage kopiert
+    en: Copied to clipboard
+    es: Copiado al portapapeles
+    fr: Copié dans le presse-papiers
+    hi: क्लिपबोर्ड पर कॉपी हो गया
+    ja: クリップボードにコピーされました
+    nl: Gekopieerd naar het klembord
+    pt: Copiado para a área de transferência
+    ru: Скопировано в буфер обмена
+    zh: 已复制到剪贴板
   WebGlobalActionCopy:
     ar: ينسخ
     context: Copy something
@@ -8787,6 +8917,19 @@ translations:
     pt: Resgatar
     ru: Выкупать
     zh: 赎回
+  WebGlobalActionRefresh:
+    ar: ينعش
+    context: Refresh something
+    de: Aktualisieren
+    en: Refresh
+    es: Refrescar
+    fr: Rafraîchir
+    hi: ताज़ा करना
+    ja: リフレッシュ
+    nl: Vernieuwen
+    pt: Atualizar
+    ru: Обновить
+    zh: 刷新
   WebGlobalActionResend:
     ar: إعادة إرسال
     context: Resend button
@@ -10574,19 +10717,6 @@ translations:
     pt: Modelos
     ru: Шаблоны
     zh: 模板
-  WebGlobalTimeZone:
-    ar: وحدة زمنية
-    context: Time zone field
-    de: Zeitzone
-    en: Time Zone
-    es: Zona horaria
-    fr: Fuseau horaire
-    hi: समय क्षेत्र
-    ja: タイムゾーン
-    nl: Tijdzone
-    pt: Fuso horário
-    ru: Часовой пояс
-    zh: 时区
   WebGlobalToday:
     ar: اليوم
     context: Things that happen today
@@ -11795,19 +11925,6 @@ translations:
     pt: Formato de hora usado pelo Homechart
     ru: Формат времени, используемый Homechart
     zh: Homechart 使用的时间格式
-  WebSettingsAccountTimeZoneTooltip:
-    ar: المنطقة الزمنية لحسابك
-    context: Time zone field tooltip
-    de: Zeitzone für Ihr Konto
-    en: Time zone for your account
-    es: Zona horaria de su cuenta
-    fr: Fuseau horaire de votre compte
-    hi: आपके खाते के लिए समय क्षेत्र
-    ja: アカウントのタイムゾーン
-    nl: Tijdzone voor uw account
-    pt: Fuso horário da sua conta
-    ru: Часовой пояс для вашего аккаунта
-    zh: 您帐户的时区
   WebSettingsHouseholdExportHousehold:
     ar: تصدير المنزل
     context: Button to export a household
@@ -12068,6 +12185,43 @@ translations:
     pt: Essa sessão
     ru: эта сессия
     zh: 本届会议
+  WebSettingsSessionsToken:
+    ar: رمز مميز
+    context: Secret token
+    de: Token
+    en: Token
+    es: Simbólico
+    fr: Jeton
+    hi: टोकन
+    ja: トークン
+    nl: Token
+    pt: Token
+    ru: Токен
+    zh: 令牌
+  WebSettingsSessionsTokenTooltip:
+    ar: |
+      الرمز المميز المراد استخدامه مع واجهة برمجة تطبيقات Homechart. يجب إضافته إلى ترويسة &quot;Authorization: Bearer&quot;.
+    context: Secret token tooltip
+    de: |
+      Das Token, das mit der Homechart-API verwendet werden soll. Es muss dem Header „Authorization: Bearer“ hinzugefügt werden.
+    en: |
+      The token to be used with Homechart's API.  Should be added to the "Authorization: Bearer" header.
+    es: |
+      El token que se usará con la API de Homechart debe añadirse al encabezado &quot;Autorización: Portador&quot;.
+    fr: |
+      Le jeton à utiliser avec l&#39;API de Homechart. Il doit être ajouté à l&#39;en-tête «Authorization: Bearer».
+    hi: |
+      होमचार्ट के एपीआई के साथ उपयोग किया जाने वाला टोकन। इसे &quot;Authorization: Bearer&quot; हेडर में जोड़ा जाना चाहिए।
+    ja: |
+      Homechart APIで使用するトークン。「Authorization: Bearer」ヘッダーに追加する必要があります。
+    nl: |
+      Het token dat gebruikt moet worden met de API van Homechart. Dit moet worden toegevoegd aan de header &quot;Authorization: Bearer&quot;.
+    pt: |
+      O token a ser usado com a API do Homechart. Deve ser adicionado ao cabeçalho &quot;Authorization: Bearer&quot;.
+    ru: |
+      Токен, используемый с API Homechart. Должен быть добавлен в заголовок &quot;Authorization: Bearer&quot;.
+    zh: |
+      用于 Homechart API 的令牌。应将其添加到“Authorization: Bearer”标头中。
   WebSetupAlertHousehold:
     ar: يرجى إنشاء أو الانضمام إلى أسرة للمتابعة
     context: Message displayed when a household needs to be created

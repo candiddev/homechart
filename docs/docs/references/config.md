@@ -75,6 +75,12 @@ Number, number of days to retain Calendar Events after their end date.  Setting 
 
 **Default:** `180`
 
+{{% snippet config_key "app_keepChangeDays" %}}
+
+Number, number of days to retain Change logs.  These are used for client synchronization and to populate the history on the Home screen.
+
+**Default:** `14`
+
 {{% snippet config_key "app_keepCookMealPlanDays" %}}
 
 Number, number of days to retain Cook Meal Plans after their scheduled date.  Setting this to 0 disables Cook Meal Plan cleanup.

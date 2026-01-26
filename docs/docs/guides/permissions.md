@@ -48,6 +48,7 @@ The following data types support Labels:
   - Grants Read/Create/Update/Delete to **Budget > Transactions** for the Account
 - **Budget > Categories**
 - **Budget > Payees**
+- **Calendars**
 - **Cook > Recipes**
 - **Inventory > Collections**
 - **Inventory > Items**

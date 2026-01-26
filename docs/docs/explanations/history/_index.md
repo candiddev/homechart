@@ -37,9 +37,9 @@ We rounded out 2020 by adding Calendar:
 
 {{% image calendar_week_2020 "Calendar" 500 %}}
 
-## 2021: App Stores and Homechart
+## 2021: Homechart
 
-Domestica was available on the Apple App Store and Google Play Store starting in January of 2021:
+Domestica was overhauled for mobile use starting in January of 2021:
 
 {{% image hero_2021 "Hero" 500 %}}
 
@@ -94,3 +94,17 @@ The rest of 2023 would be spent finishing Secrets and doing some work on core Ho
 In 2024, we launched feature voting and started working on more tactical changes requested by users.  Annoyances, delays, slowness, and UI quirks were the primary focus of work this year:
 
 {{% image plan_2024 "Plan" 500 %}}
+
+## 2025: Security Enhancements, OIDC
+
+In 2025, we added a bunch of new features:
+
+- Cook > Restaurants for tracking favorite menu items
+- A Database view to see everything in Homechart
+- Labels to grant granular access to household members
+- Account delegations and sharing
+- Published Homechart on the Apple App Store, Google Play Store, and Microsoft Store
+- Homechart became an OIDC provider
+- Added WebAuthn support
+
+{{% image oidc_2025 "OIDC" 500 %}}

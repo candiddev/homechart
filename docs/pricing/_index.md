@@ -57,7 +57,7 @@ weight: 30
   </div>
   <div>
     <strong>Lifetime</strong>
-    $99.99
+    $149.99
   </div>
 </h3>
 <a class="button button--yellow" href="/docs/guides/get-homechart">Get Homechart</a>
