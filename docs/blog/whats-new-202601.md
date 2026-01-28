@@ -28,6 +28,7 @@ You can now create multiple Calendars in Homechart with their own Events.  Calen
 - **Plan > Tasks** can now end recurrences using a count.
 - **Shop > Items** can now end recurrences using a count.
 - Added a real icon picker to forms that support icons.
+- Updated Go to 1.25.6
 - Updated dependencies to latest versions.
 
 ## Fixes
