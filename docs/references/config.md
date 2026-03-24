@@ -9,9 +9,13 @@ title: Config
 
 ## Configuration Values
 
+### `app`
+
+Main Homechart configurations.
+
 {{% snippet config_key "app_adminEmailAddresses" "(recommended)" %}}
 
-List of strings, email addresses which will have admin access to Homechart for their account.  If combined with `adminTrustedCIDRs`, 
+List of strings, email addresses which will have admin access to Homechart for their account.  If combined with `adminTrustedCIDRs`, it will limit the admin access granted to traffic originating from the networks specified.
 
 **Default:** `[]`
 
@@ -196,7 +200,7 @@ String, path to a SSL/TLS private key file.  Should work for the domain in your 
 
 **Default:** `""`
 
-{{% snippet config_cli homechart %}}
+{{% snippet config_cli homechart yellow %}}
 
 {{% snippet config_cache %}}
 
@@ -208,97 +212,97 @@ String, path to a SSL/TLS private key file.  Should work for the domain in your 
 
 {{% snippet config_jsonnet true %}}
 
-{{% snippet config_key "oidc" %}}
+### `oidc` {#oidc}
 
 OIDC is a map of OIDC issuer names to OIDC configurations.  See [Setup Homechart SSO]({{< ref "/docs/guides/sso" >}}) for more information.
 
 **Default:** `{}`
 
-### `oidc_[issuer_name]_authURL` {#oidc_authURL}
+#### `oidc_[issuer_name]_authURL` {#oidc_authURL}
 
 String, the endpoint for OAuth.  Can be discovered from [`oidcIssuerURL`](#oidc_oidcIssuerURL).
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_caCertificateBase64` {#oidc_caCertificateBase64}
+#### `oidc_[issuer_name]_caCertificateBase64` {#oidc_caCertificateBase64}
 
 String, the CA certificate used to communicate with the issuer.  Useful with private OIDC servers without public certificates.
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_clientID` {#oidc_clientID}
+#### `oidc_[issuer_name]_clientID` {#oidc_clientID}
 
 String, the ID shared with clients for OAuth requests.  Required.
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_clientSecret` {#oidc_clientSecret}
+#### `oidc_[issuer_name]_clientSecret` {#oidc_clientSecret}
 
 String, the secret shard with clients for OAuth requests.  Required.
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_codeChallengeMethodsSupported` {#oidc_codeChallengeMethodsSupported}
+#### `oidc_[issuer_name]_codeChallengeMethodsSupported` {#oidc_codeChallengeMethodsSupported}
 
 List of strings, the supported algorithms for OIDC code challenges.  Can be discovered from [`oidcIssuerURL`](#oidc_oidcIssuerURL).
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_displayName` {#oidc_displayName}
+#### `oidc_[issuer_name]_displayName` {#oidc_displayName}
 
 String, the name that will be displayed in the UI for the OIDC issuer.
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_icon` {#oidc_icon}
+#### `oidc_[issuer_name]_icon` {#oidc_icon}
 
 String, a URL for an icon to display for the OIDC issuer.  If this issuer has a name of `google` or `microsoft`, an icon will be provided by Homechart.
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_jwksKeys` {#oidc_jwksKeys}
+#### `oidc_[issuer_name]_jwksKeys` {#oidc_jwksKeys}
 
 List of strings, a list of public keys for an OIDC issuer.  Can be discovered from [`oidcIssuerURL`](#oidc_oidcIssuerURL).
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_jwksURI` {#oidc_jwksURI}
+#### `oidc_[issuer_name]_jwksURI` {#oidc_jwksURI}
 
 String, a URL for retrieving JWKS keys for an OIDC issuer.  Can be discovered from [`oidcIssuerURL`](#oidc_oidcIssuerURL).
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_issuerURL` {#oidc_issuerURL}
+#### `oidc_[issuer_name]_issuerURL` {#oidc_issuerURL}
 
 String, the issuer URL to be compared with the `issuer` of the token.  Can be discovered from [`oidcIssuerURL`](#oidc_oidcIssuerURL).
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_oidcIssuerURL` {#oidc_oidcIssuerURL}
+#### `oidc_[issuer_name]_oidcIssuerURL` {#oidc_oidcIssuerURL}
 
 String, URL to retrieve issuer configurations.  Should be the base path without `/.well-known/openid-configuration`, i.e. `https://accounts.google.com`.
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_scopes` {#oidc_scopes}
+#### `oidc_[issuer_name]_scopes` {#oidc_scopes}
 
 List of strings, a list of scopes to request.  If empty, will be set to "openid" and "email".  Homechart requires `sub` and `email` claims in an ID token to successfully authenticate a user using OIDC.
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_tokenURL` {#oidc_tokenURL}
+#### `oidc_[issuer_name]_tokenURL` {#oidc_tokenURL}
 
 String, the URL to retrieve tokens.  Can be discovered from [`oidcIssuerURL`](#oidc_oidcIssuerURL).
 
 **Default:** `""`
 
-### `oidc_[issuer_name]_userInfoEndpoint` {#oidc_userInfoEndpoint}
+#### `oidc_[issuer_name]_userInfoEndpoint` {#oidc_userInfoEndpoint}
 
 String, the URL to retrieve user info.  Can be discovered from [`oidcIssuerURL`](#oidc_oidcIssuerURL).
 
 **Default:** `""`
 
-{{% snippet config_key "smtp" %}}
+### `smtp` {#smtp}
 
 Homechart can use a SMTP server to send notifications to your household members.
 
@@ -350,7 +354,7 @@ String, username to use when connecting to SMTP server.
 
 **Default:** `""`
 
-{{% snippet config_key "webPush" %}}
+### `webPush` {#webpush}
 
 Homechart can use [Web Push](https://developer.mozilla.org/en-US/docs/Web/API/Push_API) to send push notifications from Homechart to your devices.  Homechart communicates directly to web push services provided by Apple, Google, Mozilla and other standards-compliant endpoints.  Additionally, all of the data in the push notification is encrypted between your server and the client--the web push services can't read it.
 

@@ -111,7 +111,7 @@ Homechart is meant to be easily upgradable regardless of the installation method
 
 ### 6.1. Using a Binary
 
-Download a new copy of homechart_latest to install or update Homechart. You can compare the SHA-512 sum of your existing executable to see if you need to update. See [Binary Install]({{< ref "/docs/guides/get-homechart/self-hosted#using-a-binary-1" >}}), it’s the same process as installing.
+Download a new copy of homechart_latest to install or update Homechart. You can compare the SHA-256 sum of your existing executable to see if you need to update. See [Binary Install]({{< ref "/docs/guides/get-homechart/self-hosted#using-a-binary-1" >}}), it’s the same process as installing.
 
 ### 6.2. Using a Container
 
@@ -134,7 +134,7 @@ Additionally, you can have your self-hosted instance perform automated, encrypte
 ### Docker
 
 {{< highlight bash >}}
-docker run -e homechart_postgresql_hostname=homechart -e homechart_postgresql_password=homechart -e homechart_postgresql_username=homechart -p 3000:3000 -d ghcr.io/candiddev/homechart:latest
+docker run -e 'homechart_database_uri=postgresql://postgres:postgres@postgres/postgres' -p 3000:3000 -d ghcr.io/candiddev/homechart:latest
 {{< /highlight >}}
 
 ### Docker Compose
