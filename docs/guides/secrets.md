@@ -13,7 +13,7 @@ To start using Secrets, you need to setup your [Private Key]({{< ref "/docs/guid
 
 ## Vaults
 
-Secrets > Vaults are a way to organize and protect your Values.  Vaults can be either Personal or Household, if you choose Household you can grant access to the Vault to only certain members of your household.  Members must have setup their [Private Key]({{< ref "/docs/guides/settings#private-key" >}}) to be added to a Vault.
+Secrets > Vaults organize and protect your Values.  Vaults can be either Personal or Household.  Household Vaults can grant access to specific members of your household.  Members must have setup their [Private Key]({{< ref "/docs/guides/settings#private-key" >}}) to be added to a Vault.
 
 ## Values
 

@@ -1306,6 +1306,19 @@ translations:
     pt: Bem-vindo ao Homechart
     ru: Добро пожаловать в Homechart
     zh: 欢迎来到首页图表
+  FormOverlayExportWebDAVGenerateNewICalendarURL:
+    ar: إنشاء عناوين URL جديدة لـ iCalendar
+    context: Button to generate a new URL for iCalendar
+    de: Neue iCalendar-URLs generieren
+    en: Generate New iCalendar URLs
+    es: Generar nuevas URL de iCalendar
+    fr: Générer de nouvelles URL iCalendar
+    hi: नए iCalendar URL जनरेट करें
+    ja: 新しい iCalendar URL を生成する
+    nl: Nieuwe iCalendar-URL&#39;s genereren
+    pt: Gerar novos URLs do iCalendar
+    ru: Генерация новых URL-адресов iCalendar
+    zh: 生成新的iCalendar URL
   ObjectAccount:
     ar: حساب
     context: An account/user of Homechart
@@ -1397,6 +1410,71 @@ translations:
     pt: Contas
     ru: Счета
     zh: 帐户
+  ObjectAddressBook:
+    ar: دفتر العناوين
+    context: An address book of contacts
+    de: Adressbuch
+    en: Address Book
+    es: Libreta de direcciones
+    fr: Carnet d&#39;adresses
+    hi: पता पुस्तिका
+    ja: アドレス帳
+    nl: Adresboek
+    pt: Agenda de Endereços
+    ru: Адресная книга
+    zh: 地址簿
+  ObjectAddressBookCreated:
+    ar: تم إنشاء دفتر العناوين
+    context: Message when Address Book is created
+    de: Adressbuch erstellt
+    en: Address Book created
+    es: Libreta de direcciones creada
+    fr: Carnet d&#39;adresses créé
+    hi: पता पुस्तिका बनाई गई
+    ja: アドレス帳が作成されました
+    nl: Adresboek aangemaakt
+    pt: Agenda de endereços criada
+    ru: Адресная книга создана
+    zh: 已创建地址簿
+  ObjectAddressBookDeleted:
+    ar: تم حذف دفتر العناوين
+    context: Message when Address Book is deleted
+    de: Adressbuch gelöscht
+    en: Address Book deleted
+    es: Libreta de direcciones eliminada
+    fr: Carnet d&#39;adresses supprimé
+    hi: पता पुस्तिका हटा दी गई
+    ja: アドレス帳が削除されました
+    nl: Adresboek verwijderd
+    pt: Agenda de endereços excluída
+    ru: Адресная книга удалена
+    zh: 地址簿已删除
+  ObjectAddressBookUpdated:
+    ar: تم تحديث دفتر العناوين
+    context: Message when Address Book is updated
+    de: Adressbuch aktualisiert
+    en: Address Book updated
+    es: Libreta de direcciones actualizada
+    fr: Carnet d&#39;adresses mis à jour
+    hi: पता पुस्तिका अपडेट हो गई
+    ja: アドレス帳が更新されました
+    nl: Adresboek bijgewerkt
+    pt: Agenda de endereços atualizada
+    ru: Адресная книга обновлена.
+    zh: 地址簿已更新
+  ObjectAddressBooks:
+    ar: دفاتر العناوين
+    context: Multiple address books of contacts
+    de: Adressbücher
+    en: Address Books
+    es: Libretas de direcciones
+    fr: Carnets d&#39;adresses
+    hi: पता पुस्तिकाएँ
+    ja: アドレス帳
+    nl: Adresboeken
+    pt: Listas de endereços
+    ru: Адресные книги
+    zh: 地址簿
   ObjectAuthentication:
     ar: المصادقة
     context: Authentication related things
@@ -2112,6 +2190,71 @@ translations:
     pt: Coleções
     ru: Коллекции
     zh: 收藏品
+  ObjectContact:
+    ar: اتصال
+    context: A person to contact
+    de: Kontakt
+    en: Contact
+    es: Contacto
+    fr: Contact
+    hi: संपर्क
+    ja: 接触
+    nl: Contact
+    pt: Contato
+    ru: Контакт
+    zh: 接触
+  ObjectContactCreated:
+    ar: تم إنشاء جهة الاتصال
+    context: Message when Contact is created
+    de: Kontakt erstellt
+    en: Contact created
+    es: Contacto creado
+    fr: Contact créé
+    hi: संपर्क बनाया गया
+    ja: 連絡先が作成されました
+    nl: Contact aangemaakt
+    pt: Contato criado
+    ru: Создан контакт
+    zh: 联系人已创建
+  ObjectContactDeleted:
+    ar: تم حذف جهة الاتصال
+    context: Message when Contact is deleted
+    de: Kontakt gelöscht
+    en: Contact deleted
+    es: Contacto eliminado
+    fr: Contact supprimé
+    hi: संपर्क हटा दिया गया
+    ja: 連絡先が削除されました
+    nl: Contact verwijderd
+    pt: Contato excluído
+    ru: Контакт удален
+    zh: 联系人已删除
+  ObjectContactUpdated:
+    ar: تم تحديث معلومات الاتصال
+    context: Message when Contact is updated
+    de: Kontakt aktualisiert
+    en: Contact updated
+    es: Contacto actualizado
+    fr: Contact mis à jour
+    hi: संपर्क अपडेट किया गया
+    ja: 連絡先情報が更新されました
+    nl: Contactgegevens bijgewerkt
+    pt: Contato atualizado
+    ru: Контактная информация обновлена.
+    zh: 联系方式已更新
+  ObjectContacts:
+    ar: جهات الاتصال
+    context: Multiple people to contact
+    de: Kontakte
+    en: Contacts
+    es: Contactos
+    fr: Contacts
+    hi: संपर्क
+    ja: 連絡先
+    nl: Contacten
+    pt: Contatos
+    ru: Контакты
+    zh: 联系方式
   ObjectCook:
     ar: يطبخ
     context: To prepare food
@@ -4977,6 +5120,19 @@ translations:
     pt: No acumulado do ano
     ru: С начала года
     zh: 今年迄今为止
+  WebBudgetTransactionsEditAccount:
+    ar: تعديل الحساب
+    context: Edit current account
+    de: Konto bearbeiten
+    en: Edit Account
+    es: Editar cuenta
+    fr: Modifier le compte
+    hi: खाता संपादित करें
+    ja: アカウントを編集
+    nl: Account bewerken
+    pt: Editar conta
+    ru: Редактировать учетную запись
+    zh: 编辑帐户
   WebBudgetTransactionsImportCSVDateTooltip:
     ar: ترتيب التاريخ لحقل التاريخ في ملف CSV
     context: Date order field tooltip for import csv
@@ -5029,32 +5185,6 @@ translations:
     pt: Transferir para
     ru: Перевести
     zh: 传送到
-  WebCalendarDisableiCalendar:
-    ar: تعطيل iCalendar
-    context: Button to disable iCalendar
-    de: iCalendar deaktivieren
-    en: Disable iCalendar
-    es: Deshabilitar iCalendar
-    fr: Désactiver iCalendar
-    hi: आईकैलेंडर को अक्षम करें
-    ja: iCalendarを無効にする
-    nl: Schakel iCalendar uit
-    pt: Desativar iCalendar
-    ru: Отключить iCalendar
-    zh: 禁用 iCalendar
-  WebCalendarEnableiCalendar:
-    ar: قم بتمكين iCalendar
-    context: Button to enable iCalendar
-    de: iCalendar aktivieren
-    en: Enable iCalendar
-    es: Habilitar iCalendar
-    fr: Activer iCalendar
-    hi: आईकैलेंडर सक्षम करें
-    ja: iCalendarを有効にする
-    nl: Schakel iCalendar in
-    pt: Habilitar iCalendar
-    ru: Включить iCalendar
-    zh: 启用 iCalendar
   WebCalendarExpand:
     ar: توسيع الأحداث
     context: Expand toggle
@@ -5068,19 +5198,6 @@ translations:
     pt: Expandir Eventos
     ru: Развернуть События
     zh: 展开活动
-  WebCalendarGenerateNewiCalendarURL:
-    ar: إنشاء عناوين URL جديدة لـ iCalendar
-    context: Button to generate a new URL for iCalendar
-    de: Neue iCalendar-URLs generieren
-    en: Generate New iCalendar URLs
-    es: Generar nuevas URL de iCalendar
-    fr: Générer de nouvelles URL iCalendar
-    hi: नए iCalendar URL जनरेट करें
-    ja: 新しい iCalendar URL を生成する
-    nl: Nieuwe iCalendar-URL&#39;s genereren
-    pt: Gerar novos URLs do iCalendar
-    ru: Генерация новых URL-адресов iCalendar
-    zh: 生成新的iCalendar URL
   WebCalendarICSImport:
     ar: استيراد ملف ICS
     context: Button to import an ICS file
@@ -5146,32 +5263,6 @@ translations:
     pt: URL do iCalendar
     ru: URL iCalendar
     zh: iCalendar URL
-  WebCalendariCalendarURLEvents:
-    ar: عنوان URL لـ iCalendar - الأحداث
-    context: Field to add a URL for iCalendar
-    de: iCalendar-URL - Ereignisse
-    en: iCalendar URL - Events
-    es: URL de iCalendar - Eventos
-    fr: URL iCalendar - Événements
-    hi: iCalendar URL - ईवेंट
-    ja: iCalendar URL - イベント
-    nl: iCalendar URL - Evenementen
-    pt: URL do iCalendar - Eventos
-    ru: URL-адрес iCalendar — События
-    zh: iCalendar URL - 活动
-  WebCalendariCalendarURLTasks:
-    ar: عنوان URL لـ iCalendar - المهام
-    context: Field to add a URL for iCalendar
-    de: iCalendar-URL - Aufgaben
-    en: iCalendar URL - Tasks
-    es: URL de iCalendar - Tareas
-    fr: URL iCalendar - Tâches
-    hi: iCalendar URL - कार्य
-    ja: iCalendar URL - タスク
-    nl: iCalendar URL - Taken
-    pt: URL do iCalendar - Tarefas
-    ru: URL-адрес iCalendar — Задачи
-    zh: iCalendar URL - 任务
   WebCalendariCalendarURLTooltip:
     ar: عنوان URL الاختياري لموجز iCalendar
     context: Field to add a URL for iCalendar
@@ -5224,6 +5315,32 @@ translations:
     pt: atualizado
     ru: обновлено
     zh: 更新
+  WebContactsContactShopItems:
+    ar: المتجر &gt; المنتجات
+    context: View Shop > Items associated with contact
+    de: Shop &gt; Artikel
+    en: Shop > Items
+    es: Tienda &gt; Artículos
+    fr: Boutique &gt; Articles
+    hi: दुकान &gt; आइटम
+    ja: ショップ &gt; 商品
+    nl: Winkel &gt; Artikelen
+    pt: Loja &gt; Itens
+    ru: Магазин &gt; Товары
+    zh: 商店 &gt; 商品
+  WebContactsContactsEditAddressBook:
+    ar: تعديل دفتر العناوين
+    context: Edit an address book button
+    de: Adressbuch bearbeiten
+    en: Edit Address Book
+    es: Editar la libreta de direcciones
+    fr: Modifier le carnet d&#39;adresses
+    hi: पता पुस्तिका संपादित करें
+    ja: アドレス帳を編集する
+    nl: Adresboek bewerken
+    pt: Editar Agenda de Endereços
+    ru: Редактировать адресную книгу
+    zh: 编辑地址簿
   WebCookRecipesIDCookTime:
     ar: وقت الطبخ
     context: How long a recipe takes to cook
@@ -6223,283 +6340,6 @@ translations:
     pt: Tipo de meta a ser orçada
     ru: Тип цели для бюджета
     zh: 预算目标的类型
-  WebFormOverlayBudgetPayeeAddress:
-    ar: عنوان
-    context: Address field for a payee
-    de: Adresse
-    en: Address
-    es: DIRECCIÓN
-    fr: Adresse
-    hi: पता
-    ja: 住所
-    nl: Adres
-    pt: Endereço
-    ru: Адрес
-    zh: 地址
-  WebFormOverlayBudgetPayeeAddressTooltip:
-    ar: عنوان المدفوع لأمره
-    context: Address tooltip for a payee
-    de: Adresse des Zahlungsempfängers
-    en: Payee address
-    es: dirección del beneficiario
-    fr: Adresse du bénéficiaire
-    hi: पाने वाले का पता
-    ja: 受取人住所
-    nl: Adres ontvanger
-    pt: Endereço do beneficiário
-    ru: Адрес получателя платежа
-    zh: 收款人地址
-  WebFormOverlayBudgetPayeeCookRestaurant:
-    ar: استخدم كطاهي &gt; مطعم
-    context: Toggle to set a payee as a restaurant
-    de: Verwendung als Koch &gt; Restaurant
-    en: Use as Cook > Restaurant
-    es: Usar como cocinero &gt; Restaurante
-    fr: Utiliser comme cuisinier &gt; Restaurant
-    hi: कुक के रूप में उपयोग करें &gt; रेस्तरां
-    ja: 料理人として使う &gt; レストラン
-    nl: Gebruik als Kok &gt; Restaurant
-    pt: Use como Cozinheiro &gt; Restaurante
-    ru: Использовать как повар &gt; Ресторан
-    zh: 用作厨师 &gt; 餐厅
-  WebFormOverlayBudgetPayeeDefaultCategory:
-    ar: الميزانية الافتراضية &gt; الفئة
-    context: Default Budget Category for Payee field
-    de: Standardbudget &gt; Kategorie
-    en: Default Budget > Category
-    es: Presupuesto predeterminado &gt; Categoría
-    fr: Budget par défaut &gt; Catégorie
-    hi: डिफ़ॉल्ट बजट &gt; श्रेणी
-    ja: デフォルトの予算 &gt; カテゴリ
-    nl: Standaardbudget &gt; Categorie
-    pt: Orçamento Padrão &gt; Categoria
-    ru: Бюджет по умолчанию &gt; Категория
-    zh: 默认预算 &gt; 类别
-  WebFormOverlayBudgetPayeeDefaultCategoryTooltip:
-    ar: الفئة الافتراضية لتعبئة المعاملات
-    context: Default Budget Category for Payee tooltip
-    de: Standardkategorie zum Auffüllen für Transaktionen
-    en: Default category to populate for transactions
-    es: Categoría predeterminada para completar las transacciones
-    fr: Catégorie par défaut à remplir pour les transactions
-    hi: लेन-देन के लिए पॉप्युलेट करने के लिए डिफ़ॉल्ट श्रेणी
-    ja: 取引に入力するデフォルトのカテゴリ
-    nl: Standaardcategorie om in te vullen voor transacties
-    pt: Categoria padrão a ser preenchida para transações
-    ru: Категория по умолчанию для заполнения для транзакций
-    zh: 为交易填充的默认类别
-  WebFormOverlayBudgetPayeeLastVisited:
-    ar: آخر زيارة
-    context: The last time a place was visited
-    de: Zuletzt besucht
-    en: Last Visited
-    es: Última visita
-    fr: Dernière visite
-    hi: अंतिम बार देखा गया
-    ja: 最終訪問
-    nl: Laatst bezocht
-    pt: Última visita
-    ru: Последний раз посетил
-    zh: 上次访问
-  WebFormOverlayBudgetPayeeMealsDisLiked:
-    ar: الوجبات - غير المفضلة
-    context: A list of disliked meals for a restaurant
-    de: Mahlzeiten - Nicht gemocht
-    en: Meals - Disliked
-    es: Comidas - No me gustaron
-    fr: Repas - Je n&#39;ai pas aimé
-    hi: भोजन - नापसंद
-    ja: 食事 - 嫌い
-    nl: Maaltijden - Niet leuk
-    pt: Refeições - Não gostei
-    ru: Еда - Не понравилось
-    zh: 餐食 - 不喜欢
-  WebFormOverlayBudgetPayeeMealsDislikedTooltip:
-    ar: أضف الوجبات التي لم تعجب أسرتك في هذا المطعم، مفصولة بفواصل
-    context: A list of disliked meals for a restaurant tooltip
-    de: Fügen Sie die Gerichte hinzu, die Ihrem Haushalt in diesem Restaurant nicht
-      geschmeckt haben, durch Kommas getrennt
-    en: Add the meals that your household disliked at this restaurant, comma-separated
-    es: Añade las comidas que a tu familia no le gustaron en este restaurante, separadas
-      por comas.
-    fr: Ajoutez les plats que votre famille n&#39;a pas aimés dans ce restaurant,
-      séparés par des virgules
-    hi: इस रेस्तरां में आपके परिवार को जो खाना पसंद नहीं आया, उसे अल्पविराम से अलग
-      करके जोड़ें
-    ja: このレストランで家族が嫌いだった料理をカンマで区切って追加してください
-    nl: Voeg de maaltijden toe die uw huishouden niet lekker vond in dit restaurant,
-      gescheiden door komma&#39;s
-    pt: Adicione as refeições que sua família não gostou neste restaurante, separadas
-      por vírgulas
-    ru: Добавьте блюда, которые не понравились вашей семье в этом ресторане, разделив
-      их запятыми.
-    zh: 添加您家人不喜欢这家餐厅的菜品（以逗号分隔）
-  WebFormOverlayBudgetPayeeMealsLiked:
-    ar: الوجبات - المفضلة
-    context: A list of liked meals for a restaurant
-    de: Mahlzeiten - Gefällt mir
-    en: Meals - Liked
-    es: Comidas - Me gustó
-    fr: Repas - J&#39;ai aimé
-    hi: भोजन - पसंद आया
-    ja: 食事 - 気に入った
-    nl: Maaltijden - Geliked
-    pt: Refeições - Gostei
-    ru: Еда - Понравилось
-    zh: 餐食 - 喜欢
-  WebFormOverlayBudgetPayeeMealsLikedTooltip:
-    ar: أضف الوجبات التي أحبها أفراد أسرتك في هذا المطعم، مفصولة بفواصل
-    context: A list of liked meals for a restaurant tooltip
-    de: Fügen Sie die Mahlzeiten hinzu, die Ihrem Haushalt in diesem Restaurant geschmeckt
-      haben, durch Kommas getrennt
-    en: Add the meals that your household liked at this restaurant, comma-separated
-    es: Agregue las comidas que a su familia le gustaron en este restaurante, separadas
-      por comas.
-    fr: Ajoutez les plats que votre famille a appréciés dans ce restaurant, séparés
-      par des virgules
-    hi: इस रेस्तरां में आपके परिवार को जो भोजन पसंद आया उसे अल्पविराम से अलग करके
-      जोड़ें
-    ja: このレストランで家族が気に入った料理をカンマで区切って追加してください
-    nl: Voeg de maaltijden toe die uw huishouden in dit restaurant lekker vond, gescheiden
-      door komma&#39;s
-    pt: Adicione as refeições que sua família gostou neste restaurante, separadas
-      por vírgulas
-    ru: Добавьте блюда, которые понравились вашей семье в этом ресторане, разделенные
-      запятыми.
-    zh: 添加您家人在这家餐厅喜欢的菜品（以逗号分隔）
-  WebFormOverlayBudgetPayeeMenuLink:
-    ar: رابط القائمة
-    context: A link to the restaurant's menu
-    de: Menü-Link
-    en: Menu Link
-    es: Enlace de menú
-    fr: Lien vers le menu
-    hi: मेनू लिंक
-    ja: メニューリンク
-    nl: Menu-koppeling
-    pt: Link do menu
-    ru: Ссылка на меню
-    zh: 菜单链接
-  WebFormOverlayBudgetPayeeMenuLinkTooltip:
-    ar: أضف رابطًا إلى قائمة الطعام عبر الإنترنت أو منصة الطلب الخاصة بالمطعم
-    context: A link to the restaurant's menu tooltip
-    de: Fügen Sie einen Link zum Online-Menü oder zur Bestellplattform des Restaurants
-      hinzu
-    en: Add a link to the restaurant's online menu or ordering platform
-    es: Agregue un enlace al menú en línea del restaurante o a la plataforma de pedidos.
-    fr: Ajoutez un lien vers le menu en ligne du restaurant ou vers la plateforme
-      de commande
-    hi: रेस्तरां के ऑनलाइन मेनू या ऑर्डरिंग प्लेटफ़ॉर्म का लिंक जोड़ें
-    ja: レストランのオンラインメニューまたは注文プラットフォームへのリンクを追加します
-    nl: Voeg een link toe naar het online menu of bestelplatform van het restaurant
-    pt: Adicione um link para o menu online do restaurante ou para a plataforma de
-      pedidos
-    ru: Добавьте ссылку на онлайн-меню ресторана или платформу заказов
-    zh: 添加餐厅在线菜单或订餐平台的链接
-  WebFormOverlayBudgetPayeePhoneNumber:
-    ar: رقم التليفون
-    context: Phone number of Budget Payee
-    de: Telefonnummer
-    en: Phone Number
-    es: Número de teléfono
-    fr: Numéro de téléphone
-    hi: फ़ोन नंबर
-    ja: 電話番号
-    nl: Telefoonnummer
-    pt: Número de telefone
-    ru: Номер телефона
-    zh: 电话号码
-  WebFormOverlayBudgetPayeePhoneNumberTooltip:
-    ar: رقم هاتف الشركة
-    context: Phone number of Budget Payee tooltip
-    de: Telefonnummer des Unternehmens
-    en: Phone number of the business
-    es: Número de teléfono de la empresa
-    fr: Numéro de téléphone de l&#39;entreprise
-    hi: व्यवसाय का फ़ोन नंबर
-    ja: 事業所の電話番号
-    nl: Telefoonnummer van het bedrijf
-    pt: Número de telefone da empresa
-    ru: Номер телефона компании
-    zh: 商家电话号码
-  WebFormOverlayBudgetPayeePrice:
-    ar: سعر
-    context: The price of a business
-    de: Preis
-    en: Price
-    es: Precio
-    fr: Prix
-    hi: कीमत
-    ja: 価格
-    nl: Prijs
-    pt: Preço
-    ru: Цена
-    zh: 价格
-  WebFormOverlayBudgetPayeePriceTooltip:
-    ar: كم تكلفة العمل
-    context: Tooltip for restaurant price
-    de: Wie teuer ist das Geschäft
-    en: How expensive is the business
-    es: ¿Qué tan caro es el negocio?
-    fr: Combien coûte l&#39;entreprise
-    hi: यह व्यवसाय कितना महंगा है?
-    ja: ビジネスはどれくらい費用がかかるのか
-    nl: Hoe duur is het bedrijf?
-    pt: Quão caro é o negócio
-    ru: Насколько дорог бизнес?
-    zh: 生意有多贵
-  WebFormOverlayBudgetPayeeRating:
-    ar: تصنيف
-    context: The rating of a business
-    de: Bewertungen
-    en: Rating
-    es: Clasificación
-    fr: Notation
-    hi: रेटिंग
-    ja: 評価
-    nl: Beoordeling
-    pt: Avaliação
-    ru: Рейтинг
-    zh: 等级
-  WebFormOverlayBudgetPayeeRatingTooltip:
-    ar: تصنيف الأعمال
-    context: Tooltip for business rating
-    de: Unternehmensbewertung
-    en: Business rating
-    es: Calificación empresarial
-    fr: Notation des entreprises
-    hi: व्यवसाय रेटिंग
-    ja: ビジネス評価
-    nl: Bedrijfsbeoordeling
-    pt: Avaliação de negócios
-    ru: Бизнес-рейтинг
-    zh: 业务评级
-  WebFormOverlayBudgetPayeeShopStore:
-    ar: استخدم كمتجر &gt; متجر
-    context: Toggle to set a payee as a store
-    de: Als Shop &gt; Store verwenden
-    en: Use as Shop > Store
-    es: Usar como Tienda &gt; Tienda
-    fr: Utiliser comme Boutique &gt; Magasin
-    hi: दुकान &gt; स्टोर के रूप में उपयोग करें
-    ja: ショップとして使用する &gt; ストア
-    nl: Gebruik als Winkel &gt; Winkel
-    pt: Usar como Loja &gt; Loja
-    ru: Использовать как Магазин &gt; Магазин
-    zh: 用作商店 &gt; 店铺
-  WebFormOverlayBudgetPayeeTimesVisited:
-    ar: عدد مرات الزيارة
-    context: Number of times a place was visited
-    de: Besuchszeiten
-    en: Times Visited
-    es: Veces visitadas
-    fr: Fois visités
-    hi: दौरा किये गये समय
-    ja: 訪問回数
-    nl: Aantal keer bezocht
-    pt: Vezes visitadas
-    ru: Количество посещений
-    zh: 访问次数
   WebFormOverlayBudgetTransactionAmountTooltip:
     ar: مبلغ من المال ، استخدم رمز الطرح (-) لإنشاء مبلغ سلبي أو رمز الجمع (+) لإنشاء
       مبلغ موجب
@@ -6637,84 +6477,6 @@ translations:
     pt: Status da transação na conta
     ru: Статус транзакции в аккаунте
     zh: 账户中的交易状态
-  WebFormOverlayCalendarCalDAVClientExpires:
-    ar: انتهاء صلاحية عميل CalDAV
-    context: CalDAV client expires input
-    de: CalDAV-Client läuft ab
-    en: CalDAV Client Expires
-    es: El cliente CalDAV expira
-    fr: Expiration du client CalDAV
-    hi: CalDAV क्लाइंट की समय सीमा समाप्त हो गई है
-    ja: CalDAVクライアントの有効期限
-    nl: CalDAV-client verloopt
-    pt: Cliente CalDAV expira
-    ru: Срок действия клиента CalDAV истекает.
-    zh: CalDAV客户端过期
-  WebFormOverlayCalendarCalDAVClientName:
-    ar: اسم عميل CalDAV
-    context: CalDAV client name input
-    de: CalDAV-Clientname
-    en: CalDAV Client Name
-    es: Nombre del cliente de CalDAV
-    fr: Nom du client CalDAV
-    hi: CalDAV क्लाइंट का नाम
-    ja: CalDAVクライアント名
-    nl: CalDAV-clientnaam
-    pt: Nome do cliente CalDAV
-    ru: Имя клиента CalDAV
-    zh: CalDAV客户端名称
-  WebFormOverlayCalendarCalDAVClientNameTooltip:
-    ar: اسم عميل CalDAV
-    context: CalDAV client name input tooltip
-    de: Name des CalDAV-Clients
-    en: Name of the CalDAV client
-    es: Nombre del cliente CalDAV
-    fr: Nom du client CalDAV
-    hi: CalDAV क्लाइंट का नाम
-    ja: CalDAVクライアントの名前
-    nl: Naam van de CalDAV-client
-    pt: Nome do cliente CalDAV
-    ru: Название клиента CalDAV
-    zh: CalDAV客户端的名称
-  WebFormOverlayCalendarCalDAVPassword:
-    ar: كلمة مرور CalDAV
-    context: CalDAV password
-    de: CalDAV-Passwort
-    en: CalDAV Password
-    es: Contraseña de CalDAV
-    fr: Mot de passe CalDAV
-    hi: CalDAV पासवर्ड
-    ja: CalDAVパスワード
-    nl: CalDAV-wachtwoord
-    pt: Senha CalDAV
-    ru: Пароль CalDAV
-    zh: CalDAV 密码
-  WebFormOverlayCalendarCalDAVURL:
-    ar: عنوان URL لـ CalDAV
-    context: CalDAV URL
-    de: CalDAV-URL
-    en: CalDAV URL
-    es: URL de CalDAV
-    fr: URL CalDAV
-    hi: CalDAV URL
-    ja: CalDAV URL
-    nl: CalDAV-URL
-    pt: URL CalDAV
-    ru: URL CalDAV
-    zh: CalDAV URL
-  WebFormOverlayCalendarCalDAVUsername:
-    ar: اسم مستخدم CalDAV
-    context: CalDAV username
-    de: CalDAV-Benutzername
-    en: CalDAV Username
-    es: Nombre de usuario de CalDAV
-    fr: Nom d&#39;utilisateur CalDAV
-    hi: CalDAV उपयोगकर्ता नाम
-    ja: CalDAVユーザー名
-    nl: CalDAV-gebruikersnaam
-    pt: Nome de usuário CalDAV
-    ru: Имя пользователя CalDAV
-    zh: CalDAV 用户名
   WebFormOverlayCalendarEventAllDay:
     ar: طوال اليوم
     context: Toggle to set event to all day
@@ -7001,19 +6763,621 @@ translations:
     pt: Defina o início do evento
     ru: Установите начало мероприятия
     zh: 设置事件的开始
-  WebFormOverlayCalendarGenerateCalDAV:
-    ar: إعداد CalDAV
-    context: Setup CalDAV button
-    de: CalDAV einrichten
-    en: Setup CalDAV
-    es: Configurar CalDAV
-    fr: Configuration de CalDAV
-    hi: CalDAV सेटअप करें
-    ja: CalDAVの設定
-    nl: CalDAV instellen
-    pt: Configurar CalDAV
-    ru: Настройка CalDAV
-    zh: 设置 CalDAV
+  WebFormOverlayContactsAddressBookVCFImport:
+    ar: استيراد ملف VCF
+    context: Button to import a VCF file
+    de: VCF-Datei importieren
+    en: Import VCF File
+    es: Importar archivo VCF
+    fr: Importer un fichier VCF
+    hi: VCF फ़ाइल आयात करें
+    ja: VCFファイルをインポートする
+    nl: VCF-bestand importeren
+    pt: Importar arquivo VCF
+    ru: Импорт VCF-файла
+    zh: 导入 VCF 文件
+  WebFormOverlayContactsAddressBookVCFImported:
+    ar: تم استيراد ملف VCF بنجاح!
+    context: Button to show a VCF file has been imported
+    de: VCF-Datei importiert!
+    en: VCF File Imported!
+    es: ¡Archivo VCF importado!
+    fr: Fichier VCF importé !
+    hi: VCF फ़ाइल आयात हो गई!
+    ja: VCFファイルがインポートされました！
+    nl: VCF-bestand geïmporteerd!
+    pt: Arquivo VCF importado!
+    ru: Файл VCF импортирован!
+    zh: VCF文件导入成功！
+  WebFormOverlayContactsContactAdditionalNames:
+    ar: أسماء إضافية
+    context: Nickname name for a card
+    de: Weitere Namen
+    en: Additional Names
+    es: Nombres adicionales
+    fr: Noms supplémentaires
+    hi: अतिरिक्त नाम
+    ja: 追加名
+    nl: Aanvullende namen
+    pt: Nomes adicionais
+    ru: Дополнительные имена
+    zh: 其他名称
+  WebFormOverlayContactsContactAddress:
+    ar: عنوان
+    context: Address field for a card
+    de: Adresse
+    en: Address
+    es: DIRECCIÓN
+    fr: Adresse
+    hi: पता
+    ja: 住所
+    nl: Adres
+    pt: Endereço
+    ru: Адрес
+    zh: 地址
+  WebFormOverlayContactsContactAddressBookTooltip:
+    ar: دفتر العناوين لربط جهة الاتصال هذه بـ
+    context: Tooltip to select an address book
+    de: Adressbuch, um diesen Kontakt zuzuordnen
+    en: Address Book to associate this contact with
+    es: Libreta de direcciones para asociar este contacto con
+    fr: Carnet d&#39;adresses pour associer ce contact à
+    hi: इस संपर्क को जोड़ने के लिए पता पुस्तिका का उपयोग करें
+    ja: この連絡先を関連付けるアドレス帳
+    nl: Adresboek om dit contact aan te koppelen
+    pt: Agenda de endereços para associar este contato a
+    ru: Адресная книга для связывания этого контакта с
+    zh: 要将此联系人关联到通讯录
+  WebFormOverlayContactsContactAddresses:
+    ar: العناوين
+    context: Addresses field for a card
+    de: Adressen
+    en: Addresses
+    es: Direcciones
+    fr: Adresses
+    hi: पतों
+    ja: 住所
+    nl: Adressen
+    pt: Endereços
+    ru: Адреса
+    zh: 地址
+  WebFormOverlayContactsContactAddressesTooltip:
+    ar: عناوين جهات الاتصال
+    context: Addresses tooltip for a card
+    de: Adressen der Kontaktperson
+    en: Addresses of the contact
+    es: Direcciones de contacto
+    fr: Adresses des contacts
+    hi: संपर्क के पते
+    ja: 連絡先の住所
+    nl: Contactgegevens
+    pt: Endereços dos contatos
+    ru: Адреса контактов
+    zh: 联系人地址
+  WebFormOverlayContactsContactAnniversary:
+    ar: عيد
+    context: Anniversary field for a card
+    de: Jubiläum
+    en: Anniversary
+    es: Aniversario
+    fr: Anniversaire
+    hi: सालगिरह
+    ja: 周年
+    nl: Verjaardag
+    pt: Aniversário
+    ru: Годовщина
+    zh: 周年纪念日
+  WebFormOverlayContactsContactAnniversaryTooltip:
+    ar: ذكرى سنوية أو مناسبة خاصة للتواصل
+    context: Anniversary tooltip for a card
+    de: Jahrestag oder besonderes Datum für den Kontakt
+    en: Anniversary or special date for the contact
+    es: Aniversario o fecha especial para el contacto
+    fr: Anniversaire ou date spéciale pour le contact
+    hi: संपर्क की वर्षगांठ या कोई विशेष तिथि
+    ja: 連絡先の記念日または特別な日
+    nl: Jubileum of speciale datum voor de contactpersoon
+    pt: Aniversário ou data especial para o contato
+    ru: Годовщина или особая дата для контакта
+    zh: 周年纪念日或特殊日期
+  WebFormOverlayContactsContactBirthday:
+    ar: عيد ميلاد
+    context: Birthday field for a card
+    de: Geburtstag
+    en: Birthday
+    es: Cumpleaños
+    fr: Anniversaire
+    hi: जन्मदिन
+    ja: 誕生日
+    nl: Verjaardag
+    pt: Aniversário
+    ru: День рождения
+    zh: 生日
+  WebFormOverlayContactsContactBirthdayTooltip:
+    ar: تاريخ ميلاد جهة الاتصال
+    context: Birthday tooltip for a card
+    de: Geburtsdatum des Kontakts
+    en: Birthday date for the contact
+    es: Fecha de cumpleaños del contacto
+    fr: Date d&#39;anniversaire du contact
+    hi: संपर्क के लिए जन्मदिन की तारीख
+    ja: 連絡先の誕生日
+    nl: Geboortedatum van de contactpersoon
+    pt: Data de aniversário do contato
+    ru: Дата рождения контакта
+    zh: 联系人的生日日期
+  WebFormOverlayContactsContactBudgetPayee:
+    ar: الميزانية &gt; المستفيد
+    context: Toggle to set a contact as a payee
+    de: Budget &gt; Zahlungsempfänger
+    en: Budget > Payee
+    es: Presupuesto &gt; Beneficiario
+    fr: Budget &gt; Bénéficiaire
+    hi: बजट &gt; भुगतानकर्ता
+    ja: 予算 &gt; 受取人
+    nl: Budget &gt; Begunstigde
+    pt: Orçamento &gt; Beneficiário
+    ru: Бюджет &gt; Получатель платежа
+    zh: 预算 &gt; 收款人
+  WebFormOverlayContactsContactCompany:
+    ar: شركة
+    context: Company of the contact.
+    de: Unternehmen
+    en: Company
+    es: Compañía
+    fr: Entreprise
+    hi: कंपनी
+    ja: 会社
+    nl: Bedrijf
+    pt: Empresa
+    ru: Компания
+    zh: 公司
+  WebFormOverlayContactsContactCookRestaurant:
+    ar: طباخ &gt; مطعم
+    context: Toggle to set a card as a restaurant
+    de: Koch &gt; Restaurant
+    en: Cook > Restaurant
+    es: Cocinero &gt; Restaurante
+    fr: Cuisiner &gt; Restaurant
+    hi: रसोइया &gt; रेस्टोरेंट
+    ja: 料理人 &gt; レストラン
+    nl: Kok &gt; Restaurant
+    pt: Cozinheiro &gt; Restaurante
+    ru: Повар &gt; Ресторан
+    zh: 厨师 &gt; 餐厅
+  WebFormOverlayContactsContactDefaultCategory:
+    ar: الميزانية الافتراضية &gt; الفئة
+    context: Default Budget Category for contact field
+    de: Standardbudget &gt; Kategorie
+    en: Default Budget > Category
+    es: Presupuesto predeterminado &gt; Categoría
+    fr: Budget par défaut &gt; Catégorie
+    hi: डिफ़ॉल्ट बजट &gt; श्रेणी
+    ja: デフォルトの予算 &gt; カテゴリ
+    nl: Standaardbudget &gt; Categorie
+    pt: Orçamento Padrão &gt; Categoria
+    ru: Бюджет по умолчанию &gt; Категория
+    zh: 默认预算 &gt; 类别
+  WebFormOverlayContactsContactEmailAddress:
+    ar: عنوان البريد الإلكتروني
+    context: Email address field for a card
+    de: E-Mail-Adresse
+    en: Email Address
+    es: Dirección de correo electrónico
+    fr: Adresse email
+    hi: मेल पता
+    ja: 電子メールアドレス
+    nl: E-mailadres
+    pt: Endereço de email
+    ru: Адрес электронной почты
+    zh: 电子邮件
+  WebFormOverlayContactsContactEmailAddresses:
+    ar: عناوين البريد الإلكتروني
+    context: Email addresses field for a card
+    de: E-Mail-Adressen
+    en: Email Addresses
+    es: Direcciones de correo electrónico
+    fr: Adresses électroniques
+    hi: ईमेल पते
+    ja: メールアドレス
+    nl: E-mailadressen
+    pt: Endereços de e-mail
+    ru: Адреса электронной почты
+    zh: 电子邮件地址
+  WebFormOverlayContactsContactEmailAddressesTooltip:
+    ar: عناوين البريد الإلكتروني الخاصة بجهة الاتصال
+    context: Email addresses tooltip for a card
+    de: E-Mail-Adressen der Kontaktperson
+    en: Email addresses of the contact
+    es: Direcciones de correo electrónico del contacto
+    fr: Adresses électroniques des contacts
+    hi: संपर्क के ईमेल पते
+    ja: 連絡先のメールアドレス
+    nl: E-mailadressen van de contactpersoon
+    pt: Endereços de e-mail do contato
+    ru: Адреса электронной почты контактного лица
+    zh: 联系人的电子邮件地址
+  WebFormOverlayContactsContactFirstName:
+    ar: الاسم الأول
+    context: First name of the contact.
+    de: Vorname
+    en: First Name
+    es: Nombre de pila
+    fr: Prénom
+    hi: पहला नाम
+    ja: ファーストネーム
+    nl: Voornaam
+    pt: Primeiro nome
+    ru: Имя
+    zh: 名
+  WebFormOverlayContactsContactLastName:
+    ar: اسم العائلة
+    context: Last name of the contact.
+    de: Nachname
+    en: Last Name
+    es: Apellido
+    fr: Nom de famille
+    hi: उपनाम
+    ja: 苗字
+    nl: Achternaam
+    pt: Sobrenome
+    ru: Фамилия
+    zh: 姓
+  WebFormOverlayContactsContactLastVisited:
+    ar: آخر زيارة
+    context: The last time a place was visited
+    de: Zuletzt besucht
+    en: Last Visited
+    es: Última visita
+    fr: Dernière visite
+    hi: अंतिम बार देखा गया
+    ja: 最終訪問
+    nl: Laatst bezocht
+    pt: Última visita
+    ru: Последний раз посетил
+    zh: 上次访问
+  WebFormOverlayContactsContactMealsDisLiked:
+    ar: الوجبات - غير المفضلة
+    context: A list of disliked meals for a restaurant
+    de: Mahlzeiten - Nicht gemocht
+    en: Meals - Disliked
+    es: Comidas - No me gustaron
+    fr: Repas - Je n&#39;ai pas aimé
+    hi: भोजन - नापसंद
+    ja: 食事 - 嫌い
+    nl: Maaltijden - Niet leuk
+    pt: Refeições - Não gostei
+    ru: Еда - Не понравилось
+    zh: 餐食 - 不喜欢
+  WebFormOverlayContactsContactMealsDislikedTooltip:
+    ar: أضف الوجبات التي لم تعجب أسرتك في هذا المطعم، مفصولة بفواصل
+    context: A list of disliked meals for a restaurant tooltip
+    de: Fügen Sie die Gerichte hinzu, die Ihrem Haushalt in diesem Restaurant nicht
+      geschmeckt haben, durch Kommas getrennt
+    en: Add the meals that your household disliked at this restaurant, comma-separated
+    es: Añade las comidas que a tu familia no le gustaron en este restaurante, separadas
+      por comas.
+    fr: Ajoutez les plats que votre famille n&#39;a pas aimés dans ce restaurant,
+      séparés par des virgules
+    hi: इस रेस्तरां में आपके परिवार को जो खाना पसंद नहीं आया, उसे अल्पविराम से अलग
+      करके जोड़ें
+    ja: このレストランで家族が嫌いだった料理をカンマで区切って追加してください
+    nl: Voeg de maaltijden toe die uw huishouden niet lekker vond in dit restaurant,
+      gescheiden door komma&#39;s
+    pt: Adicione as refeições que sua família não gostou neste restaurante, separadas
+      por vírgulas
+    ru: Добавьте блюда, которые не понравились вашей семье в этом ресторане, разделив
+      их запятыми.
+    zh: 添加您家人不喜欢这家餐厅的菜品（以逗号分隔）
+  WebFormOverlayContactsContactMealsLiked:
+    ar: الوجبات - المفضلة
+    context: A list of liked meals for a restaurant
+    de: Mahlzeiten - Gefällt mir
+    en: Meals - Liked
+    es: Comidas - Me gustó
+    fr: Repas - J&#39;ai aimé
+    hi: भोजन - पसंद आया
+    ja: 食事 - 気に入った
+    nl: Maaltijden - Geliked
+    pt: Refeições - Gostei
+    ru: Еда - Понравилось
+    zh: 餐食 - 喜欢
+  WebFormOverlayContactsContactMealsLikedTooltip:
+    ar: أضف الوجبات التي أحبها أفراد أسرتك في هذا المطعم، مفصولة بفواصل
+    context: A list of liked meals for a restaurant tooltip
+    de: Fügen Sie die Mahlzeiten hinzu, die Ihrem Haushalt in diesem Restaurant geschmeckt
+      haben, durch Kommas getrennt
+    en: Add the meals that your household liked at this restaurant, comma-separated
+    es: Agregue las comidas que a su familia le gustaron en este restaurante, separadas
+      por comas.
+    fr: Ajoutez les plats que votre famille a appréciés dans ce restaurant, séparés
+      par des virgules
+    hi: इस रेस्तरां में आपके परिवार को जो भोजन पसंद आया उसे अल्पविराम से अलग करके
+      जोड़ें
+    ja: このレストランで家族が気に入った料理をカンマで区切って追加してください
+    nl: Voeg de maaltijden toe die uw huishouden in dit restaurant lekker vond, gescheiden
+      door komma&#39;s
+    pt: Adicione as refeições que sua família gostou neste restaurante, separadas
+      por vírgulas
+    ru: Добавьте блюда, которые понравились вашей семье в этом ресторане, разделенные
+      запятыми.
+    zh: 添加您家人在这家餐厅喜欢的菜品（以逗号分隔）
+  WebFormOverlayContactsContactMenuLink:
+    ar: رابط القائمة
+    context: A link to the restaurant's menu
+    de: Menü-Link
+    en: Menu Link
+    es: Enlace de menú
+    fr: Lien vers le menu
+    hi: मेनू लिंक
+    ja: メニューリンク
+    nl: Menu-koppeling
+    pt: Link do menu
+    ru: Ссылка на меню
+    zh: 菜单链接
+  WebFormOverlayContactsContactMenuLinkTooltip:
+    ar: أضف رابطًا إلى قائمة الطعام عبر الإنترنت أو منصة الطلب الخاصة بالمطعم
+    context: A link to the restaurant's menu tooltip
+    de: Fügen Sie einen Link zum Online-Menü oder zur Bestellplattform des Restaurants
+      hinzu
+    en: Add a link to the restaurant's online menu or ordering platform
+    es: Agregue un enlace al menú en línea del restaurante o a la plataforma de pedidos.
+    fr: Ajoutez un lien vers le menu en ligne du restaurant ou vers la plateforme
+      de commande
+    hi: रेस्तरां के ऑनलाइन मेनू या ऑर्डरिंग प्लेटफ़ॉर्म का लिंक जोड़ें
+    ja: レストランのオンラインメニューまたは注文プラットフォームへのリンクを追加します
+    nl: Voeg een link toe naar het online menu of bestelplatform van het restaurant
+    pt: Adicione um link para o menu online do restaurante ou para a plataforma de
+      pedidos
+    ru: Добавьте ссылку на онлайн-меню ресторана или платформу заказов
+    zh: 添加餐厅在线菜单或订餐平台的链接
+  WebFormOverlayContactsContactNoteTooltip:
+    ar: تفاصيل إضافية للتواصل
+    context: Note tooltip for a card
+    de: Weitere Details für einen Kontakt
+    en: Additional details for a contact
+    es: Detalles adicionales para un contacto
+    fr: Informations complémentaires pour un contact
+    hi: संपर्क के लिए अतिरिक्त विवरण
+    ja: 連絡先に関する追加情報
+    nl: Aanvullende informatie voor een contactpersoon
+    pt: Informações adicionais para contato
+    ru: Дополнительные контактные данные
+    zh: 联系方式详情
+  WebFormOverlayContactsContactPhoneNumber:
+    ar: رقم التليفون
+    context: Phone number field for a card
+    de: Telefonnummer
+    en: Phone number
+    es: Número de teléfono
+    fr: Numéro de téléphone
+    hi: फ़ोन नंबर
+    ja: 電話番号
+    nl: Telefoonnummer
+    pt: Número de telefone
+    ru: Номер телефона
+    zh: 电话号码
+  WebFormOverlayContactsContactPhoneNumbers:
+    ar: أرقام الهواتف
+    context: Phone numbers field for a card
+    de: Telefonnummern
+    en: Phone numbers
+    es: Números de teléfono
+    fr: numéros de téléphone
+    hi: दूरभाष संख्या
+    ja: 電話番号
+    nl: Telefoonnummers
+    pt: Números de telefone
+    ru: Номера телефонов
+    zh: 电话号码
+  WebFormOverlayContactsContactPhoneNumbersTooltip:
+    ar: أرقام هواتف جهة الاتصال
+    context: Phone numbers tooltip for a card
+    de: Telefonnummern des Ansprechpartners
+    en: Phone numbers of the contact
+    es: Números de teléfono del contacto
+    fr: Numéros de téléphone du contact
+    hi: संपर्क के फ़ोन नंबर
+    ja: 連絡先の電話番号
+    nl: Telefoonnummers van de contactpersoon
+    pt: Números de telefone do contato
+    ru: Номера телефонов контактного лица
+    zh: 联系人的电话号码
+  WebFormOverlayContactsContactPrefixes:
+    ar: البادئات
+    context: Prefixes name for a card
+    de: Präfixe
+    en: Prefixes
+    es: Prefijos
+    fr: Préfixes
+    hi: उपसर्गों
+    ja: 接頭辞
+    nl: Voorvoegsels
+    pt: Prefixos
+    ru: Префиксы
+    zh: 前缀
+  WebFormOverlayContactsContactPrice:
+    ar: سعر
+    context: The price of a business
+    de: Preis
+    en: Price
+    es: Precio
+    fr: Prix
+    hi: कीमत
+    ja: 価格
+    nl: Prijs
+    pt: Preço
+    ru: Цена
+    zh: 价格
+  WebFormOverlayContactsContactPriceTooltip:
+    ar: كم تكلفة العمل
+    context: Tooltip for restaurant price
+    de: Wie teuer ist das Geschäft
+    en: How expensive is the business
+    es: ¿Qué tan caro es el negocio?
+    fr: Combien coûte l&#39;entreprise
+    hi: यह व्यवसाय कितना महंगा है?
+    ja: ビジネスはどれくらい費用がかかるのか
+    nl: Hoe duur is het bedrijf?
+    pt: Quão caro é o negócio
+    ru: Насколько дорог бизнес?
+    zh: 生意有多贵
+  WebFormOverlayContactsContactRating:
+    ar: تصنيف
+    context: The rating of a business
+    de: Bewertungen
+    en: Rating
+    es: Clasificación
+    fr: Notation
+    hi: रेटिंग
+    ja: 評価
+    nl: Beoordeling
+    pt: Avaliação
+    ru: Рейтинг
+    zh: 等级
+  WebFormOverlayContactsContactRatingTooltip:
+    ar: تصنيف الأعمال
+    context: Tooltip for business rating
+    de: Unternehmensbewertung
+    en: Business rating
+    es: Calificación empresarial
+    fr: Notation des entreprises
+    hi: व्यवसाय रेटिंग
+    ja: ビジネス評価
+    nl: Bedrijfsbeoordeling
+    pt: Avaliação de negócios
+    ru: Бизнес-рейтинг
+    zh: 业务评级
+  WebFormOverlayContactsContactShopStore:
+    ar: متجر &gt; متجر
+    context: Toggle to set a contact as a store
+    de: Shop &gt; Store
+    en: Shop > Store
+    es: Tienda &gt; Tienda
+    fr: Boutique &gt; Magasin
+    hi: दुकान &gt; स्टोर
+    ja: ショップ &gt; ストア
+    nl: Winkel &gt; Winkel
+    pt: Loja &gt; Armazenar
+    ru: Магазин &gt; Магазин
+    zh: 商店 &gt; 门店
+  WebFormOverlayContactsContactSuffixes:
+    ar: اللواحق
+    context: Suffix name for a card
+    de: Suffixe
+    en: Suffixes
+    es: Sufijos
+    fr: Suffixes
+    hi: प्रत्यय
+    ja: 接尾辞
+    nl: Achtervoegsels
+    pt: Sufixos
+    ru: Суффиксы
+    zh: 后缀
+  WebFormOverlayContactsContactTimesVisited:
+    ar: عدد مرات الزيارة
+    context: Number of times a place was visited
+    de: Besuchszeiten
+    en: Times Visited
+    es: Veces visitadas
+    fr: Fois visités
+    hi: दौरा किये गये समय
+    ja: 訪問回数
+    nl: Aantal keer bezocht
+    pt: Vezes visitadas
+    ru: Количество посещений
+    zh: 访问次数
+  WebFormOverlayContactsContactTypeHome:
+    ar: بيت
+    context: Home address or phone number for contact.
+    de: Heim
+    en: Home
+    es: Hogar
+    fr: Maison
+    hi: घर
+    ja: 家
+    nl: Thuis
+    pt: Lar
+    ru: Дом
+    zh: 家
+  WebFormOverlayContactsContactTypeMobile:
+    ar: متحرك
+    context: Mobile number for contact.
+    de: Mobile
+    en: Mobile
+    es: Móvil
+    fr: Mobile
+    hi: गतिमान
+    ja: 携帯
+    nl: Mobiel
+    pt: Móvel
+    ru: Мобильный
+    zh: 移动的
+  WebFormOverlayContactsContactTypeWork:
+    ar: عمل
+    context: Work address or phone number for contact.
+    de: Arbeiten
+    en: Work
+    es: Trabajar
+    fr: Travail
+    hi: काम
+    ja: 仕事
+    nl: Werk
+    pt: Trabalhar
+    ru: Работа
+    zh: 工作
+  WebFormOverlayContactsContactURL:
+    ar: عنوان URL
+    context: URL field for a card
+    de: URL
+    en: URL
+    es: URL
+    fr: URL
+    hi: यूआरएल
+    ja: URL
+    nl: URL
+    pt: URL
+    ru: URL
+    zh: URL
+  WebFormOverlayContactsContactURLs:
+    ar: عناوين URL
+    context: URLs field for a card
+    de: URLs
+    en: URLs
+    es: URLs
+    fr: URL
+    hi: यूआरएल
+    ja: URL
+    nl: URL&#39;s
+    pt: URLs
+    ru: URL-адреса
+    zh: 网址
+  WebFormOverlayContactsContactURLsTooltip:
+    ar: عناوين URL الخاصة بجهة الاتصال
+    context: URLs tooltip for a card
+    de: URLs des Kontakts
+    en: URLs of the contact
+    es: URLs del contacto
+    fr: URL du contact
+    hi: संपर्क के यूआरएल
+    ja: 連絡先のURL
+    nl: URL&#39;s van de contactpersoon
+    pt: URLs do contato
+    ru: URL-адреса контактов
+    zh: 联系人的网址
+  WebFormOverlayContactsContacteDefaultCategoryTooltip:
+    ar: الفئة الافتراضية لتعبئة المعاملات
+    context: Default Budget Category for Contact tooltip
+    de: Standardkategorie zum Auffüllen für Transaktionen
+    en: Default category to populate for transactions
+    es: Categoría predeterminada para completar las transacciones
+    fr: Catégorie par défaut à remplir pour les transactions
+    hi: लेन-देन के लिए पॉप्युलेट करने के लिए डिफ़ॉल्ट श्रेणी
+    ja: 取引に入力するデフォルトのカテゴリ
+    nl: Standaardcategorie om in te vullen voor transacties
+    pt: Categoria padrão a ser preenchida para transações
+    ru: Категория по умолчанию для заполнения для транзакций
+    zh: 为交易填充的默认类别
   WebFormOverlayCookMealPlanChef:
     ar: طاه
     context: Chef field for cook meal plan
@@ -7256,6 +7620,292 @@ translations:
     ru: Типичное время подачи еды. При планировании еды Homechart будет использовать
       это время по умолчанию, но его всегда можно изменить для каждого рецепта.
     zh: 用餐的典型时间。安排用餐时，Homechart 将默认使用此时间，但始终可以根据食谱进行更改
+  WebFormOverlayExportWebDAVCalDAVClientExpires:
+    ar: انتهاء صلاحية عميل CalDAV
+    context: CalDAV client expires input
+    de: CalDAV-Client läuft ab
+    en: CalDAV Client Expires
+    es: El cliente CalDAV expira
+    fr: Expiration du client CalDAV
+    hi: CalDAV क्लाइंट की समय सीमा समाप्त हो गई है
+    ja: CalDAVクライアントの有効期限
+    nl: CalDAV-client verloopt
+    pt: Cliente CalDAV expira
+    ru: Срок действия клиента CalDAV истекает.
+    zh: CalDAV客户端过期
+  WebFormOverlayExportWebDAVCalDAVClientName:
+    ar: اسم عميل CalDAV
+    context: CalDAV client name input
+    de: CalDAV-Clientname
+    en: CalDAV Client Name
+    es: Nombre del cliente de CalDAV
+    fr: Nom du client CalDAV
+    hi: CalDAV क्लाइंट का नाम
+    ja: CalDAVクライアント名
+    nl: CalDAV-clientnaam
+    pt: Nome do cliente CalDAV
+    ru: Имя клиента CalDAV
+    zh: CalDAV客户端名称
+  WebFormOverlayExportWebDAVCalDAVClientNameTooltip:
+    ar: اسم عميل CalDAV
+    context: CalDAV client name input tooltip
+    de: Name des CalDAV-Clients
+    en: Name of the CalDAV client
+    es: Nombre del cliente CalDAV
+    fr: Nom du client CalDAV
+    hi: CalDAV क्लाइंट का नाम
+    ja: CalDAVクライアントの名前
+    nl: Naam van de CalDAV-client
+    pt: Nome do cliente CalDAV
+    ru: Название клиента CalDAV
+    zh: CalDAV客户端的名称
+  WebFormOverlayExportWebDAVCalDAVPassword:
+    ar: كلمة مرور CalDAV
+    context: CalDAV password
+    de: CalDAV-Passwort
+    en: CalDAV Password
+    es: Contraseña de CalDAV
+    fr: Mot de passe CalDAV
+    hi: CalDAV पासवर्ड
+    ja: CalDAVパスワード
+    nl: CalDAV-wachtwoord
+    pt: Senha CalDAV
+    ru: Пароль CalDAV
+    zh: CalDAV 密码
+  WebFormOverlayExportWebDAVCalDAVURL:
+    ar: عنوان URL لـ CalDAV
+    context: CalDAV URL
+    de: CalDAV-URL
+    en: CalDAV URL
+    es: URL de CalDAV
+    fr: URL CalDAV
+    hi: CalDAV URL
+    ja: CalDAV URL
+    nl: CalDAV-URL
+    pt: URL CalDAV
+    ru: URL CalDAV
+    zh: CalDAV URL
+  WebFormOverlayExportWebDAVCalDAVUsername:
+    ar: اسم مستخدم CalDAV
+    context: CalDAV username
+    de: CalDAV-Benutzername
+    en: CalDAV Username
+    es: Nombre de usuario de CalDAV
+    fr: Nom d&#39;utilisateur CalDAV
+    hi: CalDAV उपयोगकर्ता नाम
+    ja: CalDAVユーザー名
+    nl: CalDAV-gebruikersnaam
+    pt: Nome de usuário CalDAV
+    ru: Имя пользователя CalDAV
+    zh: CalDAV 用户名
+  WebFormOverlayExportWebDAVCardDAVClientExpires:
+    ar: تاريخ انتهاء صلاحية بطاقة عميل DAV
+    context: CardDAV client expires input
+    de: CardDAVClient läuft ab
+    en: CardDAVClient Expires
+    es: El cliente de CardDAVCient caduca
+    fr: Expiration du client CardDAVClient
+    hi: कार्डडीएवीक्लाइंट की समय सीमा समाप्त हो रही है
+    ja: CardDAVクライアントの有効期限が切れます
+    nl: CardDAVClient verloopt
+    pt: O cliente CardDAVClient expira
+    ru: Срок действия CardDAVClient истекает
+    zh: CardDAV客户端过期
+  WebFormOverlayExportWebDAVCardDAVClientName:
+    ar: اسم عميل CardDAV
+    context: CalDAV client name input
+    de: CardDAV-Clientname
+    en: CardDAV Client Name
+    es: Nombre del cliente CardDAV
+    fr: Nom du client CardDAV
+    hi: कार्डडीएवी क्लाइंट नाम
+    ja: CardDAVクライアント名
+    nl: CardDAV-clientnaam
+    pt: Nome do cliente CardDAV
+    ru: Имя клиента CardDAV
+    zh: CardDAV 客户端名称
+  WebFormOverlayExportWebDAVCardDAVClientNameTooltip:
+    ar: اسم عميل CardDAV
+    context: CardDAV client name input tooltip
+    de: Name des CardDAV-Clients
+    en: Name of the CardDAV client
+    es: Nombre del cliente CardDAV
+    fr: Nom du client CardDAV
+    hi: CardDAV क्लाइंट का नाम
+    ja: CardDAVクライアントの名前
+    nl: Naam van de CardDAV-client
+    pt: Nome do cliente CardDAV
+    ru: Название клиента CardDAV
+    zh: CardDAV客户端的名称
+  WebFormOverlayExportWebDAVCardDAVPassword:
+    ar: كلمة مرور CardDAV
+    context: CardDAV password
+    de: CardDAV-Passwort
+    en: CardDAV Password
+    es: Contraseña de CardDAV
+    fr: Mot de passe CardDAV
+    hi: कार्डडीएवी पासवर्ड
+    ja: CardDAVパスワード
+    nl: CardDAV-wachtwoord
+    pt: Senha CardDAV
+    ru: Пароль CardDAV
+    zh: CardDAV密码
+  WebFormOverlayExportWebDAVCardDAVURL:
+    ar: رابط CardDAV
+    context: CardDAV URL
+    de: CardDAV-URL
+    en: CardDAV URL
+    es: URL de CardDAV
+    fr: URL CardDAV
+    hi: कार्डडीएवी यूआरएल
+    ja: CardDAV URL
+    nl: CardDAV-URL
+    pt: URL do CardDAV
+    ru: URL CardDAV
+    zh: CardDAV URL
+  WebFormOverlayExportWebDAVCardDAVUsername:
+    ar: اسم مستخدم CardDAV
+    context: CardDAV username
+    de: CardDAV-Benutzername
+    en: CardDAV Username
+    es: Nombre de usuario de CardDAV
+    fr: Nom d&#39;utilisateur CardDAV
+    hi: कार्डडीएवी उपयोगकर्ता नाम
+    ja: CardDAVユーザー名
+    nl: CardDAV-gebruikersnaam
+    pt: Nome de usuário do CardDAV
+    ru: Имя пользователя CardDAV
+    zh: CardDAV 用户名
+  WebFormOverlayExportWebDAVDisableICalendar:
+    ar: تعطيل iCalendar
+    context: Button to disable iCalendar
+    de: iCalendar deaktivieren
+    en: Disable iCalendar
+    es: Deshabilitar iCalendar
+    fr: Désactiver iCalendar
+    hi: आईकैलेंडर को अक्षम करें
+    ja: iCalendarを無効にする
+    nl: Schakel iCalendar uit
+    pt: Desativar iCalendar
+    ru: Отключить iCalendar
+    zh: 禁用 iCalendar
+  WebFormOverlayExportWebDAVDisableVCard:
+    ar: تعطيل بطاقة vCard
+    context: Button to disable vcard
+    de: vCard deaktivieren
+    en: Disable vCard
+    es: Deshabilitar vCard
+    fr: Désactiver la vCard
+    hi: vCard को अक्षम करें
+    ja: vCardを無効にする
+    nl: vCard uitschakelen
+    pt: Desativar vCard
+    ru: Отключить vCard
+    zh: 禁用 vCard
+  WebFormOverlayExportWebDAVEnableICalendar:
+    ar: قم بتمكين iCalendar
+    context: Button to enable iCalendar
+    de: iCalendar aktivieren
+    en: Enable iCalendar
+    es: Habilitar iCalendar
+    fr: Activer iCalendar
+    hi: आईकैलेंडर सक्षम करें
+    ja: iCalendarを有効にする
+    nl: Schakel iCalendar in
+    pt: Habilitar iCalendar
+    ru: Включить iCalendar
+    zh: 启用 iCalendar
+  WebFormOverlayExportWebDAVEnableVCard:
+    ar: تفعيل بطاقة vCard
+    context: Button to enable vcard
+    de: vCard aktivieren
+    en: Enable vCard
+    es: Habilitar vCard
+    fr: Activer la vCard
+    hi: vCard को सक्षम करें
+    ja: vCardを有効にする
+    nl: vCard inschakelen
+    pt: Ativar vCard
+    ru: Включить vCard
+    zh: 启用 vCard
+  WebFormOverlayExportWebDAVGenerateCalDAV:
+    ar: إعداد CalDAV
+    context: Setup CalDAV button
+    de: CalDAV einrichten
+    en: Setup CalDAV
+    es: Configurar CalDAV
+    fr: Configuration de CalDAV
+    hi: CalDAV सेटअप करें
+    ja: CalDAVの設定
+    nl: CalDAV instellen
+    pt: Configurar CalDAV
+    ru: Настройка CalDAV
+    zh: 设置 CalDAV
+  WebFormOverlayExportWebDAVGenerateCardDAV:
+    ar: إعداد CardDAV
+    context: Setup CardDAV button
+    de: CardDAV einrichten
+    en: Setup CardDAV
+    es: Tarjeta de configuración DAV
+    fr: Configuration CardDAV
+    hi: कार्डडीएवी सेटअप करें
+    ja: CardDAVの設定
+    nl: CardDAV instellen
+    pt: Configurar CardDAV
+    ru: Настройка CardDAV
+    zh: 设置 CardDAV
+  WebFormOverlayExportWebDAVGenerateNewVCardURL:
+    ar: إنشاء روابط جديدة لبطاقات vCard
+    context: Button to generate a new URL for vCard
+    de: Neue vCard-URLs generieren
+    en: Generate New vCard URLs
+    es: Generar nuevas URL de vCard
+    fr: Générer de nouvelles URL vCard
+    hi: नए vCard URL जेनरेट करें
+    ja: 新しいvCard URLを生成する
+    nl: Nieuwe vCard-URL&#39;s genereren
+    pt: Gerar novos URLs de vCard
+    ru: Сгенерировать новые URL-адреса vCard
+    zh: 生成新的 vCard URL
+  WebFormOverlayExportWebDAVICalendarURLEvents:
+    ar: عنوان URL لـ iCalendar - الأحداث
+    context: Field to add a URL for iCalendar
+    de: iCalendar-URL - Ereignisse
+    en: iCalendar URL - Events
+    es: URL de iCalendar - Eventos
+    fr: URL iCalendar - Événements
+    hi: iCalendar URL - ईवेंट
+    ja: iCalendar URL - イベント
+    nl: iCalendar URL - Evenementen
+    pt: URL do iCalendar - Eventos
+    ru: URL-адрес iCalendar — События
+    zh: iCalendar URL - 活动
+  WebFormOverlayExportWebDAVICalendarURLTasks:
+    ar: عنوان URL لـ iCalendar - المهام
+    context: Field to add a URL for iCalendar
+    de: iCalendar-URL - Aufgaben
+    en: iCalendar URL - Tasks
+    es: URL de iCalendar - Tareas
+    fr: URL iCalendar - Tâches
+    hi: iCalendar URL - कार्य
+    ja: iCalendar URL - タスク
+    nl: iCalendar URL - Taken
+    pt: URL do iCalendar - Tarefas
+    ru: URL-адрес iCalendar — Задачи
+    zh: iCalendar URL - 任务
+  WebFormOverlayExportWebDAVVCardURL:
+    ar: رابط بطاقة vCard
+    context: Field to add a URL for VCard
+    de: vCard-URL
+    en: vCard URL
+    es: URL de vCard
+    fr: URL de la vCard
+    hi: vCard URL
+    ja: vCard URL
+    nl: vCard-URL
+    pt: URL do vCard
+    ru: URL vCard
+    zh: vCard URL
   WebFormOverlayHealthLogItemTooltip:
     ar: عنصر صحي لسجل الصحة
     context: Inputs tooltip for a Health Log
@@ -7824,6 +8474,19 @@ translations:
     pt: Letras minúsculas
     ru: Строчные буквы
     zh: 小写字母
+  WebFormOverlaySecretsValueNoVault:
+    ar: يجب تحديد الخزنة.
+    context: Error when adding a value without a Vault
+    de: Ein Tresor muss ausgewählt werden.
+    en: A Vault must be selected.
+    es: Debe seleccionarse una bóveda.
+    fr: Un coffre-fort doit être sélectionné.
+    hi: एक वॉल्ट का चयन करना होगा।
+    ja: 保管庫を選択する必要があります。
+    nl: Er moet een kluis worden geselecteerd.
+    pt: É necessário selecionar um cofre.
+    ru: Необходимо выбрать хранилище.
+    zh: 必须选择一个保险库。
   WebFormOverlaySecretsValueNoteTooltip:
     ar: مذكرة سرية
     context: Tooltip for Secrets Value Note field
@@ -8002,18 +8665,32 @@ translations:
     ru: Разрешения на редактирование или просмотр бюджетных счетов, категорий и транзакций
     zh: 编辑或查看预算账户、类别和交易的权限
   WebFormPermissionsCalendarTooltip:
-    ar: أذونات لتحرير أو عرض أحداث التقويم
+    ar: أذونات تعديل أو عرض التقاويم والفعاليات
     context: Tooltip for calendar permission toggle
-    de: Berechtigungen zum Bearbeiten oder Anzeigen von Kalenderereignissen
-    en: Permissions to edit or view calendar events
-    es: Permisos para editar o ver eventos del calendario
-    fr: Autorisations de modifier ou d'afficher les événements du calendrier
-    hi: कैलेंडर ईवेंट संपादित करने या देखने की अनुमतियां
-    ja: カレンダーイベントを編集または表示する権限
-    nl: Rechten om agenda-afspraken te bewerken of te bekijken
-    pt: Permissões para editar ou visualizar eventos da agenda
-    ru: Разрешения на редактирование или просмотр событий календаря
-    zh: 编辑或查看日历事件的权限
+    de: Berechtigungen zum Bearbeiten oder Anzeigen von Kalendern und Ereignissen
+    en: Permissions to edit or view calendars and events
+    es: Permisos para editar o ver calendarios y eventos
+    fr: Autorisations de modifier ou de consulter les calendriers et les événements
+    hi: कैलेंडर और इवेंट को संपादित करने या देखने की अनुमतियाँ
+    ja: カレンダーやイベントを編集または閲覧するための権限
+    nl: Toestemming om agenda&#39;s en evenementen te bewerken of te bekijken
+    pt: Permissões para editar ou visualizar calendários e eventos
+    ru: Права доступа на редактирование или просмотр календарей и событий.
+    zh: 编辑或查看日历和事件的权限
+  WebFormPermissionsContactsTooltip:
+    ar: أذونات لتحرير أو عرض دفاتر العناوين وجهات الاتصال
+    context: Tooltip for contacts permission toggle
+    de: Berechtigungen zum Bearbeiten oder Anzeigen von Adressbüchern und Kontakten
+    en: Permissions to edit or view address books and contacts
+    es: Permisos para editar o ver libretas de direcciones y contactos.
+    fr: Autorisations de modification ou de consultation des carnets d&#39;adresses
+      et des contacts
+    hi: पता पुस्तिका और संपर्कों को संपादित करने या देखने की अनुमति
+    ja: アドレス帳と連絡先を編集または表示する権限
+    nl: Toestemming om adresboeken en contactpersonen te bewerken of in te zien.
+    pt: Permissões para editar ou visualizar listas de endereços e contatos.
+    ru: Права доступа на редактирование или просмотр адресных книг и контактов.
+    zh: 编辑或查看地址簿和联系人的权限
   WebFormPermissionsCookTooltip:
     ar: أذونات لتعديل أو عرض أوقات وجبات الطهي وخطط الوجبات والوصفات
     context: Tooltip for cook permission toggle
@@ -8657,6 +9334,19 @@ translations:
     pt: Fim da demonstração
     ru: Завершить демонстрацию
     zh: 结束演示
+  WebGlobalActionExportAddressBooks:
+    ar: تصدير دفاتر العناوين
+    context: Export address book button
+    de: Adressbücher exportieren
+    en: Export Address Books
+    es: Exportar libretas de direcciones
+    fr: Carnets d&#39;adresses d&#39;exportation
+    hi: पता पुस्तिकाओं का निर्यात करें
+    ja: アドレス帳のエクスポート
+    nl: Exporteer adresboeken
+    pt: Exportar listas de endereços
+    ru: Экспорт адресных книг
+    zh: 导出地址簿
   WebGlobalActionExportCalendar:
     ar: تصدير التقويم
     context: Export calendar button
@@ -9295,6 +9985,19 @@ translations:
     pt: Todos
     ru: Все
     zh: 全部
+  WebGlobalAllAddressBooks:
+    ar: جميع دفاتر العناوين
+    context: All address books
+    de: Alle Adressbücher
+    en: All Address Books
+    es: Todas las libretas de direcciones
+    fr: Tous les carnets d&#39;adresses
+    hi: सभी पता पुस्तिकाएँ
+    ja: すべてのアドレス帳
+    nl: Alle adresboeken
+    pt: Todas as listas de endereços
+    ru: Все адресные книги
+    zh: 所有地址簿
   WebGlobalAllCollections:
     ar: كل المجموعات
     context: All collections of objects
@@ -9308,6 +10011,19 @@ translations:
     pt: Todas as coleções
     ru: Все коллекции
     zh: 所有系列
+  WebGlobalAllContacts:
+    ar: جميع جهات الاتصال
+    context: All contacts
+    de: Alle Kontakte
+    en: All Contacts
+    es: Todos los contactos
+    fr: Tous les contacts
+    hi: सभी संपर्क
+    ja: すべての連絡先
+    nl: Alle contactpersonen
+    pt: Todos os contatos
+    ru: Все контакты
+    zh: 所有联系人
   WebGlobalAllItems:
     ar: جميع المواد
     context: All items of objects

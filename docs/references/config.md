@@ -115,6 +115,12 @@ Number, number of days to keep completed tasks.
 
 **Default:** `90`
 
+{{% snippet config_key "app_imageMaxSizePixels" %}}
+
+Number, max pixel size of an image (height or width).  Increase this value to show higher resolution images in Homechart, at the cost of more storage space and bandwidth usage.
+
+**Default:** `300`
+
 {{% snippet config_key "app_motd" %}}
 
 String, informational message to display on the UI for all users.

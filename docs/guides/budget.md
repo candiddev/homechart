@@ -41,7 +41,7 @@ Monthly targets are used to simplify recurring expenses like cell phone or inter
 
 ## Payees
 
-Budget > Payees represents stores, businesses, or people you exchange money with.  Payees can be used as Restaurants for [Cook]({{< ref "/docs/guides/cook" >}}) or Stores for [Shop]({{< ref "/docs/guides/shop" >}}) by ticking **Shopping Store**.
+Payees are [Contacts]({{< ref "/docs/guides/contacts" >}}) you can use within Budget > Transactions..
 
 ## Transactions
 
@@ -66,7 +66,6 @@ Eventually, Homechart will start rolling up transactions into monthly summaries,
 Budget integrates with:
 
 - [Calendar]({{< ref "/docs/guides/calendar" >}}): Budget > Recurring Transactions will display on your **Calendar**
-- [Cook]({{< ref "/docs/guides/cook" >}}): Budget > Payees can be used as Restaurants for **Cook > Meal Plans**.
+- [Contacts]({{< ref "/docs/guides/budget" >}}): Budget > Transactions use Contacts as Payees.
 - [Plan]({{< ref "/docs/guides/plan" >}}): Budget > Categories can be associated to **Plan > Projects** so you can save for household projects
 - [Shop]({{< ref "/docs/guides/shop" >}}): Budget > Categories can be associated to **Shop > Lists** so you can save for your wishlists
-- [Shop]({{< ref "/docs/guides/shop" >}}): Budget > Payees can be used as Stores for **Shop > Items**.

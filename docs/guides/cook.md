@@ -72,11 +72,12 @@ You can share your recipes publicly by ticking **Public**.  You can then share t
 
 ## Restaurants
 
-Cook > Restaurants are [Budget > Payees]({{< ref "/docs/guides/budget#payees" >}}) with the **Use as Cook > Restaurant** option ticked, thus helping you avoid duplicating entries.  You can use Restaurants to remember liked/disliked meals, phone numbers, and menu links.  You can also schedule [Meal Plans](#meal-plans) with them, and receive reminders to leave for the restaurant.
+Cook > Restaurants are [Contacts]({{< ref "/docs/guides/contacts#contacts" >}}), helping you avoid duplicating entries.  You can use Restaurants to remember liked/disliked meals, phone numbers, and menu links.  You can also schedule [Meal Plans](#meal-plans) with them, and receive reminders to leave for the restaurant.
 
 ## Integrations
 
 Cook integrates with:
 
+- [Contacts]({{< ref "/docs/guides/contacts" >}}): Cook > Meal Plans can use **Contacts** as Restaurants.
 - [Inventory]({{< ref "/docs/guides/inventory" >}}): Cook > Recipes will show you what Ingredients you have in your **Inventory**
 - [Shop]({{< ref "/docs/guides/shop" >}}): Cook > Recipes ingredients can be added to your **Shop > Pick Up** list.  Homechart will consult your **Inventory** and exclude the ones you have in stock.

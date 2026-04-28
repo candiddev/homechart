@@ -19,7 +19,7 @@ You can move Items from a List to Pick Up when you're ready to prioritize purcha
 
 ## Stores
 
-Shop > Stores are [Budget > Payees]({{< ref "/docs/guides/budget#payees" >}}) with the **Use as Shop > Store** option ticked, thus helping you avoid duplicating entries.  You'll use Stores to filter your Pick Up list, so you can easily see what you need when you're at a certain Store.
+Shop > Stores are [Contacts]({{< ref "/docs/guides/contacts#contacts" >}}), helping you avoid duplicating entries.  You'll use Stores to filter your Pick Up list, so you can easily see what you need when you're at a certain Store.
 
 ## Categories
 
@@ -42,6 +42,7 @@ Shop > Staples are recurring Items.  When you create or edit an Item, you can ti
 
 - [Budget]({{< ref "/docs/guides/budget" >}}): Shop > Lists can be associated to **Budget > Categories** so you can save for your wishlists
 - [Calendar]({{< ref "/docs/guides/calendar" >}}): Shop > Pick Up can have **Cook > Meal Plan** Ingredients added using Calendar
-- [Cook]({{< ref "/docs/guides/cook" >}}): Shop > Pick Up can include ingredients you need for your **Cook > Recipes**.  Homechart will consult your **Inventory** and exclude the ones you have in stock.
+- [Contacts]({{< ref "/docs/guides/contacts" >}}): Shop > Items can use **Contacts** as Stores for easier shopping
+- [Cook]({{< ref "/docs/guides/cook" >}}): Shop > Pick Up can include ingredients you need for your **Cook > Recipes**.  Homechart will consult your **Inventory** and exclude the ones you have in stock
 - [Inventory]({{< ref "/docs/guides/inventory" >}}): Shop > Pick Up can contain **Inventory > Items** that you need more of
 - [Plan]({{< ref "/docs/guides/plan" >}}): Shop > Items can ae associated with **Plan > Projects**
