@@ -8511,6 +8511,34 @@ translations:
     pt: URL do vCard
     ru: URL vCard
     zh: vCard URL
+  WebFormOverlayFeatureCandidateDateComplete:
+    ar: التاريخ - مكتمل
+    context: Complete date of feature
+    de: Datum - Abgeschlossen
+    en: Date - Complete
+    es: Fecha - Completar
+    fr: Date - Complète
+    hi: दिनांक - पूर्ण
+    ja: 日付 - 完了
+    nl: Datum - Voltooien
+    pl: Data - Zakończono
+    pt: Data - Completo
+    ru: Дата - Завершено
+    zh: 日期 - 完成
+  WebFormOverlayFeatureCandidateDateTarget:
+    ar: التاريخ - الهدف
+    context: Target date of feature
+    de: Datum - Ziel
+    en: Date - Target
+    es: Fecha - Objetivo
+    fr: Date - Cible
+    hi: दिनांक - लक्ष्य
+    ja: 日付 - 目標
+    nl: Datum - Doel
+    pl: Data - Cel
+    pt: Data - Alvo
+    ru: Дата - Цель
+    zh: 日期 - 目标
   WebFormOverlayHealthLogItemTooltip:
     ar: عنصر صحي لسجل الصحة
     context: Inputs tooltip for a Health Log
