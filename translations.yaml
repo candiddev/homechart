@@ -6862,6 +6862,20 @@ translations:
     pt: Nome da categoria
     ru: Название категории
     zh: 类别名称
+  WebFormOverlayBudgetTransactionContactTooltip:
+    ar: اسم جهة اتصال جديد أو موجود
+    context: Tooltip for a contact of a budget transaction
+    de: Ein neuer oder bestehender Kontaktname
+    en: A new or existing Contact name
+    es: Nombre de contacto nuevo o existente
+    fr: Nom d&#39;un contact nouveau ou existant
+    hi: एक नया या मौजूदा संपर्क नाम
+    ja: 新規または既存の連絡先名
+    nl: Een nieuwe of bestaande contactpersoon
+    pl: Nowa lub istniejąca nazwa kontaktu
+    pt: Nome de contato novo ou existente
+    ru: Новое или существующее контактное имя
+    zh: 新的或现有的联系人姓名
   WebFormOverlayBudgetTransactionDateTooltip:
     ar: تاريخ حدوث الصفقة
     context: The tooltip for the date field
@@ -6929,20 +6943,6 @@ translations:
     pt: Nota para adicionar à transação, como o que foi comprado
     ru: Примечание, которое нужно добавить к транзакции, например, что было куплено.
     zh: 添加到交易中的注释，例如购买了什么
-  WebFormOverlayBudgetTransactionPayeeTooltip:
-    ar: اسم المدفوع لأمره جديد أو موجود
-    context: Tooltip for a payee of a budget transaction
-    de: Ein neuer oder vorhandener Name des Zahlungsempfängers
-    en: A new or existing Payee name
-    es: Un nombre de beneficiario nuevo o existente
-    fr: Un nom de bénéficiaire nouveau ou existant
-    hi: पाने वाले का नया या मौजूदा नाम
-    ja: 新規または既存の受取人名
-    nl: Een nieuwe of bestaande naam van de ontvanger
-    pl: Nowa lub istniejąca nazwa odbiorcy płatności
-    pt: Um nome de beneficiário novo ou existente
-    ru: Новое или существующее имя получателя платежа
-    zh: 新的或现有的收款人姓名
   WebFormOverlayBudgetTransactionStatus:
     ar: حالة
     context: Status field of transaction
@@ -10950,20 +10950,20 @@ translations:
     pt: Gastos por categoria
     ru: Расходы по категориям
     zh: 按类别支出
-  WebGlobalBudgetChartsSpendingByPayee:
-    ar: الإنفاق عن طريق المدفوع لأمره
-    context: Chart for showing spend by payee
-    de: Ausgaben des Zahlungsempfängers
-    en: Spending by Payee
-    es: Gasto por beneficiario
-    fr: Dépenses par bénéficiaire
-    hi: भुगतानकर्ता द्वारा खर्च
-    ja: 受取人による支出
-    nl: Uitgaven door ontvangers
-    pl: Wydatki według odbiorcy
-    pt: Gastos por beneficiário
-    ru: Расходы получателя
-    zh: 收款人支出
+  WebGlobalBudgetChartsSpendingByContact:
+    ar: الإنفاق حسب جهة الاتصال
+    context: Chart for showing spend by contact
+    de: Ausgaben nach Kontakt
+    en: Spending by Contact
+    es: Gasto por contacto
+    fr: Dépenses par contact
+    hi: संपर्क के आधार पर व्यय
+    ja: 連絡先別の支出
+    nl: Uitgaven per contactpersoon
+    pl: Wydatki według kontaktu
+    pt: Gastos por contato
+    ru: Расходы по контактам
+    zh: 按联系人消费
   WebGlobalBudgetMonth:
     ar: شهر
     context: A month that has a budget
