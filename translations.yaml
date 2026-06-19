@@ -11716,6 +11716,25 @@ translations:
     pt: de
     ru: из
     zh: 的
+  WebGlobalOlderVersion:
+    ar: الخادم الذي تتصل به يعمل بإصدار قديم من برنامج Homechart
+    context: Alert when connecting to an older Homechart instance
+    de: Der Server, mit dem Sie sich verbinden, verwendet eine ältere Version von
+      Homechart.
+    en: The server you're connecting to is running an older version of Homechart
+    es: El servidor al que te estás conectando está ejecutando una versión anterior
+      de Homechart.
+    fr: Le serveur auquel vous vous connectez exécute une ancienne version de Homechart.
+    hi: आप जिस सर्वर से कनेक्ट कर रहे हैं, उस पर होमचार्ट का पुराना संस्करण चल रहा
+      है।
+    ja: 接続先のサーバーは、Homechartの古いバージョンを実行しています。
+    nl: De server waarmee u verbinding probeert te maken, draait een oudere versie
+      van Homechart.
+    pl: Serwer, z którym się łączysz, korzysta ze starszej wersji Homechart
+    pt: O servidor ao qual você está se conectando está executando uma versão antiga
+      do Homechart.
+    ru: На сервере, к которому вы подключаетесь, установлена более старая версия Homechart.
+    zh: 您连接的服务器运行的是旧版本的 Homechart。
   WebGlobalPasswordShow:
     ar: عرض كلمة المرور
     context: Toggle to reveal a password
@@ -12468,6 +12487,28 @@ translations:
     pt: Endereço do website
     ru: Адрес веб-сайта
     zh: 网站地址
+  WebGlobalUnsupportedVersion:
+    ar: الخادم الذي تتصل به يعمل بإصدار غير مدعوم من Homechart
+    context: Alert when connecting to an unsupported Homechart instance
+    de: Der Server, mit dem Sie sich verbinden, verwendet eine nicht unterstützte
+      Version von Homechart.
+    en: The server you're connecting to is running an unsupported version of Homechart
+    es: El servidor al que te estás conectando está ejecutando una versión no compatible
+      de Homechart.
+    fr: Le serveur auquel vous vous connectez exécute une version non prise en charge
+      de Homechart
+    hi: आप जिस सर्वर से कनेक्ट कर रहे हैं, उस पर होमचार्ट का एक ऐसा संस्करण चल रहा
+      है जो समर्थित नहीं है।
+    ja: 接続先のサーバーは、サポート対象外のバージョンのHomechartを実行しています。
+    nl: De server waarmee u verbinding probeert te maken, gebruikt een niet-ondersteunde
+      versie van Homechart.
+    pl: Na serwerze, z którym się łączysz, działa nieobsługiwana wersja aplikacji
+      Homechart
+    pt: O servidor ao qual você está se conectando está executando uma versão não
+      suportada do Homechart.
+    ru: На сервере, к которому вы подключаетесь, установлена неподдерживаемая версия
+      Homechart.
+    zh: 您连接的服务器运行的是不受支持的 Homechart 版本。
   WebGlobalUpcoming:
     ar: القادمة
     context: Things that are happening soon
@@ -12566,23 +12607,6 @@ translations:
     pt: não corresponde ao seu dispositivo
     ru: не соответствует вашему устройству
     zh: 与您的设备不匹配
-  WebGlobalWrongVersion:
-    ar: يقوم الخادم الذي تتصل به بتشغيل إصدار قديم من Homechart
-    context: Alert when connecting to an older Homechart instance
-    de: Auf dem Server, mit dem Sie sich verbinden, wird eine ältere Version von Homechart
-      ausgeführt
-    en: The server you're connecting to is running an older version of Homechart
-    es: El servidor al que te estás conectando está ejecutando una versión anterior
-      de Homechart
-    fr: Le serveur auquel vous vous connectez exécute une ancienne version de Homechart
-    hi: आप जिस सर्वर से जुड़ रहे हैं वह होमचार्ट का पुराना संस्करण चला रहा है
-    ja: 接続先のサーバーは古いバージョンの Homechart を実行しています
-    nl: De server waarmee u verbinding maakt, gebruikt een oudere versie van Homechart
-    pl: Serwer, z którym się łączysz, korzysta ze starszej wersji Homechart
-    pt: O servidor ao qual você está se conectando está executando uma versão mais
-      antiga do Homechart
-    ru: На сервере, к которому вы подключаетесь, установлена более старая версия Homechart.
-    zh: 您要连接的服务器正在运行旧版本的 Homechart
   WebHash:
     ar: هاش
     context: Hash value of a thing
