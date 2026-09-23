@@ -38,7 +38,7 @@ Events are things that are happening within your household.
 
 ### Participants
 
-Events can have participants, members of your household that will be at the event.  When this is set, only those members will be notified of the Event, and the Event will use the [household member's colors]({{< ref "/docs/guides/settings#household" >}}).
+Events can have participants, members of your household that will be at the event.  When this is set, only those members will be notified of the Event.  Events will display the [household member's colors]({{< ref "/docs/guides/settings#household" >}}) at the bottom for easy visual organization.
 
 ### Location and Travel
 
